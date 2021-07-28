@@ -1,0 +1,166 @@
+.btcpw_btcpay_status {
+  margin-top: 25px;
+  font-weight: bold;
+  display: none;
+}
+
+input[type="text"],
+select,
+textarea {
+  width: 50%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+label {
+  padding: 10px 10px 10px 0;
+  display: inline-block;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.col-20 {
+  flex: 1;
+  margin-top: 8px;
+}
+.col-80 {
+  flex: 4;
+  margin-top: 8px;
+}
+
+.col-50 {
+  margin-top: 8px;
+  flex: 0.4;
+}
+
+.section > h1 {
+  font-size: 35px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: center;
+}
+
+.section.scroll {
+  height: 500px;
+  overflow: auto;
+}
+
+.section.table {
+  width: 100%;
+  font-family: Helvetica, Arial, sans-serif;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 30px 0;
+  font-size: 0.9em;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.192);
+}
+
+.section.table thead tr th {
+  background-color: #1d5aa3;
+  color: #ffffff;
+  text-align: left;
+  font-size: 1.4em;
+}
+.section.table thead tr th {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+}
+
+.section.table th,
+.section.table td {
+  padding: 15px 15px;
+}
+
+.section.table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.section.table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+td.Expired,
+td.Invalid {
+  background-color: #f53c18;
+}
+td.Processing,
+td.New {
+  background-color: #f6b330;
+}
+td.Settled {
+  background-color: #269950;
+}
+.btcpw_pay__gutenberg_block_separator {
+  width: 100%;
+  height: 25px;
+  background: #c2cbd2;
+}
+.btcpw_pay__gutenberg_block_file {
+  border: solid;
+  text-align: center;
+  color: #c2cbd2;
+}
+
+.btcpw_pay__gutenberg_block_file button {
+  background-color: #007cba;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  margin-bottom: 5px;
+  line-height: 1.8;
+  font-size: 0.88889em;
+  font-weight: bold;
+}
+
+.container_predefined_amount input:not([type="checkbox"]),
+.container_predefined_amount select {
+  width: 100px;
+}
+
+.tipping_box_settings textarea,
+.tipping_banner_settings textarea,
+.tipping_page_settings textarea {
+  width: 250px;
+  height: 100px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+.tipping_box_settings label,
+.tipping_box_settings textarea,
+.tipping_banner_settings label,
+.tipping_banner_settings textarea,
+.tipping_page_settings label,
+.tipping_page_settings textarea {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.col-2 {
+  display: flex;
+  flex-direction: column;
+}
+.col-fixed {
+  display: flex;
+  flex-direction: column;
+}
+.tipping_box textarea,
+.tipping_banner textarea,
+.tipping_page textarea {
+  width: auto;
+  height: 100px;
+}
+
+.tipping_box input.widget-tipping-basic_redirect,
+.tipping_banner input.widget-tipping-basic_redirect {
+  width: 100%;
+}
