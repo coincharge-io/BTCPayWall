@@ -595,7 +595,8 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   align-items: center;
   padding: 0.5em;
 }
-.btcpw_skyscraper_header_container.high {
+.btcpw_skyscraper_header_container.high,
+.btcpw_widget.btcpw_skyscraper_header_container.high {
   padding: 0.5em;
   height: 260px !important;
   width: 200px !important;
@@ -624,6 +625,9 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
 
 .btcpw_skyscraper_banner {
   line-height: 1em;
+}
+.btcpw_skyscraper_banner.high {
+  width: 200px !important;
 }
 
 .btcpw_skyscraper_amount > div {

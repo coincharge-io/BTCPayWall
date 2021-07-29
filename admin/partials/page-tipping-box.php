@@ -23,9 +23,10 @@ $background = wp_get_attachment_image_src($image['background']);
                 <select required name="btcpw_tipping_box_dimension" id="btcpw_tipping_box_dimension">
                     <option disabled value="">Select dimension</option>
                     <?php foreach ($dimensions as $dimension) : ?>
-                        <option <?php echo $used_dimension === $dimension ? 'selected' : ''; ?> value="<?php echo $dimension; ?>">
-                            <?php echo $dimension; ?>
-                        </option>
+                    <option <?php echo $used_dimension === $dimension ? 'selected' : ''; ?>
+                        value="<?php echo $dimension; ?>">
+                        <?php echo $dimension; ?>
+                    </option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -36,13 +37,18 @@ $background = wp_get_attachment_image_src($image['background']);
             </div>
             <div class="col-50">
                 <?php if ($background) : ?>
-                    <button id="btcpw_tipping_box_button_image_background" class="btcpw_tipping_box_button_image_background" name="btcpw_tipping_box_button_image_background"><img src="<?php echo $background[0]; ?>" /></a></button>
-                    <button class="btcpw_tipping_box_button_remove_background">Remove image</button>
-                    <input type="hidden" id="btcpw_tipping_box_image_background" class="btcpw_tipping_box_image_background" name="btcpw_tipping_box_image[background]" value=<?php echo $image['background']; ?> />
+                <button id="btcpw_tipping_box_button_image_background" class="btcpw_tipping_box_button_image_background"
+                    name="btcpw_tipping_box_button_image_background"><img
+                        src="<?php echo $background[0]; ?>" /></a></button>
+                <button class="btcpw_tipping_box_button_remove_background">Remove image</button>
+                <input type="hidden" id="btcpw_tipping_box_image_background" class="btcpw_tipping_box_image_background"
+                    name="btcpw_tipping_box_image[background]" value=<?php echo $image['background']; ?> />
                 <?php else : ?>
-                    <button id="btcpw_tipping_box_button_image_background" class="btcpw_tipping_box_button_image_background" name="btcpw_tipping_box_button_image_background">Upload </button>
-                    <button class="btcpw_tipping_box_button_remove_background" style="display:none">Remove image</button>
-                    <input type="hidden" id="btcpw_tipping_box_image_background" class="btcpw_tipping_box_image_background" name="btcpw_tipping_box_image[background]" value=<?php echo $image['background']; ?> />
+                <button id="btcpw_tipping_box_button_image_background" class="btcpw_tipping_box_button_image_background"
+                    name="btcpw_tipping_box_button_image_background">Upload </button>
+                <button class="btcpw_tipping_box_button_remove_background" style="display:none">Remove image</button>
+                <input type="hidden" id="btcpw_tipping_box_image_background" class="btcpw_tipping_box_image_background"
+                    name="btcpw_tipping_box_image[background]" value=<?php echo $image['background']; ?> />
                 <?php endif; ?>
             </div>
         </div>
@@ -51,7 +57,8 @@ $background = wp_get_attachment_image_src($image['background']);
                 <label for="btcpw_tipping_box_background">Background color</label>
             </div>
             <div class="col-50">
-                <input id="btcpw_tipping_box_background" class="btcpw_tipping_box_background" name="btcpw_tipping_box_color[background]" type="text" value=<?php echo $color['background']; ?> />
+                <input id="btcpw_tipping_box_background" class="btcpw_tipping_box_background"
+                    name="btcpw_tipping_box_color[background]" type="text" value=<?php echo $color['background']; ?> />
             </div>
         </div>
         <div class="row">
@@ -59,7 +66,9 @@ $background = wp_get_attachment_image_src($image['background']);
                 <label for="btcpw_tipping_hf_background">Background color for header and footer</label>
             </div>
             <div class="col-50">
-                <input id="btcpw_tipping_box_hf_background" class="btcpw_tipping_box_hf_background" name="btcpw_tipping_box_color[hf_background]" type="text" value=<?php echo $color['hf_background']; ?> />
+                <input id="btcpw_tipping_box_hf_background" class="btcpw_tipping_box_hf_background"
+                    name="btcpw_tipping_box_color[hf_background]" type="text"
+                    value=<?php echo $color['hf_background']; ?> />
             </div>
         </div>
         <h3>Description</h3>
@@ -70,44 +79,55 @@ $background = wp_get_attachment_image_src($image['background']);
             </div>
             <div class="col-50">
                 <?php if ($logo) : ?>
-                    <button id="btcpw_tipping_box_button_image" class="btcpw_tipping_box_button_image" name="btcpw_tipping_box_button_image"><img src="<?php echo $logo[0]; ?>" /></a></button>
-                    <button class="btcpw_tipping_box_button_remove">Remove image</button>
-                    <input type="hidden" id="btcpw_tipping_box_image" class="btcpw_tipping_box_image" name="btcpw_tipping_box_image[logo]" value=<?php echo $image['logo']; ?> />
+                <button id="btcpw_tipping_box_button_image" class="btcpw_tipping_box_button_image"
+                    name="btcpw_tipping_box_button_image"><img src="<?php echo $logo[0]; ?>" /></a></button>
+                <button class="btcpw_tipping_box_button_remove">Remove image</button>
+                <input type="hidden" id="btcpw_tipping_box_image" class="btcpw_tipping_box_image"
+                    name="btcpw_tipping_box_image[logo]" value=<?php echo $image['logo']; ?> />
                 <?php else : ?>
-                    <button id="btcpw_tipping_box_button_image" class="btcpw_tipping_box_button_image" name="btcpw_tipping_box_button_image">Upload</button>
-                    <button class="btcpw_tipping_box_button_remove" style="display:none">Remove image</button>
-                    <input type="hidden" id="btcpw_tipping_box_image" class="btcpw_tipping_box_image" name="btcpw_tipping_box_image[logo]" value=<?php echo $image['logo']; ?> />
+                <button id="btcpw_tipping_box_button_image" class="btcpw_tipping_box_button_image"
+                    name="btcpw_tipping_box_button_image">Upload</button>
+                <button class="btcpw_tipping_box_button_remove" style="display:none">Remove image</button>
+                <input type="hidden" id="btcpw_tipping_box_image" class="btcpw_tipping_box_image"
+                    name="btcpw_tipping_box_image[logo]" value=<?php echo $image['logo']; ?> />
                 <?php endif; ?>
             </div>
         </div>
         <div class="row">
             <div class="col-50">
                 <label for="btcpw_tipping_box_title">Title</label>
-                <textarea id="btcpw_tipping_box_title" name="btcpw_tipping_box_text[title]"><?php echo $text['title']; ?></textarea>
+                <textarea id="btcpw_tipping_box_title"
+                    name="btcpw_tipping_box_text[title]"><?php echo $text['title']; ?></textarea>
             </div>
             <div class="col-50">
                 <label for="btcpw_tipping_box_title_color">Title text color</label>
-                <input id="btcpw_tipping_box_title_color" class="btcpw_tipping_box_title_color" name="btcpw_tipping_box_color[title]" type="text" value=<?php echo $color['title']; ?> />
+                <input id="btcpw_tipping_box_title_color" class="btcpw_tipping_box_title_color"
+                    name="btcpw_tipping_box_color[title]" type="text" value=<?php echo $color['title']; ?> />
             </div>
         </div>
         <div class="row">
             <div class="col-50">
                 <label for="btcpw_tipping_box_description">Description</label>
-                <textarea id="btcpw_tipping_box_description" name="btcpw_tipping_box_text[description]"><?php echo $text['description']; ?></textarea>
+                <textarea id="btcpw_tipping_box_description"
+                    name="btcpw_tipping_box_text[description]"><?php echo $text['description']; ?></textarea>
             </div>
             <div class="col-50">
                 <label for="btcpw_tipping_box_description_color">Description text color</label>
-                <input id="btcpw_tipping_box_description_color" class="btcpw_tipping_box_description_color" name="btcpw_tipping_box_color[description]" type="text" value=<?php echo $color['description']; ?> />
+                <input id="btcpw_tipping_box_description_color" class="btcpw_tipping_box_description_color"
+                    name="btcpw_tipping_box_color[description]" type="text"
+                    value=<?php echo $color['description']; ?> />
             </div>
         </div>
         <div class="row">
             <div class="col-50">
                 <label for="btcpw_tipping_box_text">Tipping text</label>
-                <textarea id="btcpw_tipping_box_text" name="btcpw_tipping_box_text[info]"><?php echo $text['info']; ?></textarea>
+                <textarea id="btcpw_tipping_box_text"
+                    name="btcpw_tipping_box_text[info]"><?php echo $text['info']; ?></textarea>
             </div>
             <div class="col-50">
                 <label for="btcpw_tipping_box_tipping_box_color">Tipping text color</label>
-                <input id="btcpw_tipping_box_tipping_box_color" class="btcpw_tipping_box_tipping_box_color" name="btcpw_tipping_box_color[tipping]" type="text" value=<?php echo $color['tipping']; ?> />
+                <input id="btcpw_tipping_box_tipping_box_color" class="btcpw_tipping_box_tipping_box_color"
+                    name="btcpw_tipping_box_color[tipping]" type="text" value=<?php echo $color['tipping']; ?> />
             </div>
         </div>
         <div class="row">
@@ -115,7 +135,24 @@ $background = wp_get_attachment_image_src($image['background']);
                 <label for="btcpw_tipping_box_redirect">Link to Thank you Page</label>
             </div>
             <div class="col-50">
-                <input id="btcpw_tipping_box_redirect" name="btcpw_tipping_box_redirect" value=<?php echo $redirect; ?> />
+                <input id="btcpw_tipping_box_redirect" name="btcpw_tipping_box_redirect"
+                    value=<?php echo $redirect; ?> />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-50">
+                <label for="btcpw_tipping_box_currency">Currency</label>
+            </div>
+            <div class="col-50">
+                <select required name="btcpw_tipping_box_currency" id="btcpw_tipping_box_currency">
+                    <option disabled value="">Select currency</option>
+                    <?php foreach ($supported_currencies as $currency) : ?>
+                    <option <?php echo $used_currency === $currency ? 'selected' : ''; ?>
+                        value="<?php echo $currency; ?>">
+                        <?php echo $currency; ?>
+                    </option>
+                    <?php endforeach; ?>
+                </select>
             </div>
         </div>
         <div class="row">
@@ -123,7 +160,9 @@ $background = wp_get_attachment_image_src($image['background']);
                 <label for="btcpw_tipping_box_input_background">Input background color</label>
             </div>
             <div class="col-50">
-                <input id="btcpw_tipping_box_input_background" class="btcpw_tipping_box_input_background" name="btcpw_tipping_box_color[input_background]" type="text" value=<?php echo $color['input_background']; ?> />
+                <input id="btcpw_tipping_box_input_background" class="btcpw_tipping_box_input_background"
+                    name="btcpw_tipping_box_color[input_background]" type="text"
+                    value=<?php echo $color['input_background']; ?> />
             </div>
         </div>
         <h3>Button</h3>
@@ -132,7 +171,8 @@ $background = wp_get_attachment_image_src($image['background']);
                 <label for="btcpw_tipping_box_button_text">Button text</label>
             </div>
             <div class="col-50">
-                <textarea id="btcpw_tipping_box_button_text" name="btcpw_tipping_box_text[button]"><?php echo $text['button']; ?></textarea>
+                <textarea id="btcpw_tipping_box_button_text"
+                    name="btcpw_tipping_box_text[button]"><?php echo $text['button']; ?></textarea>
             </div>
         </div>
         <div class="row">
@@ -140,7 +180,9 @@ $background = wp_get_attachment_image_src($image['background']);
                 <label for="btcpw_tipping_box_button_text_color">Button text color</label>
             </div>
             <div class="col-50">
-                <input id="btcpw_tipping_box_button_text_color" class="btcpw_tipping_box_button_text_color" name="btcpw_tipping_box_color[button_text]" type="text" value=<?php echo $color['button_text']; ?> />
+                <input id="btcpw_tipping_box_button_text_color" class="btcpw_tipping_box_button_text_color"
+                    name="btcpw_tipping_box_color[button_text]" type="text"
+                    value=<?php echo $color['button_text']; ?> />
 
             </div>
         </div>
@@ -151,7 +193,8 @@ $background = wp_get_attachment_image_src($image['background']);
                 <label for="btcpw_tipping_box_button_color">Button color</label>
             </div>
             <div class="col-50">
-                <input id="btcpw_tipping_box_button_color" class="btcpw_tipping_box_button_color" name="btcpw_tipping_box_color[button]" type="text" value=<?php echo $color['button']; ?> />
+                <input id="btcpw_tipping_box_button_color" class="btcpw_tipping_box_button_color"
+                    name="btcpw_tipping_box_color[button]" type="text" value=<?php echo $color['button']; ?> />
 
             </div>
         </div>
