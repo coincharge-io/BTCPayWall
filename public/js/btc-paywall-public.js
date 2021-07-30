@@ -49,7 +49,7 @@
           },
           success: function (response) {
             if (response.success) {
-              notifyAdmin(response.data.notify);
+              notifyAdmin(response.data.notify + "Url:" + window.location.href);
               location.reload(true);
             } else {
               console.error(response);
@@ -90,7 +90,12 @@
           $("#btcpw_tipping__button").html(text);
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id;
-            donor = response.data.donor;
+            donor =
+              response.data.donor +
+              "Type: Tipping Box" +
+              "\n" +
+              "Url:" +
+              window.location.href;
             btcpwShowDonationBoxInvoice(
               btcpw_invoice_id,
               donor,
@@ -128,7 +133,12 @@
           $("#btcpw_tipping__button_btcpw_widget").html(text);
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id;
-            donor = response.data.donor;
+            donor =
+              response.data.donor +
+              "Type: Tipping Box Widget" +
+              "\n" +
+              "Url:" +
+              window.location.href;
             btcpwShowDonationBoxInvoice(
               btcpw_invoice_id,
               donor,
@@ -175,7 +185,12 @@
 
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id;
-            donor = response.data.donor;
+            donor =
+              response.data.donor +
+              "Type: Tipping Banner" +
+              "\n" +
+              "Url:" +
+              window.location.href;
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
               donor,
@@ -221,7 +236,12 @@
           $("#btcpw_page_tipping__button").html(text);
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id;
-            donor = response.data.donor;
+            donor =
+              response.data.donor +
+              "Type: Tipping Page" +
+              "\n" +
+              "Url:" +
+              window.location.href;
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
               donor,
@@ -282,7 +302,12 @@
           $("#btcpw_widget_btcpw_skyscraper_tipping__button_high").html(text);
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id;
-            donor = response.data.donor;
+            donor =
+              response.data.donor +
+              "Type: Tipping Banner High Widget" +
+              "\n" +
+              "Url:" +
+              window.location.href;
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
               donor,
@@ -342,7 +367,12 @@
           $("#btcpw_widget_btcpw_skyscraper_tipping__button_wide").html(text);
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id;
-            donor = response.data.donor;
+            donor =
+              response.data.donor +
+              "Type: Tipping Banner Wide Widget" +
+              "\n" +
+              "Url:" +
+              window.location.href;
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
               donor,

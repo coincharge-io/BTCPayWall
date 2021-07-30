@@ -698,7 +698,7 @@ class BTCPayWall_Admin
 		$response_create = wp_remote_request($url, $args_create);
 
 		if (is_wp_error($response_view) || is_wp_error($response_create)) {
-			wp_send_json_error(['message' => 'Something went wrong. Please check your credentials.']);
+			wp_send_json_error(['message' => 'Something went wrong. Please check your credentials. If your server url is correct, make sure it doesn\'t contain trailing slash.']);
 		}
 
 		$view_permission = json_decode($response_view['body'])->permissions[0];
@@ -715,7 +715,6 @@ class BTCPayWall_Admin
 		$view_store_id = substr($view_permission, strrpos($view_permission, ':') + 1);
 		$create_store_id = substr($create_permission, strrpos($create_permission, ':') + 1);
 		$valid_store_id = $view_store_id === $create_store_id;
-
 		if ($valid_permissions && $valid_store_id && $valid_response_code) {
 			$this->check_store_id($view_store_id);
 			wp_send_json_success(["store_id" => $view_store_id]);

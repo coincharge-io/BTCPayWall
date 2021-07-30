@@ -382,19 +382,12 @@ class BTCPayWall_Public
 			$amount = $extract[0];
 			$currency = $extract[1];
 		}
+
 		$collect = 'Weblog title: '  . get_option('blogname') . PHP_EOL;
 		$collect .= 'Website url: ' . get_option('siteurl') . PHP_EOL;
 		$collect .= 'Date:' . ' ' . date('Y-m-d H:i:s', current_time('timestamp', 0)) . PHP_EOL;
 		$collect .= "Amount: {$amount} {$currency}" . PHP_EOL;
-		$collect .= 'Type: Tipping' . PHP_EOL;
-		$collect .= 'Url: ' . get_permalink(get_the_ID()) . PHP_EOL;
 		$collect .= 'Credit:' . get_option('btcpw_btcpay_store_id') . PHP_EOL;
-
-
-
-
-
-
 
 
 		$url = get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
@@ -524,9 +517,8 @@ class BTCPayWall_Public
 		$message .= 'Website url: ' . get_option('siteurl') . PHP_EOL;
 		$message .= 'Date:' . ' ' . date('Y-m-d H:i:s', current_time('timestamp', 0)) . PHP_EOL;
 		$message .= "Amount: {$amount}" . PHP_EOL;
-		$message .= 'Type:' . ' ' . get_post_meta(get_the_ID(), 'btcpw_invoice_content', true) . PHP_EOL;
-		$message .= 'Url: ' . get_permalink(get_the_ID()) . PHP_EOL;
 		$message .= 'Credit: ' . get_option('btcpw_btcpay_store_id') . PHP_EOL;
+		$message .= 'Type:' . ' ' . $content_title . PHP_EOL;
 
 		if ($body['status'] === 'Settled') {
 			$cookie_path = parse_url(get_permalink($post_id), PHP_URL_PATH);
