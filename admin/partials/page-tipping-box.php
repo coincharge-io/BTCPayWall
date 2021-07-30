@@ -9,7 +9,6 @@ $color = get_option('btcpw_tipping_box_color');
 $image = get_option('btcpw_tipping_box_image');
 $logo = wp_get_attachment_image_src($image['logo']);
 $background = wp_get_attachment_image_src($image['background']);
-var_dump(get_option('home'))
 ?>
 
 

@@ -94,7 +94,7 @@
               response.data.donor +
               "Type: Tipping Box" +
               "\n" +
-              "Url:" +
+              "Url: " +
               window.location.href;
             btcpwShowDonationBoxInvoice(
               btcpw_invoice_id,
@@ -137,7 +137,7 @@
               response.data.donor +
               "Type: Tipping Box Widget" +
               "\n" +
-              "Url:" +
+              "Url: " +
               window.location.href;
             btcpwShowDonationBoxInvoice(
               btcpw_invoice_id,
@@ -189,7 +189,7 @@
               response.data.donor +
               "Type: Tipping Banner" +
               "\n" +
-              "Url:" +
+              "Url: " +
               window.location.href;
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
@@ -240,7 +240,7 @@
               response.data.donor +
               "Type: Tipping Page" +
               "\n" +
-              "Url:" +
+              "Url: " +
               window.location.href;
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
@@ -306,7 +306,7 @@
               response.data.donor +
               "Type: Tipping Banner High Widget" +
               "\n" +
-              "Url:" +
+              "Url: " +
               window.location.href;
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
@@ -371,7 +371,7 @@
               response.data.donor +
               "Type: Tipping Banner Wide Widget" +
               "\n" +
-              "Url:" +
+              "Url: " +
               window.location.href;
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,

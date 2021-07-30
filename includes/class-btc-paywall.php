@@ -196,7 +196,7 @@ class BTCPayWall
         $this->loader->add_shortcode('btcpw_tipping', $plugin_public, 'render_shortcode_tipping');
         $this->loader->add_shortcode('btcpw_tipping_box', $plugin_public, 'render_shortcode_box_tipping');
         $this->loader->add_shortcode('btcpw_tipping_page', $plugin_public, 'render_shortcode_page_tipping');
-        $this->loader->add_shortcode('btcpw_tipping_skyscraper', $plugin_public, 'render_shortcode_skyscraper_tipping');
+        $this->loader->add_shortcode('btcpw_tipping_banner', $plugin_public, 'render_shortcode_banner_tipping');
         $this->loader->add_shortcode('btcpw_protected_file', $plugin_public, 'render_shortcode_protected_file');
         $this->loader->add_shortcode('btcpw_end_video', $plugin_public, 'render_shortcode_btcpw_end_content');
         $this->loader->add_shortcode('btcpw_video_catalog', $plugin_public, 'render_shortcode_btcpw_video_catalog');

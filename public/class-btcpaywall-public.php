@@ -387,7 +387,7 @@ class BTCPayWall_Public
 		$collect .= 'Website url: ' . get_option('siteurl') . PHP_EOL;
 		$collect .= 'Date:' . ' ' . date('Y-m-d H:i:s', current_time('timestamp', 0)) . PHP_EOL;
 		$collect .= "Amount: {$amount} {$currency}" . PHP_EOL;
-		$collect .= 'Credit:' . get_option('btcpw_btcpay_store_id') . PHP_EOL;
+		$collect .= 'Credit on Store ID:' . get_option('btcpw_btcpay_store_id') . PHP_EOL;
 
 
 		$url = get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
@@ -517,7 +517,7 @@ class BTCPayWall_Public
 		$message .= 'Website url: ' . get_option('siteurl') . PHP_EOL;
 		$message .= 'Date:' . ' ' . date('Y-m-d H:i:s', current_time('timestamp', 0)) . PHP_EOL;
 		$message .= "Amount: {$amount}" . PHP_EOL;
-		$message .= 'Credit: ' . get_option('btcpw_btcpay_store_id') . PHP_EOL;
+		$message .= 'Credit on Store ID: ' . get_option('btcpw_btcpay_store_id') . PHP_EOL;
 		$message .= 'Type:' . ' ' . $content_title . PHP_EOL;
 
 		if ($body['status'] === 'Settled') {
@@ -876,8 +876,7 @@ class BTCPayWall_Public
 
 		foreach ($arr as $key => $value) {
 
-			if ($arr[$key]['display'] === 'true') {
-
+			if ($arr[$key]['display'] === true || $arr[$key]['display'] === 'true') {
 				return true;
 			}
 		}
@@ -1139,7 +1138,7 @@ class BTCPayWall_Public
 	 *
 	 * @return string
 	 */
-	public function render_shortcode_skyscraper_tipping($atts)
+	public function render_shortcode_banner_tipping($atts)
 	{
 		$predefined_enabled = get_option('btcpw_tipping_banner_enter_amount', 'true');
 		$used_currency = get_option('btcpw_tipping_banner_currency', 'SATS');
@@ -1254,7 +1253,6 @@ class BTCPayWall_Public
 			'mandatory_message' => $collects['message']['mandatory'] ?? 'false',
 			'widget'	=> 'false'
 		), $atts);
-
 		$dimension = explode('x', ($atts['dimension'] == '200x710' ? '200x450' : '600x200'));
 		$supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
 		$logo = wp_get_attachment_image_src($atts['logo_id']) ? wp_get_attachment_image_src($atts['logo_id'])[0] : $atts['logo_id'];
@@ -1426,11 +1424,11 @@ div.btcpw_skyscraper_banner.high>div.btcpw_skyscraper_header_container.high p {
                         id="<?php echo "btcpw_skyscraper_button{$form_suffix}"; ?>">
                         <input type="hidden" id="<?php echo "btcpw_skyscraper_redirect_link_{$is_wide}"; ?>"
                             name="<?php echo "btcpw_skyscraper_redirect_link_{$is_wide}"; ?>"
-                            value=<?php echo esc_attr($atts['redirect']); ?> />
-                        <?php if ($collect_data == 'true') : ?>
+                            value="<?php echo esc_attr($atts['redirect']); ?>" />
+                        <?php if ($collect_data === true) : ?>
                         <div>
-                            <input type="button" name="next"
-                                class="<?php echo trim("skyscraper-next-form {$is_wide}"); ?>" value="Continue >" />
+                            <input type="button" name="next" class="<?php echo "skyscraper-next-form {$is_wide}"; ?>"
+                                value="Continue >" />
                         </div>
                         <?php else : ?>
                         <div>
@@ -1441,7 +1439,7 @@ div.btcpw_skyscraper_banner.high>div.btcpw_skyscraper_header_container.high p {
                     </div>
 
                 </fieldset>
-                <?php if ($collect_data == 'true') : ?>
+                <?php if ($collect_data === true) : ?>
                 <fieldset>
                     <div class="<?php echo ltrim("btcpw_skyscraper_donor_information {$is_wide}"); ?>">
                         <?php foreach ($collect as $key => $value) : ?>
@@ -1462,7 +1460,7 @@ div.btcpw_skyscraper_banner.high>div.btcpw_skyscraper_header_container.high p {
                         id="<?php echo ltrim("btcpw_skyscraper_button{$form_suffix}"); ?>">
                         <div>
                             <input type="button" name="previous"
-                                class="<?php echo trim("skyscraper-previous-form {$is_wide}"); ?>" value="< Previous" />
+                                class="<?php echo ("skyscraper-previous-form {$is_wide}"); ?>" value="< Previous" />
                         </div>
                         <div>
                             <button type="submit"
