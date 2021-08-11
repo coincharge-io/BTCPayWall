@@ -84,6 +84,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-box", {
       type: "string",
     },
   },
+  example: {},
   edit: (props) => {
     const {
       attributes: {
@@ -202,7 +203,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-box", {
               />
               <ColorPicker
                 color={tipping_text_color}
-                onChangeComplete={(value) => setColor(value.hex)}
+                onChangeComplete={(value) => setAttributes({ tipping_text_color: value.hex })}
                 disableAlpha
               />
 

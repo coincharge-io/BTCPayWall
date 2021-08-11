@@ -324,7 +324,7 @@ div.btcpw_widget.btcpw_skyscraper_banner.wide>div.btcpw_widget.btcpw_skyscraper_
 
         $free_input = !empty($instance['free_input']) ? $instance['free_input'] : esc_html__('true', 'text_domain');
 
-        $fixed_background = !empty($instance['fixed_background']) ? $instance['fixed_background'] : esc_html__('#f6b330', 'text_domain');
+        $fixed_background = !empty($instance['fixed_background']) ? $instance['fixed_background'] : esc_html__('#ffa500 ', 'text_domain');
         $hf_color = !empty($instance['hf_color']) ? $instance['hf_color'] : esc_html__('#1d5aa3', 'text_domain');
     ?>
 <div class="tipping_banner">

@@ -179,6 +179,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
       default: true,
     },
   },
+  example: {},
   edit: (props) => {
     const {
       attributes: {
@@ -334,7 +335,9 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
               />
               <ColorPicker
                 color={tipping_text_color}
-                onChangeComplete={(value) => setColor(value.hex)}
+                onChangeComplete={(value) =>
+                  setAttributes({ tipping_text_color: content })
+                }
                 disableAlpha
               />
 
@@ -354,10 +357,10 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
               <CheckboxControl
                 label="Display free input"
                 help="Do you want to display free input field?"
-                checked={freeInputEnabled}
+                checked={freeInput}
                 onChange={(value) => {
                   setFreeInput(value);
-                  setAttributes({ freeInput: !value });
+                  setAttributes({ freeInput: value });
                 }}
               />
               <SelectControl
@@ -376,15 +379,15 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
               />
             </PanelBody>
             <PanelBody title="Amount">
+              
               <CheckboxControl
-                label="Display value 1"
+								label="Display value 1"
                 help="Do you want to display value 1?"
-                checked={value1}
-                onChange={(value) => {
-                  setValue1_enabled(value);
-                  setAttributes({ value1_enabled: !value });
-                }}
-              />
+								checked={value1_enabled}
+								onChange={(newval) => 
+                  setAttributes({ value1_enabled: newval })
+                }
+							/>
               <SelectControl
                 value={value1_currency}
                 onChange={(selectedItem) => {
@@ -415,10 +418,10 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
               <CheckboxControl
                 label="Display value 2"
                 help="Do you want to display value 2?"
-                checked={value2}
+                checked={value2_enabled}
                 onChange={(value) => {
                   setValue2_enabled(value);
-                  setAttributes({ value2_enabled: !value });
+                  setAttributes({ value2_enabled: value });
                 }}
               />
               <SelectControl
@@ -451,10 +454,10 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
               <CheckboxControl
                 label="Display value 3"
                 help="Do you want to display value 3?"
-                checked={value3}
+                checked={value3_enabled}
                 onChange={(value) => {
                   setValue3_enabled(value);
-                  setAttributes({ value3_enabled: !value });
+                  setAttributes({ value3_enabled: value });
                 }}
               />
               <SelectControl
@@ -515,18 +518,18 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
                 <CheckboxControl
                   label="Full name"
                   help="Do you want to collect full name?"
-                  checked={displayName}
+                  checked={display_name}
                   onChange={(value) => {
                     setDisplayName(value);
-                    setAttributes({ display_name: !value });
+                    setAttributes({ display_name: value });
                   }}
                 />
                 <CheckboxControl
                   help="Do you want make this field mandatory?"
-                  checked={mandatoryName}
+                  checked={mandatory_name}
                   onChange={(value) => {
                     setMandatoryName(value);
-                    setAttributes({ mandatory_name: !value });
+                    setAttributes({ mandatory_name: value });
                   }}
                 />
               </PanelRow>
@@ -534,18 +537,18 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
                 <CheckboxControl
                   label="Email"
                   help="Do you want to collect email?"
-                  checked={displayEmail}
+                  checked={display_email}
                   onChange={(value) => {
                     setDisplayEmail(value);
-                    setAttributes({ display_email: !value });
+                    setAttributes({ display_email: value });
                   }}
                 />
                 <CheckboxControl
                   help="Do you want make this field mandatory?"
-                  checked={mandatoryEmail}
+                  checked={mandatory_email}
                   onChange={(value) => {
                     setMandatoryEmail(value);
-                    setAttributes({ mandatory_email: !value });
+                    setAttributes({ mandatory_email: value });
                   }}
                 />
               </PanelRow>
@@ -553,37 +556,37 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
                 <CheckboxControl
                   label="Address"
                   help="Do you want to collect address?"
-                  checked={displayAddress}
+                  checked={display_address}
                   onChange={(value) => {
                     setDisplayAddress(value);
-                    setAttributes({ display_address: !value });
+                    setAttributes({ display_address: value });
                   }}
                 />
                 <CheckboxControl
                   help="Do you want make this field mandatory?"
-                  checked={mandatoryAddress}
+                  checked={mandatory_address}
                   onChange={(value) => {
                     setMandatoryAddress(value);
-                    setAttributes({ mandatory_address: !value });
+                    setAttributes({ mandatory_address: value });
                   }}
                 />
               </PanelRow>
               <PanelRow>
                 <CheckboxControl
                   label="Phone"
-                  checked={displayPhone}
+                  checked={display_phone}
                   help="Do you want to collect phone?"
                   onChange={(value) => {
                     setDisplayPhone(value);
-                    setAttributes({ display_phone: !value });
+                    setAttributes({ display_phone: value });
                   }}
                 />
                 <CheckboxControl
                   help="Do you want make this field mandatory?"
-                  checked={mandatoryPhone}
+                  checked={mandatory_phone}
                   onChange={(value) => {
                     setMandatoryPhone(value);
-                    setAttributes({ mandatory_phone: !value });
+                    setAttributes({ mandatory_phone: value });
                   }}
                 />
               </PanelRow>
@@ -591,18 +594,18 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
                 <CheckboxControl
                   label="Message"
                   help="Do you want to collect message?"
-                  checked={displayMessage}
+                  checked={display_message}
                   onChange={(value) => {
                     setDisplayMessage(value);
-                    setAttributes({ display_message: !displayMessage });
+                    setAttributes({ display_message: displayMessage });
                   }}
                 />
                 <CheckboxControl
                   help="Do you want make this field mandatory?"
-                  checked={mandatoryMessage}
+                  checked={mandatory_message}
                   onChange={(value) => {
                     setMandatoryMessage(value);
-                    setAttributes({ mandatory_message: !mandatory_message });
+                    setAttributes({ mandatory_message: mandatory_message });
                   }}
                 />
               </PanelRow>

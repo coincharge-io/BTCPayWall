@@ -133,6 +133,8 @@ class BTCPayWall_Admin
 		add_menu_page('BTCPayWall', 'BTCPayWall', 'manage_options', 'btcpw_general_settings', '', 'dashicons-tagcloud');
 		add_submenu_page('btcpw_general_settings', 'Settings', 'Settings', 'manage_options', 'btcpw_general_settings', array($this, 'render_general_settings_page'));
 		add_submenu_page('btcpw_general_settings', 'Invoices', 'Invoices', 'manage_options', 'btcpw_invoices', array($this, 'render_invoices_page'));
+
+		add_submenu_page('btcpw_general_settings', 'All forms', 'All forms', 'manage_options', 'btcpw_forms', array($this, 'render_tipping_list'));
 		add_submenu_page('btcpw_general_settings', 'Tipping', 'Tipping', 'manage_options', 'btcpw_tipping-settings', array($this, 'render_tipping_page'));
 	}
 
@@ -787,7 +789,15 @@ class BTCPayWall_Admin
 	{
 		include 'partials/page-tipping-settings.php';
 	}
-
+	/*
+	*Render Donations
+	 */
+	public function render_tipping_list()
+	{
+		require_once __DIR__ . '/classes/class-donation-list.php';
+		$table = new Donation_List_Table();
+		return $table->display();
+	}
 	/**
 	 * @throws Exception
 	 */
@@ -1232,7 +1242,6 @@ class BTCPayWall_Admin
         title_text_color = '{$atts['title_text_color']}'
         tipping_text = '{$atts['tipping_text']}'
         tipping_text_color = '{$atts['tipping_text_color']}'
-		free_input = '{$atts['free_input']}'
         redirect = '{$atts['redirect']}'
         amount = '{$atts['redirect']}'
         description_color = '{$atts['description_color']}'
@@ -1264,46 +1273,80 @@ class BTCPayWall_Admin
 			'logo_id' => '',
 			'background_id' => '',
 			'background' => '',
-			'value1_enabled' => '',
+			'value1_enabled' => 'true',
 			'value1_amount'	=> '',
 			'value1_currency' => '',
 			'value1_icon'	=> '',
-			'value2_enabled' => '',
+			'value2_enabled' => 'true',
 			'value2_amount'	=> '',
 			'value2_currency' => '',
 			'value2_icon'	=> '',
-			'value3_enabled' => '',
+			'value3_enabled' => 'true',
 			'value3_amount'	=> '',
 			'value3_currency' => '',
 			'value3_icon'	=> '',
-			'display_name'	=> '',
+			'display_name'	=> 'true',
 			'mandatory_name'	=> '',
-			'display_email'	=> '',
+			'display_email'	=> 'true',
 			'mandatory_email'	=> '',
-			'display_address'	=> '',
+			'display_address'	=> 'true',
 			'mandatory_address'	=> '',
-			'display_phone'	=> '',
+			'display_phone'	=> 'true',
 			'mandatory_phone'	=> '',
-			'display_message'	=> '',
+			'display_message'	=> 'true',
 			'mandatory_message'	=> '',
 		), $atts);
-		var_dump($atts);
 		return do_shortcode(
-			"[btcpw_tipping_banner dimension='{$atts['dimension']}' title='{$atts['title']}' description='{$atts['description']}'
-        currency='{$atts['currency']}'
-        background_color='{$atts['background_color']}'
-        title_text_color='{$atts['title_text_color']}'
-        tipping_text='{$atts['tipping_text']}'
-        tipping_text_color= {$atts['tipping_text_color']}' redirect='{$atts['redirect']}'
-        amount='{$atts['redirect']}'
-        description_color='{$atts['description_color']}'
-        button_text='{$atts['button_text']}'
-        button_text_color='{$atts['button_text_color']}'
-        button_color='{$atts['button_color']}'
-        logo_id='{$atts['logo_id']}'
-        background_id='{$atts['background_id']}'
-        background='{$atts['background']}'
-        input_background='{$atts['input_background']}']"
+			"[btcpw_tipping_banner dimension='{$atts['dimension']}' title='{$atts['title']}' description='{$atts['description']}' currency='{$atts['currency']}' background_color='{$atts['background_color']}'title_text_color='{$atts['title_text_color']}'tipping_text='{$atts['tipping_text']}'tipping_text_color= {$atts['tipping_text_color']}' redirect='{$atts['redirect']}' amount='{$atts['redirect']}' description_color='{$atts['description_color']}' button_text='{$atts['button_text']}' button_text_color='{$atts['button_text_color']}' button_color='{$atts['button_color']}' logo_id='{$atts['logo_id']}' background_id='{$atts['background_id']}' background='{$atts['background']}' input_background='{$atts['input_background']}']"
+		);
+	}
+
+	public function render_tipping_pages($atts)
+	{
+		$atts = shortcode_atts(array(
+			'dimension' => '',
+			'title' => '',
+			'description' => '',
+			'currency' => '',
+			'background_color' => '',
+			'title_text_color' => '',
+			'tipping_text' => '',
+			'tipping_text_color' => '',
+			'redirect' => '',
+			'description_color' => '',
+			'button_text' => '',
+			'button_text_color' => '',
+			'button_color' => '',
+			'input_background' => '',
+			'logo_id' => '',
+			'background_id' => '',
+			'background' => '',
+			'value1_enabled' => 'true',
+			'value1_amount'	=> '',
+			'value1_currency' => '',
+			'value1_icon'	=> '',
+			'value2_enabled' => 'true',
+			'value2_amount'	=> '',
+			'value2_currency' => '',
+			'value2_icon'	=> '',
+			'value3_enabled' => 'true',
+			'value3_amount'	=> '',
+			'value3_currency' => '',
+			'value3_icon'	=> '',
+			'display_name'	=> 'true',
+			'mandatory_name'	=> '',
+			'display_email'	=> 'true',
+			'mandatory_email'	=> '',
+			'display_address'	=> 'true',
+			'mandatory_address'	=> '',
+			'display_phone'	=> 'true',
+			'mandatory_phone'	=> '',
+			'display_message'	=> 'true',
+			'mandatory_message'	=> '',
+		), $atts);
+
+		return do_shortcode(
+			"[btcpw_tipping_page dimension='{$atts['dimension']}' title='{$atts['title']}' description='{$atts['description']}' currency='{$atts['currency']}' background_color='{$atts['background_color']}'title_text_color='{$atts['title_text_color']}'tipping_text='{$atts['tipping_text']}'tipping_text_color= {$atts['tipping_text_color']}' redirect='{$atts['redirect']}' amount='{$atts['redirect']}' description_color='{$atts['description_color']}' button_text='{$atts['button_text']}' button_text_color='{$atts['button_text_color']}' button_color='{$atts['button_color']}' logo_id='{$atts['logo_id']}' background_id='{$atts['background_id']}' background='{$atts['background']}' input_background='{$atts['input_background']}']"
 		);
 	}
 	public function load_gutenberg()
@@ -1365,6 +1408,7 @@ class BTCPayWall_Admin
 				'render_callback' => (array($this, 'render_file_gutenberg')),
 			]
 		);
+
 		register_block_type(
 			'btc-paywall/gutenberg-tipping-box',
 			[
@@ -1378,6 +1422,14 @@ class BTCPayWall_Admin
 			[
 				'editor_script' => 'gutenberg-block-script',
 				'render_callback' => (array($this, 'render_tipping_banner')),
+			]
+		);
+
+		register_block_type(
+			'btc-paywall/gutenberg-tipping-page',
+			[
+				'editor_script' => 'gutenberg-block-script',
+				'render_callback' => (array($this, 'render_tipping_pages')),
 			]
 		);
 	}

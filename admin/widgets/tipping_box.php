@@ -181,7 +181,7 @@ work', 'text_domain');
         $hf_color = !empty($instance['hf_color']) ? $instance['hf_color'] :
             esc_html__('#1d5aa3', 'text_domain');
         $input_background = !empty($instance['input_background']) ? $instance['input_background']
-            : esc_html__('#f6b330', 'text_domain'); ?>
+            : esc_html__('#ffa500', 'text_domain'); ?>
 <div class="tipping_box">
     <h1>Tipping</h1>
     <div class="row">

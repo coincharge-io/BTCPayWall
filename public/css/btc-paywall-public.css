@@ -753,13 +753,15 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   justify-content: center;
 }
 
-.btcpw_widget.btcpw_skyscraper_tipping_container.wide {
+.btcpw_widget.btcpw_skyscraper_tipping_container.wide,
+.btcpw_skyscraper_tipping_container.wide{
   width: 600px !important;
   height: 200px !important;
 }
-.btcpw_widget.btcpw_skyscraper_tipping_container.high {
+.btcpw_widget.btcpw_skyscraper_tipping_container.high,
+.btcpw_skyscraper_tipping_container.high {
   width: 200px !important;
-  height: 500px !important;
+  height: 450px !important;
 }
 
 /**
