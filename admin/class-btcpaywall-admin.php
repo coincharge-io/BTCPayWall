@@ -796,6 +796,9 @@ class BTCPayWall_Admin
 	{
 		require_once __DIR__ . '/classes/class-donation-list.php';
 		$table = new Donation_List_Table();
+		
+		 
+		$table->prepare_items();
 		return $table->display();
 	}
 	/**
