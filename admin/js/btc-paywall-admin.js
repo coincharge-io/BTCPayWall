@@ -227,7 +227,14 @@
       palettes: true,
     });
   });
-
+  $(document).ready(function () {
+    $("#tipping-form-design").change(function(){
+      
+      if( $('#tipping-form-preview').length <= 1 ) {
+         $("#tipping-form-preview").append('<div id="btcpw_page"><div class="btcpw_tipping_box_container" style= width:250px; height:300px; background-color:#E6E6E6;><form method="POST" action="" id="tipping_form_box"><fieldset disabled=disabled><div class="btcpw_tipping_box_header_container" style=background-color:#1d5aa3><div id="btcpw_box_logo_wrap"><img alt="Tipping logo" src=https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg /></div><div><h6 style=color:#ffffff;>Title</h6></div></div><h6 style=color:#000000>Enter Tipping Amount</h6><div class="btcpw_tipping_box_amount"><div class=btcpw_tipping_free_input style=background-color: #ffa500;><input type="number" id="btcpw_tipping_amount" name="btcpw_tipping_amount" placeholder="0.00" required /><select required name="btcpw_tipping_currency" id="btcpw_tipping_currency"><option disabled value="">Select currency</option><option  value="SATS"></option></select><i class="fas fa-arrows-alt-v"></i></div><div class="btcpw_tipping_converted_values"><input type="text" id="btcpw_converted_amount" name="btcpw_converted_amount" readonly /><input type="text" id="btcpw_converted_currency" name="btcpw_converted_currency" readonly /></div></div><div id="button" style=background-color:#1d5aa3><button type="submit" id="btcpw_tipping__button" style=color:#FFFFFF;background:#FE642E;>Tip</button></div></fieldset></form></div><div id="powered_by_box"><p>Powered by <a href=https://btcpaywall.com/ target=_blank>BTCPayWall</a></p></div></div>');
+      }
+    })
+  })
   $(document).ready(function () {
     $(
       ".btcpw_tipping_box_title_color,.btcpw_tipping_box_description_color,.btcpw_tipping_box_tipping_box_color,.btcpw_tipping_box_hf_background,.btcpw_tipping_box_button_text_color,.btcpw_tipping_box_button_color,.btcpw_tipping_box_background,.btcpw_tipping_hf_background,.btcpw_tipping_banner_title_color,.btcpw_tipping_banner_description_color,.btcpw_tipping_banner_tipping_box_color,.btcpw_tipping_banner_button_text_color,.btcpw_tipping_banner_button_color,.btcpw_tipping_banner_background,.btcpw_tipping_banner_tipping_color,btcpw_tipping_banner_input_background,.btcpw_tipping_box_input_background,.btcpw_tipping_page_title_color,.btcpw_tipping_page_tipping_box_color,.btcpw_tipping_page_button_text_color,.btcpw_tipping_page_button_color,.btcpw_tipping_page_background,.btcpw_tipping_page_tipping_color,.btcpw_tipping_page_input_background,.btcpw_tipping_page_tipping_color_active,.btcpw_tipping_page_tipping_color_inactive"
@@ -434,4 +441,5 @@
       custom_uploader.open();
     });
   });
+  
 })(jQuery);
