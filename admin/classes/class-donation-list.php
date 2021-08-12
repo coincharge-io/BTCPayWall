@@ -93,6 +93,16 @@ class Donation_List_Table extends WP_List_Table
         );
         return $actions;
     }
+
+    protected function column_title($item)
+    {
+        $item_json = json_decode(json_encode($item), true);
+        $actions = array(
+            'edit' => sprintf('<a href="?page=%s&action=%s&id=%s">Edit</a>', $_REQUEST['page'], 'edit', $item_json['id']),
+            'delete' => sprintf('<a href="?page=%s&action=%s&id=%s">Delete</a>', $_REQUEST['page'], 'delete', $item_json['id']),
+        );
+        return '<em>' . sprintf('%s %s', $item_json['title'], $this->row_actions($actions)) . '</em>';
+    }
     /**
      * Generates content for a single row of the table.
      * 

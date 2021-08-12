@@ -135,6 +135,7 @@ class BTCPayWall_Admin
 		add_submenu_page('btcpw_general_settings', 'Invoices', 'Invoices', 'manage_options', 'btcpw_invoices', array($this, 'render_invoices_page'));
 
 		add_submenu_page('btcpw_general_settings', 'All forms', 'All forms', 'manage_options', 'btcpw_forms', array($this, 'render_tipping_list'));
+		add_submenu_page('btcpw_general_settings', 'Add form', 'Add form', 'manage_options', 'btcpw_form', array($this, 'render_new_form'));
 		add_submenu_page('btcpw_general_settings', 'Tipping', 'Tipping', 'manage_options', 'btcpw_tipping-settings', array($this, 'render_tipping_page'));
 	}
 
@@ -789,6 +790,15 @@ class BTCPayWall_Admin
 	{
 		include 'partials/page-tipping-settings.php';
 	}
+
+	/**
+	 * Render Add Form
+	 */
+	public function render_new_form()
+	{
+		include 'partials/page-add-form.php';
+	}
+
 	/*
 	*Render Donations
 	 */
@@ -796,8 +806,8 @@ class BTCPayWall_Admin
 	{
 		require_once __DIR__ . '/classes/class-donation-list.php';
 		$table = new Donation_List_Table();
-		
-		 
+
+
 		$table->prepare_items();
 		return $table->display();
 	}
