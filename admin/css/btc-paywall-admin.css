@@ -333,10 +333,8 @@ Preview style
   border: none;
   background: transparent;
 }
-/* #btcpw_box_logo_wrap,
-#btcpw_box_widget_logo_wrap {
-  padding: 0.1em 0 0.1em 0.1em;
-} */
+
+
 #btcpw_tipping_currency,
 #btcpw_tipping_currency_btcpw_widget {
   -webkit-appearance: none;
@@ -529,15 +527,7 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
 #btcpw_widget_btcpw_skyscraper_button_high > div:nth-child(1) > input {
   color: white;
 }
-/* #btcpw_skyscraper_button button,
-#btcpw_skyscraper_button input[type="button"] {
-  border-radius: 2em;
-  -moz-border-radius: 2em;
-  -webkit-border-radius: 2em;
-  font-size: 1.1em;
-  padding: 0.5em !important;
-  text-transform: uppercase;
-} */
+
 .btcpw_skyscraper_button.high button,
 .btcpw_skyscraper_button.high input[type="button"],
 #btcpw_widget_btcpw_skyscraper_button_high button,
@@ -560,24 +550,7 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   padding: 10.5px 14px !important;
   text-transform: uppercase;
 }
-/* #btcpw_widget_btcpw_skyscraper_button_wide button,
-#btcpw_widget_btcpw_skyscraper_button_wide input[type="button"] {
-  border-radius: 2em;
-  -moz-border-radius: 2em;
-  -webkit-border-radius: 2em;
-  font-size: 1.5em;
-  padding: 10.5px 14px !important;
-  text-transform: uppercase;
-}
-#btcpw_widget_btcpw_skyscraper_button_high button,
-#btcpw_widget_btcpw_skyscraper_button_high input[type="button"] {
-  border-radius: 2em;
-  -moz-border-radius: 2em;
-  -webkit-border-radius: 2em;
-  font-size: 12px;
-  padding: 10px !important;
-  text-transform: uppercase;
-} */
+
 
 #btcpw_skyscraper_converted_amount,
 #btcpw_skyscraper_tipping_currency,
@@ -837,7 +810,6 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   width: 200px !important;
   height: 450px !important;
 }
-
 /**
     Tipping page
     
@@ -1139,7 +1111,6 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
 div.btcpw_page_header_container > div:nth-child(2) {
   margin-left: 2em;
 }
-
 
 
 

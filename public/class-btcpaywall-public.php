@@ -1433,7 +1433,7 @@ class BTCPayWall_Public
 								<div class="<?php echo ltrim("btcpw_skyscraper_donor_information {$is_wide}"); ?>">
 									<?php foreach ($collect as $key => $value) : ?>
 										<?php if ($collect[$key]['display'] === true) : ?>
-											<div class="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['label']}_wrap {$is_wide}"; ?>">
+											<div class="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_wrap {$is_wide}"; ?>">
 
 												<input type="text" placeholder="<?php echo $collect[$key]['label']; ?>" id="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_{$is_wide}"; ?>" name="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['label']}_{$is_wide}"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 

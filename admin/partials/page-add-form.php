@@ -6,7 +6,7 @@ $designs = array('Box', 'High Banner', 'Wide Banner', 'Page');
         <h1>Add new form</h1>
         <label>Designs</label>
         <select id="tipping-form-design" required>
-            <option disabled value="">Select design</option>
+            <option disabled selected value="">Select design</option>
             <?php foreach ($designs as $design) : ?>
                 <option value="<?php echo $design; ?>">
                     <?php echo $design; ?>
