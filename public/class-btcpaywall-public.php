@@ -887,7 +887,7 @@ class BTCPayWall_Public
 	{
 		$used_currency = get_option('btcpw_tipping_box_currency', 'SATS');
 		$used_dimension = get_option('btcpw_tipping_box_dimension', '250x300');
-		$redirect = get_option('btcpw_tipping_box_redirect', get_site_url());
+		$redirect = get_option('btcpw_tipping_box_redirect');
 		$text = get_option('btcpw_tipping_box_text', array(
 			'title' => 'Support my work',
 			'description' => '',
@@ -1435,7 +1435,7 @@ class BTCPayWall_Public
 										<?php if ($collect[$key]['display'] === true) : ?>
 											<div class="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_wrap {$is_wide}"; ?>">
 
-												<input type="text" placeholder="<?php echo $collect[$key]['label']; ?>" id="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_{$is_wide}"; ?>" name="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['label']}_{$is_wide}"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+												<input type="text" placeholder="<?php echo $collect[$key]['label']; ?>" id="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_{$is_wide}"; ?>" name="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_{$is_wide}"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
 											</div>
 										<?php endif; ?>

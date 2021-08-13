@@ -99,7 +99,7 @@
             btcpwShowDonationBoxInvoice(
               btcpw_invoice_id,
               donor,
-              $("#btcpw_redirect_link")
+              $("#btcpw_redirect_link").val()
             );
           } else {
             console.error(response);
@@ -142,7 +142,7 @@
             btcpwShowDonationBoxInvoice(
               btcpw_invoice_id,
               donor,
-              $("#btcpw_redirect_link_btcpw_widget")
+              $("#btcpw_redirect_link_btcpw_widget").val()
             );
           } else {
             console.error(response);
@@ -194,7 +194,7 @@
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
               donor,
-              $("#btcpw_skyscraper_redirect_link")
+              $("#btcpw_skyscraper_redirect_link_wide, #btcpw_skyscraper_redirect_link_high").val()
             );
           } else {
             console.error(response);
@@ -245,7 +245,7 @@
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
               donor,
-              $("#btcpw_page_redirect_link")
+              $("#btcpw_page_redirect_link").val()
             );
           } else {
             console.error(response);
@@ -283,19 +283,19 @@
             "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]:checked"
           ).val(),
           name: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_Full_name_high"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_name_high"
           ).val(),
           email: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_Email_high"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_email_high"
           ).val(),
           address: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_Address_high"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_address_high"
           ).val(),
           phone: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_Phone_high"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_phone_high"
           ).val(),
           message: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_Message_high"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_message_high"
           ).val(),
         },
         success: function (response) {
@@ -311,7 +311,7 @@
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
               donor,
-              $("#btcpw_widget_btcpw_skyscraper_redirect_link_high")
+              $("#btcpw_widget_btcpw_skyscraper_redirect_link_high").val()
             );
           } else {
             console.error(response);
@@ -348,19 +348,19 @@
             "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]:checked"
           ).val(),
           name: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_Full_name_wide"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_name_wide"
           ).val(),
           email: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_Email_wide"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_email_wide"
           ).val(),
           address: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_Address_wide"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_address_wide"
           ).val(),
           phone: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_Phone_wide"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_phone_wide"
           ).val(),
           message: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_Message_wide"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_message_wide"
           ).val(),
         },
         success: function (response) {
@@ -376,7 +376,7 @@
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
               donor,
-              $("#btcpw_widget_btcpw_skyscraper_redirect_link_wide")
+              $("#btcpw_widget_btcpw_skyscraper_redirect_link_wide").val()
             );
           } else {
             console.error(response);
@@ -391,9 +391,9 @@
   function btcpwShowDonationBoxInvoice(invoice_id, donor, redirect) {
     btcpay.onModalReceiveMessage(function (event) {
       if (event.data.status === "complete") {
-        notifyAdmin(donor)(redirect.is(":empty"))
-          ? location.reload(true)
-          : location.replace($("#btcpw_redirect_link").val());
+        notifyAdmin(donor)
+        //(redirect.is(":empty")? location.reload(true): location.replace(redirect));
+        !redirect? location.reload(true): location.replace(redirect);
       }
     });
 
@@ -403,13 +403,9 @@
   function btcpwShowDonationBannerInvoice(invoice_id, donor, redirect) {
     btcpay.onModalReceiveMessage(function (event) {
       if (event.data.status === "complete") {
-        notifyAdmin(donor)(
-          /*($("#btcpw_skyscraper_redirect_link").is(":empty")) ? location.reload(true) : location.replace($("#btcpw_redirect_link").val());
-}});*/
-          redirect.is(":empty")
-        )
-          ? location.reload(true)
-          : location.replace($("#btcpw_redirect_link").val());
+        notifyAdmin(donor)
+        !redirect? location.reload(true): location.replace(redirect)
+        
       }
     });
 

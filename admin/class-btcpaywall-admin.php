@@ -82,8 +82,7 @@ class BTCPayWall_Admin
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/btc-paywall-admin.css', array(), $this->version, 'all');
 
 		wp_enqueue_style('wp-color-picker');
-		if ($_GET['page'] === 'btcpw_form') {
-
+		if (isset($_GET['page']) === 'btcpw_form') {
 			wp_enqueue_style('load-fa', 'https://use.fontawesome.com/releases/v5.12.1/css/all.css');
 		}
 	}
