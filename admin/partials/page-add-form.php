@@ -5,17 +5,19 @@ $selected = $_POST['design'] ?? null;
 <div>
     <div>
         <h1>Add new form</h1>
-        <form action="" method="post">
-            <select name="design" id="tipping-form-design" required>
-                <option disabled selected value="">Select design</option>
-                <?php foreach ($designs as $design) : ?>
-                    <option value="<?php echo $design; ?>">
-                        <?php echo $design; ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-            <button type="submit" id="design-button">Select</button>
-        </form>
+        <?php if (empty($selected)) : ?>
+            <form action="" method="post">
+                <select name="design" id="tipping-form-design" required>
+                    <option disabled selected value="">Select design</option>
+                    <?php foreach ($designs as $design) : ?>
+                        <option value="<?php echo $design; ?>">
+                            <?php echo $design; ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                <button type="submit" id="design-button">Select</button>
+            <?php endif; ?>
+            </form>
     </div>
     <div id="tipping-form-preview">
 
