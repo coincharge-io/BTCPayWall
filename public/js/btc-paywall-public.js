@@ -90,12 +90,12 @@
           $("#btcpw_tipping__button").html(text);
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id;
-            donor =
-              response.data.donor +
-              "Type: Tipping Box" +
+            donor ="Type: Tipping Box" +
               "\n" +
               "Url: " +
-              window.location.href;
+              window.location.href+"\n"+
+              response.data.donor
+              ;
             btcpwShowDonationBoxInvoice(
               btcpw_invoice_id,
               donor,
@@ -134,11 +134,11 @@
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id;
             donor =
-              response.data.donor +
               "Type: Tipping Box Widget" +
               "\n" +
               "Url: " +
-              window.location.href;
+              window.location.href + "\n" +
+              response.data.donor ;
             btcpwShowDonationBoxInvoice(
               btcpw_invoice_id,
               donor,
@@ -174,11 +174,11 @@
           predefined_amount: $(
             "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]:checked, input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]:checked"
           ).val(),
-          name: $("#btcpw_skyscraper_tipping_donor_name").val(),
-          email: $("#btcpw_skyscraper_tipping_donor_email").val(),
-          address: $("#btcpw_skyscraper_tipping_donor_address").val(),
-          phone: $("#btcpw_skyscraper_tipping_donor_phone").val(),
-          message: $("#btcpw_skyscraper_tipping_donor_message").val(),
+          name: $("#btcpw_skyscraper_tipping_donor_name_wide,#btcpw_skyscraper_tipping_donor_name_high").val(),
+          email: $("#btcpw_skyscraper_tipping_donor_email_wide,#btcpw_skyscraper_tipping_donor_email_high").val(),
+          address: $("#btcpw_skyscraper_tipping_donor_address_wide,#btcpw_skyscraper_tipping_donor_address_high").val(),
+          phone: $("#btcpw_skyscraper_tipping_donor_phone_wide,#btcpw_skyscraper_tipping_donor_phone_high").val(),
+          message: $("#btcpw_skyscraper_tipping_donor_message_wide, #btcpw_skyscraper_tipping_donor_message_high").val(),
         },
         success: function (response) {
           $("#btcpw_skyscraper_tipping__button").html(text);
@@ -186,11 +186,10 @@
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id;
             donor =
-              response.data.donor +
               "Type: Tipping Banner" +
               "\n" +
               "Url: " +
-              window.location.href;
+              window.location.href +"\n"+response.data.donor;
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
               donor,
@@ -237,11 +236,11 @@
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id;
             donor =
-              response.data.donor +
               "Type: Tipping Page" +
               "\n" +
               "Url: " +
-              window.location.href;
+              window.location.href+"\n"+
+              response.data.donor;
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
               donor,
@@ -303,11 +302,11 @@
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id;
             donor =
-              response.data.donor +
               "Type: Tipping Banner High Widget" +
               "\n" +
               "Url: " +
-              window.location.href;
+              window.location.href+"\n"+
+              response.data.donor;
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
               donor,
@@ -368,11 +367,11 @@
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id;
             donor =
-              response.data.donor +
               "Type: Tipping Banner Wide Widget" +
               "\n" +
               "Url: " +
-              window.location.href;
+              window.location.href +"\n"+
+              response.data.donor;
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
               donor,

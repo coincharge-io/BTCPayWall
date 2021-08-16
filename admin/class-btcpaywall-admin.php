@@ -815,6 +815,35 @@ class BTCPayWall_Admin
 		return $table->display();
 	}
 	/**
+	 * Action for storing shortcode values
+	 */
+
+
+	public function createShortcode()
+	{
+		global $wpdb;
+
+		$dimension = sanitize_text_field($_POST['dimension']) ?? "520x600";
+		$background = sanitize_text_field($_POST['background']);
+		$background_color = sanitize_hex_color_no_hash($_POST['background_color']);
+		$hf_color = sanitize_hex_color_no_hash($_POST['hf_color']);
+		$logo = sanitize_text_field($_POST['logo']);
+		$title_text = sanitize_text_field($_POST['title_text']);
+		$title_text_color = sanitize_hex_color_no_hash($_POST['title_text_color']);
+
+		$description_text = sanitize_text_field($_POST['description_text']);
+		$description_text_color = sanitize_hex_color_no_hash($_POST['description_text_color']);
+
+		$tipping_text = sanitize_text_field($_POST['tipping_text']);
+		$tipping_text_color = sanitize_hex_color_no_hash($_POST['tipping_text_color']);
+		$redirect = sanitize_text_field($_POST['redirect']);
+		$currency = sanitize_text_field($_POST['currency']);
+		$input_background = sanitize_hex_color_no_hash($_POST['input_background']);
+		$button_text = sanitize_text_field($_POST['button_text']);
+		$button_text_color = sanitize_hex_color_no_hash($_POST['button_text_color']);
+		$button_color = sanitize_hex_color_no_hash($_POST['button_color']);
+	}
+	/* 
 	 * @throws Exception
 	 */
 	public function load_vc_widgets()

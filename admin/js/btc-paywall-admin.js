@@ -479,15 +479,40 @@ $("#design-button").click(function(e) {
     });
   });
   $(document).ready(function () {
-    $("#tipping_box_add_form").submit(function(e){
+    $("#tipping_box_add_form").on("submit",function(e){
       e.preventDefault();
       $.ajax({
-        type: "POST",
-        data: $("#tipping_box_add_form").serialize(),
-        success: function(msg) {
-          alert("Form Submitted: " + msg);
-        }
-      });
-    })
+          type: "POST",
+          url: "/wp-admin/admin-ajax.php",
+          dataType: "json",
+          data: {
+            action:"btcpw_create_shortcode",
+
+            dimension:$("#btcpw_tipping_box_dimension").val(),
+            background:$("#btcpw_tipping_box_image_background").val(),
+            background_color:$("#btcpw_tipping_box_background").val(),
+            hf_color:$("#btcpw_tipping_box_hf_background").val(),
+            logo:$("#btcpw_tipping_box_image").val(),
+            title_text:$("#btcpw_tipping_box_title").val(),
+            title_text_color:$("#btcpw_tipping_box_title_color").val(),
+            description_text:$("#btcpw_tipping_box_description").val(),
+            description_text_color:$("#btcpw_tipping_box_description_color").val(),
+            tipping_text:$("#btcpw_tipping_box_text").val(),
+            tipping_text_color:$("#btcpw_tipping_box_tipping_box_color").val(),
+            redirect: $("#btcpw_tipping_box_redirect").val(),
+            currency: $("#btcpw_tipping_box_currency").val(),
+            input_background: $("#btcpw_tipping_box_input_background").val(),
+            button_text: $("#btcpw_tipping_box_button_text").val(),
+            button_text_color: $("#btcpw_tipping_box_button_text_color").val(),
+            button_color: $("#btcpw_tipping_box_button_color").val()
+          },
+          success: function(data) {
+            console.log(data)
+          },
+          error: function() {
+              alert('error handling here');
+          }
+});
+  })
   })
 })(jQuery);
