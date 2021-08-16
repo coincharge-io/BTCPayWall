@@ -13,46 +13,6 @@ class Tipping_Banner_High extends WP_Widget
 
     public function widget($args, $instance)
     {
-        /* echo do_shortcode("[btcpw_tipping_skyscraper dimension='200x450' title = '{$instance['title']}' description	= '{$instance['description']}'
-        currency = '{$instance['currency']}'
-        background_color = '{$instance['background_color']}'
-        title_text_color = '{$instance['title_text_color']}'
-        tipping_text = '{$instance['tipping_text']}'
-        tipping_text_color = '{$instance['tipping_text_color']}'
-        redirect = '{$instance['redirect']}'
-        amount = '{$instance['redirect']}'
-        description_color = '{$instance['description_color']}'
-        button_text = '{$instance['button_text']}'
-        button_text_color = '{$instance['button_text_color']}'
-        button_color = '{$instance['button_color']}'
-        logo_id = '{$instance['logo_id']}'
-        background_id = '{$instance['background_id']}'
-        display_name = '{$instance['display_name']}'
-        mandatory_name = '{$instance['mandatory_name']}'
-        display_email = '{$instance['display_email']}'
-        mandatory_email = '{$instance['mandatory_email']}'
-        display_address = '{$instance['display_address']}'
-        mandatory_address = '{$instance['mandatory_address']}'
-        display_phone = '{$instance['display_phone']}'
-        mandatory_phone = '{$instance['mandatory_phone']}'
-        display_message = '{$instance['display_message']}'
-        mandatory_message = '{$instance['mandatory_message']}'
-        value1_enabled = '{$instance['value1_enabled']}'
-        value1_amount = '{$instance['value1_amount']}'
-        value1_currency = '{$instance['value1_currency']}'
-        value1_icon = '{$instance['value1_icon']}'
-        value2_enabled = '{$instance['value2_enabled']}'
-        value2_amount = '{$instance['value2_amount']}'
-        value2_currency = '{$instance['value2_currency']}'
-        value2_icon = '{$instance['value2_icon']}'
-        value3_enabled = '{$instance['value3_enabled']}'
-        value3_amount = '{$instance['value3_amount']}'
-        value3_currency = '{$instance['value3_currency']}'
-        value3_icon = '{$instance['value3_icon']}'
-        free_input = '{$instance['free_input']}'
-        input_background = '{$instance['fixed_background']}'
-        background = '{$instance['hf_color']}'
-        widget = 'true']");*/
 
         $dimension = explode('x', '200x450');
         $supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
@@ -156,8 +116,7 @@ div.btcpw_widget.btcpw_skyscraper_banner.wide>div.btcpw_widget.btcpw_skyscraper_
                     </h6>
                     <div class="btcpw_widget btcpw_skyscraper_amount high">
                         <?php foreach ($fixed_amount as $key => $value) : ?>
-
-                        <?php if ($fixed_amount[$key]['enabled'] === 'true') : ?>
+                        <?php if (filter_var($fixed_amount[$key]['enabled'], FILTER_VALIDATE_BOOLEAN) === true) : ?>
                         <div class="<?php echo "btcpw_widget btcpw_skyscraper_amount_$key high"; ?>">
                             <div>
                                 <input type="radio" class="btcpw_widget btcpw_skyscraper_tipping_default_amount high"
@@ -176,7 +135,7 @@ div.btcpw_widget.btcpw_skyscraper_banner.wide>div.btcpw_widget.btcpw_skyscraper_
                         <?php endif; ?>
 
                         <?php endforeach; ?>
-                        <?php if ('true' === $instance['free_input']) : ?>
+                        <?php if (true === filter_var($instance['free_input'], FILTER_VALIDATE_BOOL)) : ?>
                         <div class="btcpw_widget btcpw_skyscraper_tipping_free_input high">
                             <input type="number" id="btcpw_widget_btcpw_skyscraper_tipping_amount_high"
                                 name="btcpw_widget_btcpw_skyscraper_tipping_amount_high" placeholder="0.00" required />
@@ -208,7 +167,7 @@ div.btcpw_widget.btcpw_skyscraper_banner.wide>div.btcpw_widget.btcpw_skyscraper_
                         <input type="hidden" id="btcpw_widget_btcpw_skyscraper_redirect_link_high"
                             name="btcpw_widget_btcpw_skyscraper_redirect_link_high"
                             value=<?php echo ($instance['redirect']); ?> />
-                        <?php if ($collect_data == 'true') : ?>
+                        <?php if (filter_var($collect_data, FILTER_VALIDATE_BOOL) === true) : ?>
                         <div>
                             <input type="button" name="next" class="btcpw_widget skyscraper-next-form high"
                                 value="Continue >" />
@@ -222,18 +181,18 @@ div.btcpw_widget.btcpw_skyscraper_banner.wide>div.btcpw_widget.btcpw_skyscraper_
                     </div>
 
                 </fieldset>
-                <?php if ($collect_data == 'true') : ?>
+                <?php if (filter_var($collect_data, FILTER_VALIDATE_BOOL) === true) : ?>
                 <fieldset>
                     <div class="btcpw_widget btcpw_skyscraper_donor_information high">
                         <?php foreach ($collect as $key => $value) : ?>
-                        <?php if ($collect[$key]['display'] == 'true') : ?>
+                        <?php if (filter_var($collect[$key]['display'], FILTER_VALIDATE_BOOL) === true) : ?>
                         <div
                             class="<?php echo "btcpw_widget btcpw_skyscraper_tipping_donor_{$collect[$key]['label']}_wrap high"; ?>">
 
                             <input type="text" placeholder="<?php echo $collect[$key]['label']; ?>"
                                 id="<?php echo "btcpw_widget_btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_high"; ?>"
-                                name="<?php echo "btcpw_widget_btcpw_skyscraper_tipping_donor_{$collect[$key]['label']}_high"; ?>"
-                                <?php echo $collect[$key]['mandatory'] === 'true' ? 'required' : ''; ?> />
+                                name="<?php echo "btcpw_widget_btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_high"; ?>"
+                                <?php echo filter_var($collect[$key]['mandatory'], FILTER_VALIDATE_BOOL) === true ? 'required' : ''; ?> />
 
                         </div>
                         <?php endif; ?>

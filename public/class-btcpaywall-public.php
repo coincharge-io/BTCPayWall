@@ -350,27 +350,27 @@ class BTCPayWall_Public
 
 	public function ajax_tipping()
 	{
-		$collect = '';
+		$collect = 'Donor Information:' . "\n";
 
 		if (!empty($_POST['name'])) {
 			$name = sanitize_text_field($_POST['name']);
-			$collect .= "Name: {$name}; ";
+			$collect .= "Name: {$name}" . "\n";
 		}
 		if (!empty($_POST['email'])) {
 			$email = sanitize_text_field($_POST['email']);
-			$collect .= "Email: {$email}; ";
+			$collect .= "Email: {$email}" . "\n";
 		}
 		if (!empty($_POST['address'])) {
 			$address = sanitize_text_field($_POST['address']);
-			$collect .= "Address: {$address}; ";
+			$collect .= "Address: {$address}" . "\n";
 		}
 		if (!empty($_POST['phone'])) {
 			$phone = sanitize_text_field($_POST['phone']);
-			$collect .= "Phone: {$phone}; ";
+			$collect .= "Phone: {$phone}" . "\n";
 		}
 		if (!empty($_POST['message'])) {
 			$message = sanitize_text_field($_POST['message']);
-			$collect .= "Message: {$message}; ";
+			$collect .= "Message: {$message}" . "\n";
 		}
 
 		$currency = sanitize_text_field($_POST['currency']);
@@ -383,11 +383,12 @@ class BTCPayWall_Public
 			$currency = $extract[1];
 		}
 
-		$collect = 'Weblog title: '  . get_option('blogname') . PHP_EOL;
-		$collect .= 'Website url: ' . get_option('siteurl') . PHP_EOL;
-		$collect .= 'Date:' . ' ' . date('Y-m-d H:i:s', current_time('timestamp', 0)) . PHP_EOL;
-		$collect .= "Amount: {$amount} {$currency}" . PHP_EOL;
-		$collect .= 'Credit on Store ID:' . get_option('btcpw_btcpay_store_id') . PHP_EOL;
+		$collects = 'Weblog title: '  . get_option('blogname') . "\n";
+		$collects .= 'Website url: ' . get_option('siteurl') . "\n";
+		$collects .= 'Date:' . ' ' . date('Y-m-d H:i:s', current_time('timestamp', 0)) . "\n";
+		$collects .= "Amount: {$amount} {$currency}" . "\n";
+		$collects .= 'Credit on Store ID:' . get_option('btcpw_btcpay_store_id') . "\n";
+		$collects .= $collect;
 
 
 		$url = get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
@@ -397,7 +398,7 @@ class BTCPayWall_Public
 			'currency' => $currency,
 			'metadata' => array(
 				'itemDesc' => 'Donation from: ' . $_SERVER['REMOTE_ADDR'],
-				'donor' => $collect,
+				'donor' => $collects,
 			)
 		);
 		$args = array(
@@ -513,12 +514,12 @@ class BTCPayWall_Public
 			return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
 		}
 		$amount = sanitize_text_field($_POST['amount']);
-		$message = 'Weblog title: '  . get_option('blogname') . PHP_EOL;
-		$message .= 'Website url: ' . get_option('siteurl') . PHP_EOL;
-		$message .= 'Date:' . ' ' . date('Y-m-d H:i:s', current_time('timestamp', 0)) . PHP_EOL;
-		$message .= "Amount: {$amount}" . PHP_EOL;
-		$message .= 'Credit on Store ID: ' . get_option('btcpw_btcpay_store_id') . PHP_EOL;
-		$message .= 'Type:' . ' ' . $content_title . PHP_EOL;
+		$message = 'Weblog title: '  . get_option('blogname') . "\n";
+		$message .= 'Website url: ' . get_option('siteurl') . "\n";
+		$message .= 'Date:' . ' ' . date('Y-m-d H:i:s', current_time('timestamp', 0)) . "\n";
+		$message .= "Amount: {$amount}" . "\n";
+		$message .= 'Credit on Store ID: ' . get_option('btcpw_btcpay_store_id') . "\n";
+		$message .= 'Type:' . ' ' . $content_title . "\n";
 
 		if ($body['status'] === 'Settled') {
 			$cookie_path = parse_url(get_permalink($post_id), PHP_URL_PATH);
@@ -1220,45 +1221,31 @@ class BTCPayWall_Public
 			'free_input' => $predefined_enabled,
 			'input_background' => $color['input_background'],
 			'background' => $color['hf_background'],
-			'value1_enabled' => $fixed_amount['value1']['enabled'],
+			'value1_enabled' => filter_var($fixed_amount['value1']['enabled'], FILTER_VALIDATE_BOOLEAN),
 			'value1_amount' => $fixed_amount['value1']['amount'],
 			'value1_currency' => $fixed_amount['value1']['currency'],
 			'value1_icon' => $fixed_amount['value1']['icon'],
-			'value2_enabled' => $fixed_amount['value2']['enabled'],
+			'value2_enabled' => filter_var($fixed_amount['value2']['enabled'], FILTER_VALIDATE_BOOLEAN),
 			'value2_amount' => $fixed_amount['value2']['amount'],
 			'value2_currency' => $fixed_amount['value2']['currency'],
 			'value2_icon' => $fixed_amount['value2']['icon'],
-			'value3_enabled' => $fixed_amount['value3']['enabled'],
+			'value3_enabled' => filter_var($fixed_amount['value3']['enabled'], FILTER_VALIDATE_BOOLEAN),
 			'value3_amount' => $fixed_amount['value3']['amount'],
 			'value3_currency' => $fixed_amount['value3']['currency'],
 			'value3_icon' => $fixed_amount['value3']['icon'],
-			'display_name' => $collects['name']['collect'] ?? false,
-			'mandatory_name' => $collects['name']['mandatory'] ?? false,
-			'display_email' => $collects['email']['collect'] ?? false,
-			'mandatory_email' => $collects['email']['mandatory'] ?? false,
-			'display_phone' => $collects['phone']['collect'] ?? false,
-			'mandatory_phone' => $collects['phone']['mandatory'] ?? false,
-			'display_address' => $collects['address']['collect'] ?? false,
-			'mandatory_address' => $collects['address']['mandatory'] ?? false,
-			'display_message' => $collects['message']['collect'] ?? false,
-			'mandatory_message' => $collects['message']['mandatory'] ?? false,
+			'display_name' => filter_var($collects['name']['collect'], FILTER_VALIDATE_BOOLEAN),
+			'mandatory_name' => filter_var($collects['name']['mandatory'], FILTER_VALIDATE_BOOLEAN),
+			'display_email' => filter_var($collects['email']['collect'], FILTER_VALIDATE_BOOLEAN),
+			'mandatory_email' => filter_var($collects['email']['mandatory'], FILTER_VALIDATE_BOOLEAN),
+			'display_phone' => filter_var($collects['phone']['collect'], FILTER_VALIDATE_BOOLEAN),
+			'mandatory_phone' => filter_var($collects['phone']['mandatory'], FILTER_VALIDATE_BOOLEAN),
+			'display_address' => filter_var($collects['address']['collect'], FILTER_VALIDATE_BOOLEAN),
+			'mandatory_address' => filter_var($collects['address']['mandatory'], FILTER_VALIDATE_BOOLEAN),
+			'display_message' => filter_var($collects['message']['collect'], FILTER_VALIDATE_BOOLEAN),
+			'mandatory_message' => filter_var($collects['message']['mandatory'], FILTER_VALIDATE_BOOLEAN),
 			'widget'	=> false
 		), $atts);
 
-		$atts['value1_enabled'] = filter_var($atts['value1_enabled'], FILTER_VALIDATE_BOOLEAN);
-		$atts['value2_enabled'] = filter_var($atts['value2_enabled'], FILTER_VALIDATE_BOOLEAN);
-		$atts['value3_enabled'] = filter_var($atts['value3_enabled'], FILTER_VALIDATE_BOOLEAN);
-		$atts['display_name'] = filter_var($atts['display_name'], FILTER_VALIDATE_BOOLEAN);
-		$atts['display_email'] = filter_var($atts['display_email'], FILTER_VALIDATE_BOOLEAN);
-		$atts['display_address'] = filter_var($atts['display_address'], FILTER_VALIDATE_BOOLEAN);
-		$atts['display_phone'] = filter_var($atts['display_phone'], FILTER_VALIDATE_BOOLEAN);
-		$atts['display_message'] = filter_var($atts['display_message'], FILTER_VALIDATE_BOOLEAN);
-
-		$atts['mandatory_name'] = filter_var($atts['mandatory_name'], FILTER_VALIDATE_BOOLEAN);
-		$atts['mandatory_email'] = filter_var($atts['mandatory_email'], FILTER_VALIDATE_BOOLEAN);
-		$atts['mandatory_address'] = filter_var($atts['mandatory_address'], FILTER_VALIDATE_BOOLEAN);
-		$atts['mandatory_phone'] = filter_var($atts['mandatory_phone'], FILTER_VALIDATE_BOOLEAN);
-		$atts['mandatory_message'] = filter_var($atts['mandatory_message'], FILTER_VALIDATE_BOOLEAN);
 		$dimension = explode('x', ($atts['dimension'] === '200x710' ? '200x450' : '600x200'));
 
 		$supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
@@ -1555,32 +1542,32 @@ class BTCPayWall_Public
 			'button_color' => $color['button'],
 			'logo_id' => $image['logo'],
 			'background_id' => $image['background'],
-			'free_input' => $predefined_enabled,
-			'show_icon' => $show_icon ?? 'true',
+			'free_input' => filter_var($predefined_enabled, FILTER_VALIDATE_BOOLEAN),
+			'show_icon' => filter_var($show_icon, FILTER_VALIDATE_BOOLEAN),
 			'input_background' => $color['input_background'],
 			'background' => $color['hf_background'],
-			'value1_enabled' => $fixed_amount['value1']['enabled'],
+			'value1_enabled' => filter_var($fixed_amount['value1']['enabled'], FILTER_VALIDATE_BOOLEAN),
 			'value1_amount' => $fixed_amount['value1']['amount'],
 			'value1_currency' => $fixed_amount['value1']['currency'],
 			'value1_icon' => $fixed_amount['value1']['icon'],
-			'value2_enabled' => $fixed_amount['value2']['enabled'],
+			'value2_enabled' => filter_var($fixed_amount['value2']['enabled'], FILTER_VALIDATE_BOOLEAN),
 			'value2_amount' => $fixed_amount['value2']['amount'],
 			'value2_currency' => $fixed_amount['value2']['currency'],
 			'value2_icon' => $fixed_amount['value2']['icon'],
-			'value3_enabled' => $fixed_amount['value3']['enabled'],
+			'value3_enabled' => filter_var($fixed_amount['value3']['enabled'], FILTER_VALIDATE_BOOLEAN),
 			'value3_amount' => $fixed_amount['value3']['amount'],
 			'value3_currency' => $fixed_amount['value3']['currency'],
 			'value3_icon' => $fixed_amount['value3']['icon'],
-			'display_name' => $collects['name']['collect'] ?? 'false',
-			'mandatory_name' => $collects['name']['mandatory'] ?? 'false',
-			'display_email' => $collects['email']['collect'] ?? 'false',
-			'mandatory_email' => $collects['email']['mandatory'] ?? 'false',
-			'display_phone' => $collects['phone']['collect'] ?? 'false',
-			'mandatory_phone' => $collects['phone']['mandatory'] ?? 'false',
-			'display_address' => $collects['address']['collect'] ?? 'false',
-			'mandatory_address' => $collects['address']['mandatory'] ?? 'false',
-			'display_message' => $collects['message']['collect'] ?? 'false',
-			'mandatory_message' => $collects['message']['mandatory'] ?? 'false',
+			'display_name' => filter_var($collects['name']['collect'], FILTER_VALIDATE_BOOLEAN),
+			'mandatory_name' => filter_var($collects['name']['mandatory'], FILTER_VALIDATE_BOOLEAN),
+			'display_email' => filter_var($collects['email']['collect'], FILTER_VALIDATE_BOOLEAN),
+			'mandatory_email' => filter_var($collects['email']['mandatory'], FILTER_VALIDATE_BOOLEAN),
+			'display_phone' => filter_var($collects['phone']['collect'], FILTER_VALIDATE_BOOLEAN),
+			'mandatory_phone' => filter_var($collects['phone']['mandatory'], FILTER_VALIDATE_BOOLEAN),
+			'display_address' => filter_var($collects['address']['collect'], FILTER_VALIDATE_BOOLEAN),
+			'mandatory_address' => filter_var($collects['address']['mandatory'], FILTER_VALIDATE_BOOLEAN),
+			'display_message' => filter_var($collects['message']['collect'], FILTER_VALIDATE_BOOLEAN),
+			'mandatory_message' => filter_var($collects['message']['mandatory'], FILTER_VALIDATE_BOOLEAN),
 			'step1' => $text['step1'],
 			'active_color' => $color['active'],
 			'step2' => $text['step2'],
@@ -1594,7 +1581,6 @@ class BTCPayWall_Public
 		$background = wp_get_attachment_image_src($atts['background_id']) ? wp_get_attachment_image_src($atts['background_id'])[0] : $atts['background_id'];
 		$collect = BTCPayWall_Public::getCollect($atts);
 		$collect_data = BTCPayWall_Public::display_is_enabled($collect);
-
 		$fixed_amount = BTCPayWall_Public::getFixedAmount($atts);
 		$first_enabled = array_column($fixed_amount, 'enabled');
 		$d = array_search('true', $first_enabled);
@@ -1699,12 +1685,12 @@ class BTCPayWall_Public
 						<div class="btcpw_page_amount">
 							<?php foreach ($fixed_amount as $key => $value) : ?>
 
-								<?php if ($fixed_amount[$key]['enabled'] === 'true') : ?>
+								<?php if ($fixed_amount[$key]['enabled'] === true) : ?>
 									<div class="<?php echo 'btcpw_page_amount_' . $key; ?>">
 										<div>
 											<input type="radio" class="btcpw_page_tipping_default_amount" id="<?php echo "{$key}_page"; ?>" name="btcpw_page_tipping_default_amount" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . (!empty($fixed_amount[$key]['currency']) ? $fixed_amount[$key]['currency'] : 'SATS')); ?>">
 											<?php if (!empty($fixed_amount[$key]['amount'])) : ?>
-												<?php if ('true' === $atts['show_icon']) : ?>
+												<?php if (true === $atts['show_icon']) : ?>
 													<i class="<?php echo esc_html($fixed_amount[$key]['icon']); ?>"></i>
 												<?php endif; ?>
 											<?php endif; ?>
@@ -1715,7 +1701,7 @@ class BTCPayWall_Public
 								<?php endif; ?>
 
 							<?php endforeach; ?>
-							<?php if ('true' === $atts['free_input']) : ?>
+							<?php if (true === $atts['free_input']) : ?>
 								<div class="btcpw_page_tipping_free_input">
 									<input type="number" id="btcpw_page_tipping_amount" name="btcpw_page_tipping_amount" placeholder="0.00" required />
 
@@ -1733,7 +1719,7 @@ class BTCPayWall_Public
 							<?php endif; ?>
 
 						</div>
-						<?php if ('true' === $atts['free_input'] && $collect === 'false') : ?>
+						<?php if (true === $atts['free_input'] && $collect === false) : ?>
 							<div class="btcpw_page_tipping_free_input">
 								<input type="number" id="btcpw_page_tipping_amount" name="btcpw_page_tipping_amount" placeholder="0.00" required />
 
@@ -1758,7 +1744,7 @@ class BTCPayWall_Public
 
 						<div id="btcpw_page_button">
 							<input type="hidden" id="btcpw_page_redirect_link" name="btcpw_page_redirect_link" value=<?php echo $atts['redirect']; ?> />
-							<?php if ($collect_data == 'true') : ?>
+							<?php if ($collect_data === true) : ?>
 								<input type="button" name="next" class="page-next-form" value="continue " />
 							<?php else : ?>
 								<button type="submit" id="btcpw_page_tipping__button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
@@ -1766,14 +1752,14 @@ class BTCPayWall_Public
 						</div>
 
 					</fieldset>
-					<?php if ($collect_data == 'true') : ?>
+					<?php if ($collect_data === true) : ?>
 						<fieldset>
 							<div class="btcpw_page_donor_information">
 								<?php foreach ($collect as $key => $value) : ?>
-									<?php if ($collect[$key]['display'] == 'true') : ?>
+									<?php if ($collect[$key]['display'] === true) : ?>
 										<div class="<?php echo "btcpw_page_tipping_donor_{$collect[$key]['id']}_wrap"; ?>">
 
-											<input type="text" placeholder="<?php echo esc_html($collect[$key]['label']); ?>" id="<?php echo "btcpw_page_tipping_donor_{$collect[$key]['id']}"; ?>" name="<?php echo "btcpw_page_tipping_donor_{$collect[$key]['label']}"; ?>" <?php echo $collect[$key]['mandatory'] === 'true' ? 'required' : ''; ?> />
+											<input type="text" placeholder="<?php echo esc_html($collect[$key]['label']); ?>" id="<?php echo "btcpw_page_tipping_donor_{$collect[$key]['id']}"; ?>" name="<?php echo "btcpw_page_tipping_donor_{$collect[$key]['id']}"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 										</div>
 									<?php endif; ?>
 								<?php endforeach; ?>

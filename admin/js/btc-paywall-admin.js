@@ -478,5 +478,16 @@ $("#design-button").click(function(e) {
       custom_uploader.open();
     });
   });
-  
+  $(document).ready(function () {
+    $("#tipping_box_add_form").submit(function(e){
+      e.preventDefault();
+      $.ajax({
+        type: "POST",
+        data: $("#tipping_box_add_form").serialize(),
+        success: function(msg) {
+          alert("Form Submitted: " + msg);
+        }
+      });
+    })
+  })
 })(jQuery);
