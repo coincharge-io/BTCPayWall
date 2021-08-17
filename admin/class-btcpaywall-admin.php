@@ -814,6 +814,24 @@ class BTCPayWall_Admin
 		$table->prepare_items();
 		return $table->display();
 	}
+
+	/**
+	 * Extract tipping name
+	 */
+	protected function extractName($dimension)
+	{
+		switch ($dimension) {
+			case '250x300':
+			case '300x300':
+				return 'Tipping Box';
+			case '200x710':
+				return 'Tipping Banner High';
+			case '600x280':
+				return 'Tipping Banner Wide';
+			default:
+				return 'Tipping Page';
+		}
+	}
 	/**
 	 * Action for storing shortcode values
 	 */
@@ -822,6 +840,7 @@ class BTCPayWall_Admin
 	public function createShortcode()
 	{
 		global $wpdb;
+		$name = $this->extractName($_POST['dimension']);
 
 		$dimension = sanitize_text_field($_POST['dimension']) ?? "520x600";
 		$background = sanitize_text_field($_POST['background']);
@@ -842,6 +861,40 @@ class BTCPayWall_Admin
 		$button_text = sanitize_text_field($_POST['button_text']);
 		$button_text_color = sanitize_hex_color_no_hash($_POST['button_text_color']);
 		$button_color = sanitize_hex_color_no_hash($_POST['button_color']);
+
+		$table_name = $wpdb->prefix . 'btc_forms';
+
+		$insert_row = $wpdb->insert(
+			$table_name,
+			array(
+				'time' => current_time('mysql'),
+				'name' => $name,
+				'dimension' => $dimension,
+				'background' => $background,
+				'background_color' => $background_color,
+				'hf_background'	=> $hf_color,
+				'logo'	=> $logo,
+				'title_text' => $title_text,
+				'title_text_color' => $title_text_color,
+				'description_text'  => $description_text,
+				'description_text_color' => $description_text_color,
+				'tipping_text'	=> $tipping_text,
+				'tipping_text_color'	=> $tipping_text_color,
+				'redirect'	=>	$redirect,
+				'currency'	=> $currency,
+				'input_background'	=> $input_background,
+				'button_text'	=> $button_text,
+				'button_text_color'	=> $button_text_color,
+				'button_color'	=> $button_color
+
+			)
+		);
+		if ($insert_row) {
+			echo json_encode(array('res' => true, 'message' => __('New row has been inserted.')));
+		} else {
+			echo json_encode(array('res' => false, 'message' => __('Something went wrong. Please try again later.')));
+		}
+		wp_die();
 	}
 	/* 
 	 * @throws Exception
