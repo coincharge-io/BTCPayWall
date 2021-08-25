@@ -60,13 +60,87 @@ class Donation_List_Table extends WP_List_Table
     /**
      * Prepares the list of items for displaying.
      */
-    public function prepare_items()
+    /* public function prepare_items()
     {
         $columns  = $this->get_columns();
         $hidden   = array();
         $sortable = array();
         $primary  = 'cb';
         $this->_column_headers = array($columns, $hidden, $sortable, $primary);
+    } */
+    public function prepare_items()
+    {
+
+        //$this->_column_headers = $this->get_column_info();
+        $this->_column_headers = array($this->get_columns(), array(), array(), 'cb');
+        $this->process_bulk_action();
+
+        $per_page = $this->get_items_per_page('customers_per_page', 5);
+        $current_page = $this->get_pagenum();
+        $total_items = self::record_count();
+
+        $this->set_pagination_args([
+            'total_items' => $total_items,
+            'per_page' => $per_page
+        ]);
+
+        $this->items = self::get_shortcodes($per_page, $current_page);
+    }
+    /**
+     * Returns the count of shortcodes in the database.
+     *
+     * @return null|string
+     */
+    public static function record_count()
+    {
+        global $wpdb;
+
+        $sql = "SELECT COUNT(*) FROM {$wpdb->prefix}btc_forms";
+
+        return $wpdb->get_var($sql);
+    }
+    /**
+     * Retrieve shortcode’s data from the database
+     *
+     * @param int $per_page
+     * @param int $page_number
+     *
+     * @return mixed
+     */
+    public static function get_shortcodes($per_page = 5, $page_number = 1)
+    {
+
+        global $wpdb;
+
+        $sql = "SELECT * FROM {$wpdb->prefix}btc_forms";
+
+        if (!empty($_REQUEST['orderby'])) {
+            $sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
+            $sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
+        }
+
+        $sql .= " LIMIT $per_page";
+
+        $sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
+
+        $result = $wpdb->get_results($sql, 'ARRAY_A');
+
+        return $result;
+    }
+    /**
+     * Delete a shortcode record.
+     *
+     * @param int $id shortcode ID
+     */
+    public static function delete_shortcode($id)
+    {
+        global $wpdb;
+
+        $wpdb->delete(
+            "{$wpdb->prefix}btc_forms",
+            ['ID' => $id],
+            ['%d']
+        );
     }
     protected function column_cb($item)
     {
@@ -101,7 +175,7 @@ class Donation_List_Table extends WP_List_Table
             'edit' => sprintf('<a href="?page=%s&action=%s&id=%s">Edit</a>', $_REQUEST['page'], 'edit', $item_json['id']),
             'delete' => sprintf('<a href="?page=%s&action=%s&id=%s">Delete</a>', $_REQUEST['page'], 'delete', $item_json['id']),
         );
-        return '<em>' . sprintf('%s %s', $item_json['title'], $this->row_actions($actions)) . '</em>';
+        return '<em>' . sprintf('%s %s', $item_json['title_text'], $this->row_actions($actions)) . '</em>';
     }
     /**
      * Generates content for a single row of the table.
@@ -111,6 +185,7 @@ class Donation_List_Table extends WP_List_Table
      */
     protected function column_default($item, $column_name)
     {
+        $shortcode = BTCPayWall_Admin::outputShortcodeAttributes(BTCPayWall_Admin::extractName($item['dimension'])['name'], $item);
         switch ($column_name) {
             case 'cb':
                 return esc_html($item['cb']);
@@ -119,13 +194,14 @@ class Donation_List_Table extends WP_List_Table
             case 'logo':
                 return esc_html($item['logo']);
             case 'description':
-                return esc_html($item['description']);
+                return esc_html($item['description_text']);
             case 'tipping-text':
-                return esc_html($item['tipping-text']);
+                return esc_html($item['tipping_text']);
             case 'button-text':
-                return esc_html($item['button-text']);
+                return esc_html($item['button_text']);
             case 'shortcode':
-                return esc_html($item['shortcode']);
+                return esc_html($shortcode);
+            default:
                 return 'Unknown';
         }
     }

@@ -814,7 +814,7 @@ class BTCPayWall_Admin
 		$table->prepare_items();
 		return $table->display();
 	}
-	protected function outputShortcodeAttributes($name, $atts)
+	public static function outputShortcodeAttributes($name, $atts)
 	{
 		switch ($name) {
 
@@ -832,7 +832,7 @@ class BTCPayWall_Admin
 				button_color = {$atts['button_color']}
 				logo_id = {$atts['logo']}
 				background_id = {$atts['background']}
-				background = {$atts['hf_color']}
+				background = {$atts['hf_background']}
 				input_background = {$atts['input_background']}]";
 			case 'Tipping Banner High':
 				return "[btcpw_tipping_banner dimension={$atts['dimension']} title={$atts['title_text']}
@@ -849,7 +849,7 @@ class BTCPayWall_Admin
 				button_color={$atts['button_color']}
 				logo_id={$atts['logo']}
 				background_id={$atts['background']}
-				background={$atts['hf_color']}
+				background={$atts['hf_background']}
 				input_background={$atts['input_background']}
 				free_input = {$atts['free_input']},
 				value1_enabled = {$atts['value1_enabled']},
@@ -889,7 +889,7 @@ class BTCPayWall_Admin
 				button_color={$atts['button_color']}
 				logo_id={$atts['logo']}
 				background_id={$atts['background']}
-				background={$atts['hf_color']}
+				background={$atts['hf_background']}
 				input_background={$atts['input_background']}
 				free_input = {$atts['free_input']},
 				value1_enabled = {$atts['value1_enabled']},
@@ -928,7 +928,7 @@ class BTCPayWall_Admin
 				button_color={$atts['button_color']}
 				logo_id={$atts['logo']}
 				background_id={$atts['background']}
-				background={$atts['hf_color']}
+				background={$atts['hf_background']}
 				input_background={$atts['input_background']}
 				free_input = {$atts['free_input']},
 				value1_enabled = {$atts['value1_enabled']},
@@ -960,7 +960,7 @@ class BTCPayWall_Admin
 	/**
 	 * Extract tipping name
 	 */
-	protected function extractName($dimension)
+	public static function extractName($dimension)
 	{
 		switch ($dimension) {
 			case '250x300':
@@ -995,8 +995,8 @@ class BTCPayWall_Admin
 	{
 		global $wpdb;
 
-		$name = $this->extractName($_POST['dimension'])['name'];
-		$type = $this->extractName($_POST['dimension'])['type'];
+		$name = BTCPayWall_Admin::extractName($_POST['dimension'])['name'];
+		$type = BTCPayWall_Admin::extractName($_POST['dimension'])['type'];
 		$dimension = sanitize_text_field($_POST['dimension']) ?? "520x600";
 
 		$background = sanitize_text_field($_POST['background']);
@@ -1053,25 +1053,25 @@ class BTCPayWall_Admin
 		$inactive_color = sanitize_hex_color_no_hash($_POST['inactive_color']);
 		$step1 = sanitize_text_field($_POST['step1']);
 		$step2 = sanitize_text_field($_POST['step2']);
-		$shortcode = $this->outputShortcodeAttributes($name, array(
+		$shortcode = BTCPayWall_Admin::outputShortcodeAttributes($name, array(
 			'name' => $name,
 			'dimension' => $dimension,
 			'background' => $background,
-			'background_color' => $background_color,
-			'hf_background'	=> $hf_color,
+			'background_color' => '#' . $background_color,
+			'hf_background'	=> '#' . $hf_color,
 			'logo'	=> $logo,
 			'title_text' => $title_text,
-			'title_text_color' => $title_text_color,
+			'title_text_color' => '#' . $title_text_color,
 			'description_text'  => $description_text,
-			'description_text_color' => $description_text_color,
+			'description_text_color' => '#' . $description_text_color,
 			'tipping_text'	=> $tipping_text,
-			'tipping_text_color'	=> $tipping_text_color,
+			'tipping_text_color'	=> '#' . $tipping_text_color,
 			'redirect'	=>	$redirect,
 			'currency'	=> $currency,
-			'input_background'	=> $input_background,
+			'input_background'	=> '#' . $input_background,
 			'button_text'	=> $button_text,
-			'button_text_color'	=> $button_text_color,
-			'button_color'	=> $button_color,
+			'button_text_color'	=> '#' . $button_text_color,
+			'button_color'	=> '#' . $button_color,
 			'value1_enabled' => $value1_enabled,
 			'value1_amount'	=> $value1_amount,
 			'value1_currency'	=> $value1_currency,
@@ -1098,8 +1098,8 @@ class BTCPayWall_Admin
 			'show_icon'		=> $show_icon,
 			'step1'			=> $step1,
 			'step2'			=> $step2,
-			'active_color'	=> $active_color,
-			'inactive_color'	=> $inactive_color,
+			'active_color'	=> '#' . $active_color,
+			'inactive_color'	=> '#' . $inactive_color,
 		));
 		$table_name = $wpdb->prefix . 'btc_forms';
 
