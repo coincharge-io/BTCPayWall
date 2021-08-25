@@ -208,7 +208,15 @@ $background = wp_get_attachment_image_src($image['background']);
 */
 ?>
 <div class="tipping_box_settings">
-    <form method="POST" action="options.php" id="tipping_box_add_form">
+    <form method="POST" action="" id="tipping_box_add_form">
+        <div class="row">
+            <div class="col-50">
+                <p>Shortcode</label>
+            </div>
+            <div class="col-50" id="btcpw_tipping_box_shortcode">
+
+            </div>
+        </div>
         <div class="row">
             <div class="col-50">
                 <label for="btcpw_tipping_box_dimension">Dimension</label>

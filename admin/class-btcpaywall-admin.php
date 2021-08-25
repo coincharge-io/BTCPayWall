@@ -814,7 +814,149 @@ class BTCPayWall_Admin
 		$table->prepare_items();
 		return $table->display();
 	}
+	protected function outputShortcodeAttributes($name, $atts)
+	{
+		switch ($name) {
 
+			case 'Tipping Box':
+				return "[btcpw_tipping_box dimension={$atts['dimension']} title = {$atts['title_text']} description = {$atts['description_text']}
+				currency = {$atts['currency']}
+				background_color = {$atts['background_color']}
+				title_text_color = {$atts['title_text_color']}
+				tipping_text = {$atts['tipping_text']}
+				tipping_text_color = {$atts['tipping_text_color']}
+				redirect = {$atts['redirect']}
+				description_text_color = {$atts['description_text_color']}
+				button_text = {$atts['button_text']}
+				button_text_color = {$atts['button_text_color']}
+				button_color = {$atts['button_color']}
+				logo_id = {$atts['logo']}
+				background_id = {$atts['background']}
+				background = {$atts['hf_color']}
+				input_background = {$atts['input_background']}]";
+			case 'Tipping Banner High':
+				return "[btcpw_tipping_banner dimension={$atts['dimension']} title={$atts['title_text']}
+				description={$atts['description_text']}
+				currency={$atts['currency']}
+				background_color={$atts['background_color']}
+				title_text_color={$atts['title_text_color']}
+				tipping_text={$atts['tipping_text']}
+				tipping_text_color={$atts['tipping_text_color']}
+				redirect={$atts['redirect']}
+				description_text_color={$atts['description_text_color']}
+				button_text={$atts['button_text']}
+				button_text_color={$atts['button_text_color']}
+				button_color={$atts['button_color']}
+				logo_id={$atts['logo']}
+				background_id={$atts['background']}
+				background={$atts['hf_color']}
+				input_background={$atts['input_background']}
+				free_input = {$atts['free_input']},
+				value1_enabled = {$atts['value1_enabled']},
+				value1_amount = {$atts['value1_amount']},
+				value1_currency = {$atts['value1_currency']},
+				value1_icon = {$atts['value1_icon']},
+				value2_enabled = {$atts['value2_enabled']},
+				value2_amount = {$atts['value2_amount']},
+				value2_currency = {$atts['value2_currency']},
+				value2_icon = {$atts['value2_icon']},
+				value3_enabled = {$atts['value3_enabled']},
+				value3_amount = {$atts['value3_amount']},
+				value3_currency = {$atts['value3_currency']},
+				value3_icon = {$atts['value3_icon']},
+				display_name = {$atts['collect_name']},
+				mandatory_name = {$atts['mandatory_name']},
+				display_email = {$atts['collect_email']},
+				mandatory_email = {$atts['mandatory_email']},
+				display_phone = {$atts['collect_phone']},
+				mandatory_phone = {$atts['mandatory_phone']},
+				display_address = {$atts['collect_address']},
+				mandatory_address = {$atts['mandatory_address']},
+				display_message = {$atts['collect_message']},
+				mandatory_message = {$atts['mandatory_message']}]";
+			case 'Tipping Banner Wide':
+				return "[btcpw_tipping_banner dimension={$atts['dimension']} title={$atts['title_text']}
+				description={$atts['description_text']}
+				currency={$atts['currency']}
+				background_color={$atts['background_color']}
+				title_text_color={$atts['title_text_color']}
+				tipping_text={$atts['tipping_text']}
+				tipping_text_color={$atts['tipping_text_color']}
+				redirect={$atts['redirect']}
+				description_text_color={$atts['description_text_color']}
+				button_text={$atts['button_text']}
+				button_text_color={$atts['button_text_color']}
+				button_color={$atts['button_color']}
+				logo_id={$atts['logo']}
+				background_id={$atts['background']}
+				background={$atts['hf_color']}
+				input_background={$atts['input_background']}
+				free_input = {$atts['free_input']},
+				value1_enabled = {$atts['value1_enabled']},
+				value1_amount = {$atts['value1_amount']},
+				value1_currency = {$atts['value1_currency']},
+				value1_icon = {$atts['value1_icon']},
+				value2_enabled = {$atts['value2_enabled']},
+				value2_amount = {$atts['value2_amount']},
+				value2_currency = {$atts['value2_currency']},
+				value2_icon = {$atts['value2_icon']},
+				value3_enabled = {$atts['value3_enabled']},
+				value3_amount = {$atts['value3_amount']},
+				value3_currency = {$atts['value3_currency']},
+				value3_icon = {$atts['value3_icon']},
+				display_name = {$atts['collect_name']},
+				mandatory_name = {$atts['mandatory_name']},
+				display_email = {$atts['collect_email']},
+				mandatory_email = {$atts['mandatory_email']},
+				display_phone = {$atts['collect_phone']},
+				mandatory_phone = {$atts['mandatory_phone']},
+				display_address = {$atts['collect_address']},
+				mandatory_address = {$atts['mandatory_address']},
+				display_message = {$atts['collect_message']},
+				mandatory_message = {$atts['mandatory_message']}]";
+			case 'Tipping Page':
+				return "[btcpw_tipping_page dimension=
+				520x600 title={$atts['title_text']}
+				currency={$atts['currency']}
+				background_color={$atts['background_color']}
+				title_text_color={$atts['title_text_color']}
+				tipping_text={$atts['tipping_text']}
+				tipping_text_color={$atts['tipping_text_color']}
+				redirect={$atts['redirect']}
+				button_text={$atts['button_text']}
+				button_text_color={$atts['button_text_color']}
+				button_color={$atts['button_color']}
+				logo_id={$atts['logo']}
+				background_id={$atts['background']}
+				background={$atts['hf_color']}
+				input_background={$atts['input_background']}
+				free_input = {$atts['free_input']},
+				value1_enabled = {$atts['value1_enabled']},
+				value1_amount = {$atts['value1_amount']},
+				value1_currency = {$atts['value1_currency']},
+				value1_icon = {$atts['value1_icon']},
+				value2_enabled = {$atts['value2_enabled']},
+				value2_amount = {$atts['value2_amount']},
+				value2_currency = {$atts['value2_currency']},
+				value2_icon = {$atts['value2_icon']},
+				value3_enabled = {$atts['value3_enabled']},
+				value3_amount = {$atts['value3_amount']},
+				value3_currency = {$atts['value3_currency']},
+				value3_icon = {$atts['value3_icon']},
+				display_name = {$atts['collect_name']},
+				mandatory_name = {$atts['mandatory_name']},
+				display_email = {$atts['collect_email']},
+				mandatory_email = {$atts['mandatory_email']},
+				display_phone = {$atts['collect_phone']},
+				mandatory_phone = {$atts['mandatory_phone']},
+				display_address = {$atts['collect_address']},
+				mandatory_address = {$atts['mandatory_address']},
+				display_message = {$atts['collect_message']},
+				mandatory_message = {$atts['mandatory_message']}]";
+			default:
+				return 'Shortcode could not be created! Please try again.';
+		}
+	}
 	/**
 	 * Extract tipping name
 	 */
@@ -823,13 +965,25 @@ class BTCPayWall_Admin
 		switch ($dimension) {
 			case '250x300':
 			case '300x300':
-				return 'Tipping Box';
+				return array(
+					'name' => 'Tipping Box',
+					'type' => 'btcpw_tipping_box_shortcode'
+				);
 			case '200x710':
-				return 'Tipping Banner High';
+				return array(
+					'name' => 'Tipping Banner High',
+					'type' => 'btcpw_tipping_banner_shortcode'
+				);
 			case '600x280':
-				return 'Tipping Banner Wide';
+				return array(
+					'name' => 'Tipping Banner Wide',
+					'type' => 'btcpw_tipping_banner_shortcode'
+				);
 			default:
-				return 'Tipping Page';
+				return array(
+					'name' => 'Tipping Page',
+					'type' => 'btcpw_tipping_page_shortcode'
+				);
 		}
 	}
 	/**
@@ -840,9 +994,11 @@ class BTCPayWall_Admin
 	public function createShortcode()
 	{
 		global $wpdb;
-		$name = $this->extractName($_POST['dimension']);
 
+		$name = $this->extractName($_POST['dimension'])['name'];
+		$type = $this->extractName($_POST['dimension'])['type'];
 		$dimension = sanitize_text_field($_POST['dimension']) ?? "520x600";
+
 		$background = sanitize_text_field($_POST['background']);
 		$background_color = sanitize_hex_color_no_hash($_POST['background_color']);
 		$hf_color = sanitize_hex_color_no_hash($_POST['hf_color']);
@@ -862,6 +1018,89 @@ class BTCPayWall_Admin
 		$button_text_color = sanitize_hex_color_no_hash($_POST['button_text_color']);
 		$button_color = sanitize_hex_color_no_hash($_POST['button_color']);
 
+		$free_input = (rest_sanitize_boolean($_POST['free_input']));
+		$value1_enabled = (rest_sanitize_boolean($_POST['value1_enabled']));
+		$value1_currency = (rest_sanitize_boolean($_POST['value1_currency']));
+		$value1_amount = (rest_sanitize_boolean($_POST['value1_amount']));
+		$value1_icon = (rest_sanitize_boolean($_POST['value1_icon']));
+
+		$value2_enabled = (rest_sanitize_boolean($_POST['value2_enabled']));
+		$value2_currency = (rest_sanitize_boolean($_POST['value2_currency']));
+		$value2_amount = (rest_sanitize_boolean($_POST['value2_amount']));
+		$value2_icon = (rest_sanitize_boolean($_POST['value2_icon']));
+
+		$value3_enabled = (rest_sanitize_boolean($_POST['value3_enabled']));
+		$value3_currency = (rest_sanitize_boolean($_POST['value3_currency']));
+		$value3_amount = (rest_sanitize_boolean($_POST['value3_amount']));
+		$value3_icon = (rest_sanitize_boolean($_POST['value3_icon']));
+
+		$collect_name = (rest_sanitize_boolean($_POST['collect_name']));
+		$mandatory_name = (rest_sanitize_boolean($_POST['mandatory_name']));
+
+		$collect_email = (rest_sanitize_boolean($_POST['collect_email']));
+		$mandatory_email = (rest_sanitize_boolean($_POST['mandatory_email']));
+
+		$collect_phone = (rest_sanitize_boolean($_POST['collect_phone']));
+		$mandatory_phone = (rest_sanitize_boolean($_POST['mandatory_phone']));
+
+		$collect_address = (rest_sanitize_boolean($_POST['collect_address']));
+		$mandatory_address = (rest_sanitize_boolean($_POST['mandatory_address']));
+
+		$collect_message = (rest_sanitize_boolean($_POST['collect_message']));
+		$mandatory_message = (rest_sanitize_boolean($_POST['mandatory_message']));
+		$show_icon = (rest_sanitize_boolean($_POST['show_icon']));
+		$active_color = sanitize_hex_color_no_hash($_POST['active_color']);
+		$inactive_color = sanitize_hex_color_no_hash($_POST['inactive_color']);
+		$step1 = sanitize_text_field($_POST['step1']);
+		$step2 = sanitize_text_field($_POST['step2']);
+		$shortcode = $this->outputShortcodeAttributes($name, array(
+			'name' => $name,
+			'dimension' => $dimension,
+			'background' => $background,
+			'background_color' => $background_color,
+			'hf_background'	=> $hf_color,
+			'logo'	=> $logo,
+			'title_text' => $title_text,
+			'title_text_color' => $title_text_color,
+			'description_text'  => $description_text,
+			'description_text_color' => $description_text_color,
+			'tipping_text'	=> $tipping_text,
+			'tipping_text_color'	=> $tipping_text_color,
+			'redirect'	=>	$redirect,
+			'currency'	=> $currency,
+			'input_background'	=> $input_background,
+			'button_text'	=> $button_text,
+			'button_text_color'	=> $button_text_color,
+			'button_color'	=> $button_color,
+			'value1_enabled' => $value1_enabled,
+			'value1_amount'	=> $value1_amount,
+			'value1_currency'	=> $value1_currency,
+			'value1_icon'	=> $value1_icon,
+			'value2_enabled' => $value2_enabled,
+			'value2_amount'	=> $value2_amount,
+			'value2_currency'	=> $value2_currency,
+			'value2_icon'	=> $value2_icon,
+			'value3_enabled' => $value3_enabled,
+			'value3_amount'	=> $value3_amount,
+			'value3_currency'	=> $value3_currency,
+			'value3_icon'	=> $value3_icon,
+			'collect_name'	=> $collect_name,
+			'mandatory_name'	=> $mandatory_name,
+			'collect_email'	=> $collect_email,
+			'mandatory_email'	=> $mandatory_email,
+			'collect_address'	=> $collect_address,
+			'mandatory_address'	=> $mandatory_address,
+			'collect_phone'	=> $collect_phone,
+			'mandatory_phone'	=> $mandatory_phone,
+			'collect_message'	=> $collect_message,
+			'mandatory_message'	=> $mandatory_message,
+			'free_input'	=> $free_input,
+			'show_icon'		=> $show_icon,
+			'step1'			=> $step1,
+			'step2'			=> $step2,
+			'active_color'	=> $active_color,
+			'inactive_color'	=> $inactive_color,
+		));
 		$table_name = $wpdb->prefix . 'btc_forms';
 
 		$insert_row = $wpdb->insert(
@@ -885,16 +1124,42 @@ class BTCPayWall_Admin
 				'input_background'	=> $input_background,
 				'button_text'	=> $button_text,
 				'button_text_color'	=> $button_text_color,
-				'button_color'	=> $button_color
-
+				'button_color'	=> $button_color,
+				'value1_enabled' => $value1_enabled,
+				'value1_amount'	=> $value1_amount,
+				'value1_currency'	=> $value1_currency,
+				'value1_icon'	=> $value1_icon,
+				'value2_enabled' => $value2_enabled,
+				'value2_amount'	=> $value2_amount,
+				'value2_currency'	=> $value2_currency,
+				'value2_icon'	=> $value2_icon,
+				'value3_enabled' => $value3_enabled,
+				'value3_amount'	=> $value3_amount,
+				'value3_currency'	=> $value3_currency,
+				'value3_icon'	=> $value3_icon,
+				'collect_name'	=> $collect_name,
+				'mandatory_name'	=> $mandatory_name,
+				'collect_email'	=> $collect_email,
+				'mandatory_email'	=> $mandatory_email,
+				'collect_address'	=> $collect_address,
+				'mandatory_address'	=> $mandatory_address,
+				'collect_phone'	=> $collect_phone,
+				'mandatory_phone'	=> $mandatory_phone,
+				'collect_message'	=> $collect_message,
+				'mandatory_message'	=> $mandatory_message,
+				'free_input'	=> $free_input,
+				'show_icon'		=> $show_icon,
+				'step1'			=> $step1,
+				'step2'			=> $step2,
+				'active_color'	=> $active_color,
+				'inactive_color'	=> $inactive_color,
 			)
 		);
 		if ($insert_row) {
-			echo json_encode(array('res' => true, 'message' => __('New row has been inserted.')));
+			wp_send_json_success(array('res' => true, 'message' => __('New row has been inserted.'), 'data' => array('shortcode' => $shortcode, 'type' => $type)));
 		} else {
-			echo json_encode(array('res' => false, 'message' => __('Something went wrong. Please try again later.')));
+			wp_send_json_error(array('res' => false, 'message' => __('Something went wrong. Please try again later.')));
 		}
-		wp_die();
 	}
 	/* 
 	 * @throws Exception

@@ -479,7 +479,7 @@ $("#design-button").click(function(e) {
     });
   });
   $(document).ready(function () {
-    $("#tipping_box_add_form").on("submit",function(e){
+    $("#tipping_box_add_form, #tipping_banner_add_form, #tipping_page_add_form").on("submit",function(e){
       e.preventDefault();
       $.ajax({
           type: "POST",
@@ -488,29 +488,58 @@ $("#design-button").click(function(e) {
           data: {
             action:"btcpw_create_shortcode",
 
-            dimension:$("#btcpw_tipping_box_dimension").val(),
-            background:$("#btcpw_tipping_box_image_background").val(),
-            background_color:$("#btcpw_tipping_box_background").val(),
-            hf_color:$("#btcpw_tipping_box_hf_background").val(),
-            logo:$("#btcpw_tipping_box_image").val(),
-            title_text:$("#btcpw_tipping_box_title").val(),
-            title_text_color:$("#btcpw_tipping_box_title_color").val(),
-            description_text:$("#btcpw_tipping_box_description").val(),
-            description_text_color:$("#btcpw_tipping_box_description_color").val(),
-            tipping_text:$("#btcpw_tipping_box_text").val(),
-            tipping_text_color:$("#btcpw_tipping_box_tipping_box_color").val(),
-            redirect: $("#btcpw_tipping_box_redirect").val(),
-            currency: $("#btcpw_tipping_box_currency").val(),
-            input_background: $("#btcpw_tipping_box_input_background").val(),
-            button_text: $("#btcpw_tipping_box_button_text").val(),
-            button_text_color: $("#btcpw_tipping_box_button_text_color").val(),
-            button_color: $("#btcpw_tipping_box_button_color").val()
+            dimension:$("#btcpw_tipping_box_dimension, #btcpw_tipping_banner_dimension").val(),
+            background:$("#btcpw_tipping_box_image_background, #btcpw_tipping_banner_image_background, #btcpw_tipping_page_image_background").val(),
+            background_color:$("#btcpw_tipping_box_background, #btcpw_tipping_banner_background, #btcpw_tipping_page_background").val(),
+            hf_color:$("#btcpw_tipping_box_hf_background, #btcpw_tipping_banner_hf_background, #btcpw_tipping_page_hf_background").val(),
+            logo:$("#btcpw_tipping_box_image, #btcpw_tipping_banner_image, #btcpw_tipping_page_image").val(),
+            title_text:$("#btcpw_tipping_box_title, #btcpw_tipping_banner_title, #btcpw_tipping_page_title").val(),
+            title_text_color:$("#btcpw_tipping_box_title_color, #btcpw_tipping_banner_title_color, #btcpw_tipping_page_title_color").val(),
+            description_text:$("#btcpw_tipping_box_description, #btcpw_tipping_banner_description, #btcpw_tipping_page_description").val(),
+            description_text_color:$("#btcpw_tipping_box_description_color, #btcpw_tipping_banner_description_color, #btcpw_tipping_page_description_color").val(),
+            tipping_text:$("#btcpw_tipping_box_text, #btcpw_tipping_banner_text, #btcpw_tipping_page_text").val(),
+            tipping_text_color:$("#btcpw_tipping_box_tipping_box_color, #btcpw_tipping_banner_tipping_banner_color, #btcpw_tipping_page_tipping_banner_color").val(),
+            redirect: $("#btcpw_tipping_box_redirect, #btcpw_tipping_banner_redirect, #btcpw_tipping_page_redirect").val(),
+            currency: $("#btcpw_tipping_box_currency, #btcpw_tipping_banner_currency, #btcpw_tipping_page_currency").val(),
+            input_background: $("#btcpw_tipping_box_input_background, #btcpw_tipping_banner_input_background, #btcpw_tipping_page_input_background").val(),
+            button_text: $("#btcpw_tipping_box_button_text, #btcpw_tipping_banner_button_text, #btcpw_tipping_page_button_text").val(),
+            button_text_color: $("#btcpw_tipping_box_button_text_color, #btcpw_tipping_banner_button_text_color, #btcpw_tipping_page_button_text_color").val(),
+            button_color: $("#btcpw_tipping_box_button_color, #btcpw_tipping_banner_button_color, #btcpw_tipping_page_button_color").val(),
+            free_input: $("#btcpw_tipping_banner_enter_amount, #btcpw_tipping_page_enter_amount").val(),
+            value1_enabled: $("#btcpw_banner_value_1_enabled, #btcpw_page_value_1_enabled").val(),
+            value1_currency: $("#btcpw_default_currency1, #btcpw_default_page_currency1").val(),
+            value1_amount: $("#btcpw_default_price1, #btcpw_default_page_price1").val(),
+            value1_icon: $("#btcpw_tipping_banner_icon1, #btcpw_tipping_page_icon1").val(),
+            value2_enabled: $("#btcpw_banner_value_2_enabled, #btcpw_page_value_2_enabled").val(),
+            value2_currency: $("#btcpw_default_currency2, #btcpw_default_page_currency2").val(),
+            value2_amount: $("#btcpw_default_price2, #btcpw_default_page_price2").val(),
+            value2_icon: $("#btcpw_tipping_banner_icon2, #btcpw_tipping_page_icon2").val(),
+            value3_enabled: $("#btcpw_banner_value_3_enabled, #btcpw_page_value_3_enabled").val(),
+            value3_currency: $("#btcpw_default_currency3, #btcpw_default_page_currency3").val(),
+            value3_amount: $("#btcpw_default_price3, #btcpw_default_page_price3").val(),
+            value3_icon: $("#btcpw_tipping_banner_icon3, #btcpw_tipping_page_icon3").val(),
+            collect_name: $("input[name='btcpw_tipping_banner_collect[name][collect]'], input[name='btcpw_tipping_page_collect[name][collect]']").val(),
+            mandatory_name: $("input[name='btcpw_tipping_banner_collect[name][mandatory]'], input[name='btcpw_tipping_page_collect[name][mandatory]']").val(),
+            collect_email: $("input[name='btcpw_tipping_banner_collect[email][collect]'], input[name='btcpw_tipping_page_collect[email][collect]']").val(),
+            mandatory_email: $("input[name='btcpw_tipping_banner_collect[email][mandatory]'], input[name='btcpw_tipping_page_collect[email][mandatory]']").val(),
+            collect_phone: $("input[name='btcpw_tipping_banner_collect[phone][collect]'], input[name='btcpw_tipping_page_collect[phone][collect]']").val(),
+            mandatory_phone: $("input[name='btcpw_tipping_banner_collect[phone][mandatory]'], input[name='btcpw_tipping_page_collect[phone][mandatory]']").val(),
+            collect_address: $("input[name='btcpw_tipping_banner_collect[address][collect]'], input[name='btcpw_tipping_page_collect[address][collect]']").val(),
+            mandatory_address: $("input[name='btcpw_tipping_banner_collect[address][mandatory]'], input[name='btcpw_tipping_page_collect[address][mandatory]']").val(),
+            collect_message: $("input[name='btcpw_tipping_banner_collect[message][collect]'], input[name='btcpw_tipping_page_collect[message][collect]']").val(),
+            mandatory_message: $("input[name='btcpw_tipping_banner_collect[message][mandatory]'], input[name='btcpw_tipping_page_collect[message][mandatory]']").val(),
+            show_icon: $("#btcpw_tipping_banner_show_icon,#btcpw_tipping_page_show_icon").val(),
+            step1: $("#btcpw_tipping_page_step1").val(),
+            step2: $("#btcpw_tipping_page_step2").val(),
+            active_color: $("#btcpw_tipping_page_tipping_color_active").val(),
+            inactive_color: $("#btcpw_tipping_page_tipping_color_inactive").val()
           },
           success: function(data) {
-            console.log(data)
+            console.log(data.data.data)
+            $('#'+data.data.data.type).append('<p>'+data.data.data.shortcode+'</p>')
           },
           error: function() {
-              alert('error handling here');
+              console.log('error handling here');
           }
 });
   })
