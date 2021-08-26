@@ -1,44 +1,11 @@
 <?php
+if (!class_exists('WP_List_Table')) {
+    require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
+}
 class Donation_List_Table extends WP_List_Table
 {
-    public $items = array(
-        array(
-            'id' => '1',
-            'title' => 'Demo 1',
-            'logo'  => 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-Logo-lang.jpg',
-            'description'   => 'This is a demo form',
-            'tipping-text' => 'Enter Tipping Amount',
-            'button-text' => 'Tip',
-            'shortcode' => '[btcpw_tipping_box id=1]'
-        ),
-        array(
-            'id' => '2',
-            'title' => 'Demo 2',
-            'logo'  => 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-Logo-lang.jpg',
-            'description'   => 'This is a demo form',
-            'tipping-text' => 'Tip me',
-            'button-text' => 'Tip',
-            'shortcode' => '[btcpw_tipping_banner id=2]'
-        ),
-        array(
-            'id' => '456',
-            'title' => 'Demo 456',
-            'logo'  => 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-Logo-lang.jpg',
-            'description'   => 'This is a demo form',
-            'tipping-text' => 'Give me money',
-            'button-text' => 'Tip',
-            'shortcode' => '[btcpw_tipping_page id=456]'
-        ),
-        array(
-            'id' => '667',
-            'title' => 'Demo 667',
-            'logo'  => 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-Logo-lang.jpg',
-            'description'   => 'This is a demo form',
-            'tipping-text' => 'Enter Tipping Amount',
-            'button-text' => 'Tip',
-            'shortcode' => '[btcpw_tipping_box id=667]'
-        )
-    );
+    public $items;
+
     /**
      * Get a list of columns.
      *
@@ -99,6 +66,7 @@ class Donation_List_Table extends WP_List_Table
 
         return $wpdb->get_var($sql);
     }
+
     /**
      * Retrieve shortcode’s data from the database
      *
@@ -132,15 +100,57 @@ class Donation_List_Table extends WP_List_Table
      *
      * @param int $id shortcode ID
      */
-    public static function delete_shortcode($id)
+    /* public static function delete_shortcode($id)
     {
         global $wpdb;
 
         $wpdb->delete(
             "{$wpdb->prefix}btc_forms",
-            ['ID' => $id],
+            ['id' => $id],
             ['%d']
         );
+    } */
+    public function process_bulk_action()
+    {
+
+        // security check!
+        if (isset($_POST['_wpnonce']) && !empty($_POST['_wpnonce'])) {
+
+            $nonce  = filter_input(INPUT_POST, '_wpnonce', FILTER_SANITIZE_STRING);
+            $action = 'bulk-' . $this->_args['plural'];
+
+            if (!wp_verify_nonce($nonce, $action))
+                wp_die('Nope! Security check failed!');
+        }
+
+        $action = $this->current_action();
+
+        switch ($action) {
+
+            case 'delete':
+                global $wpdb;
+                $table_name = $wpdb->prefix . 'btc_forms';
+                $ids = isset($_REQUEST['id']) ? $_REQUEST['id'] : array();
+                //var_dump($ids);
+                if (is_array($ids)) $ids = implode(',', $ids);
+                if (!empty($ids)) {
+                    $wpdb->query("DELETE FROM $table_name WHERE id IN($ids)");
+                }
+
+                wp_die('You have deleted this succesfully');
+                break;
+
+            case 'edit':
+                wp_die('This is the edit page.');
+                break;
+
+            default:
+                // do nothing or something else
+                return;
+                break;
+        }
+
+        return;
     }
     protected function column_cb($item)
     {
@@ -168,7 +178,7 @@ class Donation_List_Table extends WP_List_Table
         return $actions;
     }
 
-    protected function column_title($item)
+    /* protected function column_title($item)
     {
         $item_json = json_decode(json_encode($item), true);
         $actions = array(
@@ -176,6 +186,45 @@ class Donation_List_Table extends WP_List_Table
             'delete' => sprintf('<a href="?page=%s&action=%s&id=%s">Delete</a>', $_REQUEST['page'], 'delete', $item_json['id']),
         );
         return '<em>' . sprintf('%s %s', $item_json['title_text'], $this->row_actions($actions)) . '</em>';
+    } */
+    protected function column_title($item)
+    {
+        /* $page = wp_unslash($_REQUEST['page']); // WPCS: Input var ok.
+
+        // Build edit row action.
+        $edit_query_args = array(
+            'page'   => $page,
+            'action' => 'edit',
+            'shortcode'  => $item['id'],
+        );
+
+        $actions['edit'] = sprintf(
+            '<a href="%1$s">%2$s</a>',
+            esc_url(wp_nonce_url(add_query_arg($edit_query_args, 'admin.php'), 'editshortcode_' . $item['id'])),
+            _x('Edit', 'List table row action', 'wp-list-table')
+        );
+
+        // Build delete row action.
+        $delete_query_args = array(
+            'page'   => $page,
+            'action' => 'delete',
+            'shortcode'  => $item['id'],
+        );
+
+        $actions['delete'] = sprintf(
+            '<a href="%1$s">%2$s</a>',
+            esc_url(wp_nonce_url(add_query_arg($delete_query_args, 'admin.php'), 'deleteshortcode_' . $item['id'])),
+            _x('Delete', 'List table row action', 'wp-list-table')
+        );
+
+        // Return the title contents.
+        return '<em>' . sprintf('%s %s', $item['title_text'], $this->row_actions($actions)) . '</em>'; */
+        $item_json = json_decode(json_encode($item), true);
+        $actions = array(
+            'edit' => sprintf('<a href="?page=%s&action=%s&id=%s">Edit</a>', $_REQUEST['page'], 'edit', $item_json['id']),
+            'delete' => sprintf('<a href="?page=%s&action=%s&id=%s">Delete</a>', $_REQUEST['page'], 'delete', $item_json['id']),
+        );
+        return '<em>' . sprintf('%s %s', $item_json['name'], $this->row_actions($actions)) . '</em>';
     }
     /**
      * Generates content for a single row of the table.
@@ -185,7 +234,7 @@ class Donation_List_Table extends WP_List_Table
      */
     protected function column_default($item, $column_name)
     {
-        $shortcode = BTCPayWall_Admin::outputShortcodeAttributes(BTCPayWall_Admin::extractName($item['dimension'])['name'], $item);
+        $shortcode = BTCPayWall_Admin::outputShortcodeAttributes(BTCPayWall_Admin::extractName($item['dimension'])['name'], $item['id']);
         switch ($column_name) {
             case 'cb':
                 return esc_html($item['cb']);

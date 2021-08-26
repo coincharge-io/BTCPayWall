@@ -814,7 +814,7 @@ class BTCPayWall_Admin
 		$table->prepare_items();
 		return $table->display();
 	}
-	public static function outputShortcodeAttributes($name, $atts)
+	/* public static function outputShortcodeAttributes($name, $atts)
 	{
 		switch ($name) {
 
@@ -956,6 +956,22 @@ class BTCPayWall_Admin
 			default:
 				return 'Shortcode could not be created! Please try again.';
 		}
+	} */
+	public static function outputShortcodeAttributes($name, $id)
+	{
+		switch ($name) {
+
+			case 'Tipping Box':
+				return "[btcpw_tipping_box id={$id}]";
+			case 'Tipping Banner High':
+				return "[btcpw_tipping_banner id={$id}]";
+			case 'Tipping Banner Wide':
+				return "[btcpw_tipping_banner id={$id}]";
+			case 'Tipping Page':
+				return "[btcpw_tipping_page id={$id}]";
+			default:
+				return 'Shortcode could not be created! Please try again.';
+		}
 	}
 	/**
 	 * Extract tipping name
@@ -1053,7 +1069,7 @@ class BTCPayWall_Admin
 		$inactive_color = sanitize_hex_color_no_hash($_POST['inactive_color']);
 		$step1 = sanitize_text_field($_POST['step1']);
 		$step2 = sanitize_text_field($_POST['step2']);
-		$shortcode = BTCPayWall_Admin::outputShortcodeAttributes($name, array(
+		/* $shortcode = BTCPayWall_Admin::outputShortcodeAttributes($name, array(
 			'name' => $name,
 			'dimension' => $dimension,
 			'background' => $background,
@@ -1100,7 +1116,7 @@ class BTCPayWall_Admin
 			'step2'			=> $step2,
 			'active_color'	=> '#' . $active_color,
 			'inactive_color'	=> '#' . $inactive_color,
-		));
+		)); */
 		$table_name = $wpdb->prefix . 'btc_forms';
 
 		$insert_row = $wpdb->insert(
@@ -1155,6 +1171,8 @@ class BTCPayWall_Admin
 				'inactive_color'	=> $inactive_color,
 			)
 		);
+
+		$shortcode = BTCPayWall_Admin::outputShortcodeAttributes($name, $wpdb->insert_id);
 		if ($insert_row) {
 			wp_send_json_success(array('res' => true, 'message' => __('New row has been inserted.'), 'data' => array('shortcode' => $shortcode, 'type' => $type)));
 		} else {
