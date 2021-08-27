@@ -174,6 +174,17 @@ class Donation_List_Table extends WP_List_Table
             'action' => 'delete',
             'id'  => $item['id'],
         );
+        $edit_query_args = array(
+            'page'   => 'btcpw_edit',
+            'action' => 'edit',
+            'id'  => $item['id'],
+        );
+
+        $actions['edit'] = sprintf(
+            '<a href="%1$s">%2$s</a>',
+            esc_url(wp_nonce_url(add_query_arg($edit_query_args, 'admin.php'), 'id' . $item['id'])),
+            _x('Edit', 'List table row action', 'wp-list-table')
+        );
         $actions['delete'] = sprintf(
             '<a href="%1$s">%2$s</a>',
             esc_url(wp_nonce_url(add_query_arg($delete_query_args, 'admin.php'), 'id' . $item['id'])),

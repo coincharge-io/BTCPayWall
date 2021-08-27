@@ -140,6 +140,7 @@ class BTCPayWall_Admin
 		add_submenu_page('btcpw_general_settings', 'All forms', 'All forms', 'manage_options', 'btcpw_forms', array($this, 'render_tipping_list'));
 		add_submenu_page('btcpw_general_settings', 'Add form', 'Add form', 'manage_options', 'btcpw_form', array($this, 'render_new_form'));
 		add_submenu_page('btcpw_general_settings', 'Tipping', 'Tipping', 'manage_options', 'btcpw_tipping-settings', array($this, 'render_tipping_page'));
+		add_submenu_page(null, 'Edit shortcode', 'Edit shortcode', 'manage_options', 'btcpw_edit', array($this, 'render_edit_page'));
 	}
 
 	/**
@@ -792,6 +793,14 @@ class BTCPayWall_Admin
 	public function render_tipping_page()
 	{
 		include 'partials/page-tipping-settings.php';
+	}
+
+	/**
+	 * Render Edit page
+	 */
+	public function render_edit_page()
+	{
+		include 'partials/page-tipping-edit.php';
 	}
 
 	/**
