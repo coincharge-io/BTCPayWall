@@ -811,8 +811,31 @@ class BTCPayWall_Admin
 		$table = new Donation_List_Table();
 
 
-		$table->prepare_items();
-		return $table->display();
+		//$table->prepare_items();
+		//return $table->display();
+		//ob_start();
+?>
+		<div class="wrap">
+			<h2>All forms</h2>
+
+			<div>
+				<div>
+					<div>
+						<div>
+							<form method="post">
+								<?php
+								$table->prepare_items();
+								$table->display(); ?>
+							</form>
+						</div>
+					</div>
+				</div>
+				<br class="clear">
+			</div>
+		</div>
+<?php
+
+		//return ob_get_clean();
 	}
 	/* public static function outputShortcodeAttributes($name, $atts)
 	{

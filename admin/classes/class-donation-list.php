@@ -5,7 +5,14 @@ if (!class_exists('WP_List_Table')) {
 class Donation_List_Table extends WP_List_Table
 {
     public $items;
-
+    public function __construct()
+    {
+        parent::__construct([
+            'singular' => __('Shortcode', 'sd'), //singular name of the listed records, this will show in screen options
+            'plural'   => __('Shortcodes', 'sd'), //plural name of the listed records, this will show in screen options
+            'ajax'     => false //does this table support ajax?
+        ]);
+    }
     /**
      * Get a list of columns.
      *
@@ -27,14 +34,7 @@ class Donation_List_Table extends WP_List_Table
     /**
      * Prepares the list of items for displaying.
      */
-    /* public function prepare_items()
-    {
-        $columns  = $this->get_columns();
-        $hidden   = array();
-        $sortable = array();
-        $primary  = 'cb';
-        $this->_column_headers = array($columns, $hidden, $sortable, $primary);
-    } */
+
     public function prepare_items()
     {
 
@@ -42,7 +42,7 @@ class Donation_List_Table extends WP_List_Table
         $this->_column_headers = array($this->get_columns(), array(), array(), 'cb');
         $this->process_bulk_action();
 
-        $per_page = $this->get_items_per_page('customers_per_page', 5);
+        $per_page = $this->get_items_per_page('shortcodes_per_page', 5);
         $current_page = $this->get_pagenum();
         $total_items = self::record_count();
 
@@ -100,7 +100,7 @@ class Donation_List_Table extends WP_List_Table
      *
      * @param int $id shortcode ID
      */
-    /* public static function delete_shortcode($id)
+    public static function delete_shortcode($id)
     {
         global $wpdb;
 
@@ -109,54 +109,41 @@ class Donation_List_Table extends WP_List_Table
             ['id' => $id],
             ['%d']
         );
-    } */
+    }
+
     public function process_bulk_action()
     {
+        if ('delete' === $this->current_action()) {
 
-        // security check!
-        if (isset($_POST['_wpnonce']) && !empty($_POST['_wpnonce'])) {
+            $nonce = esc_attr($_REQUEST['_wpnonce']);
+            if (isset($_POST['_wpnonce']) && !empty($_POST['_wpnonce'])) {
 
-            $nonce  = filter_input(INPUT_POST, '_wpnonce', FILTER_SANITIZE_STRING);
-            $action = 'bulk-' . $this->_args['plural'];
+                $nonce  = filter_input(INPUT_POST, '_wpnonce', FILTER_SANITIZE_STRING);
+                $action = 'bulk-' . $this->_args['plural'];
 
-            if (!wp_verify_nonce($nonce, $action))
-                wp_die('Nope! Security check failed!');
+                if (!wp_verify_nonce($nonce, $action))
+                    wp_die('Nope! Security check failed!');
+            } else {
+                self::delete_shortcode(absint($_GET['id']));
+            }
         }
 
-        $action = $this->current_action();
+        if ((isset($_POST['action']) && $_POST['action'] == 'bulk-delete')
+            || (isset($_POST['action2']) && $_POST['action2'] == 'bulk-delete')
+        ) {
 
-        switch ($action) {
+            $delete_ids = esc_sql($_POST['bulk-delete']);
 
-            case 'delete':
-                global $wpdb;
-                $table_name = $wpdb->prefix . 'btc_forms';
-                $ids = isset($_REQUEST['id']) ? $_REQUEST['id'] : array();
-                //var_dump($ids);
-                if (is_array($ids)) $ids = implode(',', $ids);
-                if (!empty($ids)) {
-                    $wpdb->query("DELETE FROM $table_name WHERE id IN($ids)");
-                }
-
-                wp_die('You have deleted this succesfully');
-                break;
-
-            case 'edit':
-                wp_die('This is the edit page.');
-                break;
-
-            default:
-                // do nothing or something else
-                return;
-                break;
+            foreach ($delete_ids as $id) {
+                self::delete_shortcode($id);
+            }
         }
-
-        return;
     }
+
     protected function column_cb($item)
     {
         return sprintf(
-            '<input type="checkbox" name="%1$s[]" value="%2$s" />',
-            $this->_args['singular'],
+            '<input type="checkbox" name="bulk-delete[]" value="%1$s" />',
             $item['id']
         );
     }
@@ -172,58 +159,29 @@ class Donation_List_Table extends WP_List_Table
     protected function get_bulk_actions()
     {
         $actions = array(
-            'delete'    => 'Delete',
+            'bulk-delete'    => 'Delete',
             'trash'    => 'Move To Trash'
         );
         return $actions;
     }
 
-    /* protected function column_title($item)
-    {
-        $item_json = json_decode(json_encode($item), true);
-        $actions = array(
-            'edit' => sprintf('<a href="?page=%s&action=%s&id=%s">Edit</a>', $_REQUEST['page'], 'edit', $item_json['id']),
-            'delete' => sprintf('<a href="?page=%s&action=%s&id=%s">Delete</a>', $_REQUEST['page'], 'delete', $item_json['id']),
-        );
-        return '<em>' . sprintf('%s %s', $item_json['title_text'], $this->row_actions($actions)) . '</em>';
-    } */
     protected function column_title($item)
     {
-        /* $page = wp_unslash($_REQUEST['page']); // WPCS: Input var ok.
 
-        // Build edit row action.
-        $edit_query_args = array(
-            'page'   => $page,
-            'action' => 'edit',
-            'shortcode'  => $item['id'],
-        );
-
-        $actions['edit'] = sprintf(
-            '<a href="%1$s">%2$s</a>',
-            esc_url(wp_nonce_url(add_query_arg($edit_query_args, 'admin.php'), 'editshortcode_' . $item['id'])),
-            _x('Edit', 'List table row action', 'wp-list-table')
-        );
-
-        // Build delete row action.
+        $page = wp_unslash($_REQUEST['page']);
         $delete_query_args = array(
             'page'   => $page,
             'action' => 'delete',
-            'shortcode'  => $item['id'],
+            'id'  => $item['id'],
         );
-
         $actions['delete'] = sprintf(
             '<a href="%1$s">%2$s</a>',
-            esc_url(wp_nonce_url(add_query_arg($delete_query_args, 'admin.php'), 'deleteshortcode_' . $item['id'])),
+            esc_url(wp_nonce_url(add_query_arg($delete_query_args, 'admin.php'), 'id' . $item['id'])),
             _x('Delete', 'List table row action', 'wp-list-table')
         );
-
-        // Return the title contents.
-        return '<em>' . sprintf('%s %s', $item['title_text'], $this->row_actions($actions)) . '</em>'; */
         $item_json = json_decode(json_encode($item), true);
-        $actions = array(
-            'edit' => sprintf('<a href="?page=%s&action=%s&id=%s">Edit</a>', $_REQUEST['page'], 'edit', $item_json['id']),
-            'delete' => sprintf('<a href="?page=%s&action=%s&id=%s">Delete</a>', $_REQUEST['page'], 'delete', $item_json['id']),
-        );
+
+
         return '<em>' . sprintf('%s %s', $item_json['name'], $this->row_actions($actions)) . '</em>';
     }
     /**
