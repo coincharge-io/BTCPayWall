@@ -485,9 +485,10 @@ $("#design-button").click(function(e) {
           type: "POST",
           url: "/wp-admin/admin-ajax.php",
           dataType: "json",
+          url: shortcode_ajax_object.ajax_url,
           data: {
             action:"btcpw_create_shortcode",
-
+            nonce_ajax : shortcode_ajax_object.security,
             dimension:$("#btcpw_tipping_box_dimension, #btcpw_tipping_banner_dimension").val(),
             background:$("#btcpw_tipping_box_image_background, #btcpw_tipping_banner_image_background, #btcpw_tipping_page_image_background").val(),
             background_color:$("#btcpw_tipping_box_background, #btcpw_tipping_banner_background, #btcpw_tipping_page_background").val(),

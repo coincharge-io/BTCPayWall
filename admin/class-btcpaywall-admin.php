@@ -97,6 +97,15 @@ class BTCPayWall_Admin
 
 		wp_enqueue_script('iris', admin_url('js/iris.min.js'), array('jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch'), false, 1);
 
+		wp_localize_script(
+			$this->plugin_name,
+			'shortcode_ajax_object',
+			[
+				'ajax_url'  => admin_url('admin-ajax.php'),
+				'security'  => wp_create_nonce('shortcode-security-nonce'),
+			]
+		);
+
 		if (!did_action('wp_enqueue_media')) {
 			wp_enqueue_media();
 		}
@@ -1042,6 +1051,7 @@ class BTCPayWall_Admin
 	public function createShortcode()
 	{
 		global $wpdb;
+		check_ajax_referer('shortcode-security-nonce', 'nonce_ajax');
 
 		$name = BTCPayWall_Admin::extractName($_POST['dimension'])['name'];
 		$type = BTCPayWall_Admin::extractName($_POST['dimension'])['type'];
