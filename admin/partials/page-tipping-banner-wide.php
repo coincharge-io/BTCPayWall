@@ -1,7 +1,7 @@
 <?php
 $supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
 $predefined_enabled = get_option('btcpw_tipping_banner_enter_amount');
-$dimensions = ['200x710', '600x280'];
+$dimensions = ['600x280'];
 $used_currency = get_option('btcpw_tipping_banner_currency');
 $used_dimension = get_option('btcpw_tipping_banner_dimension');
 $redirect = get_option('btcpw_tipping_banner_redirect');
@@ -346,54 +346,53 @@ $background = wp_get_attachment_image_src($image['background']);
 </div>
 */
 ?>
-
 <style>
-    .btcpw_tipping_banner_collect_name_mandatory,
-    label[for="btcpw_tipping_banner_collect[name][mandatory]"] {
+    .btcpw_tipping_banner_wide_collect_name_mandatory,
+    label[for="btcpw_tipping_banner_wide_collect[name][mandatory]"] {
         visibility: <?php echo ($collect['name']['collect'] ?? 'false') === 'true' ? '' : 'hidden';
                     ?>;
     }
 
-    .btcpw_tipping_banner_collect_email_mandatory,
-    label[for="btcpw_tipping_banner_collect[email][mandatory]"] {
+    .btcpw_tipping_banner_wide_collect_email_mandatory,
+    label[for="btcpw_tipping_banner_wide_collect[email][mandatory]"] {
         visibility: <?php echo ($collect['email']['collect'] ?? 'false') === 'true' ? '' : 'hidden';
                     ?>;
     }
 
-    .btcpw_tipping_banner_collect_address_mandatory,
-    label[for="btcpw_tipping_banner_collect[address][mandatory]"] {
+    .btcpw_tipping_banner_wide_collect_address_mandatory,
+    label[for="btcpw_tipping_banner_wide_collect[address][mandatory]"] {
         visibility: <?php echo ($collect['address']['collect'] ?? 'false') === 'true' ? '' : 'hidden';
                     ?>;
     }
 
-    .btcpw_tipping_banner_collect_phone_mandatory,
-    label[for="btcpw_tipping_banner_collect[phone][mandatory]"] {
+    .btcpw_tipping_banner_wide_collect_phone_mandatory,
+    label[for="btcpw_tipping_banner_wide_collect[phone][mandatory]"] {
         visibility: <?php echo ($collect['phone']['collect'] ?? 'false') === 'true' ? '' : 'hidden';
                     ?>;
     }
 
-    .btcpw_tipping_banner_collect_message_mandatory,
-    label[for="btcpw_tipping_banner_collect[message][mandatory]"] {
+    .btcpw_tipping_banner_wide_collect_message_mandatory,
+    label[for="btcpw_tipping_banner_wide_collect[message][mandatory]"] {
         visibility: <?php echo ($collect['message']['collect'] ?? 'false') === 'true' ? '' : 'hidden';
                     ?>;
     }
 </style>
-<div class="tipping_banner_settings">
-    <form method="POST" action="" id="tipping_banner_add_form">
+<div class="tipping_banner_wide_settings">
+    <form method="POST" action="" id="tipping_banner_wide_add_form">
         <div class="row">
             <div class="col-50">
                 <p>Shortcode</label>
             </div>
-            <div class="col-50" id="btcpw_tipping_banner_shortcode">
+            <div class="col-50" id="btcpw_tipping_banner_wide_shortcode">
 
             </div>
         </div>
         <div class="row">
             <div class="col-50">
-                <label for="btcpw_tipping_banner_dimension">Dimension</label>
+                <label for="btcpw_tipping_banner_wide_dimension">Dimension</label>
             </div>
             <div class="col-50">
-                <select required name="btcpw_tipping_banner_dimension" id="btcpw_tipping_banner_dimension">
+                <select required name="btcpw_tipping_banner_wide_dimension" id="btcpw_tipping_banner_wide_dimension">
                     <option disabled value="">Select dimension</option>
                     <?php foreach ($dimensions as $dimension) : ?>
                         <option <?php echo $used_dimension === $dimension ? 'selected' : ''; ?> value="<?php echo $dimension; ?>">
@@ -405,102 +404,102 @@ $background = wp_get_attachment_image_src($image['background']);
         </div>
         <div class="row">
             <div class="col-50">
-                <label for="btcpw_tipping_banner_image_background">Background image</label>
+                <label for="btcpw_tipping_banner_wide_image_background">Background image</label>
             </div>
             <div class="col-50">
                 <?php if ($background) : ?>
-                    <button id="btcpw_tipping_banner_button_image_background" class="btcpw_tipping_banner_button_image_background" name="btcpw_tipping_banner_button_image_background"><img src="<?php echo $background[0]; ?>" /></a></button>
-                    <button class="btcpw_tipping_banner_button_remove_background">Remove image</button>
-                    <input type="hidden" id="btcpw_tipping_banner_image_background" class="btcpw_tipping_banner_image_background" name="btcpw_tipping_banner_image[background]" value=<?php echo $image['background']; ?> />
+                    <button id="btcpw_tipping_banner_wide_button_image_background" class="btcpw_tipping_banner_wide_button_image_background" name="btcpw_tipping_banner_wide_button_image_background"><img src="<?php echo $background[0]; ?>" /></a></button>
+                    <button class="btcpw_tipping_banner_wide_button_remove_background">Remove image</button>
+                    <input type="hidden" id="btcpw_tipping_banner_wide_image_background" class="btcpw_tipping_banner_wide_image_background" name="btcpw_tipping_banner_wide_image[background]" value=<?php echo $image['background']; ?> />
                 <?php else : ?>
-                    <button id="btcpw_tipping_banner_button_image_background" class="btcpw_tipping_banner_button_image_background" name="btcpw_tipping_banner_button_image_background">Upload </button>
-                    <button class="btcpw_tipping_banner_button_remove_background" style="display:none">Remove image</button>
-                    <input type="hidden" id="btcpw_tipping_banner_image_background" class="btcpw_tipping_banner_image_background" name="btcpw_tipping_banner_image[background]" value=<?php echo $image['background']; ?> />
+                    <button id="btcpw_tipping_banner_wide_button_image_background" class="btcpw_tipping_banner_wide_button_image_background" name="btcpw_tipping_banner_wide_button_image_background">Upload </button>
+                    <button class="btcpw_tipping_banner_wide_button_remove_background" style="display:none">Remove image</button>
+                    <input type="hidden" id="btcpw_tipping_banner_wide_image_background" class="btcpw_tipping_banner_wide_image_background" name="btcpw_tipping_banner_wide_image[background]" value=<?php echo $image['background']; ?> />
                 <?php endif; ?>
             </div>
         </div>
         <div class="row">
             <div class="col-50">
-                <label for="btcpw_tipping_banner_background">Background color</label>
+                <label for="btcpw_tipping_banner_wide_background">Background color</label>
             </div>
             <div class="col-50">
-                <input id="btcpw_tipping_banner_background" class="btcpw_tipping_banner_background" name="btcpw_tipping_banner_color[background]" type="text" value=<?php echo $color['background']; ?> />
+                <input id="btcpw_tipping_banner_wide_background" class="btcpw_tipping_banner_wide_background" name="btcpw_tipping_banner_wide_color[background]" type="text" value=<?php echo $color['background']; ?> />
             </div>
         </div>
 
         <div class="row">
             <div class="col-50">
-                <label for="btcpw_tipping_hf_background">Background color for header and footer</label>
+                <label for="btcpw_tipping_banner_wide_hf_background">Background color for header and footer</label>
             </div>
             <div class="col-50">
-                <input id="btcpw_tipping_hf_background" class="btcpw_tipping_hf_background" name="btcpw_tipping_banner_color[hf_background]" type="text" value=<?php echo $color['hf_background']; ?> />
+                <input id="btcpw_tipping_banner_wide_hf_background" class="btcpw_tipping_hf_background" name="btcpw_tipping_banner_wide_color[hf_background]" type="text" value=<?php echo $color['hf_background']; ?> />
             </div>
         </div>
         <h3>Description</h3>
 
         <div class="row">
             <div class="col-50">
-                <label for="btcpw_tipping_banner_image">Tipping Logo</label>
+                <label for="btcpw_tipping_banner_wide_image">Tipping Logo</label>
             </div>
             <div class="col-50">
                 <?php if ($logo) : ?>
-                    <button id="btcpw_tipping_banner_button_image" class="btcpw_tipping_banner_button_image" name="btcpw_tipping_banner_button_image"><img src="<?php echo $logo[0]; ?>" /></a></button>
-                    <button class="btcpw_tipping_banner_button_remove">Remove image</button>
-                    <input type="hidden" id="btcpw_tipping_banner_image" class="btcpw_tipping_banner_image" name="btcpw_tipping_banner_image[logo]" value=<?php echo $image['logo']; ?> />
+                    <button id="btcpw_tipping_banner_wide_button_image" class="btcpw_tipping_banner_wide_button_image" name="btcpw_tipping_banner_wide_button_image"><img src="<?php echo $logo[0]; ?>" /></a></button>
+                    <button class="btcpw_tipping_banner_wide_button_remove">Remove image</button>
+                    <input type="hidden" id="btcpw_tipping_banner_wide_image" class="btcpw_tipping_banner_wide_image" name="btcpw_tipping_banner_wide_image[logo]" value=<?php echo $image['logo']; ?> />
                 <?php else : ?>
-                    <button id="btcpw_tipping_banner_button_image" class="btcpw_tipping_banner_button_image" name="btcpw_tipping_banner_button_image">Upload</button>
-                    <button class="btcpw_tipping_banner_button_remove" style="display:none">Remove image</button>
-                    <input type="hidden" id="btcpw_tipping_banner_image" class="btcpw_tipping_banner_image" name="btcpw_tipping_banner_image[logo]" value=<?php echo $image['logo']; ?> />
+                    <button id="btcpw_tipping_banner_wide_button_image" class="btcpw_tipping_banner_wide_button_image" name="btcpw_tipping_banner_wide_button_image">Upload</button>
+                    <button class="btcpw_tipping_banner_wide_button_remove" style="display:none">Remove image</button>
+                    <input type="hidden" id="btcpw_tipping_banner_wide_image" class="btcpw_tipping_banner_wide_image" name="btcpw_tipping_banner_wide_image[logo]" value=<?php echo $image['logo']; ?> />
                 <?php endif; ?>
             </div>
         </div>
         <div class="row">
             <div class="col-50">
-                <label for="btcpw_tipping_banner_title">Title</label>
-                <textarea id="btcpw_tipping_banner_title" name="btcpw_tipping_banner_text[title]"><?php echo $text['title']; ?></textarea>
+                <label for="btcpw_tipping_banner_wide_title">Title</label>
+                <textarea id="btcpw_tipping_banner_wide_title" name="btcpw_tipping_banner_wide_text[title]"><?php echo $text['title']; ?></textarea>
             </div>
             <div class="col-50">
-                <label for="btcpw_tipping_banner_title_color">Title text color</label>
-                <input id="btcpw_tipping_banner_title_color" class="btcpw_tipping_banner_title_color" name="btcpw_tipping_banner_color[title]" type="text" value=<?php echo $color['title']; ?> />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-50">
-                <label for="btcpw_tipping_banner_description">Description</label>
-                <textarea id="btcpw_tipping_banner_description" name="btcpw_tipping_banner_text[description]"><?php echo $text['description']; ?></textarea>
-            </div>
-            <div class="col-50">
-                <label for="btcpw_tipping_banner_description_color">Description text color</label>
-                <input id="btcpw_tipping_banner_description_color" class="btcpw_tipping_banner_description_color" name="btcpw_tipping_banner_color[description]" type="text" value=<?php echo $color['description']; ?> />
+                <label for="btcpw_tipping_banner_wide_title_color">Title text color</label>
+                <input id="btcpw_tipping_banner_wide_title_color" class="btcpw_tipping_banner_wide_title_color" name="btcpw_tipping_banner_wide_color[title]" type="text" value=<?php echo $color['title']; ?> />
             </div>
         </div>
         <div class="row">
             <div class="col-50">
-                <label for="btcpw_tipping_banner_text">Tipping text</label>
-                <textarea id="btcpw_tipping_banner_text" name="btcpw_tipping_banner_text[info]"><?php echo $text['info']; ?></textarea>
+                <label for="btcpw_tipping_banner_wide_description">Description</label>
+                <textarea id="btcpw_tipping_banner_wide_description" name="btcpw_tipping_banner_wide_text[description]"><?php echo $text['description']; ?></textarea>
             </div>
             <div class="col-50">
-                <label for="btcpw_tipping_banner_tipping_color">Tipping text color</label>
-                <input id="btcpw_tipping_banner_tipping_color" class="btcpw_tipping_banner_tipping_color" name="btcpw_tipping_banner_color[tipping]" type="text" value=<?php echo $color['tipping']; ?> />
+                <label for="btcpw_tipping_banner_wide_description_color">Description text color</label>
+                <input id="btcpw_tipping_banner_wide_description_color" class="btcpw_tipping_banner_wide_description_color" name="btcpw_tipping_banner_wide_color[description]" type="text" value=<?php echo $color['description']; ?> />
             </div>
         </div>
         <div class="row">
             <div class="col-50">
-                <label for="btcpw_tipping_banner_redirect">Link to Thank you Page</label>
+                <label for="btcpw_tipping_banner_wide_text">Tipping text</label>
+                <textarea id="btcpw_tipping_banner_wide_text" name="btcpw_tipping_banner_wide_text[info]"><?php echo $text['info']; ?></textarea>
             </div>
             <div class="col-50">
-                <input id="btcpw_tipping_banner_redirect" name="btcpw_tipping_banner_redirect" value=<?php echo $redirect; ?> />
+                <label for="btcpw_tipping_banner_wide_tipping_color">Tipping text color</label>
+                <input id="btcpw_tipping_banner_wide_tipping_color" class="btcpw_tipping_banner_wide_tipping_color" name="btcpw_tipping_banner_wide_color[tipping]" type="text" value=<?php echo $color['tipping']; ?> />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-50">
+                <label for="btcpw_tipping_banner_wide_redirect">Link to Thank you Page</label>
+            </div>
+            <div class="col-50">
+                <input id="btcpw_tipping_banner_wide_redirect" name="btcpw_tipping_banner_wide_redirect" value=<?php echo $redirect; ?> />
             </div>
         </div>
         <h3>Amount</h3>
         <div class="row">
             <div class="col-50">
-                <label for="btcpw_tipping_banner_enter_amount">Free input of amount</label>
-                <input type="checkbox" id="btcpw_tipping_banner_enter_amount" class="btcpw_tipping_banner_enter_amount" name="btcpw_tipping_banner_enter_amount" <?php echo checked(isset($predefined_enabled)); ?> value="true" />
+                <label for="btcpw_tipping_banner_wide_enter_amount">Free input of amount</label>
+                <input type="checkbox" id="btcpw_tipping_banner_wide_enter_amount" class="btcpw_tipping_banner_wide_enter_amount" name="btcpw_tipping_banner_wide_enter_amount" <?php echo checked(isset($predefined_enabled)); ?> value="true" />
             </div>
             <div class="col-50">
-                <label for="btcpw_tipping_banner_currency">Currency</label>
-                <select required name="btcpw_tipping_banner_currency" id="btcpw_tipping_banner_currency">
+                <label for="btcpw_tipping_banner_wide_currency">Currency</label>
+                <select required name="btcpw_tipping_banner_wide_currency" id="btcpw_tipping_banner_wide_currency">
                     <option disabled value="">Select currency</option>
                     <?php foreach ($supported_currencies as $currency) : ?>
                         <option <?php echo $used_currency === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
@@ -512,28 +511,28 @@ $background = wp_get_attachment_image_src($image['background']);
         </div>
         <div class="row">
             <div class="col-50">
-                <label for="btcpw_tipping_banner_input_background">Input background color</label>
+                <label for="btcpw_tipping_banner_wide_input_background">Input background color</label>
             </div>
             <div class="col-50">
-                <input id="btcpw_tipping_banner_input_background" class="btcpw_tipping_banner_input_background" name="btcpw_tipping_banner_color[input_background]" type="text" value=<?php echo $color['input_background']; ?> />
+                <input id="btcpw_tipping_banner_wide_input_background" class="btcpw_tipping_banner_wide_input_background" name="btcpw_tipping_banner_wide_color[input_background]" type="text" value=<?php echo $color['input_background']; ?> />
             </div>
         </div>
         <div class="row">
             <div class="col-50">
-                <label for="btcpw_tipping_banner_show_icon">Show icons</label>
-                <input type="checkbox" id="btcpw_tipping_banner_show_icon" class="btcpw_tipping_banner_show_icon" name="btcpw_tipping_banner_show_icon" value="true" />
+                <label for="btcpw_tipping_banner_wide_show_icon">Show icons</label>
+                <input type="checkbox" id="btcpw_tipping_banner_wide_show_icon" class="btcpw_tipping_banner_wide_show_icon" name="btcpw_tipping_banner_wide_show_icon" value="true" />
             </div>
         </div>
         <div class="container_predefined_amount">
             <div class="row">
                 <div class="col-50">
-                    <label for="btcpw_default_price1">Default price1</label>
+                    <label for="btcpw_banner_wide_default_price1">Default price1</label>
                 </div>
                 <div class="col-50">
-                    <input type="checkbox" id="btcpw_banner_value_1_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_banner_fixed_amount[value1][enabled]" <?php checked(isset($fixed_amount['value1']['enabled'])); ?> value="true" />
-                    <input type="number" min=0 placeholder="Default Price1" step=1 name="btcpw_tipping_banner_fixed_amount[value1][amount]" id="btcpw_default_price1" value="<?php echo $fixed_amount['value1']['amount']; ?>">
+                    <input type="checkbox" id="btcpw_banner_wide_value_1_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_banner_wide_fixed_amount[value1][enabled]" <?php checked(isset($fixed_amount['value1']['enabled'])); ?> value="true" />
+                    <input type="number" min=0 placeholder="Default Price1" step=1 name="btcpw_tipping_banner_wide_fixed_amount[value1][amount]" id="btcpw_banner_wide_default_price1" value="<?php echo $fixed_amount['value1']['amount']; ?>">
 
-                    <select required name="btcpw_tipping_banner_fixed_amount[value1][currency]" id="btcpw_default_currency1">
+                    <select required name="btcpw_tipping_banner_wide_fixed_amount[value1][currency]" id="btcpw_banner_wide_default_currency1">
                         <option disabled value="">Select currency</option>
                         <?php foreach ($supported_currencies as $currency) : ?>
                             <option <?php echo $fixed_amount['value1']['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
@@ -542,18 +541,18 @@ $background = wp_get_attachment_image_src($image['background']);
                         <?php endforeach; ?>
                     </select>
 
-                    <input type="text" id="btcpw_tipping_banner_icon1" class="btcpw_tipping_banner_icon1" name="btcpw_tipping_banner_fixed_amount[value1][icon]" placeholder="Font Awesome Icon" title="Font Awesome Icon class" value="<?php echo $fixed_amount['value1']['icon']; ?>" />
+                    <input type="text" id="btcpw_tipping_banner_wide_icon1" class="btcpw_tipping_banner_wide_icon1" name="btcpw_tipping_banner_wide_fixed_amount[value1][icon]" placeholder="Font Awesome Icon" title="Font Awesome Icon class" value="<?php echo $fixed_amount['value1']['icon']; ?>" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-50">
-                    <label for="btcpw_default_price2">Default price2</label>
+                    <label for="btcpw_banner_wide_default_price2">Default price2</label>
                 </div>
                 <div class="col-50">
-                    <input type="checkbox" id="btcpw_banner_value_2_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_banner_fixed_amount[value2][enabled]" <?php echo checked(isset($fixed_amount['value2']['enabled'])); ?> value="true" />
-                    <input type="number" min=0 placeholder="Default Price2" step=1 name="btcpw_tipping_banner_fixed_amount[value2][amount]" id="btcpw_default_price2" value="<?php echo $fixed_amount['value2']['amount']; ?>">
+                    <input type="checkbox" id="btcpw_banner_wide_value_2_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_banner_wide_fixed_amount[value2][enabled]" <?php echo checked(isset($fixed_amount['value2']['enabled'])); ?> value="true" />
+                    <input type="number" min=0 placeholder="Default Price2" step=1 name="btcpw_tipping_banner_wide_fixed_amount[value2][amount]" id="btcpw_banner_wide_default_price2" value="<?php echo $fixed_amount['value2']['amount']; ?>">
 
-                    <select required name="btcpw_tipping_banner_fixed_amount[value2][currency]" id="btcpw_default_currency2">
+                    <select required name="btcpw_tipping_banner_wide_fixed_amount[value2][currency]" id="btcpw_banner_wide_default_currency2">
                         <option disabled value="">Select currency</option>
                         <?php foreach ($supported_currencies as $currency) : ?>
                             <option <?php echo $fixed_amount['value2']['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
@@ -562,18 +561,18 @@ $background = wp_get_attachment_image_src($image['background']);
                         <?php endforeach; ?>
                     </select>
 
-                    <input type="text" id="btcpw_tipping_banner_icon2" class="btcpw_tipping_banner_icon2" name="btcpw_tipping_banner_fixed_amount[value2][icon]" placeholder="Font Awesome Icon" title="Font Awesome Icon class" value="<?php echo $fixed_amount['value2']['icon']; ?>" />
+                    <input type="text" id="btcpw_tipping_banner_wide_icon2" class="btcpw_tipping_banner_wide_icon2" name="btcpw_tipping_banner_wide_fixed_amount[value2][icon]" placeholder="Font Awesome Icon" title="Font Awesome Icon class" value="<?php echo $fixed_amount['value2']['icon']; ?>" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-50">
-                    <label for="btcpw_default_price3">Default price3</label>
+                    <label for="btcpw_banner_wide_default_price3">Default price3</label>
                 </div>
                 <div class="col-50">
-                    <input type="checkbox" id="btcpw_banner_value_3_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_banner_fixed_amount[value3][enabled]" <?php checked(isset($fixed_amount['value3']['enabled'])); ?> value="true" />
-                    <input type="number" min=0 placeholder="Default Price3" step=1 name="btcpw_tipping_banner_fixed_amount[value3][amount]" id="btcpw_default_price3" value="<?php echo $fixed_amount['value3']['amount']; ?>">
+                    <input type="checkbox" id="btcpw_banner_wide_value_3_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_banner_wide_fixed_amount[value3][enabled]" <?php checked(isset($fixed_amount['value3']['enabled'])); ?> value="true" />
+                    <input type="number" min=0 placeholder="Default Price3" step=1 name="btcpw_tipping_banner_wide_fixed_amount[value3][amount]" id="btcpw_banner_wide_default_price3" value="<?php echo $fixed_amount['value3']['amount']; ?>">
 
-                    <select required name="btcpw_tipping_banner_fixed_amount[value3][currency]" id="btcpw_default_currency3">
+                    <select required name="btcpw_tipping_banner_wide_fixed_amount[value3][currency]" id="btcpw_banner_wide_default_currency3">
                         <option disabled value="">Select currency</option>
                         <?php foreach ($supported_currencies as $currency) : ?>
                             <option <?php echo $fixed_amount['value3']['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
@@ -582,25 +581,25 @@ $background = wp_get_attachment_image_src($image['background']);
                         <?php endforeach; ?>
                     </select>
 
-                    <input type="text" id="btcpw_tipping_banner_icon3" class="btcpw_tipping_banner_icon3" name="btcpw_tipping_banner_fixed_amount[value3][icon]" placeholder="Font Awesome Icon" title="Font Awesome Icon class" value="<?php echo $fixed_amount['value3']['icon']; ?>" />
+                    <input type="text" id="btcpw_tipping_banner_wide_icon3" class="btcpw_tipping_banner_wide_icon3" name="btcpw_tipping_banner_wide_fixed_amount[value3][icon]" placeholder="Font Awesome Icon" title="Font Awesome Icon class" value="<?php echo $fixed_amount['value3']['icon']; ?>" />
                 </div>
             </div>
         </div>
         <h3>Button</h3>
         <div class="row">
             <div class="col-50">
-                <label for="btcpw_tipping_banner_button_text">Button text</label>
+                <label for="btcpw_tipping_banner_wide_button_text">Button text</label>
             </div>
             <div class="col-50">
-                <textarea id="btcpw_tipping_banner_button_text" name="btcpw_tipping_banner_text[button]"><?php echo $text['button']; ?></textarea>
+                <textarea id="btcpw_tipping_banner_wide_button_text" name="btcpw_tipping_banner_wide_text[button]"><?php echo $text['button']; ?></textarea>
             </div>
         </div>
         <div class="row">
             <div class="col-50">
-                <label for="btcpw_tipping_banner_button_text_color">Button text color</label>
+                <label for="btcpw_tipping_banner_wide_button_text_color">Button text color</label>
             </div>
             <div class="col-50">
-                <input id="btcpw_tipping_banner_button_text_color" class="btcpw_tipping_banner_button_text_color" name="btcpw_tipping_banner_color[button_text]" type="text" value=<?php echo $color['button_text']; ?> />
+                <input id="btcpw_tipping_banner_wide_button_text_color" class="btcpw_tipping_banner_wide_button_text_color" name="btcpw_tipping_banner_wide_color[button_text]" type="text" value=<?php echo $color['button_text']; ?> />
 
             </div>
         </div>
@@ -608,10 +607,10 @@ $background = wp_get_attachment_image_src($image['background']);
 
         <div class="row">
             <div class="col-50">
-                <label for="btcpw_tipping_banner_button_color">Button color</label>
+                <label for="btcpw_tipping_banner_wide_button_color">Button color</label>
             </div>
             <div class="col-50">
-                <input id="btcpw_tipping_banner_button_color" class="btcpw_tipping_banner_button_color" name="btcpw_tipping_banner_color[button]" type="text" value=<?php echo $color['button']; ?> />
+                <input id="btcpw_tipping_banner_wide_button_color" class="btcpw_tipping_banner_wide_button_color" name="btcpw_tipping_banner_wide_color[button]" type="text" value=<?php echo $color['button']; ?> />
 
             </div>
         </div>
@@ -621,12 +620,12 @@ $background = wp_get_attachment_image_src($image['background']);
                 <p>Full name</p>
             </div>
             <div class="col-50">
-                <label for="btcpw_tipping_banner_collect[name][collect]">Display</label>
+                <label for="btcpw_tipping_banner_wide_collect[name][collect]">Display</label>
 
-                <input type="checkbox" class="btcpw_tipping_banner_collect_name" name="btcpw_tipping_banner_collect[name][collect]" <?php checked(isset($collect['name']['collect'])); ?> value="true" />
+                <input type="checkbox" class="btcpw_tipping_banner_wide_collect_name" name="btcpw_tipping_banner_wide_collect[name][collect]" <?php checked(isset($collect['name']['collect'])); ?> value="true" />
 
-                <label for="btcpw_tipping_banner_collect[name][mandatory]">Mandatory</label>
-                <input type="checkbox" class="btcpw_tipping_banner_collect_name_mandatory" name="btcpw_tipping_banner_collect[name][mandatory]" <?php checked(isset($collect['name']['mandatory'])); ?> value="true" />
+                <label for="btcpw_tipping_banner_wide_collect[name][mandatory]">Mandatory</label>
+                <input type="checkbox" class="btcpw_tipping_banner_wide_collect_name_mandatory" name="btcpw_tipping_banner_wide_collect[name][mandatory]" <?php checked(isset($collect['name']['mandatory'])); ?> value="true" />
 
             </div>
         </div>
@@ -635,12 +634,12 @@ $background = wp_get_attachment_image_src($image['background']);
                 <p>Email</p>
             </div>
             <div class="col-50">
-                <label for="btcpw_tipping_banner_collect[email][collect]">Display</label>
+                <label for="btcpw_tipping_banner_wide_collect[email][collect]">Display</label>
 
-                <input type="checkbox" class="btcpw_tipping_banner_collect_email" name="btcpw_tipping_banner_collect[email][collect]" <?php checked(isset($collect['email']['collect'])); ?> value="true" />
+                <input type="checkbox" class="btcpw_tipping_banner_wide_collect_email" name="btcpw_tipping_banner_wide_collect[email][collect]" <?php checked(isset($collect['email']['collect'])); ?> value="true" />
 
-                <label for="btcpw_tipping_banner_collect[email][mandatory]">Mandatory</label>
-                <input type="checkbox" class="btcpw_tipping_banner_collect_email_mandatory" name="btcpw_tipping_banner_collect[email][mandatory]" <?php checked(isset($collect['email']['mandatory'])); ?> value="true" />
+                <label for="btcpw_tipping_banner_wide_collect[email][mandatory]">Mandatory</label>
+                <input type="checkbox" class="btcpw_tipping_banner_wide_collect_email_mandatory" name="btcpw_tipping_banner_wide_collect[email][mandatory]" <?php checked(isset($collect['email']['mandatory'])); ?> value="true" />
 
             </div>
         </div>
@@ -649,12 +648,12 @@ $background = wp_get_attachment_image_src($image['background']);
                 <p>Address</p>
             </div>
             <div class="col-50">
-                <label for="btcpw_tipping_banner_collect[address][collect]">Display</label>
+                <label for="btcpw_tipping_banner_wide_collect[address][collect]">Display</label>
 
-                <input type="checkbox" class="btcpw_tipping_banner_collect_address" name="btcpw_tipping_banner_collect[address][collect]" <?php checked(isset($collect['address']['collect'])); ?> value="true" />
+                <input type="checkbox" class="btcpw_tipping_banner_wide_collect_address" name="btcpw_tipping_banner_wide_collect[address][collect]" <?php checked(isset($collect['address']['collect'])); ?> value="true" />
 
-                <label for="btcpw_tipping_banner_collect[address][mandatory]">Mandatory</label>
-                <input type="checkbox" class="btcpw_tipping_banner_collect_address_mandatory" name="btcpw_tipping_banner_collect[address][mandatory]" <?php checked(isset($collect['address']['mandatory'])); ?> value="true" />
+                <label for="btcpw_tipping_banner_wide_collect[address][mandatory]">Mandatory</label>
+                <input type="checkbox" class="btcpw_tipping_banner_wide_collect_address_mandatory" name="btcpw_tipping_banner_wide_collect[address][mandatory]" <?php checked(isset($collect['address']['mandatory'])); ?> value="true" />
             </div>
         </div>
         <div class="row">
@@ -662,12 +661,12 @@ $background = wp_get_attachment_image_src($image['background']);
                 <p>Phone number</p>
             </div>
             <div class="col-50">
-                <label for="btcpw_tipping_banner_collect[phone][collect]">Display</label>
+                <label for="btcpw_tipping_banner_wide_collect[phone][collect]">Display</label>
 
-                <input type="checkbox" class="btcpw_tipping_banner_collect_phone" name="btcpw_tipping_banner_collect[phone][collect]" <?php checked(isset($collect['phone']['collect'])); ?> value="true" />
+                <input type="checkbox" class="btcpw_tipping_banner_wide_collect_phone" name="btcpw_tipping_banner_wide_collect[phone][collect]" <?php checked(isset($collect['phone']['collect'])); ?> value="true" />
 
-                <label for="btcpw_tipping_banner_collect[phone][mandatory]">Mandatory</label>
-                <input type="checkbox" class="btcpw_tipping_banner_collect_phone_mandatory" name="btcpw_tipping_banner_collect[phone][mandatory]" <?php checked(isset($collect['name']['mandatory'])); ?> value="true" />
+                <label for="btcpw_tipping_banner_wide_collect[phone][mandatory]">Mandatory</label>
+                <input type="checkbox" class="btcpw_tipping_banner_wide_collect_phone_mandatory" name="btcpw_tipping_banner_wide_collect[phone][mandatory]" <?php checked(isset($collect['name']['mandatory'])); ?> value="true" />
 
             </div>
         </div>
@@ -676,11 +675,11 @@ $background = wp_get_attachment_image_src($image['background']);
                 <p>Message</p>
             </div>
             <div class="col-50">
-                <label for="btcpw_tipping_banner_collect[message][collect]">Display</label>
-                <input type="checkbox" class="btcpw_tipping_banner_collect_message" name="btcpw_tipping_banner_collect[message][collect]" <?php checked(isset($collect['message']['collect'])); ?> value="true" />
+                <label for="btcpw_tipping_banner_wide_collect[message][collect]">Display</label>
+                <input type="checkbox" class="btcpw_tipping_banner_wide_collect_message" name="btcpw_tipping_banner_wide_collect[message][collect]" <?php checked(isset($collect['message']['collect'])); ?> value="true" />
 
-                <label for="btcpw_tipping_banner_collect[message][mandatory]">Mandatory</label>
-                <input type="checkbox" class="btcpw_tipping_banner_collect_message_mandatory" name="btcpw_tipping_banner_collect[message][mandatory]" <?php checked(isset($collect['message']['mandatory'])) ?> value="true" />
+                <label for="btcpw_tipping_banner_wide_collect[message][mandatory]">Mandatory</label>
+                <input type="checkbox" class="btcpw_tipping_banner_wide_collect_message_mandatory" name="btcpw_tipping_banner_wide_collect[message][mandatory]" <?php checked(isset($collect['message']['mandatory'])) ?> value="true" />
 
             </div>
         </div>
