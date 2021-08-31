@@ -102,6 +102,7 @@ class BTCPayWall_Admin
 			'shortcode_ajax_object',
 			[
 				'ajax_url'  => admin_url('admin-ajax.php'),
+				'redirectUrl' => admin_url('admin.php?page=btcpw_edit&action=edit&id='),
 				'security'  => wp_create_nonce('shortcode-security-nonce'),
 			]
 		);
@@ -1159,11 +1160,6 @@ class BTCPayWall_Admin
 					'inactive_color'	=> $inactive_color,
 				)
 			);
-			wp_redirect(wp_nonce_url(add_query_arg(array(
-				'page'   => 'btcpw_edit',
-				'action' => 'edit',
-				'id'  => $wpdb->insert_id,
-			), 'admin.php'), 'id' . $wpdb->insert_id));
 		} else {
 			$row = $wpdb->update(
 				$table_name,
@@ -1222,7 +1218,7 @@ class BTCPayWall_Admin
 
 		$shortcode = BTCPayWall_Admin::outputShortcodeAttributes($name, $wpdb->insert_id);
 		if ($row) {
-			wp_send_json_success(array('res' => true, 'data' => array('shortcode' => $shortcode, 'type' => $type)));
+			wp_send_json_success(array('res' => true, 'data' => array('shortcode' => $shortcode, 'type' => $type, 'id' => $wpdb->insert_id)));
 		} else {
 			wp_send_json_error(array('res' => false, 'message' => __('Something went wrong. Please try again later.')));
 		}
