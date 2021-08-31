@@ -701,7 +701,9 @@
           /*$('#' + data.data.data.type+' p').html(
             data.data.data.shortcode
           )*/
-          location.replace(shortcode_ajax_object.redirectUrl+data.data.data.id)
+          if(!$('#btc_tipping_banner_high_id, #btc_tipping_banner_wide_id, #btc_tipping_box_id, #btc_tipping_page_id').val()){
+            location.replace(shortcode_ajax_object.redirectUrl+data.data.data.id)
+          }
         },
         error: function () {
           console.log('error handling here')

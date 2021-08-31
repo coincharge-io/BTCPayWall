@@ -172,7 +172,7 @@ class BTCPayWall_Admin
 		register_setting('btcpw_general_settings', 'btcpw_btcpay_auth_key_view', array('type' => 'string', 'sanitize_callback' => array($this, 'sanitize_btcpay_auth_key')));
 		register_setting('btcpw_general_settings', 'btcpw_btcpay_auth_key_create', array('type' => 'string', 'sanitize_callback' => array($this, 'sanitize_btcpay_auth_key')));
 
-		register_setting('btcpw_tipping_banner_settings', 'btcpw_tipping_banner_dimension', array('type' => 'string', 'default' => '250x300', 'sanitize_callback' => array($this, 'sanitize_text')));
+		/*register_setting('btcpw_tipping_banner_settings', 'btcpw_tipping_banner_dimension', array('type' => 'string', 'default' => '250x300', 'sanitize_callback' => array($this, 'sanitize_text')));
 		register_setting('btcpw_tipping_banner_settings', 'btcpw_tipping_banner_redirect', array('type' => 'string', 'default' => get_site_url()));
 
 		register_setting('btcpw_tipping_banner_settings', 'btcpw_tipping_banner_collect', array('type' => 'array', 'default' => array(
@@ -390,14 +390,11 @@ class BTCPayWall_Admin
 		));
 
 		register_setting('btcpw_tipping_page_settings', 'btcpw_tipping_page_enter_amount', array('type' => 'string', 'default' => 'false', 'sanitize_callback' => array($this, 'sanitize_mandatory')));
-		register_setting('btcpw_tipping_page_settings', 'btcpw_tipping_page_show_icon', array('type' => 'string', 'default' => 'true', 'sanitize_callback' => array($this, 'sanitize_mandatory')));
+		register_setting('btcpw_tipping_page_settings', 'btcpw_tipping_page_show_icon', array('type' => 'string', 'default' => 'true', 'sanitize_callback' => array($this, 'sanitize_mandatory')));*/
 	}
-	public function validate_images($values)
+	/*public function validate_images($values)
 	{
-		/* $default_values = array(
-			'logo' => '',
-			'background' => '',
-		); */
+		
 		$default_values = array();
 
 		if (!is_array($values)) {
@@ -413,16 +410,7 @@ class BTCPayWall_Admin
 	}
 	public function validate_colors($values)
 	{
-		/* $default_values = array(
-			'button_text' => '#FFFFFF',
-			'background' => '#E6E6E6',
-			'hf_background' => '#1d5aa3',
-			'button' => '#FE642E',
-			'title' => '#FFFFFF',
-			'description' => '#000000',
-			'tipping' => '#000000',
-			'input_background' => '#ffa500',
-		); */
+		
 		$default_values = array();
 		if (!is_array($values)) {
 			return $default_values;
@@ -437,17 +425,7 @@ class BTCPayWall_Admin
 	}
 	public function validate_page_colors($values)
 	{
-		/* $default_values = array(
-			'button_text' => '#FFFFFF',
-			'background' => '#E6E6E6',
-			'hf_background' => '#1d5aa3',
-			'button' => '#FE642E',
-			'title' => '#FFFFFF',
-			'tipping' => '#000000',
-			'input_background' => '#ffa500',
-			'active'	=> '#808080',
-			'inactive'	=> '#D3D3D3'
-		); */
+		
 		$default_values = array();
 
 		if (!is_array($values)) {
@@ -461,14 +439,10 @@ class BTCPayWall_Admin
 
 		return $default_values;
 	}
+	*/
 	public function validate_textarea($values)
 	{
-		/* $default_values = array(
-			'title' => 'Support my work',
-			'description' => '',
-			'info' => 'Enter Tipping Amount',
-			'button' => 'Tipping now'
-		); */
+
 		$default_values = array();
 
 		if (!is_array($values)) {
@@ -482,15 +456,9 @@ class BTCPayWall_Admin
 
 		return $default_values;
 	}
-	public function validate_page_textarea($values)
+	/*public function validate_page_textarea($values)
 	{
-		/* $default_values = array(
-			'title' => 'Support my work',
-			'info' => 'Enter Tipping Amount',
-			'button' => 'Tipping now',
-			'step1'	=> 'Pledge',
-			'step2'	=> 'Info'
-		); */
+		
 		$default_values = array();
 
 		if (!is_array($values)) {
@@ -503,31 +471,12 @@ class BTCPayWall_Admin
 		}
 
 		return $default_values;
-	}
+	}*/
+	/*
 	public function validate_predefined_values($values)
 	{
 
-		/* $default_values = array(
-			'value1' => array(
-				'enabled' => 'false',
-				'currency' => 'SATS',
-				'amount' => 1000,
-				'icon' => 'fas fa-coffee'
-			),
-			'value2' => array(
-				'enabled' => 'false',
-				'currency' => 'SATS',
-				'amount' => 2000,
-				'icon' => 'fas fa-beer'
-			),
-			'value3' => array(
-				'enabled' => 'false',
-				'currency' => 'SATS',
-				'amount' => 3000,
-				'icon' => 'fas fa-cocktail'
-			),
-
-		); */
+		
 		$default_values = array();
 
 		if (!is_array($values)) {
@@ -546,34 +495,7 @@ class BTCPayWall_Admin
 	public function validate_collect_info($values)
 	{
 
-		/* $default_values = array(
-			'name' => array(
-				'label' => 'Full name',
-				'collect' => 'false',
-				'mandatory' => 'false'
-			),
-			'email' => array(
-				'label' => 'Email',
-				'collect' => 'false',
-				'mandatory' => 'false'
-			),
-			'address' => array(
-				'label' => 'Address',
-				'collect' => 'false',
-				'mandatory' => 'false'
-			),
-			'phone' => array(
-				'label' => 'Phone',
-				'collect' => 'false',
-				'mandatory' => 'false'
-			),
-			'message' => array(
-				'label' => 'Message',
-				'collect' => 'false',
-				'mandatory' => 'false'
-			),
-
-		); */
+		
 		$default_values = array();
 
 		if (!is_array($values)) {
@@ -586,6 +508,7 @@ class BTCPayWall_Admin
 		}
 		return $default_values;
 	}
+	*/
 	public function sanitize_btcpay_server_url($value)
 	{
 
@@ -1073,17 +996,17 @@ class BTCPayWall_Admin
 		$free_input = (rest_sanitize_boolean($_POST['free_input']));
 		$value1_enabled = (rest_sanitize_boolean($_POST['value1_enabled']));
 		$value1_currency = (rest_sanitize_boolean($_POST['value1_currency']));
-		$value1_amount = (rest_sanitize_boolean($_POST['value1_amount']));
+		$value1_amount = (sanitize_text_field($_POST['value1_amount']));
 		$value1_icon = (sanitize_text_field($_POST['value1_icon']));
 
 		$value2_enabled = (rest_sanitize_boolean($_POST['value2_enabled']));
 		$value2_currency = (rest_sanitize_boolean($_POST['value2_currency']));
-		$value2_amount = (rest_sanitize_boolean($_POST['value2_amount']));
+		$value2_amount = (sanitize_text_field($_POST['value2_amount']));
 		$value2_icon = (sanitize_text_field($_POST['value2_icon']));
 
 		$value3_enabled = (rest_sanitize_boolean($_POST['value3_enabled']));
 		$value3_currency = (rest_sanitize_boolean($_POST['value3_currency']));
-		$value3_amount = (rest_sanitize_boolean($_POST['value3_amount']));
+		$value3_amount = (sanitize_text_field($_POST['value3_amount']));
 		$value3_icon = (sanitize_text_field($_POST['value3_icon']));
 
 		$collect_name = (rest_sanitize_boolean($_POST['collect_name']));
