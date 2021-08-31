@@ -160,7 +160,6 @@ class Donation_List_Table extends WP_List_Table
     {
         $actions = array(
             'bulk-delete'    => 'Delete',
-            'trash'    => 'Move To Trash'
         );
         return $actions;
     }

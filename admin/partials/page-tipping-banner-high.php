@@ -21,14 +21,14 @@ $text = array(
     'button' => $result[0]['button_text'] ?? 'Tipping now',
 );
 $color = array(
-    'button_text' => $result[0]['button_text_color'] ?? '#FFFFFF',
-    'background' => $result[0]['background_color'] ?? '#E6E6E6',
-    'hf_background' => $result[0]['hf_background'] ?? '#1d5aa3',
-    'button' => $result[0]['button_color'] ?? '#FE642E',
-    'title' => $result[0]['title_text_color'] ?? '#ffffff',
-    'description' => $result[0]['description_text_color'] ?? '#000000',
-    'tipping' => $result[0]['tipping_text_color'] ?? '#000000',
-    'input_background' => $result[0]['input_background'] ?? '#ffa500',
+    'button_text' => !empty($result[0]['button_text_color']) ? '#' . $result[0]['button_text_color'] : '#FFFFFF',
+    'background' => !empty($result[0]['background_color']) ? '#' . $result[0]['background_color'] : '#E6E6E6',
+    'hf_background' => !empty($result[0]['hf_background']) ? '#' . $result[0]['hf_background'] : '#1d5aa3',
+    'button' => !empty($result[0]['button_color']) ? '#' . $result[0]['button_color'] : '#FE642E',
+    'title' => !empty($result[0]['title_text_color']) ? '#' . $result[0]['title_text_color'] : '#ffffff',
+    'description' => !empty($result[0]['description_text_color']) ? '#' . $result[0]['description_text_color'] : '#000000',
+    'tipping' => !empty($result[0]['tipping_text_color']) ? '#' . $result[0]['tipping_text_color'] : '#000000',
+    'input_background' => !empty($result[0]['input_background']) ? '#' . $result[0]['input_background'] : '#ffa500',
 );
 $image = array(
     'logo' => $result[0]['logo'] ?? '',
@@ -60,6 +60,8 @@ $background = wp_get_attachment_image_src($image['background']);
 $show_icon = $result[0]['show_icon'] ?? false;
 
 $shortcode = !empty($result[0]) ? BTCPayWall_Admin::outputShortcodeAttributes($result[0]['name'], $result[0]['id']) : '';
+$id = $result[0]['id'] ?? null;
+
 ?>
 
 <style>
@@ -148,7 +150,7 @@ $shortcode = !empty($result[0]) ? BTCPayWall_Admin::outputShortcodeAttributes($r
                 <label for="btcpw_tipping_banner_high_hf_background">Background color for header and footer</label>
             </div>
             <div class="col-50">
-                <input id="btcpw_tipping_banner_high_hf_background" class="btcpw_tipping_hf_background" name="btcpw_tipping_banner_high_color[hf_background]" type="text" value=<?php echo $color['hf_background']; ?> />
+                <input id="btcpw_tipping_banner_high_hf_background" class="btcpw_tipping_banner_high_hf_background" name="btcpw_tipping_banner_high_color[hf_background]" type="text" value=<?php echo $color['hf_background']; ?> />
             </div>
         </div>
         <h3>Description</h3>
@@ -399,7 +401,7 @@ $shortcode = !empty($result[0]) ? BTCPayWall_Admin::outputShortcodeAttributes($r
 
             </div>
         </div>
-
+        <input type="hidden" id="btc_tipping_banner_high_id" value="<?php echo $id; ?>" />
         <div style="display: inline-block; margin-top: 25px;">
             <button class="button button-primary" type="submit">Save</button>
         </div>
