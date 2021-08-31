@@ -1011,7 +1011,6 @@ class BTCPayWall_Admin
 
 		$collect_name = (rest_sanitize_boolean($_POST['collect_name']));
 		$mandatory_name = (rest_sanitize_boolean($_POST['mandatory_name']));
-
 		$collect_email = (rest_sanitize_boolean($_POST['collect_email']));
 		$mandatory_email = (rest_sanitize_boolean($_POST['mandatory_email']));
 

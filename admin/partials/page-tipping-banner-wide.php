@@ -36,19 +36,19 @@ $fixed_amount = array(
     'value1' => array(
         'enabled' => $result[0]['value1_enabled'] ?? true,
         'currency' => $result[0]['value1_currency'] ?? 'SATS',
-        'amount' => $result[0]['value1_amount'] ?? 1000,
+        'amount' => !empty($result[0]['value1_amount'])?round($result[0]['value1_amount'],0) : 1000,
         'icon' => $result[0]['value1_icon'] ?? 'fas fa-coffee'
     ),
     'value2' => array(
         'enabled' => $result[0]['value2_enabled'] ?? true,
         'currency' => $result[0]['value2_currency'] ?? 'SATS',
-        'amount' => $result[0]['value2_amount'] ?? 2000,
+        'amount' => !empty($result[0]['value2_amount'])?round($result[0]['value2_amount'],0) : 2000,
         'icon' => $result[0]['value2_icon'] ?? 'fas fa-beer'
     ),
     'value3' => array(
         'enabled' => $result[0]['value3_enabled'] ?? true,
         'currency' => $result[0]['value3_currency'] ?? 'SATS',
-        'amount' => $result[0]['value3_amount'] ?? 3000,
+        'amount' => !empty($result[0]['value3_amount'])?round($result[0]['value3_amount'],0) : 3000,
         'icon' => $result[0]['value3_icon'] ?? 'fas fa-cocktail'
     ),
 );
@@ -283,7 +283,7 @@ $id = $result[0]['id'] ?? null;
                     <label for="btcpw_banner_wide_default_price3">Default price3</label>
                 </div>
                 <div class="col-50">
-                    <input type="checkbox" id="btcpw_banner_wide_value_3_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_banner_wide_fixed_amount[value3][enabled]" <?php checked(isset($fixed_amount['value3']['enabled'])); ?> value="true" />
+                    <input type="checkbox" id="btcpw_banner_wide_value_3_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_banner_wide_fixed_amount[value3][enabled]" <?php echo checked(isset($fixed_amount['value3']['enabled'])); ?> value="true" />
                     <input type="number" min=0 placeholder="Default Price3" step=1 name="btcpw_tipping_banner_wide_fixed_amount[value3][amount]" id="btcpw_banner_wide_default_price3" value="<?php echo $fixed_amount['value3']['amount']; ?>">
 
                     <select required name="btcpw_tipping_banner_wide_fixed_amount[value3][currency]" id="btcpw_banner_wide_default_currency3">

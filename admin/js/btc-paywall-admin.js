@@ -301,7 +301,7 @@
   })
   $(document).ready(function () {
     $(
-      '.btcpw_tipping_box_title_color,.btcpw_tipping_box_description_color,.btcpw_tipping_box_tipping_box_color,.btcpw_tipping_box_hf_background,.btcpw_tipping_box_button_text_color,.btcpw_tipping_box_button_color,.btcpw_tipping_box_background,.btcpw_tipping_banner_high_hf_background,.btcpw_tipping_banner_high_title_color,.btcpw_tipping_banner_high_description_color,.btcpw_tipping_banner_high_tipping_box_color,.btcpw_tipping_banner_high_button_text_color,.btcpw_tipping_banner_high_button_color,.btcpw_tipping_banner_high_background,.btcpw_tipping_banner_high_tipping_color,.btcpw_tipping_banner_high_input_background,.btcpw_tipping_banner_wide_hf_background,.btcpw_tipping_banner_wide_title_color,.btcpw_tipping_banner_wide_description_color,.btcpw_tipping_banner_wide_tipping_box_color,.btcpw_tipping_banner_wide_button_text_color,.btcpw_tipping_banner_wide_button_color,.btcpw_tipping_banner_wide_background,.btcpw_tipping_banner_wide_tipping_color,.btcpw_tipping_banner_wide_input_background,.btcpw_tipping_box_input_background,.btcpw_tipping_page_title_color,.btcpw_tipping_page_tipping_box_color,.btcpw_tipping_page_button_text_color,.btcpw_tipping_page_button_color,.btcpw_tipping_page_background,.btcpw_tipping_page_tipping_color,.btcpw_tipping_page_input_background,.btcpw_tipping_page_tipping_color_active,.btcpw_tipping_page_tipping_color_inactive'
+      '.btcpw_tipping_box_title_color,.btcpw_tipping_box_description_color,.btcpw_tipping_box_tipping_box_color,.btcpw_tipping_box_hf_background,.btcpw_tipping_box_button_text_color,.btcpw_tipping_box_button_color,.btcpw_tipping_box_background,.btcpw_tipping_banner_high_hf_background,.btcpw_tipping_banner_high_title_color,.btcpw_tipping_banner_high_description_color,.btcpw_tipping_banner_high_tipping_box_color,.btcpw_tipping_banner_high_button_text_color,.btcpw_tipping_banner_high_button_color,.btcpw_tipping_banner_high_background,.btcpw_tipping_banner_high_tipping_color,.btcpw_tipping_banner_high_input_background,.btcpw_tipping_banner_wide_hf_background,.btcpw_tipping_banner_wide_title_color,.btcpw_tipping_banner_wide_description_color,.btcpw_tipping_banner_wide_tipping_box_color,.btcpw_tipping_banner_wide_button_text_color,.btcpw_tipping_banner_wide_button_color,.btcpw_tipping_banner_wide_background,.btcpw_tipping_banner_wide_tipping_color,.btcpw_tipping_banner_wide_input_background,.btcpw_tipping_box_input_background,.btcpw_tipping_page_title_color,.btcpw_tipping_page_tipping_box_color,.btcpw_tipping_page_button_text_color,.btcpw_tipping_page_button_color,.btcpw_tipping_page_background,.btcpw_tipping_page_tipping_color,.btcpw_tipping_page_input_background,.btcpw_tipping_page_tipping_color_active,.btcpw_tipping_page_tipping_color_inactive,.btcpw_tipping_hf_background'
     ).iris({
       defaultColor: true,
 
@@ -579,7 +579,7 @@
             '#btcpw_tipping_box_background, #btcpw_tipping_banner_high_background, #btcpw_tipping_banner_wide_background,#btcpw_tipping_page_background'
           ).val(),
           hf_color: $(
-            '#btcpw_tipping_box_hf_background, #btcpw_tipping_banner_wide_hf_background, #btcpw_tipping_banner_high_hf_background, #btcpw_tipping_page_hf_background'
+            '#btcpw_tipping_box_hf_background, #btcpw_tipping_hf_background, #btcpw_tipping_banner_wide_hf_background, #btcpw_tipping_banner_high_hf_background'
           ).val(),
           logo: $(
             '#btcpw_tipping_box_image, #btcpw_tipping_banner_high_image, #btcpw_tipping_banner_wide_image, #btcpw_tipping_page_image'
@@ -648,7 +648,7 @@
             '#btcpw_tipping_banner_high_icon2, #btcpw_tipping_banner_wide_icon2, #btcpw_tipping_page_icon2'
           ).val(),
           value3_enabled: $(
-            '#btcpw_banner_high_banner_value_3_enabled, #btcpw_banner_wide_banner_value_3_enabled,#btcpw_page_value_3_enabled'
+            '#btcpw_banner_high_value_3_enabled, #btcpw_banner_wide_value_3_enabled,#btcpw_page_value_3_enabled'
           ).val(),
           value3_currency: $(
             '#btcpw_banner_high_default_currency3, #btcpw_banner_wide_default_currency3,#btcpw_default_page_currency3'

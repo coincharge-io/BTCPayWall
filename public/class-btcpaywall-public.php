@@ -886,48 +886,32 @@ class BTCPayWall_Public
 	 */
 	public function render_shortcode_box_tipping($atts)
 	{
-		$used_currency = get_option('btcpw_tipping_box_currency', 'SATS');
-		$used_dimension = get_option('btcpw_tipping_box_dimension', '250x300');
-		$redirect = get_option('btcpw_tipping_box_redirect');
-		$text = get_option('btcpw_tipping_box_text', array(
-			'title' => 'Support my work',
-			'description' => '',
-			'info' => 'Enter Tipping Amount',
-			'button' => 'Tipping now'
-		));
-		$color = get_option('btcpw_tipping_box_color', array(
-			'button_text' => '#FFFFFF',
-			'background' => '#E6E6E6',
-			'hf_background' => '#1d5aa3',
-			'button' => '#FE642E',
-			'title' => '#ffffff',
-			'description' => '#000000',
-			'tipping' => '#000000',
-			'input_background' => '#ffa500',
-		));
-		$image = get_option('btcpw_tipping_box_image', array(
-			'logo' => 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg',
-			'background' => '',
-		));
-
+		
+		global $wpdb;
+		$id = !empty($atts['id'])?intval($atts['id']) : null;
+        $result = $wpdb->get_results(
+			$wpdb->prepare("SELECT * FROM wp_btc_forms WHERE id=%d", $id),
+			ARRAY_A
+		);	
+			
 		$atts = shortcode_atts(array(
-			'dimension' => $used_dimension,
-			'title' => $text['title'],
-			'description' => $text['description'],
-			'currency' => $used_currency,
-			'background_color' => $color['background'],
-			'title_text_color' => $color['title'],
-			'tipping_text' => $text['info'],
-			'tipping_text_color' => $color['tipping'],
-			'redirect' => $redirect,
-			'description_color' => $color['description'],
-			'button_text' => $text['button'],
-			'button_text_color' => $color['button_text'],
-			'button_color' => $color['button'],
-			'input_background' => $color['input_background'],
-			'logo_id' => $image['logo'],
-			'background_id' => $image['background'],
-			'background' => $color['hf_background'],
+			'dimension' => $id?$result[0]['dimension']:'200x710',
+			'title' => $id?$result[0]['title_text']:'Support my work',
+			'description' => $id?$result[0]['description_text']:'',
+			'currency' => $id?$result[0]['currency']:'SATS',
+			'background_color' => $id?'#'.$result[0]['background_color']:'#E6E6E6',
+			'title_text_color' =>  $id?'#'.$result[0]['title_text_color']:'#ffffff',
+			'tipping_text' => $id?$result[0]['tipping_text']:'Enter Tipping Amount',
+			'tipping_text_color' => $id?'#'.$result[0]['tipping_text_color']:'#000000',
+			'redirect' => $id?$result[0]['redirect']: false,
+			'description_color' => $id?'#'.$result[0]['description_text_color']: '#000000',
+			'button_text' => $id?$result[0]['button_text']: 'Tipping now',
+			'button_text_color' => $id?'#'.$result[0]['button_text_color']: '#FFFFFF',
+			'button_color' => $id?'#'.$result[0]['button_color']: '#FE642E',
+			'logo_id' => $id?$result[0]['logo']: '',
+			'background_id' => $id?$result[0]['background']:'',
+			'input_background' => $id?'#'.$result[0]['input_background']: '#ffa500',
+			'background' => $id?'#'.$result[0]['hf_background']: '#1d5aa3',
 			'widget' => 'false',
 		), $atts);
 
@@ -1132,120 +1116,58 @@ class BTCPayWall_Public
 	 */
 	public function render_shortcode_banner_tipping($atts)
 	{
-		$predefined_enabled = get_option('btcpw_tipping_banner_enter_amount', 'true');
-		$used_currency = get_option('btcpw_tipping_banner_currency', 'SATS');
-		$used_dimension = get_option('btcpw_tipping_banner_dimension', '200x450');
-		$redirect = get_option('btcpw_tipping_banner_redirect', get_site_url());
-		$collects = get_option('btcpw_tipping_banner_collect', array(
-			'name' => array(
-				'collect' => 'false',
-				'mandatory' => 'false'
-			),
-			'email' => array(
-				'collect' => 'false',
-				'mandatory' => 'false'
-			),
-			'address' => array(
-				'collect' => 'false',
-				'mandatory' => 'false'
-			),
-			'phone' => array(
-				'collect' => 'false',
-				'mandatory' => 'false'
-			),
-			'message' => array(
-				'collect' => 'false',
-				'mandatory' => 'false'
-			),
-
-		));
-		$fixed_amount = get_option('btcpw_tipping_banner_fixed_amount', array(
-			'value1' => array(
-				'enabled' => 'true',
-				'currency' => 'SATS',
-				'amount' => 1000,
-				'icon' => 'fas fa-coffee'
-			),
-			'value2' => array(
-				'enabled' => 'true',
-				'currency' => 'SATS',
-				'amount' => 2000,
-				'icon' => 'fas fa-beer'
-			),
-			'value3' => array(
-				'enabled' => 'true',
-				'currency' => 'SATS',
-				'amount' => 3000,
-				'icon' => 'fas fa-cocktail'
-			),
-		));
-		$predefined_enabled = get_option('btcpw_tipping_banner_enter_amount', 'true');
-
-		$text = get_option('btcpw_tipping_banner_text', array(
-			'title' => 'Support my work',
-			'description' => '',
-			'info' => 'Enter Tipping Amount',
-			'button' => 'Tipping now'
-		));
-		$color = get_option('btcpw_tipping_banner_color', array(
-			'button_text' => '#FFFFFF',
-			'background' => '#E6E6E6',
-			'button' => '#FE642E',
-			'title' => '#ffffff',
-			'hf_background' => '#1d5aa3',
-			'description' => '#000000',
-			'tipping' => '#000000',
-			'input_background' => '#ffa500',
-		));
-		$image = get_option('btcpw_tipping_banner_image', array(
-			'logo' => 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg',
-			'background' => '',
-		));
-
+		
+		global $wpdb;
+		$id = !empty($atts['id'])?intval($atts['id']) : null;
+        $result = $wpdb->get_results(
+			$wpdb->prepare("SELECT * FROM wp_btc_forms WHERE id=%d", $id),
+			ARRAY_A
+		);
 		$atts = shortcode_atts(array(
-			'dimension' => $used_dimension,
-			'title' => $text['title'],
-			'description' => $text['description'],
-			'currency' => $used_currency,
-			'background_color' => $color['background'],
-			'title_text_color' => $color['title'],
-			'tipping_text' => $text['info'],
-			'tipping_text_color' => $color['tipping'],
-			'redirect' => $redirect ?? false,
-			'description_color' => $color['description'],
-			'button_text' => $text['button'],
-			'button_text_color' => $color['button_text'],
-			'button_color' => $color['button'],
-			'logo_id' => $image['logo'],
-			'background_id' => $image['background'],
-			'free_input' => $predefined_enabled,
-			'input_background' => $color['input_background'],
-			'background' => $color['hf_background'],
-			'value1_enabled' => filter_var($fixed_amount['value1']['enabled'], FILTER_VALIDATE_BOOLEAN),
-			'value1_amount' => $fixed_amount['value1']['amount'],
-			'value1_currency' => $fixed_amount['value1']['currency'],
-			'value1_icon' => $fixed_amount['value1']['icon'],
-			'value2_enabled' => filter_var($fixed_amount['value2']['enabled'], FILTER_VALIDATE_BOOLEAN),
-			'value2_amount' => $fixed_amount['value2']['amount'],
-			'value2_currency' => $fixed_amount['value2']['currency'],
-			'value2_icon' => $fixed_amount['value2']['icon'],
-			'value3_enabled' => filter_var($fixed_amount['value3']['enabled'], FILTER_VALIDATE_BOOLEAN),
-			'value3_amount' => $fixed_amount['value3']['amount'],
-			'value3_currency' => $fixed_amount['value3']['currency'],
-			'value3_icon' => $fixed_amount['value3']['icon'],
-			'display_name' => filter_var($collects['name']['collect'], FILTER_VALIDATE_BOOLEAN),
-			'mandatory_name' => filter_var($collects['name']['mandatory'], FILTER_VALIDATE_BOOLEAN),
-			'display_email' => filter_var($collects['email']['collect'], FILTER_VALIDATE_BOOLEAN),
-			'mandatory_email' => filter_var($collects['email']['mandatory'], FILTER_VALIDATE_BOOLEAN),
-			'display_phone' => filter_var($collects['phone']['collect'], FILTER_VALIDATE_BOOLEAN),
-			'mandatory_phone' => filter_var($collects['phone']['mandatory'], FILTER_VALIDATE_BOOLEAN),
-			'display_address' => filter_var($collects['address']['collect'], FILTER_VALIDATE_BOOLEAN),
-			'mandatory_address' => filter_var($collects['address']['mandatory'], FILTER_VALIDATE_BOOLEAN),
-			'display_message' => filter_var($collects['message']['collect'], FILTER_VALIDATE_BOOLEAN),
-			'mandatory_message' => filter_var($collects['message']['mandatory'], FILTER_VALIDATE_BOOLEAN),
+			'dimension' => $id?$result[0]['dimension']:'200x710',
+			'title' => $id?$result[0]['title_text']:'Support my work',
+			'description' => $id?$result[0]['description_text']:'',
+			'currency' => $id?$result[0]['currency']:'SATS',
+			'background_color' => $id?'#'.$result[0]['background_color']:'#E6E6E6',
+			'title_text_color' =>  $id?'#'.$result[0]['title_text_color']:'#ffffff',
+			'tipping_text' => $id?$result[0]['tipping_text']:'Enter Tipping Amount',
+			'tipping_text_color' => $id?'#'.$result[0]['tipping_text_color']:'#000000',
+			'redirect' => $id?$result[0]['redirect']: false,
+			'description_color' => $id?'#'.$result[0]['description_text_color']: '#000000',
+			'button_text' => $id?$result[0]['button_text']: 'Tipping now',
+			'button_text_color' => $id?'#'.$result[0]['button_text_color']: '#FFFFFF',
+			'button_color' => $id?'#'.$result[0]['button_color']: '#FE642E',
+			'logo_id' => $id?$result[0]['logo']: '',
+			'background_id' => $id?$result[0]['background']: '',
+			'free_input' => $id?filter_var($result[0]['free_input'], FILTER_VALIDATE_BOOLEAN):true,
+			'input_background' => $id?'#'.$result[0]['input_background']: '#ffa500',
+			'background' => $id?'#'.$result[0]['hf_background']: '#1d5aa3',
+			'value1_enabled' => $id?filter_var($result[0]['value1_enabled'], FILTER_VALIDATE_BOOLEAN):true,
+			'value1_amount' => $id?round($result[0]['value1_amount'],0):1000,
+			'value1_currency' => $id?$result[0]['value1_currency']:'SATS',
+			'value1_icon' => $id?$result[0]['value1_icon']:'fas fa-coffee',
+			'value2_enabled' => $id?filter_var($result[0]['value2_enabled'], FILTER_VALIDATE_BOOLEAN):true,
+			'value2_amount' => $id?round($result[0]['value2_amount'],0):2000,
+			'value2_currency' => $id?$result[0]['value2_currency']:'SATS',
+			'value2_icon' => $id?$result[0]['value2_icon']:'fas fa-beer',
+			'value3_enabled' => $id?filter_var($result[0]['value3_enabled'], FILTER_VALIDATE_BOOLEAN):true,
+			'value3_amount' => $id?round($result[0]['value3_amount'],0):3000,
+			'value3_currency' => $id?$result[0]['value3_currency']:'SATS',
+			'value3_icon' => $id?$result[0]['value3_icon']:'fas fa-cocktail',
+			'display_name' => $id?filter_var($result[0]['collect_name'], FILTER_VALIDATE_BOOLEAN):false,
+			'mandatory_name' => $id?filter_var($result[0]['mandatory_name'], FILTER_VALIDATE_BOOLEAN):false,
+			'display_email' => $id?filter_var($result[0]['collect_email'], FILTER_VALIDATE_BOOLEAN):false,
+			'mandatory_email' => $id?filter_var($result[0]['mandatory_email'], FILTER_VALIDATE_BOOLEAN):false,
+			'display_phone' => $id?filter_var($result[0]['collect_phone'], FILTER_VALIDATE_BOOLEAN):false,
+			'mandatory_phone' => $id?filter_var($result[0]['mandatory_phone'], FILTER_VALIDATE_BOOLEAN):false,
+			'display_address' => $id?filter_var($result[0]['collect_address'], FILTER_VALIDATE_BOOLEAN):false,
+			'mandatory_address' => $id?filter_var($result[0]['mandatory_address'], FILTER_VALIDATE_BOOLEAN):false,
+			'display_message' => $id?filter_var($result[0]['collect_message'], FILTER_VALIDATE_BOOLEAN):false,
+			'mandatory_message' => $id?filter_var($result[0]['mandatory_message'], FILTER_VALIDATE_BOOLEAN):false,
+			'show_icon'	=>$id? $result[0]['show_icon']:true,
 			'widget'	=> false
 		), $atts);
-
+		
 		$dimension = explode('x', ($atts['dimension'] === '200x710' ? '200x450' : '600x200'));
 
 		$supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
@@ -1253,7 +1175,6 @@ class BTCPayWall_Public
 		$background = wp_get_attachment_image_src($atts['background_id']) ? wp_get_attachment_image_src($atts['background_id'])[0] : $atts['background_id'];
 		$collect = BTCPayWall_Public::getCollect($atts);
 		$collect_data = BTCPayWall_Public::display_is_enabled($collect);
-
 		$fixed_amount = BTCPayWall_Public::getFixedAmount($atts);
 		$atts['free_input'] = filter_var($atts['free_input'], FILTER_VALIDATE_BOOLEAN);
 		$first_enabled = array_column($fixed_amount, 'enabled');
@@ -1367,7 +1288,9 @@ class BTCPayWall_Public
 											<div>
 												<input type="radio" class="<?php echo trim("btcpw_skyscraper_tipping_default_amount {$is_wide}"); ?>" id="<?php echo $key . '_' . $is_wide; ?>" name="<?php echo "btcpw_skyscraper_tipping_default_amount_{$is_wide}"; ?>" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?>">
 												<?php if (!empty($fixed_amount[$key]['amount'])) : ?>
+													<?php if (true === $atts['show_icon']) : ?>
 													<i class="<?php echo esc_html($fixed_amount[$key]['icon']); ?>"></i>
+													<?php endif; ?>
 												<?php endif; ?>
 											</div>
 											<label for="<?php echo $key; ?>"><?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?></label>
@@ -1460,76 +1383,61 @@ class BTCPayWall_Public
 	 */
 	public function render_shortcode_page_tipping($atts)
 	{
-		$predefined_enabled = get_option('btcpw_tipping_page_enter_amount', 'true');
-		$used_currency = get_option('btcpw_tipping_page_currency', 'SATS');
-		$redirect = get_option('btcpw_tipping_page_redirect', get_site_url());
-		$collects = get_option('btcpw_tipping_page_collect', array(
-			'name' => array(
-				'collect' => 'false',
-				'mandatory' => 'false'
-			),
-			'email' => array(
-				'collect' => 'false',
-				'mandatory' => 'false'
-			),
-			'address' => array(
-				'collect' => 'false',
-				'mandatory' => 'false'
-			),
-			'phone' => array(
-				'collect' => 'false',
-				'mandatory' => 'false'
-			),
-			'message' => array(
-				'collect' => 'false',
-				'mandatory' => 'false'
-			),
-
-		));
-		$fixed_amount = get_option('btcpw_tipping_page_fixed_amount', array(
-			'value1' => array(
-				'enabled' => 'true',
-				'currency' => 'SATS',
-				'amount' => 1000,
-				'icon' => 'fas fa-coffee'
-			),
-			'value2' => array(
-				'enabled' => 'true',
-				'currency' => 'SATS',
-				'amount' => 2000,
-				'icon' => 'fas fa-beer'
-			),
-			'value3' => array(
-				'enabled' => 'true',
-				'currency' => 'SATS',
-				'amount' => 3000,
-				'icon' => 'fas fa-cocktail'
-			),
-		));
-		$text = get_option('btcpw_tipping_page_text', array(
-			'title' => 'Support my work',
-			'info' => 'Enter Tipping Amount',
-			'button' => 'Tipping now',
-			'step1'	 => 'Pledge',
-			'step2'	=> 'Info'
-		));
-		$color = get_option('btcpw_tipping_page_color', array(
-			'button_text' => '#FFFFFF',
-			'background' => '#E6E6E6',
-			'button' => '#FE642E',
-			'title' => '#ffffff',
-			'input_background' => '#ffa500',
-			'hf_background' => '#1d5aa3',
-			'tipping' => '#000000',
-			'active' => '#808080',
-			'inactive'	=> '#D3D3D3'
-		));
-		$image = get_option('btcpw_tipping_page_image', array(
-			'logo' => 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg',
-			'background' => '',
-		));
-		$show_icon = get_option('btcpw_tipping_page_show_icon', 'true');
+		
+		global $wpdb;
+		$id = !empty($atts['id'])?intval($atts['id']) : null;
+        $result = $wpdb->get_results(
+			$wpdb->prepare("SELECT * FROM wp_btc_forms WHERE id=%d", $id),
+			ARRAY_A
+		);
 		$atts = shortcode_atts(array(
+			'dimension' => $id?$result[0]['dimension']:'200x710',
+			'title' => $id?$result[0]['title_text']:'Support my work',
+			'description' => $id?$result[0]['description_text']:'',
+			'currency' => $id?$result[0]['currency']:'SATS',
+			'background_color' => $id?'#'.$result[0]['background_color']:'#E6E6E6',
+			'title_text_color' =>  $id?'#'.$result[0]['title_text_color']:'#ffffff',
+			'tipping_text' => $id?$result[0]['tipping_text']:'Enter Tipping Amount',
+			'tipping_text_color' => $id?'#'.$result[0]['tipping_text_color']:'#000000',
+			'redirect' => $id?$result[0]['redirect']: false,
+			'description_color' => $id?'#'.$result[0]['description_text_color']: '#000000',
+			'button_text' => $id?$result[0]['button_text']: 'Tipping now',
+			'button_text_color' => $id?'#'.$result[0]['button_text_color']: '#FFFFFF',
+			'button_color' => $id?'#'.$result[0]['button_color']: '#FE642E',
+			'logo_id' => $id?$result[0]['logo']: '',
+			'background_id' => $id?$result[0]['background']: '',
+			'free_input' => $id?filter_var($result[0]['free_input'], FILTER_VALIDATE_BOOLEAN):true,
+			'input_background' => $id?'#'.$result[0]['input_background']: '#ffa500',
+			'background' => $id?'#'.$result[0]['hf_background']: '#1d5aa3',
+			'value1_enabled' => $id?filter_var($result[0]['value1_enabled'], FILTER_VALIDATE_BOOLEAN):true,
+			'value1_amount' => $id?round($result[0]['value1_amount'],0):1000,
+			'value1_currency' => $id?$result[0]['value1_currency']:'SATS',
+			'value1_icon' => $id?$result[0]['value1_icon']:'fas fa-coffee',
+			'value2_enabled' => $id?filter_var($result[0]['value2_enabled'], FILTER_VALIDATE_BOOLEAN):true,
+			'value2_amount' => $id?round($result[0]['value2_amount'],0):2000,
+			'value2_currency' => $id?$result[0]['value2_currency']:'SATS',
+			'value2_icon' => $id?$result[0]['value2_icon']:'fas fa-beer',
+			'value3_enabled' => $id?filter_var($result[0]['value3_enabled'], FILTER_VALIDATE_BOOLEAN):true,
+			'value3_amount' => $id?round($result[0]['value3_amount'],0):3000,
+			'value3_currency' => $id?$result[0]['value3_currency']:'SATS',
+			'value3_icon' => $id?$result[0]['value3_icon']:'fas fa-cocktail',
+			'display_name' => $id?filter_var($result[0]['collect_name'], FILTER_VALIDATE_BOOLEAN):false,
+			'mandatory_name' => $id?filter_var($result[0]['mandatory_name'], FILTER_VALIDATE_BOOLEAN):false,
+			'display_email' => $id?filter_var($result[0]['collect_email'], FILTER_VALIDATE_BOOLEAN):false,
+			'mandatory_email' => $id?filter_var($result[0]['mandatory_email'], FILTER_VALIDATE_BOOLEAN):false,
+			'display_phone' => $id?filter_var($result[0]['collect_phone'], FILTER_VALIDATE_BOOLEAN):false,
+			'mandatory_phone' => $id?filter_var($result[0]['mandatory_phone'], FILTER_VALIDATE_BOOLEAN):false,
+			'display_address' => $id?filter_var($result[0]['collect_address'], FILTER_VALIDATE_BOOLEAN):false,
+			'mandatory_address' => $id?filter_var($result[0]['mandatory_address'], FILTER_VALIDATE_BOOLEAN):false,
+			'display_message' => $id?filter_var($result[0]['collect_message'], FILTER_VALIDATE_BOOLEAN):false,
+			'mandatory_message' => $id?filter_var($result[0]['mandatory_message'], FILTER_VALIDATE_BOOLEAN):false,
+			'step1' => $id? $result[0]['step1']:'Pledge',
+			'active_color' => $id?'#'.$result[0]['active_color']: '#808080',
+			'step2' => $id? $result[0]['step2']:'Info',
+			'inactive_color' => $id?'#'.$result[0]['inactive_color']: '#D3D3D3',
+			'show_icon'	=>$id? $result[0]['show_icon']:true,
+		), $atts);
+		/* $atts = shortcode_atts(array(
 			'title' => $text['title'],
 			'currency' => $used_currency,
 			'background_color' => $color['background'],
@@ -1569,11 +1477,12 @@ class BTCPayWall_Public
 			'display_message' => filter_var($collects['message']['collect'], FILTER_VALIDATE_BOOLEAN),
 			'mandatory_message' => filter_var($collects['message']['mandatory'], FILTER_VALIDATE_BOOLEAN),
 			'step1' => $text['step1'],
-			'active_color' => $color['active'],
+			'active_color' => $id?'#'.$result[0]['active_color']: '#ffa500',
 			'step2' => $text['step2'],
-			'inactive_color' => $color['inactive'],
-		), $atts);
-
+			'inactive_color' => $id?'#'.$result[0]['inactive_color']: '#ffa500',
+			'show_icon' => 
+		), $atts); */
+		
 		$dimension = explode('x', '520x600');
 		$supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
 		$logo = wp_get_attachment_image_src($atts['logo_id']) ? wp_get_attachment_image_src($atts['logo_id'])[0] : $atts['logo_id'];
@@ -1585,7 +1494,7 @@ class BTCPayWall_Public
 		$first_enabled = array_column($fixed_amount, 'enabled');
 		$d = array_search('true', $first_enabled);
 		$index = 'value' . ($d + 1);
-
+		
 		ob_start();
 	?>
 		<style>
