@@ -698,11 +698,9 @@
           inactive_color: $('#btcpw_tipping_page_tipping_color_inactive').val()
         },
         success: function (data) {
-          console.log(data)
-          console.log(shortcode_ajax_object.redirectUrl)
-          $('#' + data.data.data.type+' p').html(
+          /*$('#' + data.data.data.type+' p').html(
             data.data.data.shortcode
-          )
+          )*/
           location.replace(shortcode_ajax_object.redirectUrl+data.data.data.id)
         },
         error: function () {

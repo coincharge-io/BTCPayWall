@@ -1218,7 +1218,7 @@ class BTCPayWall_Admin
 
 		$shortcode = BTCPayWall_Admin::outputShortcodeAttributes($name, $wpdb->insert_id);
 		if ($row) {
-			wp_send_json_success(array('res' => true, 'data' => array('shortcode' => $shortcode, 'type' => $type, 'id' => $wpdb->insert_id)));
+			wp_send_json_success(array('res' => true, 'data' => array('type' => $type, 'id' => $wpdb->insert_id)));
 		} else {
 			wp_send_json_error(array('res' => false, 'message' => __('Something went wrong. Please try again later.')));
 		}
