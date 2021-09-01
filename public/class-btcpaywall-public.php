@@ -1164,10 +1164,9 @@ class BTCPayWall_Public
 			'mandatory_address' => $id ? filter_var($result[0]['mandatory_address'], FILTER_VALIDATE_BOOLEAN) : false,
 			'display_message' => $id ? filter_var($result[0]['collect_message'], FILTER_VALIDATE_BOOLEAN) : false,
 			'mandatory_message' => $id ? filter_var($result[0]['mandatory_message'], FILTER_VALIDATE_BOOLEAN) : false,
-			'show_icon'	=> $id ? $result[0]['show_icon'] : true,
+			'show_icon'	=> $id ? filter_var($result[0]['show_icon'], FILTER_VALIDATE_BOOLEAN) : true,
 			'widget'	=> false
 		), $atts);
-
 		$dimension = explode('x', ($atts['dimension'] === '200x710' ? '200x450' : '600x200'));
 
 		$supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
@@ -1176,14 +1175,12 @@ class BTCPayWall_Public
 		$collect = BTCPayWall_Public::getCollect($atts);
 		$collect_data = BTCPayWall_Public::display_is_enabled($collect);
 		$fixed_amount = BTCPayWall_Public::getFixedAmount($atts);
-		$atts['free_input'] = filter_var($atts['free_input'], FILTER_VALIDATE_BOOLEAN);
 		$first_enabled = array_column($fixed_amount, 'enabled');
 		$d = array_search('true', $first_enabled);
 		$index = 'value' . ($d + 1);
 		$is_widget = $atts['widget'] === true ? 'btcpw_widget' : '';
 		$is_wide = $dimension[0] === '600' ? 'wide' : 'high';
 		$form_suffix = ($is_widget === 'btcpw_widget' && $dimension[0] === '200') ? '_high' : (($is_widget === 'btcpw_widget' && $dimension[0] === '600') ? '_wide' : '');
-
 		$container_suffix = ($is_widget === 'btcpw_widget' && $dimension[0] === '200') ? 'high' : (($is_widget === 'btcpw_widget' && $dimension[0] === '600') ? 'wide' : '');
 
 		ob_start();
@@ -1288,7 +1285,7 @@ class BTCPayWall_Public
 											<div>
 												<input type="radio" class="<?php echo trim("btcpw_skyscraper_tipping_default_amount {$is_wide}"); ?>" id="<?php echo $key . '_' . $is_wide; ?>" name="<?php echo "btcpw_skyscraper_tipping_default_amount_{$is_wide}"; ?>" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?>">
 												<?php if (!empty($fixed_amount[$key]['amount'])) : ?>
-													<?php if (true === $atts['show_icon']) : ?>
+													<?php if (true == $atts['show_icon']) : ?>
 														<i class="<?php echo esc_html($fixed_amount[$key]['icon']); ?>"></i>
 													<?php endif; ?>
 												<?php endif; ?>
@@ -1299,7 +1296,7 @@ class BTCPayWall_Public
 									<?php endif; ?>
 
 								<?php endforeach; ?>
-								<?php if (true === $atts['free_input']) : ?>
+								<?php if (true == $atts['free_input']) : ?>
 									<div class="<?php echo trim("btcpw_skyscraper_tipping_free_input {$is_wide}"); ?>">
 										<input type="number" id="<?php echo "btcpw_skyscraper_tipping_amount{$form_suffix}"; ?>" name="<?php echo "btcpw_skyscraper_tipping_amount_{$is_wide}"; ?>" placeholder="0.00" required />
 
@@ -1437,51 +1434,7 @@ class BTCPayWall_Public
 			'inactive_color' => $id ? '#' . $result[0]['inactive_color'] : '#D3D3D3',
 			'show_icon'	=> $id ? $result[0]['show_icon'] : true,
 		), $atts);
-		/* $atts = shortcode_atts(array(
-			'title' => $text['title'],
-			'currency' => $used_currency,
-			'background_color' => $color['background'],
-			'title_text_color' => $color['title'],
-			'tipping_text' => $text['info'],
-			'tipping_text_color' => $color['tipping'],
-			'redirect' => $redirect ?? 'false',
-			'button_text' => $text['button'],
-			'button_text_color' => $color['button_text'],
-			'button_color' => $color['button'],
-			'logo_id' => $image['logo'],
-			'background_id' => $image['background'],
-			'free_input' => filter_var($predefined_enabled, FILTER_VALIDATE_BOOLEAN),
-			'show_icon' => filter_var($show_icon, FILTER_VALIDATE_BOOLEAN),
-			'input_background' => $color['input_background'],
-			'background' => $color['hf_background'],
-			'value1_enabled' => filter_var($fixed_amount['value1']['enabled'], FILTER_VALIDATE_BOOLEAN),
-			'value1_amount' => $fixed_amount['value1']['amount'],
-			'value1_currency' => $fixed_amount['value1']['currency'],
-			'value1_icon' => $fixed_amount['value1']['icon'],
-			'value2_enabled' => filter_var($fixed_amount['value2']['enabled'], FILTER_VALIDATE_BOOLEAN),
-			'value2_amount' => $fixed_amount['value2']['amount'],
-			'value2_currency' => $fixed_amount['value2']['currency'],
-			'value2_icon' => $fixed_amount['value2']['icon'],
-			'value3_enabled' => filter_var($fixed_amount['value3']['enabled'], FILTER_VALIDATE_BOOLEAN),
-			'value3_amount' => $fixed_amount['value3']['amount'],
-			'value3_currency' => $fixed_amount['value3']['currency'],
-			'value3_icon' => $fixed_amount['value3']['icon'],
-			'display_name' => filter_var($collects['name']['collect'], FILTER_VALIDATE_BOOLEAN),
-			'mandatory_name' => filter_var($collects['name']['mandatory'], FILTER_VALIDATE_BOOLEAN),
-			'display_email' => filter_var($collects['email']['collect'], FILTER_VALIDATE_BOOLEAN),
-			'mandatory_email' => filter_var($collects['email']['mandatory'], FILTER_VALIDATE_BOOLEAN),
-			'display_phone' => filter_var($collects['phone']['collect'], FILTER_VALIDATE_BOOLEAN),
-			'mandatory_phone' => filter_var($collects['phone']['mandatory'], FILTER_VALIDATE_BOOLEAN),
-			'display_address' => filter_var($collects['address']['collect'], FILTER_VALIDATE_BOOLEAN),
-			'mandatory_address' => filter_var($collects['address']['mandatory'], FILTER_VALIDATE_BOOLEAN),
-			'display_message' => filter_var($collects['message']['collect'], FILTER_VALIDATE_BOOLEAN),
-			'mandatory_message' => filter_var($collects['message']['mandatory'], FILTER_VALIDATE_BOOLEAN),
-			'step1' => $text['step1'],
-			'active_color' => $id?'#'.$result[0]['active_color']: '#ffa500',
-			'step2' => $text['step2'],
-			'inactive_color' => $id?'#'.$result[0]['inactive_color']: '#ffa500',
-			'show_icon' => 
-		), $atts); */
+
 
 		$dimension = explode('x', '520x600');
 		$supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
@@ -1599,7 +1552,7 @@ class BTCPayWall_Public
 										<div>
 											<input type="radio" class="btcpw_page_tipping_default_amount" id="<?php echo "{$key}_page"; ?>" name="btcpw_page_tipping_default_amount" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . (!empty($fixed_amount[$key]['currency']) ? $fixed_amount[$key]['currency'] : 'SATS')); ?>">
 											<?php if (!empty($fixed_amount[$key]['amount'])) : ?>
-												<?php if (true === $atts['show_icon']) : ?>
+												<?php if (true == $atts['show_icon']) : ?>
 													<i class="<?php echo esc_html($fixed_amount[$key]['icon']); ?>"></i>
 												<?php endif; ?>
 											<?php endif; ?>
@@ -1610,7 +1563,7 @@ class BTCPayWall_Public
 								<?php endif; ?>
 
 							<?php endforeach; ?>
-							<?php if (true === $atts['free_input']) : ?>
+							<?php if (true == $atts['free_input']) : ?>
 								<div class="btcpw_page_tipping_free_input">
 									<input type="number" id="btcpw_page_tipping_amount" name="btcpw_page_tipping_amount" placeholder="0.00" required />
 
@@ -1628,7 +1581,7 @@ class BTCPayWall_Public
 							<?php endif; ?>
 
 						</div>
-						<?php if (true === $atts['free_input'] && $collect === false) : ?>
+						<?php if (true == $atts['free_input'] && $collect === false) : ?>
 							<div class="btcpw_page_tipping_free_input">
 								<input type="number" id="btcpw_page_tipping_amount" name="btcpw_page_tipping_amount" placeholder="0.00" required />
 

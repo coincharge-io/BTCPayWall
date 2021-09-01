@@ -136,7 +136,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
     },
     display_name: {
       type: "boolean",
-      default: true,
+      default: false,
     },
     mandatory_name: {
       type: "boolean",
@@ -175,6 +175,10 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
       default: false,
     },
     freeInput: {
+      type: "boolean",
+      default: true,
+    },
+    showIcon: {
       type: "boolean",
       default: true,
     },
@@ -224,23 +228,11 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
         mandatory_message,
         mandatory_name,
         freeInput,
+        showIcon
       },
       setAttributes,
     } = props;
-    const [displayName, setDisplayName] = useState(display_name);
-    const [mandatoryName, setMandatoryName] = useState(mandatory_name);
-    const [displayEmail, setDisplayEmail] = useState(display_email);
-    const [mandatoryEmail, setMandatoryEmail] = useState(mandatory_email);
-    const [displayAddress, setDisplayAddress] = useState(display_address);
-    const [mandatoryAddress, setMandatoryAddress] = useState(mandatory_address);
-    const [displayPhone, setDisplayPhone] = useState(display_phone);
-    const [mandatoryPhone, setMandatoryPhone] = useState(mandatory_phone);
-    const [displayMessage, setDisplayMessage] = useState(display_message);
-    const [mandatoryMessage, setMandatoryMessage] = useState(mandatory_message);
-    const [value1, setValue1_enabled] = useState(value1_enabled);
-    const [value2, setValue2_enabled] = useState(value2_enabled);
-    const [value3, setValue3_enabled] = useState(value3_enabled);
-    const [freeInputEnabled, setFreeInput] = useState(freeInput);
+    
     return (
       <div>
         <hr class="btcpw_pay__gutenberg_block_separator"></hr>
@@ -358,10 +350,17 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
                 label="Display free input"
                 help="Do you want to display free input field?"
                 checked={freeInput}
-                onChange={(value) => {
-                  setFreeInput(value);
-                  setAttributes({ freeInput: value });
-                }}
+                onChange={(newvalue) => 
+                  setAttributes({ freeInput: newvalue })
+                  }
+              />
+              
+              <CheckboxControl
+                label="Display icons"
+                help="Do you want to display icons?"
+                checked={showIcon}
+                onChange={(newvalue) => setAttributes({ showIcon: newvalue })
+                }
               />
               <SelectControl
                 label="Currency"
@@ -420,7 +419,6 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
                 help="Do you want to display value 2?"
                 checked={value2_enabled}
                 onChange={(value) => {
-                  setValue2_enabled(value);
                   setAttributes({ value2_enabled: value });
                 }}
               />
@@ -456,8 +454,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
                 help="Do you want to display value 3?"
                 checked={value3_enabled}
                 onChange={(value) => {
-                  setValue3_enabled(value);
-                  setAttributes({ value3_enabled: value });
+                  setAttributes({ value3_enabled: value })
                 }}
               />
               <SelectControl
@@ -520,7 +517,6 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
                   help="Do you want to collect full name?"
                   checked={display_name}
                   onChange={(value) => {
-                    setDisplayName(value);
                     setAttributes({ display_name: value });
                   }}
                 />
@@ -528,7 +524,6 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
                   help="Do you want make this field mandatory?"
                   checked={mandatory_name}
                   onChange={(value) => {
-                    setMandatoryName(value);
                     setAttributes({ mandatory_name: value });
                   }}
                 />
@@ -539,7 +534,6 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
                   help="Do you want to collect email?"
                   checked={display_email}
                   onChange={(value) => {
-                    setDisplayEmail(value);
                     setAttributes({ display_email: value });
                   }}
                 />
@@ -547,7 +541,6 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
                   help="Do you want make this field mandatory?"
                   checked={mandatory_email}
                   onChange={(value) => {
-                    setMandatoryEmail(value);
                     setAttributes({ mandatory_email: value });
                   }}
                 />
@@ -558,7 +551,6 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
                   help="Do you want to collect address?"
                   checked={display_address}
                   onChange={(value) => {
-                    setDisplayAddress(value);
                     setAttributes({ display_address: value });
                   }}
                 />
@@ -566,7 +558,6 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
                   help="Do you want make this field mandatory?"
                   checked={mandatory_address}
                   onChange={(value) => {
-                    setMandatoryAddress(value);
                     setAttributes({ mandatory_address: value });
                   }}
                 />
@@ -576,16 +567,14 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
                   label="Phone"
                   checked={display_phone}
                   help="Do you want to collect phone?"
-                  onChange={(value) => {
-                    setDisplayPhone(value);
-                    setAttributes({ display_phone: value });
-                  }}
+                  onChange={(value) => 
+                    setAttributes({ display_phone: value })
+                  }
                 />
                 <CheckboxControl
                   help="Do you want make this field mandatory?"
                   checked={mandatory_phone}
                   onChange={(value) => {
-                    setMandatoryPhone(value);
                     setAttributes({ mandatory_phone: value });
                   }}
                 />
@@ -596,16 +585,14 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
                   help="Do you want to collect message?"
                   checked={display_message}
                   onChange={(value) => {
-                    setDisplayMessage(value);
-                    setAttributes({ display_message: displayMessage });
+                    setAttributes({ display_message: value });
                   }}
                 />
                 <CheckboxControl
                   help="Do you want make this field mandatory?"
                   checked={mandatory_message}
                   onChange={(value) => {
-                    setMandatoryMessage(value);
-                    setAttributes({ mandatory_message: mandatory_message });
+                    setAttributes({ mandatory_message: value });
                   }}
                 />
               </PanelRow>
