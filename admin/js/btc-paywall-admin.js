@@ -621,10 +621,10 @@
             '#btcpw_tipping_box_button_color, #btcpw_tipping_banner_high_button_color, #btcpw_tipping_banner_wide_button_color,#btcpw_tipping_page_button_color'
           ).val(),
           free_input: $(
-            '#btcpw_tipping_banner_high_enter_amount, #btcpw_tipping_banner_wide_enter_amount, #btcpw_tipping_page_enter_amount'
+            "input[name='btcpw_tipping_banner_wide_enter_amount']:checked, input[name='btcpw_tipping_banner_high_enter_amount']:checked, input[name='btcpw_tipping_page_enter_amount']:checked"
           ).val(),
           value1_enabled: $(
-            '#btcpw_banner_high_value_1_enabled, #btcpw_banner_wide_value_1_enabled, #btcpw_page_value_1_enabled'
+            "input[name='btcpw_tipping_banner_wide_fixed_amount[value1][enabled]']:checked, input[name='btcpw_tipping_banner_high_fixed_amount[value1][enabled]']:checked, input[name='btcpw_tipping_page_fixed_amount[value1][enabled]']:checked"
           ).val(),
           value1_currency: $(
             '#btcpw_banner_high_default_currency1, #btcpw_banner_wide_default_currency1, #btcpw_default_page_currency1'
@@ -636,7 +636,7 @@
             '#btcpw_tipping_banner_high_icon1, #btcpw_tipping_banner_wide_icon1, #btcpw_tipping_page_icon1'
           ).val(),
           value2_enabled: $(
-            '#btcpw_banner_high_value_2_enabled, #btcpw_banner_wide_value_2_enabled,#btcpw_page_value_2_enabled'
+            "input[name='btcpw_tipping_banner_wide_fixed_amount[value2][enabled]']:checked, input[name='btcpw_tipping_banner_high_fixed_amount[value2][enabled]']:checked,input[name='btcpw_tipping_page_fixed_amount[value2][enabled]']:checked"
           ).val(),
           value2_currency: $(
             '#btcpw_banner_high_default_currency2, #btcpw_banner_wide_default_currency2, #btcpw_default_page_currency2'
@@ -648,7 +648,7 @@
             '#btcpw_tipping_banner_high_icon2, #btcpw_tipping_banner_wide_icon2, #btcpw_tipping_page_icon2'
           ).val(),
           value3_enabled: $(
-            '#btcpw_banner_high_value_3_enabled, #btcpw_banner_wide_value_3_enabled,#btcpw_page_value_3_enabled'
+            "input[name='btcpw_tipping_banner_wide_fixed_amount[value3][enabled]']:checked, input[name='btcpw_tipping_banner_high_fixed_amount[value3][enabled]']:checked,input[name='btcpw_tipping_page_fixed_amount[value3][enabled]']:checked"
           ).val(),
           value3_currency: $(
             '#btcpw_banner_high_default_currency3, #btcpw_banner_wide_default_currency3,#btcpw_default_page_currency3'
@@ -660,37 +660,37 @@
             '#btcpw_tipping_banner_high_icon3, #btcpw_tipping_banner_wide_icon3, #btcpw_tipping_page_icon3'
           ).val(),
           collect_name: $(
-            "input[name='btcpw_tipping_banner_high_collect[name][collect]'],input[name='btcpw_tipping_banner_wide_collect[name][collect]'], input[name='btcpw_tipping_page_collect[name][collect]']"
+            "input[name='btcpw_tipping_banner_high_collect[name][collect]']:checked,input[name='btcpw_tipping_banner_wide_collect[name][collect]']:checked, input[name='btcpw_tipping_page_collect[name][collect]']:checked"
           ).val(),
           mandatory_name: $(
-            "input[name='btcpw_tipping_banner_high_collect[name][mandatory]'], input[name='btcpw_tipping_banner_wide_collect[name][mandatory]'], input[name='btcpw_tipping_page_collect[name][mandatory]']"
+            "input[name='btcpw_tipping_banner_high_collect[name][mandatory]']:checked, input[name='btcpw_tipping_banner_wide_collect[name][mandatory]']:checked, input[name='btcpw_tipping_page_collect[name][mandatory]']:checked"
           ).val(),
           collect_email: $(
-            "input[name='btcpw_tipping_banner_high_collect[email][collect]'], input[name='btcpw_tipping_banner_wide_collect[email][collect]'], input[name='btcpw_tipping_page_collect[email][collect]']"
+            "input[name='btcpw_tipping_banner_high_collect[email][collect]']:checked, input[name='btcpw_tipping_banner_wide_collect[email][collect]']:checked, input[name='btcpw_tipping_page_collect[email][collect]']:checked"
           ).val(),
           mandatory_email: $(
-            "input[name='btcpw_tipping_banner_high_collect[email][mandatory]'], input[name='btcpw_tipping_banner_wide_collect[email][mandatory]'], input[name='btcpw_tipping_page_collect[email][mandatory]']"
+            "input[name='btcpw_tipping_banner_high_collect[email][mandatory]']:checked, input[name='btcpw_tipping_banner_wide_collect[email][mandatory]']:checked, input[name='btcpw_tipping_page_collect[email][mandatory]']:checked"
           ).val(),
           collect_phone: $(
-            "input[name='btcpw_tipping_banner_high_collect[phone][collect]'], input[name='btcpw_tipping_banner_wide_collect[phone][collect]'], input[name='btcpw_tipping_page_collect[phone][collect]']"
+            "input[name='btcpw_tipping_banner_high_collect[phone][collect]']:checked, input[name='btcpw_tipping_banner_wide_collect[phone][collect]']:checked, input[name='btcpw_tipping_page_collect[phone][collect]']:checked"
           ).val(),
           mandatory_phone: $(
-            "input[name='btcpw_tipping_banner_high_collect[phone][mandatory]'], input[name='btcpw_tipping_banner_wide_collect[phone][mandatory]'], input[name='btcpw_tipping_page_collect[phone][mandatory]']"
+            "input[name='btcpw_tipping_banner_high_collect[phone][mandatory]']:checked, input[name='btcpw_tipping_banner_wide_collect[phone][mandatory]']:checked, input[name='btcpw_tipping_page_collect[phone][mandatory]']:checked"
           ).val(),
           collect_address: $(
-            "input[name='btcpw_tipping_banner_high_collect[address][collect]'], input[name='btcpw_tipping_banner_wide_collect[address][collect]'], input[name='btcpw_tipping_page_collect[address][collect]']"
+            "input[name='btcpw_tipping_banner_high_collect[address][collect]']:checked, input[name='btcpw_tipping_banner_wide_collect[address][collect]']:checked, input[name='btcpw_tipping_page_collect[address][collect]']:checked"
           ).val(),
           mandatory_address: $(
-            "input[name='btcpw_tipping_banner_high_collect[address][mandatory]'], input[name='btcpw_tipping_banner_wide_collect[address][mandatory]'], input[name='btcpw_tipping_page_collect[address][mandatory]']"
+            "input[name='btcpw_tipping_banner_high_collect[address][mandatory]']:checked, input[name='btcpw_tipping_banner_wide_collect[address][mandatory]']:checked, input[name='btcpw_tipping_page_collect[address][mandatory]']:checked"
           ).val(),
           collect_message: $(
-            "input[name='btcpw_tipping_banner_high_collect[message][collect]'], input[name='btcpw_tipping_banner_wide_collect[message][collect]'], input[name='btcpw_tipping_page_collect[message][collect]']"
+            "input[name='btcpw_tipping_banner_high_collect[message][collect]']:checked, input[name='btcpw_tipping_banner_wide_collect[message][collect]']:checked, input[name='btcpw_tipping_page_collect[message][collect]']:checked"
           ).val(),
           mandatory_message: $(
-            "input[name='btcpw_tipping_banner_high_collect[message][mandatory]'], input[name='btcpw_tipping_banner_wide_collect[message][mandatory]'], input[name='btcpw_tipping_page_collect[message][mandatory]']"
+            "input[name='btcpw_tipping_banner_high_collect[message][mandatory]']:checked, input[name='btcpw_tipping_banner_wide_collect[message][mandatory]']:checked, input[name='btcpw_tipping_page_collect[message][mandatory]']:checked"
           ).val(),
           show_icon: $(
-            '#btcpw_tipping_banner_high_show_icon,#btcpw_tipping_banner_wide_show_icon,#btcpw_tipping_page_show_icon'
+            "input[name='btcpw_tipping_page_show_icon']:checked, input[name='btcpw_tipping_banner_wide_show_icon']:checked, input[name='btcpw_tipping_banner_high_show_icon']:checked"
           ).val(),
           step1: $('#btcpw_tipping_page_step1').val(),
           step2: $('#btcpw_tipping_page_step2').val(),

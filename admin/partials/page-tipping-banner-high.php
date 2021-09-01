@@ -38,21 +38,44 @@ $fixed_amount = array(
     'value1' => array(
         'enabled' => $result[0]['value1_enabled'] ?? true,
         'currency' => $result[0]['value1_currency'] ?? 'SATS',
-        'amount' => !empty($result[0]['value1_amount'])?round($result[0]['value1_amount'],0) : 1000,
+        'amount' => !empty($result[0]['value1_amount']) ? round($result[0]['value1_amount'], 0) : 1000,
         'icon' => $result[0]['value1_icon'] ?? 'fas fa-coffee'
     ),
     'value2' => array(
         'enabled' => $result[0]['value2_enabled'] ?? true,
         'currency' => $result[0]['value2_currency'] ?? 'SATS',
-        'amount' => !empty($result[0]['value2_amount'])?round($result[0]['value2_amount'],0) : 2000,
+        'amount' => !empty($result[0]['value2_amount']) ? round($result[0]['value2_amount'], 0) : 2000,
         'icon' => $result[0]['value2_icon'] ?? 'fas fa-beer'
     ),
     'value3' => array(
         'enabled' => $result[0]['value3_enabled'] ?? true,
         'currency' => $result[0]['value3_currency'] ?? 'SATS',
-        'amount' => !empty($result[0]['value3_amount'])?round($result[0]['value3_amount'],0) : 3000,
+        'amount' => !empty($result[0]['value3_amount']) ? round($result[0]['value3_amount'], 0) : 3000,
         'icon' => $result[0]['value3_icon'] ?? 'fas fa-cocktail'
     ),
+);
+$collect = array(
+    'name' => array(
+        'collect' => $result[0]['collect_name'] ?? false,
+        'mandatory' => $result[0]['mandatory_name'] ?? false
+    ),
+    'email' => array(
+        'collect' => $result[0]['collect_email'] ?? false,
+        'mandatory' => $result[0]['mandatory_email'] ?? false
+    ),
+    'address' => array(
+        'collect' => $result[0]['collect_address'] ?? false,
+        'mandatory' => $result[0]['mandatory_address'] ?? false
+    ),
+    'phone' => array(
+        'collect' => $result[0]['collect_phone'] ?? false,
+        'mandatory' => $result[0]['mandatory_phone'] ?? false
+    ),
+    'message' => array(
+        'collect' => $result[0]['collect_address'] ?? false,
+        'mandatory' => $result[0]['mandatory_message'] ?? false
+    ),
+
 );
 $predefined_enabled = $result[0]['free_input'] ?? false;
 $logo = wp_get_attachment_image_src($image['logo']);
@@ -213,7 +236,7 @@ $id = $result[0]['id'] ?? null;
         <div class="row">
             <div class="col-50">
                 <label for="btcpw_tipping_banner_high_enter_amount">Free input of amount</label>
-                <input type="checkbox" id="btcpw_tipping_banner_high_enter_amount" class="btcpw_tipping_banner_high_enter_amount" name="btcpw_tipping_banner_high_enter_amount" <?php echo checked(isset($predefined_enabled)); ?> value="true" />
+                <input type="checkbox" id="btcpw_tipping_banner_high_enter_amount" class="btcpw_tipping_banner_high_enter_amount" name="btcpw_tipping_banner_high_enter_amount" <?php echo checked($predefined_enabled); ?> value="true" />
             </div>
             <div class="col-50">
                 <label for="btcpw_tipping_banner_high_currency">Currency</label>
@@ -238,7 +261,7 @@ $id = $result[0]['id'] ?? null;
         <div class="row">
             <div class="col-50">
                 <label for="btcpw_tipping_banner_high_show_icon">Show icons</label>
-                <input type="checkbox" id="btcpw_tipping_banner_high_show_icon" class="btcpw_tipping_banner_high_show_icon" name="btcpw_tipping_banner_high_show_icon" <?php checked(isset($show_icon)); ?> value="true" />
+                <input type="checkbox" id="btcpw_tipping_banner_high_show_icon" class="btcpw_tipping_banner_high_show_icon" name="btcpw_tipping_banner_high_show_icon" <?php checked($show_icon); ?> value="true" />
             </div>
         </div>
         <div class="container_predefined_amount">
@@ -247,7 +270,7 @@ $id = $result[0]['id'] ?? null;
                     <label for="btcpw_banner_high_default_price1">Default price1</label>
                 </div>
                 <div class="col-50">
-                    <input type="checkbox" id="btcpw_banner_high_value_1_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_banner_high_fixed_amount[value1][enabled]" <?php checked(isset($fixed_amount['value1']['enabled'])); ?> value="true" />
+                    <input type="checkbox" id="btcpw_banner_high_value_1_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_banner_high_fixed_amount[value1][enabled]" <?php checked($fixed_amount['value1']['enabled']); ?> value="true" />
                     <input type="number" min=0 placeholder="Default Price1" step=1 name="btcpw_tipping_banner_high_fixed_amount[value1][amount]" id="btcpw_banner_high_default_price1" value="<?php echo $fixed_amount['value1']['amount']; ?>">
 
                     <select required name="btcpw_tipping_banner_high_fixed_amount[value1][currency]" id="btcpw_banner_high_default_currency1">
@@ -267,7 +290,7 @@ $id = $result[0]['id'] ?? null;
                     <label for="btcpw_banner_high_default_price2">Default price2</label>
                 </div>
                 <div class="col-50">
-                    <input type="checkbox" id="btcpw_banner_high_value_2_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_banner_high_fixed_amount[value2][enabled]" <?php echo checked(isset($fixed_amount['value2']['enabled'])); ?> value="true" />
+                    <input type="checkbox" id="btcpw_banner_high_value_2_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_banner_high_fixed_amount[value2][enabled]" <?php echo checked($fixed_amount['value2']['enabled']); ?> value="true" />
                     <input type="number" min=0 placeholder="Default Price2" step=1 name="btcpw_tipping_banner_high_fixed_amount[value2][amount]" id="btcpw_banner_high_default_price2" value="<?php echo $fixed_amount['value2']['amount']; ?>">
 
                     <select required name="btcpw_tipping_banner_high_fixed_amount[value2][currency]" id="btcpw_banner_high_default_currency2">
@@ -287,7 +310,7 @@ $id = $result[0]['id'] ?? null;
                     <label for="btcpw_banner_high_default_price3">Default price3</label>
                 </div>
                 <div class="col-50">
-                    <input type="checkbox" id="btcpw_banner_high_value_3_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_banner_high_fixed_amount[value3][enabled]" <?php echo checked(isset($fixed_amount['value3']['enabled'])); ?> value="true" />
+                    <input type="checkbox" id="btcpw_banner_high_value_3_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_banner_high_fixed_amount[value3][enabled]" <?php echo checked($fixed_amount['value3']['enabled']); ?> value="true" />
                     <input type="number" min=0 placeholder="Default Price3" step=1 name="btcpw_tipping_banner_high_fixed_amount[value3][amount]" id="btcpw_banner_high_default_price3" value="<?php echo $fixed_amount['value3']['amount']; ?>">
 
                     <select required name="btcpw_tipping_banner_high_fixed_amount[value3][currency]" id="btcpw_banner_high_default_currency3">
@@ -340,10 +363,10 @@ $id = $result[0]['id'] ?? null;
             <div class="col-50">
                 <label for="btcpw_tipping_banner_high_collect[name][collect]">Display</label>
 
-                <input type="checkbox" class="btcpw_tipping_banner_high_collect_name" name="btcpw_tipping_banner_high_collect[name][collect]" <?php checked(isset($collect['name']['collect'])); ?> value="true" />
+                <input type="checkbox" class="btcpw_tipping_banner_high_collect_name" name="btcpw_tipping_banner_high_collect[name][collect]" <?php checked($collect['name']['collect']); ?> value="true" />
 
                 <label for="btcpw_tipping_banner_high_collect[name][mandatory]">Mandatory</label>
-                <input type="checkbox" class="btcpw_tipping_banner_high_collect_name_mandatory" name="btcpw_tipping_banner_high_collect[name][mandatory]" <?php checked(isset($collect['name']['mandatory'])); ?> value="true" />
+                <input type="checkbox" class="btcpw_tipping_banner_high_collect_name_mandatory" name="btcpw_tipping_banner_high_collect[name][mandatory]" <?php checked($collect['name']['mandatory']); ?> value="true" />
 
             </div>
         </div>
@@ -354,10 +377,10 @@ $id = $result[0]['id'] ?? null;
             <div class="col-50">
                 <label for="btcpw_tipping_banner_high_collect[email][collect]">Display</label>
 
-                <input type="checkbox" class="btcpw_tipping_banner_high_collect_email" name="btcpw_tipping_banner_high_collect[email][collect]" <?php checked(isset($collect['email']['collect'])); ?> value="true" />
+                <input type="checkbox" class="btcpw_tipping_banner_high_collect_email" name="btcpw_tipping_banner_high_collect[email][collect]" <?php checked($collect['email']['collect']); ?> value="true" />
 
                 <label for="btcpw_tipping_banner_high_collect[email][mandatory]">Mandatory</label>
-                <input type="checkbox" class="btcpw_tipping_banner_high_collect_email_mandatory" name="btcpw_tipping_banner_high_collect[email][mandatory]" <?php checked(isset($collect['email']['mandatory'])); ?> value="true" />
+                <input type="checkbox" class="btcpw_tipping_banner_high_collect_email_mandatory" name="btcpw_tipping_banner_high_collect[email][mandatory]" <?php checked($collect['email']['mandatory']); ?> value="true" />
 
             </div>
         </div>
@@ -368,10 +391,10 @@ $id = $result[0]['id'] ?? null;
             <div class="col-50">
                 <label for="btcpw_tipping_banner_high_collect[address][collect]">Display</label>
 
-                <input type="checkbox" class="btcpw_tipping_banner_high_collect_address" name="btcpw_tipping_banner_high_collect[address][collect]" <?php checked(isset($collect['address']['collect'])); ?> value="true" />
+                <input type="checkbox" class="btcpw_tipping_banner_high_collect_address" name="btcpw_tipping_banner_high_collect[address][collect]" <?php checked($collect['address']['collect']); ?> value="true" />
 
                 <label for="btcpw_tipping_banner_high_collect[address][mandatory]">Mandatory</label>
-                <input type="checkbox" class="btcpw_tipping_banner_high_collect_address_mandatory" name="btcpw_tipping_banner_high_collect[address][mandatory]" <?php checked(isset($collect['address']['mandatory'])); ?> value="true" />
+                <input type="checkbox" class="btcpw_tipping_banner_high_collect_address_mandatory" name="btcpw_tipping_banner_high_collect[address][mandatory]" <?php checked($collect['address']['mandatory']); ?> value="true" />
             </div>
         </div>
         <div class="row">
@@ -381,10 +404,10 @@ $id = $result[0]['id'] ?? null;
             <div class="col-50">
                 <label for="btcpw_tipping_banner_high_collect[phone][collect]">Display</label>
 
-                <input type="checkbox" class="btcpw_tipping_banner_high_collect_phone" name="btcpw_tipping_banner_high_collect[phone][collect]" <?php checked(isset($collect['phone']['collect'])); ?> value="true" />
+                <input type="checkbox" class="btcpw_tipping_banner_high_collect_phone" name="btcpw_tipping_banner_high_collect[phone][collect]" <?php checked($collect['phone']['collect']); ?> value="true" />
 
                 <label for="btcpw_tipping_banner_high_collect[phone][mandatory]">Mandatory</label>
-                <input type="checkbox" class="btcpw_tipping_banner_high_collect_phone_mandatory" name="btcpw_tipping_banner_high_collect[phone][mandatory]" <?php checked(isset($collect['name']['mandatory'])); ?> value="true" />
+                <input type="checkbox" class="btcpw_tipping_banner_high_collect_phone_mandatory" name="btcpw_tipping_banner_high_collect[phone][mandatory]" <?php checked($collect['name']['mandatory']); ?> value="true" />
 
             </div>
         </div>
@@ -394,10 +417,10 @@ $id = $result[0]['id'] ?? null;
             </div>
             <div class="col-50">
                 <label for="btcpw_tipping_banner_high_collect[message][collect]">Display</label>
-                <input type="checkbox" class="btcpw_tipping_banner_high_collect_message" name="btcpw_tipping_banner_high_collect[message][collect]" <?php checked(isset($collect['message']['collect'])); ?> value="true" />
+                <input type="checkbox" class="btcpw_tipping_banner_high_collect_message" name="btcpw_tipping_banner_high_collect[message][collect]" <?php checked($collect['message']['collect']); ?> value="true" />
 
                 <label for="btcpw_tipping_banner_high_collect[message][mandatory]">Mandatory</label>
-                <input type="checkbox" class="btcpw_tipping_banner_high_collect_message_mandatory" name="btcpw_tipping_banner_high_collect[message][mandatory]" <?php checked(isset($collect['message']['mandatory'])) ?> value="true" />
+                <input type="checkbox" class="btcpw_tipping_banner_high_collect_message_mandatory" name="btcpw_tipping_banner_high_collect[message][mandatory]" <?php checked($collect['message']['mandatory']); ?> value="true" />
 
             </div>
         </div>
