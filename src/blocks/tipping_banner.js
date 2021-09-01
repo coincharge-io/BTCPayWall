@@ -73,6 +73,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
     },
     button_color: {
       type: "string",
+      default: "#FE642E"
     },
     input_background: {
       type: "string",
@@ -350,8 +351,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
                 label="Display free input"
                 help="Do you want to display free input field?"
                 checked={freeInput}
-                onChange={(newvalue) => 
-                  setAttributes({ freeInput: newvalue })
+                onChange={(newvalue) => setAttributes({ freeInput: newvalue })
                   }
               />
               

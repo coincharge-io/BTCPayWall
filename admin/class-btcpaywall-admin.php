@@ -1627,7 +1627,7 @@ class BTCPayWall_Admin
 			'description_color' =>  '#000000',
 			'button_text' =>  'Tipping now',
 			'button_text_color' =>  '#FFFFFF',
-			'button_color' =>  '',
+			'button_color' =>  '#FE642E',
 			'logo_id'	=> '',
 			'background_id' =>  '',
 			'free_input' =>  true,
@@ -1666,7 +1666,7 @@ class BTCPayWall_Admin
 	public function render_tipping_pages($atts)
 	{
 		$atts = shortcode_atts(array(
-			'dimension' =>  '200x710',
+			'dimension' =>  '520x600',
 			'title' =>  'Support my work',
 			'description' =>  '',
 			'currency' =>  'SATS',
@@ -1678,10 +1678,9 @@ class BTCPayWall_Admin
 			'description_color' =>  '#000000',
 			'button_text' =>  'Tipping now',
 			'button_text_color' =>  '#FFFFFF',
-			'button_color' =>  '',
+			'button_color' =>  '#FE642E',
 			'logo_id'	=> '',
 			'background_id' =>  '',
-			'free_input' =>  true,
 			'input_background' =>  '#ffa500',
 			'background' =>  '#1d5aa3',
 			'value1_enabled' =>  true,
@@ -1706,15 +1705,15 @@ class BTCPayWall_Admin
 			'mandatory_address' => false,
 			'display_message' =>  true,
 			'mandatory_message' => false,
+			'free_input' =>  true,
 			'show_icon'	=>  true,
 			'step1'	=> 'Pledge',
 			'step2' => 'Info',
 			'active_color' => '#808080',
 			'inactive_color' => '#D3D3D3',
 		), $atts);
-
 		return do_shortcode(
-			"[btcpw_tipping_page dimension='{$atts['dimension']}' title='{$atts['title']}' description='{$atts['description']}' currency='{$atts['currency']}' background_color='{$atts['background_color']}'title_text_color='{$atts['title_text_color']}'tipping_text='{$atts['tipping_text']}'tipping_text_color= {$atts['tipping_text_color']}' redirect='{$atts['redirect']}' amount='{$atts['redirect']}' description_color='{$atts['description_color']}' button_text='{$atts['button_text']}' button_text_color='{$atts['button_text_color']}' button_color='{$atts['button_color']}' logo_id='{$atts['logo_id']}' background_id='{$atts['background_id']}' background='{$atts['background']}' input_background='{$atts['input_background']} free_input='{$atts['free_input']}' value1_enabled='{$atts['value1_enabled']}' value1_amount='{$atts['value1_amount']}' value1_currency='{$atts['value1_currency']}' value1_icon='{$atts['value1_icon']}' value2_enabled='{$atts['value2_enabled']}' value2_amount='{$atts['value2_amount']}' value2_currency='{$atts['value2_currency']}' value2_icon='{$atts['value2_icon']}' value3_enabled='{$atts['value3_enabled']}' value3_amount='{$atts['value3_amount']}' value3_currency='{$atts['value3_currency']}' value3_icon='{$atts['value3_icon']}' display_name='{$atts['display_name']}' mandatory_name='{$atts['mandatory_name']}' display_email='{$atts['display_email']}' mandatory_email='{$atts['mandatory_email']}' display_phone='{$atts['display_phone']}' mandatory_phone='{$atts['mandatory_phone']}' display_address='{$atts['display_address']}' mandatory_address='{$atts['mandatory_address']}' display_message='{$atts['display_message']}' mandatory_message='{$atts['mandatory_message']}' show_icon='{$atts['show_icon']}' step1='{$atts['step1']}' step2='{$atts['step2']}' active_color='{$atts['active_color']}' inactive_color='{$atts['inactive_color']}']"
+			"[btcpw_tipping_page dimension='{$atts['dimension']}' title='{$atts['title']}' description='{$atts['description']}' currency='{$atts['currency']}' background_color='{$atts['background_color']}'title_text_color='{$atts['title_text_color']}'tipping_text='{$atts['tipping_text']}'tipping_text_color= {$atts['tipping_text_color']}' redirect='{$atts['redirect']}' amount='{$atts['redirect']}' description_color='{$atts['description_color']}' button_text='{$atts['button_text']}' button_text_color='{$atts['button_text_color']}' button_color='{$atts['button_color']}' logo_id='{$atts['logo_id']}' background_id='{$atts['background_id']}' background='{$atts['background']}' input_background='{$atts['input_background']} value1_enabled='{$atts['value1_enabled']}' value1_amount='{$atts['value1_amount']}' value1_currency='{$atts['value1_currency']}' value1_icon='{$atts['value1_icon']}' value2_enabled='{$atts['value2_enabled']}' value2_amount='{$atts['value2_amount']}' value2_currency='{$atts['value2_currency']}' value2_icon='{$atts['value2_icon']}' value3_enabled='{$atts['value3_enabled']}' value3_amount='{$atts['value3_amount']}' value3_currency='{$atts['value3_currency']}' value3_icon='{$atts['value3_icon']}' display_name='{$atts['display_name']}' mandatory_name='{$atts['mandatory_name']}' display_email='{$atts['display_email']}' mandatory_email='{$atts['mandatory_email']}' display_phone='{$atts['display_phone']}' mandatory_phone='{$atts['mandatory_phone']}' display_address='{$atts['display_address']}' mandatory_address='{$atts['mandatory_address']}' display_message='{$atts['display_message']}' mandatory_message='{$atts['mandatory_message']}' show_icon='{$atts['show_icon']}' step1='{$atts['step1']}' step2='{$atts['step2']}' active_color='{$atts['active_color']}' inactive_color='{$atts['inactive_color']}' free_input='{$atts['free_input']}']"
 		);
 	}
 	public function load_gutenberg()

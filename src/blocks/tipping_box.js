@@ -70,6 +70,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-box", {
     },
     button_color: {
       type: "string",
+      default: "#FE642E"
     },
     input_background: {
       type: "string",

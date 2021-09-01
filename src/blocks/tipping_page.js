@@ -73,6 +73,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
     },
     button_color: {
       type: "string",
+      default: "#FE642E"
     },
     input_background: {
       type: "string",
@@ -174,10 +175,6 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
       type: "boolean",
       default: false,
     },
-    freeInput: {
-      type: "boolean",
-      default: true,
-    },
     step1: {
       type: "string",
       default: "Pledge"
@@ -193,6 +190,10 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
     inactive_color: {
       type: "string",
       default: "#D3D3D3"
+    },
+    freeInput: {
+      type: "boolean",
+      default: true,
     },
     show_icon: {
       type: "boolean",
@@ -252,7 +253,6 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
       },
       setAttributes,
     } = props;
-    
     return (
       <div>
         <hr class="btcpw_pay__gutenberg_block_separator"></hr>
@@ -265,9 +265,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
                   setAttributes({ dimension: selectedItem });
                 }}
                 options={[
-                  { value: "", label: "Default" },
-                  { value: "200x710", label: "200x710" },
-                  { value: "600x280", label: "600x280" },
+                  { value: "520x600", label: "Default" },
                 ]}
               />
             </PanelBody>
@@ -366,12 +364,22 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
                 }
                 disableAlpha
               />
+
               <CheckboxControl
                 label="Display free input"
                 help="Do you want to display free input field?"
                 checked={freeInput}
+                onChange={(newvalue) => {
+                  setAttributes({ freeInput: newvalue });
+                  }}
+              />
+
+              <CheckboxControl
+                label="Display icon"
+                help="Do you want to display icons?"
+                checked={show_icon}
                 onChange={(value) => {
-                  setAttributes({ freeInput: value });
+                  setAttributes({ show_icon: value });
                 }}
               />
               <SelectControl
@@ -388,22 +396,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
                   { value: "USD", label: "USD" },
                 ]}
               />
-              <CheckboxControl
-                label="Display free input"
-                help="Do you want to display free input field?"
-                checked={freeInput}
-                onChange={(newvalue) => 
-                  setAttributes({ freeInput: newvalue })
-                  }
-              />
-              <CheckboxControl
-                label="Display icon"
-                help="Do you want to display icons?"
-                checked={show_icon}
-                onChange={(value) => {
-                  setAttributes({ show_icon: value });
-                }}
-              />
+              
             </PanelBody>
             <PanelBody title="Amount">
               

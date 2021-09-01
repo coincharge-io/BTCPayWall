@@ -1132,7 +1132,7 @@ class BTCPayWall_Public
 			'title_text_color' =>  $id ? '#' . $result[0]['title_text_color'] : '#ffffff',
 			'tipping_text' => $id ? $result[0]['tipping_text'] : 'Enter Tipping Amount',
 			'tipping_text_color' => $id ? '#' . $result[0]['tipping_text_color'] : '#000000',
-			'redirect' => $id ? $result[0]['redirect'] : false,
+			'redirect' => $id ? $result[0]['redirect'] : '',
 			'description_color' => $id ? '#' . $result[0]['description_text_color'] : '#000000',
 			'button_text' => $id ? $result[0]['button_text'] : 'Tipping now',
 			'button_text_color' => $id ? '#' . $result[0]['button_text_color'] : '#FFFFFF',
@@ -1396,16 +1396,16 @@ class BTCPayWall_Public
 			'title_text_color' =>  $id ? '#' . $result[0]['title_text_color'] : '#ffffff',
 			'tipping_text' => $id ? $result[0]['tipping_text'] : 'Enter Tipping Amount',
 			'tipping_text_color' => $id ? '#' . $result[0]['tipping_text_color'] : '#000000',
-			'redirect' => $id ? $result[0]['redirect'] : false,
+			'redirect' => $id ? $result[0]['redirect'] : '',
 			'description_color' => $id ? '#' . $result[0]['description_text_color'] : '#000000',
 			'button_text' => $id ? $result[0]['button_text'] : 'Tipping now',
 			'button_text_color' => $id ? '#' . $result[0]['button_text_color'] : '#FFFFFF',
 			'button_color' => $id ? '#' . $result[0]['button_color'] : '#FE642E',
 			'logo_id' => $id ? $result[0]['logo'] : '',
 			'background_id' => $id ? $result[0]['background'] : '',
-			'free_input' => $id ? filter_var($result[0]['free_input'], FILTER_VALIDATE_BOOLEAN) : true,
 			'input_background' => $id ? '#' . $result[0]['input_background'] : '#ffa500',
 			'background' => $id ? '#' . $result[0]['hf_background'] : '#1d5aa3',
+			'free_input' => $id ? filter_var($result[0]['free_input'], FILTER_VALIDATE_BOOLEAN) : true,
 			'value1_enabled' => $id ? filter_var($result[0]['value1_enabled'], FILTER_VALIDATE_BOOLEAN) : true,
 			'value1_amount' => $id ? round($result[0]['value1_amount'], 0) : 1000,
 			'value1_currency' => $id ? $result[0]['value1_currency'] : 'SATS',
@@ -1434,7 +1434,6 @@ class BTCPayWall_Public
 			'inactive_color' => $id ? '#' . $result[0]['inactive_color'] : '#D3D3D3',
 			'show_icon'	=> $id ? $result[0]['show_icon'] : true,
 		), $atts);
-
 
 		$dimension = explode('x', '520x600');
 		$supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
