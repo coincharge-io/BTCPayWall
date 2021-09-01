@@ -440,6 +440,18 @@ class BTCPayWall_Admin
 		return $default_values;
 	}
 	*/
+	public static function roundAmount($currency, $amount)
+	{
+		switch ($currency) {
+			case 'BTC':
+				return $amount;
+			case 'EUR':
+			case 'USD':
+				return round($amount, 1);
+			default:
+				return round($amount, 0);
+		}
+	}
 	public function validate_textarea($values)
 	{
 

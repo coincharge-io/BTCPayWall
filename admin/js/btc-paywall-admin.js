@@ -40,6 +40,20 @@
     })
   })
   $(document).ready(function () {
+    $('#btcpw_default_page_currency1, #btcpw_default_page_currency2, #btcpw_default_page_currency3, #btcpw_banner_wide_default_currency1, #btcpw_banner_wide_default_currency2, #btcpw_banner_wide_default_currency3, #btcpw_banner_high_default_currency1, #btcpw_banner_high_default_currency2, #btcpw_banner_high_default_currency3').change(function () {
+      var stepValue = $(this).val() === "BTC"
+          ? "0.00000001"
+          : $(this).val() === "SATS"
+          ? "1"
+          : "0.50";
+
+      $(this).prev('input').attr({
+        step: stepValue,
+        value: parseInt($(this).prev('input').val())
+      })
+    })
+  })
+  $(document).ready(function () {
     $('#btcpw_default_currency').change(function () {
       if ($('#btcpw_default_currency').val() !== 'SATS') {
         $('.btcpw_price_format').hide()

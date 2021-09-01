@@ -36,7 +36,7 @@ $collect = array(
         'mandatory' => $result[0]['mandatory_phone'] ?? false
     ),
     'message' => array(
-        'collect' => $result[0]['collect_address'] ?? false,
+        'collect' => $result[0]['collect_message'] ?? false,
         'mandatory' => $result[0]['mandatory_message'] ?? false
     ),
 
@@ -60,19 +60,19 @@ $fixed_amount = array(
     'value1' => array(
         'enabled' => $result[0]['value1_enabled'] ?? true,
         'currency' => $result[0]['value1_currency'] ?? 'SATS',
-        'amount' => !empty($result[0]['value1_amount']) ? round($result[0]['value1_amount'], 0) : 1000,
+        'amount' => !empty($result[0]['value1_amount']) ? BTCPayWall_Admin::roundAmount($used_currency, $result[0]['value1_amount']) : 1000,
         'icon' => $result[0]['value1_icon'] ?? 'fas fa-coffee'
     ),
     'value2' => array(
         'enabled' => $result[0]['value2_enabled'] ?? true,
         'currency' => $result[0]['value2_currency'] ?? 'SATS',
-        'amount' => !empty($result[0]['value2_amount']) ? round($result[0]['value2_amount'], 0) : 2000,
+        'amount' => !empty($result[0]['value2_amount']) ? BTCPayWall_Admin::roundAmount($used_currency, $result[0]['value2_amount']) : 2000,
         'icon' => $result[0]['value2_icon'] ?? 'fas fa-beer'
     ),
     'value3' => array(
         'enabled' => $result[0]['value3_enabled'] ?? true,
         'currency' => $result[0]['value3_currency'] ?? 'SATS',
-        'amount' => !empty($result[0]['value3_amount']) ? round($result[0]['value3_amount'], 0) : 3000,
+        'amount' => !empty($result[0]['value3_amount']) ? BTCPayWall_Admin::roundAmount($used_currency, $result[0]['value3_amount']) : 3000,
         'icon' => $result[0]['value3_icon'] ?? 'fas fa-cocktail'
     ),
 );
@@ -89,31 +89,31 @@ $id = $result[0]['id'] ?? null;
 <style>
     .btcpw_tipping_page_collect_name_mandatory,
     label[for="btcpw_tipping_page_collect[name][mandatory]"] {
-        visibility: <?php echo ($collect['name']['collect'] ?? 'false') === 'true' ? '' : 'hidden';
+        visibility: <?php echo ($collect['name']['collect']) == true ? '' : 'hidden';
                     ?>;
     }
 
     .btcpw_tipping_page_collect_email_mandatory,
     label[for="btcpw_tipping_page_collect[email][mandatory]"] {
-        visibility: <?php echo ($collect['email']['collect'] ?? 'false') === 'true' ? '' : 'hidden';
+        visibility: <?php echo ($collect['email']['collect']) ? '' : 'hidden';
                     ?>;
     }
 
     .btcpw_tipping_page_collect_address_mandatory,
     label[for="btcpw_tipping_page_collect[address][mandatory]"] {
-        visibility: <?php echo ($collect['address']['collect'] ?? 'false') === 'true' ? '' : 'hidden';
+        visibility: <?php echo ($collect['address']['collect']) == true  ? '' : 'hidden';
                     ?>;
     }
 
     .btcpw_tipping_page_collect_phone_mandatory,
     label[for="btcpw_tipping_page_collect[phone][mandatory]"] {
-        visibility: <?php echo ($collect['phone']['collect'] ?? 'false') === 'true' ? '' : 'hidden';
+        visibility: <?php echo ($collect['phone']['collect']) == true ? '' : 'hidden';
                     ?>;
     }
 
     .btcpw_tipping_page_collect_message_mandatory,
     label[for="btcpw_tipping_page_collect[message][mandatory]"] {
-        visibility: <?php echo ($collect['message']['collect'] ?? 'false') === 'true' ? '' : 'hidden';
+        visibility: <?php echo ($collect['message']['collect']) == true ? '' : 'hidden';
                     ?>;
     }
 </style>

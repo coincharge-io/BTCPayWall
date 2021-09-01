@@ -72,7 +72,7 @@ $collect = array(
         'mandatory' => $result[0]['mandatory_phone'] ?? false
     ),
     'message' => array(
-        'collect' => $result[0]['collect_address'] ?? false,
+        'collect' => $result[0]['collect_message'] ?? false,
         'mandatory' => $result[0]['mandatory_message'] ?? false
     ),
 
@@ -90,31 +90,31 @@ $id = $result[0]['id'] ?? null;
 <style>
     .btcpw_tipping_banner_high_collect_name_mandatory,
     label[for="btcpw_tipping_banner_high_collect[name][mandatory]"] {
-        visibility: <?php echo ($collect['name']['collect'] ?? 'false') === 'true' ? '' : 'hidden';
+        visibility: <?php echo ($collect['name']['collect']) == true ? '' : 'hidden';
                     ?>;
     }
 
     .btcpw_tipping_banner_high_collect_email_mandatory,
     label[for="btcpw_tipping_banner_high_collect[email][mandatory]"] {
-        visibility: <?php echo ($collect['email']['collect'] ?? 'false') === 'true' ? '' : 'hidden';
+        visibility: <?php echo ($collect['email']['collect']) == true ? '' : 'hidden';
                     ?>;
     }
 
     .btcpw_tipping_banner_high_collect_address_mandatory,
     label[for="btcpw_tipping_banner_high_collect[address][mandatory]"] {
-        visibility: <?php echo ($collect['address']['collect'] ?? 'false') === 'true' ? '' : 'hidden';
+        visibility: <?php echo ($collect['address']['collect']) == true ? '' : 'hidden';
                     ?>;
     }
 
     .btcpw_tipping_banner_high_collect_phone_mandatory,
     label[for="btcpw_tipping_banner_high_collect[phone][mandatory]"] {
-        visibility: <?php echo ($collect['phone']['collect'] ?? 'false') === 'true' ? '' : 'hidden';
+        visibility: <?php echo ($collect['phone']['collect']) == true ? '' : 'hidden';
                     ?>;
     }
 
     .btcpw_tipping_banner_high_collect_message_mandatory,
     label[for="btcpw_tipping_banner_high_collect[message][mandatory]"] {
-        visibility: <?php echo ($collect['message']['collect'] ?? 'false') === 'true' ? '' : 'hidden';
+        visibility: <?php echo ($collect['message']['collect']) == true ? '' : 'hidden';
                     ?>;
     }
 </style>
