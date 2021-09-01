@@ -38,19 +38,19 @@ $fixed_amount = array(
     'value1' => array(
         'enabled' => $result[0]['value1_enabled'] ?? true,
         'currency' => $result[0]['value1_currency'] ?? 'SATS',
-        'amount' => !empty($result[0]['value1_amount']) ? round($result[0]['value1_amount'], 0) : 1000,
+        'amount' => !empty($result[0]['value1_amount']) ? BTCPayWall_Admin::roundAmount($used_currency, $result[0]['value1_amount']) : 1000,
         'icon' => $result[0]['value1_icon'] ?? 'fas fa-coffee'
     ),
     'value2' => array(
         'enabled' => $result[0]['value2_enabled'] ?? true,
         'currency' => $result[0]['value2_currency'] ?? 'SATS',
-        'amount' => !empty($result[0]['value2_amount']) ? round($result[0]['value2_amount'], 0) : 2000,
+        'amount' => !empty($result[0]['value2_amount']) ? BTCPayWall_Admin::roundAmount($used_currency, $result[0]['value2_amount']) : 2000,
         'icon' => $result[0]['value2_icon'] ?? 'fas fa-beer'
     ),
     'value3' => array(
         'enabled' => $result[0]['value3_enabled'] ?? true,
         'currency' => $result[0]['value3_currency'] ?? 'SATS',
-        'amount' => !empty($result[0]['value3_amount']) ? round($result[0]['value3_amount'], 0) : 3000,
+        'amount' => !empty($result[0]['value3_amount']) ? BTCPayWall_Admin::roundAmount($used_currency, $result[0]['value3_amount']) : 3000,
         'icon' => $result[0]['value3_icon'] ?? 'fas fa-cocktail'
     ),
 );

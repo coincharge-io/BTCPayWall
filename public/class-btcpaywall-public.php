@@ -886,32 +886,32 @@ class BTCPayWall_Public
 	 */
 	public function render_shortcode_box_tipping($atts)
 	{
-		
+
 		global $wpdb;
-		$id = !empty($atts['id'])?intval($atts['id']) : null;
-        $result = $wpdb->get_results(
+		$id = !empty($atts['id']) ? intval($atts['id']) : null;
+		$result = $wpdb->get_results(
 			$wpdb->prepare("SELECT * FROM wp_btc_forms WHERE id=%d", $id),
 			ARRAY_A
-		);	
-			
+		);
+
 		$atts = shortcode_atts(array(
-			'dimension' => $id?$result[0]['dimension']:'200x710',
-			'title' => $id?$result[0]['title_text']:'Support my work',
-			'description' => $id?$result[0]['description_text']:'',
-			'currency' => $id?$result[0]['currency']:'SATS',
-			'background_color' => $id?'#'.$result[0]['background_color']:'#E6E6E6',
-			'title_text_color' =>  $id?'#'.$result[0]['title_text_color']:'#ffffff',
-			'tipping_text' => $id?$result[0]['tipping_text']:'Enter Tipping Amount',
-			'tipping_text_color' => $id?'#'.$result[0]['tipping_text_color']:'#000000',
-			'redirect' => $id?$result[0]['redirect']: false,
-			'description_color' => $id?'#'.$result[0]['description_text_color']: '#000000',
-			'button_text' => $id?$result[0]['button_text']: 'Tipping now',
-			'button_text_color' => $id?'#'.$result[0]['button_text_color']: '#FFFFFF',
-			'button_color' => $id?'#'.$result[0]['button_color']: '#FE642E',
-			'logo_id' => $id?$result[0]['logo']: '',
-			'background_id' => $id?$result[0]['background']:'',
-			'input_background' => $id?'#'.$result[0]['input_background']: '#ffa500',
-			'background' => $id?'#'.$result[0]['hf_background']: '#1d5aa3',
+			'dimension' => $id ? $result[0]['dimension'] : '250x300',
+			'title' => $id ? $result[0]['title_text'] : 'Support my work',
+			'description' => $id ? $result[0]['description_text'] : '',
+			'currency' => $id ? $result[0]['currency'] : 'SATS',
+			'background_color' => $id ? '#' . $result[0]['background_color'] : '#E6E6E6',
+			'title_text_color' =>  $id ? '#' . $result[0]['title_text_color'] : '#ffffff',
+			'tipping_text' => $id ? $result[0]['tipping_text'] : 'Enter Tipping Amount',
+			'tipping_text_color' => $id ? '#' . $result[0]['tipping_text_color'] : '#000000',
+			'redirect' => $id ? $result[0]['redirect'] : false,
+			'description_color' => $id ? '#' . $result[0]['description_text_color'] : '#000000',
+			'button_text' => $id ? $result[0]['button_text'] : 'Tipping now',
+			'button_text_color' => $id ? '#' . $result[0]['button_text_color'] : '#FFFFFF',
+			'button_color' => $id ? '#' . $result[0]['button_color'] : '#FE642E',
+			'logo_id' => $id ? $result[0]['logo'] : '',
+			'background_id' => $id ? $result[0]['background'] : '',
+			'input_background' => $id ? '#' . $result[0]['input_background'] : '#ffa500',
+			'background' => $id ? '#' . $result[0]['hf_background'] : '#1d5aa3',
 			'widget' => 'false',
 		), $atts);
 
@@ -1116,58 +1116,58 @@ class BTCPayWall_Public
 	 */
 	public function render_shortcode_banner_tipping($atts)
 	{
-		
+
 		global $wpdb;
-		$id = !empty($atts['id'])?intval($atts['id']) : null;
-        $result = $wpdb->get_results(
+		$id = !empty($atts['id']) ? intval($atts['id']) : null;
+		$result = $wpdb->get_results(
 			$wpdb->prepare("SELECT * FROM wp_btc_forms WHERE id=%d", $id),
 			ARRAY_A
 		);
 		$atts = shortcode_atts(array(
-			'dimension' => $id?$result[0]['dimension']:'200x710',
-			'title' => $id?$result[0]['title_text']:'Support my work',
-			'description' => $id?$result[0]['description_text']:'',
-			'currency' => $id?$result[0]['currency']:'SATS',
-			'background_color' => $id?'#'.$result[0]['background_color']:'#E6E6E6',
-			'title_text_color' =>  $id?'#'.$result[0]['title_text_color']:'#ffffff',
-			'tipping_text' => $id?$result[0]['tipping_text']:'Enter Tipping Amount',
-			'tipping_text_color' => $id?'#'.$result[0]['tipping_text_color']:'#000000',
-			'redirect' => $id?$result[0]['redirect']: false,
-			'description_color' => $id?'#'.$result[0]['description_text_color']: '#000000',
-			'button_text' => $id?$result[0]['button_text']: 'Tipping now',
-			'button_text_color' => $id?'#'.$result[0]['button_text_color']: '#FFFFFF',
-			'button_color' => $id?'#'.$result[0]['button_color']: '#FE642E',
-			'logo_id' => $id?$result[0]['logo']: '',
-			'background_id' => $id?$result[0]['background']: '',
-			'free_input' => $id?filter_var($result[0]['free_input'], FILTER_VALIDATE_BOOLEAN):true,
-			'input_background' => $id?'#'.$result[0]['input_background']: '#ffa500',
-			'background' => $id?'#'.$result[0]['hf_background']: '#1d5aa3',
-			'value1_enabled' => $id?filter_var($result[0]['value1_enabled'], FILTER_VALIDATE_BOOLEAN):true,
-			'value1_amount' => $id?round($result[0]['value1_amount'],0):1000,
-			'value1_currency' => $id?$result[0]['value1_currency']:'SATS',
-			'value1_icon' => $id?$result[0]['value1_icon']:'fas fa-coffee',
-			'value2_enabled' => $id?filter_var($result[0]['value2_enabled'], FILTER_VALIDATE_BOOLEAN):true,
-			'value2_amount' => $id?round($result[0]['value2_amount'],0):2000,
-			'value2_currency' => $id?$result[0]['value2_currency']:'SATS',
-			'value2_icon' => $id?$result[0]['value2_icon']:'fas fa-beer',
-			'value3_enabled' => $id?filter_var($result[0]['value3_enabled'], FILTER_VALIDATE_BOOLEAN):true,
-			'value3_amount' => $id?round($result[0]['value3_amount'],0):3000,
-			'value3_currency' => $id?$result[0]['value3_currency']:'SATS',
-			'value3_icon' => $id?$result[0]['value3_icon']:'fas fa-cocktail',
-			'display_name' => $id?filter_var($result[0]['collect_name'], FILTER_VALIDATE_BOOLEAN):false,
-			'mandatory_name' => $id?filter_var($result[0]['mandatory_name'], FILTER_VALIDATE_BOOLEAN):false,
-			'display_email' => $id?filter_var($result[0]['collect_email'], FILTER_VALIDATE_BOOLEAN):false,
-			'mandatory_email' => $id?filter_var($result[0]['mandatory_email'], FILTER_VALIDATE_BOOLEAN):false,
-			'display_phone' => $id?filter_var($result[0]['collect_phone'], FILTER_VALIDATE_BOOLEAN):false,
-			'mandatory_phone' => $id?filter_var($result[0]['mandatory_phone'], FILTER_VALIDATE_BOOLEAN):false,
-			'display_address' => $id?filter_var($result[0]['collect_address'], FILTER_VALIDATE_BOOLEAN):false,
-			'mandatory_address' => $id?filter_var($result[0]['mandatory_address'], FILTER_VALIDATE_BOOLEAN):false,
-			'display_message' => $id?filter_var($result[0]['collect_message'], FILTER_VALIDATE_BOOLEAN):false,
-			'mandatory_message' => $id?filter_var($result[0]['mandatory_message'], FILTER_VALIDATE_BOOLEAN):false,
-			'show_icon'	=>$id? $result[0]['show_icon']:true,
+			'dimension' => $id ? $result[0]['dimension'] : '200x710',
+			'title' => $id ? $result[0]['title_text'] : 'Support my work',
+			'description' => $id ? $result[0]['description_text'] : '',
+			'currency' => $id ? $result[0]['currency'] : 'SATS',
+			'background_color' => $id ? '#' . $result[0]['background_color'] : '#E6E6E6',
+			'title_text_color' =>  $id ? '#' . $result[0]['title_text_color'] : '#ffffff',
+			'tipping_text' => $id ? $result[0]['tipping_text'] : 'Enter Tipping Amount',
+			'tipping_text_color' => $id ? '#' . $result[0]['tipping_text_color'] : '#000000',
+			'redirect' => $id ? $result[0]['redirect'] : false,
+			'description_color' => $id ? '#' . $result[0]['description_text_color'] : '#000000',
+			'button_text' => $id ? $result[0]['button_text'] : 'Tipping now',
+			'button_text_color' => $id ? '#' . $result[0]['button_text_color'] : '#FFFFFF',
+			'button_color' => $id ? '#' . $result[0]['button_color'] : '#FE642E',
+			'logo_id' => $id ? $result[0]['logo'] : '',
+			'background_id' => $id ? $result[0]['background'] : '',
+			'free_input' => $id ? filter_var($result[0]['free_input'], FILTER_VALIDATE_BOOLEAN) : true,
+			'input_background' => $id ? '#' . $result[0]['input_background'] : '#ffa500',
+			'background' => $id ? '#' . $result[0]['hf_background'] : '#1d5aa3',
+			'value1_enabled' => $id ? filter_var($result[0]['value1_enabled'], FILTER_VALIDATE_BOOLEAN) : true,
+			'value1_amount' => $id ? round($result[0]['value1_amount'], 0) : 1000,
+			'value1_currency' => $id ? $result[0]['value1_currency'] : 'SATS',
+			'value1_icon' => $id ? $result[0]['value1_icon'] : 'fas fa-coffee',
+			'value2_enabled' => $id ? filter_var($result[0]['value2_enabled'], FILTER_VALIDATE_BOOLEAN) : true,
+			'value2_amount' => $id ? round($result[0]['value2_amount'], 0) : 2000,
+			'value2_currency' => $id ? $result[0]['value2_currency'] : 'SATS',
+			'value2_icon' => $id ? $result[0]['value2_icon'] : 'fas fa-beer',
+			'value3_enabled' => $id ? filter_var($result[0]['value3_enabled'], FILTER_VALIDATE_BOOLEAN) : true,
+			'value3_amount' => $id ? round($result[0]['value3_amount'], 0) : 3000,
+			'value3_currency' => $id ? $result[0]['value3_currency'] : 'SATS',
+			'value3_icon' => $id ? $result[0]['value3_icon'] : 'fas fa-cocktail',
+			'display_name' => $id ? filter_var($result[0]['collect_name'], FILTER_VALIDATE_BOOLEAN) : false,
+			'mandatory_name' => $id ? filter_var($result[0]['mandatory_name'], FILTER_VALIDATE_BOOLEAN) : false,
+			'display_email' => $id ? filter_var($result[0]['collect_email'], FILTER_VALIDATE_BOOLEAN) : false,
+			'mandatory_email' => $id ? filter_var($result[0]['mandatory_email'], FILTER_VALIDATE_BOOLEAN) : false,
+			'display_phone' => $id ? filter_var($result[0]['collect_phone'], FILTER_VALIDATE_BOOLEAN) : false,
+			'mandatory_phone' => $id ? filter_var($result[0]['mandatory_phone'], FILTER_VALIDATE_BOOLEAN) : false,
+			'display_address' => $id ? filter_var($result[0]['collect_address'], FILTER_VALIDATE_BOOLEAN) : false,
+			'mandatory_address' => $id ? filter_var($result[0]['mandatory_address'], FILTER_VALIDATE_BOOLEAN) : false,
+			'display_message' => $id ? filter_var($result[0]['collect_message'], FILTER_VALIDATE_BOOLEAN) : false,
+			'mandatory_message' => $id ? filter_var($result[0]['mandatory_message'], FILTER_VALIDATE_BOOLEAN) : false,
+			'show_icon'	=> $id ? $result[0]['show_icon'] : true,
 			'widget'	=> false
 		), $atts);
-		
+
 		$dimension = explode('x', ($atts['dimension'] === '200x710' ? '200x450' : '600x200'));
 
 		$supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
@@ -1289,7 +1289,7 @@ class BTCPayWall_Public
 												<input type="radio" class="<?php echo trim("btcpw_skyscraper_tipping_default_amount {$is_wide}"); ?>" id="<?php echo $key . '_' . $is_wide; ?>" name="<?php echo "btcpw_skyscraper_tipping_default_amount_{$is_wide}"; ?>" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?>">
 												<?php if (!empty($fixed_amount[$key]['amount'])) : ?>
 													<?php if (true === $atts['show_icon']) : ?>
-													<i class="<?php echo esc_html($fixed_amount[$key]['icon']); ?>"></i>
+														<i class="<?php echo esc_html($fixed_amount[$key]['icon']); ?>"></i>
 													<?php endif; ?>
 												<?php endif; ?>
 											</div>
@@ -1383,59 +1383,59 @@ class BTCPayWall_Public
 	 */
 	public function render_shortcode_page_tipping($atts)
 	{
-		
+
 		global $wpdb;
-		$id = !empty($atts['id'])?intval($atts['id']) : null;
-        $result = $wpdb->get_results(
+		$id = !empty($atts['id']) ? intval($atts['id']) : null;
+		$result = $wpdb->get_results(
 			$wpdb->prepare("SELECT * FROM wp_btc_forms WHERE id=%d", $id),
 			ARRAY_A
 		);
 		$atts = shortcode_atts(array(
-			'dimension' => $id?$result[0]['dimension']:'200x710',
-			'title' => $id?$result[0]['title_text']:'Support my work',
-			'description' => $id?$result[0]['description_text']:'',
-			'currency' => $id?$result[0]['currency']:'SATS',
-			'background_color' => $id?'#'.$result[0]['background_color']:'#E6E6E6',
-			'title_text_color' =>  $id?'#'.$result[0]['title_text_color']:'#ffffff',
-			'tipping_text' => $id?$result[0]['tipping_text']:'Enter Tipping Amount',
-			'tipping_text_color' => $id?'#'.$result[0]['tipping_text_color']:'#000000',
-			'redirect' => $id?$result[0]['redirect']: false,
-			'description_color' => $id?'#'.$result[0]['description_text_color']: '#000000',
-			'button_text' => $id?$result[0]['button_text']: 'Tipping now',
-			'button_text_color' => $id?'#'.$result[0]['button_text_color']: '#FFFFFF',
-			'button_color' => $id?'#'.$result[0]['button_color']: '#FE642E',
-			'logo_id' => $id?$result[0]['logo']: '',
-			'background_id' => $id?$result[0]['background']: '',
-			'free_input' => $id?filter_var($result[0]['free_input'], FILTER_VALIDATE_BOOLEAN):true,
-			'input_background' => $id?'#'.$result[0]['input_background']: '#ffa500',
-			'background' => $id?'#'.$result[0]['hf_background']: '#1d5aa3',
-			'value1_enabled' => $id?filter_var($result[0]['value1_enabled'], FILTER_VALIDATE_BOOLEAN):true,
-			'value1_amount' => $id?round($result[0]['value1_amount'],0):1000,
-			'value1_currency' => $id?$result[0]['value1_currency']:'SATS',
-			'value1_icon' => $id?$result[0]['value1_icon']:'fas fa-coffee',
-			'value2_enabled' => $id?filter_var($result[0]['value2_enabled'], FILTER_VALIDATE_BOOLEAN):true,
-			'value2_amount' => $id?round($result[0]['value2_amount'],0):2000,
-			'value2_currency' => $id?$result[0]['value2_currency']:'SATS',
-			'value2_icon' => $id?$result[0]['value2_icon']:'fas fa-beer',
-			'value3_enabled' => $id?filter_var($result[0]['value3_enabled'], FILTER_VALIDATE_BOOLEAN):true,
-			'value3_amount' => $id?round($result[0]['value3_amount'],0):3000,
-			'value3_currency' => $id?$result[0]['value3_currency']:'SATS',
-			'value3_icon' => $id?$result[0]['value3_icon']:'fas fa-cocktail',
-			'display_name' => $id?filter_var($result[0]['collect_name'], FILTER_VALIDATE_BOOLEAN):false,
-			'mandatory_name' => $id?filter_var($result[0]['mandatory_name'], FILTER_VALIDATE_BOOLEAN):false,
-			'display_email' => $id?filter_var($result[0]['collect_email'], FILTER_VALIDATE_BOOLEAN):false,
-			'mandatory_email' => $id?filter_var($result[0]['mandatory_email'], FILTER_VALIDATE_BOOLEAN):false,
-			'display_phone' => $id?filter_var($result[0]['collect_phone'], FILTER_VALIDATE_BOOLEAN):false,
-			'mandatory_phone' => $id?filter_var($result[0]['mandatory_phone'], FILTER_VALIDATE_BOOLEAN):false,
-			'display_address' => $id?filter_var($result[0]['collect_address'], FILTER_VALIDATE_BOOLEAN):false,
-			'mandatory_address' => $id?filter_var($result[0]['mandatory_address'], FILTER_VALIDATE_BOOLEAN):false,
-			'display_message' => $id?filter_var($result[0]['collect_message'], FILTER_VALIDATE_BOOLEAN):false,
-			'mandatory_message' => $id?filter_var($result[0]['mandatory_message'], FILTER_VALIDATE_BOOLEAN):false,
-			'step1' => $id? $result[0]['step1']:'Pledge',
-			'active_color' => $id?'#'.$result[0]['active_color']: '#808080',
-			'step2' => $id? $result[0]['step2']:'Info',
-			'inactive_color' => $id?'#'.$result[0]['inactive_color']: '#D3D3D3',
-			'show_icon'	=>$id? $result[0]['show_icon']:true,
+			'dimension' => $id ? $result[0]['dimension'] : '200x710',
+			'title' => $id ? $result[0]['title_text'] : 'Support my work',
+			'description' => $id ? $result[0]['description_text'] : '',
+			'currency' => $id ? $result[0]['currency'] : 'SATS',
+			'background_color' => $id ? '#' . $result[0]['background_color'] : '#E6E6E6',
+			'title_text_color' =>  $id ? '#' . $result[0]['title_text_color'] : '#ffffff',
+			'tipping_text' => $id ? $result[0]['tipping_text'] : 'Enter Tipping Amount',
+			'tipping_text_color' => $id ? '#' . $result[0]['tipping_text_color'] : '#000000',
+			'redirect' => $id ? $result[0]['redirect'] : false,
+			'description_color' => $id ? '#' . $result[0]['description_text_color'] : '#000000',
+			'button_text' => $id ? $result[0]['button_text'] : 'Tipping now',
+			'button_text_color' => $id ? '#' . $result[0]['button_text_color'] : '#FFFFFF',
+			'button_color' => $id ? '#' . $result[0]['button_color'] : '#FE642E',
+			'logo_id' => $id ? $result[0]['logo'] : '',
+			'background_id' => $id ? $result[0]['background'] : '',
+			'free_input' => $id ? filter_var($result[0]['free_input'], FILTER_VALIDATE_BOOLEAN) : true,
+			'input_background' => $id ? '#' . $result[0]['input_background'] : '#ffa500',
+			'background' => $id ? '#' . $result[0]['hf_background'] : '#1d5aa3',
+			'value1_enabled' => $id ? filter_var($result[0]['value1_enabled'], FILTER_VALIDATE_BOOLEAN) : true,
+			'value1_amount' => $id ? round($result[0]['value1_amount'], 0) : 1000,
+			'value1_currency' => $id ? $result[0]['value1_currency'] : 'SATS',
+			'value1_icon' => $id ? $result[0]['value1_icon'] : 'fas fa-coffee',
+			'value2_enabled' => $id ? filter_var($result[0]['value2_enabled'], FILTER_VALIDATE_BOOLEAN) : true,
+			'value2_amount' => $id ? round($result[0]['value2_amount'], 0) : 2000,
+			'value2_currency' => $id ? $result[0]['value2_currency'] : 'SATS',
+			'value2_icon' => $id ? $result[0]['value2_icon'] : 'fas fa-beer',
+			'value3_enabled' => $id ? filter_var($result[0]['value3_enabled'], FILTER_VALIDATE_BOOLEAN) : true,
+			'value3_amount' => $id ? round($result[0]['value3_amount'], 0) : 3000,
+			'value3_currency' => $id ? $result[0]['value3_currency'] : 'SATS',
+			'value3_icon' => $id ? $result[0]['value3_icon'] : 'fas fa-cocktail',
+			'display_name' => $id ? filter_var($result[0]['collect_name'], FILTER_VALIDATE_BOOLEAN) : false,
+			'mandatory_name' => $id ? filter_var($result[0]['mandatory_name'], FILTER_VALIDATE_BOOLEAN) : false,
+			'display_email' => $id ? filter_var($result[0]['collect_email'], FILTER_VALIDATE_BOOLEAN) : false,
+			'mandatory_email' => $id ? filter_var($result[0]['mandatory_email'], FILTER_VALIDATE_BOOLEAN) : false,
+			'display_phone' => $id ? filter_var($result[0]['collect_phone'], FILTER_VALIDATE_BOOLEAN) : false,
+			'mandatory_phone' => $id ? filter_var($result[0]['mandatory_phone'], FILTER_VALIDATE_BOOLEAN) : false,
+			'display_address' => $id ? filter_var($result[0]['collect_address'], FILTER_VALIDATE_BOOLEAN) : false,
+			'mandatory_address' => $id ? filter_var($result[0]['mandatory_address'], FILTER_VALIDATE_BOOLEAN) : false,
+			'display_message' => $id ? filter_var($result[0]['collect_message'], FILTER_VALIDATE_BOOLEAN) : false,
+			'mandatory_message' => $id ? filter_var($result[0]['mandatory_message'], FILTER_VALIDATE_BOOLEAN) : false,
+			'step1' => $id ? $result[0]['step1'] : 'Pledge',
+			'active_color' => $id ? '#' . $result[0]['active_color'] : '#808080',
+			'step2' => $id ? $result[0]['step2'] : 'Info',
+			'inactive_color' => $id ? '#' . $result[0]['inactive_color'] : '#D3D3D3',
+			'show_icon'	=> $id ? $result[0]['show_icon'] : true,
 		), $atts);
 		/* $atts = shortcode_atts(array(
 			'title' => $text['title'],
@@ -1482,7 +1482,7 @@ class BTCPayWall_Public
 			'inactive_color' => $id?'#'.$result[0]['inactive_color']: '#ffa500',
 			'show_icon' => 
 		), $atts); */
-		
+
 		$dimension = explode('x', '520x600');
 		$supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
 		$logo = wp_get_attachment_image_src($atts['logo_id']) ? wp_get_attachment_image_src($atts['logo_id'])[0] : $atts['logo_id'];
@@ -1494,7 +1494,7 @@ class BTCPayWall_Public
 		$first_enabled = array_column($fixed_amount, 'enabled');
 		$d = array_search('true', $first_enabled);
 		$index = 'value' . ($d + 1);
-		
+
 		ob_start();
 	?>
 		<style>

@@ -1576,23 +1576,23 @@ class BTCPayWall_Admin
 	public function render_tipping_box($atts)
 	{
 		$atts = shortcode_atts(array(
-			'dimension' => '',
-			'title' => '',
+			'dimension' =>  '250x300',
+			'title' =>  'Support my work',
 			'description' => '',
-			'currency' => '',
-			'background_color' => '',
-			'title_text_color' => '',
-			'tipping_text' => '',
-			'tipping_text_color' => '',
-			'redirect' => '',
-			'description_color' => '',
-			'button_text' => '',
-			'button_text_color' => '',
-			'button_color' => '',
-			'input_background' => '',
-			'logo_id' => '',
-			'background_id' => '',
-			'background' => ''
+			'currency' => 'SATS',
+			'background_color' =>  '#E6E6E6',
+			'title_text_color' =>  '#ffffff',
+			'tipping_text' =>  'Enter Tipping Amount',
+			'tipping_text_color' =>  '#000000',
+			'redirect' =>  false,
+			'description_color' =>  '#000000',
+			'button_text' => 'Tipping now',
+			'button_text_color' =>  '#FFFFFF',
+			'button_color' =>  '#FE642E',
+			'logo_id' =>  '',
+			'background_id' =>  '',
+			'input_background' =>  '#ffa500',
+			'background' =>  '#1d5aa3',
 		), $atts);
 
 		return do_shortcode("[btcpw_tipping_box dimension='{$atts['dimension']}' title = '{$atts['title']}' description	= '{$atts['description']}'
