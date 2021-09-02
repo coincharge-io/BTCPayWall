@@ -243,15 +243,11 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner-wide", {
               />
             </PanelBody>
             <PanelBody title="Background">
-              <MediaUpload
-                onSelect={(pic) => {
-                  setAttributes({
-                    background_id: pic.sizes.full.url,
-                  });
-                }}
-                render={({ open }) => (
-                  <Button onClick={open}>Background image</Button>
-                )}
+              <MediaPlaceholder
+                labels={{ title: "Background" }}
+                onSelect={(el) => setAttributes({ background_id: el.url })}
+                multiple={false}
+                onSelectURL={(el) => setAttributes({ background_id: el })}
               />
               <ColorPicker
                 color={background_color}
@@ -269,11 +265,11 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner-wide", {
               />
             </PanelBody>
             <PanelBody title="Description">
-              <MediaUpload
-                onSelect={(pic) => {
-                  setAttributes({ logo_id: pic.sizes.full.url });
-                }}
-                render={({ open }) => <Button onClick={open}>Logo</Button>}
+              <MediaPlaceholder
+                labels={{ title: "Logo" }}
+                onSelect={(el) => setAttributes({ logo_id: el.url })}
+                multiple={false}
+                onSelectURL={(el) => setAttributes({ logo_id: el })}
               />
 
               <TextareaControl

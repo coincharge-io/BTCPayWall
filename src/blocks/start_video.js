@@ -11,6 +11,7 @@ import {
   __experimentalNumberControl as NumberControl,
   SelectControl,
 } from "@wordpress/components";
+import ServerSideRender from '@wordpress/server-side-render';
 
 registerBlockType("btc-paywall/gutenberg-start-video-block", {
   title: "BP Pay-per-View Start",
@@ -183,6 +184,7 @@ c655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0
       type: "number",
     },
   },
+  example:{},
   edit: (props) => {
     const {
       attributes: {
@@ -200,10 +202,7 @@ c655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0
     } = props;
     const [show, setShow] = useState(currency === "SATS");
 
-    return (
-      <div>
-        <hr class="btcpw_pay__gutenberg_block_separator"></hr>
-        <InspectorControls>
+    const inspectorControls=(<InspectorControls>
           <PanelBody title="BP Paywall Video" initialOpen={true}>
             <PanelRow>
               <ToggleControl
@@ -315,9 +314,14 @@ c655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0
               />
             </PanelRow>
           </PanelBody>
-        </InspectorControls>
-      </div>
-    );
+        </InspectorControls>);
+        return [
+         <div>
+         <ServerSideRender block="btc-paywall/gutenberg-start-video-block" attributes={pay_view_block,
+        btc_format, title, description, preview, currency, duration_type, price, duration}/>
+         {inspectorControls}
+         </div>
+       ];
   },
   save: (props) => {
     return null;

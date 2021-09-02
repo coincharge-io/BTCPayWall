@@ -1723,6 +1723,32 @@ class BTCPayWall_Admin
 			[
 				'editor_script' => 'gutenberg-block-script',
 				'render_callback' => (array($this, 'render_gutenberg')),
+				'attributes'	=> array(
+					'pay_block' =>  array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'btc_format' =>  array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'currency' =>  array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'price' =>  array(
+						'type'	=> 'string',
+						'default' => '1000'
+					),
+					'duration' =>  array(
+						'type'	=> 'string',
+						'default' => '20'
+					),
+					'duration_type' =>  array(
+						'type'	=> 'string',
+						'default' => 'minute'
+					),
+				)
 			]
 		);
 
@@ -1740,6 +1766,44 @@ class BTCPayWall_Admin
 			[
 				'editor_script' => 'gutenberg-block-script',
 				'render_callback' => (array($this, 'render_start_video_gutenberg')),
+				'attributes'	=> array(
+					'pay_block' =>  array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'btc_format' =>  array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'title' => array(
+						'type'	=> 'string',
+						'default' => 'Untitled'
+					),
+					'description' =>  array(
+						'type'	=> 'string',
+						'default' => ''
+					),
+					'preview' =>  array(
+						'type'	=> 'string',
+						'default' => ''
+					),
+					'currency' =>  array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'price' =>  array(
+						'type'	=> 'string',
+						'default' => '1000'
+					),
+					'duration' =>  array(
+						'type'	=> 'string',
+						'default' => '20'
+					),
+					'duration_type' =>  array(
+						'type'	=> 'string',
+						'default' => 'minute'
+					),
+				)
 			]
 		);
 
@@ -1756,6 +1820,48 @@ class BTCPayWall_Admin
 			[
 				'editor_script' => 'gutenberg-block-script',
 				'render_callback' => (array($this, 'render_file_gutenberg')),
+				'attributes'	=> array(
+					'pay_file_block' =>  array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'btc_format' =>  array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'file' => array(
+						'type'	=> 'string',
+						'default' => 'paywall_example.pdf'
+					),
+					'title' => array(
+						'type'	=> 'string',
+						'default' => 'Untitled'
+					),
+					'description' =>  array(
+						'type'	=> 'string',
+						'default' => ''
+					),
+					'preview' =>  array(
+						'type'	=> 'string',
+						'default' => ''
+					),
+					'currency' =>  array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'price' =>  array(
+						'type'	=> 'string',
+						'default' => '1000'
+					),
+					'duration' =>  array(
+						'type'	=> 'string',
+						'default' => '20'
+					),
+					'duration_type' =>  array(
+						'type'	=> 'string',
+						'default' => 'minute'
+					),
+				)
 			]
 		);
 
