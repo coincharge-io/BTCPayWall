@@ -5,6 +5,7 @@ import {
   MediaPlaceholder,
   URLInputButton,
 } from "@wordpress/block-editor";
+import ServerSideRender from '@wordpress/server-side-render';
 import {
   TextControl,
   TextareaControl,
@@ -18,17 +19,15 @@ import {
   __experimentalNumberControl as NumberControl,
 } from "@wordpress/components";
 
-import { useState } from "@wordpress/element";
-
-registerBlockType("btc-paywall/gutenberg-tipping-banner", {
-  title: "BP Tipping Banner",
+registerBlockType("btc-paywall/gutenberg-tipping-banner-wide", {
+  title: "BP Tipping Banner Wide",
   icon: "dashicons-screenoptions",
   category: "widgets",
-  keywords: ["tipping", "tipping-banner"],
+  keywords: ["tipping", "tipping-banner-wide"],
   attributes: {
     dimension: {
       type: "string",
-      default: "250x300",
+      default: "600x280",
     },
     title: {
       type: "string",
@@ -41,9 +40,6 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
     currency: {
       type: "string",
     },
-    background_color: {
-      type: "string",
-    },
     title_text_color: {
       type: "string",
     },
@@ -53,10 +49,6 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
     },
     tipping_text_color: {
       type: "string",
-    },
-    background_image: {
-      type: "string",
-      default: "",
     },
     redirect: {
       type: "string",
@@ -80,8 +72,12 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
     },
     logo_id: {
       type: "string",
+      default:'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg'
     },
     background: {
+      type: "string",
+    },
+    background_color: {
       type: "string",
     },
     background_id: {
@@ -179,7 +175,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
       type: "boolean",
       default: true,
     },
-    showIcon: {
+    show_icon: {
       type: "boolean",
       default: true,
     },
@@ -189,8 +185,8 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
     const {
       attributes: {
         dimension,
-        background_color,
         background,
+        background_color,
         background_id,
         logo_id,
         input_background,
@@ -204,7 +200,6 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
         tipping_text,
         tipping_text_color,
         description,
-        background_image,
         currency,
         value1_amount,
         value1_currency,
@@ -229,15 +224,12 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
         mandatory_message,
         mandatory_name,
         free_input,
-        showIcon
+        show_icon
       },
       setAttributes,
     } = props;
     
-    return (
-      <div>
-        <hr class="btcpw_pay__gutenberg_block_separator"></hr>
-        <InspectorControls>
+    const inspectorControls=(<InspectorControls>
           <Panel>
             <PanelBody title="Dimension" initialOpen={true}>
               <SelectControl
@@ -246,9 +238,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
                   setAttributes({ dimension: selectedItem });
                 }}
                 options={[
-                  { value: "", label: "Default" },
-                  { value: "200x710", label: "200x710" },
-                  { value: "600x280", label: "600x280" },
+                  { value: "600x280", label: "Default" },
                 ]}
               />
             </PanelBody>
@@ -256,7 +246,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
               <MediaUpload
                 onSelect={(pic) => {
                   setAttributes({
-                    background_image: pic.sizes.full.url,
+                    background_id: pic.sizes.full.url,
                   });
                 }}
                 render={({ open }) => (
@@ -358,8 +348,8 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
               <CheckboxControl
                 label="Display icons"
                 help="Do you want to display icons?"
-                checked={showIcon}
-                onChange={(newvalue) => setAttributes({ showIcon: newvalue })
+                checked={show_icon}
+                onChange={(newvalue) => setAttributes({ show_icon: newvalue })
                 }
               />
               <SelectControl
@@ -599,8 +589,15 @@ registerBlockType("btc-paywall/gutenberg-tipping-banner", {
             </PanelBody>
           </Panel>
         </InspectorControls>
-      </div>
     );
+    return [
+         <div>
+         <ServerSideRender block="btc-paywall/gutenberg-tipping-banner-wide" attributes={dimension, background_color,background, background_id, logo_id, input_background, button_color, button_text, button_text_color, description_color, redirect, title, title_text_color, tipping_text, tipping_text_color, description, currency, value1_amount, value1_currency, value1_enabled, value1_icon, value2_amount, value2_currency, value2_enabled,
+        value2_icon, value3_amount, value3_currency, value3_enabled, value3_icon, display_name, display_email, display_message, display_phone, display_address, mandatory_address, mandatory_email, mandatory_phone, mandatory_message, mandatory_name, free_input, show_icon}/>
+         {inspectorControls}
+         
+         </div>
+       ];
   },
   save: (props) => {
     return null;

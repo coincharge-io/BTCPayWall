@@ -1362,14 +1362,6 @@ class BTCPayWall_Admin
 			'params' => array(),
 		));
 
-		vc_map(array(
-			'name' => 'BP Video Catalog',
-			'base' => 'btcpw_store',
-			'description' => 'Show Videos',
-			'category' => 'Content',
-			'icon' => plugin_dir_url(__FILE__) . 'img/icon.svg',
-			'params' => array(),
-		));
 
 		vc_map(array(
 			'name' => 'BP Pay-per-File',
@@ -1481,7 +1473,6 @@ class BTCPayWall_Admin
 		require_once __DIR__ . '/elementor/class-pay-block-widget.php';
 		require_once __DIR__ . '/elementor/class-start-video-widget.php';
 		require_once __DIR__ . '/elementor/class-end-video-widget.php';
-		require_once __DIR__ . '/elementor/class-store-widget.php';
 		require_once __DIR__ . '/elementor/class-file-widget.php';
 
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Start_Content_Widget());
@@ -1489,7 +1480,6 @@ class BTCPayWall_Admin
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Pay_Block_Widget());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Start_Video_Widget());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_End_Video_Widget());
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Store_Widget());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_File_Widget());
 	}
 
@@ -1744,13 +1734,6 @@ class BTCPayWall_Admin
 			]
 		);
 
-		register_block_type(
-			'btc-paywall/gutenberg-catalog-view',
-			[
-				'editor_script' => 'gutenberg-block-script',
-				'render_callback' => (array($this, 'render_video_catalog_gutenberg')),
-			]
-		);
 
 		register_block_type(
 			'btc-paywall/gutenberg-start-video-block',
@@ -1781,14 +1764,424 @@ class BTCPayWall_Admin
 			[
 				'editor_script' => 'gutenberg-block-script',
 				'render_callback' => (array($this, 'render_tipping_box')),
+				'attributes'	=> array(
+					'dimension' =>  array(
+						'type'	=> 'string',
+						'default' => '250x300'
+					),
+					'title' =>  array(
+						'type'	=> 'string',
+						'default' => 'Support my work'
+					),
+					'description' => array(
+						'type'	=> 'string',
+						'default' => ''
+					),
+					'currency' => array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'background_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#E6E6E6'
+					),
+					'title_text_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#ffffff'
+					),
+					'tipping_text' =>  array(
+						'type'	=> 'string',
+						'default' => 'Enter Tipping Amount'
+					),
+					'tipping_text_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#000000'
+					),
+					'redirect' =>  array(
+						'type'	=> 'string',
+						'default' => ''
+					),
+					'description_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#000000'
+					),
+					'button_text' => array(
+						'type'	=> 'string',
+						'default' => 'Tipping now'
+					),
+					'button_text_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#FFFFFF'
+					),
+					'button_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#FE642E'
+					),
+					'logo_id' =>  array(
+						'type'	=> 'string',
+						'default' => 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg'
+					),
+					'background_id' =>  array(
+						'type'	=> 'string',
+						'default' => ''
+					),
+					'input_background' =>  array(
+						'type'	=> 'string',
+						'default' => '#ffa500'
+					),
+					'background' =>  array(
+						'type'	=> 'string',
+						'default' => '#1d5aa3'
+					),
+				)
 			]
 		);
 
 		register_block_type(
-			'btc-paywall/gutenberg-tipping-banner',
+			'btc-paywall/gutenberg-tipping-banner-wide',
 			[
 				'editor_script' => 'gutenberg-block-script',
 				'render_callback' => (array($this, 'render_tipping_banner')),
+				'attributes'	=> array(
+					'dimension' =>  array(
+						'type'	=> 'string',
+						'default' => '600x280'
+					),
+					'title' =>  array(
+						'type'	=> 'string',
+						'default' => 'Support my work'
+					),
+					'description' => array(
+						'type'	=> 'string',
+						'default' => ''
+					),
+					'currency' => array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'background_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#E6E6E6'
+					),
+					'title_text_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#ffffff'
+					),
+					'tipping_text' =>  array(
+						'type'	=> 'string',
+						'default' => 'Enter Tipping Amount'
+					),
+					'tipping_text_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#000000'
+					),
+					'redirect' =>  array(
+						'type'	=> 'string',
+						'default' => ''
+					),
+					'description_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#000000'
+					),
+					'button_text' => array(
+						'type'	=> 'string',
+						'default' => 'Tipping now'
+					),
+					'button_text_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#FFFFFF'
+					),
+					'button_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#FE642E'
+					),
+					'logo_id' =>  array(
+						'type'	=> 'string',
+						'default' => 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg'
+					),
+					'background_id' =>  array(
+						'type'	=> 'string',
+						'default' => ''
+					),
+					'input_background' =>  array(
+						'type'	=> 'string',
+						'default' => '#ffa500'
+					),
+					'background' =>  array(
+						'type'	=> 'string',
+						'default' => '#1d5aa3'
+					),
+					'value1_enabled' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'value1_amount' =>  array(
+						'type'	=> 'string',
+						'default' => '1000'
+					),
+					'value1_currency' =>  array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'value1_icon' =>  array(
+						'type'	=> 'string',
+						'default' => 'fas fa-coffee'
+					),
+					'value2_enabled' =>  array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'value2_amount' => array(
+						'type'	=> 'string',
+						'default' => '2000'
+					),
+					'value2_currency' =>  array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'value2_icon' =>  array(
+						'type'	=> 'string',
+						'default' => 'fas fa-beer'
+					),
+					'value3_enabled' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'value3_amount' =>  array(
+						'type'	=> 'string',
+						'default' => '3000'
+					),
+					'value3_currency' => array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'value3_icon' =>  array(
+						'type'	=> 'string',
+						'default' => 'fas fa-cocktail'
+					),
+					'display_name' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'mandatory_name' => array(
+						'type'	=> 'boolean',
+						'default' => false
+					),
+					'display_email' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'mandatory_email' => array(
+						'type'	=> 'boolean',
+						'default' => false
+					),
+					'display_phone' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'mandatory_phone' => array(
+						'type'	=> 'boolean',
+						'default' => false
+					),
+					'display_address' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'mandatory_address' => array(
+						'type'	=> 'boolean',
+						'default' => false
+					),
+					'display_message' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'mandatory_message' => array(
+						'type'	=> 'boolean',
+						'default' => false
+					),
+					'show_icon'	=>  array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'free_input'	=>  array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+				)
+			]
+		);
+
+		register_block_type(
+			'btc-paywall/gutenberg-tipping-banner-high',
+			[
+				'editor_script' => 'gutenberg-block-script',
+				'render_callback' => (array($this, 'render_tipping_banner')),
+				'attributes'	=> array(
+					'dimension' =>  array(
+						'type'	=> 'string',
+						'default' => '200x710'
+					),
+					'title' =>  array(
+						'type'	=> 'string',
+						'default' => 'Support my work'
+					),
+					'description' => array(
+						'type'	=> 'string',
+						'default' => ''
+					),
+					'currency' => array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'background_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#E6E6E6'
+					),
+					'title_text_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#ffffff'
+					),
+					'tipping_text' =>  array(
+						'type'	=> 'string',
+						'default' => 'Enter Tipping Amount'
+					),
+					'tipping_text_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#000000'
+					),
+					'redirect' =>  array(
+						'type'	=> 'string',
+						'default' => ''
+					),
+					'description_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#000000'
+					),
+					'button_text' => array(
+						'type'	=> 'string',
+						'default' => 'Tipping now'
+					),
+					'button_text_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#FFFFFF'
+					),
+					'button_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#FE642E'
+					),
+					'logo_id' =>  array(
+						'type'	=> 'string',
+						'default' => 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg'
+					),
+					'background_id' =>  array(
+						'type'	=> 'string',
+						'default' => ''
+					),
+					'input_background' =>  array(
+						'type'	=> 'string',
+						'default' => '#ffa500'
+					),
+					'background' =>  array(
+						'type'	=> 'string',
+						'default' => '#1d5aa3'
+					),
+					'value1_enabled' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'value1_amount' =>  array(
+						'type'	=> 'string',
+						'default' => '1000'
+					),
+					'value1_currency' =>  array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'value1_icon' =>  array(
+						'type'	=> 'string',
+						'default' => 'fas fa-coffee'
+					),
+					'value2_enabled' =>  array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'value2_amount' => array(
+						'type'	=> 'string',
+						'default' => '2000'
+					),
+					'value2_currency' =>  array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'value2_icon' =>  array(
+						'type'	=> 'string',
+						'default' => 'fas fa-beer'
+					),
+					'value3_enabled' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'value3_amount' =>  array(
+						'type'	=> 'string',
+						'default' => '3000'
+					),
+					'value3_currency' => array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'value3_icon' =>  array(
+						'type'	=> 'string',
+						'default' => 'fas fa-cocktail'
+					),
+					'display_name' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'mandatory_name' => array(
+						'type'	=> 'boolean',
+						'default' => false
+					),
+					'display_email' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'mandatory_email' => array(
+						'type'	=> 'boolean',
+						'default' => false
+					),
+					'display_phone' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'mandatory_phone' => array(
+						'type'	=> 'boolean',
+						'default' => false
+					),
+					'display_address' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'mandatory_address' => array(
+						'type'	=> 'boolean',
+						'default' => false
+					),
+					'display_message' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'mandatory_message' => array(
+						'type'	=> 'boolean',
+						'default' => false
+					),
+					'show_icon'	=>  array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'free_input'	=>  array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+				)
 			]
 		);
 
@@ -1797,6 +2190,188 @@ class BTCPayWall_Admin
 			[
 				'editor_script' => 'gutenberg-block-script',
 				'render_callback' => (array($this, 'render_tipping_pages')),
+				'attributes'	=> array(
+					'dimension' =>  array(
+						'type'	=> 'string',
+						'default' => '200x710'
+					),
+					'title' =>  array(
+						'type'	=> 'string',
+						'default' => 'Support my work'
+					),
+					'description' => array(
+						'type'	=> 'string',
+						'default' => ''
+					),
+					'currency' => array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'background_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#E6E6E6'
+					),
+					'title_text_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#ffffff'
+					),
+					'tipping_text' =>  array(
+						'type'	=> 'string',
+						'default' => 'Enter Tipping Amount'
+					),
+					'tipping_text_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#000000'
+					),
+					'redirect' =>  array(
+						'type'	=> 'string',
+						'default' => ''
+					),
+					'description_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#000000'
+					),
+					'button_text' => array(
+						'type'	=> 'string',
+						'default' => 'Tipping now'
+					),
+					'button_text_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#FFFFFF'
+					),
+					'button_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#FE642E'
+					),
+					'logo_id' =>  array(
+						'type'	=> 'string',
+						'default' => 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg'
+					),
+					'background_id' =>  array(
+						'type'	=> 'string',
+						'default' => ''
+					),
+					'input_background' =>  array(
+						'type'	=> 'string',
+						'default' => '#ffa500'
+					),
+					'background' =>  array(
+						'type'	=> 'string',
+						'default' => '#1d5aa3'
+					),
+					'value1_enabled' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'value1_amount' =>  array(
+						'type'	=> 'string',
+						'default' => '1000'
+					),
+					'value1_currency' =>  array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'value1_icon' =>  array(
+						'type'	=> 'string',
+						'default' => 'fas fa-coffee'
+					),
+					'value2_enabled' =>  array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'value2_amount' => array(
+						'type'	=> 'string',
+						'default' => '2000'
+					),
+					'value2_currency' =>  array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'value2_icon' =>  array(
+						'type'	=> 'string',
+						'default' => 'fas fa-beer'
+					),
+					'value3_enabled' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'value3_amount' =>  array(
+						'type'	=> 'string',
+						'default' => '3000'
+					),
+					'value3_currency' => array(
+						'type'	=> 'string',
+						'default' => 'SATS'
+					),
+					'value3_icon' =>  array(
+						'type'	=> 'string',
+						'default' => 'fas fa-cocktail'
+					),
+					'display_name' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'mandatory_name' => array(
+						'type'	=> 'boolean',
+						'default' => false
+					),
+					'display_email' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'mandatory_email' => array(
+						'type'	=> 'boolean',
+						'default' => false
+					),
+					'display_phone' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'mandatory_phone' => array(
+						'type'	=> 'boolean',
+						'default' => false
+					),
+					'display_address' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'mandatory_address' => array(
+						'type'	=> 'boolean',
+						'default' => false
+					),
+					'display_message' => array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'mandatory_message' => array(
+						'type'	=> 'boolean',
+						'default' => false
+					),
+					'show_icon'	=>  array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'free_input'	=>  array(
+						'type'	=> 'boolean',
+						'default' => true
+					),
+					'step1' =>  array(
+						'type'	=> 'string',
+						'default' => 'Pledge'
+					),
+					'step2' =>  array(
+						'type'	=> 'string',
+						'default' => 'Infp'
+					),
+					'active_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#808080'
+					),
+					'inactive_color' =>  array(
+						'type'	=> 'string',
+						'default' => '#D3D3D3'
+					),
+				)
 			]
 		);
 	}

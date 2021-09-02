@@ -19,15 +19,15 @@ import {
 } from "@wordpress/components";
 import ServerSideRender from '@wordpress/server-side-render';
 
-registerBlockType("btc-paywall/gutenberg-tipping-page", {
-  title: "BP Tipping Page",
+registerBlockType("btc-paywall/gutenberg-tipping-banner-high", {
+  title: "BP Tipping Banner High",
   icon: "dashicons-screenoptions",
   category: "widgets",
-  keywords: ["tipping", "tipping-page"],
+  keywords: ["tipping", "tipping-banner-high"],
   attributes: {
     dimension: {
       type: "string",
-      default: "250x300",
+      default: "200x710",
     },
     title: {
       type: "string",
@@ -133,7 +133,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
     },
     display_name: {
       type: "boolean",
-      default: true,
+      default: false,
     },
     mandatory_name: {
       type: "boolean",
@@ -171,30 +171,14 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
       type: "boolean",
       default: false,
     },
-    step1: {
-      type: "string",
-      default: "Pledge"
-    },
-    step2: {
-      type: "string",
-      default: "Info"
-    },
-    active_color: {
-      type: "string",
-      default: "#808080"
-    },
-    inactive_color: {
-      type: "string",
-      default: "#D3D3D3"
-    },
     free_input: {
       type: "boolean",
       default: true,
     },
     show_icon: {
       type: "boolean",
-      default: true
-    }
+      default: true,
+    },
   },
   example: {},
   edit: (props) => {
@@ -203,6 +187,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
         dimension,
         background,
         background_id,
+        background_color,
         logo_id,
         input_background,
         button_color,
@@ -210,7 +195,6 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
         button_text_color,
         description_color,
         redirect,
-        background_color,
         title,
         title_text_color,
         tipping_text,
@@ -240,15 +224,13 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
         mandatory_message,
         mandatory_name,
         free_input,
-        step1,
-        step2,
-        active_color,
-        inactive_color,
         show_icon
       },
       setAttributes,
     } = props;
-    const inspectorControls=(<InspectorControls>
+    
+    const inspectorControls= (
+        <InspectorControls>
           <Panel>
             <PanelBody title="Dimension" initialOpen={true}>
               <SelectControl
@@ -257,7 +239,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
                   setAttributes({ dimension: selectedItem });
                 }}
                 options={[
-                  { value: "520x600", label: "Default" },
+                  { value: "200x710", label: "Default" },
                 ]}
               />
             </PanelBody>
@@ -356,23 +338,20 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
                 }
                 disableAlpha
               />
-
               <CheckboxControl
                 label="Display free input"
                 help="Do you want to display free input field?"
                 checked={free_input}
-                onChange={(newvalue) => {
-                  setAttributes({ free_input: newvalue });
-                  }}
+                onChange={(newvalue) => setAttributes({ free_input: newvalue })
+                  }
               />
-
+              
               <CheckboxControl
-                label="Display icon"
+                label="Display icons"
                 help="Do you want to display icons?"
                 checked={show_icon}
-                onChange={(value) => {
-                  setAttributes({ show_icon: value });
-                }}
+                onChange={(newvalue) => setAttributes({ show_icon: newvalue })
+                }
               />
               <SelectControl
                 label="Currency"
@@ -388,7 +367,6 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
                   { value: "USD", label: "USD" },
                 ]}
               />
-              
             </PanelBody>
             <PanelBody title="Amount">
               
@@ -467,7 +445,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
                 help="Do you want to display value 3?"
                 checked={value3_enabled}
                 onChange={(value) => {
-                  setAttributes({ value3_enabled: value });
+                  setAttributes({ value3_enabled: value })
                 }}
               />
               <SelectControl
@@ -522,47 +500,6 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
                 }
                 disableAlpha
               />
-            </PanelBody>
-            <PanelBody title="Tabs">
-              <PanelRow>
-              <TextareaControl
-                label="Step1"
-                help="Enter step1 text"
-                onChange={(content) => {
-                  setAttributes({ step1: content });
-                }}
-                value={step1}
-              />
-
-
-<ColorPicker
-                color={active_color}
-                onChangeComplete={(value) =>
-                  setAttributes({ active_color: value.hex })
-                }
-                disableAlpha
-              />
-              </PanelRow>
-
-              <PanelRow>
-              <TextareaControl
-                label="Step2"
-                help="Enter step2 text"
-                onChange={(content) => {
-                  setAttributes({ step2: content });
-                }}
-                value={step1}
-              />
-
-
-<ColorPicker
-                color={inactive_color}
-                onChangeComplete={(value) =>
-                  setAttributes({ inactive_color: value.hex })
-                }
-                disableAlpha
-              />
-              </PanelRow>
             </PanelBody>
             <PanelBody title="Collect further information">
               <PanelRow>
@@ -621,9 +558,9 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
                   label="Phone"
                   checked={display_phone}
                   help="Do you want to collect phone?"
-                  onChange={(value) => {
-                    setAttributes({ display_phone: value });
-                  }}
+                  onChange={(value) => 
+                    setAttributes({ display_phone: value })
+                  }
                 />
                 <CheckboxControl
                   help="Do you want make this field mandatory?"
@@ -639,14 +576,14 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
                   help="Do you want to collect message?"
                   checked={display_message}
                   onChange={(value) => {
-                    setAttributes({ display_message: displayMessage });
+                    setAttributes({ display_message: value });
                   }}
                 />
                 <CheckboxControl
                   help="Do you want make this field mandatory?"
                   checked={mandatory_message}
                   onChange={(value) => {
-                    setAttributes({ mandatory_message: mandatory_message });
+                    setAttributes({ mandatory_message: value });
                   }}
                 />
               </PanelRow>
@@ -655,13 +592,8 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
         </InspectorControls>);
         return [
          <div>
-         <ServerSideRender block="btc-paywall/gutenberg-tipping-page" attributes={dimension,background_color, background, background_id, logo_id, input_background, button_color,
-        button_text, button_text_color, description_color, redirect, title, title_text_color,
-        tipping_text, tipping_text_color, description, currency, value1_amount,
-        value1_currency, value1_enabled, value1_icon, value2_amount, value2_currency, value2_enabled,
-        value2_icon, value3_amount, value3_currency, value3_enabled, value3_icon, display_name,
-        display_email, display_message, display_phone, display_address, mandatory_address, mandatory_email, mandatory_phone, mandatory_message, mandatory_name, free_input, step1,
-        step2, active_color, inactive_color, show_icon}/>
+         <ServerSideRender block="btc-paywall/gutenberg-tipping-banner-high" attributes={dimension, background_color, background, background_id, logo_id, input_background, button_color, button_text, button_text_color, description_color, redirect, title, title_text_color, tipping_text, tipping_text_color, description, currency, value1_amount, value1_currency, value1_enabled, value1_icon, value2_amount, value2_currency, value2_enabled,
+        value2_icon, value3_amount, value3_currency, value3_enabled, value3_icon, display_name, display_email, display_message, display_phone, display_address, mandatory_address, mandatory_email, mandatory_phone, mandatory_message, mandatory_name, free_input, show_icon}/>
          {inspectorControls}
          
          </div>

@@ -5,5 +5,6 @@ import "./blocks/end_video";
 import "./blocks/video_catalog";
 import "./blocks/file";
 import "./blocks/tipping_box";
-import "./blocks/tipping_banner";
+import "./blocks/tipping_banner_wide";
+import "./blocks/tipping_banner_high";
 import "./blocks/tipping_page";

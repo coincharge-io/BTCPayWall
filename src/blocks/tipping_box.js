@@ -1,4 +1,5 @@
 import { registerBlockType } from "@wordpress/blocks";
+import ServerSideRender from '@wordpress/server-side-render';
 import {
   InspectorControls,
   MediaUpload,
@@ -15,7 +16,6 @@ import {
   Button,
   Panel,
 } from "@wordpress/components";
-import { useState } from "@wordpress/element";
 
 registerBlockType("btc-paywall/gutenberg-tipping-box", {
   title: "BP Tipping Box",
@@ -36,9 +36,6 @@ registerBlockType("btc-paywall/gutenberg-tipping-box", {
       default: "",
     },
     currency: {
-      type: "string",
-    },
-    background_color: {
       type: "string",
     },
     title_text_color: {
@@ -77,8 +74,12 @@ registerBlockType("btc-paywall/gutenberg-tipping-box", {
     },
     logo_id: {
       type: "string",
+      default:'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg'
     },
     background: {
+      type: "string",
+    },
+    background_color: {
       type: "string",
     },
     background_id: {
@@ -110,10 +111,8 @@ registerBlockType("btc-paywall/gutenberg-tipping-box", {
       },
       setAttributes,
     } = props;
-    return (
-      <div>
-        <hr class="btcpw_pay__gutenberg_block_separator"></hr>
-        <InspectorControls>
+    
+       const inspectorControls= (<InspectorControls>
           <Panel>
             <PanelBody title="Dimension" initialOpen={true}>
               <SelectControl
@@ -132,7 +131,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-box", {
               <MediaUpload
                 onSelect={(pic) => {
                   setAttributes({
-                    background_image: pic.sizes.full.url,
+                    background_id: pic.sizes.full.url,
                   });
                 }}
                 render={({ open }) => (
@@ -264,8 +263,29 @@ registerBlockType("btc-paywall/gutenberg-tipping-box", {
             </PanelBody>
           </Panel>
         </InspectorControls>
-      </div>
-    );
+       );
+       return [
+         <div>
+         <ServerSideRender block="btc-paywall/gutenberg-tipping-box" attributes={dimension, background_color,
+        background,
+        background_id,
+        logo_id,
+        input_background,
+        button_color,
+        button_text,
+        button_text_color,
+        description_color,
+        redirect,
+        title,
+        title_text_color,
+        tipping_text,
+        tipping_text_color,
+        description,
+        currency}/>
+         {inspectorControls}
+         
+         </div>
+       ];
   },
   save: (props) => {
     return null;
