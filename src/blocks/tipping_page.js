@@ -191,7 +191,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
       type: "string",
       default: "#D3D3D3"
     },
-    freeInput: {
+    free_input: {
       type: "boolean",
       default: true,
     },
@@ -244,7 +244,7 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
         mandatory_phone,
         mandatory_message,
         mandatory_name,
-        freeInput,
+        free_input,
         step1,
         step2,
         active_color,
@@ -368,9 +368,9 @@ registerBlockType("btc-paywall/gutenberg-tipping-page", {
               <CheckboxControl
                 label="Display free input"
                 help="Do you want to display free input field?"
-                checked={freeInput}
+                checked={free_input}
                 onChange={(newvalue) => {
-                  setAttributes({ freeInput: newvalue });
+                  setAttributes({ free_input: newvalue });
                   }}
               />
 
