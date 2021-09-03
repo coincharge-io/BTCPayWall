@@ -19,7 +19,7 @@ class Tipping_Banner_Wide extends WP_Widget
         $logo = wp_get_attachment_image_src($instance['logo_id']) ? wp_get_attachment_image_src($instance['logo_id'])[0] : $instance['logo_id'];
         $background = wp_get_attachment_image_src($instance['background_id']) ? wp_get_attachment_image_src($instance['background_id'])[0] : $instance['background_id'];
         $collect = BTCPayWall_Public::getCollect($instance);
-        $collect_data = BTCPayWall_Public::display_is_enabled($collect);
+        $collect_data = filter_var(BTCPayWall_Public::display_is_enabled($collect), FILTER_VALIDATE_BOOL);
         $fixed_amount = BTCPayWall_Public::getFixedAmount($instance);
 
         $first_enabled = array_column($fixed_amount, 'enabled');
@@ -156,7 +156,7 @@ class Tipping_Banner_Wide extends WP_Widget
 
                             <div id="btcpw_widget_btcpw_skyscraper_button_wide">
                                 <input type="hidden" id="btcpw_widget_btcpw_skyscraper_redirect_link_wide" name="btcpw_widget_btcpw_skyscraper_redirect_link_wide" value=<?php echo ($instance['redirect']); ?> />
-                                <?php if (filter_var($collect_data, FILTER_VALIDATE_BOOL) === true) : ?>
+                                <?php if ($collect_data === true) : ?>
                                     <div>
                                         <input type="button" name="next" class="btcpw_widget skyscraper-next-form wide" value="Continue >" />
                                     </div>

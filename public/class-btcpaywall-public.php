@@ -1167,6 +1167,7 @@ class BTCPayWall_Public
 			'show_icon'	=> $id ? filter_var($result[0]['show_icon'], FILTER_VALIDATE_BOOLEAN) : true,
 			'widget'	=> false
 		), $atts);
+
 		$dimension = explode('x', ($atts['dimension'] === '200x710' ? '200x450' : '600x200'));
 
 		$supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
