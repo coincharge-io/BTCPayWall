@@ -784,149 +784,7 @@ class BTCPayWall_Admin
 
 		//return ob_get_clean();
 	}
-	/* public static function outputShortcodeAttributes($name, $atts)
-	{
-		switch ($name) {
 
-			case 'Tipping Box':
-				return "[btcpw_tipping_box dimension={$atts['dimension']} title = {$atts['title_text']} description = {$atts['description_text']}
-				currency = {$atts['currency']}
-				background_color = {$atts['background_color']}
-				title_text_color = {$atts['title_text_color']}
-				tipping_text = {$atts['tipping_text']}
-				tipping_text_color = {$atts['tipping_text_color']}
-				redirect = {$atts['redirect']}
-				description_text_color = {$atts['description_text_color']}
-				button_text = {$atts['button_text']}
-				button_text_color = {$atts['button_text_color']}
-				button_color = {$atts['button_color']}
-				logo_id = {$atts['logo']}
-				background_id = {$atts['background']}
-				background = {$atts['hf_background']}
-				input_background = {$atts['input_background']}]";
-			case 'Tipping Banner High':
-				return "[btcpw_tipping_banner dimension={$atts['dimension']} title={$atts['title_text']}
-				description={$atts['description_text']}
-				currency={$atts['currency']}
-				background_color={$atts['background_color']}
-				title_text_color={$atts['title_text_color']}
-				tipping_text={$atts['tipping_text']}
-				tipping_text_color={$atts['tipping_text_color']}
-				redirect={$atts['redirect']}
-				description_text_color={$atts['description_text_color']}
-				button_text={$atts['button_text']}
-				button_text_color={$atts['button_text_color']}
-				button_color={$atts['button_color']}
-				logo_id={$atts['logo']}
-				background_id={$atts['background']}
-				background={$atts['hf_background']}
-				input_background={$atts['input_background']}
-				free_input = {$atts['free_input']},
-				value1_enabled = {$atts['value1_enabled']},
-				value1_amount = {$atts['value1_amount']},
-				value1_currency = {$atts['value1_currency']},
-				value1_icon = {$atts['value1_icon']},
-				value2_enabled = {$atts['value2_enabled']},
-				value2_amount = {$atts['value2_amount']},
-				value2_currency = {$atts['value2_currency']},
-				value2_icon = {$atts['value2_icon']},
-				value3_enabled = {$atts['value3_enabled']},
-				value3_amount = {$atts['value3_amount']},
-				value3_currency = {$atts['value3_currency']},
-				value3_icon = {$atts['value3_icon']},
-				display_name = {$atts['collect_name']},
-				mandatory_name = {$atts['mandatory_name']},
-				display_email = {$atts['collect_email']},
-				mandatory_email = {$atts['mandatory_email']},
-				display_phone = {$atts['collect_phone']},
-				mandatory_phone = {$atts['mandatory_phone']},
-				display_address = {$atts['collect_address']},
-				mandatory_address = {$atts['mandatory_address']},
-				display_message = {$atts['collect_message']},
-				mandatory_message = {$atts['mandatory_message']}]";
-			case 'Tipping Banner Wide':
-				return "[btcpw_tipping_banner dimension={$atts['dimension']} title={$atts['title_text']}
-				description={$atts['description_text']}
-				currency={$atts['currency']}
-				background_color={$atts['background_color']}
-				title_text_color={$atts['title_text_color']}
-				tipping_text={$atts['tipping_text']}
-				tipping_text_color={$atts['tipping_text_color']}
-				redirect={$atts['redirect']}
-				description_text_color={$atts['description_text_color']}
-				button_text={$atts['button_text']}
-				button_text_color={$atts['button_text_color']}
-				button_color={$atts['button_color']}
-				logo_id={$atts['logo']}
-				background_id={$atts['background']}
-				background={$atts['hf_background']}
-				input_background={$atts['input_background']}
-				free_input = {$atts['free_input']},
-				value1_enabled = {$atts['value1_enabled']},
-				value1_amount = {$atts['value1_amount']},
-				value1_currency = {$atts['value1_currency']},
-				value1_icon = {$atts['value1_icon']},
-				value2_enabled = {$atts['value2_enabled']},
-				value2_amount = {$atts['value2_amount']},
-				value2_currency = {$atts['value2_currency']},
-				value2_icon = {$atts['value2_icon']},
-				value3_enabled = {$atts['value3_enabled']},
-				value3_amount = {$atts['value3_amount']},
-				value3_currency = {$atts['value3_currency']},
-				value3_icon = {$atts['value3_icon']},
-				display_name = {$atts['collect_name']},
-				mandatory_name = {$atts['mandatory_name']},
-				display_email = {$atts['collect_email']},
-				mandatory_email = {$atts['mandatory_email']},
-				display_phone = {$atts['collect_phone']},
-				mandatory_phone = {$atts['mandatory_phone']},
-				display_address = {$atts['collect_address']},
-				mandatory_address = {$atts['mandatory_address']},
-				display_message = {$atts['collect_message']},
-				mandatory_message = {$atts['mandatory_message']}]";
-			case 'Tipping Page':
-				return "[btcpw_tipping_page dimension=
-				520x600 title={$atts['title_text']}
-				currency={$atts['currency']}
-				background_color={$atts['background_color']}
-				title_text_color={$atts['title_text_color']}
-				tipping_text={$atts['tipping_text']}
-				tipping_text_color={$atts['tipping_text_color']}
-				redirect={$atts['redirect']}
-				button_text={$atts['button_text']}
-				button_text_color={$atts['button_text_color']}
-				button_color={$atts['button_color']}
-				logo_id={$atts['logo']}
-				background_id={$atts['background']}
-				background={$atts['hf_background']}
-				input_background={$atts['input_background']}
-				free_input = {$atts['free_input']},
-				value1_enabled = {$atts['value1_enabled']},
-				value1_amount = {$atts['value1_amount']},
-				value1_currency = {$atts['value1_currency']},
-				value1_icon = {$atts['value1_icon']},
-				value2_enabled = {$atts['value2_enabled']},
-				value2_amount = {$atts['value2_amount']},
-				value2_currency = {$atts['value2_currency']},
-				value2_icon = {$atts['value2_icon']},
-				value3_enabled = {$atts['value3_enabled']},
-				value3_amount = {$atts['value3_amount']},
-				value3_currency = {$atts['value3_currency']},
-				value3_icon = {$atts['value3_icon']},
-				display_name = {$atts['collect_name']},
-				mandatory_name = {$atts['mandatory_name']},
-				display_email = {$atts['collect_email']},
-				mandatory_email = {$atts['mandatory_email']},
-				display_phone = {$atts['collect_phone']},
-				mandatory_phone = {$atts['mandatory_phone']},
-				display_address = {$atts['collect_address']},
-				mandatory_address = {$atts['mandatory_address']},
-				display_message = {$atts['collect_message']},
-				mandatory_message = {$atts['mandatory_message']}]";
-			default:
-				return 'Shortcode could not be created! Please try again.';
-		}
-	} */
 	public static function outputShortcodeAttributes($name, $id)
 	{
 		switch ($name) {
@@ -934,9 +792,9 @@ class BTCPayWall_Admin
 			case 'Tipping Box':
 				return "[btcpw_tipping_box id={$id}]";
 			case 'Tipping Banner High':
-				return "[btcpw_tipping_banner id={$id}]";
+				return "[btcpw_tipping_banner_high id={$id}]";
 			case 'Tipping Banner Wide':
-				return "[btcpw_tipping_banner id={$id}]";
+				return "[btcpw_tipping_banner_wide id={$id}]";
 			case 'Tipping Page':
 				return "[btcpw_tipping_page id={$id}]";
 			default:
@@ -1467,12 +1325,352 @@ class BTCPayWall_Admin
 
 
 
+		vc_map(array(
+			'name' => 'BP Tipping Banner Wide',
+			'base' => 'btcpw_tipping_banner_wide',
+			'description' => 'Add Wide Tipping Banner',
+			'category' => 'Content',
+			'icon' => plugin_dir_url(__FILE__) . 'img/icon.svg',
+			'params' => array(
+				array(
+					'type' => 'dropdown',
+					'heading' => 'Dimension',
+					'param_name' => 'dimension',
+					'value' => array(
+						'600x200' => '600x200',
+					),
+					'std' => '600x200',
+					'description' => 'Dimension',
+				),
+				array(
+					'type' => 'textarea',
+					'heading' => 'Title',
+					'param_name' => 'title',
+					'value' => 'Support my work',
+					'description' => 'Set title',
+				),
+				array(
+					'type' => 'textarea',
+					'heading' => 'Description',
+					'param_name' => 'description',
+					'value' => '',
+					'description' => 'Set description',
+				),
+				array(
+					'type' => 'textarea',
+					'heading' => 'Tipping text',
+					'param_name' => 'tipping_text',
+					'value' => 'Enter Tipping Amount',
+					'description' => 'Set tipping text',
+				),
+				array(
+					'type' => 'dropdown',
+					'heading' => 'Currency',
+					'param_name' => 'currency',
+					'value' => array(
+						'SATS' => 'SATS',
+						'BTC'	=> 'BTC',
+						'EUR' => 'EUR',
+						'USD' => 'USD'
+					),
+					'std' => 'SATS',
+					'description' => 'Set currency',
+				),
+				array(
+					'type' => 'colorpicker',
+					'heading' => 'Title text color',
+					'param_name' => 'title_text_color',
+					'value' => '#ffffff',
+					'description' => 'Set title text color',
+				),
+				array(
+					'type' => 'colorpicker',
+					'heading' => 'Description text color',
+					'param_name' => 'description_text_color',
+					'value' => '#000000',
+					'description' => 'Set description text color',
+				),
+				array(
+					'type' => 'colorpicker',
+					'heading' => 'Tipping text color',
+					'param_name' => 'tipping_text_color',
+					'value' => '#000000',
+					'description' => 'Set tipping text color',
+				),
+				array(
+					'type' => 'textarea',
+					'heading' => 'Button text',
+					'param_name' => 'button_text',
+					'value' => 'Tipping now',
+					'description' => 'Set button text',
+				),
+				array(
+					'type' => 'colorpicker',
+					'heading' => 'Button text color',
+					'param_name' => 'button_text_color',
+					'value' => '#ffffff',
+					'description' => 'Set button text color',
+				),
+				array(
+					'type' => 'colorpicker',
+					'heading' => 'Button color',
+					'param_name' => 'button_color',
+					'value' => '#FE642E',
+					'description' => 'Set button color',
+				),
+				array(
+					'type' => 'textfield',
+					'heading' => 'Redirect',
+					'param_name' => 'redirect',
+					'description' => 'Set redirect link',
+				),
+				array(
+					'type' => 'attach_image',
+					'heading' => 'Logo',
+					'param_name' => 'logo_id',
+					'value' => 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg',
+					'description' => 'Add logo',
+				),
+				array(
+					'type' => 'attach_image',
+					'heading' => 'Background',
+					'param_name' => 'background_id',
+					'description' => 'Add background image',
+				),
+				array(
+					'type' => 'colorpicker',
+					'heading' => 'Background color for header and footer',
+					'param_name' => 'background',
+					'value' => '#1d5aa3',
+					'description' => 'Set header and footer background color',
+				),
+				array(
+					'type' => 'colorpicker',
+					'heading' => 'Background color',
+					'param_name' => 'background_color',
+					'value' => '#E6E6E6',
+					'description' => 'Set background color',
+				),
+				array(
+					'type' => 'colorpicker',
+					'heading' => 'Input color',
+					'param_name' => 'input_background',
+					'value' => '#ffa500',
+					'description' => 'Set background color for input fields',
+				),
+				array(
+					'type' => 'checkbox',
+					'heading' => 'Free input',
+					'param_name' => 'free_input',
+					'value' => true,
+					'std' => true,
+					'description' => 'Display free input',
+				),
+				array(
+					'type' => 'checkbox',
+					'heading' => 'Show icon',
+					'param_name' => 'show_icon',
+					'value' => true,
+					'std' => true,
+					'description' => 'Display icons',
+				),
+				array(
+					'type' => 'checkbox',
+					'heading' => 'Value 1 enabled',
+					'param_name' => 'value1_enabled',
+					'value' => true,
+					'std' => true,
+					'description' => 'Display value 1',
+				),
+				array(
+					'type' => 'textfield',
+					'heading' => 'Value 1 amount',
+					'param_name' => 'value1_amount',
+					'value' => 1000,
+					'description' => 'Set amount for value 1',
+				),
+				array(
+					'type' => 'dropdown',
+					'heading' => 'Value 1 currency',
+					'param_name' => 'value1_currency',
+					'value' => array(
+						'Default' => 'SATS',
+						'BTC'	=> 'BTC',
+						'SATS' => 'SATS',
+						'EUR' => 'EUR',
+						'USD' => 'USD'
+					),
+					'std' => 'Default',
+					'description' => 'Set value 1 currency',
+				),
+				array(
+					'type' => 'textfield',
+					'heading' => 'Value 1 icon',
+					'param_name' => 'value1_icon',
+					'value' => 'fas fa-coffee',
+					'description' => 'Set icon for value 1',
+				),
 
+
+				array(
+					'type' => 'checkbox',
+					'heading' => 'Value 2 enabled',
+					'param_name' => 'value2_enabled',
+					'value' => true,
+					'std' => true,
+					'description' => 'Display value 2',
+				),
+				array(
+					'type' => 'textfield',
+					'heading' => 'Value 2 amount',
+					'param_name' => 'value2_amount',
+					'value' => 2000,
+					'description' => 'Set amount for value 2',
+				),
+				array(
+					'type' => 'dropdown',
+					'heading' => 'Value 2 currency',
+					'param_name' => 'value2_currency',
+					'value' => array(
+						'Default' => 'SATS',
+						'BTC'	=> 'BTC',
+						'SATS' => 'SATS',
+						'EUR' => 'EUR',
+						'USD' => 'USD'
+					),
+					'std' => 'Default',
+					'description' => 'Set value 2 currency',
+				),
+				array(
+					'type' => 'textfield',
+					'heading' => 'Value 2 icon',
+					'param_name' => 'value1_icon',
+					'value' => 'fas fa-beer',
+					'description' => 'Set icon for value 2',
+				),
+				array(
+					'type' => 'checkbox',
+					'heading' => 'Value 3 enabled',
+					'param_name' => 'value3_enabled',
+					'value' => true,
+					'std' => true,
+					'description' => 'Display value 3',
+				),
+				array(
+					'type' => 'textfield',
+					'heading' => 'Value 3 amount',
+					'param_name' => 'value1_amount',
+					'value' => 3000,
+					'description' => 'Set amount for value 3',
+				),
+				array(
+					'type' => 'dropdown',
+					'heading' => 'Value 3 currency',
+					'param_name' => 'value3_currency',
+					'value' => array(
+						'Default' => 'SATS',
+						'BTC'	=> 'BTC',
+						'SATS' => 'SATS',
+						'EUR' => 'EUR',
+						'USD' => 'USD'
+					),
+					'std' => 'Default',
+					'description' => 'Set value 3 currency',
+				),
+				array(
+					'type' => 'textfield',
+					'heading' => 'Value 3 icon',
+					'param_name' => 'value3_icon',
+					'value' => 'fas fa-coffee',
+					'description' => 'Set icon for value 3',
+				),
+				array(
+					'type' => 'checkbox',
+					'heading' => 'Display name',
+					'param_name' => 'display_name',
+					'value' => true,
+					'std' => true,
+					'description' => 'Collect information',
+				),
+				array(
+					'type' => 'checkbox',
+					'heading' => 'Mandatory name',
+					'param_name' => 'mandatory_name',
+					'value' => false,
+					'std' => false,
+					'description' => 'Set as mandatory',
+				),
+				array(
+					'type' => 'checkbox',
+					'heading' => 'Display email',
+					'param_name' => 'display_email',
+					'value' => true,
+					'std' => true,
+					'description' => 'Collect information',
+				),
+				array(
+					'type' => 'checkbox',
+					'heading' => 'Mandatory email',
+					'param_name' => 'mandatory_email',
+					'value' => false,
+					'std' => false,
+					'description' => 'Set as mandatory',
+				),
+				array(
+					'type' => 'checkbox',
+					'heading' => 'Display phone',
+					'param_name' => 'display_phone',
+					'value' => true,
+					'std' => true,
+					'description' => 'Collect information',
+				),
+				array(
+					'type' => 'checkbox',
+					'heading' => 'Mandatory phone',
+					'param_name' => 'mandatory_phone',
+					'value' => false,
+					'std' => false,
+					'description' => 'Set as mandatory',
+				),
+				array(
+					'type' => 'checkbox',
+					'heading' => 'Display address',
+					'param_name' => 'display_address',
+					'value' => true,
+					'std' => true,
+					'description' => 'Collect information',
+				),
+				array(
+					'type' => 'checkbox',
+					'heading' => 'Mandatory address',
+					'param_name' => 'mandatory_address',
+					'value' => false,
+					'std' => false,
+					'description' => 'Set as mandatory',
+				),
+				array(
+					'type' => 'checkbox',
+					'heading' => 'Display message',
+					'param_name' => 'display_message',
+					'value' => true,
+					'std' => true,
+					'description' => 'Collect information',
+				),
+				array(
+					'type' => 'checkbox',
+					'heading' => 'Mandatory message',
+					'param_name' => 'mandatory_message',
+					'value' => false,
+					'std' => false,
+					'description' => 'Set as mandatory',
+				),
+			),
+		));
 
 		vc_map(array(
-			'name' => 'BP Tipping Banner',
-			'base' => 'btcpw_tipping_banner',
-			'description' => 'Add Tipping Banner',
+			'name' => 'BP Tipping Banner High',
+			'base' => 'btcpw_tipping_banner_high',
+			'description' => 'Add High Tipping Banner',
 			'category' => 'Content',
 			'icon' => plugin_dir_url(__FILE__) . 'img/icon.svg',
 			'params' => array(
@@ -1482,7 +1680,6 @@ class BTCPayWall_Admin
 					'param_name' => 'dimension',
 					'value' => array(
 						'200x710' => '200x710',
-						'600x200' => '600x200',
 					),
 					'std' => '200x710',
 					'description' => 'Dimension',
@@ -2326,6 +2523,8 @@ class BTCPayWall_Admin
 		require_once __DIR__ . '/elementor/class-file-widget.php';
 		require_once __DIR__ . '/elementor/class-tipping-box-widget.php';
 		require_once __DIR__ . '/elementor/class-tipping-banner-high-widget.php';
+		require_once __DIR__ . '/elementor/class-tipping-banner-wide-widget.php';
+		require_once __DIR__ . '/elementor/class-tipping-page-widget.php';
 
 
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Start_Content_Widget());
@@ -2336,6 +2535,8 @@ class BTCPayWall_Admin
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_File_Widget());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Tipping_Box_Widget());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Tipping_Banner_High_Widget());
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Tipping_Banner_Wide_Widget());
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Tipping_Page_Widget());
 	}
 
 	/**
@@ -2447,7 +2648,6 @@ class BTCPayWall_Admin
         tipping_text = '{$atts['tipping_text']}'
         tipping_text_color = '{$atts['tipping_text_color']}'
         redirect = '{$atts['redirect']}'
-        amount = '{$atts['redirect']}'
         description_color = '{$atts['description_color']}'
         button_text = '{$atts['button_text']}'
         button_text_color = '{$atts['button_text_color']}'
@@ -2457,7 +2657,56 @@ class BTCPayWall_Admin
         background = '{$atts['background']}'
         input_background = '{$atts['input_background']}']");
 	}
-	public function render_tipping_banner($atts)
+	public function render_tipping_banner_wide($atts)
+	{
+		$atts = shortcode_atts(array(
+			'dimension' =>  '200x710',
+			'title' =>  'Support my work',
+			'description' =>  '',
+			'currency' =>  'SATS',
+			'background_color' =>  '#E6E6E6',
+			'title_text_color' =>   '#ffffff',
+			'tipping_text' =>  'Enter Tipping Amount',
+			'tipping_text_color' =>  '#000000',
+			'redirect' =>  false,
+			'description_color' =>  '#000000',
+			'button_text' =>  'Tipping now',
+			'button_text_color' =>  '#FFFFFF',
+			'button_color' =>  '#FE642E',
+			'logo_id'	=> '',
+			'background_id' =>  '',
+			'free_input' =>  true,
+			'input_background' =>  '#ffa500',
+			'background' =>  '#1d5aa3',
+			'value1_enabled' =>  true,
+			'value1_amount' =>  1000,
+			'value1_currency' =>  'SATS',
+			'value1_icon' =>  'fas fa-coffee',
+			'value2_enabled' =>  true,
+			'value2_amount' =>  2000,
+			'value2_currency' =>  'SATS',
+			'value2_icon' =>  'fas fa-beer',
+			'value3_enabled' =>  true,
+			'value3_amount' =>  3000,
+			'value3_currency' =>  'SATS',
+			'value3_icon' =>  'fas fa-cocktail',
+			'display_name' =>  true,
+			'mandatory_name' =>  false,
+			'display_email' =>  true,
+			'mandatory_email' =>  false,
+			'display_phone' =>  true,
+			'mandatory_phone' =>  false,
+			'display_address' =>  true,
+			'mandatory_address' => false,
+			'display_message' =>  true,
+			'mandatory_message' => false,
+			'show_icon'	=>  true,
+		), $atts);
+		return do_shortcode(
+			"[btcpw_tipping_banner_wide dimension='{$atts['dimension']}' title='{$atts['title']}' description='{$atts['description']}' currency='{$atts['currency']}' background_color='{$atts['background_color']}'title_text_color='{$atts['title_text_color']}'tipping_text='{$atts['tipping_text']}'tipping_text_color= {$atts['tipping_text_color']}' redirect='{$atts['redirect']}' amount='{$atts['redirect']}' description_color='{$atts['description_color']}' button_text='{$atts['button_text']}' button_text_color='{$atts['button_text_color']}' button_color='{$atts['button_color']}' logo_id='{$atts['logo_id']}' background_id='{$atts['background_id']}' background='{$atts['background']}' input_background='{$atts['input_background']}' free_input='{$atts['free_input']}' value1_enabled='{$atts['value1_enabled']}' value1_amount='{$atts['value1_amount']}' value1_currency='{$atts['value1_currency']}' value1_icon='{$atts['value1_icon']}' value2_enabled='{$atts['value2_enabled']}' value2_amount='{$atts['value2_amount']}' value2_currency='{$atts['value2_currency']}' value2_icon='{$atts['value2_icon']}' value3_enabled='{$atts['value3_enabled']}' value3_amount='{$atts['value3_amount']}' value3_currency='{$atts['value3_currency']}' value3_icon='{$atts['value3_icon']}' display_name='{$atts['display_name']}' mandatory_name='{$atts['mandatory_name']}' display_email='{$atts['display_email']}' mandatory_email='{$atts['mandatory_email']}' display_phone='{$atts['display_phone']}' mandatory_phone='{$atts['mandatory_phone']}' display_address='{$atts['display_address']}' mandatory_address='{$atts['mandatory_address']}' display_message='{$atts['display_message']}' mandatory_message='{$atts['mandatory_message']}' show_icon='{$atts['show_icon']}']"
+		);
+	}
+	public function render_tipping_banner_high($atts)
 	{
 		$atts = shortcode_atts(array(
 			'dimension' =>  '200x710',
@@ -2504,7 +2753,7 @@ class BTCPayWall_Admin
 		), $atts);
 
 		return do_shortcode(
-			"[btcpw_tipping_banner dimension='{$atts['dimension']}' title='{$atts['title']}' description='{$atts['description']}' currency='{$atts['currency']}' background_color='{$atts['background_color']}'title_text_color='{$atts['title_text_color']}'tipping_text='{$atts['tipping_text']}'tipping_text_color= {$atts['tipping_text_color']}' redirect='{$atts['redirect']}' amount='{$atts['redirect']}' description_color='{$atts['description_color']}' button_text='{$atts['button_text']}' button_text_color='{$atts['button_text_color']}' button_color='{$atts['button_color']}' logo_id='{$atts['logo_id']}' background_id='{$atts['background_id']}' background='{$atts['background']}' input_background='{$atts['input_background']}' free_input='{$atts['free_input']}' value1_enabled='{$atts['value1_enabled']}' value1_amount='{$atts['value1_amount']}' value1_currency='{$atts['value1_currency']}' value1_icon='{$atts['value1_icon']}' value2_enabled='{$atts['value2_enabled']}' value2_amount='{$atts['value2_amount']}' value2_currency='{$atts['value2_currency']}' value2_icon='{$atts['value2_icon']}' value3_enabled='{$atts['value3_enabled']}' value3_amount='{$atts['value3_amount']}' value3_currency='{$atts['value3_currency']}' value3_icon='{$atts['value3_icon']}' display_name='{$atts['display_name']}' mandatory_name='{$atts['mandatory_name']}' display_email='{$atts['display_email']}' mandatory_email='{$atts['mandatory_email']}' display_phone='{$atts['display_phone']}' mandatory_phone='{$atts['mandatory_phone']}' display_address='{$atts['display_address']}' mandatory_address='{$atts['mandatory_address']}' display_message='{$atts['display_message']}' mandatory_message='{$atts['mandatory_message']}' show_icon='{$atts['show_icon']}']"
+			"[btcpw_tipping_banner_high dimension='{$atts['dimension']}' title='{$atts['title']}' description='{$atts['description']}' currency='{$atts['currency']}' background_color='{$atts['background_color']}'title_text_color='{$atts['title_text_color']}'tipping_text='{$atts['tipping_text']}'tipping_text_color= {$atts['tipping_text_color']}' redirect='{$atts['redirect']}' amount='{$atts['redirect']}' description_color='{$atts['description_color']}' button_text='{$atts['button_text']}' button_text_color='{$atts['button_text_color']}' button_color='{$atts['button_color']}' logo_id='{$atts['logo_id']}' background_id='{$atts['background_id']}' background='{$atts['background']}' input_background='{$atts['input_background']}' free_input='{$atts['free_input']}' value1_enabled='{$atts['value1_enabled']}' value1_amount='{$atts['value1_amount']}' value1_currency='{$atts['value1_currency']}' value1_icon='{$atts['value1_icon']}' value2_enabled='{$atts['value2_enabled']}' value2_amount='{$atts['value2_amount']}' value2_currency='{$atts['value2_currency']}' value2_icon='{$atts['value2_icon']}' value3_enabled='{$atts['value3_enabled']}' value3_amount='{$atts['value3_amount']}' value3_currency='{$atts['value3_currency']}' value3_icon='{$atts['value3_icon']}' display_name='{$atts['display_name']}' mandatory_name='{$atts['mandatory_name']}' display_email='{$atts['display_email']}' mandatory_email='{$atts['mandatory_email']}' display_phone='{$atts['display_phone']}' mandatory_phone='{$atts['mandatory_phone']}' display_address='{$atts['display_address']}' mandatory_address='{$atts['mandatory_address']}' display_message='{$atts['display_message']}' mandatory_message='{$atts['mandatory_message']}' show_icon='{$atts['show_icon']}']"
 		);
 	}
 
@@ -2802,7 +3051,7 @@ class BTCPayWall_Admin
 			'btc-paywall/gutenberg-tipping-banner-wide',
 			[
 				'editor_script' => 'gutenberg-block-script',
-				'render_callback' => (array($this, 'render_tipping_banner')),
+				'render_callback' => (array($this, 'render_tipping_banner_wide')),
 				'attributes'	=> array(
 					'dimension' =>  array(
 						'type'	=> 'string',
@@ -2976,7 +3225,7 @@ class BTCPayWall_Admin
 			'btc-paywall/gutenberg-tipping-banner-high',
 			[
 				'editor_script' => 'gutenberg-block-script',
-				'render_callback' => (array($this, 'render_tipping_banner')),
+				'render_callback' => (array($this, 'render_tipping_banner_high')),
 				'attributes'	=> array(
 					'dimension' =>  array(
 						'type'	=> 'string',

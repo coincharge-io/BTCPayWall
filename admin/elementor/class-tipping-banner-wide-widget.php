@@ -1,7 +1,7 @@
 <?php
 
 
-class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
+class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
 {
 
 
@@ -10,7 +10,7 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
      */
     public function get_name()
     {
-        return 'elementor_btcpw_tipping_banner_high';
+        return 'elementor_btcpw_tipping_banner_wide';
     }
 
     /**
@@ -18,7 +18,7 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return 'BP Tipping Banner High';
+        return 'BP Tipping Banner Wide';
     }
 
     /**
@@ -58,7 +58,7 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'default',
                 'options' => [
-                    '200x710' => '200x710',
+                    '600x200' => '600x200',
                 ],
             ]
         );
@@ -449,7 +449,7 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
         $mandatory_phone = filter_var($settings['mandatory_phone'], FILTER_VALIDATE_BOOLEAN);
         $mandatory_message = filter_var($settings['mandatory_message'], FILTER_VALIDATE_BOOLEAN);
 
-        echo do_shortcode("[btcpw_tipping_banner_high dimension='{$settings['dimension']}' title='{$settings['title']}' description='{$settings['description']}'
+        echo do_shortcode("[btcpw_tipping_banner_wide dimension='{$settings['dimension']}' title='{$settings['title']}' description='{$settings['description']}'
         currency='{$settings['currency']}'
         background_color = '{$settings['background_color']}'
         title_text_color = '{$settings['title_text_color']}'

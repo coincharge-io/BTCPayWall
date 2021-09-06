@@ -1,7 +1,7 @@
 <?php
 
 
-class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
+class Elementor_BTCPW_Tipping_Page_Widget extends \Elementor\Widget_Base
 {
 
 
@@ -10,7 +10,7 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
      */
     public function get_name()
     {
-        return 'elementor_btcpw_tipping_banner_high';
+        return 'elementor_btcpw_tipping_page';
     }
 
     /**
@@ -18,7 +18,7 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return 'BP Tipping Banner High';
+        return 'BP Tipping Page';
     }
 
     /**
@@ -58,7 +58,7 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'default',
                 'options' => [
-                    '200x710' => '200x710',
+                    '520x600' => '520x600',
                 ],
             ]
         );
@@ -338,6 +338,38 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
             ]
         );
         $this->add_control(
+            'step1',
+            [
+                'label' => 'Step 1',
+                'type'  => \Elementor\Controls_Manager::TEXT,
+                'default' => 'Pledge'
+            ]
+        );
+        $this->add_control(
+            'active_color',
+            [
+                'label' => 'Active tab color',
+                'type'  => \Elementor\Controls_Manager::COLOR,
+                'default' => '#808080',
+            ]
+        );
+        $this->add_control(
+            'step2',
+            [
+                'label' => 'Step 2',
+                'type'  => \Elementor\Controls_Manager::TEXT,
+                'default' => 'Info'
+            ]
+        );
+        $this->add_control(
+            'inactive_color',
+            [
+                'label' => 'Inactive tab color',
+                'type'  => \Elementor\Controls_Manager::COLOR,
+                'default' => '#D3D3D3',
+            ]
+        );
+        $this->add_control(
             'display_name',
             [
                 'label' => 'Display name',
@@ -449,7 +481,7 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
         $mandatory_phone = filter_var($settings['mandatory_phone'], FILTER_VALIDATE_BOOLEAN);
         $mandatory_message = filter_var($settings['mandatory_message'], FILTER_VALIDATE_BOOLEAN);
 
-        echo do_shortcode("[btcpw_tipping_banner_high dimension='{$settings['dimension']}' title='{$settings['title']}' description='{$settings['description']}'
+        echo do_shortcode("[btcpw_tipping_page dimension='{$settings['dimension']}' title='{$settings['title']}' description='{$settings['description']}'
         currency='{$settings['currency']}'
         background_color = '{$settings['background_color']}'
         title_text_color = '{$settings['title_text_color']}'
@@ -463,6 +495,6 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
         logo_id = '{$settings['logo_id']['url']}'
         background_id = '{$settings['background_id']['url']}'
         background = '{$settings['background']}'
-        input_background = '{$settings['input_background']}' free_input='{$settings['free_input']}' value1_enabled='{$value1_enabled}' value1_amount='{$settings['value1_amount']}' value1_currency='{$settings['value1_currency']}' value1_icon='{$settings['value1_icon']}' value2_enabled='{$value2_enabled}' value2_amount='{$settings['value2_amount']}' value2_currency='{$settings['value2_currency']}' value2_icon='{$settings['value2_icon']}' value3_enabled='{$value3_enabled}' value3_amount='{$settings['value3_amount']}' value3_currency='{$settings['value3_currency']}' value3_icon='{$settings['value3_icon']}' display_name='{$display_name}' mandatory_name='{$mandatory_name}' display_email='{$display_email}' mandatory_email='{$mandatory_email}' display_phone='{$display_phone}' mandatory_phone='{$mandatory_phone}' display_address='{$display_address}' mandatory_address='{$mandatory_address}' display_message='{$display_message}' mandatory_message='{$mandatory_message}' show_icon='{$show_icon}' free_input='{$free_input}']");
+        input_background = '{$settings['input_background']}' free_input='{$settings['free_input']}' value1_enabled='{$value1_enabled}' value1_amount='{$settings['value1_amount']}' value1_currency='{$settings['value1_currency']}' value1_icon='{$settings['value1_icon']}' value2_enabled='{$value2_enabled}' value2_amount='{$settings['value2_amount']}' value2_currency='{$settings['value2_currency']}' value2_icon='{$settings['value2_icon']}' value3_enabled='{$value3_enabled}' value3_amount='{$settings['value3_amount']}' value3_currency='{$settings['value3_currency']}' value3_icon='{$settings['value3_icon']}' display_name='{$display_name}' mandatory_name='{$mandatory_name}' display_email='{$display_email}' mandatory_email='{$mandatory_email}' display_phone='{$display_phone}' mandatory_phone='{$mandatory_phone}' display_address='{$display_address}' mandatory_address='{$mandatory_address}' display_message='{$display_message}' mandatory_message='{$mandatory_message}' show_icon='{$show_icon}' free_input='{$free_input}' step1='{$settings['step1']}' step2='{$settings['step2']}' active_color='{$settings['active_color']}' inactive_color='{$settings['inactive_color']}']");
     }
 }
