@@ -2325,6 +2325,8 @@ class BTCPayWall_Admin
 		require_once __DIR__ . '/elementor/class-end-video-widget.php';
 		require_once __DIR__ . '/elementor/class-file-widget.php';
 		require_once __DIR__ . '/elementor/class-tipping-box-widget.php';
+		require_once __DIR__ . '/elementor/class-tipping-banner-high-widget.php';
+
 
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Start_Content_Widget());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_End_Content_Widget());
@@ -2333,6 +2335,7 @@ class BTCPayWall_Admin
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_End_Video_Widget());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_File_Widget());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Tipping_Box_Widget());
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Tipping_Banner_High_Widget());
 	}
 
 	/**
