@@ -21,6 +21,19 @@ $selected = $_POST['design'] ?? null;
     </div>
     <div id="tipping-form-preview">
 
+        <div id="tipping-box-preview" class="toggle-preview" style="display:none;">
+            <?php include_once(__DIR__ . '/page-preview-tipping-box.php'); ?>
+        </div>
+        <div id="tipping-banner-high-preview" class="toggle-preview" style="display:none;">
+            <?php include_once(__DIR__ . '/page-preview-tipping-banner-high.php'); ?>
+        </div>
+        <div id="tipping-banner-wide-preview" class="toggle-preview" style="display:none;">
+            <?php include_once(__DIR__ . '/page-preview-tipping-banner-wide.php'); ?>
+        </div>
+        <div id="tipping-page-preview" class="toggle-preview" style="display:none;">
+            <?php include_once(__DIR__ . '/page-preview-tipping-page.php'); ?>
+        </div>
+
     </div>
     <div class="tab-content">
         <?php switch ($selected):

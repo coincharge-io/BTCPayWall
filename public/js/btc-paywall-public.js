@@ -154,7 +154,7 @@
       });
     });
 
-    $("#skyscraper_tipping_form").submit(function (e) {
+    /* $("#skyscraper_tipping_form").submit(function (e) {
       e.preventDefault();
       var text = $("#btcpw_skyscraper_tipping__button").text();
       $("#btcpw_skyscraper_tipping__button").html(
@@ -203,7 +203,7 @@
           console.log(error);
         },
       });
-    });
+    }); */
 
     $("#page_tipping_form").submit(function (e) {
       e.preventDefault();
@@ -255,6 +255,58 @@
         },
       });
     });
+    $("#skyscraper_tipping_high_form").submit(function (e) {
+      e.preventDefault();
+      var text = $("#btcpw_skyscraper_tipping_high_button").text();
+      $("#btcpw_skyscraper_tipping_high_button").html(
+        `<span class="tipping-border" role="status" aria-hidden="true"></span>`
+      );
+      if (btcpw_invoice_id) {
+        btcpwShowDonationBannerInvoice(btcpw_invoice_id);
+        return;
+      }
+      $.ajax({
+        url: "/wp-admin/admin-ajax.php",
+        method: "POST",
+        data: {
+          action: "btcpw_tipping",
+          currency: $("#btcpw_skyscraper_tipping_high_currency").val(),
+          amount: $("#btcpw_skyscraper_tipping_high_amount").val(),
+          predefined_amount: $(
+            " input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]:checked"
+          ).val(),
+          name: $("#btcpw_skyscraper_tipping_donor_name_high").val(),
+          email: $("#btcpw_skyscraper_tipping_donor_email_high").val(),
+          address: $("#btcpw_skyscraper_tipping_donor_address_high").val(),
+          phone: $("#btcpw_skyscraper_tipping_donor_phone_high").val(),
+          message: $("#btcpw_skyscraper_tipping_donor_message_high").val(),
+        },
+        success: function (response) {
+          $("#btcpw_skyscraper_tipping_high_button").html(text);
+
+          if (response.success) {
+            btcpw_invoice_id = response.data.invoice_id;
+            donor =
+              "Type: Tipping Banner High" +
+              "\n" +
+              "Url: " +
+              window.location.href +"\n"+response.data.donor;
+            btcpwShowDonationBannerInvoice(
+              btcpw_invoice_id,
+              donor,
+              $("#btcpw_skyscraper_redirect_link_high").val()
+            );
+          } else {
+            console.error(response);
+          }
+        },
+        error: function (error) {
+          console.log(error);
+        },
+      });
+    });
+
+
 
     $("#btcpw_widget_skyscraper_tipping_form_high").submit(function (e) {
       e.preventDefault();
@@ -321,7 +373,56 @@
         },
       });
     });
+$("#skyscraper_tipping_wide_form").submit(function (e) {
+      e.preventDefault();
+      var text = $("#btcpw_skyscraper_tipping_wide_button").text();
+      $("#btcpw_skyscraper_tipping_wide_button").html(
+        `<span class="tipping-border" role="status" aria-hidden="true"></span>`
+      );
+      if (btcpw_invoice_id) {
+        btcpwShowDonationBannerInvoice(btcpw_invoice_id);
+        return;
+      }
+      $.ajax({
+        url: "/wp-admin/admin-ajax.php",
+        method: "POST",
+        data: {
+          action: "btcpw_tipping",
+          currency: $("#btcpw_skyscraper_tipping_wide_currency").val(),
+          amount: $("#btcpw_skyscraper_tipping_wide_amount").val(),
+          predefined_amount: $(
+            "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]:checked"
+          ).val(),
+          name: $("#btcpw_skyscraper_tipping_donor_name_wide").val(),
+          email: $("#btcpw_skyscraper_tipping_donor_email_wide").val(),
+          address: $("#btcpw_skyscraper_tipping_donor_address_wide").val(),
+          phone: $("#btcpw_skyscraper_tipping_donor_phone_wide").val(),
+          message: $("#btcpw_skyscraper_tipping_donor_message_wide").val(),
+        },
+        success: function (response) {
+          $("#btcpw_skyscraper_tipping_wide_button").html(text);
 
+          if (response.success) {
+            btcpw_invoice_id = response.data.invoice_id;
+            donor =
+              "Type: Tipping Banner Wide" +
+              "\n" +
+              "Url: " +
+              window.location.href +"\n"+response.data.donor;
+            btcpwShowDonationBannerInvoice(
+              btcpw_invoice_id,
+              donor,
+              $("#btcpw_skyscraper_redirect_link_wide").val()
+            );
+          } else {
+            console.error(response);
+          }
+        },
+        error: function (error) {
+          console.log(error);
+        },
+      });
+    });
     $("#btcpw_widget_skyscraper_tipping_form_wide").submit(function (e) {
       e.preventDefault();
       var text = $(
@@ -531,7 +632,7 @@
           .attr("readonly", true);
       }
     );
-    $("#btcpw_skyscraper_tipping_amount").on("input", function () {
+    /* $("#btcpw_skyscraper_tipping_amount").on("input", function () {
       var currency = $("#btcpw_skyscraper_tipping_currency").val();
       var amount = $(this).val();
       var converted = fiat_to_crypto(currency, amount, usd, eur, sats);
@@ -543,8 +644,46 @@
         .attr("readonly", false)
         .val(get_currency(currency))
         .attr("readonly", true);
+    }); */
+
+    $("#btcpw_skyscraper_tipping_high_amount").on("input", function () {
+      var currency = $("#btcpw_skyscraper_tipping_high_currency").val();
+      var amount = $(this).val();
+      var converted = fiat_to_crypto(currency, amount, usd, eur, sats);
+      $("#btcpw_skyscraper_high_converted_amount")
+        .attr("readonly", false)
+        .val(fiat_to_crypto(currency, amount, usd, eur, sats))
+        .attr("readonly", true);
+      $("#btcpw_skyscraper_high_converted_currency")
+        .attr("readonly", false)
+        .val(get_currency(currency))
+        .attr("readonly", true);
     });
-    $("#value_1, #value_2, #value_3").change(function () {
+    $("#value_1_high, #value_2_high, #value_3_high").change(function () {
+      if ($(this).is(":checked")) {
+        var predefined = $(this).val().split(" ");
+        var converted_icon = fiat_to_crypto(
+          predefined[1],
+          predefined[0],
+          usd,
+          eur,
+          sats
+        );
+        var converted_icon_amount =
+          fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats) +
+          " " +
+          get_currency(predefined[1]);
+        $("#btcpw_skyscraper_high_converted_amount")
+          .attr("readonly", false)
+          .val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats))
+          .attr("readonly", true);
+        $("#btcpw_skyscraper_high_converted_currency")
+          .attr("readonly", false)
+          .val(get_currency(predefined[1]))
+          .attr("readonly", true);
+      }
+    });
+    /* $("#value_1, #value_2, #value_3").change(function () {
       if ($(this).is(":checked")) {
         var predefined = $(this).val().split(" ");
         var converted_icon = fiat_to_crypto(
@@ -563,6 +702,43 @@
           .val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats))
           .attr("readonly", true);
         $("#btcpw_skyscraper_converted_currency")
+          .attr("readonly", false)
+          .val(get_currency(predefined[1]))
+          .attr("readonly", true);
+      }
+    }); */
+     $("#btcpw_skyscraper_tipping_wide_amount").on("input", function () {
+      var currency = $("#btcpw_skyscraper_tipping_wide_currency").val();
+      var amount = $(this).val();
+      var converted = fiat_to_crypto(currency, amount, usd, eur, sats);
+      $("#btcpw_skyscraper_wide_converted_amount")
+        .attr("readonly", false)
+        .val(fiat_to_crypto(currency, amount, usd, eur, sats))
+        .attr("readonly", true);
+      $("#btcpw_skyscraper_wide_converted_currency")
+        .attr("readonly", false)
+        .val(get_currency(currency))
+        .attr("readonly", true);
+    });
+    $("#value_1_wide, #value_2_wide, #value_3_wide").change(function () {
+      if ($(this).is(":checked")) {
+        var predefined = $(this).val().split(" ");
+        var converted_icon = fiat_to_crypto(
+          predefined[1],
+          predefined[0],
+          usd,
+          eur,
+          sats
+        );
+        var converted_icon_amount =
+          fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats) +
+          " " +
+          get_currency(predefined[1]);
+        $("#btcpw_skyscraper_wide_converted_amount")
+          .attr("readonly", false)
+          .val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats))
+          .attr("readonly", true);
+        $("#btcpw_skyscraper_wide_converted_currency")
           .attr("readonly", false)
           .val(get_currency(predefined[1]))
           .attr("readonly", true);

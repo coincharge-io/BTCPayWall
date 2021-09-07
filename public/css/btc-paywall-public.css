@@ -37,7 +37,7 @@
   height: 50px;
 }
 .btcpw_pay__loading p.loading.spinner:before {
-  content: "";
+  content: '';
   display: block;
   width: 44px;
   height: 44px;
@@ -180,7 +180,7 @@ a.btcpw_pay__download {
 #btcpw_converted_currency_btcpw_widget {
   text-align: left;
 }
-.predefined_container input[type="radio"] {
+.predefined_container input[type='radio'] {
   position: absolute;
   width: 10%;
   height: 5%;
@@ -215,7 +215,7 @@ a.btcpw_pay__download {
 .btcpw_tipping_converted_values {
   margin-bottom: 2em;
 }
-.btcpw_tipping_box_container fieldset input:not([type="submit"]) {
+.btcpw_tipping_box_container fieldset input:not([type='submit']) {
   margin-bottom: 0;
 }
 
@@ -287,7 +287,7 @@ a.btcpw_pay__download {
 #btcpw_tipping_currency_btcpw_widget option {
   padding-right: 21px;
 }
-#button > button[type="submit"] {
+#button > button[type='submit'] {
   width: 50%;
   margin: 5px auto;
 }
@@ -298,7 +298,7 @@ a.btcpw_pay__download {
   -webkit-border-radius: 2em;
 }
 #button button,
-#button input[type="button"] {
+#button input[type='button'] {
   font-size: 14px;
   padding: 12px !important;
   text-transform: uppercase;
@@ -345,41 +345,48 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   display: flex;
 }
 
-#btcpw_skyscraper_converted_amount,
+#btcpw_skyscraper_high_converted_amount,
+#btcpw_skyscraper_wide_converted_amount,
 #btcpw_widget_btcpw_skyscraper_converted_amount_wide,
 #btcpw_widget_btcpw_skyscraper_converted_amount_high {
   text-align: right;
   font-size: 15px;
 }
-#btcpw_skyscraper_converted_currency,
+#btcpw_skyscraper_high_converted_currency,
+#btcpw_skyscraper_wide_converted_currency,
 #btcpw_widget_btcpw_skyscraper_converted_currency_wide,
 #btcpw_widget_btcpw_skyscraper_converted_currency_high {
   text-align: left;
   font-size: 15px;
 }
 
-#btcpw_skyscraper_tipping_amount,
+#btcpw_skyscraper_tipping_high_amount,
+#btcpw_skyscraper_tipping_wide_amount,
 #btcpw_widget_btcpw_skyscraper_tipping_amount_wide,
 #btcpw_widget_btcpw_skyscraper_tipping_amount_high {
   height: 30px;
   width: 50%;
   margin: 0;
 }
-#btcpw_skyscraper_tipping_currency,
+#btcpw_skyscraper_tipping_high_currency,
+#btcpw_skyscraper_tipping_wide_currency,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_wide,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_high {
   height: 30px;
   width: 50%;
   font-size: 15px;
 }
-#btcpw_skyscraper_tipping_currency,
+#btcpw_skyscraper_tipping_high_currency,
+#btcpw_skyscraper_tipping_wide_currency,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_wide,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_high {
   color: white;
   font-weight: bold;
 }
-#btcpw_skyscraper_tipping_amount,
-#btcpw_skyscraper_tipping_currency,
+#btcpw_skyscraper_tipping_high_amount,
+#btcpw_skyscraper_tipping_high_currency,
+#btcpw_skyscraper_tipping_wide_amount,
+#btcpw_skyscraper_tipping_wide_currency,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_wide,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_high,
 #btcpw_widget_btcpw_skyscraper_tipping_amount_wide,
@@ -391,7 +398,8 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   padding: 0 !important;
 }
 
-#btcpw_skyscraper_button,
+#btcpw_skyscraper_high_button,
+#btcpw_skyscraper_wide_button,
 #btcpw_widget_btcpw_skyscraper_button_high,
 #btcpw_widget_btcpw_skyscraper_button_wide {
   position: absolute;
@@ -414,18 +422,22 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   width: 100%;
   height: 100%;
 }
-#btcpw_skyscraper_button button,
-#btcpw_skyscraper_button input[type="button"],
+
+#btcpw_skyscraper_high_button button,
+#btcpw_skyscraper_wide_button input[type='button'],
+#btcpw_skyscraper_high_button button,
+#btcpw_skyscraper_wide_button input[type='button'],
 #btcpw_widget_btcpw_skyscraper_button_high button,
-#btcpw_widget_btcpw_skyscraper_button_high input[type="button"],
+#btcpw_widget_btcpw_skyscraper_button_high input[type='button'],
 #btcpw_widget_btcpw_skyscraper_button_wide button,
-#btcpw_widget_btcpw_skyscraper_button_wide input[type="button"] {
+#btcpw_widget_btcpw_skyscraper_button_wide input[type='button'] {
   padding: 0;
   line-height: 20px;
   height: 40px;
 }
 
-#btcpw_skyscraper_button > div,
+#btcpw_skyscraper_high_button > div,
+#btcpw_skyscraper_wide_button > div,
 #btcpw_widget_btcpw_skyscraper_button_high > div,
 #btcpw_widget_btcpw_skyscraper_button_wide > div {
   display: flex;
@@ -435,12 +447,14 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   margin: 5px 0 !important;
 }
 
-#btcpw_skyscraper_button > button[type="submit"],
-#btcpw_skyscraper_button > input.skyscraper-next-form,
-#btcpw_widget_btcpw_skyscraper_button_high > button[type="submit"],
+#btcpw_skyscraper_high_button > button[type='submit'],
+#btcpw_skyscraper_high_button > input.skyscraper-next-form,
+#btcpw_skyscraper_wide_button > button[type='submit'],
+#btcpw_skyscraper_wide_button > input.skyscraper-next-form,
+#btcpw_widget_btcpw_skyscraper_button_high > button[type='submit'],
 #btcpw_widget_btcpw_skyscraper_button_high
   > input.btcpw_widget.skyscraper-next-form.high,
-#btcpw_widget_btcpw_skyscraper_button_wide > button[type="submit"],
+#btcpw_widget_btcpw_skyscraper_button_wide > button[type='submit'],
 #btcpw_widget_btcpw_skyscraper_button_wide
   > input.btcpw_widget.skyscraper-next-form.wide {
   width: 50%;
@@ -449,7 +463,8 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   padding: 0;
 }
 
-#btcpw_skyscraper_button > div:nth-child(1) > input,
+#btcpw_skyscraper_high_button > div:nth-child(1) > input,
+#btcpw_skyscraper_wide_button > div:nth-child(1) > input,
 #btcpw_widget_btcpw_skyscraper_button_wide > div:nth-child(1) > input,
 #btcpw_widget_btcpw_skyscraper_button_high > div:nth-child(1) > input {
   color: white;
@@ -463,10 +478,10 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   padding: 0.5em !important;
   text-transform: uppercase;
 } */
-.btcpw_skyscraper_button.high button,
-.btcpw_skyscraper_button.high input[type="button"],
+#btcpw_skyscraper_high_button button,
+#btcpw_skyscraper_high_button input[type='button'],
 #btcpw_widget_btcpw_skyscraper_button_high button,
-#btcpw_widget_btcpw_skyscraper_button_high input[type="button"] {
+#btcpw_widget_btcpw_skyscraper_button_high input[type='button'] {
   border-radius: 2em;
   -moz-border-radius: 2em;
   -webkit-border-radius: 2em;
@@ -474,10 +489,10 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   padding: 0.1em !important;
   text-transform: uppercase;
 }
-.btcpw_skyscraper_button.wide button,
-.btcpw_skyscraper_button.wide input[type="button"],
+#btcpw_skyscraper_wide_button button,
+#btcpw_skyscraper_wide_button input[type='button'],
 #btcpw_widget_btcpw_skyscraper_button_wide button,
-#btcpw_widget_btcpw_skyscraper_button_wide input[type="button"] {
+#btcpw_widget_btcpw_skyscraper_button_wide input[type='button'] {
   border-radius: 2em;
   -moz-border-radius: 2em;
   -webkit-border-radius: 2em;
@@ -504,9 +519,12 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   text-transform: uppercase;
 } */
 
-#btcpw_skyscraper_converted_amount,
-#btcpw_skyscraper_tipping_currency,
-#btcpw_skyscraper_converted_currency,
+#btcpw_skyscraper_high_converted_amount,
+#btcpw_skyscraper_tipping_high_currency,
+#btcpw_skyscraper_high_converted_currency,
+#btcpw_skyscraper_wide_converted_amount,
+#btcpw_skyscraper_tipping_wide_currency,
+#btcpw_skyscraper_wide_converted_currency,
 #btcpw_widget_btcpw_skyscraper_converted_amount_high,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_high,
 #btcpw_widget_btcpw_skyscraper_converted_currency_high,
@@ -528,7 +546,8 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   flex-direction: column;
   text-align: center;
 }
-.btcpw_skyscraper_tipping_container #skyscraper_tipping_form > fieldset > h6,
+.btcpw_skyscraper_tipping_container #skyscraper_tipping_high_form > fieldset h6,
+.btcpw_skyscraper_tipping_container #skyscraper_tipping_wide_form > fieldset h6,
 .btcpw_skyscraper_tipping_container
   #btcpw_widget_skyscraper_tipping_form_high
   > fieldset
@@ -540,7 +559,8 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   text-align: center;
   margin: 1em;
 }
-#skyscraper_tipping_form fieldset:not(:first-of-type),
+#skyscraper_tipping_high_form fieldset:not(:first-of-type),
+#skyscraper_tipping_wide_form fieldset:not(:first-of-type),
 #btcpw_widget_skyscraper_tipping_form_high fieldset:not(:first-of-type),
 #btcpw_widget_skyscraper_tipping_form_wide fieldset:not(:first-of-type) {
   display: none;
@@ -564,21 +584,21 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   align-items: center;
   gap: 1em;
 }
-.btcpw_skyscraper_donor_information input[type="text"],
-.btcpw_skyscraper_donor_information input[type="email"],
-.btcpw_skyscraper_donor_information input[type="url"],
-.btcpw_skyscraper_donor_information input[type="password"],
-.btcpw_skyscraper_donor_information input[type="search"],
-.btcpw_skyscraper_donor_information input[type="number"],
-.btcpw_skyscraper_donor_information input[type="tel"],
-.btcpw_skyscraper_donor_information input[type="range"],
-.btcpw_skyscraper_donor_information input[type="date"],
-.btcpw_skyscraper_donor_information input[type="month"],
-.btcpw_skyscraper_donor_information input[type="week"],
-.btcpw_skyscraper_donor_information input[type="time"],
-.btcpw_skyscraper_donor_information input[type="datetime"],
-.btcpw_skyscraper_donor_information input[type="datetime-local"],
-.btcpw_skyscraper_donor_information input[type="color"],
+.btcpw_skyscraper_donor_information input[type='text'],
+.btcpw_skyscraper_donor_information input[type='email'],
+.btcpw_skyscraper_donor_information input[type='url'],
+.btcpw_skyscraper_donor_information input[type='password'],
+.btcpw_skyscraper_donor_information input[type='search'],
+.btcpw_skyscraper_donor_information input[type='number'],
+.btcpw_skyscraper_donor_information input[type='tel'],
+.btcpw_skyscraper_donor_information input[type='range'],
+.btcpw_skyscraper_donor_information input[type='date'],
+.btcpw_skyscraper_donor_information input[type='month'],
+.btcpw_skyscraper_donor_information input[type='week'],
+.btcpw_skyscraper_donor_information input[type='time'],
+.btcpw_skyscraper_donor_information input[type='datetime'],
+.btcpw_skyscraper_donor_information input[type='datetime-local'],
+.btcpw_skyscraper_donor_information input[type='color'],
 .btcpw_skyscraper_donor_information textarea {
   padding: 0 !important;
   margin: 0 !important;
@@ -664,20 +684,23 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   margin: 0;
 }
 
-#btcpw_skyscraper_tipping_amount,
+#btcpw_skyscraper_tipping_high_amount,
+#btcpw_skyscraper_tipping_wide_amount,
 #btcpw_widget_btcpw_skyscraper_tipping_amount_wide,
 #btcpw_widget_btcpw_skyscraper_tipping_amount_high {
   border-top-left-radius: 2em;
   border-bottom-left-radius: 2em;
   background-color: white !important;
 }
-#btcpw_skyscraper_tipping_currency,
+#btcpw_skyscraper_tipping_high_currency,
+#btcpw_skyscraper_tipping_wide_currency,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_wide,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_high {
   color: white !important;
 }
 
-#btcpw_skyscraper_tipping_currency,
+#btcpw_skyscraper_tipping_high_currency,
+#btcpw_skyscraper_tipping_wide_currency,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_wide,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_high {
   -webkit-appearance: none;
@@ -685,12 +708,14 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   -o-appearance: none;
   appearance: none;
 }
-#btcpw_skyscraper_tipping_currency::-ms-expand,
+#btcpw_skyscraper_tipping_high_currency::-ms-expand,
+#btcpw_skyscraper_tipping_wide_currency::-ms-expand,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_wide::-ms-expand,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_high::-ms-expand {
   display: none;
 }
-#btcpw_skyscraper_tipping_currency + i.fas,
+#btcpw_skyscraper_tipping_high_currency + i.fas,
+#btcpw_skyscraper_tipping_wide_currency + i.fas,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_wide + i.fas,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_high + i.fas {
   float: right;
@@ -699,7 +724,8 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   color: white !important;
   padding-right: 10px;
 }
-#btcpw_skyscraper_tipping_currency option,
+#btcpw_skyscraper_tipping_high_currency option,
+#btcpw_skyscraper_tipping_wide_currency option,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_wide option,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_high option {
   padding-right: 21px;
@@ -719,9 +745,9 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
 .btcpw_widget.btcpw_skyscraper_amount_value_3.high.selected {
   background-color: hsl(354, 78%, 7%) !important;
 }
-.btcpw_skyscraper_amount_value_1 input[type="radio"],
-.btcpw_skyscraper_amount_value_2 input[type="radio"],
-.btcpw_skyscraper_amount_value_3 input[type="radio"] {
+.btcpw_skyscraper_amount_value_1 input[type='radio'],
+.btcpw_skyscraper_amount_value_2 input[type='radio'],
+.btcpw_skyscraper_amount_value_3 input[type='radio'] {
   display: none;
 }
 .btcpw_skyscraper_amount.high {
@@ -753,7 +779,7 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
 }
 
 .btcpw_widget.btcpw_skyscraper_tipping_container.wide,
-.btcpw_skyscraper_tipping_container.wide{
+.btcpw_skyscraper_tipping_container.wide {
   width: 600px !important;
   height: 200px !important;
 }
@@ -847,7 +873,7 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   color: white;
 }
 
-#btcpw_page_button > button[type="submit"],
+#btcpw_page_button > button[type='submit'],
 #btcpw_page_button > input.page-next-form {
   width: 50%;
   margin: 10px auto !important;
@@ -862,8 +888,8 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   -webkit-border-radius: 2em;
 }
 #btcpw_page_button button,
-#btcpw_page_button input[type="button"],
-#btcpw_page_button input[type="submit"] {
+#btcpw_page_button input[type='button'],
+#btcpw_page_button input[type='submit'] {
   padding: 10.5px 14px;
   font-size: 1.5em;
   text-transform: uppercase;
@@ -938,21 +964,21 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   width: 100%;
 }
 
-.btcpw_page_donor_information input[type="text"],
-.btcpw_page_donor_information input[type="email"],
-.btcpw_page_donor_information input[type="url"],
-.btcpw_page_donor_information input[type="password"],
-.btcpw_page_donor_information input[type="search"],
-.btcpw_page_donor_information input[type="number"],
-.btcpw_page_donor_information input[type="tel"],
-.btcpw_page_donor_information input[type="range"],
-.btcpw_page_donor_information input[type="date"],
-.btcpw_page_donor_information input[type="month"],
-.btcpw_page_donor_information input[type="week"],
-.btcpw_page_donor_information input[type="time"],
-.btcpw_page_donor_information input[type="datetime"],
-.btcpw_page_donor_information input[type="datetime-local"],
-.btcpw_page_donor_information input[type="color"],
+.btcpw_page_donor_information input[type='text'],
+.btcpw_page_donor_information input[type='email'],
+.btcpw_page_donor_information input[type='url'],
+.btcpw_page_donor_information input[type='password'],
+.btcpw_page_donor_information input[type='search'],
+.btcpw_page_donor_information input[type='number'],
+.btcpw_page_donor_information input[type='tel'],
+.btcpw_page_donor_information input[type='range'],
+.btcpw_page_donor_information input[type='date'],
+.btcpw_page_donor_information input[type='month'],
+.btcpw_page_donor_information input[type='week'],
+.btcpw_page_donor_information input[type='time'],
+.btcpw_page_donor_information input[type='datetime'],
+.btcpw_page_donor_information input[type='datetime-local'],
+.btcpw_page_donor_information input[type='color'],
 .btcpw_page_donor_information textarea {
   font-size: 14px;
   padding: 12.5px 8px;
@@ -994,9 +1020,9 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   -webkit-border-radius: 2em;
 }
 
-.btcpw_page_amount_value_1 input[type="radio"],
-.btcpw_page_amount_value_2 input[type="radio"],
-.btcpw_page_amount_value_3 input[type="radio"] {
+.btcpw_page_amount_value_1 input[type='radio'],
+.btcpw_page_amount_value_2 input[type='radio'],
+.btcpw_page_amount_value_3 input[type='radio'] {
   display: none;
 }
 
@@ -1070,7 +1096,7 @@ div.btcpw_page_header_container > div:nth-child(2) {
     */
 
 .tipping-border {
-  content: "";
+  content: '';
   display: inline-block;
   width: 2rem;
   height: 2rem;

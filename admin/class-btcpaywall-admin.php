@@ -82,9 +82,9 @@ class BTCPayWall_Admin
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/btc-paywall-admin.css', array(), $this->version, 'all');
 
 		wp_enqueue_style('wp-color-picker');
-		if (isset($_GET['page']) === 'btcpw_form' || isset($_GET['page']) === 'btcpw_edit') {
-			wp_enqueue_style('load-fa', 'https://use.fontawesome.com/releases/v5.12.1/css/all.css');
-		}
+		wp_enqueue_style('load-fa', 'https://use.fontawesome.com/releases/v5.12.1/css/all.css');
+		
+		wp_enqueue_style($this->plugin_name . '_preview', plugin_dir_url(__FILE__) . 'css/btc-paywall-preview-admin.css', array(), $this->version, 'all');
 	}
 
 	/**
@@ -106,6 +106,8 @@ class BTCPayWall_Admin
 				'security'  => wp_create_nonce('shortcode-security-nonce'),
 			]
 		);
+
+		wp_enqueue_script($this->plugin_name . '_preview', plugin_dir_url(__FILE__) . 'js/btc-paywall-preview-admin.js', array('jquery'), $this->version, false);
 
 		if (!did_action('wp_enqueue_media')) {
 			wp_enqueue_media();

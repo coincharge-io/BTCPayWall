@@ -908,7 +908,7 @@ class BTCPayWall_Public
 			'button_text' => $id ? $result[0]['button_text'] : 'Tipping now',
 			'button_text_color' => $id ? '#' . $result[0]['button_text_color'] : '#FFFFFF',
 			'button_color' => $id ? '#' . $result[0]['button_color'] : '#FE642E',
-			'logo_id' => $id ? $result[0]['logo'] : '',
+			'logo_id' => $id ? $result[0]['logo'] : 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg',
 			'background_id' => $id ? $result[0]['background'] : '',
 			'input_background' => $id ? '#' . $result[0]['input_background'] : '#ffa500',
 			'background' => $id ? '#' . $result[0]['hf_background'] : '#1d5aa3',
@@ -1114,7 +1114,7 @@ class BTCPayWall_Public
 	 *
 	 * @return string
 	 */
-	public function render_shortcode_banner_tipping($atts)
+	/* 	public function render_shortcode_banner_tipping($atts)
 	{
 
 		global $wpdb;
@@ -1370,7 +1370,7 @@ class BTCPayWall_Public
 
 		return ob_get_clean();
 	}
-
+ */
 
 	/**
 	 * @param $atts
@@ -1400,7 +1400,7 @@ class BTCPayWall_Public
 			'button_text' => $id ? $result[0]['button_text'] : 'Tipping now',
 			'button_text_color' => $id ? '#' . $result[0]['button_text_color'] : '#FFFFFF',
 			'button_color' => $id ? '#' . $result[0]['button_color'] : '#FE642E',
-			'logo_id' => $id ? $result[0]['logo'] : '',
+			'logo_id' => $id ? $result[0]['logo'] : 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg',
 			'background_id' => $id ? $result[0]['background'] : '',
 			'free_input' => $id ? filter_var($result[0]['free_input'], FILTER_VALIDATE_BOOLEAN) : true,
 			'input_background' => $id ? '#' . $result[0]['input_background'] : '#ffa500',
@@ -1445,7 +1445,7 @@ class BTCPayWall_Public
 		ob_start();
 	?>
 		<style>
-			.btcpw_skyscraper_tipping_container {
+			.btcpw_skyscraper_tipping_container.wide {
 				background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : '');
 									?>;
 				background-image: url(<?php echo ($background ? esc_html($background) : '');
@@ -1459,55 +1459,40 @@ class BTCPayWall_Public
 										?>);
 			}
 
-			.btcpw_skyscraper_amount_value_1,
-			.btcpw_skyscraper_amount_value_2,
-			.btcpw_skyscraper_amount_value_3,
-			.btcpw_skyscraper_tipping_free_input {
-				background-color: <?php echo esc_html($atts['input_background']);
-									?>;
-			}
-
-			.btcpw_skyscraper_header_container,
-			#btcpw_skyscraper_button,
-			#btcpw_skyscraper_button>div:nth-child(1)>input {
+			.btcpw_skyscraper_header_container.wide,
+			#btcpw_skyscraper_wide_button,
+			#btcpw_skyscraper_wide_button>div:nth-child(1)>input {
 				background-color: <?php echo esc_html($atts['background']);
 									?>;
 			}
 
-			#btcpw_skyscraper_tipping__button,
-			#btcpw_skyscraper_button>div>input.skyscraper-next-form {
+			#btcpw_skyscraper_tipping_wide_button,
+			#btcpw_skyscraper_wide_button>div>input.skyscraper-next-form {
 				color: <?php echo esc_html($atts['button_text_color']);
 						?>;
 				background: <?php echo esc_html($atts['button_color']);
 							?>;
 			}
 
-			.btcpw_skyscraper_header_container h6 {
+			.btcpw_skyscraper_header_container.wide h6 {
 				color: <?php echo esc_html($atts['title_text_color']);
 						?>
 			}
 
-			.btcpw_skyscraper_tipping_container.info_container {
-				display: <?php echo (empty($atts['description'])) ? 'none' : 'block';
-							?>
-			}
-
-			.btcpw_skyscraper_info_container p,
 			div.btcpw_skyscraper_banner.wide>div.btcpw_skyscraper_header_container.wide p {
 				color: <?php echo esc_html($atts['description_color']);
 						?>
 			}
 
-			.btcpw_skyscraper_tipping_info fieldset h6,
-			.btcpw_skyscraper_tipping_info h6,
-			#skyscraper_tipping_form>fieldset:nth-child(1)>h6 {
+			#skyscraper_tipping_wide_form>fieldset h6 {
 				color: <?php echo esc_html($atts['tipping_text_color']);
 						?>
 			}
 
-			.btcpw_skyscraper_amount_value_1,
-			.btcpw_skyscraper_amount_value_2,
-			.btcpw_skyscraper_amount_value_3 {
+			.btcpw_skyscraper_amount_value_1.wide,
+			.btcpw_skyscraper_amount_value_2.wide,
+			.btcpw_skyscraper_amount_value_3.wide,
+			.btcpw_skyscraper_tipping_free_input.wide {
 				background: <?php echo esc_html($atts['input_background']);
 							?>;
 
@@ -1531,7 +1516,7 @@ class BTCPayWall_Public
 					</div>
 				</div>
 				<div class="btcpw_skyscraper_tipping_container wide">
-					<form method="POST" action="" id="<?php echo "skyscraper_tipping_form"; ?>">
+					<form method="POST" action="" id="<?php echo "skyscraper_tipping_wide_form"; ?>">
 						<fieldset>
 							<h6><?php echo (!empty($atts['tipping_text']) ? esc_html($atts['tipping_text']) : ''); ?>
 							</h6>
@@ -1541,7 +1526,7 @@ class BTCPayWall_Public
 									<?php if ($fixed_amount[$key]['enabled'] === true) : ?>
 										<div class="<?php echo trim('btcpw_skyscraper_amount_' . $key . ' ' . 'wide'); ?>">
 											<div>
-												<input type="radio" class="<?php echo trim("btcpw_skyscraper_tipping_default_amount wide"); ?>" id="<?php echo $key . '_wide'; ?>" name="<?php echo "btcpw_skyscraper_tipping_default_amount_wide"; ?>" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?>">
+												<input type="radio" class="btcpw_skyscraper_tipping_default_amount wide" id="<?php echo $key . '_wide'; ?>" name="<?php echo "btcpw_skyscraper_tipping_default_amount_wide"; ?>" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?>">
 												<?php if (!empty($fixed_amount[$key]['amount'])) : ?>
 													<?php if (true == $atts['show_icon']) : ?>
 														<i class="<?php echo esc_html($fixed_amount[$key]['icon']); ?>"></i>
@@ -1556,10 +1541,10 @@ class BTCPayWall_Public
 								<?php endforeach; ?>
 								<?php if (true == $atts['free_input']) : ?>
 									<div class="<?php echo trim("btcpw_skyscraper_tipping_free_input wide"); ?>">
-										<input type="number" id="<?php echo "btcpw_skyscraper_tipping_amount"; ?>" name="<?php echo "btcpw_skyscraper_tipping_amount_wide"; ?>" placeholder="0.00" required />
+										<input type="number" id="<?php echo "btcpw_skyscraper_tipping_wide_amount"; ?>" name="<?php echo "btcpw_skyscraper_tipping_amount_wide"; ?>" placeholder="0.00" required />
 
 
-										<select required name="<?php echo "btcpw_skyscraper_tipping_currency_wide"; ?>" id="<?php echo "btcpw_skyscraper_tipping_currency"; ?>">
+										<select required name="<?php echo "btcpw_skyscraper_tipping_currency_wide"; ?>" id="<?php echo "btcpw_skyscraper_tipping_wide_currency"; ?>">
 											<option disabled value="">Select currency</option>
 											<?php foreach ($supported_currencies as $currency) : ?>
 												<option <?php echo $atts['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
@@ -1571,13 +1556,13 @@ class BTCPayWall_Public
 									</div>
 								<?php endif; ?>
 							</div>
-							<div class="<?php echo trim("btcpw_skyscraper_tipping_converted_values wide"); ?>">
-								<input type="text" id="<?php echo "btcpw_skyscraper_converted_amount"; ?>" name="<?php echo "btcpw_skyscraper_converted_amount_wide"; ?>" readonly />
-								<input type="text" id="<?php echo "btcpw_skyscraper_converted_currency"; ?>" name="<?php echo "btcpw_skyscraper_converted_currency_wide"; ?>" readonly />
+							<div class="btcpw_skyscraper_tipping_converted_values wide">
+								<input type="text" id="<?php echo "btcpw_skyscraper_wide_converted_amount"; ?>" name="<?php echo "btcpw_skyscraper_converted_amount_wide"; ?>" readonly />
+								<input type="text" id="<?php echo "btcpw_skyscraper_wide_converted_currency"; ?>" name="<?php echo "btcpw_skyscraper_converted_currency_wide"; ?>" readonly />
 							</div>
 
 
-							<div class="<?php echo "btcpw_skyscraper_button wide"; ?>" id="<?php echo "btcpw_skyscraper_button"; ?>">
+							<div class="<?php echo "btcpw_skyscraper_button wide"; ?>" id="btcpw_skyscraper_wide_button">
 								<input type="hidden" id="<?php echo "btcpw_skyscraper_redirect_link_wide"; ?>" name="<?php echo "btcpw_skyscraper_redirect_link_wide"; ?>" value="<?php echo esc_attr($atts['redirect']); ?>" />
 								<?php if (true === $collect_data) : ?>
 
@@ -1587,7 +1572,7 @@ class BTCPayWall_Public
 
 								<?php else : ?>
 									<div>
-										<button type="submit" id="<?php echo "btcpw_skyscraper_tipping__button"; ?>"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
+										<button type="submit" id="btcpw_skyscraper_tipping_wide_button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
 									</div>
 								<?php endif; ?>
 							</div>
@@ -1606,12 +1591,12 @@ class BTCPayWall_Public
 										<?php endif; ?>
 									<?php endforeach; ?>
 								</div>
-								<div class="<?php echo "btcpw_skyscraper_button wide"; ?>" id="<?php echo ltrim("btcpw_skyscraper_button"); ?>">
+								<div class="<?php echo "btcpw_skyscraper_button wide"; ?>" id="btcpw_skyscraper_wide_button">
 									<div>
 										<input type="button" name="previous" class="<?php echo ("skyscraper-previous-form wide"); ?>" value="< Previous" />
 									</div>
 									<div>
-										<button type="submit" id=<?php echo "btcpw_skyscraper_tipping__button"; ?>><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
+										<button type="submit" id="btcpw_skyscraper_tipping_wide_button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
 									</div>
 								</div>
 							</fieldset>
@@ -1655,7 +1640,7 @@ class BTCPayWall_Public
 			'button_text' => $id ? $result[0]['button_text'] : 'Tipping now',
 			'button_text_color' => $id ? '#' . $result[0]['button_text_color'] : '#FFFFFF',
 			'button_color' => $id ? '#' . $result[0]['button_color'] : '#FE642E',
-			'logo_id' => $id ? $result[0]['logo'] : '',
+			'logo_id' => $id ? $result[0]['logo'] : 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg',
 			'background_id' => $id ? $result[0]['background'] : '',
 			'free_input' => $id ? filter_var($result[0]['free_input'], FILTER_VALIDATE_BOOLEAN) : true,
 			'input_background' => $id ? '#' . $result[0]['input_background'] : '#ffa500',
@@ -1700,7 +1685,7 @@ class BTCPayWall_Public
 		ob_start();
 	?>
 		<style>
-			.btcpw_skyscraper_tipping_container {
+			.btcpw_skyscraper_tipping_container.high {
 				background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : '');
 									?>;
 				background-image: url(<?php echo ($background ? esc_html($background) : '');
@@ -1708,58 +1693,43 @@ class BTCPayWall_Public
 			}
 
 
-			.btcpw_skyscraper_amount_value_1,
-			.btcpw_skyscraper_amount_value_2,
-			.btcpw_skyscraper_amount_value_3,
-			.btcpw_skyscraper_tipping_free_input {
+			.btcpw_skyscraper_amount_value_1.high,
+			.btcpw_skyscraper_amount_value_2.high,
+			.btcpw_skyscraper_amount_value_3.high,
+			.btcpw_skyscraper_tipping_free_input.high {
 				background-color: <?php echo esc_html($atts['input_background']);
 									?>;
 			}
 
-			.btcpw_skyscraper_header_container,
-			#btcpw_skyscraper_button,
-			#btcpw_skyscraper_button>div:nth-child(1)>input {
+			.btcpw_skyscraper_header_container.high,
+			#btcpw_skyscraper_high_button,
+			#btcpw_skyscraper_high_button>div:nth-child(1)>input {
 				background-color: <?php echo esc_html($atts['background']);
 									?>;
 			}
 
-			#btcpw_skyscraper_tipping__button,
-			#btcpw_skyscraper_button>div>input.skyscraper-next-form {
+			#btcpw_skyscraper_tipping_high_button,
+			#btcpw_skyscraper_high_button>div>input.skyscraper-next-form {
 				color: <?php echo esc_html($atts['button_text_color']);
 						?>;
 				background: <?php echo esc_html($atts['button_color']);
 							?>;
 			}
 
-			.btcpw_skyscraper_header_container h6 {
+			.btcpw_skyscraper_header_container.high h6 {
 				color: <?php echo esc_html($atts['title_text_color']);
 						?>
 			}
 
-			.btcpw_skyscraper_tipping_container.info_container {
-				display: <?php echo (empty($atts['description'])) ? 'none' : 'block';
-							?>
-			}
 
-			.btcpw_skyscraper_info_container p,
 			div.btcpw_skyscraper_banner.high>div.btcpw_skyscraper_header_container.high p {
 				color: <?php echo esc_html($atts['description_color']);
 						?>
 			}
 
-			.btcpw_skyscraper_tipping_info fieldset h6,
-			.btcpw_skyscraper_tipping_info h6,
-			#skyscraper_tipping_form>fieldset:nth-child(1)>h6 {
+			#skyscraper_tipping_high_form>fieldset h6 {
 				color: <?php echo esc_html($atts['tipping_text_color']);
 						?>
-			}
-
-			.btcpw_skyscraper_amount_value_1,
-			.btcpw_skyscraper_amount_value_2,
-			.btcpw_skyscraper_amount_value_3 {
-				background: <?php echo esc_html($atts['input_background']);
-							?>;
-
 			}
 		</style>
 		<div id="btcpw_page">
@@ -1780,7 +1750,7 @@ class BTCPayWall_Public
 					</div>
 				</div>
 				<div class="btcpw_skyscraper_tipping_container high">
-					<form method="POST" action="" id="skyscraper_tipping_form">
+					<form method="POST" action="" id="skyscraper_tipping_high_form">
 						<fieldset>
 							<h6><?php echo (!empty($atts['tipping_text']) ? esc_html($atts['tipping_text']) : ''); ?>
 							</h6>
@@ -1788,7 +1758,7 @@ class BTCPayWall_Public
 								<?php foreach ($fixed_amount as $key => $value) : ?>
 
 									<?php if ($fixed_amount[$key]['enabled'] === true) : ?>
-										<div class="<?php echo trim('btcpw_skyscraper_amount_' . $key . ' ' . 'high'); ?>">
+										<div class="<?php echo 'btcpw_skyscraper_amount_' . $key . ' ' . 'high'; ?>">
 											<div>
 												<input type="radio" class="<?php echo trim("btcpw_skyscraper_tipping_default_amount high"); ?>" id="<?php echo $key . '_high'; ?>" name="<?php echo "btcpw_skyscraper_tipping_default_amount_high"; ?>" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?>">
 												<?php if (!empty($fixed_amount[$key]['amount'])) : ?>
@@ -1804,11 +1774,11 @@ class BTCPayWall_Public
 
 								<?php endforeach; ?>
 								<?php if (true == $atts['free_input']) : ?>
-									<div class="<?php echo trim("btcpw_skyscraper_tipping_free_input high"); ?>">
-										<input type="number" id="<?php echo "btcpw_skyscraper_tipping_amount"; ?>" name="<?php echo "btcpw_skyscraper_tipping_amount_high"; ?>" placeholder="0.00" required />
+									<div class="btcpw_skyscraper_tipping_free_input high">
+										<input type="number" id="<?php echo "btcpw_skyscraper_tipping_high_amount"; ?>" name="<?php echo "btcpw_skyscraper_tipping_amount_high"; ?>" placeholder="0.00" required />
 
 
-										<select required name="<?php echo "btcpw_skyscraper_tipping_currency_high"; ?>" id="<?php echo "btcpw_skyscraper_tipping_currency"; ?>">
+										<select required name="<?php echo "btcpw_skyscraper_tipping_currency_high"; ?>" id="<?php echo "btcpw_skyscraper_tipping_high_currency"; ?>">
 											<option disabled value="">Select currency</option>
 											<?php foreach ($supported_currencies as $currency) : ?>
 												<option <?php echo $atts['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
@@ -1820,13 +1790,13 @@ class BTCPayWall_Public
 									</div>
 								<?php endif; ?>
 							</div>
-							<div class="<?php echo trim("btcpw_skyscraper_tipping_converted_values high"); ?>">
-								<input type="text" id="<?php echo "btcpw_skyscraper_converted_amount"; ?>" name="<?php echo "btcpw_skyscraper_converted_amount_high"; ?>" readonly />
-								<input type="text" id="<?php echo "btcpw_skyscraper_converted_currency"; ?>" name="<?php echo "btcpw_skyscraper_converted_currency_high"; ?>" readonly />
+							<div class="btcpw_skyscraper_tipping_converted_values high">
+								<input type="text" id="btcpw_skyscraper_high_converted_amount" name="<?php echo "btcpw_skyscraper_converted_amount_high"; ?>" readonly />
+								<input type="text" id="<?php echo "btcpw_skyscraper_high_converted_currency"; ?>" name="<?php echo "btcpw_skyscraper_converted_currency_high"; ?>" readonly />
 							</div>
 
 
-							<div class="<?php echo "btcpw_skyscraper_button high"; ?>" id="<?php echo "btcpw_skyscraper_button"; ?>">
+							<div class="<?php echo "btcpw_skyscraper_button high"; ?>" id="btcpw_skyscraper_high_button">
 								<input type="hidden" id="<?php echo "btcpw_skyscraper_redirect_link_high"; ?>" name="<?php echo "btcpw_skyscraper_redirect_link_high"; ?>" value="<?php echo esc_attr($atts['redirect']); ?>" />
 								<?php if (true === $collect_data) : ?>
 
@@ -1836,7 +1806,7 @@ class BTCPayWall_Public
 
 								<?php else : ?>
 									<div>
-										<button type="submit" id="<?php echo "btcpw_skyscraper_tipping__button"; ?>"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
+										<button type="submit" id="<?php echo "btcpw_skyscraper_tipping_high_button"; ?>"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
 									</div>
 								<?php endif; ?>
 							</div>
@@ -1855,12 +1825,12 @@ class BTCPayWall_Public
 										<?php endif; ?>
 									<?php endforeach; ?>
 								</div>
-								<div class="<?php echo "btcpw_skyscraper_button high"; ?>" id="<?php echo ltrim("btcpw_skyscraper_button"); ?>">
+								<div class="<?php echo "btcpw_skyscraper_button high"; ?>" id="btcpw_skyscraper_high_button">
 									<div>
 										<input type="button" name="previous" class="<?php echo ("skyscraper-previous-form high"); ?>" value="< Previous" />
 									</div>
 									<div>
-										<button type="submit" id=<?php echo "btcpw_skyscraper_tipping__button"; ?>><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
+										<button type="submit" id=<?php echo "btcpw_skyscraper_tipping_high_button"; ?>><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
 									</div>
 								</div>
 							</fieldset>
@@ -1905,7 +1875,7 @@ class BTCPayWall_Public
 			'button_text' => $id ? $result[0]['button_text'] : 'Tipping now',
 			'button_text_color' => $id ? '#' . $result[0]['button_text_color'] : '#FFFFFF',
 			'button_color' => $id ? '#' . $result[0]['button_color'] : '#FE642E',
-			'logo_id' => $id ? $result[0]['logo'] : '',
+			'logo_id' => $id ? $result[0]['logo'] : 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg',
 			'background_id' => $id ? $result[0]['background'] : '',
 			'input_background' => $id ? '#' . $result[0]['input_background'] : '#ffa500',
 			'background' => $id ? '#' . $result[0]['hf_background'] : '#1d5aa3',

@@ -40,17 +40,26 @@
     })
   })
   $(document).ready(function () {
-    $('#btcpw_default_page_currency1, #btcpw_default_page_currency2, #btcpw_default_page_currency3, #btcpw_banner_wide_default_currency1, #btcpw_banner_wide_default_currency2, #btcpw_banner_wide_default_currency3, #btcpw_banner_high_default_currency1, #btcpw_banner_high_default_currency2, #btcpw_banner_high_default_currency3').change(function () {
-      var stepValue = $(this).val() === "BTC"
-          ? "0.00000001"
-          : $(this).val() === "SATS"
-          ? "1"
-          : "0.50";
+    $(
+      '#btcpw_default_page_currency1, #btcpw_default_page_currency2, #btcpw_default_page_currency3, #btcpw_banner_wide_default_currency1, #btcpw_banner_wide_default_currency2, #btcpw_banner_wide_default_currency3, #btcpw_banner_high_default_currency1, #btcpw_banner_high_default_currency2, #btcpw_banner_high_default_currency3'
+    ).change(function () {
+      var stepValue =
+        $(this).val() === 'BTC'
+          ? '0.00000001'
+          : $(this).val() === 'SATS'
+          ? '1'
+          : '0.50'
 
-      $(this).prev('input').attr({
-        step: stepValue,
-        value: parseInt($(this).prev('input').val())
-      })
+      $(this)
+        .prev('input')
+        .attr({
+          step: stepValue,
+          value: parseInt(
+            $(this)
+              .prev('input')
+              .val()
+          )
+        })
     })
   })
   $(document).ready(function () {
@@ -253,6 +262,30 @@
   $(document).ready(function () {
     $('#tipping-form-design').change(function () {
       var design = $(this).val()
+      $('.toggle-preview').hide()
+      switch (design) {
+        case 'Box':
+          $('#tipping-box-preview').show()
+          break
+        case 'High-Banner':
+          $('#tipping-banner-high-preview').show()
+          break
+        case 'Wide-Banner':
+          $('#tipping-banner-wide-preview').show()
+          break
+        case 'Page':
+          $('#tipping-page-preview').show()
+          break
+
+        default:
+          $('#tipping-box-preview').show()
+          break
+      }
+    })
+  })
+  /* $(document).ready(function () {
+    $('#tipping-form-design').change(function () {
+      var design = $(this).val()
       $('#tipping-form-preview').empty()
       if ($('#tipping-form-preview').children().length === 0) {
         switch (design) {
@@ -301,7 +334,7 @@
             break
           case 'Page':
             $('#tipping-form-preview').replaceWith(
-              '<div id="btcpw_page"><div class="btcpw_page_tipping_container" style="width:520px; height:600px; background-color:#E6E6E6"><form method="POST" action="" id="page_tipping_form"><div class="btcpw_page_header_container" style="background-color:#1d5aa3"><div id="btcpw_page_logo_wrap"><img alt="Tipping page logo" src="https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg" /></div><div><h6 style="color:#ffffff;">Title</h6></div></div><div class="btcpw_page_bar_container"><div class="btcpw_page_bar_container bar-1 active">1.Pledge</div><div class="btcpw_page_bar_container bar-2">2.Info</div></div><fieldset><h6>Enter Tipping Amount</h6><div class="btcpw_page_amount"><div style="background-color: #ffa500;" class="btcpw_page_amount_value_1"><div><input type="radio" class="btcpw_page_tipping_default_amount" id="value_1_page"  name="btcpw_page_tipping_default_amount" value="1000 SATS"><i class="fas fa-coffee"></i></div><label for="value_1">1000 SATS</label></div><div style="background-color: #ffa500;" class="btcpw_page_amount_value_2"><div><input type="radio" class="btcpw_page_tipping_default_amount" id="value_2_page"  name="btcpw_page_tipping_default_amount" value="2000 SATS"><i class="fas fa-coffee"></i></div><label for="value_2">2000 SATS</label></div><div style="background-color: #ffa500;" class="btcpw_page_amount_value_3"><div><input type="radio" class="btcpw_page_tipping_default_amount" id="value_3_page"  name="btcpw_page_tipping_default_amount" value="3000 SATS"><i class="fas fa-coffee"></i></div><label for="value_3">3000 SATS</label></div><div class="btcpw_page_tipping_free_input" style="background-color: #ffa500;"><input type="number" id="btcpw_page_tipping_amount" name="btcpw_page_tipping_amount" placeholder="0.00" required /><select required name="btcpw_page_tipping_currency" id="btcpw_page_tipping_currency"><option disabled value="">Select currency</option><option value="SATS">SATS</option></select><i class="fas fa-arrows-alt-v"></i></div></div><div class="btcpw_page_tipping_converted_values"><input type="text" id="btcpw_page_converted_amount" name="btcpw_page_converted_amount" readonly /><input type="text" id="btcpw_page_converted_currency" name="btcpw_page_converted_currency" readonly /></div><div id="btcpw_page_button" style="background-color:#1d5aa3"><input type="button" style="background:#FE642E;"name="next" class="page-next-form" value="continue " /></div></fieldset><fieldset><div class="btcpw_page_donor_information"><div class="btcpw_page_tipping_donor_name_wrap"><input type="text" placeholder="Full name" id="name" name="<?php echo "btcpw_page_tipping_donor_Full name"; ?>" /></div></div><div id="btcpw_page_button"><div><input type="button" name="previous" class="page-previous-form" value="< previous" /></div><div><button type="submit" id="btcpw_page_tipping__button">Tip</button></div></div></fieldset></form></div><div id="powered_by"><p>Powered by <a href=https://btcpaywall.com/ target=_blank>BTCPayWall</a></p></div></div>'
+              '<div id="btcpw_page"><div class="btcpw_page_tipping_container" style="width:520px; height:600px; background-color:#E6E6E6"><form method="POST" action="" id="page_tipping_form"><div class="btcpw_page_header_container" style="background-color:#1d5aa3"><div id="btcpw_page_logo_wrap"><img alt="Tipping page logo" src="https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg" /></div><div><h6 style="color:#ffffff;">Title</h6></div></div><div class="btcpw_page_bar_container"><div class="btcpw_page_bar_container bar-1 active">1.Pledge</div><div class="btcpw_page_bar_container bar-2">2.Info</div></div><fieldset><h6>Enter Tipping Amount</h6><div class="btcpw_page_amount"><div style="background-color: #ffa500;" class="btcpw_page_amount_value_1"><div><input type="radio" class="btcpw_page_tipping_default_amount" id="value_1_page"  name="btcpw_page_tipping_default_amount" value="1000 SATS"><i class="fas fa-coffee"></i></div><label for="value_1">1000 SATS</label></div><div style="background-color: #ffa500;" class="btcpw_page_amount_value_2"><div><input type="radio" class="btcpw_page_tipping_default_amount" id="value_2_page"  name="btcpw_page_tipping_default_amount" value="2000 SATS"><i class="fas fa-coffee"></i></div><label for="value_2">2000 SATS</label></div><div style="background-color: #ffa500;" class="btcpw_page_amount_value_3"><div><input type="radio" class="btcpw_page_tipping_default_amount" id="value_3_page"  name="btcpw_page_tipping_default_amount" value="3000 SATS"><i class="fas fa-coffee"></i></div><label for="value_3">3000 SATS</label></div><div class="btcpw_page_tipping_free_input" style="background-color: #ffa500;"><input type="number" id="btcpw_page_tipping_amount" name="btcpw_page_tipping_amount" placeholder="0.00" required /><select required name="btcpw_page_tipping_currency" id="btcpw_page_tipping_currency"><option disabled value="">Select currency</option><option value="SATS">SATS</option></select><i class="fas fa-arrows-alt-v"></i></div></div><div class="btcpw_page_tipping_converted_values"><input type="text" id="btcpw_page_converted_amount" name="btcpw_page_converted_amount" readonly /><input type="text" id="btcpw_page_converted_currency" name="btcpw_page_converted_currency" readonly /></div><div id="btcpw_page_button" style="background-color:#1d5aa3"><input type="button" style="background:#FE642E;"name="next" class="page-next-form" value="continue " /></div></fieldset><fieldset><div class="btcpw_page_donor_information"><div class="btcpw_page_tipping_donor_name_wrap"><input type="text" placeholder="Full name" id="name" name="btcpw_page_tipping_donor_name"</div></div><div id="btcpw_page_button"><div><input type="button" name="previous" class="page-previous-form" value="< previous" /></div><div><button type="submit" id="btcpw_page_tipping__button">Tip</button></div></div></fieldset></form></div><div id="powered_by"><p>Powered by <a href=https://btcpaywall.com/ target=_blank>BTCPayWall</a></p></div></div>'
             )
             break
           default:
@@ -312,7 +345,7 @@
         }
       }
     })
-  })
+  }) */
   $(document).ready(function () {
     $(
       '.btcpw_tipping_box_title_color,.btcpw_tipping_box_description_color,.btcpw_tipping_box_tipping_box_color,.btcpw_tipping_box_hf_background,.btcpw_tipping_box_button_text_color,.btcpw_tipping_box_button_color,.btcpw_tipping_box_background,.btcpw_tipping_banner_high_hf_background,.btcpw_tipping_banner_high_title_color,.btcpw_tipping_banner_high_description_color,.btcpw_tipping_banner_high_tipping_box_color,.btcpw_tipping_banner_high_button_text_color,.btcpw_tipping_banner_high_button_color,.btcpw_tipping_banner_high_background,.btcpw_tipping_banner_high_tipping_color,.btcpw_tipping_banner_high_input_background,.btcpw_tipping_banner_wide_hf_background,.btcpw_tipping_banner_wide_title_color,.btcpw_tipping_banner_wide_description_color,.btcpw_tipping_banner_wide_tipping_box_color,.btcpw_tipping_banner_wide_button_text_color,.btcpw_tipping_banner_wide_button_color,.btcpw_tipping_banner_wide_background,.btcpw_tipping_banner_wide_tipping_color,.btcpw_tipping_banner_wide_input_background,.btcpw_tipping_box_input_background,.btcpw_tipping_page_title_color,.btcpw_tipping_page_tipping_box_color,.btcpw_tipping_page_button_text_color,.btcpw_tipping_page_button_color,.btcpw_tipping_page_background,.btcpw_tipping_page_tipping_color,.btcpw_tipping_page_input_background,.btcpw_tipping_page_tipping_color_active,.btcpw_tipping_page_tipping_color_inactive,.btcpw_tipping_hf_background'
@@ -582,7 +615,9 @@
         data: {
           action: 'btcpw_create_shortcode',
           nonce_ajax: shortcode_ajax_object.security,
-          id: $('#btc_tipping_banner_high_id, #btc_tipping_banner_wide_id, #btc_tipping_box_id, #btc_tipping_page_id').val(),
+          id: $(
+            '#btc_tipping_banner_high_id, #btc_tipping_banner_wide_id, #btc_tipping_box_id, #btc_tipping_page_id'
+          ).val(),
           dimension: $(
             '#btcpw_tipping_box_dimension, #btcpw_tipping_banner_high_dimension, #btcpw_tipping_banner_wide_dimension'
           ).val(),
@@ -715,8 +750,14 @@
           /*$('#' + data.data.data.type+' p').html(
             data.data.data.shortcode
           )*/
-          if(!$('#btc_tipping_banner_high_id, #btc_tipping_banner_wide_id, #btc_tipping_box_id, #btc_tipping_page_id').val()){
-            location.replace(shortcode_ajax_object.redirectUrl+data.data.data.id)
+          if (
+            !$(
+              '#btc_tipping_banner_high_id, #btc_tipping_banner_wide_id, #btc_tipping_box_id, #btc_tipping_page_id'
+            ).val()
+          ) {
+            location.replace(
+              shortcode_ajax_object.redirectUrl + data.data.data.id
+            )
           }
         },
         error: function () {
