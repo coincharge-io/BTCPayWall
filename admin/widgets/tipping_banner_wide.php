@@ -19,7 +19,8 @@ class Tipping_Banner_Wide extends WP_Widget
         $logo = wp_get_attachment_image_src($instance['logo_id']) ? wp_get_attachment_image_src($instance['logo_id'])[0] : $instance['logo_id'];
         $background = wp_get_attachment_image_src($instance['background_id']) ? wp_get_attachment_image_src($instance['background_id'])[0] : $instance['background_id'];
         $collect = BTCPayWall_Public::getCollect($instance);
-        $collect_data = filter_var(BTCPayWall_Public::display_is_enabled($collect), FILTER_VALIDATE_BOOL);
+        $collect_d = filter_var(BTCPayWall_Public::display_is_enabled($collect), FILTER_VALIDATE_BOOL);
+        $collect_data = filter_var($collect_d, FILTER_VALIDATE_BOOL);
         $fixed_amount = BTCPayWall_Public::getFixedAmount($instance);
 
         $first_enabled = array_column($fixed_amount, 'enabled');
@@ -403,7 +404,7 @@ class Tipping_Banner_Wide extends WP_Widget
                             <?php endforeach; ?>
                         </select>
 
-                        <input id="<?php echo esc_attr($this->get_field_id('value1_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value1_icon')); ?>" type="text" value="<?php echo esc_attr($value1_icon); ?>" />
+                        <input id="<?php echo esc_attr($this->get_field_id('value1_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value1_icon')); ?>" type="text" value="<?php echo esc_attr($value1_icon); ?>" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
                     </div>
                 </div>
                 <div class="row">
@@ -423,7 +424,7 @@ class Tipping_Banner_Wide extends WP_Widget
                             <?php endforeach; ?>
                         </select>
 
-                        <input id="<?php echo esc_attr($this->get_field_id('value2_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value2_icon')); ?>" type="text" value="<?php echo esc_attr($value2_icon); ?>" />
+                        <input id="<?php echo esc_attr($this->get_field_id('value2_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value2_icon')); ?>" type="text" value="<?php echo esc_attr($value2_icon); ?>" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
                     </div>
                 </div>
                 <div class="row">
@@ -443,7 +444,7 @@ class Tipping_Banner_Wide extends WP_Widget
                             <?php endforeach; ?>
                         </select>
 
-                        <input id="<?php echo esc_attr($this->get_field_id('value3_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value3_icon')); ?>" type="text" value="<?php echo esc_attr($value3_icon); ?>" />
+                        <input id="<?php echo esc_attr($this->get_field_id('value3_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value3_icon')); ?>" type="text" value="<?php echo esc_attr($value3_icon); ?>" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
                     </div>
                 </div>
             </div>

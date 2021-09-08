@@ -35,9 +35,12 @@ $background = wp_get_attachment_image_src($image['background']);
 $shortcode = !empty($result[0]) ? BTCPayWall_Admin::outputShortcodeAttributes($result[0]['name'], $result[0]['id']) : '';
 $id = $result[0]['id'] ?? null;
 ?>
+
 <div class="tipping_box_settings">
+    <?php include(__DIR__ . '/notices/form-notice.php'); ?>
     <form method="POST" action="" id="tipping_box_add_form">
         <div class="row">
+
             <div class="col-50">
                 <p>Shortcode</label>
             </div>
@@ -203,7 +206,7 @@ $id = $result[0]['id'] ?? null;
         <input type="hidden" id="btc_tipping_box_id" value="<?php echo $id; ?>" />
 
         <div style="display: inline-block; margin-top: 25px;">
-            <button class="button button-primary" type="submit">Save</button>
+            <button class="button button-primary btcpw_button" type="submit">Save</button>
         </div>
     </form>
 </div>

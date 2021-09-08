@@ -83,7 +83,7 @@ class BTCPayWall_Admin
 
 		wp_enqueue_style('wp-color-picker');
 		wp_enqueue_style('load-fa', 'https://use.fontawesome.com/releases/v5.12.1/css/all.css');
-		
+
 		wp_enqueue_style($this->plugin_name . '_preview', plugin_dir_url(__FILE__) . 'css/btc-paywall-preview-admin.css', array(), $this->version, 'all');
 	}
 
@@ -613,7 +613,14 @@ class BTCPayWall_Admin
 		}
 	}
 
-
+	/* public function edit_page_admin_notice($short)
+	{
+		$id = $_GET['id'] ?? null;
+		$shortcode = $short;
+		if ($id) {
+			include(__DIR__ . '/partials/notices/edit-notice.php');
+		}
+	} */
 	/**
 	 * Check connection with a server
 	 */

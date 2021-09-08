@@ -119,6 +119,7 @@ $id = $result[0]['id'] ?? null;
     }
 </style>
 <div class="tipping_banner_high_settings">
+    <?php include(__DIR__ . '/notices/form-notice.php'); ?>
     <form method="POST" action="" id="tipping_banner_high_add_form">
         <div class="row">
             <div class="col-50">
@@ -282,7 +283,7 @@ $id = $result[0]['id'] ?? null;
                         <?php endforeach; ?>
                     </select>
 
-                    <input type="text" id="btcpw_tipping_banner_high_icon1" class="btcpw_tipping_banner_high_icon1" name="btcpw_tipping_banner_high_fixed_amount[value1][icon]" placeholder="Font Awesome Icon" title="Font Awesome Icon class" value="<?php echo $fixed_amount['value1']['icon']; ?>" />
+                    <input type="text" id="btcpw_tipping_banner_high_icon1" class="btcpw_tipping_banner_high_icon1" name="btcpw_tipping_banner_high_fixed_amount[value1][icon]" placeholder="Font Awesome Icon" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." value="<?php echo $fixed_amount['value1']['icon']; ?>" />
                 </div>
             </div>
             <div class="row">
@@ -302,7 +303,7 @@ $id = $result[0]['id'] ?? null;
                         <?php endforeach; ?>
                     </select>
 
-                    <input type="text" id="btcpw_tipping_banner_high_icon2" class="btcpw_tipping_banner_high_icon2" name="btcpw_tipping_banner_high_fixed_amount[value2][icon]" placeholder="Font Awesome Icon" title="Font Awesome Icon class" value="<?php echo $fixed_amount['value2']['icon']; ?>" />
+                    <input type="text" id="btcpw_tipping_banner_high_icon2" class="btcpw_tipping_banner_high_icon2" name="btcpw_tipping_banner_high_fixed_amount[value2][icon]" placeholder="Font Awesome Icon" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." value="<?php echo $fixed_amount['value2']['icon']; ?>" />
                 </div>
             </div>
             <div class="row">
@@ -322,7 +323,7 @@ $id = $result[0]['id'] ?? null;
                         <?php endforeach; ?>
                     </select>
 
-                    <input type="text" id="btcpw_tipping_banner_high_icon3" class="btcpw_tipping_banner_high_icon3" name="btcpw_tipping_banner_high_fixed_amount[value3][icon]" placeholder="Font Awesome Icon" title="Font Awesome Icon class" value="<?php echo $fixed_amount['value3']['icon']; ?>" />
+                    <input type="text" id="btcpw_tipping_banner_high_icon3" class="btcpw_tipping_banner_high_icon3" name="btcpw_tipping_banner_high_fixed_amount[value3][icon]" placeholder="Font Awesome Icon" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." value="<?php echo $fixed_amount['value3']['icon']; ?>" />
                 </div>
             </div>
         </div>
@@ -426,7 +427,7 @@ $id = $result[0]['id'] ?? null;
         </div>
         <input type="hidden" id="btc_tipping_banner_high_id" value="<?php echo $id; ?>" />
         <div style="display: inline-block; margin-top: 25px;">
-            <button class="button button-primary" type="submit">Save</button>
+            <button class="button button-primary btcpw_button" type="submit">Save</button>
         </div>
     </form>
 </div>

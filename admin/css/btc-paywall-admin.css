@@ -4,20 +4,15 @@
   display: none;
 }
 
-input[type="text"],
-select,
-textarea {
+input[type='text']:not(.btcpw_add_form_preview),
+select:not(.btcpw_add_form_preview),
+textarea:not(.btcpw_add_form_preview) {
   width: 50%;
   padding: 6px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
   resize: vertical;
-}
-
-label {
-  padding: 10px 10px 10px 0;
-  display: inline-block;
 }
 
 .row {
@@ -119,13 +114,14 @@ td.Settled {
   font-weight: bold;
 }
 
-.container_predefined_amount input:not([type="checkbox"]),
+.container_predefined_amount input:not([type='checkbox']),
 .container_predefined_amount select {
   width: 100px;
 }
 
 .tipping_box_settings textarea,
-.tipping_banner_settings textarea,
+.tipping_banner_high_settings textarea,
+.tipping_banner_wide_settings textarea,
 .tipping_page_settings textarea {
   width: 250px;
   height: 100px;
@@ -137,8 +133,10 @@ td.Settled {
 }
 .tipping_box_settings label,
 .tipping_box_settings textarea,
-.tipping_banner_settings label,
-.tipping_banner_settings textarea,
+.tipping_banner_high_settings label,
+.tipping_banner_high_settings textarea,
+.tipping_banner_wide_settings label,
+.tipping_banner_wide_settings textarea,
 .tipping_page_settings label,
 .tipping_page_settings textarea {
   display: inline-block;
@@ -153,16 +151,89 @@ td.Settled {
   display: flex;
   flex-direction: column;
 }
-.tipping_box textarea,
-.tipping_banner textarea,
-.tipping_page textarea {
+
+.tipping_box_settings textarea,
+.tipping_banner_high_settings textarea,
+.tipping_banner_wide_settings textarea,
+.tipping_page_settings textarea {
   width: auto;
   height: 100px;
 }
-
+.tipping_box textarea,
+.tipping_banner textarea {
+  width: auto;
+  height: 80px;
+}
+.tipping_box label,
+.tipping_banner textarea {
+  display: inline-block;
+  vertical-align: middle;
+}
 .tipping_box input.widget-tipping-basic_redirect,
 .tipping_banner input.widget-tipping-basic_redirect {
   width: 100%;
 }
 
+.btcpw_form_notice {
+  border: solid 3px #007cba;
+  padding: 10px;
+  margin: 0 -5px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background: rgba(196, 190, 190, 0.678);
+}
+.btcpw_general_settings,
+.tipping_box_settings,
+.tipping_banner_high_settings,
+.tipping_banner_wide_settings,
+.tipping_page_settings {
+  border: 1px solid #1e1e1e;
+  background: #fff;
+  padding: 0;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  padding: 0 5px;
+}
+.button.button-primary.btcpw_button {
+  background: #0066a2;
+  color: #fff;
+  border-style: outset;
+  border-color: #0066a2;
+  height: 50px;
+  width: 100px;
+  font: bold 15px arial, sans-serif;
+  text-shadow: none;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  margin-left: -5px;
+}
 
+.button.button-secondary.btcpw_button {
+  height: 50px;
+  background-color: #008000;
+  color: #fff;
+  font: bold 15px arial, sans-serif;
+}
+div.btcpw_help_link a {
+  width: 40px;
+  background-color: #008000;
+  color: white;
+  padding: 5px;
+  text-decoration: none;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+div.btcpw_help_link a:hover {
+  background-color: #555;
+}
+
+.btcpw_general_settings_buttons {
+  margin-top: 5em;
+}
+#btcpw_btcpay_store_id {
+  width: 60%;
+}

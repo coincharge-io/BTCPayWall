@@ -293,8 +293,8 @@ div.preview_btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
 }
 
 #preview_btcpw_skyscraper_high_button button,
-#preview_btcpw_skyscraper_wide_button input[type='button'],
-#preview_btcpw_skyscraper_high_button button,
+#preview_btcpw_skyscraper_high_button input[type='button'],
+#preview_btcpw_skyscraper_wide_button button,
 #preview_btcpw_skyscraper_wide_button input[type='button'] {
   padding: 0;
   line-height: 20px;
@@ -780,7 +780,7 @@ div.preview_btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
 .preview_btcpw_page_donor_information input[type='color'],
 .preview_btcpw_page_donor_information textarea {
   font-size: 14px;
-  padding: 12.5px 8px;
+  padding: 8px;
   flex: 1;
   margin: 1px;
 }
@@ -891,3 +891,30 @@ div.preview_btcpw_page_header_container > div:nth-child(2) {
 }
 
 /*End Preview*/
+
+.btcpw_add_form_preview {
+  display: flex;
+}
+
+.btcpw_add_form_preview form {
+  display: flex;
+  flex-direction: column;
+}
+#tipping-form-preview {
+  margin-left: 5em;
+}
+
+.btcpw_add_form_preview input[type='text'],
+.btcpw_add_form_preview select,
+.btcpw_add_form_preview textarea {
+  width: 100%;
+}
+
+.btcpw_add_form_preview label {
+  padding: 10px 10px 10px 0;
+  display: inline-block;
+}
+#design-button {
+  width: 80px;
+  height: 50px;
+}

@@ -22,7 +22,7 @@ $store_id = get_option('btcpw_btcpay_store_id');
                     ?>;
     }
 </style>
-<div class="container">
+<div class="btcpw_general_settings">
     <h1>BTCPayWall Settings</h1>
 
     <div style="margin-top: 25px;">
@@ -144,21 +144,21 @@ $store_id = get_option('btcpw_btcpay_store_id');
                 </div>
             </div>
     </div>
-</div>
-<div style="margin-top: 10px;">
-    <a href="https://btcpaywall.com/setup-btcpaywall/" target="_blank">Help</a>
-</div>
-<p id="btcpw_btcpay_status_success" class="btcpw_btcpay_status" style="color: green;">
-    BTCPAY SERVER CONNECTED
-</p>
-<p id="btcpw_btcpay_status_error" class="btcpw_btcpay_status" style="color: red;"></p>
-<div style="display: inline-block; margin-top: 25px;">
-    <button class="button button-primary" type="submit">Save</button>
-    <button id="btcpw_btcpay_check_status" class="button button-secondary" type="button">Check BTCPay Server
-        Status</button>
-</div>
-</form>
+
+    <div class="btcpw_help_link" style="margin-top: 20px;">
+        <a href="https://btcpaywall.com/setup-btcpaywall/" target="_blank">Help</a>
+    </div>
+    <p id="btcpw_btcpay_status_success" class="btcpw_btcpay_status" style="color: green;">
+        BTCPAY SERVER CONNECTED
+    </p>
+    <p id="btcpw_btcpay_status_error" class="btcpw_btcpay_status" style="color: red;"></p>
+    <div class="btcpw_general_settings_buttons" style="display: inline-block;">
+        <button class="button button-primary btcpw_button" type="submit">Save</button>
+        <button id="btcpw_btcpay_check_status" class="button button-secondary btcpw_button" type="button">Check BTCPay Server
+            Status</button>
+    </div>
+    </form>
 
 </div>
-
+</div>
 </div>
