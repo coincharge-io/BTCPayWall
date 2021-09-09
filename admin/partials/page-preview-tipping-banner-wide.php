@@ -46,7 +46,6 @@
             </div>
             <div>
                 <h6>Support my work</h6>
-                <p>Description</p>
             </div>
         </div>
         <div class="preview_btcpw_skyscraper_tipping_container wide">
@@ -81,7 +80,7 @@
 
                         </div>
                         <div class="preview_btcpw_skyscraper_tipping_free_input wide">
-                            <input type="number" id="preview_btcpw_skyscraper_tipping_wide_amount" name="<preview_btcpw_skyscraper_tipping_amount_wide" placeholder="0.00" required />
+                            <input type="number" id="preview_btcpw_skyscraper_tipping_wide_amount" name="preview_btcpw_skyscraper_tipping_amount_wide" placeholder="0.00" required />
 
 
                             <select required name="preview_btcpw_skyscraper_tipping_currency_wide" id="preview_btcpw_skyscraper_tipping_wide_currency">
@@ -119,7 +118,7 @@
                     <div class="preview_btcpw_skyscraper_donor_information wide">
 
                         <div class="preview_btcpw_skyscraper_tipping_donor_name_wrap wide">
-                            <input type="text" placeholder="Full name" id="preview_btcpw_skyscraper_tipping_donor_name_wide" name="preview_btcpw_skyscraper_tipping_donor_name_wide" required />
+                            <input type="text" placeholder="Full_name" id="preview_btcpw_skyscraper_tipping_donor_name_wide" name="preview_btcpw_skyscraper_tipping_donor_name_wide" required />
                         </div>
                         <div class="preview_btcpw_skyscraper_tipping_donor_email_wrap wide">
                             <input type="text" placeholder="Email" id="preview_btcpw_skyscraper_tipping_donor_email_wide" name="preview_btcpw_skyscraper_tipping_donor_email_wide" required />

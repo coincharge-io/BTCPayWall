@@ -46,7 +46,6 @@
 
                     <div>
                         <h6>Support my work</h6>
-                        <p>Description</p>
                     </div>
 
                 </div>

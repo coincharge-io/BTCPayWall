@@ -894,16 +894,20 @@ div.preview_btcpw_page_header_container > div:nth-child(2) {
 
 .btcpw_add_form_preview {
   display: flex;
+  margin-top: 20px;
 }
 
 .btcpw_add_form_preview form {
   display: flex;
   flex-direction: column;
 }
-#tipping-form-preview {
-  margin-left: 5em;
-}
 
+#btcpw_form_preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
 .btcpw_add_form_preview input[type='text'],
 .btcpw_add_form_preview select,
 .btcpw_add_form_preview textarea {

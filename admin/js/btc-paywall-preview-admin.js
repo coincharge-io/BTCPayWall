@@ -346,11 +346,11 @@
         fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats) +
         ' ' +
         get_currency(predefined[1])
-      $('#preview_btcpw_skyscraper_converted_amount')
+      $('#preview_btcpw_skyscraper_high_converted_amount')
         .attr('readonly', false)
         .val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats))
         .attr('readonly', true)
-      $('#preview_btcpw_skyscraper_converted_currency')
+      $('#preview_btcpw_skyscraper_high_converted_currency')
         .attr('readonly', false)
         .val(get_currency(predefined[1]))
         .attr('readonly', true)
@@ -423,11 +423,11 @@
         fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats) +
         ' ' +
         get_currency(predefined[1])
-      $('#preview_btcpw_skyscraper_converted_amount')
+      $('#preview_btcpw_skyscraper_wide_converted_amount')
         .attr('readonly', false)
         .val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats))
         .attr('readonly', true)
-      $('#preview_btcpw_skyscraper_converted_currency')
+      $('#preview_btcpw_skyscraper_converted_wide_currency')
         .attr('readonly', false)
         .val(get_currency(predefined[1]))
         .attr('readonly', true)

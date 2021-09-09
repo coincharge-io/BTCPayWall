@@ -20,23 +20,23 @@ $text = array(
 );
 $collect = array(
     'name' => array(
-        'collect' => $result[0]['collect_name'] ?? false,
+        'collect' => $result[0]['collect_name'] ?? true,
         'mandatory' => $result[0]['mandatory_name'] ?? false
     ),
     'email' => array(
-        'collect' => $result[0]['collect_email'] ?? false,
+        'collect' => $result[0]['collect_email'] ?? true,
         'mandatory' => $result[0]['mandatory_email'] ?? false
     ),
     'address' => array(
-        'collect' => $result[0]['collect_address'] ?? false,
+        'collect' => $result[0]['collect_address'] ?? true,
         'mandatory' => $result[0]['mandatory_address'] ?? false
     ),
     'phone' => array(
-        'collect' => $result[0]['collect_phone'] ?? false,
+        'collect' => $result[0]['collect_phone'] ?? true,
         'mandatory' => $result[0]['mandatory_phone'] ?? false
     ),
     'message' => array(
-        'collect' => $result[0]['collect_message'] ?? false,
+        'collect' => $result[0]['collect_message'] ?? true,
         'mandatory' => $result[0]['mandatory_message'] ?? false
     ),
 
@@ -67,7 +67,7 @@ $fixed_amount = array(
         'enabled' => $result[0]['value2_enabled'] ?? true,
         'currency' => $result[0]['value2_currency'] ?? 'SATS',
         'amount' => !empty($result[0]['value2_amount']) ? BTCPayWall_Admin::roundAmount($used_currency, $result[0]['value2_amount']) : 2000,
-        'icon' => $result[0]['value2_icon'] ?? 'fas fa-beer'
+        'icon' => $result[0]['value2_icon'] ?? 'fa fa-beer'
     ),
     'value3' => array(
         'enabled' => $result[0]['value3_enabled'] ?? true,
@@ -76,10 +76,10 @@ $fixed_amount = array(
         'icon' => $result[0]['value3_icon'] ?? 'fas fa-cocktail'
     ),
 );
-$predefined_enabled = $result[0]['free_input'] ?? false;
+$predefined_enabled = $result[0]['free_input'] ?? true;
 $logo = wp_get_attachment_image_src($image['logo']);
 $background = wp_get_attachment_image_src($image['background']);
-$show_icon = $result[0]['show_icon'] ?? false;
+$show_icon = $result[0]['show_icon'] ?? true;
 $shortcode = !empty($result[0]) ? BTCPayWall_Admin::outputShortcodeAttributes($result[0]['name'], $result[0]['id']) : '';
 $id = $result[0]['id'] ?? null;
 //TODO class_Exists
@@ -121,14 +121,16 @@ $id = $result[0]['id'] ?? null;
     <?php include(__DIR__ . '/notices/form-notice.php'); ?>
 
     <form method="POST" action="" id="tipping_page_add_form">
-        <div class="row">
-            <div class="col-50">
-                <p>Shortcode</label>
+        <?php if ($shortcode) : ?>
+            <div class="row">
+                <div class="col-50">
+                    <p>Shortcode</label>
+                </div>
+                <div class="col-50" id="btcpw_tipping_page_shortcode">
+                    <p><?php echo $shortcode; ?>
+                </div>
             </div>
-            <div class="col-50" id="btcpw_tipping_page_shortcode">
-                <p><?php echo $shortcode; ?>
-            </div>
-        </div>
+        <?php endif; ?>
         <div class="row">
             <div class="col-50">
                 <p>Dimension</label>

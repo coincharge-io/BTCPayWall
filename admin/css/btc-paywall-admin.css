@@ -174,14 +174,33 @@ td.Settled {
   width: 100%;
 }
 
-.btcpw_form_notice {
+/* .btcpw_form_notice {
   border: solid 3px #007cba;
   padding: 10px;
   margin: 0 -5px;
   border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  background: rgba(196, 190, 190, 0.678);
+  background: rgba(68, 64, 64, 0.678);
+} */
+.btcpw_add_form_notice,
+.btcpw_form_notice {
+  border: solid 1px #007cba;
+  padding: 10px;
+  margin: 0 -5px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background: #ffffe0;
+}
+.btcpw_add_form_notice p,
+.btcpw_form_notice p {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  line-height: 1.75;
+  letter-spacing: 0.05em;
 }
 .btcpw_general_settings,
 .tipping_box_settings,

@@ -4,6 +4,7 @@
     </div>
 <?php else : ?>
     <div class='btcpw_form_notice'>
-        <p>On this page you can create shortcode for tipping form. Upon submitting attributes you will be redirected to a page where you can copy shortcode.</p>
+        <p>On this page you can generate shortcode for the form type you've selected. Shortcode will be displayed after you submit data. Click on the arrow bellow if you aren't sure what some fields represent.</p>
+        <h4>Find out what fields represent <span><i class="fas fa-arrow-down"></i></span></h4>
     </div>
 <?php endif;

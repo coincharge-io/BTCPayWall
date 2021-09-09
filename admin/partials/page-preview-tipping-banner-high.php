@@ -46,7 +46,6 @@
             </div>
             <div>
                 <h6>Support my work</h6>
-                <p>Description</p>
             </div>
         </div>
         <div class="preview_btcpw_skyscraper_tipping_container high">
@@ -81,7 +80,7 @@
 
                         </div>
                         <div class="preview_btcpw_skyscraper_tipping_free_input high">
-                            <input type="number" id="preview_btcpw_skyscraper_tipping_high_amount" name="<preview_btcpw_skyscraper_tipping_amount_high" placeholder="0.00" required />
+                            <input type="number" id="preview_btcpw_skyscraper_tipping_high_amount" name="preview_btcpw_skyscraper_tipping_amount_high" placeholder="0.00" required />
 
 
                             <select required name="preview_btcpw_skyscraper_tipping_currency_high" id="preview_btcpw_skyscraper_tipping_high_currency">
