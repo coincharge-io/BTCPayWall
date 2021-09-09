@@ -1567,7 +1567,7 @@ class BTCPayWall_Public
 								<?php if (true === $collect_data) : ?>
 
 									<div>
-										<input type="button" name="next" class="<?php echo "skyscraper-next-form wide"; ?>" value="Continue>">
+										<input type="button" name="next" class="<?php echo "skyscraper-next-form wide"; ?>" value="Continue">
 									</div>
 
 								<?php else : ?>
@@ -1801,7 +1801,7 @@ class BTCPayWall_Public
 								<?php if (true === $collect_data) : ?>
 
 									<div>
-										<input type="button" name="next" class="<?php echo "skyscraper-next-form high"; ?>" value="Continue>">
+										<input type="button" name="next" class="<?php echo "skyscraper-next-form high"; ?>" value="Continue">
 									</div>
 
 								<?php else : ?>
@@ -2080,7 +2080,7 @@ class BTCPayWall_Public
 						<div id="btcpw_page_button">
 							<input type="hidden" id="btcpw_page_redirect_link" name="btcpw_page_redirect_link" value=<?php echo $atts['redirect']; ?> />
 							<?php if ($collect_data === true) : ?>
-								<input type="button" name="next" class="page-next-form" value="continue>" />
+								<input type="button" name="next" class="page-next-form" value="continue" />
 							<?php else : ?>
 								<button type="submit" id="btcpw_page_tipping__button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
 							<?php endif; ?>

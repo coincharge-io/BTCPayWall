@@ -147,7 +147,7 @@ class BTCPayWall
         $this->loader->add_action('wp_ajax_btcpw_check_greenfield_api_work', $plugin_admin, 'ajax_check_greenfield_api_work');
         $this->loader->add_action('wp_ajax_btcpw_get_greenfield_invoices', $plugin_admin, 'get_greenfield_invoices');
         $this->loader->add_action('wp_ajax_btcpw_create_shortcode', $plugin_admin, 'createShortcode');
-        //$this->loader->add_action('admin_notices', $plugin_admin, 'edit_page_admin_notice', 100000);
+
 
         $this->loader->add_action('init', $plugin_admin, 'load_gutenberg');
         $this->loader->add_action('vc_before_init', $plugin_admin, 'load_vc_widgets');
@@ -202,6 +202,8 @@ class BTCPayWall
         $this->loader->add_shortcode('btcpw_tipping_banner_wide', $plugin_public, 'render_shortcode_banner_wide_tipping');
         $this->loader->add_shortcode('btcpw_protected_file', $plugin_public, 'render_shortcode_protected_file');
         $this->loader->add_shortcode('btcpw_end_video', $plugin_public, 'render_shortcode_btcpw_end_content');
+
+        $this->loader->add_action('enqueue_block_editor_assets', $plugin_public, 'enqueue_styles');
     }
 
     /**
