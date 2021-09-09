@@ -613,12 +613,58 @@ class BTCPayWall_Admin
 		}
 	}
 
-	/* public function edit_page_admin_notice($short)
+	/* public static function displayShortcodeAttributeMeaning($result)
 	{
-		$id = $_GET['id'] ?? null;
-		$shortcode = $short;
-		if ($id) {
-			include(__DIR__ . '/partials/notices/edit-notice.php');
+		switch ($result[0]['name']) {
+			case 'Tipping Box':
+				echo '<p>currency => Default currency for input field where donor enter amount<p>
+				<p>tipping_text => Text which goes above input fields</p>
+				<p>Link to Thank you page=> Url where donors will be redirected after donation</p>
+				<p>free_input =>Display free input field which allows donors to enter amount freely. </p>
+				<p>show_icon => Display icons in front of values you have defined. It\'s necessary to have icons set in first place.</p>
+				<p>input_background => Background color for input fields related to donation amount.  That fields are value1, value2, value3 and free input.</p>';
+				break;
+			case 'Tipping Banner High':
+				echo '<p>currency => Default currency for input field where donor enter amount<p>
+				<p>tipping_text => Text which goes above input fields</p>
+				<p>Link to Thank you page=> Url where donors will be redirected after donation</p>
+				<p>free_input =>Display free input field which allows donors to enter amount freely. </p>
+				<p>show_icon => Display icons in front of values you have defined. It\'s necessary to have icons set in first place.</p>
+				<p>input_background => Background color for input fields related to donation amount.  That fields are value1, value2, value3 and free input.</p>
+				<p>value*_enabled => Display corresponding value within Tipping form</p><p>value*_icon => Set Font Awesome icon next to defined amount. You need to add Font Awesome icon class. For example, you want to add beer icon. On FA website you can see esc_html(<i class="fa fa-beer" aria-hidden="true"></i>). In order to use this icon you need to copy-paste class values, which is, in this case, fa fa-beer.</p>
+				<p>display_* => This field is used for choosing which information you want to collect.</p>
+				<p>mandatory_* => This field is used for mandating specific information from donor. Display field needs to be enabled also in order to work.</p>
+				';
+				break;
+			case 'Tipping Banner Wide':
+				echo '<p>currency => Default currency for input field where donor enter amount<p>
+				<p>tipping_text => Text which goes above input fields</p>
+				<p>Link to Thank you page=> Url where donors will be redirected after donation</p>
+				<p>free_input =>Display free input field which allows donors to enter amount freely. </p>
+				<p>show_icon => Display icons in front of values you have defined. It\'s necessary to have icons set in first place.</p>
+				<p>input_background => Background color for input fields related to donation amount.  That fields are value1, value2, value3 and free input.</p>
+				<p>value*_enabled => Display corresponding value within Tipping form</p><p>value*_icon => Set Font Awesome icon next to defined amount. You need to add Font Awesome icon class. For example, you want to add beer icon. On FA website you can see esc_html(<i class="fa fa-beer" aria-hidden="true"></i>). In order to use this icon you need to copy-paste class values, which is, in this case, fa fa-beer.</p>
+				<p>display_* => This field is used for choosing which information you want to collect.</p>
+				<p>mandatory_* => This field is used for mandating specific information from donor. Display field needs to be enabled also in order to work.</p>
+				';
+				break;
+			case 'Tipping Page':
+				echo '<p>currency => Default currency for input field where donor enter amount<p>
+				<p>tipping_text => Text which goes above input fields</p>
+				<p>Link to Thank you page=> Url where donors will be redirected after donation</p>
+				<p>free_input =>Display free input field which allows donors to enter amount freely. </p>
+				<p>show_icon => Display icons in front of values you have defined. It\'s necessary to have icons set in first place.</p>
+				<p>input_background => Background color for input fields related to donation amount.  That fields are value1, value2, value3 and free input.</p>
+				<p>step1 => Text for first step in progress bar. Progress bar is only visible if you collect information about donor.</p>
+				<p>step2 => Text for second step in progress bar.</p>
+				<p>active_color => Background color for active step in progress bar. </p>
+				<p>inactive_color => Background color for inactive step in progress bar</p>
+				<p>value*_enabled => Display corresponding value within Tipping form</p><p>value*_icon => Set Font Awesome icon next to defined amount. You need to add Font Awesome icon class. For example, you want to add beer icon. On FA website you can see esc_html(<i class="fa fa-beer" aria-hidden="true"></i>). In order to use this icon you need to copy-paste class values, which is, in this case, fa fa-beer.</p>
+				<p>display_* => This field is used for choosing which information you want to collect.</p>
+				<p>mandatory_* => This field is used for mandating specific information from donor. Display field needs to be enabled also in order to work.</p>';
+				break;
+			default:
+				break;
 		}
 	} */
 	/**

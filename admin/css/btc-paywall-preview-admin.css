@@ -922,3 +922,6 @@ div.preview_btcpw_page_header_container > div:nth-child(2) {
   width: 80px;
   height: 50px;
 }
+.btcpw_expand_notice {
+  cursor: pointer;
+}

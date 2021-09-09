@@ -260,6 +260,14 @@
     })
   })
   $(document).ready(function () {
+    $('.btcpw_expand_notice').click(function () {
+      $('.btcpw_expanded_notice').toggle()
+      $('.btcpw_expand_notice span i').toggleClass(
+        'fas fa-arrow-down fas fa-arrow-up'
+      )
+    })
+  })
+  $(document).ready(function () {
     $('#tipping-form-design').change(function () {
       var design = $(this).val()
       $('.toggle-preview').hide()
