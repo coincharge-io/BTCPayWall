@@ -1106,3 +1106,6 @@ div.btcpw_page_header_container > div:nth-child(2) {
   border-color: #ffa500 #1d5aa3 #ffa500 #1d5aa3;
   animation: spinner 1s linear infinite;
 }
+.btcpw_gutenberg_sel_num_control {
+  height: 50px;
+}

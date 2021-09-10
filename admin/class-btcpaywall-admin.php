@@ -2676,6 +2676,7 @@ class BTCPayWall_Admin
 	}
 	public function render_tipping_box($atts)
 	{
+
 		$atts = shortcode_atts(array(
 			'dimension' =>  '250x300',
 			'title' =>  'Support my work',
@@ -2696,7 +2697,7 @@ class BTCPayWall_Admin
 			'background' =>  '#1d5aa3',
 		), $atts);
 
-		return do_shortcode("[btcpw_tipping_box dimension='{$atts['dimension']}' title = '{$atts['title']}' description	= '{$atts['description']}'
+		return do_shortcode("[btcpw_tipping_box dimension='{$atts['dimension']}' title = '{$atts['title']}' description='{$atts['description']}'
         currency = '{$atts['currency']}'
         background_color = '{$atts['background_color']}'
         title_text_color = '{$atts['title_text_color']}'
@@ -2883,6 +2884,10 @@ class BTCPayWall_Admin
 				'editor_script' => 'gutenberg-block-script',
 				'render_callback' => (array($this, 'render_gutenberg')),
 				'attributes'	=> array(
+					'className' => array(
+						'default' => '',
+						'type' => 'string'
+					),
 					'pay_block' =>  array(
 						'type'	=> 'boolean',
 						'default' => true
@@ -2926,6 +2931,10 @@ class BTCPayWall_Admin
 				'editor_script' => 'gutenberg-block-script',
 				'render_callback' => (array($this, 'render_start_video_gutenberg')),
 				'attributes'	=> array(
+					'className' => array(
+						'default' => '',
+						'type' => 'string'
+					),
 					'pay_block' =>  array(
 						'type'	=> 'boolean',
 						'default' => true
@@ -2980,6 +2989,10 @@ class BTCPayWall_Admin
 				'editor_script' => 'gutenberg-block-script',
 				'render_callback' => (array($this, 'render_file_gutenberg')),
 				'attributes'	=> array(
+					'className' => array(
+						'default' => '',
+						'type' => 'string'
+					),
 					'pay_file_block' =>  array(
 						'type'	=> 'boolean',
 						'default' => true
@@ -3030,6 +3043,10 @@ class BTCPayWall_Admin
 				'editor_script' => 'gutenberg-block-script',
 				'render_callback' => (array($this, 'render_tipping_box')),
 				'attributes'	=> array(
+					'className' => array(
+						'default' => '',
+						'type' => 'string'
+					),
 					'dimension' =>  array(
 						'type'	=> 'string',
 						'default' => '250x300'
@@ -3097,7 +3114,7 @@ class BTCPayWall_Admin
 					'background' =>  array(
 						'type'	=> 'string',
 						'default' => '#1d5aa3'
-					),
+					)
 				)
 			]
 		);
@@ -3108,6 +3125,10 @@ class BTCPayWall_Admin
 				'editor_script' => 'gutenberg-block-script',
 				'render_callback' => (array($this, 'render_tipping_banner_wide')),
 				'attributes'	=> array(
+					'className' => array(
+						'default' => '',
+						'type' => 'string'
+					),
 					'dimension' =>  array(
 						'type'	=> 'string',
 						'default' => '600x280'
@@ -3282,6 +3303,10 @@ class BTCPayWall_Admin
 				'editor_script' => 'gutenberg-block-script',
 				'render_callback' => (array($this, 'render_tipping_banner_high')),
 				'attributes'	=> array(
+					'className' => array(
+						'type' => 'string',
+						'default' => '',
+					),
 					'dimension' =>  array(
 						'type'	=> 'string',
 						'default' => '200x710'
@@ -3456,6 +3481,10 @@ class BTCPayWall_Admin
 				'editor_script' => 'gutenberg-block-script',
 				'render_callback' => (array($this, 'render_tipping_pages')),
 				'attributes'	=> array(
+					'className' => array(
+						'default' => '',
+						'type' => 'string'
+					),
 					'dimension' =>  array(
 						'type'	=> 'string',
 						'default' => '200x710'

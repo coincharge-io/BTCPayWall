@@ -152,6 +152,10 @@ c655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0
   category: "widgets",
   keywords: ["paywall", "file-paywall"],
   attributes: {
+    className: {
+      type: 'string',
+      default: ''
+    },
     pay_file_block: {
       type: "boolean",
       default: true,
@@ -202,6 +206,7 @@ c655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0
         duration_type,
         price,
         duration,
+        className
       },
       setAttributes,
     } = props;
@@ -331,7 +336,7 @@ c655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0
 return [
          <div>
          <ServerSideRender block="btc-paywall/gutenberg-file-block" attributes={pay_file_block,
-        btc_format, file, title, description, preview, currency, duration_type, price, duration}/>
+        btc_format, file, title, description, preview, currency, duration_type, price, duration, className}/>
          {inspectorControls}
          
          </div>
