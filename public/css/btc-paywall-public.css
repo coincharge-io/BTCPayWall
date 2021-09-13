@@ -486,8 +486,9 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   -moz-border-radius: 2em;
   -webkit-border-radius: 2em;
   font-size: 1em;
-  padding: 0.1em !important;
+  padding: 8px !important;
   text-transform: uppercase;
+  width: 100%;
 }
 #btcpw_skyscraper_wide_button button,
 #btcpw_skyscraper_wide_button input[type='button'],
@@ -497,27 +498,9 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   -moz-border-radius: 2em;
   -webkit-border-radius: 2em;
   font-size: 1.5em;
-  padding: 10.5px 14px !important;
+  padding: 8px !important;
   text-transform: uppercase;
 }
-/* #btcpw_widget_btcpw_skyscraper_button_wide button,
-#btcpw_widget_btcpw_skyscraper_button_wide input[type="button"] {
-  border-radius: 2em;
-  -moz-border-radius: 2em;
-  -webkit-border-radius: 2em;
-  font-size: 1.5em;
-  padding: 10.5px 14px !important;
-  text-transform: uppercase;
-}
-#btcpw_widget_btcpw_skyscraper_button_high button,
-#btcpw_widget_btcpw_skyscraper_button_high input[type="button"] {
-  border-radius: 2em;
-  -moz-border-radius: 2em;
-  -webkit-border-radius: 2em;
-  font-size: 12px;
-  padding: 10px !important;
-  text-transform: uppercase;
-} */
 
 #btcpw_skyscraper_high_converted_amount,
 #btcpw_skyscraper_tipping_high_currency,
@@ -574,15 +557,15 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
 .btcpw_skyscraper_donor_information.wide {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   gap: 1px;
 }
 
 .btcpw_skyscraper_donor_information.high {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
-  gap: 1em;
+  line-height: 3em;
 }
 .btcpw_skyscraper_donor_information input[type='text'],
 .btcpw_skyscraper_donor_information input[type='email'],
@@ -954,7 +937,6 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
 .btcpw_page_donor_information {
   display: flex;
   flex-direction: column;
-  margin-top: 0.5em;
   justify-content: center;
   align-items: center;
 }
@@ -1108,4 +1090,8 @@ div.btcpw_page_header_container > div:nth-child(2) {
 }
 .btcpw_gutenberg_sel_num_control {
   height: 50px;
+}
+
+#btcpw_page h6 {
+  font-family: sans-serif;
 }

@@ -338,26 +338,12 @@ registerBlockType('btc-paywall/gutenberg-tipping-banner-wide', {
               value={redirect}
               onChange={value => setAttributes({ redirect: value })}
             />
-            <p>Background color for inputs</p>
-            <ColorPicker
-              color={input_background}
-              onChangeComplete={value =>
-                setAttributes({ input_background: value.hex })
-              }
-              disableAlpha
-            />
+
             <CheckboxControl
               label='Display free input'
               help='Do you want to display free input field?'
               checked={free_input}
               onChange={newvalue => setAttributes({ free_input: newvalue })}
-            />
-
-            <CheckboxControl
-              label='Display icons'
-              help='Do you want to display icons?'
-              checked={show_icon}
-              onChange={newvalue => setAttributes({ show_icon: newvalue })}
             />
             <div className='btcpw_gutenberg_sel_num_control'>
               <SelectControl
@@ -367,7 +353,6 @@ registerBlockType('btc-paywall/gutenberg-tipping-banner-wide', {
                   setAttributes({ currency: selectedItem })
                 }}
                 options={[
-                  
                   { value: 'SATS', label: 'SATS' },
                   { value: 'BTC', label: 'BTC' },
                   { value: 'EUR', label: 'EUR' },
@@ -375,6 +360,20 @@ registerBlockType('btc-paywall/gutenberg-tipping-banner-wide', {
                 ]}
               />
             </div>
+            <p>Background color for inputs</p>
+            <ColorPicker
+              color={input_background}
+              onChangeComplete={value =>
+                setAttributes({ input_background: value.hex })
+              }
+              disableAlpha
+            />
+            <CheckboxControl
+              label='Display icons'
+              help='Do you want to display icons?'
+              checked={show_icon}
+              onChange={newvalue => setAttributes({ show_icon: newvalue })}
+            />
           </PanelBody>
           <PanelBody title='Amount'>
             <CheckboxControl
@@ -390,7 +389,6 @@ registerBlockType('btc-paywall/gutenberg-tipping-banner-wide', {
                   setAttributes({ value1_currency: selectedItem })
                 }}
                 options={[
-                  
                   { value: 'SATS', label: 'SATS' },
                   { value: 'BTC', label: 'BTC' },
                   { value: 'EUR', label: 'EUR' },
@@ -429,7 +427,6 @@ registerBlockType('btc-paywall/gutenberg-tipping-banner-wide', {
                   setAttributes({ value2_currency: selectedItem })
                 }}
                 options={[
-                  
                   { value: 'SATS', label: 'SATS' },
                   { value: 'BTC', label: 'BTC' },
                   { value: 'EUR', label: 'EUR' },
@@ -468,7 +465,6 @@ registerBlockType('btc-paywall/gutenberg-tipping-banner-wide', {
                   setAttributes({ value3_currency: selectedItem })
                 }}
                 options={[
-                  
                   { value: 'SATS', label: 'SATS' },
                   { value: 'BTC', label: 'BTC' },
                   { value: 'EUR', label: 'EUR' },

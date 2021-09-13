@@ -336,14 +336,7 @@ registerBlockType('btc-paywall/gutenberg-tipping-banner-high', {
               value={redirect}
               onChange={value => setAttributes({ redirect: value })}
             />
-            <p>Background color for inputs</p>
-            <ColorPicker
-              color={input_background}
-              onChangeComplete={value =>
-                setAttributes({ input_background: value.hex })
-              }
-              disableAlpha
-            />
+
             <CheckboxControl
               label='Display free input'
               help='Do you want to display free input field?'
@@ -351,12 +344,6 @@ registerBlockType('btc-paywall/gutenberg-tipping-banner-high', {
               onChange={newvalue => setAttributes({ free_input: newvalue })}
             />
 
-            <CheckboxControl
-              label='Display icons'
-              help='Do you want to display icons?'
-              checked={show_icon}
-              onChange={newvalue => setAttributes({ show_icon: newvalue })}
-            />
             <div className='btcpw_gutenberg_sel_num_control'>
               <SelectControl
                 label='Currency'
@@ -372,6 +359,20 @@ registerBlockType('btc-paywall/gutenberg-tipping-banner-high', {
                 ]}
               />
             </div>
+            <p>Background color for inputs</p>
+            <ColorPicker
+              color={input_background}
+              onChangeComplete={value =>
+                setAttributes({ input_background: value.hex })
+              }
+              disableAlpha
+            />
+            <CheckboxControl
+              label='Display icons'
+              help='Do you want to display icons?'
+              checked={show_icon}
+              onChange={newvalue => setAttributes({ show_icon: newvalue })}
+            />
           </PanelBody>
           <PanelBody title='Amount'>
             <CheckboxControl

@@ -342,6 +342,7 @@ registerBlockType('btc-paywall/gutenberg-tipping-page', {
               }}
               value={tipping_text}
             />
+            <p>Tipping text color</p>
             <ColorPicker
               color={tipping_text_color}
               onChangeComplete={value =>
@@ -355,30 +356,12 @@ registerBlockType('btc-paywall/gutenberg-tipping-page', {
               value={redirect}
               onChange={value => setAttributes({ redirect: value })}
             />
-            <p>Background color for inputs</p>
-            <ColorPicker
-              color={input_background}
-              onChangeComplete={value =>
-                setAttributes({ input_background: value.hex })
-              }
-              disableAlpha
-            />
-
             <CheckboxControl
               label='Display free input'
               help='Do you want to display free input field?'
               checked={free_input}
               onChange={newvalue => {
                 setAttributes({ free_input: newvalue })
-              }}
-            />
-
-            <CheckboxControl
-              label='Display icon'
-              help='Do you want to display icons?'
-              checked={show_icon}
-              onChange={value => {
-                setAttributes({ show_icon: value })
               }}
             />
             <div className='btcpw_gutenberg_sel_num_control'>
@@ -396,6 +379,23 @@ registerBlockType('btc-paywall/gutenberg-tipping-page', {
                 ]}
               />
             </div>
+            <p>Background color for inputs</p>
+            <ColorPicker
+              color={input_background}
+              onChangeComplete={value =>
+                setAttributes({ input_background: value.hex })
+              }
+              disableAlpha
+            />
+
+            <CheckboxControl
+              label='Display icon'
+              help='Do you want to display icons?'
+              checked={show_icon}
+              onChange={value => {
+                setAttributes({ show_icon: value })
+              }}
+            />
           </PanelBody>
           <PanelBody title='Amount'>
             <CheckboxControl

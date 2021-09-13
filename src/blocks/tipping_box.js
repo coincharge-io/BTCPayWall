@@ -223,14 +223,6 @@ registerBlockType('btc-paywall/gutenberg-tipping-box', {
               value={redirect}
               onChange={value => setAttributes({ redirect: value })}
             />
-            <p>Background color for inputs</p>
-            <ColorPicker
-              color={input_background}
-              onChangeComplete={value =>
-                setAttributes({ input_background: value.hex })
-              }
-              disableAlpha
-            />
             <div className='btcpw_gutenberg_sel_num_control'>
               <SelectControl
                 label='Currency'
@@ -246,6 +238,14 @@ registerBlockType('btc-paywall/gutenberg-tipping-box', {
                 ]}
               />
             </div>
+            <p>Background color for inputs</p>
+            <ColorPicker
+              color={input_background}
+              onChangeComplete={value =>
+                setAttributes({ input_background: value.hex })
+              }
+              disableAlpha
+            />
           </PanelBody>
 
           <PanelBody title='Button'>
