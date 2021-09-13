@@ -693,9 +693,6 @@
           inactive_color: $('#btcpw_tipping_page_tipping_color_inactive').val()
         },
         success: function (data) {
-          /*$('#' + data.data.data.type+' p').html(
-            data.data.data.shortcode
-          )*/
           if (
             !$(
               '#btc_tipping_banner_high_id, #btc_tipping_banner_wide_id, #btc_tipping_box_id, #btc_tipping_page_id'

@@ -86,6 +86,7 @@ class BTCPayWall_Activator
 			  show_icon boolean,
 			  currency char(4),
 			  PRIMARY KEY  (id)) $charset_collate;";
+		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 		dbDelta($sql);
 	}
 }

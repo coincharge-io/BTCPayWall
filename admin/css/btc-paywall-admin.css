@@ -259,3 +259,7 @@ div.btcpw_help_link a:hover {
 #btcpw_btcpay_store_id {
   width: 60%;
 }
+#btcpw_expanded_notice_split {
+  display: flex;
+  gap: 30px;
+}

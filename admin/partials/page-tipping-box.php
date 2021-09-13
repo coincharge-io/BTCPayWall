@@ -1,8 +1,9 @@
 <?php
 global $wpdb;
 $id = $_GET['id'] ?? null;
+$table_name = "{$wpdb->prefix}btc_forms";
 $result = $wpdb->get_results(
-    $wpdb->prepare("SELECT * FROM wp_btc_forms WHERE id=%d", $id),
+    $wpdb->prepare("SELECT * FROM $table_name WHERE id=%d", $id),
     ARRAY_A
 );
 $supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
@@ -39,15 +40,15 @@ $id = $result[0]['id'] ?? null;
 <div class="tipping_box_settings">
     <?php include(__DIR__ . '/notices/form-notice.php'); ?>
     <form method="POST" action="" id="tipping_box_add_form">
-    <?php if($shortcode): ?>
-        <div class="row">
-            <div class="col-50">
-                <p>Shortcode</label>
+        <?php if ($shortcode) : ?>
+            <div class="row">
+                <div class="col-50">
+                    <p>Shortcode</label>
+                </div>
+                <div class="col-50" id="btcpw_tipping_page_shortcode">
+                    <p><?php echo $shortcode; ?>
+                </div>
             </div>
-            <div class="col-50" id="btcpw_tipping_page_shortcode">
-                <p><?php echo $shortcode; ?>
-            </div>
-        </div>
         <?php endif; ?>
         <div class="row">
             <div class="col-50">
@@ -70,7 +71,7 @@ $id = $result[0]['id'] ?? null;
             </div>
             <div class="col-50">
                 <?php if ($background) : ?>
-                    <button id="btcpw_tipping_box_button_image_background" class="btcpw_tipping_box_button_image_background" name="btcpw_tipping_box_button_image_background"><img src="<?php echo $background[0]; ?>"/></a></button>
+                    <button id="btcpw_tipping_box_button_image_background" class="btcpw_tipping_box_button_image_background" name="btcpw_tipping_box_button_image_background"><img src="<?php echo $background[0]; ?>" /></a></button>
                     <button class="btcpw_tipping_box_button_remove_background">Remove image</button>
                     <input type="hidden" id="btcpw_tipping_box_image_background" class="btcpw_tipping_box_image_background" name="btcpw_tipping_box_image[background]" value=<?php echo $image['background']; ?> />
                 <?php else : ?>

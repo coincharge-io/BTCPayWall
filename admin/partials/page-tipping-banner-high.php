@@ -5,8 +5,9 @@ $supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
 
 global $wpdb;
 $id = $_GET['id'] ?? null;
+$table_name = "{$wpdb->prefix}btc_forms";
 $result = $wpdb->get_results(
-    $wpdb->prepare("SELECT * FROM wp_btc_forms WHERE id=%d", $id),
+    $wpdb->prepare("SELECT * FROM $table_name WHERE id=%d", $id),
     ARRAY_A
 );
 $supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
