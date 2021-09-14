@@ -1696,8 +1696,7 @@ class BTCPayWall_Public
 			}
 
 
-			.btcpw_page_tipping_info fieldset h6,
-			.btcpw_page_tipping_info h6 {
+			#page_tipping_form>fieldset>h6 {
 				color: <?php echo esc_html($atts['tipping_text_color']);
 						?>
 			}

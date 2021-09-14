@@ -103,6 +103,23 @@ a.btcpw_pay__download {
   background-size: cover;
   background-repeat: no-repeat;
 }
+#tipping_form_box fieldset div.btcpw_tipping_box_header_container div h6 {
+  margin-bottom: 0.3rem;
+}
+.btcpw_tipping_box_header_container > div:nth-child(2),
+.btcpw_widget.btcpw_tipping_box_header_container > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 160px !important;
+}
+.btcpw_tipping_box_container p,
+.btcpw_widget.btcpw_tipping_box_container p {
+  font-size: 0.4rem;
+  line-height: 1.5;
+  text-align: center;
+  margin-top: 0;
+}
 .btcpw_tipping_box_container div,
 .btcpw_tipping_box_container img,
 .btcpw_tipping_box_container pre,
@@ -250,7 +267,7 @@ a.btcpw_pay__download {
   padding: 0;
 }
 #btcpw_tipping_currency,
-#btcpw_tipping_currency_lnpw_widget,
+#btcpw_tipping_currency_btcpw_widget,
 #btcpw_converted_amount,
 #btcpw_converted_currency,
 #btcpw_converted_amount_btcpw_widget,
@@ -300,7 +317,7 @@ a.btcpw_pay__download {
 #button button,
 #button input[type='button'] {
   font-size: 14px;
-  padding: 12px !important;
+  padding: 8px !important;
   text-transform: uppercase;
 }
 /*
@@ -315,13 +332,15 @@ a.btcpw_pay__download {
   background-repeat: no-repeat;
   position: relative;
 }
-.btcpw_skyscraper_header_container.wide {
+.btcpw_skyscraper_header_container.wide,
+.btcpw_widget.btcpw_skyscraper_header_container.wide {
   flex-direction: row;
   height: 80px;
+  gap: 10px;
 }
-div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
+/* div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   padding-left: 2em;
-}
+} */
 #btcpw_skyscraper_logo_wrap_high {
   padding: 0.1em 0.1em 0 0.1em;
 }
@@ -559,6 +578,7 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   flex-wrap: wrap;
   flex-direction: column;
   gap: 1px;
+  align-items: center;
 }
 
 .btcpw_skyscraper_donor_information.high {
@@ -595,7 +615,6 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
 }
 .btcpw_skyscraper_header_container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   padding: 0.5em;
 }
@@ -603,6 +622,7 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
 .btcpw_widget.btcpw_skyscraper_header_container.high {
   padding: 0.5em;
   height: 260px !important;
+  flex-direction: column;
 }
 .btcpw_skyscraper_info_container {
   text-align: center;
@@ -626,9 +646,9 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   font-size: 0.8em;
 }
 
-.btcpw_skyscraper_banner {
+/* .btcpw_skyscraper_banner {
   line-height: 1em;
-}
+} */
 .btcpw_skyscraper_banner.high {
   width: 200px !important;
 }
@@ -772,7 +792,25 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
   width: 200px !important;
   height: 450px !important;
 }
-
+.btcpw_skyscraper_banner.wide,
+.btcpw_widget.btcpw_skyscraper_banner.wide {
+  width: 600px !important;
+}
+.btcpw_skyscraper_header_container p,
+.btcpw_widget.btcpw_skyscraper_header_container p {
+  word-break: break-all;
+  font-size: 0.5rem;
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 0;
+}
+.btcpw_skyscraper_header_container > div:nth-child(2),
+.btcpw_widget.btcpw_skyscraper_header_container > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
 /**
     Tipping page
     
@@ -1095,4 +1133,5 @@ div.btcpw_page_header_container > div:nth-child(2) {
 
 #btcpw_page h6 {
   font-family: sans-serif;
+  margin-bottom: 0.3rem;
 }

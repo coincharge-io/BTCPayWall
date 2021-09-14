@@ -157,9 +157,9 @@ class Tipping_Banner_High extends WP_Widget
 
                             <div id="btcpw_widget_btcpw_skyscraper_button_high">
                                 <input type="hidden" id="btcpw_widget_btcpw_skyscraper_redirect_link_high" name="btcpw_widget_btcpw_skyscraper_redirect_link_high" value=<?php echo ($instance['redirect']); ?> />
-                                <?php if ($collect_data) : ?>
+                                <?php if ($collect_data === true) : ?>
                                     <div>
-                                        <input type="button" name="next" class="btcpw_widget skyscraper-next-form high" value="Continue >" />
+                                        <input type="button" name="next" class="btcpw_widget skyscraper-next-form high" value="Continue" />
                                     </div>
                                 <?php else : ?>
                                     <div>

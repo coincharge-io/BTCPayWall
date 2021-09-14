@@ -114,22 +114,7 @@ class Elementor_BTCPW_Tipping_Page_Widget extends \Elementor\Widget_Base
                 'default' => '#ffffff',
             ]
         );
-        $this->add_control(
-            'description',
-            [
-                'label' => 'Description',
-                'type'  => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => '',
-            ]
-        );
-        $this->add_control(
-            'description_color',
-            [
-                'label' => 'Description color',
-                'type'  => \Elementor\Controls_Manager::COLOR,
-                'default' => '#000000',
-            ]
-        );
+
         $this->add_control(
             'tipping_text',
             [
