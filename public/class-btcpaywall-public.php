@@ -889,8 +889,9 @@ class BTCPayWall_Public
 
 		global $wpdb;
 		$id = !empty($atts['id']) ? intval($atts['id']) : null;
+		$table_name = "{$wpdb->prefix}btc_forms";
 		$result = $wpdb->get_results(
-			$wpdb->prepare("SELECT * FROM wp_btc_forms WHERE id=%d", $id),
+			$wpdb->prepare("SELECT * FROM $table_name WHERE id=%d", $id),
 			ARRAY_A
 		);
 
@@ -1109,268 +1110,7 @@ class BTCPayWall_Public
 			),
 		);
 	}
-	/**
-	 * @param $atts
-	 *
-	 * @return string
-	 */
-	/* 	public function render_shortcode_banner_tipping($atts)
-	{
 
-		global $wpdb;
-		$id = !empty($atts['id']) ? intval($atts['id']) : null;
-		$result = $wpdb->get_results(
-			$wpdb->prepare("SELECT * FROM wp_btc_forms WHERE id=%d", $id),
-			ARRAY_A
-		);
-		$atts = shortcode_atts(array(
-			'dimension' => $id ? $result[0]['dimension'] : '200x710',
-			'title' => $id ? $result[0]['title_text'] : 'Support my work',
-			'description' => $id ? $result[0]['description_text'] : '',
-			'currency' => $id ? $result[0]['currency'] : 'SATS',
-			'background_color' => $id ? '#' . $result[0]['background_color'] : '#E6E6E6',
-			'title_text_color' =>  $id ? '#' . $result[0]['title_text_color'] : '#ffffff',
-			'tipping_text' => $id ? $result[0]['tipping_text'] : 'Enter Tipping Amount',
-			'tipping_text_color' => $id ? '#' . $result[0]['tipping_text_color'] : '#000000',
-			'redirect' => $id ? $result[0]['redirect'] : '',
-			'description_color' => $id ? '#' . $result[0]['description_text_color'] : '#000000',
-			'button_text' => $id ? $result[0]['button_text'] : 'Tipping now',
-			'button_text_color' => $id ? '#' . $result[0]['button_text_color'] : '#FFFFFF',
-			'button_color' => $id ? '#' . $result[0]['button_color'] : '#FE642E',
-			'logo_id' => $id ? $result[0]['logo'] : '',
-			'background_id' => $id ? $result[0]['background'] : '',
-			'free_input' => $id ? filter_var($result[0]['free_input'], FILTER_VALIDATE_BOOLEAN) : true,
-			'input_background' => $id ? '#' . $result[0]['input_background'] : '#ffa500',
-			'background' => $id ? '#' . $result[0]['hf_background'] : '#1d5aa3',
-			'value1_enabled' => $id ? filter_var($result[0]['value1_enabled'], FILTER_VALIDATE_BOOLEAN) : true,
-			'value1_amount' => $id ? round($result[0]['value1_amount'], 0) : 1000,
-			'value1_currency' => $id ? $result[0]['value1_currency'] : 'SATS',
-			'value1_icon' => $id ? $result[0]['value1_icon'] : 'fas fa-coffee',
-			'value2_enabled' => $id ? filter_var($result[0]['value2_enabled'], FILTER_VALIDATE_BOOLEAN) : true,
-			'value2_amount' => $id ? round($result[0]['value2_amount'], 0) : 2000,
-			'value2_currency' => $id ? $result[0]['value2_currency'] : 'SATS',
-			'value2_icon' => $id ? $result[0]['value2_icon'] : 'fas fa-beer',
-			'value3_enabled' => $id ? filter_var($result[0]['value3_enabled'], FILTER_VALIDATE_BOOLEAN) : true,
-			'value3_amount' => $id ? round($result[0]['value3_amount'], 0) : 3000,
-			'value3_currency' => $id ? $result[0]['value3_currency'] : 'SATS',
-			'value3_icon' => $id ? $result[0]['value3_icon'] : 'fas fa-cocktail',
-			'display_name' => $id ? filter_var($result[0]['collect_name'], FILTER_VALIDATE_BOOLEAN) : false,
-			'mandatory_name' => $id ? filter_var($result[0]['mandatory_name'], FILTER_VALIDATE_BOOLEAN) : false,
-			'display_email' => $id ? filter_var($result[0]['collect_email'], FILTER_VALIDATE_BOOLEAN) : false,
-			'mandatory_email' => $id ? filter_var($result[0]['mandatory_email'], FILTER_VALIDATE_BOOLEAN) : false,
-			'display_phone' => $id ? filter_var($result[0]['collect_phone'], FILTER_VALIDATE_BOOLEAN) : false,
-			'mandatory_phone' => $id ? filter_var($result[0]['mandatory_phone'], FILTER_VALIDATE_BOOLEAN) : false,
-			'display_address' => $id ? filter_var($result[0]['collect_address'], FILTER_VALIDATE_BOOLEAN) : false,
-			'mandatory_address' => $id ? filter_var($result[0]['mandatory_address'], FILTER_VALIDATE_BOOLEAN) : false,
-			'display_message' => $id ? filter_var($result[0]['collect_message'], FILTER_VALIDATE_BOOLEAN) : false,
-			'mandatory_message' => $id ? filter_var($result[0]['mandatory_message'], FILTER_VALIDATE_BOOLEAN) : false,
-			'show_icon'	=> $id ? filter_var($result[0]['show_icon'], FILTER_VALIDATE_BOOLEAN) : true,
-			'widget'	=> false
-		), $atts);
-
-		$dimension = explode('x', ($atts['dimension'] === '200x710' ? '200x450' : '600x200'));
-
-		$supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
-		$logo = wp_get_attachment_image_src($atts['logo_id']) ? wp_get_attachment_image_src($atts['logo_id'])[0] : $atts['logo_id'];
-		$background = wp_get_attachment_image_src($atts['background_id']) ? wp_get_attachment_image_src($atts['background_id'])[0] : $atts['background_id'];
-		$collect = BTCPayWall_Public::getCollect($atts);
-		$collect_data = BTCPayWall_Public::display_is_enabled($collect);
-		$fixed_amount = BTCPayWall_Public::getFixedAmount($atts);
-		$first_enabled = array_column($fixed_amount, 'enabled');
-		$d = array_search('true', $first_enabled);
-		$index = 'value' . ($d + 1);
-		$is_widget = $atts['widget'] === true ? 'btcpw_widget' : '';
-		$is_wide = $dimension[0] === '600' ? 'wide' : 'high';
-		$form_suffix = ($is_widget === 'btcpw_widget' && $dimension[0] === '200') ? '_high' : (($is_widget === 'btcpw_widget' && $dimension[0] === '600') ? '_wide' : '');
-		$container_suffix = ($is_widget === 'btcpw_widget' && $dimension[0] === '200') ? 'high' : (($is_widget === 'btcpw_widget' && $dimension[0] === '600') ? 'wide' : '');
-
-		ob_start();
-	?>
-		<style>
-			.btcpw_skyscraper_tipping_container {
-				background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : '');
-									?>;
-				background-image: url(<?php echo ($background ? esc_html($background) : '');
-										?>);
-			}
-
-			.btcpw_skyscraper_banner.wide {
-				background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : '');
-									?>;
-				background-image: url(<?php echo ($background ? esc_html($background) : '');
-										?>);
-			}
-
-			.btcpw_skyscraper_amount_value_1,
-			.btcpw_skyscraper_amount_value_2,
-			.btcpw_skyscraper_amount_value_3,
-			.btcpw_skyscraper_tipping_free_input {
-				background-color: <?php echo esc_html($atts['input_background']);
-									?>;
-			}
-
-			.btcpw_skyscraper_header_container,
-			#btcpw_skyscraper_button,
-			#btcpw_skyscraper_button>div:nth-child(1)>input {
-				background-color: <?php echo esc_html($atts['background']);
-									?>;
-			}
-
-			#btcpw_skyscraper_tipping__button,
-			#btcpw_skyscraper_button>div>input.skyscraper-next-form {
-				color: <?php echo esc_html($atts['button_text_color']);
-						?>;
-				background: <?php echo esc_html($atts['button_color']);
-							?>;
-			}
-
-			.btcpw_skyscraper_header_container h6 {
-				color: <?php echo esc_html($atts['title_text_color']);
-						?>
-			}
-
-			.btcpw_skyscraper_tipping_container.info_container {
-				display: <?php echo (empty($atts['description'])) ? 'none' : 'block';
-							?>
-			}
-
-			.btcpw_skyscraper_info_container p,
-			div.btcpw_skyscraper_banner.wide>div.btcpw_skyscraper_header_container.wide p,
-			div.btcpw_skyscraper_banner.high>div.btcpw_skyscraper_header_container.high p {
-				color: <?php echo esc_html($atts['description_color']);
-						?>
-			}
-
-			.btcpw_skyscraper_tipping_info fieldset h6,
-			.btcpw_skyscraper_tipping_info h6,
-			#skyscraper_tipping_form>fieldset:nth-child(1)>h6 {
-				color: <?php echo esc_html($atts['tipping_text_color']);
-						?>
-			}
-
-			.btcpw_skyscraper_amount_value_1,
-			.btcpw_skyscraper_amount_value_2,
-			.btcpw_skyscraper_amount_value_3 {
-				background: <?php echo esc_html($atts['input_background']);
-							?>;
-
-			}
-		</style>
-		<div id="btcpw_page">
-			<div class="<?php echo ltrim("btcpw_skyscraper_banner {$is_wide}"); ?>">
-				<div class="<?php echo trim("btcpw_skyscraper_header_container {$is_wide}"); ?>">
-					<?php if ($logo) : ?>
-						<div id="<?php echo "btcpw_skyscraper_logo_wrap_{$is_wide}"; ?>">
-							<img alt="Tipping logo" src=<?php echo esc_url($logo); ?> />
-						</div>
-					<?php endif; ?>
-					<div>
-						<?php if (!empty($atts['title'])) : ?>
-							<h6><?php echo esc_html($atts['title']); ?></h6>
-						<?php endif; ?>
-						<?php if (!empty($atts['description'])) : ?>
-							<p><?php echo esc_html($atts['description']); ?></p>
-						<?php endif; ?>
-					</div>
-				</div>
-				<div class=" <?php echo trim("btcpw_skyscraper_tipping_container {$is_wide}"); ?>">
-					<form method="POST" action="" id="<?php echo "skyscraper_tipping_form{$form_suffix}"; ?>">
-						<fieldset>
-							<h6><?php echo (!empty($atts['tipping_text']) ? esc_html($atts['tipping_text']) : ''); ?>
-							</h6>
-							<div class="<?php echo trim("btcpw_skyscraper_amount {$is_wide}"); ?>">
-								<?php foreach ($fixed_amount as $key => $value) : ?>
-
-									<?php if ($fixed_amount[$key]['enabled'] === true) : ?>
-										<div class="<?php echo trim('btcpw_skyscraper_amount_' . $key . ' ' . $is_wide); ?>">
-											<div>
-												<input type="radio" class="<?php echo trim("btcpw_skyscraper_tipping_default_amount {$is_wide}"); ?>" id="<?php echo $key . '_' . $is_wide; ?>" name="<?php echo "btcpw_skyscraper_tipping_default_amount_{$is_wide}"; ?>" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?>">
-												<?php if (!empty($fixed_amount[$key]['amount'])) : ?>
-													<?php if (true == $atts['show_icon']) : ?>
-														<i class="<?php echo esc_html($fixed_amount[$key]['icon']); ?>"></i>
-													<?php endif; ?>
-												<?php endif; ?>
-											</div>
-											<label for="<?php echo $key; ?>"><?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?></label>
-
-										</div>
-									<?php endif; ?>
-
-								<?php endforeach; ?>
-								<?php if (true == $atts['free_input']) : ?>
-									<div class="<?php echo trim("btcpw_skyscraper_tipping_free_input {$is_wide}"); ?>">
-										<input type="number" id="<?php echo "btcpw_skyscraper_tipping_amount{$form_suffix}"; ?>" name="<?php echo "btcpw_skyscraper_tipping_amount_{$is_wide}"; ?>" placeholder="0.00" required />
-
-
-										<select required name="<?php echo "btcpw_skyscraper_tipping_currency_{$is_wide}"; ?>" id="<?php echo "btcpw_skyscraper_tipping_currency{$form_suffix}"; ?>">
-											<option disabled value="">Select currency</option>
-											<?php foreach ($supported_currencies as $currency) : ?>
-												<option <?php echo $atts['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
-													<?php echo $currency; ?>
-												<?php endforeach; ?>
-										</select>
-										<i class="fas fa-arrows-alt-v"></i>
-
-									</div>
-								<?php endif; ?>
-							</div>
-							<div class="<?php echo trim("btcpw_skyscraper_tipping_converted_values {$is_wide}"); ?>">
-								<input type="text" id="<?php echo "btcpw_skyscraper_converted_amount{$form_suffix}"; ?>" name="<?php echo "btcpw_skyscraper_converted_amount_{$is_wide}"; ?>" readonly />
-								<input type="text" id="<?php echo "btcpw_skyscraper_converted_currency{$form_suffix}"; ?>" name="<?php echo "btcpw_skyscraper_converted_currency_{$is_wide}"; ?>" readonly />
-							</div>
-
-
-							<div class="<?php echo "btcpw_skyscraper_button {$is_wide}"; ?>" id="<?php echo "btcpw_skyscraper_button{$form_suffix}"; ?>">
-								<input type="hidden" id="<?php echo "btcpw_skyscraper_redirect_link_{$is_wide}"; ?>" name="<?php echo "btcpw_skyscraper_redirect_link_{$is_wide}"; ?>" value="<?php echo esc_attr($atts['redirect']); ?>" />
-								<?php if (true === $collect_data) : ?>
-
-									<div>
-										<input type="button" name="next" class="<?php echo "skyscraper-next-form {$is_wide}"; ?>" value="Continue">
-									</div>
-
-								<?php else : ?>
-									<div>
-										<button type="submit" id="<?php echo "btcpw_skyscraper_tipping__button{$form_suffix}"; ?>"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
-									</div>
-								<?php endif; ?>
-							</div>
-
-						</fieldset>
-						<?php if ($collect_data === true) : ?>
-							<fieldset>
-								<div class="<?php echo ltrim("btcpw_skyscraper_donor_information {$is_wide}"); ?>">
-									<?php foreach ($collect as $key => $value) : ?>
-										<?php if ($collect[$key]['display'] === true) : ?>
-											<div class="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_wrap {$is_wide}"; ?>">
-
-												<input type="text" placeholder="<?php echo $collect[$key]['label']; ?>" id="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_{$is_wide}"; ?>" name="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_{$is_wide}"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
-
-											</div>
-										<?php endif; ?>
-									<?php endforeach; ?>
-								</div>
-								<div class="<?php echo "btcpw_skyscraper_button {$is_wide}"; ?>" id="<?php echo ltrim("btcpw_skyscraper_button{$form_suffix}"); ?>">
-									<div>
-										<input type="button" name="previous" class="<?php echo ("skyscraper-previous-form {$is_wide}"); ?>" value="< Previous" />
-									</div>
-									<div>
-										<button type="submit" id=<?php echo "btcpw_skyscraper_tipping__button{$form_suffix}"; ?>><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
-									</div>
-								</div>
-							</fieldset>
-						<?php endif; ?>
-					</form>
-				</div>
-			</div>
-			<div id="powered_by_skyscraper">
-				<p>Powered by <a href='https://btcpaywall.com/' target='_blank'>BTCPayWall</a></p>
-			</div>
-		</div>
-	<?php
-
-		return ob_get_clean();
-	}
- */
 
 	/**
 	 * @param $atts
@@ -1382,8 +1122,9 @@ class BTCPayWall_Public
 
 		global $wpdb;
 		$id = !empty($atts['id']) ? intval($atts['id']) : null;
+		$table_name = "{$wpdb->prefix}btc_forms";
 		$result = $wpdb->get_results(
-			$wpdb->prepare("SELECT * FROM wp_btc_forms WHERE id=%d", $id),
+			$wpdb->prepare("SELECT * FROM $table_name WHERE id=%d", $id),
 			ARRAY_A
 		);
 		$atts = shortcode_atts(array(
@@ -1622,8 +1363,9 @@ class BTCPayWall_Public
 
 		global $wpdb;
 		$id = !empty($atts['id']) ? intval($atts['id']) : null;
+		$table_name = "{$wpdb->prefix}btc_forms";
 		$result = $wpdb->get_results(
-			$wpdb->prepare("SELECT * FROM wp_btc_forms WHERE id=%d", $id),
+			$wpdb->prepare("SELECT * FROM $table_name WHERE id=%d", $id),
 			ARRAY_A
 		);
 		$atts = shortcode_atts(array(
@@ -1857,8 +1599,9 @@ class BTCPayWall_Public
 
 		global $wpdb;
 		$id = !empty($atts['id']) ? intval($atts['id']) : null;
+		$table_name = "{$wpdb->prefix}btc_forms";
 		$result = $wpdb->get_results(
-			$wpdb->prepare("SELECT * FROM wp_btc_forms WHERE id=%d", $id),
+			$wpdb->prepare("SELECT * FROM $table_name WHERE id=%d", $id),
 			ARRAY_A
 		);
 		$atts = shortcode_atts(array(

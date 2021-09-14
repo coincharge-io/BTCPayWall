@@ -19,10 +19,11 @@ class Tipping_Banner_High extends WP_Widget
         $logo = wp_get_attachment_image_src($instance['logo_id']) ? wp_get_attachment_image_src($instance['logo_id'])[0] : $instance['logo_id'];
         $background = wp_get_attachment_image_src($instance['background_id']) ? wp_get_attachment_image_src($instance['background_id'])[0] : $instance['background_id'];
         $collect = BTCPayWall_Public::getCollect($instance);
-        $collect_d = filter_var(BTCPayWall_Public::display_is_enabled($collect), FILTER_VALIDATE_BOOL);
-        $collect_data = filter_var($collect_d, FILTER_VALIDATE_BOOL);
-        $fixed_amount = BTCPayWall_Public::getFixedAmount($instance);
+        $collect_d = BTCPayWall_Public::display_is_enabled($collect);
 
+        $collect_data = filter_var($collect_d, FILTER_VALIDATE_BOOLEAN);
+        $fixed_amount = BTCPayWall_Public::getFixedAmount($instance);
+        $free_input = filter_var($instance['free_input'], FILTER_VALIDATE_BOOLEAN);
         $first_enabled = array_column($fixed_amount, 'enabled');
         $d = array_search('true', $first_enabled);
         $index = 'value' . ($d + 1);
@@ -117,7 +118,7 @@ class Tipping_Banner_High extends WP_Widget
                             </h6>
                             <div class="btcpw_widget btcpw_skyscraper_amount high">
                                 <?php foreach ($fixed_amount as $key => $value) : ?>
-                                    <?php if (filter_var($fixed_amount[$key]['enabled'], FILTER_VALIDATE_BOOLEAN) === true) : ?>
+                                    <?php if ($fixed_amount[$key]['enabled'] === true) : ?>
                                         <div class="<?php echo "btcpw_widget btcpw_skyscraper_amount_$key high"; ?>">
                                             <div>
                                                 <input type="radio" class="btcpw_widget btcpw_skyscraper_tipping_default_amount high" id="<?php echo "btcpw_widget_{$key}_high"; ?>" name="btcpw_widget_btcpw_skyscraper_tipping_default_amount_high" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo ($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?>">
@@ -131,7 +132,7 @@ class Tipping_Banner_High extends WP_Widget
                                     <?php endif; ?>
 
                                 <?php endforeach; ?>
-                                <?php if (true === filter_var($instance['free_input'], FILTER_VALIDATE_BOOL)) : ?>
+                                <?php if (true === $free_input) : ?>
                                     <div class="btcpw_widget btcpw_skyscraper_tipping_free_input high">
                                         <input type="number" id="btcpw_widget_btcpw_skyscraper_tipping_amount_high" name="btcpw_widget_btcpw_skyscraper_tipping_amount_high" placeholder="0.00" required />
 
@@ -156,7 +157,7 @@ class Tipping_Banner_High extends WP_Widget
 
                             <div id="btcpw_widget_btcpw_skyscraper_button_high">
                                 <input type="hidden" id="btcpw_widget_btcpw_skyscraper_redirect_link_high" name="btcpw_widget_btcpw_skyscraper_redirect_link_high" value=<?php echo ($instance['redirect']); ?> />
-                                <?php if (filter_var($collect_data, FILTER_VALIDATE_BOOL) === true) : ?>
+                                <?php if ($collect_data) : ?>
                                     <div>
                                         <input type="button" name="next" class="btcpw_widget skyscraper-next-form high" value="Continue >" />
                                     </div>
@@ -168,14 +169,14 @@ class Tipping_Banner_High extends WP_Widget
                             </div>
 
                         </fieldset>
-                        <?php if (filter_var($collect_data, FILTER_VALIDATE_BOOL) === true) : ?>
+                        <?php if ($collect_data) : ?>
                             <fieldset>
                                 <div class="btcpw_widget btcpw_skyscraper_donor_information high">
                                     <?php foreach ($collect as $key => $value) : ?>
-                                        <?php if (filter_var($collect[$key]['display'], FILTER_VALIDATE_BOOL) === true) : ?>
+                                        <?php if ($collect[$key]['display'] === true) : ?>
                                             <div class="<?php echo "btcpw_widget btcpw_skyscraper_tipping_donor_{$collect[$key]['label']}_wrap high"; ?>">
 
-                                                <input type="text" placeholder="<?php echo $collect[$key]['label']; ?>" id="<?php echo "btcpw_widget_btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_high"; ?>" name="<?php echo "btcpw_widget_btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_high"; ?>" <?php echo filter_var($collect[$key]['mandatory'], FILTER_VALIDATE_BOOL) === true ? 'required' : ''; ?> />
+                                                <input type="text" placeholder="<?php echo $collect[$key]['label']; ?>" id="<?php echo "btcpw_widget_btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_high"; ?>" name="<?php echo "btcpw_widget_btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_high"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                             </div>
                                         <?php endif; ?>

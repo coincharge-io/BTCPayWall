@@ -563,9 +563,10 @@ div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
 
 .btcpw_skyscraper_donor_information.high {
   display: flex;
+  margin: 1em 0;
   flex-direction: column;
   align-items: center;
-  line-height: 3em;
+  gap: 2em;
 }
 .btcpw_skyscraper_donor_information input[type='text'],
 .btcpw_skyscraper_donor_information input[type='email'],
