@@ -514,10 +514,10 @@
       }
     })
   }
-  $(document).ready(function () {
+  /* $(document).ready(function () {
     var custom_uploader, click_elem, target
 
-    $('#lnpw_tipping_button_image_background_box').click(function (e) {
+    $('#btcpw_tipping_button_image_background_box').click(function (e) {
       e.preventDefault()
       if (custom_uploader) {
         custom_uploader.open()
@@ -540,12 +540,17 @@
           .toJSON()
         target.val(attachment.id)
         click_elem
-          .html('<img src="' + attachment.url + '">')
+          .html('<img width=100px height=100px src="' + attachment.url + '">')
           .next()
           .show()
       })
 
       custom_uploader.open()
+    })
+  }) */
+  $(document).ready(function () {
+    $('#btcpw_previous_page').click(function () {
+      window.location.reload(false)
     })
   })
   $(document).ready(function () {

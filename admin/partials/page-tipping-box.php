@@ -208,6 +208,7 @@ $id = $result[0]['id'] ?? null;
         <input type="hidden" id="btc_tipping_box_id" value="<?php echo $id; ?>" />
 
         <div style="display: inline-block; margin-top: 25px;">
+            <button id="btcpw_previous_page" class="button button-secondary btcpw_button" type="button">Back</button>
             <button class="button button-primary btcpw_button" type="submit">Save</button>
         </div>
     </form>

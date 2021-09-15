@@ -149,9 +149,10 @@ class Donation_List_Table extends WP_List_Table
     }
     protected function column_logo($item)
     {
+        $logo = wp_get_attachment_image_src($item['logo']) ? wp_get_attachment_image_src($item['logo'])[0] : $item['logo'];
         return sprintf(
             '<img width=60 height=60 src="%s" />',
-            $item['logo']
+            $logo
         );
     }
 

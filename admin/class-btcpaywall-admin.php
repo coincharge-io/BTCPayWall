@@ -1836,7 +1836,7 @@ class BTCPayWall_Admin
 					'type' => 'textfield',
 					'heading' => 'Dimension',
 					'param_name' => 'dimension',
-					'value' => '600x280',
+					'value' => '520x600',
 					'description' => 'Dimension',
 				),
 				array(
