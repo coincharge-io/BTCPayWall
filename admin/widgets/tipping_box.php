@@ -8,7 +8,7 @@ class Tipping_Box extends WP_Widget
 
         parent::__construct(
             'tipping-box',  // Base ID
-            'BP Tipping Box'   // Name
+            'BTCPW Tipping Box'   // Name
         );
     }
 

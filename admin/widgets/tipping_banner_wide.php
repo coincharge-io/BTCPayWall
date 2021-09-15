@@ -7,7 +7,7 @@ class Tipping_Banner_Wide extends WP_Widget
     {
         parent::__construct(
             'tipping-banner-wide',
-            'BP Tipping Banner Wide'
+            'BTCPW Tipping Banner Wide'
         );
     }
 

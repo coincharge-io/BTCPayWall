@@ -1,7 +1,7 @@
 import { registerBlockType } from "@wordpress/blocks";
 
 registerBlockType("btc-paywall/gutenberg-end-block", {
-  title: "BP Pay-per-Post End",
+  title: "BTCPW Pay-per-Post End",
   icon: (
     <svg
       version="1.0"

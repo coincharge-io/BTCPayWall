@@ -703,7 +703,7 @@ class BTCPayWall_Admin
 	{
 
 		vc_map(array(
-			'name' => 'BP Pay-per-Post Start',
+			'name' => 'BTCPW Pay-per-Post Start',
 			'base' => 'btcpw_start_content',
 			'description' => 'Start area of paid content',
 			'category' => 'Content',
@@ -779,7 +779,7 @@ class BTCPayWall_Admin
 		));
 
 		vc_map(array(
-			'name' => 'BP Pay-per-Post End',
+			'name' => 'BTCPW Pay-per-Post End',
 			'base' => 'btcpw_end_content',
 			'description' => 'End area of paid content',
 			'category' => 'Content',
@@ -788,7 +788,7 @@ class BTCPayWall_Admin
 		));
 
 		vc_map(array(
-			'name' => 'BP Pay Widget',
+			'name' => 'BTCPW Pay Widget',
 			'base' => 'btcpw_pay_block',
 			'description' => 'Show Payment Widget',
 			'category' => 'Content',
@@ -797,7 +797,7 @@ class BTCPayWall_Admin
 		));
 
 		vc_map(array(
-			'name' => 'BP Pay-per-View Start',
+			'name' => 'BTCPW Pay-per-View Start',
 			'base' => 'btcpw_start_video',
 			'description' => 'Start area of paid video content',
 			'category' => 'Content',
@@ -893,7 +893,7 @@ class BTCPayWall_Admin
 		));
 
 		vc_map(array(
-			'name' => 'BP Pay-per-View End',
+			'name' => 'BTCPW Pay-per-View End',
 			'base' => 'btcpw_end_video',
 			'description' => 'End area of paid video content',
 			'category' => 'Content',
@@ -903,7 +903,7 @@ class BTCPayWall_Admin
 
 
 		vc_map(array(
-			'name' => 'BP Pay-per-File',
+			'name' => 'BTCPW Pay-per-File',
 			'base' => 'btcpw_file',
 			'description' => 'Area of file',
 			'category' => 'Content',
@@ -1007,7 +1007,7 @@ class BTCPayWall_Admin
 
 
 		vc_map(array(
-			'name' => 'BP Tipping Banner Wide',
+			'name' => 'BTCPW Tipping Banner Wide',
 			'base' => 'btcpw_tipping_banner_wide',
 			'description' => 'Add Wide Tipping Banner',
 			'category' => 'Content',
@@ -1347,7 +1347,7 @@ class BTCPayWall_Admin
 		));
 
 		vc_map(array(
-			'name' => 'BP Tipping Banner High',
+			'name' => 'BTCPW Tipping Banner High',
 			'base' => 'btcpw_tipping_banner_high',
 			'description' => 'Add High Tipping Banner',
 			'category' => 'Content',
@@ -1686,7 +1686,7 @@ class BTCPayWall_Admin
 			),
 		));
 		vc_map(array(
-			'name' => 'BP Tipping Box',
+			'name' => 'BTCPW Tipping Box',
 			'base' => 'btcpw_tipping_box',
 			'description' => 'Add Tipping Box',
 			'category' => 'Content',
@@ -1826,7 +1826,7 @@ class BTCPayWall_Admin
 			),
 		));
 		vc_map(array(
-			'name' => 'BP Tipping Page',
+			'name' => 'BTCPW Tipping Page',
 			'base' => 'btcpw_tipping_page',
 			'description' => 'Add Tipping Page',
 			'category' => 'Content',

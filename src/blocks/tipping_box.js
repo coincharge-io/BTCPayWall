@@ -18,7 +18,7 @@ import {
 } from '@wordpress/components'
 
 registerBlockType('btc-paywall/gutenberg-tipping-box', {
-  title: 'BP Tipping Box',
+  title: 'BTCPW Tipping Box',
   icon: 'dashicons-screenoptions',
   category: 'widgets',
   keywords: ['tipping', 'tipping-box'],

@@ -20,7 +20,7 @@ import {
 } from '@wordpress/components'
 
 registerBlockType('btc-paywall/gutenberg-tipping-banner-wide', {
-  title: 'BP Tipping Banner Wide',
+  title: 'BTCPW Tipping Banner Wide',
   icon: 'dashicons-screenoptions',
   category: 'widgets',
   keywords: ['tipping', 'tipping-banner-wide'],

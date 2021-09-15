@@ -18,7 +18,7 @@ class Elementor_BTCPW_File_Widget extends \Elementor\Widget_Base
 	 */
 	public function get_title()
 	{
-		return 'BP Pay-per-File';
+		return 'BTCPW Pay-per-File';
 	}
 
 	/**

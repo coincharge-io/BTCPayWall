@@ -18,7 +18,7 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return 'BP Tipping Banner High';
+        return 'BTCPW Tipping Banner High';
     }
 
     /**

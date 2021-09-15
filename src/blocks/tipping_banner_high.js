@@ -20,7 +20,7 @@ import {
 import ServerSideRender from '@wordpress/server-side-render'
 
 registerBlockType('btc-paywall/gutenberg-tipping-banner-high', {
-  title: 'BP Tipping Banner High',
+  title: 'BTCPW Tipping Banner High',
   icon: 'dashicons-screenoptions',
   category: 'widgets',
   keywords: ['tipping', 'tipping-banner-high'],

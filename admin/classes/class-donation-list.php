@@ -191,8 +191,7 @@ class Donation_List_Table extends WP_List_Table
         );
         $item_json = json_decode(json_encode($item), true);
 
-
-        return '<em>' . sprintf('%s %s', $item_json['name'], $this->row_actions($actions)) . '</em>';
+        return '<em>' . sprintf('%s %s', $item_json['title_text'], $this->row_actions($actions)) . '</em>';
     }
     /**
      * Generates content for a single row of the table.

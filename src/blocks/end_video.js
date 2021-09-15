@@ -1,7 +1,7 @@
 import { registerBlockType } from "@wordpress/blocks";
 
 registerBlockType("btc-paywall/gutenberg-end-video-block", {
-  title: "BP Pay-per-View End",
+  title: "BTCPW Pay-per-View End",
   icon: (
     <svg
       version="1.0"

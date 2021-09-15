@@ -18,7 +18,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 	 */
 	public function get_title()
 	{
-		return 'BP Pay-per-View Start';
+		return 'BTCPW Pay-per-View Start';
 	}
 
 	/**

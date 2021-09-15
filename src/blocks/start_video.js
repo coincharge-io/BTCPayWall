@@ -14,7 +14,7 @@ import {
 import ServerSideRender from '@wordpress/server-side-render'
 
 registerBlockType('btc-paywall/gutenberg-start-video-block', {
-  title: 'BP Pay-per-View Start',
+  title: 'BTCPW Pay-per-View Start',
   icon: (
     <svg
       version='1.0'

@@ -15,7 +15,7 @@ import { InspectorControls, MediaUpload, MediaPlaceholder } from "@wordpress/blo
 import { useState } from "@wordpress/element";
 
 registerBlockType("btc-paywall/gutenberg-start-block", {
-  title: "BP Pay-per-Post Start",
+  title: "BTCPW Pay-per-Post Start",
   icon: (
     <svg
       version="1.0"

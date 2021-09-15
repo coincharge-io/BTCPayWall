@@ -18,7 +18,7 @@ class Elementor_BTCPW_Tipping_Page_Widget extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return 'BP Tipping Page';
+        return 'BTCPW Tipping Page';
     }
 
     /**

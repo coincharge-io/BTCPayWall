@@ -18,7 +18,7 @@ class Elementor_BTCPW_End_Content_Widget extends \Elementor\Widget_Base
 	 */
 	public function get_title()
 	{
-		return 'BP Pay-per-Post End';
+		return 'BTCPW Pay-per-Post End';
 	}
 
 	/**

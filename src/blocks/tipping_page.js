@@ -20,7 +20,7 @@ import {
 import ServerSideRender from '@wordpress/server-side-render'
 
 registerBlockType('btc-paywall/gutenberg-tipping-page', {
-  title: 'BP Tipping Page',
+  title: 'BTCPW Tipping Page',
   icon: 'dashicons-screenoptions',
   category: 'widgets',
   keywords: ['tipping', 'tipping-page'],

@@ -18,7 +18,7 @@ class Elementor_BTCPW_Pay_Block_Widget extends \Elementor\Widget_Base
 	 */
 	public function get_title()
 	{
-		return 'BP Pay Widget';
+		return 'BTCPW Pay Widget';
 	}
 
 	/**
