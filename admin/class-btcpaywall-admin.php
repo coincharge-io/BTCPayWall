@@ -465,7 +465,21 @@ class BTCPayWall_Admin
 
 		//return ob_get_clean();
 	}
+	public static function allCreatedForms()
+	{
+		global $wpdb;
+		$table_name = "{$wpdb->prefix}btc_forms";
+		$result = $wpdb->get_results(
+			"SELECT * FROM $table_name",
+			ARRAY_A
+		);
+		$shortcodes = array();
+		foreach ($result as $row) {
 
+			$shortcodes[BTCPayWall_Admin::outputShortcodeAttributes($row['name'], $row['id'])] = BTCPayWall_Admin::outputShortcodeAttributes($row['name'], $row['id']);
+		}
+		return $shortcodes;
+	}
 	public static function outputShortcodeAttributes($name, $id)
 	{
 		switch ($name) {
@@ -529,6 +543,7 @@ class BTCPayWall_Admin
 		$background_color = sanitize_hex_color_no_hash($_POST['background_color']);
 		$hf_color = sanitize_hex_color_no_hash($_POST['hf_color']);
 		$logo = sanitize_text_field($_POST['logo']);
+		$form_name = sanitize_text_field($_POST['form_name']);
 		$title_text = sanitize_text_field($_POST['title_text']);
 		$title_text_color = sanitize_hex_color_no_hash($_POST['title_text_color']);
 
@@ -586,6 +601,7 @@ class BTCPayWall_Admin
 				array(
 					'time' => current_time('mysql'),
 					'name' => $name,
+					'form_name' => $form_name,
 					'dimension' => $dimension,
 					'background' => $background,
 					'background_color' => $background_color,
@@ -639,6 +655,7 @@ class BTCPayWall_Admin
 				array(
 					'time' => current_time('mysql'),
 					'name' => $name,
+					'form_name' => $form_name,
 					'dimension' => $dimension,
 					'background' => $background,
 					'background_color' => $background_color,
@@ -2189,6 +2206,22 @@ class BTCPayWall_Admin
 				),
 			),
 		));
+
+		vc_map(array(
+			'name' => 'BTCPW Shortcode List',
+			'base' => 'btcpw_list_shortcodes',
+			'description' => 'Shortcode list',
+			'category' => 'Content',
+			'params' => array(
+				array(
+					'type' => 'dropdown',
+					'heading' => 'Shortcode',
+					'param_name' => 'shortcode',
+					'value' => BTCPayWall_Admin::allCreatedForms(),
+					'description' => 'Shortcode',
+				),
+			)
+		));
 	}
 
 	public function load_elementor_widgets()
@@ -2203,7 +2236,7 @@ class BTCPayWall_Admin
 		require_once __DIR__ . '/elementor/class-tipping-banner-high-widget.php';
 		require_once __DIR__ . '/elementor/class-tipping-banner-wide-widget.php';
 		require_once __DIR__ . '/elementor/class-tipping-page-widget.php';
-
+		require_once __DIR__ . '/elementor/class-tipping-shortcode-list-widget.php';
 
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Start_Content_Widget());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_End_Content_Widget());
@@ -2215,6 +2248,7 @@ class BTCPayWall_Admin
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Tipping_Banner_High_Widget());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Tipping_Banner_Wide_Widget());
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Tipping_Page_Widget());
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Shortcode_List_Widget());
 	}
 
 	/**
@@ -2259,6 +2293,14 @@ class BTCPayWall_Admin
 	{
 		return do_shortcode("[btcpw_end_content]");
 	}
+	public function render_shortcodes_gutenberg($atts)
+	{
+		$atts = shortcode_atts(array(
+			'shortcode' => '',
+		), $atts);
+		return $atts['shortcode'];
+		/* return do_shortcode("[btcpw_list_shortcodes shortcode='{$atts['shortcode']}']"); */
+	}
 
 	public function render_video_catalog_gutenberg()
 	{
@@ -2299,7 +2341,6 @@ class BTCPayWall_Admin
 	}
 	public function render_tipping_box($atts)
 	{
-
 		$atts = shortcode_atts(array(
 			'dimension' =>  '250x300',
 			'title' =>  'Support my work',
@@ -2605,7 +2646,13 @@ class BTCPayWall_Admin
 				'render_callback' => (array($this, 'render_end_gutenberg')),
 			]
 		);
-
+		register_block_type(
+			'btc-paywall/gutenberg-shortcode-list',
+			[
+				'editor_script' => 'gutenberg-block-script',
+				'render_callback' => (array($this, 'render_shortcodes_gutenberg')),
+			]
+		);
 		register_block_type(
 			'btc-paywall/gutenberg-file-block',
 			[
@@ -3300,5 +3347,20 @@ class BTCPayWall_Admin
 		register_widget(new Tipping_Box());
 		register_widget(new Tipping_Banner_Wide());
 		register_widget(new Tipping_Banner_High());
+	}
+
+	public function register_shortcode_list()
+	{
+		register_rest_route(
+			$this->plugin_name,
+			'/shortcode-list/v1',
+			array(
+				'methods'             => 'GET',
+				'callback'            => array($this, 'allCreatedForms'),
+				'permission_callback' => function () {
+					return current_user_can('edit_posts');
+				},
+			)
+		);
 	}
 }

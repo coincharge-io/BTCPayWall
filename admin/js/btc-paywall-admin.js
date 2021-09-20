@@ -569,6 +569,9 @@
           id: $(
             '#btc_tipping_banner_high_id, #btc_tipping_banner_wide_id, #btc_tipping_box_id, #btc_tipping_page_id'
           ).val(),
+          form_name: $(
+            '#btcpw_tipping_page_form_name, #btcpw_tipping_box_form_name, #btcpw_tipping_banner_high_form_name, #btcpw_tipping_banner_wide_form_name'
+          ).val(),
           dimension: $(
             '#btcpw_tipping_box_dimension, #btcpw_tipping_banner_high_dimension, #btcpw_tipping_banner_wide_dimension'
           ).val(),

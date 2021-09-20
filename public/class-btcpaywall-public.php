@@ -878,6 +878,19 @@ class BTCPayWall_Public
 		}
 		return false;
 	}
+	/**
+	 * @param $atts
+	 *
+	 * @return string
+	 */
+	public function displayShortcodeList($atts)
+	{
+		$atts = shortcode_atts(array(
+			'shortcode' => ''
+		), $atts);
+		$trimmed = trim($atts['shortcode'], "`{}`");
+		return do_shortcode("[{$trimmed}]");
+	}
 
 	/**
 	 * @param $atts
@@ -917,14 +930,13 @@ class BTCPayWall_Public
 		), $atts);
 
 		$dimension = explode('x', ($atts['dimension'] == '250x300' ? '250x300' : '300x300'));
+
 		$supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
 		$logo = wp_get_attachment_image_src($atts['logo_id']) ? wp_get_attachment_image_src($atts['logo_id'])[0] : $atts['logo_id'];
 		$background = wp_get_attachment_image_src($atts['background_id']) ? wp_get_attachment_image_src($atts['background_id'])[0] : $atts['background_id'];
 
 		$is_widget = $atts['widget'] === 'true' ? 'btcpw_widget' : '';
-		$form = $is_widget === 'btcpw_widget' ? 'tipping_form_box_widget' : 'tipping_form_box';
-		$suffix = $is_widget === 'btcpw_widget' ? '_btcpw_widget' : '';
-		$version = $atts['widget'] === 'true' ? 'widget' : 'basic';
+
 		ob_start();
 	?>
 

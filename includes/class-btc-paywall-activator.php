@@ -40,6 +40,7 @@ class BTCPayWall_Activator
 			  id mediumint(9) NOT NULL AUTO_INCREMENT,
 			  time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
 			  name tinytext NOT NULL,
+			  form_name tinytext NOT NULL,
 			  dimension char(7) NOT NULL,
 			  redirect varchar(55),
 			  title_text text,

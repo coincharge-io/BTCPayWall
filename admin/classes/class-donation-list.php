@@ -22,6 +22,7 @@ class Donation_List_Table extends WP_List_Table
     {
         return array(
             'cb'      => '<input type="checkbox" />',
+            'template' => wp_strip_all_tags(__('Template')),
             'title'   => wp_strip_all_tags(__('Title')),
             'logo'    => wp_strip_all_tags(__('Logo')),
             'description'  => wp_strip_all_tags(__('Description')),
@@ -165,7 +166,7 @@ class Donation_List_Table extends WP_List_Table
         return $actions;
     }
 
-    protected function column_title($item)
+    /* protected function column_title($item)
     {
 
         $page = wp_unslash($_REQUEST['page']);
@@ -193,6 +194,36 @@ class Donation_List_Table extends WP_List_Table
         $item_json = json_decode(json_encode($item), true);
 
         return '<em>' . sprintf('%s %s', $item_json['title_text'], $this->row_actions($actions)) . '</em>';
+    } */
+
+    protected function column_template($item)
+    {
+
+        $page = wp_unslash($_REQUEST['page']);
+        $delete_query_args = array(
+            'page'   => $page,
+            'action' => 'delete',
+            'id'  => $item['id'],
+        );
+        $edit_query_args = array(
+            'page'   => 'btcpw_edit',
+            'action' => 'edit',
+            'id'  => $item['id'],
+        );
+
+        $actions['edit'] = sprintf(
+            '<a href="%1$s">%2$s</a>',
+            esc_url(wp_nonce_url(add_query_arg($edit_query_args, 'admin.php'), 'id' . $item['id'])),
+            _x('Edit', 'List table row action', 'wp-list-table')
+        );
+        $actions['delete'] = sprintf(
+            '<a href="%1$s">%2$s</a>',
+            esc_url(wp_nonce_url(add_query_arg($delete_query_args, 'admin.php'), 'id' . $item['id'])),
+            _x('Delete', 'List table row action', 'wp-list-table')
+        );
+        $item_json = json_decode(json_encode($item), true);
+
+        return '<em>' . sprintf('%s %s', $item_json['form_name'], $this->row_actions($actions)) . '</em>';
     }
     /**
      * Generates content for a single row of the table.
@@ -206,8 +237,10 @@ class Donation_List_Table extends WP_List_Table
         switch ($column_name) {
             case 'cb':
                 return esc_html($item['cb']);
+            case 'template':
+                return esc_html($item['form_name']);
             case 'title':
-                return esc_html($item['title']);
+                return esc_html($item['title_text']);
             case 'logo':
                 return esc_html($item['logo']);
             case 'description':

@@ -18,6 +18,7 @@ $text = array(
     'step1' => $result[0]['step1'] ?? 'Pledge',
     'step2' => $result[0]['step1'] ?? 'Info',
 );
+$form_name = $result[0]['form_name'] ?? $text['title'];
 $collect = array(
     'name' => array(
         'collect' => $result[0]['collect_name'] ?? true,
@@ -121,6 +122,14 @@ $id = $result[0]['id'] ?? null;
     <?php include(__DIR__ . '/notices/form-notice.php'); ?>
 
     <form method="POST" action="" id="tipping_page_add_form">
+        <div class="row">
+            <div class="col-50">
+                <label for="btcpw_tipping_page_form_name">Template name</label>
+            </div>
+            <div class="col-50" id="btcpw_tipping_page_shortcode">
+                <input id="btcpw_tipping_page_form_name" class="btcpw_tipping_page_form_name" name="btcpw_tipping_page_form_name" type="text" value="<?php echo $form_name; ?>">
+            </div>
+        </div>
         <?php if ($shortcode) : ?>
             <div class="row">
                 <div class="col-50">
@@ -145,7 +154,7 @@ $id = $result[0]['id'] ?? null;
             </div>
             <div class="col-50">
                 <?php if ($background) : ?>
-                    <button id="btcpw_tipping_page_button_image_background" class="btcpw_tipping_page_button_image_background" name="btcpw_tipping_page_button_image_background"><img src="<?php echo $background[0]; ?>" /></a></button>
+                    <button id="btcpw_tipping_page_button_image_background" class="btcpw_tipping_page_button_image_background" name="btcpw_tipping_page_button_image_background"><img src="<?php echo $background[0]; ?>" height=100px width=100px /></a></button>
                     <button class="btcpw_tipping_page_button_remove_background">Remove image</button>
                     <input type="hidden" id="btcpw_tipping_page_image_background" class="btcpw_tipping_page_image_background" name="btcpw_tipping_page_image[background]" value=<?php echo $image['background']; ?> />
                 <?php else : ?>
@@ -180,7 +189,7 @@ $id = $result[0]['id'] ?? null;
             </div>
             <div class="col-50">
                 <?php if ($logo) : ?>
-                    <button id="btcpw_tipping_page_button_image" class="btcpw_tipping_page_button_image" name="btcpw_tipping_page_button_image"><img src="<?php echo $logo[0]; ?>" /></a></button>
+                    <button id="btcpw_tipping_page_button_image" class="btcpw_tipping_page_button_image" name="btcpw_tipping_page_button_image"><img src="<?php echo $logo[0]; ?>" height=100px width=100px /></a></button>
                     <button class="btcpw_tipping_page_button_remove">Remove image</button>
                     <input type="hidden" id="btcpw_tipping_page_image" class="btcpw_tipping_page_image" name="btcpw_tipping_page_image[logo]" value=<?php echo $image['logo']; ?> />
                 <?php else : ?>
@@ -318,7 +327,7 @@ $id = $result[0]['id'] ?? null;
                 <label for="btcpw_tipping_page_button_text">Button text</label>
             </div>
             <div class="col-50">
-                <textarea id="btcpw_tipping_page_button_text" name="btcpw_tipping_page_text[button]"><?php echo $text['button']; ?></textarea>
+                <input type="text" id="btcpw_tipping_page_button_text" name="btcpw_tipping_page_text[button]" value="<?php echo $text['button']; ?>">
             </div>
         </div>
         <div class="row">

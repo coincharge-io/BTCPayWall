@@ -21,6 +21,7 @@ $text = array(
     'info' => $result[0]['tipping_text'] ?? 'Enter Tipping Amount',
     'button' => $result[0]['button_text'] ?? 'Tipping now',
 );
+$form_name = $result[0]['form_name'] ?? $text['title'];
 $color = array(
     'button_text' => !empty($result[0]['button_text_color']) ? '#' . $result[0]['button_text_color'] : '#FFFFFF',
     'background' => !empty($result[0]['background_color']) ? '#' . $result[0]['background_color'] : '#E6E6E6',
@@ -122,12 +123,20 @@ $id = $result[0]['id'] ?? null;
 <div class="tipping_banner_high_settings">
     <?php include(__DIR__ . '/notices/form-notice.php'); ?>
     <form method="POST" action="" id="tipping_banner_high_add_form">
+        <div class="row">
+            <div class="col-50">
+                <label for="btcpw_tipping_banner_high_form_name">Template name</label>
+            </div>
+            <div class="col-50" id="btcpw_tipping_banner_high_shortcode">
+                <input id="btcpw_tipping_banner_high_form_name" class="btcpw_tipping_banner_high_form_name" name="btcpw_tipping_banner_high_form_name" type="text" value="<?php echo $form_name; ?>">
+            </div>
+        </div>
         <?php if ($shortcode) : ?>
             <div class="row">
                 <div class="col-50">
                     <p>Shortcode</label>
                 </div>
-                <div class="col-50" id="btcpw_tipping_page_shortcode">
+                <div class="col-50" id="btcpw_tipping_banner_high_shortcode">
                     <p><?php echo $shortcode; ?>
                 </div>
             </div>
@@ -153,7 +162,7 @@ $id = $result[0]['id'] ?? null;
             </div>
             <div class="col-50">
                 <?php if ($background) : ?>
-                    <button id="btcpw_tipping_banner_high_button_image_background" class="btcpw_tipping_banner_high_button_image_background" name="btcpw_tipping_banner_high_button_image_background"><img src="<?php echo $background[0]; ?>" /></a></button>
+                    <button id="btcpw_tipping_banner_high_button_image_background" class="btcpw_tipping_banner_high_button_image_background" name="btcpw_tipping_banner_high_button_image_background"><img height=100px width=100px src="<?php echo $background[0]; ?>" /></a></button>
                     <button class="btcpw_tipping_banner_high_button_remove_background">Remove image</button>
                     <input type="hidden" id="btcpw_tipping_banner_high_image_background" class="btcpw_tipping_banner_high_image_background" name="btcpw_tipping_banner_high_image[background]" value=<?php echo $image['background']; ?> />
                 <?php else : ?>
@@ -188,7 +197,7 @@ $id = $result[0]['id'] ?? null;
             </div>
             <div class="col-50">
                 <?php if ($logo) : ?>
-                    <button id="btcpw_tipping_banner_high_button_image" class="btcpw_tipping_banner_high_button_image" name="btcpw_tipping_banner_high_button_image"><img src="<?php echo $logo[0]; ?>" /></a></button>
+                    <button id="btcpw_tipping_banner_high_button_image" class="btcpw_tipping_banner_high_button_image" name="btcpw_tipping_banner_high_button_image"><img height=100px width=100px src="<?php echo $logo[0]; ?>" /></a></button>
                     <button class="btcpw_tipping_banner_high_button_remove">Remove image</button>
                     <input type="hidden" id="btcpw_tipping_banner_high_image" class="btcpw_tipping_banner_high_image" name="btcpw_tipping_banner_high_image[logo]" value=<?php echo $image['logo']; ?> />
                 <?php else : ?>
@@ -336,7 +345,7 @@ $id = $result[0]['id'] ?? null;
                 <label for="btcpw_tipping_banner_high_button_text">Button text</label>
             </div>
             <div class="col-50">
-                <textarea id="btcpw_tipping_banner_high_button_text" name="btcpw_tipping_banner_high_text[button]"><?php echo $text['button']; ?></textarea>
+                <input id="btcpw_tipping_banner_high_button_text" name="btcpw_tipping_banner_high_text[button]" value="<?php echo $text['button']; ?>">
             </div>
         </div>
         <div class="row">

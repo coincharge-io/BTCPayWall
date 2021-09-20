@@ -153,6 +153,7 @@ class BTCPayWall
         $this->loader->add_action('vc_before_init', $plugin_admin, 'load_vc_widgets');
         $this->loader->add_action('elementor/widgets/widgets_registered', $plugin_admin, 'load_elementor_widgets');
         $this->loader->add_action('widgets_init', $plugin_admin, 'wpdocs_register_widgets');
+        $this->loader->add_action('rest_api_init', $plugin_admin, 'register_shortcode_list');
     }
 
     /**
@@ -202,7 +203,7 @@ class BTCPayWall
         $this->loader->add_shortcode('btcpw_tipping_banner_wide', $plugin_public, 'render_shortcode_banner_wide_tipping');
         $this->loader->add_shortcode('btcpw_protected_file', $plugin_public, 'render_shortcode_protected_file');
         $this->loader->add_shortcode('btcpw_end_video', $plugin_public, 'render_shortcode_btcpw_end_content');
-
+        $this->loader->add_shortcode('btcpw_list_shortcodes', $plugin_public, 'displayShortcodeList');
         $this->loader->add_action('enqueue_block_editor_assets', $plugin_public, 'enqueue_styles');
     }
 
