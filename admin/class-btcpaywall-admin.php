@@ -3363,4 +3363,27 @@ class BTCPayWall_Admin
 			)
 		);
 	}
+	public function add_my_media_button()
+	{
+		$shortcodes = BTCPayWall_Admin::allCreatedForms();
+		$shortcodes_list = '';
+		echo '<div id=btcpw_shortcodes>';
+		echo '<button type=button id=btcpw_shortcode_button>BTCPayWall Shortcode</button>';
+		/* echo '&nbsp;<select id="sc_select" style=display:none;>';
+
+		foreach ($shortcodes as $val) {
+			$shortcodes_list .= "<option value='{$val}'>$val</option>";
+		}
+
+		echo $shortcodes_list;
+		echo '</select>'; */
+		echo '<div id=sc_menu style=display:none;>';
+		foreach ($shortcodes as $val) {
+			$shortcodes_list .= "<div class=sc_menu_item btcpw_shortcode data='{$val}'>$val</div>";
+		}
+
+		echo $shortcodes_list;
+		echo '</div>';
+		echo '</div>';
+	}
 }

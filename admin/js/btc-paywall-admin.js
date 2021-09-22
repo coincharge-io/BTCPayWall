@@ -514,6 +514,15 @@
       }
     })
   }
+  $(document).ready(function () {
+    $('#btcpw_shortcodes').click(function () {
+      $('#sc_menu').toggle()
+    })
+    $('#sc_select').change(function () {
+      send_to_editor($('#sc_select :selected').val())
+      return false
+    })
+  })
   /* $(document).ready(function () {
     var custom_uploader, click_elem, target
 

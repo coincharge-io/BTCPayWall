@@ -154,6 +154,8 @@ class BTCPayWall
         $this->loader->add_action('elementor/widgets/widgets_registered', $plugin_admin, 'load_elementor_widgets');
         $this->loader->add_action('widgets_init', $plugin_admin, 'wpdocs_register_widgets');
         $this->loader->add_action('rest_api_init', $plugin_admin, 'register_shortcode_list');
+
+        $this->loader->add_action('media_buttons', $plugin_admin, 'add_my_media_button', 15);
     }
 
     /**
