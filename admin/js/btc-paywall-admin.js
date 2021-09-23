@@ -518,8 +518,9 @@
     $('#btcpw_shortcodes').click(function () {
       $('#sc_menu').toggle()
     })
-    $('#sc_select').change(function () {
-      send_to_editor($('#sc_select :selected').val())
+    $('.sc_menu_item.btcpw_shortcode').click(function () {
+      send_to_editor($(this).attr('data'))
+      $('#sc_menu').toggle()
       return false
     })
   })

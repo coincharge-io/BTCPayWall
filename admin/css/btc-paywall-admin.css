@@ -263,3 +263,36 @@ div.btcpw_help_link a:hover {
   display: flex;
   gap: 30px;
 }
+
+/*Media button*/
+#btcpw_shortcode_button {
+  background-color: black;
+  color: white;
+  padding: 12px;
+  font-size: 12px;
+}
+
+#sc_menu {
+  display: none;
+  position: absolute;
+  background-color: greenyellow;
+  z-index: 1;
+}
+
+#btcpw_shortcode_button {
+  min-width: 230px;
+}
+#sc_menu div {
+  color: darkblue;
+  padding: 14px 18px;
+  display: block;
+}
+#sc_menu div:hover {
+  background-color: lightcyan;
+}
+#btcpw_shortcode_button:hover #sc_menu {
+  display: block;
+}
+#btcpw_shortcode_button:hover #btcpw_shortcode_button {
+  background-color: blue;
+}

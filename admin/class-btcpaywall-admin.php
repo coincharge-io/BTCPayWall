@@ -3369,17 +3369,9 @@ class BTCPayWall_Admin
 		$shortcodes_list = '';
 		echo '<div id=btcpw_shortcodes>';
 		echo '<button type=button id=btcpw_shortcode_button>BTCPayWall Shortcode</button>';
-		/* echo '&nbsp;<select id="sc_select" style=display:none;>';
-
+		echo '<div id=sc_menu>';
 		foreach ($shortcodes as $val) {
-			$shortcodes_list .= "<option value='{$val}'>$val</option>";
-		}
-
-		echo $shortcodes_list;
-		echo '</select>'; */
-		echo '<div id=sc_menu style=display:none;>';
-		foreach ($shortcodes as $val) {
-			$shortcodes_list .= "<div class=sc_menu_item btcpw_shortcode data='{$val}'>$val</div>";
+			$shortcodes_list .= "<div class='sc_menu_item btcpw_shortcode' data='{$val}'>$val</div>";
 		}
 
 		echo $shortcodes_list;
