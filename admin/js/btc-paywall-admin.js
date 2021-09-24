@@ -148,7 +148,6 @@
           var data = JSON.parse(JSON.stringify(response['data']))
 
           var body = $('.section.invoices')
-
           $.each(data, function (i, value) {
             var parseUrl = value['checkoutLink'].split('/')
 

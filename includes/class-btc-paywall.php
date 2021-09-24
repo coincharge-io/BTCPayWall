@@ -156,6 +156,8 @@ class BTCPayWall
         $this->loader->add_action('rest_api_init', $plugin_admin, 'register_shortcode_list');
 
         $this->loader->add_action('media_buttons', $plugin_admin, 'add_my_media_button', 15);
+        $this->loader->add_action('elementor/editor/after_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
+        $this->loader->add_action('elementor/editor/before_enqueue_styles', $plugin_admin, 'enqueue_styles');
     }
 
     /**
