@@ -439,9 +439,6 @@ class BTCPayWall_Admin
 		$table = new Donation_List_Table();
 
 
-		//$table->prepare_items();
-		//return $table->display();
-		//ob_start();
 ?>
 		<div class="wrap">
 			<h2>All forms</h2>
@@ -463,7 +460,6 @@ class BTCPayWall_Admin
 		</div>
 <?php
 
-		//return ob_get_clean();
 	}
 	public static function allCreatedForms()
 	{
@@ -475,8 +471,8 @@ class BTCPayWall_Admin
 		);
 		$shortcodes = array();
 		foreach ($result as $row) {
-
-			$shortcodes[BTCPayWall_Admin::outputShortcodeAttributes($row['name'], $row['id'])] = BTCPayWall_Admin::outputShortcodeAttributes($row['name'], $row['id']);
+			$placeholder = "#{$row['id']} {$row['form_name']} - {$row['name']}";
+			$shortcodes[$placeholder] = BTCPayWall_Admin::outputShortcodeAttributes($row['name'], $row['id']);
 		}
 		return $shortcodes;
 	}
@@ -3368,10 +3364,10 @@ class BTCPayWall_Admin
 		$shortcodes = BTCPayWall_Admin::allCreatedForms();
 		$shortcodes_list = '';
 		echo '<div id=btcpw_shortcodes>';
-		echo '<button type=button id=btcpw_shortcode_button>BTCPayWall Shortcode</button>';
+		echo '<button type=button id=btcpw_shortcode_button>BTCPayWall Shortcodes <span><i class="fas fa-arrow-down"></i></span></button>';
 		echo '<div id=sc_menu>';
-		foreach ($shortcodes as $val) {
-			$shortcodes_list .= "<div class='sc_menu_item btcpw_shortcode' data='{$val}'>$val</div>";
+		foreach ($shortcodes as $key => $val) {
+			$shortcodes_list .= "<div class='sc_menu_item btcpw_shortcode' data='{$val}'>$key</div>";
 		}
 
 		echo $shortcodes_list;

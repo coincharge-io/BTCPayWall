@@ -266,33 +266,29 @@ div.btcpw_help_link a:hover {
 
 /*Media button*/
 #btcpw_shortcode_button {
-  background-color: black;
-  color: white;
-  padding: 12px;
-  font-size: 12px;
+  background-color: #f6f7f7;
+  font-size: 14px;
+  color: #2271b1;
+  padding: 5px;
+  border-radius: 3px;
+  width: fit-content;
 }
-
+.sc_menu_item.btcpw_shortcode {
+  font-size: 16px;
+  white-space: nowrap;
+  cursor: pointer;
+  padding: 2px;
+  margin-bottom: 2px;
+}
 #sc_menu {
+  width: fit-content;
   display: none;
   position: absolute;
-  background-color: greenyellow;
+  background-color: #fff;
   z-index: 1;
+  border: 1px solid #c2cbd2;
 }
 
-#btcpw_shortcode_button {
-  min-width: 230px;
-}
-#sc_menu div {
-  color: darkblue;
-  padding: 14px 18px;
-  display: block;
-}
 #sc_menu div:hover {
-  background-color: lightcyan;
-}
-#btcpw_shortcode_button:hover #sc_menu {
-  display: block;
-}
-#btcpw_shortcode_button:hover #btcpw_shortcode_button {
-  background-color: blue;
+  background-color: #007bff;
 }

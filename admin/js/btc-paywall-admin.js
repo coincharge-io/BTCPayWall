@@ -517,10 +517,16 @@
   $(document).ready(function () {
     $('#btcpw_shortcodes').click(function () {
       $('#sc_menu').toggle()
+      $('#btcpw_shortcodes span i').toggleClass(
+        'fas fa-arrow-down fas fa-arrow-up'
+      )
     })
     $('.sc_menu_item.btcpw_shortcode').click(function () {
       send_to_editor($(this).attr('data'))
       $('#sc_menu').toggle()
+      $('#btcpw_shortcodes span i').toggleClass(
+        'fas fa-arrow-down fas fa-arrow-up'
+      )
       return false
     })
   })

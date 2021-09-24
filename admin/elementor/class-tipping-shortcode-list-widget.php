@@ -43,6 +43,7 @@ class Elementor_BTCPW_Shortcode_List_Widget extends \Elementor\Widget_Base
     protected function _register_controls()
     {
 
+
         $this->start_controls_section(
             'content_section',
             [
@@ -56,7 +57,7 @@ class Elementor_BTCPW_Shortcode_List_Widget extends \Elementor\Widget_Base
             [
                 'label' => 'Shortcodes',
                 'type' => \Elementor\Controls_Manager::SELECT,
-                'options' => BTCPayWall_Admin::allCreatedForms(),
+                'options' => array_flip(BTCPayWall_Admin::allCreatedForms()),
             ]
         );
 

@@ -45,9 +45,9 @@ registerBlockType('btc-paywall/gutenberg-shortcode-list', {
                   onChange={selectedItem => {
                     setAttributes({ shortcode: selectedItem })
                   }}
-                  options={Object.values(shortcodes).map(shortcode => ({
-                    label: shortcode,
-                    value: shortcode
+                  options={Object.entries(shortcodes).map(pair => ({
+                    label: pair[0],
+                    value: pair[1]
                   }))}
                 />
               </div>
