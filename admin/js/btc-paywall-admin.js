@@ -136,7 +136,7 @@
   $('#design-button').click(function (e) {
     e.preventDefault()
   })
-  $(document).ready(function () {
+  /* $(document).ready(function () {
     $.ajax({
       url: '/wp-admin/admin-ajax.php',
       method: 'GET',
@@ -184,7 +184,7 @@
         }
       }
     })
-  })
+  }) */
   $(document).ready(function () {
     $('.btcpw_fixed_amount_enable').change(function () {
       $(this).is(':checked')

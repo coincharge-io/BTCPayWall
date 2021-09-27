@@ -35,15 +35,13 @@ class Invoices_Table extends WP_List_Table
     public function prepare_items()
     {
         $this->_column_headers = array($this->get_columns(), array(), array(), 'cb');
-
         $per_page = $this->get_items_per_page('invoices_per_page', 5);
         $current_page = $this->get_pagenum();
-        //$total_items = count($this->items);
+        //var_dump(gettype($this->items));
+        // $total_items = count($this->items);
 
-        $this->set_pagination_args([
-            'total_items' => 5,
-            'per_page' => $per_page
-        ]);
+
+        $this->items = $this->get_invoices($per_page, $current_page);
         $store_id = get_option('btcpw_btcpay_store_id');
 
         $args = array(
@@ -68,55 +66,17 @@ class Invoices_Table extends WP_List_Table
             $body = wp_remote_retrieve_body($response);
 
 
+            $perpage = $this->get_items_per_page('invoices_per_page', 10);
+            $paged = isset($_REQUEST['paged']) ? (($this->get_pagenum() - 1) * $perpage) : 0;
             $data = json_decode($body, true);
-            $this->items = $data;
-            //var_dump($data);
-            //wp_die();
+            $totalitems = count($data);
+            $this->set_pagination_args([
+                'total_items' => $totalitems,
+                'per_page' => $perpage
+            ]);
+            $this->items = array_slice($data, $paged, $perpage);
         }
     }
-    /**
-     * Returns the count of invoices in the database.
-     *
-     * @return null|string
-     */
-    /*  public static function record_count()
-    {
-        return count($this->items);
-    } */
-
-    /**
-     * Retrieve shortcode’s data from the database
-     *
-     * @param int $per_page
-     * @param int $page_number
-     *
-     * @return mixed
-     */
-    /*  public static function get_invoices($per_page = 5, $page_number = 1)
-    {
-
-        global $wpdb;
-
-        $sql = "SELECT * FROM {$wpdb->prefix}btc_forms";
-
-        if (!empty($_REQUEST['orderby'])) {
-            $sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
-            $sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
-        }
-
-        $sql .= " LIMIT $per_page";
-
-        $sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
-
-        $result = $wpdb->get_results($sql, 'ARRAY_A');
-
-        return $result;
-    }
- */
-
-
-
-
 
 
     /**
@@ -154,8 +114,6 @@ class Invoices_Table extends WP_List_Table
     {
 ?>
         <div class="tablenav <?php echo esc_attr($which); ?>">
-
-
             <?php
             $this->extra_tablenav($which);
             $this->pagination($which);
@@ -166,24 +124,18 @@ class Invoices_Table extends WP_List_Table
         </div>
     <?php
     }
-    /*  protected function column_status($item)
-    {
-        return sprintf(
-            "<span class=%s></span>",
-            $item['status']
-        );
-    } */
+
     /**
      * Generates content for a single row of the table.
      *
      * @param object $item The current item.
      */
-    public function single_row($item)
+    /* public function single_row($item)
     {
         echo '<tr>';
         $this->single_row_columns($item);
         echo '</tr>';
-    }
+    } */
 
     public function display()
     {
@@ -218,17 +170,16 @@ class Invoices_Table extends WP_List_Table
     public function display_rows()
     {
 
-        $invoices = $this->items;
 
+        $invoices = $this->items;
 
         list($columns, $hidden) = $this->get_column_info();
         if (!empty($invoices)) {
-
             foreach ($invoices as $inv) {
                 $content_title = $inv['metadata']['itemDesc'] ?? null;
                 $creationTime = date('Y-m-d H:i:s', $inv['createdTime']);
                 echo "<tr class=btcpw_invoices>";
-                foreach ($columns as $column_name => $column_display_name) {
+                foreach ($columns as $c) {
 
                     echo "<td data-colname=Date class=status column-status>{$creationTime}</td>";
                     echo "<td data-colname=Content title class=status column-status>{$content_title}</td>";

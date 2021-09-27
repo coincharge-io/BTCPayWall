@@ -416,7 +416,7 @@ class BTCPayWall_Admin
 
 ?>
 		<div class="wrap">
-			<h2>All forms</h2>
+			<h2>Invoices</h2>
 
 			<div>
 				<div>
