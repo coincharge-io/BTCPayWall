@@ -350,27 +350,27 @@ class BTCPayWall_Public
 
 	public function ajax_tipping()
 	{
-		$collect = 'Donor Information:' . "\n";
+		$collect = "Donor Information: \n";
 
 		if (!empty($_POST['name'])) {
 			$name = sanitize_text_field($_POST['name']);
-			$collect .= "Name: {$name}" . "\n";
+			$collect .= "Name: {$name} \n";
 		}
 		if (!empty($_POST['email'])) {
 			$email = sanitize_text_field($_POST['email']);
-			$collect .= "Email: {$email}" . "\n";
+			$collect .= "Email: {$email} \n";
 		}
 		if (!empty($_POST['address'])) {
 			$address = sanitize_text_field($_POST['address']);
-			$collect .= "Address: {$address}" . "\n";
+			$collect .= "Address: {$address} \n";
 		}
 		if (!empty($_POST['phone'])) {
 			$phone = sanitize_text_field($_POST['phone']);
-			$collect .= "Phone: {$phone}" . "\n";
+			$collect .= "Phone: {$phone} \n";
 		}
 		if (!empty($_POST['message'])) {
 			$message = sanitize_text_field($_POST['message']);
-			$collect .= "Message: {$message}" . "\n";
+			$collect .= "Message: {$message} \n";
 		}
 
 		$currency = sanitize_text_field($_POST['currency']);
@@ -382,12 +382,15 @@ class BTCPayWall_Public
 			$amount = $extract[0];
 			$currency = $extract[1];
 		}
-
-		$collects = 'Weblog title: '  . get_option('blogname') . "\n";
-		$collects .= 'Website url: ' . get_option('siteurl') . "\n";
-		$collects .= 'Date:' . ' ' . date('Y-m-d H:i:s', current_time('timestamp', 0)) . "\n";
-		$collects .= "Amount: {$amount} {$currency}" . "\n";
-		$collects .= 'Credit on Store ID:' . get_option('btcpw_btcpay_store_id') . "\n";
+		$storeId = get_option('btcpw_btcpay_store_id');
+		$blogname = get_option('blogname');
+		$siteurl = get_option('siteurl');
+		$date = date('Y-m-d H:i:s', current_time('timestamp', 0));
+		$collects = "Weblog title: {$blogname} \n";
+		$collects .= "Website url: {$siteurl} \n";
+		$collects .= "Date: {$date} \n";
+		$collects .= "Amount: {$amount} {$currency} \n";
+		$collects .= "Credit on Store ID: {$storeId} \n";
 		$collects .= $collect;
 
 
@@ -514,12 +517,16 @@ class BTCPayWall_Public
 			return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
 		}
 		$amount = sanitize_text_field($_POST['amount']);
-		$message = 'Weblog title: '  . get_option('blogname') . "\n";
-		$message .= 'Website url: ' . get_option('siteurl') . "\n";
-		$message .= 'Date:' . ' ' . date('Y-m-d H:i:s', current_time('timestamp', 0)) . "\n";
-		$message .= "Amount: {$amount}" . "\n";
-		$message .= 'Credit on Store ID: ' . get_option('btcpw_btcpay_store_id') . "\n";
-		$message .= 'Type:' . ' ' . $content_title . "\n";
+		$storeId = get_option('btcpw_btcpay_store_id');
+		$blogname = get_option('blogname');
+		$siteurl = get_option('siteurl');
+		$date = date('Y-m-d H:i:s', current_time('timestamp', 0));
+		$message = "Weblog title: {$blogname} \n";
+		$message .= "Website url: {$siteurl} \n";
+		$message .= "Date: {$date} \n";
+		$message .= "Amount: {$amount} \n";
+		$message .= "Credit on Store ID: {$storeId} \n";
+		$message .= "Type: $content_title \n";
 
 		if ($body['status'] === 'Settled') {
 			$cookie_path = parse_url(get_permalink($post_id), PHP_URL_PATH);

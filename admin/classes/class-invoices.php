@@ -179,16 +179,14 @@ class Invoices_Table extends WP_List_Table
                 $content_title = $inv['metadata']['itemDesc'] ?? null;
                 $creationTime = date('Y-m-d H:i:s', $inv['createdTime']);
                 echo "<tr class=btcpw_invoices>";
-                foreach ($columns as $c) {
 
-                    echo "<td data-colname=Date class=status column-status>{$creationTime}</td>";
-                    echo "<td data-colname=Content title class=status column-status>{$content_title}</td>";
-                    echo "<td data-colname=Status class={$inv['status']} status column-status>{$inv['status']}</td>";
-                    echo "<td data-colname=Amount class=status column-status>{$inv['amount']}</td>";
-                    echo "<td data-colname=Currency class=status column-status>{$inv['currency']}</td>";
-                    echo "<td data-colname=Id class=status column-status>{$inv['id']}</td>";
-                    echo '</tr>';
-                }
+                echo "<td data-colname=Date class=status column-status>{$creationTime}</td>";
+                echo "<td data-colname=Content title class=status column-status>{$content_title}</td>";
+                echo "<td data-colname=Status class={$inv['status']} status column-status>{$inv['status']}</td>";
+                echo "<td data-colname=Amount class=status column-status>{$inv['amount']}</td>";
+                echo "<td data-colname=Currency class=status column-status>{$inv['currency']}</td>";
+                echo "<td data-colname=Id class=status column-status>{$inv['id']}</td>";
+                echo '</tr>';
             }
         }
     }
