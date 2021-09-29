@@ -37,8 +37,6 @@ class Invoices_Table extends WP_List_Table
         $this->_column_headers = array($this->get_columns(), array(), array(), 'cb');
         $per_page = $this->get_items_per_page('invoices_per_page', 5);
         $current_page = $this->get_pagenum();
-        //var_dump(gettype($this->items));
-        // $total_items = count($this->items);
 
 
         $this->items = $this->get_invoices($per_page, $current_page);
@@ -77,7 +75,28 @@ class Invoices_Table extends WP_List_Table
             $this->items = array_slice($data, $paged, $perpage);
         }
     }
+    public function display_rows()
+    {
 
+
+        $invoices = $this->items;
+
+        if (!empty($invoices)) {
+            foreach ($invoices as $inv) {
+                $content_title = $inv['metadata']['itemDesc'] ?? null;
+                $creationTime = date('Y-m-d H:i:s', $inv['createdTime']);
+                echo "<tr class=btcpw_invoices>";
+
+                echo "<td data-colname=Date class=status column-status>{$creationTime}</td>";
+                echo "<td data-colname=Content title class=status column-status>{$content_title}</td>";
+                echo "<td data-colname=Status class={$inv['status']} status column-status>{$inv['status']}</td>";
+                echo "<td data-colname=Amount class=status column-status>{$inv['amount']}</td>";
+                echo "<td data-colname=Currency class=status column-status>{$inv['currency']}</td>";
+                echo "<td data-colname=Id class=status column-status>{$inv['id']}</td>";
+                echo '</tr>';
+            }
+        }
+    }
 
     /**
      * Generates content for a single row of the table.
@@ -164,31 +183,6 @@ class Invoices_Table extends WP_List_Table
 
         </table>
 <?php
-    }
-
-
-    public function display_rows()
-    {
-
-
-        $invoices = $this->items;
-
-        list($columns, $hidden) = $this->get_column_info();
-        if (!empty($invoices)) {
-            foreach ($invoices as $inv) {
-                $content_title = $inv['metadata']['itemDesc'] ?? null;
-                $creationTime = date('Y-m-d H:i:s', $inv['createdTime']);
-                echo "<tr class=btcpw_invoices>";
-
-                echo "<td data-colname=Date class=status column-status>{$creationTime}</td>";
-                echo "<td data-colname=Content title class=status column-status>{$content_title}</td>";
-                echo "<td data-colname=Status class={$inv['status']} status column-status>{$inv['status']}</td>";
-                echo "<td data-colname=Amount class=status column-status>{$inv['amount']}</td>";
-                echo "<td data-colname=Currency class=status column-status>{$inv['currency']}</td>";
-                echo "<td data-colname=Id class=status column-status>{$inv['id']}</td>";
-                echo '</tr>';
-            }
-        }
     }
 }
 new Invoices_Table();

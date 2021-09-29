@@ -83,8 +83,9 @@ class BTCPayWall_Admin
 
 		wp_enqueue_style('wp-color-picker');
 		wp_enqueue_style('load-fa', 'https://use.fontawesome.com/releases/v5.12.1/css/all.css');
-
-		wp_enqueue_style($this->plugin_name . '_preview', plugin_dir_url(__FILE__) . 'css/btc-paywall-preview-admin.css', array(), $this->version, 'all');
+		if (isset($_GET['page']) && $_GET['page'] == 'btcpw_form') {
+			wp_enqueue_style($this->plugin_name . '_preview', plugin_dir_url(__FILE__) . 'css/btc-paywall-preview-admin.css', array(), $this->version, 'all');
+		}
 	}
 
 	/**
@@ -106,9 +107,9 @@ class BTCPayWall_Admin
 				'security'  => wp_create_nonce('shortcode-security-nonce'),
 			]
 		);
-
-		wp_enqueue_script($this->plugin_name . '_preview', plugin_dir_url(__FILE__) . 'js/btc-paywall-preview-admin.js', array('jquery'), $this->version, false);
-
+		if (isset($_GET['page']) && $_GET['page'] == 'btcpw_form') {
+			wp_enqueue_script($this->plugin_name . '_preview', plugin_dir_url(__FILE__) . 'js/btc-paywall-preview-admin.js', array('jquery'), $this->version, false);
+		}
 		if (!did_action('wp_enqueue_media')) {
 			wp_enqueue_media();
 		}
@@ -727,7 +728,7 @@ class BTCPayWall_Admin
 			);
 		}
 
-		$shortcode = BTCPayWall_Admin::outputShortcodeAttributes($name, $wpdb->insert_id);
+
 		if ($row) {
 			wp_send_json_success(array('res' => true, 'data' => array('type' => $type, 'id' => $wpdb->insert_id)));
 		} else {
@@ -3346,7 +3347,7 @@ class BTCPayWall_Admin
 					),
 					'step2' =>  array(
 						'type'	=> 'string',
-						'default' => 'Infp'
+						'default' => 'Info'
 					),
 					'active_color' =>  array(
 						'type'	=> 'string',
@@ -3386,6 +3387,7 @@ class BTCPayWall_Admin
 	}
 	public function add_my_media_button()
 	{
+
 		$shortcodes = BTCPayWall_Admin::allCreatedForms();
 		$shortcodes_list = '';
 		echo '<div id=btcpw_shortcodes>';

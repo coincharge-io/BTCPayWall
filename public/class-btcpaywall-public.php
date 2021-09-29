@@ -386,21 +386,24 @@ class BTCPayWall_Public
 		$blogname = get_option('blogname');
 		$siteurl = get_option('siteurl');
 		$date = date('Y-m-d H:i:s', current_time('timestamp', 0));
-		$collects = "Weblog title: {$blogname} \n";
+
+		$collects = "\nWeblog title: {$blogname} \n";
 		$collects .= "Website url: {$siteurl} \n";
 		$collects .= "Date: {$date} \n";
 		$collects .= "Amount: {$amount} {$currency} \n";
 		$collects .= "Credit on Store ID: {$storeId} \n";
 		$collects .= $collect;
-
-
+		$type = sanitize_text_field($_POST['type']);
+		$itemDesc = "\nType: {$type}\n";
+		$itemDesc .= "Weblog title: {$blogname} \n";
+		$itemDesc .= "Amount: {$amount} {$currency} \n";
 		$url = get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
-
+		//'Donation from: ' . $_SERVER['REMOTE_ADDR']
 		$data = array(
 			'amount' => $amount,
 			'currency' => $currency,
 			'metadata' => array(
-				'itemDesc' => 'Donation from: ' . $_SERVER['REMOTE_ADDR'],
+				'itemDesc' => $itemDesc,
 				'donor' => $collects,
 			)
 		);
@@ -425,7 +428,6 @@ class BTCPayWall_Public
 		}
 
 		$body = json_decode($response['body'], true);
-
 
 		if (empty($body) || !empty($body['error'])) {
 			return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
@@ -521,7 +523,7 @@ class BTCPayWall_Public
 		$blogname = get_option('blogname');
 		$siteurl = get_option('siteurl');
 		$date = date('Y-m-d H:i:s', current_time('timestamp', 0));
-		$message = "Weblog title: {$blogname} \n";
+		$message = "\nWeblog title: {$blogname} \n";
 		$message .= "Website url: {$siteurl} \n";
 		$message .= "Date: {$date} \n";
 		$message .= "Amount: {$amount} \n";
