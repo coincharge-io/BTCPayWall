@@ -267,13 +267,15 @@ class BTCPayWall_Public
 
 		$currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ?: get_option('btcpw_default_currency', 'SATS');
 		$currency = $currency_scope != 'SATS' ? $currency_scope : 'BTC';
+		$blogname = get_option('blogname');
 
 		$data = array(
 			'amount' => $amount,
 			'currency' => $currency,
 			'metadata' => array(
 				'orderId' => $order_id,
-				'itemDesc' => get_post_meta($post_id, 'btcpw_invoice_content', true)['title'],
+				'type' => 'Pay-per-' . get_post_meta($post_id, 'btcpw_invoice_content', true)['project'],
+				'blog' => $blogname,
 				'buyer' => array(
 					'name' => (string) $_SERVER['REMOTE_ADDR']
 				)
@@ -396,14 +398,14 @@ class BTCPayWall_Public
 		$type = sanitize_text_field($_POST['type']);
 		$itemDesc = "\nType: {$type}\n";
 		$itemDesc .= "Weblog title: {$blogname} \n";
-		$itemDesc .= "Amount: {$amount} {$currency} \n";
 		$url = get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
-		//'Donation from: ' . $_SERVER['REMOTE_ADDR']
+
 		$data = array(
 			'amount' => $amount,
 			'currency' => $currency,
 			'metadata' => array(
-				'itemDesc' => $itemDesc,
+				'type' => $type,
+				'blog'	=> $blogname,
 				'donor' => $collects,
 			)
 		);
@@ -614,6 +616,11 @@ class BTCPayWall_Public
 			'currency' => '',
 			'duration' => '',
 			'duration_type' => '',
+			'background_color' => '',
+			'header_color' => '',
+			'info_color' => '',
+			'button_color' => '',
+			'button_txt' => '',
 		), $atts);
 
 
@@ -627,7 +634,7 @@ class BTCPayWall_Public
 		$payblock = filter_var($atts['pay_block'], FILTER_VALIDATE_BOOLEAN);
 
 		if ($payblock) {
-			return do_shortcode('[btcpw_pay_block]') . $s_data;
+			return do_shortcode("[btcpw_pay_block background_color='{$atts['background_color']}' header_color='{$atts['header_color']}' info_color='{$atts['info_color']}' button_color='{$atts['button_color']}' button_txt='{$atts['button_txt']}']") . $s_data;
 		}
 	}
 
@@ -650,7 +657,12 @@ class BTCPayWall_Public
 			'currency' => '',
 			'price' => '',
 			'duration' => '',
-			'duration_type' => ''
+			'duration_type' => '',
+			'background_color'	=> '',
+			'header_color' => '',
+			'info_color' => '',
+			'button_color' => '',
+			'button_txt' => '',
 		), $atts);
 
 		$this->update_meta_settings($atts);
@@ -664,7 +676,7 @@ class BTCPayWall_Public
 		$s_data = '<!-- btcpw:start_content -->';
 
 		if ($payblock) {
-			return do_shortcode("[btcpw_pay_video_block title='{$atts['title']}' description='{$atts['description']}' preview='{$atts['preview']}']") . $s_data;
+			return do_shortcode("[btcpw_pay_video_block title='{$atts['title']}' description='{$atts['description']}' preview='{$atts['preview']}' background_color='{$atts['background_color']}' header_color='{$atts['header_color']}' info_color='{$atts['info_color']}' button_color='{$atts['button_color']}' button_txt='{$atts['button_txt']}']") . $s_data;
 		}
 	}
 
@@ -735,6 +747,13 @@ class BTCPayWall_Public
 		if ($this->is_paid_content()) {
 			return '';
 		}
+		$atts = shortcode_atts(array(
+			'background_color' => '#ECF0F1',
+			'header_color' => '#000000',
+			'info_color' => '#000000',
+			'button_color' => '#000000',
+			'button_txt' => '#FFFFFF',
+		), $atts);
 
 		ob_start();
 
@@ -758,6 +777,11 @@ class BTCPayWall_Public
 			'title' => '',
 			'description' => '',
 			'preview' => '',
+			'background_color' => '#ECF0F1',
+			'header_color' => '#000000',
+			'info_color' => '#000000',
+			'button_color' => '#000000',
+			'button_txt' => '#FFFFFF',
 		), $atts);
 
 		$image = wp_get_attachment_image_src($atts['preview']);
@@ -767,6 +791,26 @@ class BTCPayWall_Public
 		ob_start();
 
 ?>
+		<style>
+			.btcpw_pay {
+				background-color: <?php echo esc_html($atts['background_color']); ?>;
+			}
+
+			.btcpw_pay__content h2,
+			.btcpw_pay__preview h2 {
+				color: <?php echo esc_html($atts['header_color']); ?>;
+			}
+
+			.btcpw_pay__content p,
+			.btcpw_pay__preview p {
+				color: <?php echo esc_html($atts['info_color']); ?>;
+			}
+
+			#btcpw_pay__button {
+				background-color: <?php echo esc_html($atts['button_color']); ?>;
+				color: <?php echo esc_html($atts['button_txt']); ?>;
+			}
+		</style>
 		<div class="btcpw_pay">
 			<div class="btcpw_pay__preview">
 				<h2><?php echo esc_html($atts['title']); ?></h2>
@@ -787,7 +831,7 @@ class BTCPayWall_Public
 					<p class="loading"></p>
 				</div>
 				<div class="btcpw_help">
-					<a class="btcpw_help__link" href="https://lightning-paywall.coincharge.io/how-to-pay-the-lightning-paywall/" target="_blank">Help</a>
+					<a class="btcpw_help__link" href="https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/" target="_blank">Help</a>
 				</div>
 			</div>
 		</div>
@@ -1193,7 +1237,7 @@ class BTCPayWall_Public
 			'widget'	=> false
 		), $atts);
 
-		$dimension = explode('x', '600x200');
+
 		$supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
 		$logo = wp_get_attachment_image_src($atts['logo_id']) ? wp_get_attachment_image_src($atts['logo_id'])[0] : $atts['logo_id'];
 		$background = wp_get_attachment_image_src($atts['background_id']) ? wp_get_attachment_image_src($atts['background_id'])[0] : $atts['background_id'];

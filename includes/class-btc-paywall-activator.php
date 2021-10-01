@@ -35,8 +35,8 @@ class BTCPayWall_Activator
 
 		$charset_collate = $wpdb->get_charset_collate();
 
-		$wp_table_name = $wpdb->prefix . "btc_forms";
-		$sql = "CREATE TABLE IF NOT EXISTS {$wp_table_name}(
+		$wp_table_forms = $wpdb->prefix . "btc_forms";
+		$sql = "CREATE TABLE IF NOT EXISTS {$wp_table_forms}(
 			  id mediumint(9) NOT NULL AUTO_INCREMENT,
 			  time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
 			  name tinytext NOT NULL,

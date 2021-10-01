@@ -23,7 +23,8 @@ class Invoices_Table extends WP_List_Table
     {
         return array(
             'date' => __('Date'),
-            'content_title'   => __('Content title'),
+            'blog'   => __('Post/Page'),
+            'type'   => __('Type'),
             'status'    => __('Status'),
             'amount'  => __('Amount'),
             'currency'    => __('Currency'),
@@ -83,12 +84,15 @@ class Invoices_Table extends WP_List_Table
 
         if (!empty($invoices)) {
             foreach ($invoices as $inv) {
-                $content_title = $inv['metadata']['itemDesc'] ?? null;
+                $blog = $inv['metadata']['blog'] ?? null;
+                $type = $inv['metadata']['type'] ?? null;
+
                 $creationTime = date('Y-m-d H:i:s', $inv['createdTime']);
                 echo "<tr class=btcpw_invoices>";
 
                 echo "<td data-colname=Date class=status column-status>{$creationTime}</td>";
-                echo "<td data-colname=Content title class=status column-status>{$content_title}</td>";
+                echo "<td data-colname=Content title class=status column-status>{$blog}</td>";
+                echo "<td data-colname=Content title class=status column-status>{$type}</td>";
                 echo "<td data-colname=Status class={$inv['status']} status column-status>{$inv['status']}</td>";
                 echo "<td data-colname=Amount class=status column-status>{$inv['amount']}</td>";
                 echo "<td data-colname=Currency class=status column-status>{$inv['currency']}</td>";
@@ -109,8 +113,10 @@ class Invoices_Table extends WP_List_Table
         switch ($column_name) {
             case 'date':
                 return esc_html(date('Y-m-d H:i:s', $item['createdTime']));
-            case 'content_title':
-                return esc_html($item['metadata']['itemDesc'] ?? null);
+            case 'blog':
+                return esc_html($item['metadata']['blog'] ?? null);
+            case 'type':
+                return esc_html($item['metadata']['type'] ?? null);
             case 'status':
                 return esc_html($item['status']);
             case 'amount':

@@ -439,7 +439,6 @@ class BTCPayWall_Admin
 	}
 
 
-
 	/**
 	 * Render Edit page
 	 */

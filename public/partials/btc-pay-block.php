@@ -1,3 +1,21 @@
+<style>
+    .btcpw_pay {
+        background-color: <?php echo esc_html($atts['background_color']); ?>;
+    }
+
+    .btcpw_pay__content h2 {
+        color: <?php echo esc_html($atts['header_color']); ?>;
+    }
+
+    .btcpw_pay__content p {
+        color: <?php echo esc_html($atts['info_color']); ?>;
+    }
+
+    #btcpw_pay__button {
+        background-color: <?php echo esc_html($atts['button_color']); ?>;
+        color: <?php echo esc_html($atts['button_txt']); ?>;
+    }
+</style>
 <div class="btcpw_pay">
     <div class="btcpw_pay__content">
         <h2><?php echo BTCPayWall_Public::get_payblock_header_string() ?></h2>
