@@ -14,6 +14,7 @@
  * @subpackage BTCPayWall/includes
  * @author BTCPayWall by Coincharge https://btcpaywall.com
  */
+
 class BTCPayWall
 {
 

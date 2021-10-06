@@ -621,6 +621,9 @@ class BTCPayWall_Public
 			'info_color' => '',
 			'button_color' => '',
 			'button_txt' => '',
+			'link'	=> true,
+			'help_link'	=> '',
+			'help_text'	=> 'Help',
 		), $atts);
 
 
@@ -634,7 +637,7 @@ class BTCPayWall_Public
 		$payblock = filter_var($atts['pay_block'], FILTER_VALIDATE_BOOLEAN);
 
 		if ($payblock) {
-			return do_shortcode("[btcpw_pay_block background_color='{$atts['background_color']}' header_color='{$atts['header_color']}' info_color='{$atts['info_color']}' button_color='{$atts['button_color']}' button_txt='{$atts['button_txt']}']") . $s_data;
+			return do_shortcode("[btcpw_pay_block background_color='{$atts['background_color']}' header_color='{$atts['header_color']}' info_color='{$atts['info_color']}' button_color='{$atts['button_color']}' button_txt='{$atts['button_txt']}' link='{$atts['link']}' help_link='{$atts['help_link']}' help_text='{$atts['help_text']}']") . $s_data;
 		}
 	}
 
@@ -663,6 +666,9 @@ class BTCPayWall_Public
 			'info_color' => '',
 			'button_color' => '',
 			'button_txt' => '',
+			'link'	=> 'true',
+			'help_link'	=> '',
+			'help_text'	=> 'Help'
 		), $atts);
 
 		$this->update_meta_settings($atts);
@@ -676,7 +682,7 @@ class BTCPayWall_Public
 		$s_data = '<!-- btcpw:start_content -->';
 
 		if ($payblock) {
-			return do_shortcode("[btcpw_pay_video_block title='{$atts['title']}' description='{$atts['description']}' preview='{$atts['preview']}' background_color='{$atts['background_color']}' header_color='{$atts['header_color']}' info_color='{$atts['info_color']}' button_color='{$atts['button_color']}' button_txt='{$atts['button_txt']}']") . $s_data;
+			return do_shortcode("[btcpw_pay_video_block title='{$atts['title']}' description='{$atts['description']}' preview='{$atts['preview']}' background_color='{$atts['background_color']}' header_color='{$atts['header_color']}' info_color='{$atts['info_color']}' button_color='{$atts['button_color']}' button_txt='{$atts['button_txt']}' link='{$atts['link']}' help_link='{$atts['help_link']}' help_text='{$atts['help_text']}']") . $s_data;
 		}
 	}
 
@@ -699,7 +705,10 @@ class BTCPayWall_Public
 			'currency' => '',
 			'price' => '',
 			'duration' => '',
-			'duration_type' => ''
+			'duration_type' => '',
+			'link'	=> 'true',
+			'help_link' => '',
+			'help_text'	=> 'Help'
 		), $atts);
 
 		$this->update_meta_settings($atts);
@@ -717,7 +726,7 @@ class BTCPayWall_Public
 		$e_data = '<!-- /btcpw:end_content -->';
 
 		if ($required_attributes) {
-			$output = do_shortcode("[btcpw_pay_file_block title='{$atts['title']}' description='{$atts['description']}' preview='{$atts['preview']}']");
+			$output = do_shortcode("[btcpw_pay_file_block title='{$atts['title']}' description='{$atts['description']}' preview='{$atts['preview']}' link='{$atts['link']}' help_link='{$atts['help_link']}' help_text='{$atts['help_text']}']");
 			$output .= $s_data;
 			$output .= do_shortcode("[btcpw_protected_file file='{$atts['file']}']");
 			$output .= $e_data;
@@ -753,8 +762,11 @@ class BTCPayWall_Public
 			'info_color' => '#000000',
 			'button_color' => '#000000',
 			'button_txt' => '#FFFFFF',
+			'link'	=> 'true',
+			'help_link' => 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/',
+			'help_text' => 'Help'
 		), $atts);
-
+		$help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
 		ob_start();
 
 		include 'partials/btc-pay-block.php';
@@ -782,7 +794,13 @@ class BTCPayWall_Public
 			'info_color' => '#000000',
 			'button_color' => '#000000',
 			'button_txt' => '#FFFFFF',
+			'link'	=> 'true',
+			'help_link' => 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/',
+			'help_text'	=> 'Help'
 		), $atts);
+
+		$help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
+
 
 		$image = wp_get_attachment_image_src($atts['preview']);
 
@@ -830,9 +848,11 @@ class BTCPayWall_Public
 				<div class="btcpw_pay__loading">
 					<p class="loading"></p>
 				</div>
-				<div class="btcpw_help">
-					<a class="btcpw_help__link" href="https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/" target="_blank">Help</a>
-				</div>
+				<?php if ($help === true) : ?>
+					<div class="btcpw_help">
+						<a class="btcpw_help__link" href="<?php echo esc_attr($atts['help_link']); ?>" target="_blank"><?php echo esc_html($atts['help_text']); ?></a>
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	<?php
@@ -877,7 +897,11 @@ class BTCPayWall_Public
 			'title' => '',
 			'description' => '',
 			'preview' => '',
+			'link'	=> true,
+			'help_link' => 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/',
+			'help_text'	=> 'Text',
 		), $atts);
+		$help = (filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN));
 
 		$image = wp_get_attachment_image_src($atts['preview']);
 
@@ -905,9 +929,11 @@ class BTCPayWall_Public
 				<div class="btcpw_pay__loading">
 					<p class="loading"></p>
 				</div>
-				<div class="btcpw_help">
-					<a class="btcpw_help__link" href="https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/" target="_blank">Help</a>
-				</div>
+				<?php if ($help === true) : ?>
+					<div class="btcpw_help">
+						<a class="btcpw_help__link" href="<?php echo esc_attr($atts['help_link']); ?>" target="_blank"><?php echo esc_html($atts['help_text']); ?></a>
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	<?php

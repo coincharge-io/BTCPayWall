@@ -30,8 +30,10 @@
         <div class="btcpw_pay__loading">
             <p class="loading"></p>
         </div>
-        <div class="btcpw_help">
-            <a class="btcpw_help__link" href="https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/" target="_blank">Help</a>
-        </div>
+        <?php if ($help === true) : ?>
+            <div class="btcpw_help">
+                <a class="btcpw_help__link" href="<?php echo esc_attr($atts['help_link']); ?>" target="_blank"><?php echo esc_html($atts['help_text']); ?></a>
+            </div>
+        <?php endif; ?>
     </div>
 </div>

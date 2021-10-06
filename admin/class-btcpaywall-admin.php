@@ -107,9 +107,13 @@ class BTCPayWall_Admin
 				'security'  => wp_create_nonce('shortcode-security-nonce'),
 			]
 		);
+		if (isset($_GET['page']) && $_GET['page'] == 'btcpw_general_settings') {
+			wp_enqueue_script($this->plugin_name . '_design_preview', plugin_dir_url(__FILE__) . 'js/btc-paywall-design-preview-admin.js', array('jquery'), $this->version, false);
+		}
 		if (isset($_GET['page']) && $_GET['page'] == 'btcpw_form') {
 			wp_enqueue_script($this->plugin_name . '_preview', plugin_dir_url(__FILE__) . 'js/btc-paywall-preview-admin.js', array('jquery'), $this->version, false);
 		}
+
 		if (!did_action('wp_enqueue_media')) {
 			wp_enqueue_media();
 		}
@@ -161,7 +165,7 @@ class BTCPayWall_Admin
 	public function register_settings()
 	{
 
-		register_setting('btcpw_general_settings', 'btcpw_enabled_post_types', array('type' => 'array', 'default' => array('post')));
+		/* register_setting('btcpw_general_settings', 'btcpw_enabled_post_types', array('type' => 'array', 'default' => array('post')));
 		register_setting('btcpw_general_settings', 'btcpw_default_currency', array('type' => 'string', 'default' => 'SATS'));
 		register_setting('btcpw_general_settings', 'btcpw_default_btc_format', array('type' => 'string', 'default' => 'SATS'));
 		register_setting('btcpw_general_settings', 'btcpw_default_price', array('type' => 'number', 'default' => 10));
@@ -169,11 +173,47 @@ class BTCPayWall_Admin
 		register_setting('btcpw_general_settings', 'btcpw_default_duration_type', array('type' => 'string', 'default' => 'unlimited'));
 		register_setting('btcpw_general_settings', 'btcpw_default_payblock_text', array('type' => 'string', 'default' => 'For access to content first pay', 'sanitize_callback' => array($this, 'sanitize_payblock_area')));
 		register_setting('btcpw_general_settings', 'btcpw_default_payblock_button', array('type' => 'string', 'default' => 'Pay', 'sanitize_callback' => array($this, 'sanitize_payblock_area')));
-		register_setting('btcpw_general_settings', 'btcpw_default_payblock_info', array('type' => 'string', 'default' => '', 'sanitize_callback' => array($this, 'sanitize_payblock_area')));
+		register_setting('btcpw_general_settings', 'btcpw_default_payblock_info', array('type' => 'string', 'default' => '', 'sanitize_callback' => array($this, 'sanitize_payblock_area'))); */
 
 		register_setting('btcpw_general_settings', 'btcpw_btcpay_server_url', array('type' => 'string', 'sanitize_callback' => array($this, 'sanitize_btcpay_server_url')));
 		register_setting('btcpw_general_settings', 'btcpw_btcpay_auth_key_view', array('type' => 'string', 'sanitize_callback' => array($this, 'sanitize_btcpay_auth_key')));
 		register_setting('btcpw_general_settings', 'btcpw_btcpay_auth_key_create', array('type' => 'string', 'sanitize_callback' => array($this, 'sanitize_btcpay_auth_key')));
+
+		register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_background', array('type' => 'string', 'default' => '#ECF0F1', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_header_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_info_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_button_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_button_text_color', array('type' => 'string', 'default' => '#FFFFFF', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_show_help_link', array('type' => 'boolean', 'default' => true, 'sanitize_callback' => array($this, 'sanitize_boolean')));
+		register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_help_link', array('type' => 'string', 'default' => 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/', 'sanitize_callback' => array($this, 'sanitize_text')));
+		register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_help_link_text', array('type' => 'string', 'default' => 'Help', 'sanitize_callback' => array($this, 'sanitize_text')));
+
+
+
+
+
+		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_preview_title_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_preview_description_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_background', array('type' => 'string', 'default' => '#ECF0F1', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_header_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_info_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_button_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_button_text_color', array('type' => 'string', 'default' => '#FFFFFF', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_show_help_link', array('type' => 'boolean', 'default' => true, 'sanitize_callback' => array($this, 'sanitize_boolean')));
+		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_help_link', array('type' => 'string', 'default' => 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/', 'sanitize_callback' => array($this, 'sanitize_text')));
+		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_help_link_text', array('type' => 'string', 'default' => 'Help', 'sanitize_callback' => array($this, 'sanitize_text')));
+
+
+		register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_preview_title_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_preview_description_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_background', array('type' => 'string', 'default' => '#ECF0F1', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_header_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_info_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_button_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_button_text_color', array('type' => 'string', 'default' => '#FFFFFF', 'sanitize_callback' => array($this, 'sanitize_color')));
+		register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_show_help_link', array('type' => 'boolean', 'default' => true, 'sanitize_callback' => array($this, 'sanitize_boolean')));
+		register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_help_link', array('type' => 'string', 'default' => 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/', 'sanitize_callback' => array($this, 'sanitize_text')));
+		register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_help_link_text', array('type' => 'string', 'default' => 'Help', 'sanitize_callback' => array($this, 'sanitize_text')));
 	}
 	public static function roundAmount($currency, $amount)
 	{
@@ -244,10 +284,10 @@ class BTCPayWall_Admin
 		return $value;
 	}
 
-	public function sanitize_mandatory($value)
+	public function sanitize_boolean($value)
 	{
 
-		return (isset($value) ? 'true' : 'false');
+		return (isset($value) ? true : false);
 	}
 	/**
 	 * Helper function for extracting permission string from server

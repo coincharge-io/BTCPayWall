@@ -23,6 +23,7 @@ if (!defined('WPINC')) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define('BTCPAYWALL_VERSION', '1.0.0');
+define('BTCPAYWALL_BASE_URL', plugin_dir_url(__FILE__));
 
 /**
  * The code that runs during plugin activation.
