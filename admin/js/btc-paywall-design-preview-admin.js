@@ -78,6 +78,15 @@
 
       palettes: true
     })
+    $('#btcpw_pay_per_post_title').on('input', function () {
+      $('.btcpw_pay__content_preview.pay_per_post h2').text($(this).val())
+    })
+    $('#btcpw_pay_per_post_info').on('change input', function () {
+      $('.btcpw_pay__content_preview.pay_per_post p').text($(this).val())
+    })
+    $('#btcpw_pay_per_post_button').on('input', function () {
+      $('#btcpw_pay__button_preview').text($(this).val())
+    })
     $('#btcpw_pay_per_post_show_help_link').change(function () {
       $('.btcpw_help_preview.pay_per_post').toggle()
     })
@@ -87,7 +96,16 @@
     $('#btcpw_pay_per_post_help_link').on('input', function () {
       $('.btcpw_help__link_preview.pay_per_post').attr('href', $(this).val())
     })
-
+    $(
+      '.btcpw_pay_per_post_price_placeholder, .btcpw_pay_per_post_currency_placeholder, .btcpw_pay_per_post_duration_placeholder, .btcpw_pay_per_post_duration_type_placeholder'
+    ).click(function () {
+      var buttonValue = $(this).val()
+      $('#btcpw_pay_per_post_info').val(function () {
+        $(this).focus()
+        return $(this).prop('value') + ' ' + buttonValue
+      })
+      $('#btcpw_pay_per_post_info').trigger('change')
+    })
     $('#btcpw_pay_per_view_show_help_link').change(function () {
       $('.btcpw_help_preview.pay_per_view').toggle()
     })

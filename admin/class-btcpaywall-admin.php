@@ -188,8 +188,9 @@ class BTCPayWall_Admin
 		register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_help_link', array('type' => 'string', 'default' => 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/', 'sanitize_callback' => array($this, 'sanitize_text')));
 		register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_help_link_text', array('type' => 'string', 'default' => 'Help', 'sanitize_callback' => array($this, 'sanitize_text')));
 
-
-
+		register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_title', array('type' => 'string', 'default' => 'Pay now to unlock blogpost', 'sanitize_callback' => array($this, 'sanitize_text')));
+		register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_info', array('type' => 'string', 'default' => '', 'sanitize_callback' => array($this, 'sanitize_text')));
+		register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_button', array('type' => 'string', 'default' => 'Pay', 'sanitize_callback' => array($this, 'sanitize_text')));
 
 
 		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_preview_title_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => array($this, 'sanitize_color')));
@@ -202,6 +203,9 @@ class BTCPayWall_Admin
 		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_show_help_link', array('type' => 'boolean', 'default' => true, 'sanitize_callback' => array($this, 'sanitize_boolean')));
 		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_help_link', array('type' => 'string', 'default' => 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/', 'sanitize_callback' => array($this, 'sanitize_text')));
 		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_help_link_text', array('type' => 'string', 'default' => 'Help', 'sanitize_callback' => array($this, 'sanitize_text')));
+		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_title', array('type' => 'string', 'default' => 'Pay now to watch the whole video', 'sanitize_callback' => array($this, 'sanitize_text')));
+		register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_view_info', array('type' => 'string', 'default' => '', 'sanitize_callback' => array($this, 'sanitize_text')));
+		register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_view_button', array('type' => 'string', 'default' => 'Pay', 'sanitize_callback' => array($this, 'sanitize_text')));
 
 
 		register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_preview_title_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => array($this, 'sanitize_color')));
@@ -214,6 +218,10 @@ class BTCPayWall_Admin
 		register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_show_help_link', array('type' => 'boolean', 'default' => true, 'sanitize_callback' => array($this, 'sanitize_boolean')));
 		register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_help_link', array('type' => 'string', 'default' => 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/', 'sanitize_callback' => array($this, 'sanitize_text')));
 		register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_help_link_text', array('type' => 'string', 'default' => 'Help', 'sanitize_callback' => array($this, 'sanitize_text')));
+
+		register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_title', array('type' => 'string', 'default' => 'Pay now to download the software', 'sanitize_callback' => array($this, 'sanitize_text')));
+		register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_file_info', array('type' => 'string', 'default' => '', 'sanitize_callback' => array($this, 'sanitize_text')));
+		register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_file_button', array('type' => 'string', 'default' => 'Pay', 'sanitize_callback' => array($this, 'sanitize_text')));
 	}
 	public static function roundAmount($currency, $amount)
 	{

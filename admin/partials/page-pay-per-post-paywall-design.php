@@ -8,6 +8,9 @@ $header_color = get_option('btcpw_pay_per_post_header_color');
 $info_color = get_option('btcpw_pay_per_post_info_color');
 $button_color = get_option('btcpw_pay_per_post_button_color');
 $button_text_color = get_option('btcpw_pay_per_post_button_text_color');
+$default_text = get_option('btcpw_pay_per_post_title');
+$default_button = get_option('btcpw_pay_per_post_button');
+$default_info = get_option('btcpw_pay_per_post_info');
 ?>
 <style>
     .btcpw_help_preview.pay_per_post {
@@ -47,6 +50,14 @@ $button_text_color = get_option('btcpw_pay_per_post_button_text_color');
             <h3>Header</h3>
             <div class="row">
                 <div class="col-20">
+                    <label for="btcpw_pay_per_post_title">Title</label>
+                </div>
+                <div class="col-80">
+                    <textarea id="btcpw_pay_per_post_title" name="btcpw_pay_per_post_title"><?php echo $default_text; ?></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
                     <label for="btcpw_pay_per_post_header_color">Title color</label>
                 </div>
                 <div class="col-80">
@@ -55,13 +66,35 @@ $button_text_color = get_option('btcpw_pay_per_post_button_text_color');
             </div>
             <div class="row">
                 <div class="col-20">
-                    <label for="btcpw_pay_per_post_info_color">Price info color</label>
+                    <label for="btcpw_pay_per_post_info">Price information</label>
+                </div>
+                <div class="col-80">
+                    <textarea id="btcpw_pay_per_post_info" name="btcpw_pay_per_post_info"><?php echo $default_info; ?></textarea>
+                    <div class="btcpw_pay_per_placeholders">
+                        <button type="button" class="btcpw_pay_per_post_price_placeholder" value="[price]">Price</button>
+                        <button type="button" class="btcpw_pay_per_post_currency_placeholder" value="[currency]">Currency</button>
+                        <button type="button" class="btcpw_pay_per_post_duration_placeholder" value="[duration]">Duration</button>
+                        <button type="button" class="btcpw_pay_per_post_duration_type_placeholder" value="[dtype]">Duration type</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_post_info_color">Price information color</label>
                 </div>
                 <div class="col-80">
                     <input id="btcpw_pay_per_post_info_color" class="btcpw_pay_per_post_info_color" name="btcpw_pay_per_post_info_color" type="text" value="<?php echo $info_color; ?>" />
                 </div>
             </div>
             <h3>Button</h3>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_post_button">Button text</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_post_button" name="btcpw_pay_per_post_button" value="<?php echo $default_button; ?>" />
+                </div>
+            </div>
             <div class="row">
                 <div class="col-20">
                     <label for="btcpw_pay_per_post_button_color">Button color</label>
@@ -114,14 +147,14 @@ $button_text_color = get_option('btcpw_pay_per_post_button_text_color');
     <div id="btcpw_pay_per_post_paywall_preview">
         <div class="btcpw_pay_preview pay_per_post">
             <div class="btcpw_pay__content_preview pay_per_post">
-                <h2>Title</h2>
+                <h2><?php echo $default_text; ?></h2>
                 <p>
-                    For 1000 SATS you will have unlimited access to the post.
+                    <?php echo $default_info; ?>
                 </p>
             </div>
             <div class="btcpw_pay__footer_preview pay_per_post">
                 <div>
-                    <button disabled type="button" id="btcpw_pay__button_preview" data-post_id="<?php echo get_the_ID(); ?>">Pay</button>
+                    <button disabled type="button" id="btcpw_pay__button_preview" data-post_id="<?php echo get_the_ID(); ?>"><?php echo $default_button; ?></button>
                 </div>
                 <div class="btcpw_pay__loading_preview pay_per_post">
                     <p class="loading_preview"></p>

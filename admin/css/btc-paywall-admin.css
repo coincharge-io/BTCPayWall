@@ -366,3 +366,15 @@ div.btcpw_help_link a:hover {
 .btcpw__paywall_submit_button {
   margin-top: 50px;
 }
+.btcpw_pay_per_placeholders {
+  display: flex;
+  width: 50%;
+  height: 40px;
+  margin: 5px 0 30px 0;
+}
+#btcpw_pay_per_post_info,
+#btcpw_pay_per_view_info,
+#btcpw_pay_per_file_info {
+  width: 90%;
+  height: 100px;
+}

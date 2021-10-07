@@ -73,7 +73,7 @@ $preview_description_color = get_option('btcpw_pay_per_file_preview_description_
                     <input id="btcpw_pay_per_file_preview_description_color" class="btcpw_pay_per_file_preview_description_color" name="btcpw_pay_per_file_preview_description_color" type="text" value="<?php echo $preview_description_color; ?>" />
                 </div>
             </div>
-            <h3>Header</h3>
+            <h3>Description</h3>
             <div class="row">
                 <div class="col-20">
                     <label for="btcpw_pay_per_file_header_color">Title color</label>
@@ -84,7 +84,7 @@ $preview_description_color = get_option('btcpw_pay_per_file_preview_description_
             </div>
             <div class="row">
                 <div class="col-20">
-                    <label for="btcpw_pay_per_file_info_color">Price info color</label>
+                    <label for="btcpw_pay_per_file_info_color">Price information color</label>
                 </div>
                 <div class="col-80">
                     <input id="btcpw_pay_per_file_info_color" class="btcpw_pay_per_file_info_color" name="btcpw_pay_per_file_info_color" type="text" value="<?php echo $info_color; ?>" />
