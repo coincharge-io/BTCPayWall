@@ -211,6 +211,9 @@ class BTCPayWall_Admin
 		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_title', array('type' => 'string', 'default' => 'Pay now to watch the whole video', 'sanitize_callback' => array($this, 'sanitize_text')));
 		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_info', array('type' => 'string', 'default' => 'For [price] [currency] you will have access to the video for [duration] [dtype]', 'sanitize_callback' => array($this, 'sanitize_text')));
 		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_button', array('type' => 'string', 'default' => 'Pay', 'sanitize_callback' => array($this, 'sanitize_text')));
+		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_show_additional_help_link', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => array($this, 'sanitize_boolean')));
+		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_additional_help_link', array('type' => 'string', 'default' => '', 'sanitize_callback' => array($this, 'sanitize_text')));
+		register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_additional_help_link_text', array('type' => 'string', 'default' => '', 'sanitize_callback' => array($this, 'sanitize_text')));
 
 
 		register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_preview_title_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => array($this, 'sanitize_color')));
