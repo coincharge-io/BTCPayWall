@@ -374,7 +374,28 @@ div.btcpw_help_link a:hover {
 }
 #btcpw_pay_per_post_info,
 #btcpw_pay_per_view_info,
-#btcpw_pay_per_file_info {
+#btcpw_pay_per_file_info,
+#btcpw_pay_per_post_title,
+#btcpw_pay_per_view_title,
+#btcpw_pay_per_file_title {
   width: 90%;
   height: 100px;
+}
+.btcpw_pay__preview_preview {
+  display: flex;
+  justify-content: space-around;
+}
+.btcpw_pay__preview_preview.preview_img {
+  width: 200px;
+  height: 200px;
+}
+.btcpw_pay__preview_preview.preview_description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.btcpw_pay__preview_preview.preview_img img {
+  width: 100%;
+  height: 100%;
 }

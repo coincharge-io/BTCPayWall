@@ -2,7 +2,9 @@
 $help = filter_var(get_option('btcpw_pay_per_post_show_help_link'), FILTER_VALIDATE_BOOLEAN);
 $help_link = get_option('btcpw_pay_per_post_help_link');
 $help_text = get_option('btcpw_pay_per_post_help_link_text');
-
+$additional_help = filter_var(get_option('btcpw_pay_per_post_show_additional_help_link'), FILTER_VALIDATE_BOOLEAN);
+$additional_help_link = get_option('btcpw_pay_per_post_additional_help_link');
+$additional_help_text = get_option('btcpw_pay_per_post_additional_help_link_text');
 $background = get_option('btcpw_pay_per_post_background');
 $header_color = get_option('btcpw_pay_per_post_header_color');
 $info_color = get_option('btcpw_pay_per_post_info_color');
@@ -14,7 +16,11 @@ $default_info = get_option('btcpw_pay_per_post_info');
 ?>
 <style>
     .btcpw_help_preview.pay_per_post {
-        display: <?php echo $help === true ? '' : 'none'; ?>;
+        display: <?php echo $help === true ? 'block' : 'none'; ?>;
+    }
+
+    .btcpw_additional_help_preview.pay_per_post {
+        display: <?php echo $additional_help === true ? 'block' : 'none'; ?>;
     }
 
     .btcpw_pay_preview {
@@ -138,6 +144,31 @@ $default_info = get_option('btcpw_pay_per_post_info');
                         <input id="btcpw_pay_per_post_help_link_text" class="btcpw_pay_per_post_help_link_text" name="btcpw_pay_per_post_help_link_text" type="text" value="<?php echo $help_text; ?>" />
                     </div>
                 </div>
+                <h3>Additional link</h3>
+                <div class="row">
+                    <div class="col-20">
+                        <label for="btcpw_pay_per_post_show_additional_help_link">Display additional link</label>
+                    </div>
+                    <div class="col-80">
+                        <input id="btcpw_pay_per_post_show_additional_help_link" class="btcpw_pay_per_post_show_additional_help_link" name="btcpw_pay_per_post_show_additional_help_link" type="checkbox" <?php echo checked($additional_help); ?> value="<?php echo $additional_help; ?>" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-20">
+                        <label for="btcpw_pay_per_post_additional_help_link">Additional link url</label>
+                    </div>
+                    <div class="col-80">
+                        <input id="btcpw_pay_per_post_additional_help_link" class="btcpw_pay_per_post_additional_help_link" name="btcpw_pay_per_post_additional_help_link" type="url" value="<?php echo $additional_help_link; ?>" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-20">
+                        <label for="btcpw_pay_per_post_additional_help_link_text">Additional link text</label>
+                    </div>
+                    <div class="col-80">
+                        <input id="btcpw_pay_per_post_additional_help_link_text" class="btcpw_pay_per_post_additional_help_link_text" name="btcpw_pay_per_post_additional_help_link_text" type="text" value="<?php echo $additional_help_text; ?>" />
+                    </div>
+                </div>
             </div>
             <div class="btcpw__paywall_submit_button" style="display: inline-block;">
                 <button class="button button-primary btcpw_button" type="submit">Save</button>
@@ -161,6 +192,9 @@ $default_info = get_option('btcpw_pay_per_post_info');
                 </div>
                 <div class="btcpw_help_preview pay_per_post">
                     <a class="btcpw_help__link_preview pay_per_post" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
+                </div>
+                <div class="btcpw_additional_help_preview pay_per_post">
+                    <a class="btcpw_help__additional_link_preview pay_per_post" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
                 </div>
             </div>
         </div>

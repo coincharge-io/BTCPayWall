@@ -10,6 +10,9 @@ $button_color = get_option('btcpw_pay_per_file_button_color');
 $button_text_color = get_option('btcpw_pay_per_file_button_text_color');
 $preview_title_color = get_option('btcpw_pay_per_file_preview_title_color');
 $preview_description_color = get_option('btcpw_pay_per_file_preview_description_color');
+$default_text = get_option('btcpw_pay_per_file_title');
+$default_button = get_option('btcpw_pay_per_file_button');
+$default_info = get_option('btcpw_pay_per_file_info');
 ?>
 <style>
     .btcpw_pay__preview_preview.pay_per_file h2 {
@@ -76,10 +79,32 @@ $preview_description_color = get_option('btcpw_pay_per_file_preview_description_
             <h3>Description</h3>
             <div class="row">
                 <div class="col-20">
+                    <label for="btcpw_pay_per_file_title">Title</label>
+                </div>
+                <div class="col-80">
+                    <textarea id="btcpw_pay_per_file_title" name="btcpw_pay_per_file_title"><?php echo $default_text; ?></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
                     <label for="btcpw_pay_per_file_header_color">Title color</label>
                 </div>
                 <div class="col-80">
                     <input id="btcpw_pay_per_file_header_color" class="btcpw_pay_per_file_header_color" name="btcpw_pay_per_file_header_color" type="text" value="<?php echo $header_color; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_file_info">Price information</label>
+                </div>
+                <div class="col-80">
+                    <textarea id="btcpw_pay_per_file_info" name="btcpw_pay_per_file_info"><?php echo $default_info; ?></textarea>
+                    <div class="btcpw_pay_per_placeholders">
+                        <button type="button" class="btcpw_pay_per_file_price_placeholder" value="[price]">Price</button>
+                        <button type="button" class="btcpw_pay_per_file_currency_placeholder" value="[currency]">Currency</button>
+                        <button type="button" class="btcpw_pay_per_file_duration_placeholder" value="[duration]">Duration</button>
+                        <button type="button" class="btcpw_pay_per_file_duration_type_placeholder" value="[dtype]">Duration type</button>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -91,6 +116,14 @@ $preview_description_color = get_option('btcpw_pay_per_file_preview_description_
                 </div>
             </div>
             <h3>Button</h3>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_file_button">Button text</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_file_button" name="btcpw_pay_per_file_button" value="<?php echo $default_button; ?>" />
+                </div>
+            </div>
             <div class="row">
                 <div class="col-20">
                     <label for="btcpw_pay_per_file_button_color">Button color</label>
@@ -142,20 +175,28 @@ $preview_description_color = get_option('btcpw_pay_per_file_preview_description_
     </div>
     <div id="btcpw_pay_per_file_paywall_preview">
         <div class="btcpw_pay_preview pay_per_file">
+            <div class="btcpw_pay__content_preview pay_per_file">
+                <h2> <?php echo $default_text; ?>
+                </h2>
+            </div>
             <div class="btcpw_pay__preview_preview pay_per_file">
-                <h2>Untitled</h2>
-                <p>No description</p>
-                <img src="<?php echo BTCPAYWALL_BASE_URL . 'public/img/file_preview.png'; ?>" alt="Video preview">
+                <div class="btcpw_pay__preview_preview preview_img">
+                    <img src="<?php echo BTCPAYWALL_BASE_URL . 'public/img/file_preview.png'; ?>" alt="Video preview">
+                </div>
+                <div class="btcpw_pay__preview_preview preview_description">
+                    <h2>Untitled</h2>
+                    <p>No description</p>
+                </div>
             </div>
             <div class="btcpw_pay__content_preview pay_per_file">
-                <h2>Title</h2>
                 <p>
-                    For 1000 SATS you will have unlimited access to the post.
+                    <?php echo $default_info; ?>
                 </p>
             </div>
             <div class="btcpw_pay__footer_preview pay_per_file">
                 <div>
-                    <button disabled type="button" id="btcpw_pay__button_preview_pay_per_file" data-post_id="<?php echo get_the_ID(); ?>">Pay</button>
+                    <button disabled type="button" id="btcpw_pay__button_preview_pay_per_file" data-post_id="<?php echo get_the_ID(); ?>"> <?php echo $default_button; ?>
+                    </button>
                 </div>
                 <div class="btcpw_pay__loading">
                     <p class="loading"></p>

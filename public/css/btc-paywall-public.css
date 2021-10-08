@@ -2,7 +2,24 @@
   background-color: #ecf0f1;
   padding: 30px;
 }
-
+.btcpw_pay__preview {
+  display: flex;
+  justify-content: space-around;
+}
+.btcpw_pay__preview.preview_img {
+  width: 200px;
+  height: 200px;
+}
+.btcpw_pay__preview.preview_description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.btcpw_pay__preview.preview_img img {
+  width: 100%;
+  height: 100%;
+}
 .btcpw_pay__content,
 .btcpw_pay__preview {
   text-align: center;

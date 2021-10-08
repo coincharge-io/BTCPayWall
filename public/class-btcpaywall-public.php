@@ -830,13 +830,21 @@ class BTCPayWall_Public
 			}
 		</style>
 		<div class="btcpw_pay">
-			<div class="btcpw_pay__preview">
-				<h2><?php echo esc_html($atts['title']); ?></h2>
-				<p><?php echo esc_html($atts['description']); ?></p>
-				<img src=<?php echo esc_url($preview_url); ?> alt="Video preview">
-			</div>
 			<div class="btcpw_pay__content">
 				<h2><?php echo BTCPayWall_Public::get_payblock_header_string() ?></h2>
+
+			</div>
+			<div class="btcpw_pay__preview">
+				<div class="btcpw_pay__preview preview_img">
+					<img src=<?php echo esc_url($preview_url); ?> alt="Video preview">
+				</div>
+				<div class="btcpw_pay__preview preview_description">
+					<h2><?php echo esc_html($atts['title']); ?></h2>
+					<p><?php echo esc_html($atts['description']); ?></p>
+				</div>
+
+			</div>
+			<div class="btcpw_pay__content">
 				<p>
 					<?php echo BTCPayWall_Public::get_post_info_string() ?>
 				</p>
@@ -911,13 +919,21 @@ class BTCPayWall_Public
 
 	?>
 		<div class="btcpw_pay">
-			<div class="btcpw_pay__preview">
-				<h2><?php echo esc_html($atts['title']); ?></h2>
-				<p><?php echo esc_html($atts['description']); ?></p>
-				<img src=<?php echo esc_url($preview_url); ?> alt="Video preview">
-			</div>
 			<div class="btcpw_pay__content">
 				<h2><?php echo BTCPayWall_Public::get_payblock_header_string() ?></h2>
+
+			</div>
+			<div class="btcpw_pay__preview">
+				<div class="btcpw_pay__preview preview_img">
+					<img src=<?php echo esc_url($preview_url); ?> alt="Video preview">
+				</div>
+				<div class="btcpw_pay__preview preview_description">
+					<h2><?php echo esc_html($atts['title']); ?></h2>
+					<p><?php echo esc_html($atts['description']); ?></p>
+				</div>
+
+			</div>
+			<div class="btcpw_pay__content">
 				<p>
 					<?php echo BTCPayWall_Public::get_post_info_string() ?>
 				</p>
