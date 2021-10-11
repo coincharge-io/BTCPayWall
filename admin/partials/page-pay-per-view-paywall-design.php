@@ -5,6 +5,8 @@ $help_text = get_option('btcpw_pay_per_view_help_link_text');
 $additional_help = filter_var(get_option('btcpw_pay_per_view_show_additional_help_link'), FILTER_VALIDATE_BOOLEAN);
 $additional_help_link = get_option('btcpw_pay_per_view_additional_help_link');
 $additional_help_text = get_option('btcpw_pay_per_view_additional_help_link_text');
+$width = get_option('btcpw_pay_per_view_width');
+$height = get_option('btcpw_pay_per_view_height');
 $background = get_option('btcpw_pay_per_view_background');
 $header_color = get_option('btcpw_pay_per_view_header_color');
 $info_color = get_option('btcpw_pay_per_view_info_color');
@@ -15,6 +17,15 @@ $preview_description_color = get_option('btcpw_pay_per_view_preview_description_
 $default_text = get_option('btcpw_pay_per_view_title');
 $default_button = get_option('btcpw_pay_per_view_button');
 $default_info = get_option('btcpw_pay_per_view_info');
+$used_currency = get_option('btcpw_pay_per_view_currency');
+$supported_currencies = BTCPayWall_Admin::CURRENCIES;
+$default_price = get_option('btcpw_pay_per_view_price');
+$default_duration = get_option('btcpw_pay_per_view_duration');
+$default_duration_type = get_option('btcpw_pay_per_view_duration_type');
+$supported_durations = BTCPayWall_Admin::DURATIONS;
+$supported_btc_format = BTCPayWall_Admin::BTC_FORMAT;
+$used_format = get_option("btcpw_pay_per_view_btc_format");
+
 ?>
 <style>
     .btcpw_pay__preview_preview.pay_per_view h2 {
@@ -37,6 +48,8 @@ $default_info = get_option('btcpw_pay_per_view_info');
 
     .btcpw_pay_preview {
         background-color: <?php echo esc_html($background); ?>;
+        width: <?php echo esc_html($width) . 'px'; ?>;
+        height: <?php echo esc_html($height) . 'px'; ?>;
     }
 
     .btcpw_pay__content_preview h2 {
@@ -65,6 +78,168 @@ $default_info = get_option('btcpw_pay_per_view_info');
                     <input id="btcpw_pay_per_view_background" class="btcpw_pay_per_view_background" name="btcpw_pay_per_view_background" type="text" value=<?php echo $background; ?> />
                 </div>
             </div>
+            <h3>Dimension</h3>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_view_width">Width</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_view_width" class="btcpw_pay_per_view_width" name="btcpw_pay_per_view_width" type="number" min="200" value=<?php echo $width; ?> required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_view_height">Height</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_view_height" class="btcpw_pay_per_view_height" name="btcpw_pay_per_view_height" type="number" min="200" value=<?php echo $height; ?> required />
+                </div>
+            </div>
+
+
+
+
+
+
+            <h2>Price & Duration</h2>
+
+
+            <div class="row">
+
+
+                <div class="col-20">
+
+
+                    <label for="btcpw_pay_per_view_price">Default price</label>
+
+
+                </div>
+
+
+                <div class="col-80">
+
+
+                    <input required type="number" min=0 placeholder="Default Price" step=1 name="btcpw_pay_per_view_price" id="btcpw_pay_per_view_price" value="<?php echo $default_price ?>">
+
+
+
+
+
+
+                    <select required name="btcpw_pay_per_view_currency" id="btcpw_pay_per_view_currency">
+
+
+                        <option disabled value="">Select currency</option>
+
+
+                        <?php foreach ($supported_currencies as $currency) : ?>
+
+
+                            <option <?php echo $used_currency === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
+
+
+                                <?php echo $currency; ?>
+
+
+                            </option>
+
+
+                        <?php endforeach; ?>
+
+
+                    </select>
+
+
+                    <div class="btcpw_price_format">
+
+
+                        <p>Select Bitcoin price display:</p>
+
+
+                        <?php foreach ($supported_btc_format as $format) : ?>
+
+
+                            <div>
+
+
+                                <input type="radio" id="btcpw_pay_per_view_btc_format" name="btcpw_pay_per_view_btc_format" value="<?php echo $format ?>" <?php echo $used_format === $format ? 'checked' : '' ?>>
+
+
+                                <label for="btcpw_pay_per_view_btc_format"><?php echo $format ?></label>
+
+
+                            </div>
+
+
+                        <?php endforeach; ?>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+            <div class="row">
+
+
+                <div class="col-20">
+
+
+                    <label for="btcpw_pay_per_view_duration">Default duration</label>
+
+
+                </div>
+
+
+                <div class="col-80">
+
+
+                    <input type="number" min="1" placeholder="Default Access Duration" name="btcpw_pay_per_view_duration" id="btcpw_pay_per_view_duration" disabled value="<?php echo $default_duration ?>">
+
+
+
+
+
+
+                    <select required name="btcpw_pay_per_view_duration_type" id="btcpw_pay_per_view_duration_type">
+
+
+                        <option disabled value="">Select duration type</option>
+
+
+                        <?php foreach ($supported_durations as $duration) : ?>
+
+
+                            <option <?php echo $default_duration_type === $duration ? 'selected' : ''; ?> value="<?php echo $duration; ?>">
+
+
+                                <?php echo $duration; ?>
+
+
+                            </option>
+
+
+                        <?php endforeach; ?>
+
+
+                    </select>
+
+
+                </div>
+
+
+            </div>
+
+
+
             <h3>Preview</h3>
             <div class="row">
                 <div class="col-20">

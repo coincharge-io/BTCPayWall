@@ -1,6 +1,9 @@
 .btcpw_pay {
   background-color: #ecf0f1;
   padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .btcpw_pay__preview {
   display: flex;

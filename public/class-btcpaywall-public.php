@@ -159,7 +159,7 @@ class BTCPayWall_Public
 		]);
 	}
 
-	public static function get_post_info_string($post_id = null)
+	public static function get_post_info_string($post_id = null, $pay_info)
 	{
 
 		if (!$post_id) {
@@ -169,26 +169,33 @@ class BTCPayWall_Public
 		if (get_post_meta($post_id, 'btcpw_price', true)) {
 			$price = get_post_meta($post_id, 'btcpw_price', true);
 		} else {
-			$price = get_option('btcpw_default_price');
+			//$price = get_option('btcpw_default_price');
+			$price = BTCPayWall_Public::getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['price'];
 		}
 
 		if (get_post_meta($post_id, 'btcpw_duration', true)) {
 			$duration = get_post_meta($post_id, 'btcpw_duration', true);
 		} else {
-			$duration = get_option('btcpw_default_duration');
+			//$duration = get_option('btcpw_default_duration');
+			$duration = BTCPayWall_Public::getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['duration'];
 		}
 
 		if (get_post_meta($post_id, 'btcpw_duration_type', true)) {
 			$duration_type = get_post_meta($post_id, 'btcpw_duration_type', true);
 		} else {
-			$duration_type = get_option('btcpw_default_duration_type', 'unlimited');
+			//$duration_type = get_option('btcpw_default_duration_type', 'unlimited');
+			$duration_type = BTCPayWall_Public::getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['duration_type'];
 		}
+
+
 		if (get_post_meta($post_id, 'btcpw_currency', true)) {
 			$currency = get_post_meta($post_id, 'btcpw_currency', true);
 		} else {
-			$currency = get_option('btcpw_default_currency', 'SATS');
+			//$currency = get_option('btcpw_default_currency', 'SATS');
+			$currency = BTCPayWall_Public::getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['currency'];
 		}
-		$btc_format = get_post_meta(get_the_ID(), 'btcpw_btc_format', true) ?: get_option('btcpw_default_btc_format');
+		$btc_format = get_post_meta(get_the_ID(), 'btcpw_btc_format', true) ?: BTCPayWall_Public::getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['btc_format'];
+		//get_option('btcpw_default_btc_format');
 
 		if ($currency === 'SATS' && $btc_format === 'BTC') {
 
@@ -201,16 +208,18 @@ class BTCPayWall_Public
 			$currency = 'BTC';
 		}
 
-		$payblock_info = get_option('btcpw_default_payblock_info');
+		//$payblock_info = get_option('btcpw_default_payblock_info');
 
+		$payblock_info = $pay_info;
 		if (!empty($payblock_info)) {
 
 			$search = array('[price]', '[duration]', '[dtype]', '[currency]');
 
 			$replace = array($price, $duration, $duration_type, $currency);
 
-			return str_replace($search, $replace, $payblock_info);
+			str_replace($search, $replace, $payblock_info);
 		}
+
 		$non_number = $duration_type === 'unlimited' || $duration_type === 'onetime';
 
 		$duration_type = ($duration > 1 && !$non_number) ? "{$duration_type}s" : $duration_type;
@@ -224,18 +233,48 @@ class BTCPayWall_Public
 		return $duration_type === 'unlimited' ? $unlimited : ($duration_type === 'onetime' ? $onetime : $other);
 	}
 
-	public static function get_payblock_header_string()
+	public static function get_payblock_header_string($default_text)
 	{
-		return get_option('btcpw_default_payblock_text') ?: 'For access to ' . get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] . ' first pay';
+		return $default_text ?: 'For access to ' . get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] . ' first pay';
 	}
-	public static function get_payblock_button_string()
+	public static function get_payblock_button_string($default_text)
 	{
-		return get_option('btcpw_default_payblock_button') ?: 'Pay';
+		return $default_text ?: 'Pay';
 	}
 
+	public static function getDefaultValues($name)
+	{
+		switch ($name) {
+			case 'post':
+				return [
+					'currency' => get_option('btcpw_pay_per_post_currency', 'SATS'),
+					'price'	  => get_option('btcpw_pay_per_post_price', 1000), 'duration'	=> get_option('btcpw_pay_per_post_duration'),
+					'duration_type'	=> get_option('btcpw_pay_per_post_duration_type', 'unlimited'),
+					'btc_format' => get_option('btcpw_pay_per_post_btc_format', 'SATS')
+				];
+			case 'view':
+				return [
+					'currency' => get_option('btcpw_pay_per_view_currency', 'SATS'),
+					'price'	  => get_option('btcpw_pay_per_view_price', 1000), 'duration'	=> get_option('btcpw_pay_per_view_duration'),
+					'duration_type'	=> get_option('btcpw_pay_per_view_duration_type', 'unlimited'),
+					'btc_format' => get_option('btcpw_pay_per_view_btc_format', 'SATS')
+				];
+			case 'file':
+				return [
+					'currency' => get_option('btcpw_pay_per_file_currency', 'SATS'),
+					'price'	  => get_option('btcpw_pay_per_file_price', 1000), 'duration'	=> get_option('btcpw_pay_per_file_duration'),
+					'duration_type'	=> get_option('btcpw_pay_per_file_duration_type', 'unlimited'),
+					'btc_format' => get_option('btcpw_pay_per_file_btc_format', 'SATS')
+				];
+			default:
+				return null;
+		}
+	}
 	private function calculate_price_for_invoice($post_id)
 	{
-		$currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ?: get_option('btcpw_default_currency', 'SATS');
+		$currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ?: BTCPayWall_Public::getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['currency'];
+
+		//get_option('btcpw_default_currency', 'SATS');
 
 		if ($currency_scope === 'SATS') {
 
@@ -244,7 +283,8 @@ class BTCPayWall_Public
 				$price = get_post_meta($post_id, 'btcpw_price', true);
 			} else {
 
-				$price = get_option('btcpw_default_price');
+				//$price = get_option('btcpw_default_price');
+				$price = BTCPayWall_Public::getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['price'];
 			}
 
 			$value = $price / 100000000;
@@ -256,7 +296,8 @@ class BTCPayWall_Public
 			return $value;
 		}
 
-		return get_post_meta($post_id, 'btcpw_price', true) ?: get_option('btcpw_default_price');
+		return get_post_meta($post_id, 'btcpw_price', true) ?: BTCPayWall_Public::getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['price'];
+		//get_option('btcpw_default_price');
 	}
 
 	public function generate_invoice_id($post_id, $order_id)
@@ -265,7 +306,8 @@ class BTCPayWall_Public
 
 		$url = get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
 
-		$currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ?: get_option('btcpw_default_currency', 'SATS');
+		$currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ?: BTCPayWall_Public::getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['currency'];
+		//get_option('btcpw_default_currency', 'SATS');
 		$currency = $currency_scope != 'SATS' ? $currency_scope : 'BTC';
 		$blogname = get_option('blogname');
 
@@ -555,13 +597,15 @@ class BTCPayWall_Public
 		$duration = get_post_meta($post_id, 'btcpw_duration', true);
 
 		if (empty($duration)) {
-			$duration = get_option('btcpw_default_duration');
+			//$duration = get_option('btcpw_default_duration');
+			$duration = BTCPayWall_Public::getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['duration'];
 		}
 
 		$duration_type = get_post_meta($post_id, 'btcpw_duration_type', true);
 
 		if (empty($duration_type)) {
-			$duration_type = get_option('btcpw_default_duration_type');
+			//$duration_type = get_option('btcpw_default_duration_type');
+			BTCPayWall_Public::getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['duration_type'];
 		}
 
 		return $duration_type === 'unlimited' ? strtotime("14 Jan 2038") : ($duration_type === 'onetime' ? 0 : strtotime("+{$duration} {$duration_type}"));
@@ -574,28 +618,27 @@ class BTCPayWall_Public
 		$valid_duration = in_array($atts['duration_type'], BTCPayWall_Admin::DURATIONS);
 		$valid_btc_format = in_array($atts['btc_format'], BTCPayWall_Admin::BTC_FORMAT);
 
-
-		if (!empty($atts['currency']) && $valid_currency) {
+		if (($atts['currency'] != "") && $valid_currency) {
 			update_post_meta(get_the_ID(), 'btcpw_currency', sanitize_text_field($atts['currency']));
 		} else {
 			delete_post_meta(get_the_ID(), 'btcpw_currency');
 		}
-		if ($atts['currency'] === 'SATS' && $valid_btc_format) {
+		if (($atts['currency'] === 'SATS') && $valid_btc_format) {
 			update_post_meta(get_the_ID(), 'btcpw_btc_format', sanitize_text_field($atts['btc_format']));
 		} else {
 			delete_post_meta(get_the_ID(), 'btcpw_btc_format');
 		}
-		if (!empty($atts['price'])) {
+		if ($atts['price'] != "") {
 			update_post_meta(get_the_ID(), 'btcpw_price', sanitize_text_field($atts['price']));
 		} else {
 			delete_post_meta(get_the_ID(), 'btcpw_price');
 		}
-		if (!empty($atts['duration'])) {
+		if ($atts['duration'] != "") {
 			update_post_meta(get_the_ID(), 'btcpw_duration', sanitize_text_field($atts['duration']));
 		} else {
 			delete_post_meta(get_the_ID(), 'btcpw_duration');
 		}
-		if (!empty($atts['duration_type']) && $valid_duration) {
+		if (($atts['duration_type'] != "") && $valid_duration) {
 			update_post_meta(get_the_ID(), 'btcpw_duration_type', sanitize_text_field($atts['duration_type']));
 		} else {
 			delete_post_meta(get_the_ID(), 'btcpw_duration_type');

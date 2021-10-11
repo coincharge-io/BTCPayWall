@@ -81,6 +81,12 @@
     $('#btcpw_pay_per_post_title').on('input', function () {
       $('.btcpw_pay__content_preview.pay_per_post h2').text($(this).val())
     })
+    $('#btcpw_pay_per_post_width').on('input, change', function () {
+      $('.btcpw_pay_preview.pay_per_post').css('width', $(this).val() + 'px')
+    })
+    $('#btcpw_pay_per_post_height').on('input, change', function () {
+      $('.btcpw_pay_preview.pay_per_post').css('height', $(this).val() + 'px')
+    })
     $('#btcpw_pay_per_post_info').on('change input', function () {
       $('.btcpw_pay__content_preview.pay_per_post p').text($(this).val())
     })
@@ -148,6 +154,12 @@
     })
     $('#btcpw_pay_per_view_button').on('input', function () {
       $('#btcpw_pay__button_preview_pay_per_view').text($(this).val())
+    })
+    $('#btcpw_pay_per_view_width').on('input, change', function () {
+      $('.btcpw_pay_preview.pay_per_view').css('width', $(this).val() + 'px')
+    })
+    $('#btcpw_pay_per_view_height').on('input, change', function () {
+      $('.btcpw_pay_preview.pay_per_view').css('height', $(this).val() + 'px')
     })
     $(
       '.btcpw_pay_per_view_price_placeholder, .btcpw_pay_per_view_currency_placeholder, .btcpw_pay_per_view_duration_placeholder, .btcpw_pay_per_view_duration_type_placeholder'
@@ -269,6 +281,12 @@
       hide: true,
 
       palettes: true
+    })
+    $('#btcpw_pay_per_file_width').on('input, change', function () {
+      $('.btcpw_pay_preview.pay_per_file').css('width', $(this).val() + 'px')
+    })
+    $('#btcpw_pay_per_file_height').on('input, change', function () {
+      $('.btcpw_pay_preview.pay_per_file').css('height', $(this).val() + 'px')
     })
     $('#btcpw_pay_per_file_title').on('input', function () {
       $('.btcpw_pay__content_preview.pay_per_file h2').text($(this).val())

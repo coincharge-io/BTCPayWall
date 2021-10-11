@@ -6,6 +6,9 @@ $additional_help = filter_var(get_option('btcpw_pay_per_post_show_additional_hel
 $additional_help_link = get_option('btcpw_pay_per_post_additional_help_link');
 $additional_help_text = get_option('btcpw_pay_per_post_additional_help_link_text');
 $background = get_option('btcpw_pay_per_post_background');
+$width = get_option('btcpw_pay_per_post_width');
+$height = get_option('btcpw_pay_per_post_height');
+
 $header_color = get_option('btcpw_pay_per_post_header_color');
 $info_color = get_option('btcpw_pay_per_post_info_color');
 $button_color = get_option('btcpw_pay_per_post_button_color');
@@ -13,6 +16,17 @@ $button_text_color = get_option('btcpw_pay_per_post_button_text_color');
 $default_text = get_option('btcpw_pay_per_post_title');
 $default_button = get_option('btcpw_pay_per_post_button');
 $default_info = get_option('btcpw_pay_per_post_info');
+
+
+$used_currency = get_option('btcpw_pay_per_post_currency');
+$supported_currencies = BTCPayWall_Admin::CURRENCIES;
+$default_price = get_option('btcpw_pay_per_post_price');
+$default_duration = get_option('btcpw_pay_per_post_duration');
+$default_duration_type = get_option('btcpw_pay_per_post_duration_type');
+$supported_durations = BTCPayWall_Admin::DURATIONS;
+$supported_btc_format = BTCPayWall_Admin::BTC_FORMAT;
+$used_format = get_option("btcpw_pay_per_post_btc_format");
+
 ?>
 <style>
     .btcpw_help_preview.pay_per_post {
@@ -25,6 +39,8 @@ $default_info = get_option('btcpw_pay_per_post_info');
 
     .btcpw_pay_preview {
         background-color: <?php echo esc_html($background); ?>;
+        width: <?php echo esc_html($width) . 'px'; ?>;
+        height: <?php echo esc_html($height) . 'px'; ?>;
     }
 
     .btcpw_pay__content_preview h2 {
@@ -51,6 +67,78 @@ $default_info = get_option('btcpw_pay_per_post_info');
                 </div>
                 <div class="col-80">
                     <input id="btcpw_pay_per_post_background" class="btcpw_pay_per_post_background" name="btcpw_pay_per_post_background" type="text" value=<?php echo $background; ?> />
+                </div>
+            </div>
+            <h3>Dimension</h3>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_post_width">Width</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_post_width" class="btcpw_pay_per_post_width" name="btcpw_pay_per_post_width" type="number" min="200" value=<?php echo $width; ?> required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_post_height">Height</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_post_height" class="btcpw_pay_per_post_height" name="btcpw_pay_per_post_height" type="number" min="200" value=<?php echo $height; ?> required />
+                </div>
+            </div>
+            <h2>Price & Duration</h2>
+
+
+            <div class="row">
+
+
+                <div class="col-20">
+
+
+                    <label for="btcpw_pay_per_post_price">Default price</label>
+                </div>
+                <div class="col-80">
+                    <input required type="number" min=0 placeholder="Default Price" step=1 name="btcpw_pay_per_post_price" id="btcpw_pay_per_post_price" value="<?php echo $default_price ?>">
+
+                    <select required name="btcpw_pay_per_post_currency" id="btcpw_pay_per_post_currency">
+                        <option disabled value="">Select currency</option>
+                        <?php foreach ($supported_currencies as $currency) : ?>
+                            <option <?php echo $used_currency === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
+                                <?php echo $currency; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <div class="btcpw_price_format">
+                        <p>Select Bitcoin price display:</p>
+                        <?php foreach ($supported_btc_format as $format) : ?>
+                            <div>
+                                <input type="radio" id="btcpw_pay_per_post_btc_format" name="btcpw_pay_per_post_btc_format" value="<?php echo $format ?>" <?php echo $used_format === $format ? 'checked' : '' ?>>
+
+
+                                <label for="btcpw_pay_per_post_btc_format"><?php echo $format ?></label>
+
+
+                            </div>
+
+
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_post_duration">Default duration</label>
+                </div>
+                <div class="col-80">
+                    <input type="number" min="1" placeholder="Default Access Duration" name="btcpw_pay_per_post_duration" id="btcpw_pay_per_post_duration" disabled value="<?php echo $default_duration ?>">
+                    <select required name="btcpw_pay_per_post_duration_type" id="btcpw_pay_per_post_duration_type">
+                        <option disabled value="">Select duration type</option>
+                        <?php foreach ($supported_durations as $duration) : ?>
+                            <option <?php echo $default_duration_type === $duration ? 'selected' : ''; ?> value="<?php echo $duration; ?>">
+                                <?php echo $duration; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
             </div>
             <h3>Header</h3>
@@ -179,6 +267,8 @@ $default_info = get_option('btcpw_pay_per_post_info');
         <div class="btcpw_pay_preview pay_per_post">
             <div class="btcpw_pay__content_preview pay_per_post">
                 <h2><?php echo $default_text; ?></h2>
+            </div>
+            <div class="btcpw_pay__content_preview pay_per_post">
                 <p>
                     <?php echo $default_info; ?>
                 </p>
