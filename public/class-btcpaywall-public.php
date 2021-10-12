@@ -159,7 +159,7 @@ class BTCPayWall_Public
 		]);
 	}
 
-	public static function get_post_info_string($post_id = null, $pay_info)
+	public static function get_post_info_string($post_id = null)
 	{
 
 		if (!$post_id) {
@@ -210,7 +210,7 @@ class BTCPayWall_Public
 
 		//$payblock_info = get_option('btcpw_default_payblock_info');
 
-		$payblock_info = $pay_info;
+		$payblock_info = BTCPayWall_Public::getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['info'];
 		if (!empty($payblock_info)) {
 
 			$search = array('[price]', '[duration]', '[dtype]', '[currency]');
@@ -233,13 +233,13 @@ class BTCPayWall_Public
 		return $duration_type === 'unlimited' ? $unlimited : ($duration_type === 'onetime' ? $onetime : $other);
 	}
 
-	public static function get_payblock_header_string($default_text)
+	public static function get_payblock_header_string()
 	{
-		return $default_text ?: 'For access to ' . get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] . ' first pay';
+		return BTCPayWall_Public::getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['title'] ?: 'For access to ' . get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] . ' first pay';
 	}
-	public static function get_payblock_button_string($default_text)
+	public static function get_payblock_button_string()
 	{
-		return $default_text ?: 'Pay';
+		return BTCPayWall_Public::getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['button'] ?: 'Pay';
 	}
 
 	public static function getDefaultValues($name)
@@ -247,6 +247,9 @@ class BTCPayWall_Public
 		switch ($name) {
 			case 'post':
 				return [
+					'title' => get_option('btcpw_pay_per_post_title', 'Pay now to unlock blogpost'),
+					'info'	=> get_option('btcpw_pay_per_post_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]'),
+					'button'	=> get_option('btcpw_pay_per_post_button', 'Pay'),
 					'currency' => get_option('btcpw_pay_per_post_currency', 'SATS'),
 					'price'	  => get_option('btcpw_pay_per_post_price', 1000), 'duration'	=> get_option('btcpw_pay_per_post_duration'),
 					'duration_type'	=> get_option('btcpw_pay_per_post_duration_type', 'unlimited'),
@@ -254,6 +257,9 @@ class BTCPayWall_Public
 				];
 			case 'view':
 				return [
+					'title' => get_option('btcpw_pay_per_view_title', 'Pay now to watch the whole video'),
+					'info'	=> get_option('btcpw_pay_per_view_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]'),
+					'button'	=> get_option('btcpw_pay_per_view_button', 'Pay'),
 					'currency' => get_option('btcpw_pay_per_view_currency', 'SATS'),
 					'price'	  => get_option('btcpw_pay_per_view_price', 1000), 'duration'	=> get_option('btcpw_pay_per_view_duration'),
 					'duration_type'	=> get_option('btcpw_pay_per_view_duration_type', 'unlimited'),
@@ -261,6 +267,9 @@ class BTCPayWall_Public
 				];
 			case 'file':
 				return [
+					'title' => get_option('btcpw_pay_per_file_title', 'Pay now to download the software'),
+					'info'	=> get_option('btcpw_pay_per_file_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]'),
+					'button'	=> get_option('btcpw_pay_per_file_button', 'Pay'),
 					'currency' => get_option('btcpw_pay_per_file_currency', 'SATS'),
 					'price'	  => get_option('btcpw_pay_per_file_price', 1000), 'duration'	=> get_option('btcpw_pay_per_file_duration'),
 					'duration_type'	=> get_option('btcpw_pay_per_file_duration_type', 'unlimited'),
@@ -674,7 +683,6 @@ class BTCPayWall_Public
 
 		$invoice_content = array('title' => 'Pay-per-post: ' . get_the_title(get_the_ID()), 'project' => 'post');
 		update_post_meta(get_the_ID(), 'btcpw_invoice_content', $invoice_content);
-
 		$s_data = '<!-- btcpw:start_content -->';
 
 		$payblock = filter_var($atts['pay_block'], FILTER_VALIDATE_BOOLEAN);

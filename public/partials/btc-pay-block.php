@@ -40,17 +40,17 @@ $default_info = get_option('btcpw_pay_per_post_info', 'For [price] [currency] yo
 </style>
 <div class="btcpw_pay">
     <div class="btcpw_pay__content paywall_header">
-        <h2><?php echo BTCPayWall_Public::get_payblock_header_string($default_text); ?></h2>
+        <h2><?php echo BTCPayWall_Public::get_payblock_header_string(); ?></h2>
 
     </div>
     <div class="btcpw_pay__content paywall_info">
         <p>
-            <?php echo BTCPayWall_Public::get_post_info_string(null, $default_info); ?>
+            <?php echo BTCPayWall_Public::get_post_info_string(); ?>
         </p>
     </div>
     <div class="btcpw_pay__footer">
         <div>
-            <button type="button" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo BTCPayWall_Public::get_payblock_button_string($default_button) ?></button>
+            <button type="button" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo BTCPayWall_Public::get_payblock_button_string() ?></button>
         </div>
         <div class="btcpw_pay__loading">
             <p class="loading"></p>

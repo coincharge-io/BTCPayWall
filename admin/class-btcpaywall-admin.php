@@ -2395,7 +2395,6 @@ class BTCPayWall_Admin
 			'duration' => '',
 		), $atts);
 
-
 		return do_shortcode("[btcpw_start_content pay_block='{$atts['pay_block']}' btc_format='{$atts['btc_format']}' price='{$atts['price']}' duration_type='{$atts['duration_type']}' duration='{$atts['duration']}' currency='{$atts['currency']}']");
 	}
 
@@ -2409,7 +2408,6 @@ class BTCPayWall_Admin
 			'shortcode' => '',
 		), $atts);
 		return $atts['shortcode'];
-		/* return do_shortcode("[btcpw_list_shortcodes shortcode='{$atts['shortcode']}']"); */
 	}
 
 	public function render_video_catalog_gutenberg()
@@ -2675,11 +2673,11 @@ class BTCPayWall_Admin
 						'default' => 'SATS'
 					),
 					'price' =>  array(
-						'type'	=> 'string',
+						'type'	=> 'integer',
 						'default' => '1000'
 					),
 					'duration' =>  array(
-						'type'	=> 'string',
+						'type'	=> 'integer',
 						'default' => '20'
 					),
 					'duration_type' =>  array(
@@ -2734,11 +2732,11 @@ class BTCPayWall_Admin
 						'default' => 'SATS'
 					),
 					'price' =>  array(
-						'type'	=> 'string',
+						'type'	=> 'integer',
 						'default' => '1000'
 					),
 					'duration' =>  array(
-						'type'	=> 'string',
+						'type'	=> 'integer',
 						'default' => '20'
 					),
 					'duration_type' =>  array(
@@ -2802,11 +2800,11 @@ class BTCPayWall_Admin
 						'default' => 'SATS'
 					),
 					'price' =>  array(
-						'type'	=> 'string',
+						'type'	=> 'integer',
 						'default' => '1000'
 					),
 					'duration' =>  array(
-						'type'	=> 'string',
+						'type'	=> 'integer',
 						'default' => '20'
 					),
 					'duration_type' =>  array(
