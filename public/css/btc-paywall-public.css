@@ -1,13 +1,21 @@
 .btcpw_pay {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-color: #ecf0f1;
   padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 30px;
+}
+
+.btcpw_pay h2 {
+  font-size: 40px;
 }
 .btcpw_pay__preview {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  text-align: center;
 }
 .btcpw_pay__preview.preview_img {
   width: 200px;
@@ -17,14 +25,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 .btcpw_pay__preview.preview_img img {
   width: 100%;
   height: 100%;
 }
-.btcpw_pay__content,
-.btcpw_pay__preview {
+.btcpw_pay__content {
   text-align: center;
 }
 
@@ -32,16 +39,33 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-top: 20px;
 }
+/* .btcpw_pay__footer button {
+  min-width: 75px;
+  min-height: 60px;
+  letter-spacing: 1px;
+  border: 3px solid #9289fa;
+  border-radius: 60px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.35s;
+} */
+
 #btcpw_pay__button {
+  min-width: 75px;
+  min-height: 60px;
   background: #f6b330;
-  border-radius: 0.25rem;
+  border: solid 1px transparent;
+  border-radius: 0.5rem;
   color: white;
   font-size: 1.2rem;
   line-height: 1.2;
   padding: 0.5rem 0.5rem;
   margin: 0.25rem;
+}
+#btcpw_pay__button:hover {
+  background: #8c82fc;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -79,8 +103,8 @@
 }
 
 .btcpw_pay__content p {
-  margin-top: 20px;
-  font-size: 1.1em;
+  font-size: 30px;
+  line-height: 1.6;
 }
 .btcpw_pay__footer div.btcpw_help {
   margin-top: 3em;

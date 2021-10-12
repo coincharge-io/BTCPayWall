@@ -26,6 +26,8 @@ $default_duration_type = get_option('btcpw_pay_per_post_duration_type');
 $supported_durations = BTCPayWall_Admin::DURATIONS;
 $supported_btc_format = BTCPayWall_Admin::BTC_FORMAT;
 $used_format = get_option("btcpw_pay_per_post_btc_format");
+$disabled_field = ($default_duration_type === 'unlimited') || ($default_duration_type === 'onetime');
+$disable = $disabled_field ? 'disabled' : '';
 
 ?>
 <style>
@@ -130,7 +132,7 @@ $used_format = get_option("btcpw_pay_per_post_btc_format");
                     <label for="btcpw_pay_per_post_duration">Default duration</label>
                 </div>
                 <div class="col-80">
-                    <input type="number" min="1" placeholder="Default Access Duration" name="btcpw_pay_per_post_duration" id="btcpw_pay_per_post_duration" disabled value="<?php echo $default_duration ?>">
+                    <input type="number" min="1" placeholder="Default Access Duration" name="btcpw_pay_per_post_duration" id="btcpw_pay_per_post_duration" <?php echo $disable; ?> value="<?php echo $default_duration ?>">
                     <select required name="btcpw_pay_per_post_duration_type" id="btcpw_pay_per_post_duration_type">
                         <option disabled value="">Select duration type</option>
                         <?php foreach ($supported_durations as $duration) : ?>

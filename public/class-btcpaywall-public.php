@@ -235,6 +235,7 @@ class BTCPayWall_Public
 
 	public static function get_payblock_header_string()
 	{
+
 		return BTCPayWall_Public::getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['title'] ?: 'For access to ' . get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] . ' first pay';
 	}
 	public static function get_payblock_button_string()
@@ -255,7 +256,7 @@ class BTCPayWall_Public
 					'duration_type'	=> get_option('btcpw_pay_per_post_duration_type', 'unlimited'),
 					'btc_format' => get_option('btcpw_pay_per_post_btc_format', 'SATS')
 				];
-			case 'view':
+			case 'video':
 				return [
 					'title' => get_option('btcpw_pay_per_view_title', 'Pay now to watch the whole video'),
 					'info'	=> get_option('btcpw_pay_per_view_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]'),
@@ -858,8 +859,9 @@ class BTCPayWall_Public
 		$preview_url = $image ? $image[0] : $atts['preview'];
 
 		ob_start();
+		include 'partials/btc-pay-view-block.php';
 
-?>
+		/* ?>
 		<style>
 			.btcpw_pay {
 				background-color: <?php echo esc_html($atts['background_color']); ?>;
@@ -915,7 +917,7 @@ class BTCPayWall_Public
 			</div>
 		</div>
 	<?php
-
+ */
 
 		return ob_get_clean();
 	}
@@ -937,7 +939,7 @@ class BTCPayWall_Public
 			$href = vc_build_link($atts['file'])['url'] ?: $atts['file'];
 		}
 		ob_start();
-	?>
+?>
 
 		<a class="btcpw_pay__download" href=<?php echo esc_url($href) ?> target="_blank" download>Download</a>
 
@@ -967,8 +969,9 @@ class BTCPayWall_Public
 		$preview_url = $image ? $image[0] : $atts['preview'];
 
 		ob_start();
+		include 'partials/btc-pay-file-block.php';
 
-	?>
+	/* ?>
 		<div class="btcpw_pay">
 			<div class="btcpw_pay__content">
 				<h2><?php echo BTCPayWall_Public::get_payblock_header_string() ?></h2>
@@ -1005,7 +1008,7 @@ class BTCPayWall_Public
 		</div>
 	<?php
 
-
+ */
 		return ob_get_clean();
 	}
 
