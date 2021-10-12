@@ -420,7 +420,7 @@ $id = $result[0]['id'] ?? null;
                 <input type="checkbox" class="btcpw_tipping_banner_high_collect_phone" name="btcpw_tipping_banner_high_collect[phone][collect]" <?php checked($collect['phone']['collect']); ?> value="true" />
 
                 <label for="btcpw_tipping_banner_high_collect[phone][mandatory]">Mandatory</label>
-                <input type="checkbox" class="btcpw_tipping_banner_high_collect_phone_mandatory" name="btcpw_tipping_banner_high_collect[phone][mandatory]" <?php checked($collect['name']['mandatory']); ?> value="true" />
+                <input type="checkbox" class="btcpw_tipping_banner_high_collect_phone_mandatory" name="btcpw_tipping_banner_high_collect[phone][mandatory]" <?php checked($collect['phone']['mandatory']); ?> value="true" />
 
             </div>
         </div>
