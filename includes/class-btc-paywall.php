@@ -137,28 +137,28 @@ class BTCPayWall
 
         $plugin_admin = new BTCPayWall_Admin($this->get_plugin_name(), $this->get_version());
 
-        $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
-        $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
+        /* $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
+        $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts'); */
 
-        $this->loader->add_action('admin_menu', $plugin_admin, 'add_menu_pages');
-        $this->loader->add_action('admin_init', $plugin_admin, 'register_settings');
+        //$this->loader->add_action('admin_menu', $plugin_admin, 'add_menu_pages');
+        //$this->loader->add_action('admin_init', $plugin_admin, 'register_settings');
 
-        $this->loader->add_action('init', $plugin_admin, 'register_post_types');
+        //$this->loader->add_action('init', $plugin_admin, 'register_post_types');
 
-        $this->loader->add_action('wp_ajax_btcpw_check_greenfield_api_work', $plugin_admin, 'ajax_check_greenfield_api_work');
+        /* $this->loader->add_action('wp_ajax_btcpw_check_greenfield_api_work', $plugin_admin, 'ajax_check_greenfield_api_work');
         $this->loader->add_action('wp_ajax_btcpw_get_greenfield_invoices', $plugin_admin, 'get_greenfield_invoices');
-        $this->loader->add_action('wp_ajax_btcpw_create_shortcode', $plugin_admin, 'createShortcode');
+        $this->loader->add_action('wp_ajax_btcpw_create_shortcode', $plugin_admin, 'createShortcode'); */
 
 
-        $this->loader->add_action('init', $plugin_admin, 'load_gutenberg');
-        $this->loader->add_action('vc_before_init', $plugin_admin, 'load_vc_widgets');
-        $this->loader->add_action('elementor/widgets/widgets_registered', $plugin_admin, 'load_elementor_widgets');
-        $this->loader->add_action('widgets_init', $plugin_admin, 'wpdocs_register_widgets');
-        $this->loader->add_action('rest_api_init', $plugin_admin, 'register_shortcode_list');
+        //$this->loader->add_action('init', $plugin_admin, 'load_gutenberg');
+        //$this->loader->add_action('vc_before_init', $plugin_admin, 'load_vc_widgets');
+        //$this->loader->add_action('elementor/widgets/widgets_registered', $plugin_admin, 'load_elementor_widgets');
+        //$this->loader->add_action('widgets_init', $plugin_admin, 'wpdocs_register_widgets');
+        //$this->loader->add_action('rest_api_init', $plugin_admin, 'register_shortcode_list');
 
-        $this->loader->add_action('media_buttons', $plugin_admin, 'add_my_media_button', 15);
-        $this->loader->add_action('elementor/editor/after_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
-        $this->loader->add_action('elementor/editor/before_enqueue_styles', $plugin_admin, 'enqueue_styles');
+        //$this->loader->add_action('media_buttons', $plugin_admin, 'add_my_media_button', 15);
+        /* $this->loader->add_action('elementor/editor/after_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
+        $this->loader->add_action('elementor/editor/before_enqueue_styles', $plugin_admin, 'enqueue_styles'); */
     }
 
     /**

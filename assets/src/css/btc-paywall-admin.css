@@ -1,0 +1,424 @@
+.btcpw_btcpay_status {
+  margin-top: 25px;
+  font-weight: bold;
+  display: none;
+}
+
+input[type='text']:not(.btcpw_add_form_preview),
+select:not(.btcpw_add_form_preview),
+textarea:not(.btcpw_add_form_preview) {
+  width: 50%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.col-20 {
+  flex: 1;
+  margin-top: 8px;
+}
+.col-80 {
+  flex: 4;
+  margin-top: 8px;
+}
+
+.col-50 {
+  margin-top: 8px;
+  flex: 0.4;
+}
+
+.section > h1 {
+  font-size: 35px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: center;
+}
+
+.section.scroll {
+  height: 500px;
+  overflow: auto;
+}
+
+.section.table {
+  width: 100%;
+  font-family: Helvetica, Arial, sans-serif;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 30px 0;
+  font-size: 0.9em;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.192);
+}
+
+.section.table thead tr th {
+  background-color: #1d5aa3;
+  color: #ffffff;
+  text-align: left;
+  font-size: 1.4em;
+}
+.section.table thead tr th {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+}
+
+.section.table th,
+.section.table td {
+  padding: 15px 15px;
+}
+
+.section.table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.section.table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+td.Expired,
+td.Invalid {
+  background-color: #f53c18;
+}
+td.Processing,
+td.New {
+  background-color: #f6b330;
+}
+td.Settled {
+  background-color: #269950;
+}
+.btcpw_pay__gutenberg_block_separator {
+  width: 100%;
+  height: 25px;
+  background: #c2cbd2;
+}
+.btcpw_pay__gutenberg_block_file {
+  border: solid;
+  text-align: center;
+  color: #c2cbd2;
+}
+
+.btcpw_pay__gutenberg_block_file button {
+  background-color: #007cba;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  margin-bottom: 5px;
+  line-height: 1.8;
+  font-size: 0.88889em;
+  font-weight: bold;
+}
+
+.container_predefined_amount input:not([type='checkbox']),
+.container_predefined_amount select {
+  width: 100px;
+}
+
+.tipping_box_settings textarea,
+.tipping_banner_high_settings textarea,
+.tipping_banner_wide_settings textarea,
+.tipping_page_settings textarea {
+  width: 250px;
+  height: 100px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+.tipping_box_settings label,
+.tipping_box_settings textarea,
+.tipping_banner_high_settings label,
+.tipping_banner_high_settings textarea,
+.tipping_banner_wide_settings label,
+.tipping_banner_wide_settings textarea,
+.tipping_page_settings label,
+.tipping_page_settings textarea,
+#btcpw_pay_per_post_paywall label,
+#btcpw_pay_per_view_paywall label,
+#btcpw_pay_per_file_paywall label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.col-2 {
+  display: flex;
+  flex-direction: column;
+}
+.col-fixed {
+  display: flex;
+  flex-direction: column;
+}
+
+.tipping_box_settings textarea,
+.tipping_banner_high_settings textarea,
+.tipping_banner_wide_settings textarea,
+.tipping_page_settings textarea {
+  width: auto;
+  height: 100px;
+}
+.tipping_box textarea,
+.tipping_banner textarea {
+  width: auto;
+  height: 80px;
+}
+.tipping_box label,
+.tipping_banner textarea {
+  display: inline-block;
+  vertical-align: middle;
+}
+.tipping_box input.widget-tipping-basic_redirect,
+.tipping_banner input.widget-tipping-basic_redirect {
+  width: 100%;
+}
+
+.btcpw_add_form_notice,
+.btcpw_form_notice {
+  border: solid 1px #007cba;
+  padding: 10px;
+  margin: 0 -5px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background: #ffffe0;
+}
+.btcpw_add_form_notice p,
+.btcpw_form_notice p {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  line-height: 1.75;
+  letter-spacing: 0.05em;
+}
+.btcpw_expanded_notice p {
+  font-size: 10px;
+}
+.btcpw_general_settings,
+.tipping_box_settings,
+.tipping_banner_high_settings,
+.tipping_banner_wide_settings,
+.tipping_page_settings,
+#btcpw_pay_per_post_paywall,
+#btcpw_pay_per_view_paywall,
+#btcpw_pay_per_file_paywall {
+  border: 1px solid #1e1e1e;
+  background: #fff;
+  padding: 0;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  padding: 0 5px;
+}
+.button.button-primary.btcpw_button {
+  background: #0066a2;
+  color: #fff;
+  border-style: outset;
+  border-color: #0066a2;
+  height: 50px;
+  width: 100px;
+  font: bold 15px arial, sans-serif;
+  text-shadow: none;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  margin-left: -5px;
+}
+
+.button.button-secondary.btcpw_button {
+  height: 50px;
+  background-color: #008000;
+  color: #fff;
+  font: bold 15px arial, sans-serif;
+}
+div.btcpw_help_link a {
+  width: 40px;
+  background-color: #008000;
+  color: white;
+  padding: 5px;
+  text-decoration: none;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+div.btcpw_help_link a:hover {
+  background-color: #555;
+}
+
+.btcpw_general_settings_buttons {
+  margin-top: 5em;
+}
+#btcpw_btcpay_store_id {
+  width: 60%;
+}
+#btcpw_expanded_notice_split {
+  display: flex;
+  gap: 30px;
+}
+
+/*Media button*/
+#btcpw_shortcode_button {
+  background-color: #f6f7f7;
+  font-size: 14px;
+  color: #2271b1;
+  padding: 5px;
+  border-radius: 3px;
+  width: fit-content;
+}
+.sc_menu_item.btcpw_shortcode {
+  font-size: 16px;
+  white-space: nowrap;
+  cursor: pointer;
+  padding: 2px;
+  margin-bottom: 2px;
+}
+#sc_menu {
+  width: fit-content;
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  z-index: 1;
+  border: 1px solid #c2cbd2;
+}
+
+#sc_menu div:hover {
+  background-color: #007bff;
+}
+
+#btcpw_pay_per_post_paywall,
+#btcpw_pay_per_view_paywall,
+#btcpw_pay_per_file_paywall {
+  display: flex;
+}
+
+#btcpw_pay_per_post_paywall > div,
+#btcpw_pay_per_view_paywall > div,
+#btcpw_pay_per_file_paywall > div {
+  flex: 1;
+}
+
+/*Paywall preview*/
+.btcpw_pay_preview {
+  background-color: #ecf0f1;
+  padding: 30px;
+}
+
+.btcpw_pay__content_preview,
+.btcpw_pay__preview_preview {
+  text-align: center;
+}
+
+.btcpw_pay__footer_preview {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+#btcpw_pay__button_preview {
+  background: #f6b330;
+  border-radius: 0.25rem;
+  color: white;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  padding: 0.5rem 0.5rem;
+  margin: 0.25rem;
+  cursor: pointer;
+}
+
+.btcpw_help_preview > a.btcpw_help__link_preview {
+  margin-top: 5px;
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+.btcpw_pay__content_preview p {
+  font-size: 1.1em;
+}
+.btcpw_pay__footer_preview div.btcpw_help_preview {
+  margin-top: 3em;
+}
+
+#btcpw_pay_per_post_paywall_preview,
+#btcpw_pay_per_view_paywall_preview,
+#btcpw_pay_per_file_paywall_preview {
+  display: flex;
+  align-items: center;
+}
+.btcpw__paywall_submit_button {
+  margin-top: 50px;
+}
+.btcpw_pay_per_placeholders {
+  display: flex;
+  width: 50%;
+  height: 40px;
+  margin: 5px 0 30px 0;
+}
+#btcpw_pay_per_post_info,
+#btcpw_pay_per_view_info,
+#btcpw_pay_per_file_info,
+#btcpw_pay_per_post_title,
+#btcpw_pay_per_view_title,
+#btcpw_pay_per_file_title {
+  width: 90%;
+  height: 100px;
+}
+.btcpw_pay__preview_preview {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.btcpw_pay__preview_preview.preview_img {
+  width: 200px;
+  height: 200px;
+}
+.btcpw_pay__preview_preview.preview_description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
+}
+.btcpw_pay__preview_preview.preview_img img {
+  width: 100%;
+  height: 100%;
+}
+.btcpw_pay__loading_preview {
+  display: none;
+}
+.btcpw_pay_preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: flex-start;
+}
+
+.btcpw_pay_preview h2 {
+  font-size: 23px;
+}
+.btcpw_pay_preview p {
+  font-size: 18px;
+}
+#btcpw_pay__button_preview_pay_per_view,
+#btcpw_pay__button_preview_pay_per_file,
+#btcpw_pay__button_preview {
+  min-width: 75px;
+  min-height: 60px;
+  background: #f6b330;
+  border: solid 1px transparent;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  padding: 0.5rem 0.5rem;
+  margin: 0.25rem;
+}
+#btcpw_pay__button_preview_pay_per_view:hover,
+#btcpw_pay__button_preview_pay_per_file:hover,
+#btcpw_pay__button_preview:hover {
+  background: #8c82fc;
+  color: #fff;
+  cursor: pointer;
+}

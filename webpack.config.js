@@ -1,11 +1,13 @@
-const defaultConfig = require("@wordpress/scripts/config/webpack.config");
-const path = require('path');
-
+const defaultConfig = require('@wordpress/scripts/config/webpack.config')
+const path = require('path')
 
 module.exports = {
-	...defaultConfig,
-	output: {
-		filename: '[name].js',
-		path: path.join( __dirname, "admin/gutenberg" )
-	}
+  ...defaultConfig,
+  entry: {
+    index: path.join(__dirname, 'blocks/index.js')
+  },
+  output: {
+    filename: '[name].js',
+    path: path.join(__dirname, 'assets/dist/js')
+  }
 }
