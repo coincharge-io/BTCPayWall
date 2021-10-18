@@ -1,5 +1,6 @@
 <?php
-
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 function register_post_types()
 {
 

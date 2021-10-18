@@ -1,4 +1,6 @@
 <?php
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 function ajax_check_greenfield_api_work()
 {
 
@@ -27,7 +29,6 @@ function ajax_check_greenfield_api_work()
         'timeout' => 10
     );
     $url = "{$server_url}/api/v1/api-keys/current";
-
     $response_view = wp_remote_request($url, $args_view);
 
     $response_create = wp_remote_request($url, $args_create);
@@ -103,8 +104,8 @@ function createShortcode()
     global $wpdb;
     check_ajax_referer('shortcode-security-nonce', 'nonce_ajax');
     $id = sanitize_text_field($_POST['id']) ?? null;
-    $name = BTCPayWall_Admin::extractName($_POST['dimension'])['name'];
-    $type = BTCPayWall_Admin::extractName($_POST['dimension'])['type'];
+    $name = extractName($_POST['dimension'])['name'];
+    $type = extractName($_POST['dimension'])['type'];
     $dimension = sanitize_text_field($_POST['dimension']) ?? "520x600";
 
     $background = sanitize_text_field($_POST['background']);
@@ -161,8 +162,61 @@ function createShortcode()
     $inactive_color = sanitize_hex_color_no_hash($_POST['inactive_color']);
     $step1 = sanitize_text_field($_POST['step1']);
     $step2 = sanitize_text_field($_POST['step2']);
-    $row = null;
-    $table_name = $wpdb->prefix . 'btc_forms';
+    //$row = null;
+    $data = array(
+        'time' => current_time('mysql'),
+        'name' => $name,
+        'form_name' => $form_name,
+        'dimension' => $dimension,
+        'background' => $background,
+        'background_color' => $background_color,
+        'hf_background'    => $hf_color,
+        'logo'    => $logo,
+        'title_text' => $title_text,
+        'title_text_color' => $title_text_color,
+        'description_text'  => $description_text,
+        'description_text_color' => $description_text_color,
+        'tipping_text'    => $tipping_text,
+        'tipping_text_color'    => $tipping_text_color,
+        'redirect'    =>    $redirect,
+        'currency'    => $currency,
+        'input_background'    => $input_background,
+        'button_text'    => $button_text,
+        'button_text_color'    => $button_text_color,
+        'button_color'    => $button_color,
+        'value1_enabled' => $value1_enabled,
+        'value1_amount'    => $value1_amount,
+        'value1_currency'    => $value1_currency,
+        'value1_icon'    => $value1_icon,
+        'value2_enabled' => $value2_enabled,
+        'value2_amount'    => $value2_amount,
+        'value2_currency'    => $value2_currency,
+        'value2_icon'    => $value2_icon,
+        'value3_enabled' => $value3_enabled,
+        'value3_amount'    => $value3_amount,
+        'value3_currency'    => $value3_currency,
+        'value3_icon'    => $value3_icon,
+        'collect_name'    => $collect_name,
+        'mandatory_name'    => $mandatory_name,
+        'collect_email'    => $collect_email,
+        'mandatory_email'    => $mandatory_email,
+        'collect_address'    => $collect_address,
+        'mandatory_address'    => $mandatory_address,
+        'collect_phone'    => $collect_phone,
+        'mandatory_phone'    => $mandatory_phone,
+        'collect_message'    => $collect_message,
+        'mandatory_message'    => $mandatory_message,
+        'free_input'    => $free_input,
+        'show_icon'        => $show_icon,
+        'step1'            => $step1,
+        'step2'            => $step2,
+        'active_color'    => $active_color,
+        'inactive_color'    => $inactive_color,
+    );
+    $row = new BTCPayWall_DB_Donation_Forms();
+    $row->add($data);
+    var_dump($row);
+    /*$table_name = $wpdb->prefix . 'btc_forms';
     if (empty($id)) {
         $row = $wpdb->insert(
             $table_name,
@@ -272,7 +326,7 @@ function createShortcode()
             ),
             array('id' => $id)
         );
-    }
+    }*/
 
 
     if ($row) {

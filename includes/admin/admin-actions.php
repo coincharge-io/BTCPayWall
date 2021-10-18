@@ -1,5 +1,6 @@
 <?php
-
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 
 function add_my_media_button()
 {

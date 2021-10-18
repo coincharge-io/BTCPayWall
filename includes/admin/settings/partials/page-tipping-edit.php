@@ -1,7 +1,7 @@
 <?php
 global $wpdb;
 $id = $_GET['id'];
-$table_name = "{$wpdb->prefix}btc_forms";
+$table_name = "{$wpdb->prefix}btcpaywall_forms";
 $result = $wpdb->get_results(
     $wpdb->prepare("SELECT * FROM $table_name WHERE id=%d", $id),
     ARRAY_A

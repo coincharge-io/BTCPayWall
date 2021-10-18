@@ -2,6 +2,13 @@
   'use strict'
 
   $(document).ready(function () {
+    $('#btcpw_general_settings_duration_type').change(function () {
+      if ($(this).val() === 'unlimited' || $(this).val() === 'onetime') {
+        $('#btcpw_general_settings_duration').prop('disabled', true)
+      } else {
+        $('#btcpw_general_settings_duration').prop('disabled', false)
+      }
+    })
     $('.btcpw_pay_per_post_button_color').iris({
       defaultColor: true,
 

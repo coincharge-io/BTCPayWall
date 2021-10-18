@@ -18,13 +18,13 @@ $preview_description_color = get_option('btcpw_pay_per_file_preview_description_
 $default_text = get_option('btcpw_pay_per_file_title');
 $default_button = get_option('btcpw_pay_per_file_button');
 $default_info = get_option('btcpw_pay_per_file_info');
-$used_currency = get_option('btcpw_pay_per_view_currency');
-$supported_currencies = BTCPayWall_Admin::CURRENCIES;
+$used_currency = get_option('btcpw_pay_per_file_currency');
+$supported_currencies = BTCPayWall::CURRENCIES;
 $default_price = get_option('btcpw_pay_per_view_price');
 $default_duration = get_option('btcpw_pay_per_view_duration');
 $default_duration_type = get_option('btcpw_pay_per_view_duration_type');
-$supported_durations = BTCPayWall_Admin::DURATIONS;
-$supported_btc_format = BTCPayWall_Admin::BTC_FORMAT;
+$supported_durations = BTCPayWall::DURATIONS;
+$supported_btc_format = BTCPayWall::BTC_FORMAT;
 $used_format = get_option("btcpw_pay_per_view_btc_format");
 $disabled_field = ($default_duration_type === 'unlimited') || ($default_duration_type === 'onetime');
 $disable = $disabled_field ? 'disabled' : '';
@@ -289,7 +289,7 @@ $disable = $disabled_field ? 'disabled' : '';
             </div>
             <div class="btcpw_pay__preview_preview pay_per_file">
                 <div class="btcpw_pay__preview_preview preview_img">
-                    <img src="<?php echo BTCPAYWALL_BASE_URL . 'public/img/file_preview.png'; ?>" alt="Video preview">
+                    <img src="<?php echo BTCPAYWALL_PLUGIN_URL . 'public/img/file_preview.png'; ?>" alt="Video preview">
                 </div>
                 <div class="btcpw_pay__preview_preview preview_description">
                     <h3>Untitled</h3>

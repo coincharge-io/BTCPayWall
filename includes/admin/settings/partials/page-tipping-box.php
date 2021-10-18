@@ -6,7 +6,7 @@ $result = $wpdb->get_results(
     $wpdb->prepare("SELECT * FROM $table_name WHERE id=%d", $id),
     ARRAY_A
 );
-$supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
+$supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
 $dimensions = ['250x300', '300x300'];
 $used_currency = $result[0]['currency'] ?? 'SATS';
 $used_dimension = $result[0]['dimension'] ?? '250x300';
@@ -34,7 +34,7 @@ $image = array(
 );
 $logo = wp_get_attachment_image_src($image['logo']);
 $background = wp_get_attachment_image_src($image['background']);
-$shortcode = !empty($result[0]) ? BTCPayWall_Admin::outputShortcodeAttributes($result[0]['name'], $result[0]['id']) : '';
+$shortcode = !empty($result[0]) ? outputShortcodeAttributes($result[0]['name'], $result[0]['id']) : '';
 $id = $result[0]['id'] ?? null;
 ?>
 

@@ -1,16 +1,16 @@
 <?php
 
 $used_currency = get_option('btcpw_default_currency');
-$supported_currencies = BTCPayWall_Admin::CURRENCIES;
+$supported_currencies = BTCPayWall::CURRENCIES;
 $default_price = get_option('btcpw_default_price');
 $default_duration = get_option('btcpw_default_duration');
 $default_duration_type = get_option('btcpw_default_duration_type');
 $default_text = get_option('btcpw_default_payblock_text');
 $default_button = get_option('btcpw_default_payblock_button');
 $default_info = get_option('btcpw_default_payblock_info');
-$supported_durations = BTCPayWall_Admin::DURATIONS;
+$supported_durations = BTCPayWall::DURATIONS;
 $used_format = get_option("btcpw_default_btc_format");
-$supported_btc_format = BTCPayWall_Admin::BTC_FORMAT;
+$supported_btc_format = BTCPayWall::BTC_FORMAT;
 $btcpay_server_url = get_option('btcpw_btcpay_server_url');
 $btcpay_auth_key_view = get_option('btcpw_btcpay_auth_key_view');
 $btcpay_auth_key_create = get_option('btcpw_btcpay_auth_key_create');

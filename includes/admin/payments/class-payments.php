@@ -1,7 +1,11 @@
 <?php
+
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 if (!class_exists('WP_List_Table')) {
     require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
 }
+
 class Payments_Table extends WP_List_Table
 {
     public $items;
@@ -9,8 +13,8 @@ class Payments_Table extends WP_List_Table
     public function __construct()
     {
         parent::__construct([
-            'singular' => __('Invoice', 'sd'),
-            'plural'   => __('Invoices', 'sd'),
+            'singular' => __('Payment', 'sd'),
+            'plural'   => __('Payments', 'sd'),
             'ajax'     => true
         ]);
     }
@@ -150,17 +154,7 @@ class Payments_Table extends WP_List_Table
     <?php
     }
 
-    /**
-     * Generates content for a single row of the table.
-     *
-     * @param object $item The current item.
-     */
-    /* public function single_row($item)
-    {
-        echo '<tr>';
-        $this->single_row_columns($item);
-        echo '</tr>';
-    } */
+
 
     public function display()
     {

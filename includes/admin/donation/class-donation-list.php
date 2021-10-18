@@ -1,8 +1,10 @@
 <?php
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 if (!class_exists('WP_List_Table')) {
     require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
 }
-class Donation_List_Table extends WP_List_Table
+class Donation_Forms_Table extends WP_List_Table
 {
     public $items;
     public function __construct()
@@ -63,7 +65,7 @@ class Donation_List_Table extends WP_List_Table
     {
         global $wpdb;
 
-        $sql = "SELECT COUNT(*) FROM {$wpdb->prefix}btc_forms";
+        $sql = "SELECT COUNT(*) FROM {$wpdb->prefix}btcpw_forms";
 
         return $wpdb->get_var($sql);
     }
@@ -233,7 +235,7 @@ class Donation_List_Table extends WP_List_Table
      */
     protected function column_default($item, $column_name)
     {
-        $shortcode = BTCPayWall_Admin::outputShortcodeAttributes(BTCPayWall_Admin::extractName($item['dimension'])['name'], $item['id']);
+        $shortcode = outputShortcodeAttributes(extractName($item['dimension'])['name'], $item['id']);
         switch ($column_name) {
             case 'cb':
                 return esc_html($item['cb']);
@@ -321,4 +323,4 @@ class Donation_List_Table extends WP_List_Table
 <?php
     }
 }
-new Donation_List_Table();
+new Donation_Forms_Table();

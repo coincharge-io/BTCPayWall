@@ -1,5 +1,6 @@
 <?php
-
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 function startsWith($string, $startString)
 {
     $len = strlen($startString);

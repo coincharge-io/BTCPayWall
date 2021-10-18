@@ -1,5 +1,5 @@
 <?php
-$supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
+$supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
 global $wpdb;
 $id = $_GET['id'] ?? null;
 $table_name = "{$wpdb->prefix}btc_forms";
@@ -8,7 +8,7 @@ $result = $wpdb->get_results(
     ARRAY_A
 );
 $predefined_enabled = $result[0]['free_input'] ?? true;
-$supported_currencies = BTCPayWall_Admin::TIPPING_CURRENCIES;
+$supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
 $used_currency = $result[0]['currency'] ?? 'SATS';
 $redirect = $result[0]['redirect'] ?? '';
 $text = array(
@@ -61,19 +61,19 @@ $fixed_amount = array(
     'value1' => array(
         'enabled' => $result[0]['value1_enabled'] ?? true,
         'currency' => $result[0]['value1_currency'] ?? 'SATS',
-        'amount' => !empty($result[0]['value1_amount']) ? BTCPayWall_Admin::roundAmount($used_currency, $result[0]['value1_amount']) : 1000,
+        'amount' => !empty($result[0]['value1_amount']) ? roundAmount($used_currency, $result[0]['value1_amount']) : 1000,
         'icon' => $result[0]['value1_icon'] ?? 'fas fa-coffee'
     ),
     'value2' => array(
         'enabled' => $result[0]['value2_enabled'] ?? true,
         'currency' => $result[0]['value2_currency'] ?? 'SATS',
-        'amount' => !empty($result[0]['value2_amount']) ? BTCPayWall_Admin::roundAmount($used_currency, $result[0]['value2_amount']) : 2000,
+        'amount' => !empty($result[0]['value2_amount']) ? roundAmount($used_currency, $result[0]['value2_amount']) : 2000,
         'icon' => $result[0]['value2_icon'] ?? 'fa fa-beer'
     ),
     'value3' => array(
         'enabled' => $result[0]['value3_enabled'] ?? true,
         'currency' => $result[0]['value3_currency'] ?? 'SATS',
-        'amount' => !empty($result[0]['value3_amount']) ? BTCPayWall_Admin::roundAmount($used_currency, $result[0]['value3_amount']) : 3000,
+        'amount' => !empty($result[0]['value3_amount']) ? roundAmount($used_currency, $result[0]['value3_amount']) : 3000,
         'icon' => $result[0]['value3_icon'] ?? 'fas fa-cocktail'
     ),
 );
@@ -81,7 +81,7 @@ $predefined_enabled = $result[0]['free_input'] ?? true;
 $logo = wp_get_attachment_image_src($image['logo']);
 $background = wp_get_attachment_image_src($image['background']);
 $show_icon = $result[0]['show_icon'] ?? true;
-$shortcode = !empty($result[0]) ? BTCPayWall_Admin::outputShortcodeAttributes($result[0]['name'], $result[0]['id']) : '';
+$shortcode = !empty($result[0]) ? outputShortcodeAttributes($result[0]['name'], $result[0]['id']) : '';
 $id = $result[0]['id'] ?? null;
 //TODO class_Exists
 

@@ -19,12 +19,12 @@ $default_info = get_option('btcpw_pay_per_post_info');
 
 
 $used_currency = get_option('btcpw_pay_per_post_currency');
-$supported_currencies = BTCPayWall_Admin::CURRENCIES;
+$supported_currencies = BTCPayWall::CURRENCIES;
 $default_price = get_option('btcpw_pay_per_post_price');
 $default_duration = get_option('btcpw_pay_per_post_duration');
 $default_duration_type = get_option('btcpw_pay_per_post_duration_type');
-$supported_durations = BTCPayWall_Admin::DURATIONS;
-$supported_btc_format = BTCPayWall_Admin::BTC_FORMAT;
+$supported_durations = BTCPayWall::DURATIONS;
+$supported_btc_format = BTCPayWall::BTC_FORMAT;
 $used_format = get_option("btcpw_pay_per_post_btc_format");
 $disabled_field = ($default_duration_type === 'unlimited') || ($default_duration_type === 'onetime');
 $disable = $disabled_field ? 'disabled' : '';

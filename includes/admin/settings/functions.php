@@ -71,13 +71,18 @@ function sanitize_boolean($value)
 
     return (isset($value) ? true : false);
 }
- function render_edit_page()
-	{
-		include 'partials/page-tipping-edit.php';
-	}
+function render_general_settings_page()
+{
+    include 'partials/page-general-settings.php';
+}
+function render_edit_page()
+{
+    include 'partials/page-tipping-edit.php';
+}
 
-	
-	 function render_new_form()
-	{
-		include 'partials/page-add-form.php';
-	}
+
+function render_new_form()
+{
+    include 'partials/page-add-form.php';
+}
+

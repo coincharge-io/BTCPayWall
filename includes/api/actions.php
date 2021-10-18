@@ -1,5 +1,6 @@
 <?php
-
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 function register_shortcode_list()
 {
     register_rest_route(

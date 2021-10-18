@@ -1,8 +1,9 @@
 <?php
-function render_invoices_page()
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
+function render_payments_page()
 {
-    //include 'partials/page-invoices.php';
-    require_once __DIR__ . '/classes/class-payments.php';
+    require_once __DIR__ . '/class-payments.php';
     $table = new Payments_Table();
 
 
