@@ -16,6 +16,114 @@ class BTCPayWall_DB_Donation_Forms extends BTCPayWall_DB
 
         parent::__construct();
     }
+    public function get_columns()
+    {
+        return array(
+            'id' => '%d',
+            'time' => '%s',
+            'name' => '%s',
+            'form_name' => '%s',
+            'dimension' => '%s',
+            'redirect' => '%s',
+            'title_text' => '%s',
+            'description_text' => '%s',
+            'button_text' => '%s',
+            'tipping_text' => '%s',
+            'title_text_color' => '%s',
+            'description_text_color' => '%s',
+            'button_text_color' => '%s',
+            'button_color' => '%s',
+            'tipping_text_color' => '%s',
+            'background_color' => '%s',
+            'input_background' => '%s',
+            'hf_background' => '%s',
+            'active_color' => '%s',
+            'inactive_color' => '%s',
+            'logo' => '%s',
+            'background' => '%s',
+            'collect_name' => '%d',
+            'mandatory_name' => '%d',
+            'collect_email' => '%d',
+            'mandatory_email' => '%d',
+            'collect_address' => '%d',
+            'mandatory_address' => '%d',
+            'collect_phone' => '%d',
+            'mandatory_phone' => '%d',
+            'collect_message' => '%d',
+            'mandatory_message' => '%d',
+            'value1_enabled' => '%d',
+            'value1_currency' => '%s',
+            'value1_amount' => '%d',
+            'value1_icon' => '%s',
+            'value2_enabled' => '%d',
+            'value2_currency' => '%s',
+            'value2_amount' => '%d',
+            'value2_icon' => '%s',
+            'value3_enabled' => '%d',
+            'value3_currency' => '%s',
+            'value3_amount' => '%d',
+            'value3_icon' => '%s',
+            'step1' => '%s',
+            'step2' => '%s',
+            'free_input' => '%d',
+            'show_icon' => '%d',
+            'currency' => '%s'
+        );
+    }
+
+    public function get_column_defaults()
+    {
+        return array(
+            'time' => date('Y-m-d H:i:s'),
+            'name' => '',
+            'form_name' => '',
+            'dimension' => '',
+            'redirect' => '',
+            'title_text' => '',
+            'description_text' => '',
+            'button_text' => '',
+            'tipping_text' => '',
+            'title_text_color' => '',
+            'description_text_color' => '',
+            'button_text_color' => '',
+            'button_color' => '',
+            'tipping_text_color' => '',
+            'background_color' => '',
+            'input_background' => '',
+            'hf_background' => '',
+            'active_color' => '',
+            'inactive_color' => '',
+            'logo' => '',
+            'background' => '',
+            'collect_name' => '',
+            'mandatory_name' => '',
+            'collect_email' => '',
+            'mandatory_email' => '',
+            'collect_address' => '',
+            'mandatory_address' => '',
+            'collect_phone' => '',
+            'mandatory_phone' => '',
+            'collect_message' => '',
+            'mandatory_message' => '',
+            'value1_enabled' => '',
+            'value1_currency' => '',
+            'value1_amount' => '',
+            'value1_icon' => '',
+            'value2_enabled' => '',
+            'value2_currency' => '',
+            'value2_amount' => '',
+            'value2_icon' => '',
+            'value3_enabled' => '',
+            'value3_currency' => '',
+            'value3_amount' => '',
+            'value3_icon' => '',
+            'step1' => '',
+            'step2' => '',
+            'free_input' => '',
+            'show_icon' => '',
+            'currency' => '',
+        );
+    }
     public function update($row_id, $data = array(), $where = '')
     {
 
@@ -31,10 +139,10 @@ class BTCPayWall_DB_Donation_Forms extends BTCPayWall_DB
         return $form_id;
     }
 
-    public function delete($_id = false)
+    public function delete($id = null)
     {
 
-        if (empty($_id)) {
+        if (empty($id)) {
             return false;
         }
         $form  = $this->get_form_by('id');
@@ -51,19 +159,12 @@ class BTCPayWall_DB_Donation_Forms extends BTCPayWall_DB
     public function add($data = array())
     {
 
-
         if (empty($data)) {
             return false;
         }
 
-
-
         $form = $this->get_form_by('id');
-
-        // update an existing donor.
         if ($form) {
-
-
 
             $this->update($form->id, $data);
 
@@ -81,8 +182,37 @@ class BTCPayWall_DB_Donation_Forms extends BTCPayWall_DB
         );
         return $row;
     }
+    public  function record_count()
+    {
+        global $wpdb;
+
+        $sql = "SELECT COUNT(*) FROM {$this->table_name}";
+
+        return $wpdb->get_var($sql);
+    }
+    public function get_forms($per_page = 5, $page_number = 1)
+    {
+
+        global $wpdb;
+
+        $sql = "SELECT * FROM {$this->table_name}";
+
+        if (!empty($_REQUEST['orderby'])) {
+            $sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
+            $sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
+        }
+
+        $sql .= " LIMIT $per_page";
+
+        $sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
+
+        $result = $wpdb->get_results($sql, 'ARRAY_A');
+
+        return $result;
+    }
     public function create_table()
     {
+        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
         $sql = "CREATE TABLE IF NOT EXISTS {$this->table_name}(
 			  id bigint(20) NOT NULL AUTO_INCREMENT,

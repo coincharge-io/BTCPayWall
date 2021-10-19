@@ -214,8 +214,11 @@ function createShortcode()
         'inactive_color'    => $inactive_color,
     );
     $row = new BTCPayWall_DB_Donation_Forms();
-    $row->add($data);
-    var_dump($row);
+    if (empty($id)) {
+        $row->insert($data);
+    } else {
+        $row->update($id, $data);
+    }
     /*$table_name = $wpdb->prefix . 'btc_forms';
     if (empty($id)) {
         $row = $wpdb->insert(

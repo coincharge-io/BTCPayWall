@@ -63,11 +63,13 @@ class Donation_Forms_Table extends WP_List_Table
      */
     public static function record_count()
     {
-        global $wpdb;
+        /* global $wpdb;
 
         $sql = "SELECT COUNT(*) FROM {$wpdb->prefix}btcpw_forms";
 
-        return $wpdb->get_var($sql);
+        return $wpdb->get_var($sql); */
+        $shortcodes = new BTCPayWall_DB_Donation_Forms();
+        return $shortcodes->record_count();
     }
 
     /**
@@ -81,7 +83,7 @@ class Donation_Forms_Table extends WP_List_Table
     public static function get_shortcodes($per_page = 5, $page_number = 1)
     {
 
-        global $wpdb;
+        /* global $wpdb;
 
         $sql = "SELECT * FROM {$wpdb->prefix}btc_forms";
 
@@ -96,7 +98,9 @@ class Donation_Forms_Table extends WP_List_Table
 
         $result = $wpdb->get_results($sql, 'ARRAY_A');
 
-        return $result;
+        return $result; */
+        $shortcodes = new BTCPayWall_DB_Donation_Forms();
+        return $shortcodes->get_forms();
     }
     /**
      * Delete a shortcode record.
@@ -105,13 +109,15 @@ class Donation_Forms_Table extends WP_List_Table
      */
     public static function delete_shortcode($id)
     {
-        global $wpdb;
+        /* global $wpdb;
 
         $wpdb->delete(
             "{$wpdb->prefix}btc_forms",
             ['id' => $id],
             ['%d']
-        );
+        ); */
+        $shortcodes = new BTCPayWall_DB_Donation_Forms();
+        return $shortcodes->delete($id);
     }
 
     public function process_bulk_action()
