@@ -4,39 +4,48 @@
 if (!defined('ABSPATH')) exit;
 
 
-class BTCPayWall_DB_Customers extends BTCPayWall_DB
+class BTCPayWall_DB_Donations extends BTCPayWall_DB
 {
     public function __construct()
     {
         global $wpdb;
 
-        $this->table_name = "{$wpdb->prefix}btcpaywall_customers";
+        $this->table_name = "{$wpdb->prefix}btcpaywall_donations";
         $this->primary_key = 'id';
         $this->version     = '1.0';
 
         parent::__construct();
     }
-
     public function get_columns()
     {
         return array(
             'id' => '%d',
-            'full_name' => '%s',
-            'email' => '%s',
-            'address' => '%s',
-            'phone' => '%s',
-            'message' => '%s'
+            'donation_id' => '%s',
+            'donor_id' => '%d',
+            'page_title' => '%s',
+            'type' => '%s',
+            'currency' => '%s',
+            'amount' => '%f',
+            'status' => '%s',
+            'gateway' => '%s',
+            'payment_method' => '%s',
+            'date_created'   => '%s'
         );
     }
 
     public function get_column_defaults()
     {
         return array(
-            'full_name' => 'Anonymous',
-            'email' => '',
-            'address' => '',
-            'phone' => '',
-            'message' => ''
+            'donation_id' => '',
+            'donor_id' => 0,
+            'page_title' => '',
+            'type' => '',
+            'currency' => '',
+            'amount' => '',
+            'status' => 'New',
+            'gateway' => '',
+            'payment_method' => '',
+            'date_created'    => date('Y-m-d H:i:s'),
         );
     }
     public function update($row_id, $data = array(), $where = '')
@@ -49,9 +58,9 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
 
     public function insert($data, $type = '')
     {
-        $customer_id = parent::insert($data, $type);
+        $form_id = parent::insert($data, $type);
 
-        return $customer_id;
+        return $form_id;
     }
 
     public function delete($id = null)
@@ -60,13 +69,13 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
         if (empty($id)) {
             return false;
         }
-        $customer  = $this->get_customer_by('id');
+        $donation  = $this->get_donation_by('id');
 
-        if ($customer->id > 0) {
+        if ($donation->id > 0) {
 
             global $wpdb;
 
-            return $wpdb->delete($this->table_name, array('id' => $customer->id), array('%d'));
+            return $wpdb->delete($this->table_name, array('id' => $donation->id), array('%d'));
         } else {
             return false;
         }
@@ -78,18 +87,18 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
             return false;
         }
 
-        $customer = $this->get_customer_by('id');
-        if ($customer) {
+        $donation = $this->get_donation_by('id');
+        if ($donation) {
 
-            $this->update($customer->id, $data);
+            $this->update($donation->id, $data);
 
-            return $customer->id;
+            return $donation->id;
         } else {
 
-            return $this->insert($data, 'customer');
+            return $this->insert($data, 'donation');
         }
     }
-    public function get_customer_by($id)
+    public function get_donation_by($id)
     {
         global $wpdb;
         $row = $wpdb->get_row(
@@ -97,7 +106,7 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
         );
         return $row;
     }
-    public  function customer_count()
+    public  function record_count()
     {
         global $wpdb;
 
@@ -105,17 +114,22 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
 
         return $wpdb->get_var($sql);
     }
-    public function get_customers($per_page = 5, $page_number = 1)
+    public function get_donations($per_page = 5, $page_number = 1)
     {
+
         global $wpdb;
+
         $sql = "SELECT * FROM {$this->table_name}";
 
         if (!empty($_REQUEST['orderby'])) {
             $sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
             $sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
         }
+
         $sql .= " LIMIT $per_page";
+
         $sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
+
         $result = $wpdb->get_results($sql, 'ARRAY_A');
 
         return $result;
@@ -125,14 +139,19 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
         $sql = "CREATE TABLE IF NOT EXISTS {$this->table_name}(
-			  id bigint(20) NOT NULL AUTO_INCREMENT,
-			  full_name TINYTEXT,
-              email TINYTEXT,
-              address TINYTEXT,
-              phone TINYTEXT,
-              message TEXT,
-			  PRIMARY KEY  (id)
-              UNIQUE KEY email (email)) CHARACTER SET utf8 COLLATE utf8_general_ci;";
+            id BIGINT(20) NOT NULL AUTO_INCREMENT,
+            donation_id BIGINT(20) NOT NULL,
+            donor_id BIGINT(20) NOT NULL,
+            page_title TINYTEXT,
+            type TINYTEXT,
+            currency CHAR(4),
+            amount DECIMAL(16,8),
+            status TINYTEXT,
+            gateway TINYTEXT,
+            payment_method TINYTEXT,
+            PRIMARY KEY  (id)
+            KEY donor (donor_id)
+          ) CHARACTER SET utf8 COLLATE utf8_general_ci;";
         dbDelta($sql);
         update_option($this->table_name . '_db_version', $this->version, false);
     }

@@ -131,7 +131,8 @@ class BTCPayWall_DB_Donors extends BTCPayWall_DB
               address TINYTEXT,
               phone TINYTEXT,
               message TEXT,
-			  PRIMARY KEY  (id)) CHARACTER SET utf8 COLLATE utf8_general_ci;";
+			  PRIMARY KEY  (id)
+              UNIQUE KEY email (email)) CHARACTER SET utf8 COLLATE utf8_general_ci;";
         dbDelta($sql);
         update_option($this->table_name . '_db_version', $this->version, false);
     }
