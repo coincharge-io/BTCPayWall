@@ -53,15 +53,15 @@ class BTCPayWall_DB_Donation_Forms extends BTCPayWall_DB
             'mandatory_message' => '%d',
             'value1_enabled' => '%d',
             'value1_currency' => '%s',
-            'value1_amount' => '%d',
+            'value1_amount' => '%f',
             'value1_icon' => '%s',
             'value2_enabled' => '%d',
             'value2_currency' => '%s',
-            'value2_amount' => '%d',
+            'value2_amount' => '%f',
             'value2_icon' => '%s',
             'value3_enabled' => '%d',
             'value3_currency' => '%s',
-            'value3_amount' => '%d',
+            'value3_amount' => '%f',
             'value3_icon' => '%s',
             'step1' => '%s',
             'step2' => '%s',
@@ -145,7 +145,7 @@ class BTCPayWall_DB_Donation_Forms extends BTCPayWall_DB
         if (empty($id)) {
             return false;
         }
-        $form  = $this->get_form_by('id');
+        $form  = $this->get_form_by($id);
 
         if ($form->id > 0) {
 
@@ -163,7 +163,8 @@ class BTCPayWall_DB_Donation_Forms extends BTCPayWall_DB
             return false;
         }
 
-        $form = $this->get_form_by('id');
+        $form = $this->get_form_by($data['id']);
+
         if ($form) {
 
             $this->update($form->id, $data);
@@ -178,7 +179,7 @@ class BTCPayWall_DB_Donation_Forms extends BTCPayWall_DB
     {
         global $wpdb;
         $row = $wpdb->get_row(
-            $wpdb->prepare("SELECT * FROM {$this->table_name} WHERE id = %s LIMIT 1", $id)
+            $wpdb->prepare("SELECT * FROM {$this->table_name} WHERE id = %d LIMIT 1", $id)
         );
         return $row;
     }
@@ -190,6 +191,7 @@ class BTCPayWall_DB_Donation_Forms extends BTCPayWall_DB
 
         return $wpdb->get_var($sql);
     }
+
     public function get_forms($per_page = 5, $page_number = 1)
     {
 
@@ -212,7 +214,9 @@ class BTCPayWall_DB_Donation_Forms extends BTCPayWall_DB
     }
     public function create_table()
     {
-        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+        global $wpdb;
+
+        $charset_collate = $wpdb->get_charset_collate();
 
         $sql = "CREATE TABLE IF NOT EXISTS {$this->table_name}(
 			  id bigint(20) NOT NULL AUTO_INCREMENT,
@@ -264,7 +268,10 @@ class BTCPayWall_DB_Donation_Forms extends BTCPayWall_DB
 			  free_input BOOLEAN,
 			  show_icon BOOLEAN,
 			  currency CHAR(4),
-			  PRIMARY KEY  (id)) CHARACTER SET utf8 COLLATE utf8_general_ci;";
+			  PRIMARY KEY  (id)) {$charset_collate};";
+
+        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
         dbDelta($sql);
         update_option($this->table_name . '_db_version', $this->version, false);
     }

@@ -122,17 +122,22 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
     }
     public function create_table()
     {
-        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+        global $wpdb;
+
+        $charset_collate = $wpdb->get_charset_collate();
 
         $sql = "CREATE TABLE IF NOT EXISTS {$this->table_name}(
 			  id bigint(20) NOT NULL AUTO_INCREMENT,
 			  full_name TINYTEXT,
-              email TINYTEXT,
+              email varchar(255),
               address TINYTEXT,
               phone TINYTEXT,
               message TEXT,
-			  PRIMARY KEY  (id)
-              UNIQUE KEY email (email)) CHARACTER SET utf8 COLLATE utf8_general_ci;";
+			  PRIMARY KEY  (id),
+              UNIQUE KEY email (email)) {$charset_collate};";
+
+        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
         dbDelta($sql);
         update_option($this->table_name . '_db_version', $this->version, false);
     }

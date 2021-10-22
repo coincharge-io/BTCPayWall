@@ -104,13 +104,14 @@ function createShortcode()
     global $wpdb;
     check_ajax_referer('shortcode-security-nonce', 'nonce_ajax');
     $id = sanitize_text_field($_POST['id']) ?? null;
+    /* $id = sanitize_text_field($_POST['id']) ?? null;
     $name = extractName($_POST['dimension'])['name'];
     $type = extractName($_POST['dimension'])['type'];
     $dimension = sanitize_text_field($_POST['dimension']) ?? "520x600";
 
     $background = sanitize_text_field($_POST['background']);
     $background_color = sanitize_hex_color_no_hash($_POST['background_color']);
-    $hf_color = sanitize_hex_color_no_hash($_POST['hf_color']);
+    $hf_color = sanitize_hex_color_no_hash($_POST['hf_background']);
     $logo = sanitize_text_field($_POST['logo']);
     $form_name = sanitize_text_field($_POST['form_name']);
     $title_text = sanitize_text_field($_POST['title_text']);
@@ -161,9 +162,9 @@ function createShortcode()
     $active_color = sanitize_hex_color_no_hash($_POST['active_color']);
     $inactive_color = sanitize_hex_color_no_hash($_POST['inactive_color']);
     $step1 = sanitize_text_field($_POST['step1']);
-    $step2 = sanitize_text_field($_POST['step2']);
+    $step2 = sanitize_text_field($_POST['step2']); */
     //$row = null;
-    $data = array(
+    /*$data = array(
         'time' => current_time('mysql'),
         'name' => $name,
         'form_name' => $form_name,
@@ -212,13 +213,16 @@ function createShortcode()
         'step2'            => $step2,
         'active_color'    => $active_color,
         'inactive_color'    => $inactive_color,
-    );
-    $row = new BTCPayWall_DB_Donation_Forms();
-    if (empty($id)) {
+    );*/
+    $row = new BTCPayWall_Donation_Form();
+
+    $row->create($_POST);
+
+    /* if (empty($id)) {
         $row->insert($data);
     } else {
         $row->update($id, $data);
-    }
+    } */
     /*$table_name = $wpdb->prefix . 'btc_forms';
     if (empty($id)) {
         $row = $wpdb->insert(
@@ -333,7 +337,7 @@ function createShortcode()
 
 
     if ($row) {
-        wp_send_json_success(array('res' => true, 'data' => array('type' => $type, 'id' => $wpdb->insert_id)));
+        wp_send_json_success(array('res' => true, 'data' => array('id' => $row->id)));
     } else {
         wp_send_json_error(array('res' => false, 'message' => __('Something went wrong. Please try again later.')));
     }

@@ -1,88 +1,85 @@
 <?php
 $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
-global $wpdb;
 $id = $_GET['id'] ?? null;
-$table_name = "{$wpdb->prefix}btc_forms";
-$result = $wpdb->get_results(
-    $wpdb->prepare("SELECT * FROM $table_name WHERE id=%d", $id),
-    ARRAY_A
-);
-$predefined_enabled = $result[0]['free_input'] ?? true;
+$form = new BTCPayWall_Donation_Form($id);
+$result = json_decode(json_encode($form), true);
+
+$predefined_enabled = $result['free_input'] ?? true;
 $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
-$used_currency = $result[0]['currency'] ?? 'SATS';
-$redirect = $result[0]['redirect'] ?? '';
+$used_currency = $result['currency'] ?? 'SATS';
+$redirect = $result['redirect'] ?? '';
 $text = array(
-    'title' => $result[0]['title_text'] ?? 'Support my work',
-    'info' => $result[0]['tipping_text'] ?? 'Enter Tipping Amount',
-    'button' => $result[0]['button_text'] ?? 'Tipping now',
-    'step1' => $result[0]['step1'] ?? 'Pledge',
-    'step2' => $result[0]['step1'] ?? 'Info',
+    'title' => $result['title_text'] ?? 'Support my work',
+    'info' => $result['tipping_text'] ?? 'Enter Tipping Amount',
+    'button' => $result['button_text'] ?? 'Tipping now',
+    'step1' => $result['step1'] ?? 'Pledge',
+    'step2' => $result['step1'] ?? 'Info',
 );
-$form_name = $result[0]['form_name'] ?? $text['title'];
+$form_name = $result['form_name'] ?? $text['title'];
 $collect = array(
     'name' => array(
-        'collect' => $result[0]['collect_name'] ?? true,
-        'mandatory' => $result[0]['mandatory_name'] ?? false
+        'collect' => $result['collect_name'] ?? true,
+        'mandatory' => $result['mandatory_name'] ?? false
     ),
     'email' => array(
-        'collect' => $result[0]['collect_email'] ?? true,
-        'mandatory' => $result[0]['mandatory_email'] ?? false
+        'collect' => $result['collect_email'] ?? true,
+        'mandatory' => $result['mandatory_email'] ?? false
     ),
     'address' => array(
-        'collect' => $result[0]['collect_address'] ?? true,
-        'mandatory' => $result[0]['mandatory_address'] ?? false
+        'collect' => $result['collect_address'] ?? true,
+        'mandatory' => $result['mandatory_address'] ?? false
     ),
     'phone' => array(
-        'collect' => $result[0]['collect_phone'] ?? true,
-        'mandatory' => $result[0]['mandatory_phone'] ?? false
+        'collect' => $result['collect_phone'] ?? true,
+        'mandatory' => $result['mandatory_phone'] ?? false
     ),
     'message' => array(
-        'collect' => $result[0]['collect_message'] ?? true,
-        'mandatory' => $result[0]['mandatory_message'] ?? false
+        'collect' => $result['collect_message'] ?? true,
+        'mandatory' => $result['mandatory_message'] ?? false
     ),
 
 );
 $color = array(
-    'button_text' => !empty($result[0]['button_text_color']) ? '#' . $result[0]['button_text_color'] : '#FFFFFF',
-    'background' => !empty($result[0]['background_color']) ? '#' . $result[0]['background_color'] : '#E6E6E6',
-    'hf_background' => !empty($result[0]['hf_background']) ? '#' . $result[0]['hf_background'] : '#1d5aa3',
-    'button' => !empty($result[0]['button_color']) ? '#' . $result[0]['button_color'] : '#FE642E',
-    'title' => !empty($result[0]['title_text_color']) ? '#' . $result[0]['title_text_color'] : '#ffffff',
-    'tipping' => !empty($result[0]['tipping_text_color']) ? '#' . $result[0]['tipping_text_color'] : '#000000',
-    'input_background' => !empty($result[0]['input_background']) ? '#' . $result[0]['input_background'] : '#ffa500',
-    'active' => !empty($result[0]['active_color']) ? '#' . $result[0]['active_color'] : '#808080',
-    'inactive'  => !empty($result[0]['inactive_color']) ? '#' . $result[0]['inactive_color'] : '#D3D3D3',
+    'button_text' => !empty($result['button_text_color']) ? '#' . $result['button_text_color'] : '#FFFFFF',
+    'background' => !empty($result['background_color']) ? '#' . $result['background_color'] : '#E6E6E6',
+    'hf_background' => !empty($result['hf_background']) ? '#' . $result['hf_background'] : '#1d5aa3',
+    'button' => !empty($result['button_color']) ? '#' . $result['button_color'] : '#FE642E',
+    'title' => !empty($result['title_text_color']) ? '#' . $result['title_text_color'] : '#ffffff',
+    'tipping' => !empty($result['tipping_text_color']) ? '#' . $result['tipping_text_color'] : '#000000',
+    'input_background' => !empty($result['input_background']) ? '#' . $result['input_background'] : '#ffa500',
+    'active' => !empty($result['active_color']) ? '#' . $result['active_color'] : '#808080',
+    'inactive'  => !empty($result['inactive_color']) ? '#' . $result['inactive_color'] : '#D3D3D3',
 );
 $image = array(
-    'logo' => $result[0]['logo'] ?? '',
-    'background' => $result[0]['background'] ?? ''
+    'logo' => $result['logo'] ?? '',
+    'background' => $result['background'] ?? ''
 );
 $fixed_amount = array(
     'value1' => array(
-        'enabled' => $result[0]['value1_enabled'] ?? true,
-        'currency' => $result[0]['value1_currency'] ?? 'SATS',
-        'amount' => !empty($result[0]['value1_amount']) ? roundAmount($used_currency, $result[0]['value1_amount']) : 1000,
-        'icon' => $result[0]['value1_icon'] ?? 'fas fa-coffee'
+        'enabled' => $result['value1_enabled'] ?? true,
+        'currency' => $result['value1_currency'] ?? 'SATS',
+        'amount' => !empty($result['value1_amount']) ? roundAmount($used_currency, $result['value1_amount']) : 1000,
+        'icon' => $result['value1_icon'] ?? 'fas fa-coffee'
     ),
     'value2' => array(
-        'enabled' => $result[0]['value2_enabled'] ?? true,
-        'currency' => $result[0]['value2_currency'] ?? 'SATS',
-        'amount' => !empty($result[0]['value2_amount']) ? roundAmount($used_currency, $result[0]['value2_amount']) : 2000,
-        'icon' => $result[0]['value2_icon'] ?? 'fa fa-beer'
+        'enabled' => $result['value2_enabled'] ?? true,
+        'currency' => $result['value2_currency'] ?? 'SATS',
+        'amount' => !empty($result['value2_amount']) ? roundAmount($used_currency, $result['value2_amount']) : 2000,
+        'icon' => $result['value2_icon'] ?? 'fa fa-beer'
     ),
     'value3' => array(
-        'enabled' => $result[0]['value3_enabled'] ?? true,
-        'currency' => $result[0]['value3_currency'] ?? 'SATS',
-        'amount' => !empty($result[0]['value3_amount']) ? roundAmount($used_currency, $result[0]['value3_amount']) : 3000,
-        'icon' => $result[0]['value3_icon'] ?? 'fas fa-cocktail'
+        'enabled' => $result['value3_enabled'] ?? true,
+        'currency' => $result['value3_currency'] ?? 'SATS',
+        'amount' => !empty($result['value3_amount']) ? roundAmount($used_currency, $result['value3_amount']) : 3000,
+        'icon' => $result['value3_icon'] ?? 'fas fa-cocktail'
     ),
 );
-$predefined_enabled = $result[0]['free_input'] ?? true;
+$predefined_enabled = $result['free_input'] ?? true;
 $logo = wp_get_attachment_image_src($image['logo']);
 $background = wp_get_attachment_image_src($image['background']);
-$show_icon = $result[0]['show_icon'] ?? true;
-$shortcode = !empty($result[0]) ? outputShortcodeAttributes($result[0]['name'], $result[0]['id']) : '';
-$id = $result[0]['id'] ?? null;
+$show_icon = $result['show_icon'] ?? true;
+$shortcode = !empty($result) ? outputShortcodeAttributes($result['name'], $result['id']) : '';
+$id = $result['id'] ?? null;
 //TODO class_Exists
 
 ?>

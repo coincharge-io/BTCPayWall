@@ -30,7 +30,7 @@ class BTCPayWall_Payment
             return false;
         }
 
-        $payment = $this->db->get_payment_by('id', $payment_id);
+        $payment = $this->db->get_payment_by($payment_id);
 
         if (empty($payment) || !is_object($payment)) {
             return false;
@@ -71,14 +71,14 @@ class BTCPayWall_Payment
         }
 
 
-        $args = $this->sanitize_columns($data);
+        $data = $this->sanitize_columns($data);
 
         $created = false;
+        $create_or_update = $this->db->add($data);
+        if ($create_or_update) {
 
-        if ($this->db->add($data)) {
 
-
-            $payment = $this->db->get_payment_by('id', $args['id']);
+            $payment = $this->db->get_payment_by($create_or_update);
 
             $this->setup_payment($payment);
 
@@ -101,7 +101,7 @@ class BTCPayWall_Payment
 
         if ($this->db->update($this->id, $data)) {
 
-            $payment = $this->db->get_payment_by('id', $this->id);
+            $payment = $this->db->get_payment_by($this->id);
             $this->setup_payment($payment);
 
             $updated = true;

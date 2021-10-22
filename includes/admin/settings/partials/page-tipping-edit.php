@@ -1,14 +1,17 @@
 <?php
 global $wpdb;
 $id = $_GET['id'];
-$table_name = "{$wpdb->prefix}btcpaywall_forms";
+/* $table_name = "{$wpdb->prefix}btcpaywall_forms";
 $result = $wpdb->get_results(
     $wpdb->prepare("SELECT * FROM $table_name WHERE id=%d", $id),
     ARRAY_A
-);
+); */
+$form = new BTCPayWall_Donation_Form($id);
+$result = json_decode(json_encode($form), true);
+
 ?>
 <div class="btcpw_edit_shortcode">
-    <?php switch ($result[0]['name']):
+    <?php switch ($result['name']):
         case 'Tipping Banner Wide':
             require_once __DIR__ . '/page-tipping-banner-wide.php';
             break;

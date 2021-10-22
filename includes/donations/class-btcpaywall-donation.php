@@ -30,7 +30,7 @@ class BTCPayWall_Donation
             return false;
         }
 
-        $donation = $this->db->get_donation_by('id', $donation_id);
+        $donation = $this->db->get_donation_by($donation_id);
 
         if (empty($donation) || !is_object($donation)) {
             return false;
@@ -71,14 +71,14 @@ class BTCPayWall_Donation
         }
 
 
-        $args = $this->sanitize_columns($data);
+        $data = $this->sanitize_columns($data);
 
         $created = false;
+        $create_or_update = $this->db->add($data);
+        if ($create_or_update) {
 
-        if ($this->db->add($data)) {
 
-
-            $donation = $this->db->get_donation_by('id', $args['id']);
+            $donation = $this->db->get_donation_by($create_or_update);
 
             $this->setup_donation($donation);
 

@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) exit;
 if (!class_exists('BTCPayWall')) :
 
     /**
-     * BTCPyWall Class.
+     * BTCPayWall Class.
      *
      * @since 1.0
      */
@@ -52,6 +52,10 @@ if (!class_exists('BTCPayWall')) :
             'BTC',
         ];
         public $forms;
+        public $donors;
+        public $customers;
+        public $donations;
+        public $payments;
 
         public static function instance()
         {
@@ -62,33 +66,22 @@ if (!class_exists('BTCPayWall')) :
                 add_action('plugins_loaded', array(self::$instance, 'load_textdomain'));
 
                 self::$instance->includes();
+                self::$instance->donors = new BTCPayWall_DB_Donors();
+                self::$instance->customers = new BTCPayWall_DB_Customers();
+                self::$instance->payments = new BTCPayWall_DB_Payments();
+                self::$instance->donations = new BTCPayWall_DB_Donations();
                 self::$instance->forms = new BTCPayWall_DB_Donation_Forms();
             }
 
             return self::$instance;
         }
 
-        /**
-         * Throw error on object clone.
-         *
-         * The whole idea of the singleton design pattern is that there is a single
-         * object therefore, we don't want the object to be cloned.
-         *
-         * @since 1.6
-         * @access protected
-         * @return void
-         */
+
         public function __clone()
         {
         }
 
-        /**
-         * Disable unserializing of the class.
-         *
-         * @since 1.0
-         * @access protected
-         * @return void
-         */
+
         public function __wakeup()
         {
         }
@@ -138,26 +131,29 @@ if (!class_exists('BTCPayWall')) :
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/actions.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/ajax-functions.php';
 
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db.php';
-            //require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-edd-db-customers.php';
-
 
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/scripts.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/post-types.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/shortcodes.php';
 
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-customer.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-donor.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-form.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/donations/class-btcpaywall-donation.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/payments/class-btcpaywall-payment.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db.php';
+
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-customers.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-donors.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-payments.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-donations.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-donation-forms.php';
-
-
-
 
             if (is_admin()) {
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/settings/functions.php';
 
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-actions.php';
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-scripts.php';
-                //require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/payments/class-payments.php';
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/payments/view.php';
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/donation/view.php';
 
@@ -166,13 +162,6 @@ if (!class_exists('BTCPayWall')) :
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-ajax-functions.php';
 
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/widgets/functions.php';
-
-                /* require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/customers/customers.php';
-                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/customers/customer-functions.php';
-                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/customers/customer-actions.php';
-                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/downloads/metabox.php';*/
-                //require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/payments/actions.php';
-
             }
 
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/install.php';

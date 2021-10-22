@@ -596,7 +596,7 @@
           background_color: $(
             '#btcpw_tipping_box_background, #btcpw_tipping_banner_high_background, #btcpw_tipping_banner_wide_background,#btcpw_tipping_page_background'
           ).val(),
-          hf_color: $(
+          hf_background: $(
             '#btcpw_tipping_box_hf_background, #btcpw_tipping_hf_background, #btcpw_tipping_banner_wide_hf_background, #btcpw_tipping_banner_high_hf_background'
           ).val(),
           logo: $(

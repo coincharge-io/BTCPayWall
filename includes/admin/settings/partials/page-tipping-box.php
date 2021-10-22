@@ -1,41 +1,39 @@
 <?php
-global $wpdb;
 $id = $_GET['id'] ?? null;
-$table_name = "{$wpdb->prefix}btc_forms";
-$result = $wpdb->get_results(
-    $wpdb->prepare("SELECT * FROM $table_name WHERE id=%d", $id),
-    ARRAY_A
-);
+
+$form = new BTCPayWall_Donation_Form($id);
+$result = json_decode(json_encode($form), true);
+
 $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
 $dimensions = ['250x300', '300x300'];
-$used_currency = $result[0]['currency'] ?? 'SATS';
-$used_dimension = $result[0]['dimension'] ?? '250x300';
-$redirect = $result[0]['redirect'] ?? '';
+$used_currency = $result['currency'] ?? 'SATS';
+$used_dimension = $result['dimension'] ?? '250x300';
+$redirect = $result['redirect'] ?? '';
 $text = array(
-    'title' => $result[0]['title_text'] ?? 'Support my work',
-    'description' => $result[0]['description_text'] ?? '',
-    'info' => $result[0]['tipping_text'] ?? 'Enter Tipping Amount',
-    'button' => $result[0]['button_text'] ?? 'Tipping now',
+    'title' => $result['title_text'] ?? 'Support my work',
+    'description' => $result['description_text'] ?? '',
+    'info' => $result['tipping_text'] ?? 'Enter Tipping Amount',
+    'button' => $result['button_text'] ?? 'Tipping now',
 );
-$form_name = $result[0]['form_name'] ?? $text['title'];
+$form_name = $result['form_name'] ?? $text['title'];
 $color = array(
-    'button_text' => !empty($result[0]['button_text_color']) ? '#' . $result[0]['button_text_color'] : '#FFFFFF',
-    'background' => !empty($result[0]['background_color']) ? '#' . $result[0]['background_color'] : '#E6E6E6',
-    'hf_background' => !empty($result[0]['hf_background']) ? '#' . $result[0]['hf_background'] : '#1d5aa3',
-    'button' => !empty($result[0]['button_color']) ? '#' . $result[0]['button_color'] : '#FE642E',
-    'title' => !empty($result[0]['title_text_color']) ? '#' . $result[0]['title_text_color'] : '#ffffff',
-    'description' => !empty($result[0]['description_text_color']) ? '#' . $result[0]['description_text_color'] : '#000000',
-    'tipping' => !empty($result[0]['tipping_text_color']) ? '#' . $result[0]['tipping_text_color'] : '#000000',
-    'input_background' => !empty($result[0]['input_background']) ? '#' . $result[0]['input_background'] : '#ffa500',
+    'button_text' => !empty($result['button_text_color']) ? '#' . $result['button_text_color'] : '#FFFFFF',
+    'background' => !empty($result['background_color']) ? '#' . $result['background_color'] : '#E6E6E6',
+    'hf_background' => !empty($result['hf_background']) ? '#' . $result['hf_background'] : '#1d5aa3',
+    'button' => !empty($result['button_color']) ? '#' . $result['button_color'] : '#FE642E',
+    'title' => !empty($result['title_text_color']) ? '#' . $result['title_text_color'] : '#ffffff',
+    'description' => !empty($result['description_text_color']) ? '#' . $result['description_text_color'] : '#000000',
+    'tipping' => !empty($result['tipping_text_color']) ? '#' . $result['tipping_text_color'] : '#000000',
+    'input_background' => !empty($result['input_background']) ? '#' . $result['input_background'] : '#ffa500',
 );
 $image = array(
-    'logo' => $result[0]['logo'] ?? '',
-    'background' => $result[0]['background'] ?? ''
+    'logo' => $result['logo'] ?? '',
+    'background' => $result['background'] ?? ''
 );
 $logo = wp_get_attachment_image_src($image['logo']);
 $background = wp_get_attachment_image_src($image['background']);
-$shortcode = !empty($result[0]) ? outputShortcodeAttributes($result[0]['name'], $result[0]['id']) : '';
-$id = $result[0]['id'] ?? null;
+$shortcode = !empty($result) ? outputShortcodeAttributes($result['name'], $result['id']) : '';
+$id = $result['id'] ?? null;
 ?>
 
 <div class="tipping_box_settings">

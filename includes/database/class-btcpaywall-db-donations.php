@@ -20,7 +20,6 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
     {
         return array(
             'id' => '%d',
-            'donation_id' => '%s',
             'donor_id' => '%d',
             'page_title' => '%s',
             'type' => '%s',
@@ -36,7 +35,6 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
     public function get_column_defaults()
     {
         return array(
-            'donation_id' => '',
             'donor_id' => 0,
             'page_title' => '',
             'type' => '',
@@ -136,11 +134,12 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
     }
     public function create_table()
     {
-        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+        global $wpdb;
+
+        $charset_collate = $wpdb->get_charset_collate();
 
         $sql = "CREATE TABLE IF NOT EXISTS {$this->table_name}(
             id BIGINT(20) NOT NULL AUTO_INCREMENT,
-            donation_id BIGINT(20) NOT NULL,
             donor_id BIGINT(20) NOT NULL,
             page_title TINYTEXT,
             type TINYTEXT,
@@ -149,9 +148,11 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
             status TINYTEXT,
             gateway TINYTEXT,
             payment_method TINYTEXT,
-            PRIMARY KEY  (id)
-            KEY donor (donor_id)
-          ) CHARACTER SET utf8 COLLATE utf8_general_ci;";
+            PRIMARY KEY  (id),
+            KEY donor (donor_id)) {$charset_collate};";
+
+        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
         dbDelta($sql);
         update_option($this->table_name . '_db_version', $this->version, false);
     }
