@@ -717,9 +717,9 @@
         },
         success: function (data) {
           if (
-            !$(
+            $(
               '#btc_tipping_banner_high_id, #btc_tipping_banner_wide_id, #btc_tipping_box_id, #btc_tipping_page_id'
-            ).val()
+            ).val() < 1
           ) {
             location.replace(
               shortcode_ajax_object.redirectUrl + data.data.data.id

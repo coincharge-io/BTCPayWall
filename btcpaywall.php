@@ -155,7 +155,7 @@ if (!class_exists('BTCPayWall')) :
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-actions.php';
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-scripts.php';
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/payments/view.php';
-                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/donation/view.php';
+                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/donation-forms/view.php';
 
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-pages.php';
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-functions.php';

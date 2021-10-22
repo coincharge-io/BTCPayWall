@@ -198,10 +198,10 @@ class BTCPayWall_Donation_Form
     }
 
 
-    public function get_forms()
+    public function get_forms($per_page = null, $page_number = null)
     {
 
-        $forms = $this->db->get_forms();
+        $forms = $this->db->get_forms($per_page, $page_number);
 
         return $forms;
     }
@@ -214,7 +214,14 @@ class BTCPayWall_Donation_Form
     {
         return extractName(sanitize_text_field($_POST['dimension']))['name'];
     }
-
+    public function form_count()
+    {
+        return $this->db->record_count();
+    }
+    public function delete($id)
+    {
+        return $this->db->delete($id);
+    }
 
     private function sanitize_columns($data)
     {

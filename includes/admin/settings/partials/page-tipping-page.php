@@ -80,6 +80,7 @@ $background = wp_get_attachment_image_src($image['background']);
 $show_icon = $result['show_icon'] ?? true;
 $shortcode = !empty($result) ? outputShortcodeAttributes($result['name'], $result['id']) : '';
 $id = $result['id'] ?? null;
+
 //TODO class_Exists
 
 ?>

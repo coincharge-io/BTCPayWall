@@ -7,7 +7,6 @@ function render_tipping_list()
 
 	$table = new Donation_Forms_Table();
 
-
 ?>
 	<div class="wrap">
 		<h2>All forms</h2>

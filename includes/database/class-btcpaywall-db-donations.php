@@ -112,7 +112,7 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
 
         return $wpdb->get_var($sql);
     }
-    public function get_donations($per_page = 5, $page_number = 1)
+    public function get_donations($per_page = null, $page_number = null)
     {
 
         global $wpdb;
@@ -123,11 +123,12 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
             $sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
             $sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
         }
+        if (!empty($per_page) && !empty($page_number)) {
+            $sql .= " LIMIT $per_page";
 
-        $sql .= " LIMIT $per_page";
-
-        $sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
-
+            $sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
+        }
+        
         $result = $wpdb->get_results($sql, 'ARRAY_A');
 
         return $result;

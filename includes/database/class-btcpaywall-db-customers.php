@@ -105,7 +105,7 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
 
         return $wpdb->get_var($sql);
     }
-    public function get_customers($per_page = 5, $page_number = 1)
+    public function get_customers($per_page = null, $page_number = null)
     {
         global $wpdb;
         $sql = "SELECT * FROM {$this->table_name}";
@@ -114,8 +114,12 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
             $sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
             $sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
         }
-        $sql .= " LIMIT $per_page";
-        $sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
+        if (!empty($per_page) && !empty($page_number)) {
+            $sql .= " LIMIT $per_page";
+
+            $sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
+        }
+        
         $result = $wpdb->get_results($sql, 'ARRAY_A');
 
         return $result;
