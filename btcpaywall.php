@@ -129,8 +129,9 @@ if (!class_exists('BTCPayWall')) :
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/settings/register-settings.php';
 
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/actions.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/functions.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/filters.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/ajax-functions.php';
-
 
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/scripts.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/post-types.php';

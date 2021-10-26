@@ -1575,4 +1575,112 @@
       previous_form.hide()
     })
   })
+
+  //Revenue post
+  $(document).ready(function () {
+    var form_count = 1,
+      previous_form,
+      next_form,
+      total_forms
+    total_forms = $('.btcpw_revenue_post_container fieldset').length
+
+    $('.revenue-post-next-form').click(function () {
+      previous_form = $(this)
+        .parent()
+        .parent()
+        .parent()
+      next_form = $(this)
+        .parent()
+        .parent()
+        .parent()
+        .next()
+      next_form.show()
+      previous_form.hide()
+    })
+    $('input.revenue-post-previous-form').click(function () {
+      previous_form = $(this)
+        .parent()
+        .parent()
+        .parent()
+      next_form = $(this)
+        .parent()
+        .parent()
+        .parent()
+        .prev()
+      next_form.show()
+      previous_form.hide()
+    })
+  })
+
+  //Revenue view
+  $(document).ready(function () {
+    var form_count = 1,
+      previous_form,
+      next_form,
+      total_forms
+    total_forms = $('.btcpw_revenue_view_container fieldset').length
+
+    $('.revenue-view-next-form').click(function () {
+      previous_form = $(this)
+        .parent()
+        .parent()
+        .parent()
+      next_form = $(this)
+        .parent()
+        .parent()
+        .parent()
+        .next()
+      next_form.show()
+      previous_form.hide()
+    })
+    $('input.revenue-view-previous-form').click(function () {
+      previous_form = $(this)
+        .parent()
+        .parent()
+        .parent()
+      next_form = $(this)
+        .parent()
+        .parent()
+        .parent()
+        .prev()
+      next_form.show()
+      previous_form.hide()
+    })
+  })
+
+  //Revenue file
+  $(document).ready(function () {
+    var form_count = 1,
+      previous_form,
+      next_form,
+      total_forms
+    total_forms = $('.btcpw_revenue_file_container fieldset').length
+
+    $('.revenue-file-next-form').click(function () {
+      previous_form = $(this)
+        .parent()
+        .parent()
+        .parent()
+      next_form = $(this)
+        .parent()
+        .parent()
+        .parent()
+        .next()
+      next_form.show()
+      previous_form.hide()
+    })
+    $('input.revenue-file-previous-form').click(function () {
+      previous_form = $(this)
+        .parent()
+        .parent()
+        .parent()
+      next_form = $(this)
+        .parent()
+        .parent()
+        .parent()
+        .prev()
+      next_form.show()
+      previous_form.hide()
+    })
+  })
 })(jQuery)

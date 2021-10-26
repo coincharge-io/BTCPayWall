@@ -238,6 +238,7 @@ function render_shortcode_banner_wide_tipping($atts)
 
     return ob_get_clean();
 }
+add_shortcode('btcpw_tipping_banner_wide', 'render_shortcode_banner_wide_tipping');
 /**
  * @param $atts
  *
@@ -469,7 +470,7 @@ function render_shortcode_banner_high_tipping($atts)
 
     return ob_get_clean();
 }
-
+add_shortcode('btcpw_tipping_banner_high', 'render_shortcode_banner_high_tipping');
 /**
  * @param $atts
  *
@@ -738,7 +739,7 @@ function render_shortcode_page_tipping($atts)
 
     return ob_get_clean();
 }
-
+add_shortcode('btcpw_tipping_page', 'render_shortcode_page_tipping');
 function displayShortcodeList($atts)
 {
     $atts = shortcode_atts(array(
@@ -904,6 +905,7 @@ function render_shortcode_box_tipping($atts)
 
     return ob_get_clean();
 }
+add_shortcode('btcpw_tipping_box', 'render_shortcode_box_tipping');
 function render_shortcode_btcpw_pay_file_block($atts)
 {
     if (is_paid_content()) {
@@ -930,6 +932,7 @@ function render_shortcode_btcpw_pay_file_block($atts)
 
     return ob_get_clean();
 }
+add_shortcode('btcpw_pay_file_block', 'render_shortcode_btcpw_pay_file_block');
 /**
  * @param $atts
  *
@@ -969,6 +972,7 @@ function render_shortcode_btcpw_pay_view_block($atts)
 
     return ob_get_clean();
 }
+add_shortcode('btcpw_pay_video_block', 'render_shortcode_btcpw_pay_view_block');
 /**
  * @param array $atts
  *
@@ -976,7 +980,9 @@ function render_shortcode_btcpw_pay_view_block($atts)
  */
 function render_shortcode_btcpw_start_content($atts)
 {
-
+    if (is_paid_content()) {
+        return '';
+    }
     $atts = shortcode_atts(array(
         'pay_block' => 'false',
         'btc_format' => '',
@@ -992,6 +998,16 @@ function render_shortcode_btcpw_start_content($atts)
         'link'    => true,
         'help_link'    => '',
         'help_text'    => 'Help',
+        'display_name' => false,
+        'mandatory_name' =>  false,
+        'display_email' => false,
+        'mandatory_email' => false,
+        'display_phone' => false,
+        'mandatory_phone' => false,
+        'display_address' =>  false,
+        'mandatory_address' =>  false,
+        'display_message' =>  false,
+        'mandatory_message' =>  false,
     ), $atts);
 
 
@@ -1004,10 +1020,14 @@ function render_shortcode_btcpw_start_content($atts)
     $payblock = filter_var($atts['pay_block'], FILTER_VALIDATE_BOOLEAN);
 
     if ($payblock) {
-        return do_shortcode("[btcpw_pay_block background_color='{$atts['background_color']}' header_color='{$atts['header_color']}' info_color='{$atts['info_color']}' button_color='{$atts['button_color']}' button_txt='{$atts['button_txt']}' link='{$atts['link']}' help_link='{$atts['help_link']}' help_text='{$atts['help_text']}']") . $s_data;
+        ob_start();
+        /*return do_shortcode("[btcpw_pay_block background_color='{$atts['background_color']}' header_color='{$atts['header_color']}' info_color='{$atts['info_color']}' button_color='{$atts['button_color']}' button_txt='{$atts['button_txt']}' link='{$atts['link']}' help_link='{$atts['help_link']}' help_text='{$atts['help_text']}']")*/
+        include(BTCPAYWALL_PLUGIN_DIR . 'templates/btc-pay-block.php');
+        echo "{$s_data}";
+        return ob_get_clean();
     }
 }
-
+add_shortcode('btcpw_start_content', 'render_shortcode_btcpw_start_content');
 /**
  * @param $atts
  *
@@ -1016,6 +1036,9 @@ function render_shortcode_btcpw_start_content($atts)
 
 function render_shortcode_btcpw_start_video($atts)
 {
+    if (is_paid_content()) {
+        return '';
+    }
     $img_preview = plugin_dir_url(__FILE__) . 'img/preview.png';
 
     $atts = shortcode_atts(array(
@@ -1035,7 +1058,17 @@ function render_shortcode_btcpw_start_video($atts)
         'button_txt' => '',
         'link'    => 'true',
         'help_link'    => '',
-        'help_text'    => 'Help'
+        'help_text'    => 'Help',
+        'display_name' => false,
+        'mandatory_name' =>  false,
+        'display_email' => false,
+        'mandatory_email' => false,
+        'display_phone' => false,
+        'mandatory_phone' => false,
+        'display_address' =>  false,
+        'mandatory_address' =>  false,
+        'display_message' =>  false,
+        'mandatory_message' =>  false,
     ), $atts);
 
     update_meta_settings($atts);
@@ -1049,10 +1082,14 @@ function render_shortcode_btcpw_start_video($atts)
     $s_data = '<!-- btcpw:start_content -->';
 
     if ($payblock) {
-        return do_shortcode("[btcpw_pay_video_block title='{$atts['title']}' description='{$atts['description']}' preview='{$atts['preview']}' background_color='{$atts['background_color']}' header_color='{$atts['header_color']}' info_color='{$atts['info_color']}' button_color='{$atts['button_color']}' button_txt='{$atts['button_txt']}' link='{$atts['link']}' help_link='{$atts['help_link']}' help_text='{$atts['help_text']}']") . $s_data;
+        /* return do_shortcode("[btcpw_pay_video_block title='{$atts['title']}' description='{$atts['description']}' preview='{$atts['preview']}' background_color='{$atts['background_color']}' header_color='{$atts['header_color']}' info_color='{$atts['info_color']}' button_color='{$atts['button_color']}' button_txt='{$atts['button_txt']}' link='{$atts['link']}' help_link='{$atts['help_link']}' help_text='{$atts['help_text']}']") . $s_data; */
+        ob_start();
+        include(BTCPAYWALL_PLUGIN_DIR . 'templates/btc-pay-view-block.php');
+        echo "{$s_data}";
+        return ob_get_clean();
     }
 }
-
+add_shortcode('btcpw_start_video', 'render_shortcode_btcpw_start_video');
 /**
  * @param $atts
  *
@@ -1060,6 +1097,9 @@ function render_shortcode_btcpw_start_video($atts)
  */
 function render_shortcode_btcpw_file($atts)
 {
+    if (is_paid_content()) {
+        return '';
+    }
     $img_preview = plugin_dir_url(__FILE__) . 'img/file_preview.png';
 
     $atts = shortcode_atts(array(
@@ -1075,7 +1115,17 @@ function render_shortcode_btcpw_file($atts)
         'duration_type' => '',
         'link'    => 'true',
         'help_link' => '',
-        'help_text'    => 'Help'
+        'help_text'    => 'Help',
+        'display_name' => false,
+        'mandatory_name' =>  false,
+        'display_email' => false,
+        'mandatory_email' => false,
+        'display_phone' => false,
+        'mandatory_phone' => false,
+        'display_address' =>  false,
+        'mandatory_address' =>  false,
+        'display_message' =>  false,
+        'mandatory_message' =>  false,
     ), $atts);
 
     update_meta_settings($atts);
@@ -1088,20 +1138,35 @@ function render_shortcode_btcpw_file($atts)
     $file = !empty($atts['file']);
 
     $required_attributes = $payblock && $file;
-
+    $href = $atts['file'];
+    if (function_exists('vc_build_link')) {
+        $href = vc_build_link($atts['file'])['url'] ?: $atts['file'];
+    }
+    $href = esc_url($href);
     $s_data = '<!-- btcpw:start_content -->';
     $e_data = '<!-- /btcpw:end_content -->';
 
     if ($required_attributes) {
-        $output = do_shortcode("[btcpw_pay_file_block title='{$atts['title']}' description='{$atts['description']}' preview='{$atts['preview']}' link='{$atts['link']}' help_link='{$atts['help_link']}' help_text='{$atts['help_text']}']");
-        $output .= $s_data;
-        $output .= do_shortcode("[btcpw_protected_file file='{$atts['file']}']");
-        $output .= $e_data;
-        return $output;
+        ob_start();
+
+        include(BTCPAYWALL_PLUGIN_DIR . 'templates/btc-pay-file-block.php');
+
+        echo "{$s_data}";
+
+        /*$output = do_shortcode("[btcpw_pay_file_block title='{$atts['title']}' description='{$atts['description']}' preview='{$atts['preview']}' link='{$atts['link']}' help_link='{$atts['help_link']}' help_text='{$atts['help_text']}']");*/
+        //$output .= $s_data;
+
+
+
+        echo "<a class=btcpw_pay__download href={$href} target=_blank download>Download</a>";
+        //$output .= do_shortcode("[btcpw_protected_file file='{$atts['file']}']");
+        echo "{$e_data}";
+        return ob_get_clean();
     }
 
-    return do_shortcode("[btcpw_protected_file file='{$atts['file']}']");
+    //return do_shortcode("[btcpw_protected_file file='{$atts['file']}']");
 }
+add_shortcode('btcpw_file', 'render_shortcode_btcpw_file');
 /**
  * @param array $atts
  *
@@ -1112,7 +1177,8 @@ function render_shortcode_btcpw_end_content($atts)
 
     return '<!-- /btcpw:end_content -->';
 }
-
+add_shortcode('btcpw_end_content', 'render_shortcode_btcpw_end_content');
+add_shortcode('btcpw_end_video', 'render_shortcode_btcpw_end_content');
 /**
  * @param $atts
  *
@@ -1131,16 +1197,26 @@ function render_shortcode_btcpw_pay_block($atts)
         'button_txt' => '#FFFFFF',
         'link'    => 'true',
         'help_link' => 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/',
-        'help_text' => 'Help'
+        'help_text' => 'Help',
+        'display_name' => false,
+        'mandatory_name' =>  false,
+        'display_email' => false,
+        'mandatory_email' => false,
+        'display_phone' => false,
+        'mandatory_phone' => false,
+        'display_address' =>  false,
+        'mandatory_address' =>  false,
+        'display_message' =>  false,
+        'mandatory_message' =>  false,
     ), $atts);
     $help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
     ob_start();
 
-    include BTCPAYWALL_PLUGIN_URL . 'templates/btc-pay-block.php';
+    include(BTCPAYWALL_PLUGIN_DIR . 'templates/btc-pay-block.php');
 
     return ob_get_clean();
 }
-
+add_shortcode('btcpw_pay_block', 'render_shortcode_btcpw_pay_block');
 
 /**
  * @param $atts
@@ -1169,3 +1245,4 @@ function render_shortcode_protected_file($atts)
 
     return ob_get_clean();
 }
+add_shortcode('btcpw_protected_file', 'render_shortcode_protected_file');

@@ -1,12 +1,12 @@
 <?php
-$used_currency = get_option('btcpw_general_settings_currency');
+$used_currency = get_option('btcpw_default_currency');
 $supported_currencies = BTCPayWall::CURRENCIES;
-$default_price = get_option('btcpw_general_settings_price');
-$default_duration = get_option('btcpw_general_settings_duration');
-$default_duration_type = get_option('btcpw_general_settings_duration_type');
+$default_price = get_option('btcpw_default_price');
+$default_duration = get_option('btcpw_default_duration');
+$default_duration_type = get_option('btcpw_default_duration_type');
 $supported_durations = BTCPayWall::DURATIONS;
 $supported_btc_format = BTCPayWall::BTC_FORMAT;
-$used_format = get_option("btcpw_general_settings_btc_format");
+$used_format = get_option("btcpw_default_btc_format");
 $disabled_field = ($default_duration_type === 'unlimited') || ($default_duration_type === 'onetime');
 $disable = $disabled_field ? 'disabled' : '';
 

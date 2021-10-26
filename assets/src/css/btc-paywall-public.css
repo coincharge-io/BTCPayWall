@@ -1179,3 +1179,13 @@ div.btcpw_page_header_container > div:nth-child(2) {
   font-family: sans-serif;
   margin-bottom: 0.3rem;
 }
+
+/*
+Revenue types
+*/
+
+#post_revenue_type fieldset:not(:first-of-type),
+#view_revenue_type fieldset:not(:first-of-type),
+#file_revenue_type fieldset:not(:first-of-type) {
+  display: none;
+}

@@ -1,11 +1,11 @@
 <?php
 function load_gutenberg()
 {
-    $asset_file = include(plugin_dir_path(__FILE__) . 'gutenberg/index.asset.php');
+    $asset_file = BTCPAYWALL_PLUGIN_DIR . 'assets/dist/js/index.asset.php';
 
     wp_register_script(
         'gutenberg-block-script',
-        plugin_dir_url(__FILE__) . 'gutenberg/index.js',
+        BTCPAYWALL_PLUGIN_DIR . 'assets/dist/js/index.js',
         $asset_file['dependencies'],
         BTCPAYWALL_VERSION
     );

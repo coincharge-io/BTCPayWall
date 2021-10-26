@@ -1,1 +1,3687 @@
-!function(e){var t={};function l(a){if(t[a])return t[a].exports;var n=t[a]={i:a,l:!1,exports:{}};return e[a].call(n.exports,n,n.exports,l),n.l=!0,n.exports}l.m=e,l.c=t,l.d=function(e,t,a){l.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:a})},l.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},l.t=function(e,t){if(1&t&&(e=l(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var a=Object.create(null);if(l.r(a),Object.defineProperty(a,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var n in e)l.d(a,n,function(t){return e[t]}.bind(null,n));return a},l.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return l.d(t,"a",t),t},l.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},l.p="",l(l.s=7)}([function(e,t){e.exports=window.wp.element},function(e,t){e.exports=window.wp.components},function(e,t){e.exports=window.wp.blockEditor},function(e,t){e.exports=window.wp.blocks},function(e,t){e.exports=window.wp.serverSideRender},function(e,t){e.exports=window.wp.data},function(e,t){e.exports=window.wp.apiFetch},function(e,t,l){"use strict";l.r(t);var a=l(0),n=l(3),c=l(1),o=l(4),r=l.n(o),i=l(2);Object(n.registerBlockType)("btc-paywall/gutenberg-start-block",{title:"BTCPW Pay-per-Post Start",icon:Object(a.createElement)("svg",{version:"1.0",xmlns:"http://www.w3.org/2000/svg",width:"517.000000pt",height:"372.000000pt",viewBox:"0 0 517.000000 372.000000",preserveAspectRatio:"xMidYMid meet"},Object(a.createElement)("g",{transform:"translate(0.000000,372.000000) scale(0.100000,-0.100000)",fill:"#000000",stroke:"none"},Object(a.createElement)("path",{d:"M45 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"}),Object(a.createElement)("path",{d:"M785 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 470 0 471 0 -6 29\n-6 29 216 -5 216 -6 0 287 0 287 -25 24 -24 25 -656 0 -656 0 -24 -25z"}),Object(a.createElement)("path",{d:"M2276 3659 l-26 -20 0 -289 0 -288 418 -5 c387 -4 423 -5 500 -25 70\n-19 111 -22 258 -22 97 0 184 4 194 10 10 5 23 24 29 41 14 42 15 525 1 566\n-6 17 -22 35 -36 42 -18 8 -209 11 -668 11 -636 0 -644 0 -670 -21z"}),Object(a.createElement)("path",{d:"M3755 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"}),Object(a.createElement)("path",{d:"M63 2930 c-12 -5 -26 -18 -32 -29 -7 -13 -11 -122 -11 -304 0 -283 0\n-284 23 -305 l23 -22 661 0 662 0 20 26 c20 26 21 39 21 306 0 163 -4 287 -10\n298 -5 10 -24 23 -41 29 -39 13 -1282 14 -1316 1z"}),Object(a.createElement)("path",{d:"M1549 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -25 c24 -24 29 -25\n132 -22 l108 3 -3 324 c-1 178 -5 327 -8 332 -7 12 -172 10 -205 -2z"}),Object(a.createElement)("path",{d:"M3479 2873 c80 -80 133 -180 152 -287 12 -70 8 -264 -6 -298 -7 -17\n14 -18 363 -18 l371 0 20 26 c20 26 21 39 21 300 0 289 -3 313 -47 333 -16 8\n-168 11 -483 11 l-460 0 69 -67z"}),Object(a.createElement)("path",{d:"M4519 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -24 24 -25 289 0\n289 0 21 23 c22 23 22 29 22 309 0 266 -1 287 -19 309 l-19 24 -279 2 c-162 1\n-289 -2 -304 -8z"}),Object(a.createElement)("path",{d:"M2260 2460 l0 -190 305 0 c292 0 306 1 325 20 18 18 20 33 20 184 l0\n163 -52 7 c-29 3 -176 6 -325 6 l-273 0 0 -190z"}),Object(a.createElement)("path",{d:"M2990 2465 c0 -142 2 -157 20 -175 26 -26 114 -29 124 -4 12 32 6\n165 -10 202 -17 43 -67 97 -106 118 l-28 15 0 -156z"}),Object(a.createElement)("path",{d:"M40 2170 c-19 -19 -20 -33 -20 -310 0 -277 1 -291 20 -310 19 -19 33\n-20 314 -20 l295 0 20 26 c20 26 21 39 21 304 0 265 -1 278 -21 304 l-20 26\n-295 0 c-281 0 -295 -1 -314 -20z"}),Object(a.createElement)("path",{d:"M781 2164 c-20 -26 -21 -38 -21 -304 0 -266 1 -278 21 -304 l21 -26\n481 2 482 3 0 325 0 325 -482 3 -481 2 -21 -26z"}),Object(a.createElement)("path",{d:"M2272 2178 c-7 -7 -12 -29 -12 -51 l0 -38 338 3 c328 3 338 4 389 26\n28 13 61 35 74 48 l22 24 -399 0 c-298 0 -403 -3 -412 -12z"}),Object(a.createElement)("path",{d:"M3569 2148 c-37 -73 -134 -160 -228 -206 -83 -40 -84 -41 -57 -52 15\n-5 32 -10 37 -10 6 0 44 -15 85 -34 72 -34 172 -120 231 -201 l22 -30 -2 266\nc-2 247 -3 269 -21 288 -28 31 -43 26 -67 -21z"}),Object(a.createElement)("path",{d:"M3750 2168 c-19 -21 -20 -34 -20 -310 0 -275 1 -289 20 -308 20 -20\n33 -20 685 -20 652 0 665 0 685 20 19 19 20 33 20 310 0 277 -1 291 -20 310\n-20 20 -33 20 -685 20 l-664 0 -21 -22z"}),Object(a.createElement)("path",{d:"M2260 1617 c0 -36 5 -68 12 -75 14 -14 898 -18 898 -4 0 20 -78 87\n-129 111 l-56 26 -362 3 -363 3 0 -64z"}),Object(a.createElement)("path",{d:"M42 1427 c-22 -23 -22 -29 -22 -309 0 -266 1 -287 19 -309 l19 -24\n667 0 667 0 19 24 c18 22 19 42 19 306 0 270 -1 283 -21 309 l-20 26 -663 0\n-663 0 -21 -23z"}),Object(a.createElement)("path",{d:"M1529 1431 l-24 -19 -3 -278 c-2 -188 1 -286 8 -305 16 -39 49 -49\n155 -49 l95 0 1 138 c1 75 2 226 3 334 l1 198 -106 0 c-90 0 -110 -3 -130 -19z"}),Object(a.createElement)("path",{d:"M2260 1245 l0 -205 325 0 325 0 0 185 c0 172 -1 186 -20 205 -19 19\n-33 20 -325 20 l-305 0 0 -205z"}),Object(a.createElement)("path",{d:"M3012 1430 c-21 -20 -22 -29 -22 -195 0 -128 3 -175 12 -175 29 0\n101 45 136 85 50 57 72 126 72 226 l0 79 -88 0 c-75 0 -92 -3 -110 -20z"}),Object(a.createElement)("path",{d:"M3716 1428 c14 -41 7 -250 -10 -320 -22 -96 -79 -202 -144 -270 l-55\n-58 412 0 c444 0 461 2 475 52 3 13 6 146 6 296 l0 273 -25 24 -24 25 -321 0\n-321 0 7 -22z"}),Object(a.createElement)("path",{d:"M4495 1425 l-25 -24 0 -275 c0 -183 4 -283 11 -300 20 -44 46 -47\n343 -44 l278 3 19 24 c18 22 19 43 19 310 l0 288 -23 21 c-23 22 -29 22 -311\n22 l-287 0 -24 -25z"}),Object(a.createElement)("path",{d:"M45 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"}),Object(a.createElement)("path",{d:"M785 685 l-25 -24 0 -284 c0 -265 1 -286 19 -308 l19 -24 660 -3\nc655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0\n-472 0 -24 -25z"}),Object(a.createElement)("path",{d:"M3303 679 c-142 -51 -235 -59 -665 -59 l-388 0 0 -267 c0 -148 4\n-273 8 -279 21 -33 50 -34 691 -34 457 0 647 3 665 11 14 7 30 25 36 42 14 41\n13 524 -1 566 -6 17 -19 36 -29 41 -10 6 -67 10 -127 9 -92 -1 -120 -5 -190\n-30z"}),Object(a.createElement)("path",{d:"M3755 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"}))),category:"widgets",keywords:["paywall","start-paywall"],attributes:{className:{type:"string",default:""},pay_block:{type:"boolean",default:!0},btc_format:{type:"string"},currency:{type:"string"},price:{type:"number"},duration_type:{type:"string"},duration:{type:"number"}},example:{},edit:e=>{const{attributes:{pay_block:t,btc_format:l,currency:n,duration_type:o,price:b,duration:u,className:p},setAttributes:d}=e,[s,m]=Object(a.useState)("SATS"===n),h=Object(a.createElement)(i.InspectorControls,null,Object(a.createElement)(c.PanelBody,{title:"BP Paywall Text",initialOpen:!0},Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.ToggleControl,{label:"Enable paywall",checked:t,onChange:e=>{d({pay_block:e})},value:t})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.SelectControl,{label:"Currency",value:n,onChange:e=>{m("SATS"===e),d({currency:e})},options:[{value:"",label:"Default"},{value:"SATS",label:"SATS"},{value:"EUR",label:"EUR"},{value:"USD",label:"USD"}]})),s&&Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.SelectControl,{label:"BTC format",value:l,onChange:e=>d({btc_format:e}),options:[{value:"",label:"Default"},{value:"SATS",label:"SATS"},{value:"BTC",label:"BTC"}]})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.__experimentalNumberControl,{label:"Price",value:b,onChange:e=>d({price:Number(e)})})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.SelectControl,{label:"Duration type",value:o,onChange:e=>d({duration_type:e}),options:[{value:"",label:"Default"},{value:"minute",label:"Minute"},{value:"hour",label:"Hour"},{value:"week",label:"Week"},{value:"month",label:"Month"},{value:"year",label:"Year"},{value:"onetime",label:"Onetime"},{value:"unlimited",label:"Unlimited"}]})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.__experimentalNumberControl,{label:"Duration",value:u,onChange:e=>d({duration:Number(e)})}))));return[Object(a.createElement)("div",null,Object(a.createElement)(r.a,{block:"btc-paywall/gutenberg-start-block",attributes:p}),h)]},save:e=>null}),Object(n.registerBlockType)("btc-paywall/gutenberg-end-block",{title:"BTCPW Pay-per-Post End",icon:Object(a.createElement)("svg",{version:"1.0",xmlns:"http://www.w3.org/2000/svg",width:"517.000000pt",height:"372.000000pt",viewBox:"0 0 517.000000 372.000000",preserveAspectRatio:"xMidYMid meet"},Object(a.createElement)("g",{transform:"translate(0.000000,372.000000) scale(0.100000,-0.100000)",fill:"#000000",stroke:"none"},Object(a.createElement)("path",{d:"M45 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"}),Object(a.createElement)("path",{d:"M785 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 470 0 471 0 -6 29\n-6 29 216 -5 216 -6 0 287 0 287 -25 24 -24 25 -656 0 -656 0 -24 -25z"}),Object(a.createElement)("path",{d:"M2276 3659 l-26 -20 0 -289 0 -288 418 -5 c387 -4 423 -5 500 -25 70\n-19 111 -22 258 -22 97 0 184 4 194 10 10 5 23 24 29 41 14 42 15 525 1 566\n-6 17 -22 35 -36 42 -18 8 -209 11 -668 11 -636 0 -644 0 -670 -21z"}),Object(a.createElement)("path",{d:"M3755 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"}),Object(a.createElement)("path",{d:"M63 2930 c-12 -5 -26 -18 -32 -29 -7 -13 -11 -122 -11 -304 0 -283 0\n-284 23 -305 l23 -22 661 0 662 0 20 26 c20 26 21 39 21 306 0 163 -4 287 -10\n298 -5 10 -24 23 -41 29 -39 13 -1282 14 -1316 1z"}),Object(a.createElement)("path",{d:"M1549 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -25 c24 -24 29 -25\n132 -22 l108 3 -3 324 c-1 178 -5 327 -8 332 -7 12 -172 10 -205 -2z"}),Object(a.createElement)("path",{d:"M3479 2873 c80 -80 133 -180 152 -287 12 -70 8 -264 -6 -298 -7 -17\n14 -18 363 -18 l371 0 20 26 c20 26 21 39 21 300 0 289 -3 313 -47 333 -16 8\n-168 11 -483 11 l-460 0 69 -67z"}),Object(a.createElement)("path",{d:"M4519 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -24 24 -25 289 0\n289 0 21 23 c22 23 22 29 22 309 0 266 -1 287 -19 309 l-19 24 -279 2 c-162 1\n-289 -2 -304 -8z"}),Object(a.createElement)("path",{d:"M2260 2460 l0 -190 305 0 c292 0 306 1 325 20 18 18 20 33 20 184 l0\n163 -52 7 c-29 3 -176 6 -325 6 l-273 0 0 -190z"}),Object(a.createElement)("path",{d:"M2990 2465 c0 -142 2 -157 20 -175 26 -26 114 -29 124 -4 12 32 6\n165 -10 202 -17 43 -67 97 -106 118 l-28 15 0 -156z"}),Object(a.createElement)("path",{d:"M40 2170 c-19 -19 -20 -33 -20 -310 0 -277 1 -291 20 -310 19 -19 33\n-20 314 -20 l295 0 20 26 c20 26 21 39 21 304 0 265 -1 278 -21 304 l-20 26\n-295 0 c-281 0 -295 -1 -314 -20z"}),Object(a.createElement)("path",{d:"M781 2164 c-20 -26 -21 -38 -21 -304 0 -266 1 -278 21 -304 l21 -26\n481 2 482 3 0 325 0 325 -482 3 -481 2 -21 -26z"}),Object(a.createElement)("path",{d:"M2272 2178 c-7 -7 -12 -29 -12 -51 l0 -38 338 3 c328 3 338 4 389 26\n28 13 61 35 74 48 l22 24 -399 0 c-298 0 -403 -3 -412 -12z"}),Object(a.createElement)("path",{d:"M3569 2148 c-37 -73 -134 -160 -228 -206 -83 -40 -84 -41 -57 -52 15\n-5 32 -10 37 -10 6 0 44 -15 85 -34 72 -34 172 -120 231 -201 l22 -30 -2 266\nc-2 247 -3 269 -21 288 -28 31 -43 26 -67 -21z"}),Object(a.createElement)("path",{d:"M3750 2168 c-19 -21 -20 -34 -20 -310 0 -275 1 -289 20 -308 20 -20\n33 -20 685 -20 652 0 665 0 685 20 19 19 20 33 20 310 0 277 -1 291 -20 310\n-20 20 -33 20 -685 20 l-664 0 -21 -22z"}),Object(a.createElement)("path",{d:"M2260 1617 c0 -36 5 -68 12 -75 14 -14 898 -18 898 -4 0 20 -78 87\n-129 111 l-56 26 -362 3 -363 3 0 -64z"}),Object(a.createElement)("path",{d:"M42 1427 c-22 -23 -22 -29 -22 -309 0 -266 1 -287 19 -309 l19 -24\n667 0 667 0 19 24 c18 22 19 42 19 306 0 270 -1 283 -21 309 l-20 26 -663 0\n-663 0 -21 -23z"}),Object(a.createElement)("path",{d:"M1529 1431 l-24 -19 -3 -278 c-2 -188 1 -286 8 -305 16 -39 49 -49\n155 -49 l95 0 1 138 c1 75 2 226 3 334 l1 198 -106 0 c-90 0 -110 -3 -130 -19z"}),Object(a.createElement)("path",{d:"M2260 1245 l0 -205 325 0 325 0 0 185 c0 172 -1 186 -20 205 -19 19\n-33 20 -325 20 l-305 0 0 -205z"}),Object(a.createElement)("path",{d:"M3012 1430 c-21 -20 -22 -29 -22 -195 0 -128 3 -175 12 -175 29 0\n101 45 136 85 50 57 72 126 72 226 l0 79 -88 0 c-75 0 -92 -3 -110 -20z"}),Object(a.createElement)("path",{d:"M3716 1428 c14 -41 7 -250 -10 -320 -22 -96 -79 -202 -144 -270 l-55\n-58 412 0 c444 0 461 2 475 52 3 13 6 146 6 296 l0 273 -25 24 -24 25 -321 0\n-321 0 7 -22z"}),Object(a.createElement)("path",{d:"M4495 1425 l-25 -24 0 -275 c0 -183 4 -283 11 -300 20 -44 46 -47\n343 -44 l278 3 19 24 c18 22 19 43 19 310 l0 288 -23 21 c-23 22 -29 22 -311\n22 l-287 0 -24 -25z"}),Object(a.createElement)("path",{d:"M45 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"}),Object(a.createElement)("path",{d:"M785 685 l-25 -24 0 -284 c0 -265 1 -286 19 -308 l19 -24 660 -3\nc655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0\n-472 0 -24 -25z"}),Object(a.createElement)("path",{d:"M3303 679 c-142 -51 -235 -59 -665 -59 l-388 0 0 -267 c0 -148 4\n-273 8 -279 21 -33 50 -34 691 -34 457 0 647 3 665 11 14 7 30 25 36 42 14 41\n13 524 -1 566 -6 17 -19 36 -29 41 -10 6 -67 10 -127 9 -92 -1 -120 -5 -190\n-30z"}),Object(a.createElement)("path",{d:"M3755 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"}))),category:"widgets",keywords:["paywall","end-paywall"],edit:e=>Object(a.createElement)("hr",{class:"btcpw_pay__gutenberg_block_separator"}),save:e=>null}),Object(n.registerBlockType)("btc-paywall/gutenberg-start-video-block",{title:"BTCPW Pay-per-View Start",icon:Object(a.createElement)("svg",{version:"1.0",xmlns:"http://www.w3.org/2000/svg",width:"517.000000pt",height:"372.000000pt",viewBox:"0 0 517.000000 372.000000",preserveAspectRatio:"xMidYMid meet"},Object(a.createElement)("g",{transform:"translate(0.000000,372.000000) scale(0.100000,-0.100000)",fill:"#000000",stroke:"none"},Object(a.createElement)("path",{d:"M45 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"}),Object(a.createElement)("path",{d:"M785 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 470 0 471 0 -6 29\n-6 29 216 -5 216 -6 0 287 0 287 -25 24 -24 25 -656 0 -656 0 -24 -25z"}),Object(a.createElement)("path",{d:"M2276 3659 l-26 -20 0 -289 0 -288 418 -5 c387 -4 423 -5 500 -25 70\n-19 111 -22 258 -22 97 0 184 4 194 10 10 5 23 24 29 41 14 42 15 525 1 566\n-6 17 -22 35 -36 42 -18 8 -209 11 -668 11 -636 0 -644 0 -670 -21z"}),Object(a.createElement)("path",{d:"M3755 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"}),Object(a.createElement)("path",{d:"M63 2930 c-12 -5 -26 -18 -32 -29 -7 -13 -11 -122 -11 -304 0 -283 0\n-284 23 -305 l23 -22 661 0 662 0 20 26 c20 26 21 39 21 306 0 163 -4 287 -10\n298 -5 10 -24 23 -41 29 -39 13 -1282 14 -1316 1z"}),Object(a.createElement)("path",{d:"M1549 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -25 c24 -24 29 -25\n132 -22 l108 3 -3 324 c-1 178 -5 327 -8 332 -7 12 -172 10 -205 -2z"}),Object(a.createElement)("path",{d:"M3479 2873 c80 -80 133 -180 152 -287 12 -70 8 -264 -6 -298 -7 -17\n14 -18 363 -18 l371 0 20 26 c20 26 21 39 21 300 0 289 -3 313 -47 333 -16 8\n-168 11 -483 11 l-460 0 69 -67z"}),Object(a.createElement)("path",{d:"M4519 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -24 24 -25 289 0\n289 0 21 23 c22 23 22 29 22 309 0 266 -1 287 -19 309 l-19 24 -279 2 c-162 1\n-289 -2 -304 -8z"}),Object(a.createElement)("path",{d:"M2260 2460 l0 -190 305 0 c292 0 306 1 325 20 18 18 20 33 20 184 l0\n163 -52 7 c-29 3 -176 6 -325 6 l-273 0 0 -190z"}),Object(a.createElement)("path",{d:"M2990 2465 c0 -142 2 -157 20 -175 26 -26 114 -29 124 -4 12 32 6\n165 -10 202 -17 43 -67 97 -106 118 l-28 15 0 -156z"}),Object(a.createElement)("path",{d:"M40 2170 c-19 -19 -20 -33 -20 -310 0 -277 1 -291 20 -310 19 -19 33\n-20 314 -20 l295 0 20 26 c20 26 21 39 21 304 0 265 -1 278 -21 304 l-20 26\n-295 0 c-281 0 -295 -1 -314 -20z"}),Object(a.createElement)("path",{d:"M781 2164 c-20 -26 -21 -38 -21 -304 0 -266 1 -278 21 -304 l21 -26\n481 2 482 3 0 325 0 325 -482 3 -481 2 -21 -26z"}),Object(a.createElement)("path",{d:"M2272 2178 c-7 -7 -12 -29 -12 -51 l0 -38 338 3 c328 3 338 4 389 26\n28 13 61 35 74 48 l22 24 -399 0 c-298 0 -403 -3 -412 -12z"}),Object(a.createElement)("path",{d:"M3569 2148 c-37 -73 -134 -160 -228 -206 -83 -40 -84 -41 -57 -52 15\n-5 32 -10 37 -10 6 0 44 -15 85 -34 72 -34 172 -120 231 -201 l22 -30 -2 266\nc-2 247 -3 269 -21 288 -28 31 -43 26 -67 -21z"}),Object(a.createElement)("path",{d:"M3750 2168 c-19 -21 -20 -34 -20 -310 0 -275 1 -289 20 -308 20 -20\n33 -20 685 -20 652 0 665 0 685 20 19 19 20 33 20 310 0 277 -1 291 -20 310\n-20 20 -33 20 -685 20 l-664 0 -21 -22z"}),Object(a.createElement)("path",{d:"M2260 1617 c0 -36 5 -68 12 -75 14 -14 898 -18 898 -4 0 20 -78 87\n-129 111 l-56 26 -362 3 -363 3 0 -64z"}),Object(a.createElement)("path",{d:"M42 1427 c-22 -23 -22 -29 -22 -309 0 -266 1 -287 19 -309 l19 -24\n667 0 667 0 19 24 c18 22 19 42 19 306 0 270 -1 283 -21 309 l-20 26 -663 0\n-663 0 -21 -23z"}),Object(a.createElement)("path",{d:"M1529 1431 l-24 -19 -3 -278 c-2 -188 1 -286 8 -305 16 -39 49 -49\n155 -49 l95 0 1 138 c1 75 2 226 3 334 l1 198 -106 0 c-90 0 -110 -3 -130 -19z"}),Object(a.createElement)("path",{d:"M2260 1245 l0 -205 325 0 325 0 0 185 c0 172 -1 186 -20 205 -19 19\n-33 20 -325 20 l-305 0 0 -205z"}),Object(a.createElement)("path",{d:"M3012 1430 c-21 -20 -22 -29 -22 -195 0 -128 3 -175 12 -175 29 0\n101 45 136 85 50 57 72 126 72 226 l0 79 -88 0 c-75 0 -92 -3 -110 -20z"}),Object(a.createElement)("path",{d:"M3716 1428 c14 -41 7 -250 -10 -320 -22 -96 -79 -202 -144 -270 l-55\n-58 412 0 c444 0 461 2 475 52 3 13 6 146 6 296 l0 273 -25 24 -24 25 -321 0\n-321 0 7 -22z"}),Object(a.createElement)("path",{d:"M4495 1425 l-25 -24 0 -275 c0 -183 4 -283 11 -300 20 -44 46 -47\n343 -44 l278 3 19 24 c18 22 19 43 19 310 l0 288 -23 21 c-23 22 -29 22 -311\n22 l-287 0 -24 -25z"}),Object(a.createElement)("path",{d:"M45 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"}),Object(a.createElement)("path",{d:"M785 685 l-25 -24 0 -284 c0 -265 1 -286 19 -308 l19 -24 660 -3\nc655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0\n-472 0 -24 -25z"}),Object(a.createElement)("path",{d:"M3303 679 c-142 -51 -235 -59 -665 -59 l-388 0 0 -267 c0 -148 4\n-273 8 -279 21 -33 50 -34 691 -34 457 0 647 3 665 11 14 7 30 25 36 42 14 41\n13 524 -1 566 -6 17 -19 36 -29 41 -10 6 -67 10 -127 9 -92 -1 -120 -5 -190\n-30z"}),Object(a.createElement)("path",{d:"M3755 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"}))),category:"widgets",keywords:["paywall","start-video-paywall"],attributes:{className:{type:"string",default:""},pay_view_block:{type:"boolean",default:!0},btc_format:{type:"string"},title:{type:"string",default:"Untitled"},description:{type:"string",default:"No description"},preview:{type:"string",default:""},currency:{type:"string"},price:{type:"number"},duration_type:{type:"string"},duration:{type:"number"}},example:{},edit:e=>{const{attributes:{pay_view_block:t,btc_format:l,title:n,description:o,preview:b,currency:u,duration_type:p,price:d,duration:s,className:m},setAttributes:h}=e,[g,_]=Object(a.useState)("SATS"===u),y=Object(a.createElement)(i.InspectorControls,null,Object(a.createElement)(c.PanelBody,{title:"BP Paywall Video",initialOpen:!0},Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.ToggleControl,{label:"Enable payment block",checked:t,onChange:e=>{h({pay_view_block:e})},value:t})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.TextareaControl,{label:"Title",help:"Enter video title",onChange:e=>{h({title:e})},value:n})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.TextareaControl,{label:"Description",help:"Enter video description",onChange:e=>{h({description:e})},value:o})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(i.MediaUpload,{onSelect:e=>{h({preview:e.sizes.full.url})},render:({open:e})=>Object(a.createElement)(c.Button,{onClick:e},"Video preview")})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.SelectControl,{label:"Currency",value:u,onChange:e=>{_("SATS"===e),h({currency:e})},options:[{value:"",label:"Default"},{value:"SATS",label:"SATS"},{value:"EUR",label:"EUR"},{value:"USD",label:"USD"}]})),g&&Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.SelectControl,{label:"BTC format",value:l,onChange:e=>h({btc_format:e}),options:[{value:"",label:"Default"},{value:"SATS",label:"SATS"},{value:"BTC",label:"BTC"}]})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.__experimentalNumberControl,{label:"Price",value:d,onChange:e=>h({price:Number(e)})})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.SelectControl,{label:"Duration type",value:p,onChange:e=>h({duration_type:e}),options:[{value:"",label:"Default"},{value:"minute",label:"Minute"},{value:"hour",label:"Hour"},{value:"week",label:"Week"},{value:"month",label:"Month"},{value:"year",label:"Year"},{value:"onetime",label:"Onetime"},{value:"unlimited",label:"Unlimited"}]})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.__experimentalNumberControl,{label:"Duration",value:s,onChange:e=>h({duration:Number(e)})}))));return[Object(a.createElement)("div",null,Object(a.createElement)(r.a,{block:"btc-paywall/gutenberg-start-video-block",attributes:m}),y)]},save:e=>null}),Object(n.registerBlockType)("btc-paywall/gutenberg-end-video-block",{title:"BTCPW Pay-per-View End",icon:Object(a.createElement)("svg",{version:"1.0",xmlns:"http://www.w3.org/2000/svg",width:"517.000000pt",height:"372.000000pt",viewBox:"0 0 517.000000 372.000000",preserveAspectRatio:"xMidYMid meet"},Object(a.createElement)("g",{transform:"translate(0.000000,372.000000) scale(0.100000,-0.100000)",fill:"#000000",stroke:"none"},Object(a.createElement)("path",{d:"M45 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"}),Object(a.createElement)("path",{d:"M785 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 470 0 471 0 -6 29\n-6 29 216 -5 216 -6 0 287 0 287 -25 24 -24 25 -656 0 -656 0 -24 -25z"}),Object(a.createElement)("path",{d:"M2276 3659 l-26 -20 0 -289 0 -288 418 -5 c387 -4 423 -5 500 -25 70\n-19 111 -22 258 -22 97 0 184 4 194 10 10 5 23 24 29 41 14 42 15 525 1 566\n-6 17 -22 35 -36 42 -18 8 -209 11 -668 11 -636 0 -644 0 -670 -21z"}),Object(a.createElement)("path",{d:"M3755 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"}),Object(a.createElement)("path",{d:"M63 2930 c-12 -5 -26 -18 -32 -29 -7 -13 -11 -122 -11 -304 0 -283 0\n-284 23 -305 l23 -22 661 0 662 0 20 26 c20 26 21 39 21 306 0 163 -4 287 -10\n298 -5 10 -24 23 -41 29 -39 13 -1282 14 -1316 1z"}),Object(a.createElement)("path",{d:"M1549 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -25 c24 -24 29 -25\n132 -22 l108 3 -3 324 c-1 178 -5 327 -8 332 -7 12 -172 10 -205 -2z"}),Object(a.createElement)("path",{d:"M3479 2873 c80 -80 133 -180 152 -287 12 -70 8 -264 -6 -298 -7 -17\n14 -18 363 -18 l371 0 20 26 c20 26 21 39 21 300 0 289 -3 313 -47 333 -16 8\n-168 11 -483 11 l-460 0 69 -67z"}),Object(a.createElement)("path",{d:"M4519 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -24 24 -25 289 0\n289 0 21 23 c22 23 22 29 22 309 0 266 -1 287 -19 309 l-19 24 -279 2 c-162 1\n-289 -2 -304 -8z"}),Object(a.createElement)("path",{d:"M2260 2460 l0 -190 305 0 c292 0 306 1 325 20 18 18 20 33 20 184 l0\n163 -52 7 c-29 3 -176 6 -325 6 l-273 0 0 -190z"}),Object(a.createElement)("path",{d:"M2990 2465 c0 -142 2 -157 20 -175 26 -26 114 -29 124 -4 12 32 6\n165 -10 202 -17 43 -67 97 -106 118 l-28 15 0 -156z"}),Object(a.createElement)("path",{d:"M40 2170 c-19 -19 -20 -33 -20 -310 0 -277 1 -291 20 -310 19 -19 33\n-20 314 -20 l295 0 20 26 c20 26 21 39 21 304 0 265 -1 278 -21 304 l-20 26\n-295 0 c-281 0 -295 -1 -314 -20z"}),Object(a.createElement)("path",{d:"M781 2164 c-20 -26 -21 -38 -21 -304 0 -266 1 -278 21 -304 l21 -26\n481 2 482 3 0 325 0 325 -482 3 -481 2 -21 -26z"}),Object(a.createElement)("path",{d:"M2272 2178 c-7 -7 -12 -29 -12 -51 l0 -38 338 3 c328 3 338 4 389 26\n28 13 61 35 74 48 l22 24 -399 0 c-298 0 -403 -3 -412 -12z"}),Object(a.createElement)("path",{d:"M3569 2148 c-37 -73 -134 -160 -228 -206 -83 -40 -84 -41 -57 -52 15\n-5 32 -10 37 -10 6 0 44 -15 85 -34 72 -34 172 -120 231 -201 l22 -30 -2 266\nc-2 247 -3 269 -21 288 -28 31 -43 26 -67 -21z"}),Object(a.createElement)("path",{d:"M3750 2168 c-19 -21 -20 -34 -20 -310 0 -275 1 -289 20 -308 20 -20\n33 -20 685 -20 652 0 665 0 685 20 19 19 20 33 20 310 0 277 -1 291 -20 310\n-20 20 -33 20 -685 20 l-664 0 -21 -22z"}),Object(a.createElement)("path",{d:"M2260 1617 c0 -36 5 -68 12 -75 14 -14 898 -18 898 -4 0 20 -78 87\n-129 111 l-56 26 -362 3 -363 3 0 -64z"}),Object(a.createElement)("path",{d:"M42 1427 c-22 -23 -22 -29 -22 -309 0 -266 1 -287 19 -309 l19 -24\n667 0 667 0 19 24 c18 22 19 42 19 306 0 270 -1 283 -21 309 l-20 26 -663 0\n-663 0 -21 -23z"}),Object(a.createElement)("path",{d:"M1529 1431 l-24 -19 -3 -278 c-2 -188 1 -286 8 -305 16 -39 49 -49\n155 -49 l95 0 1 138 c1 75 2 226 3 334 l1 198 -106 0 c-90 0 -110 -3 -130 -19z"}),Object(a.createElement)("path",{d:"M2260 1245 l0 -205 325 0 325 0 0 185 c0 172 -1 186 -20 205 -19 19\n-33 20 -325 20 l-305 0 0 -205z"}),Object(a.createElement)("path",{d:"M3012 1430 c-21 -20 -22 -29 -22 -195 0 -128 3 -175 12 -175 29 0\n101 45 136 85 50 57 72 126 72 226 l0 79 -88 0 c-75 0 -92 -3 -110 -20z"}),Object(a.createElement)("path",{d:"M3716 1428 c14 -41 7 -250 -10 -320 -22 -96 -79 -202 -144 -270 l-55\n-58 412 0 c444 0 461 2 475 52 3 13 6 146 6 296 l0 273 -25 24 -24 25 -321 0\n-321 0 7 -22z"}),Object(a.createElement)("path",{d:"M4495 1425 l-25 -24 0 -275 c0 -183 4 -283 11 -300 20 -44 46 -47\n343 -44 l278 3 19 24 c18 22 19 43 19 310 l0 288 -23 21 c-23 22 -29 22 -311\n22 l-287 0 -24 -25z"}),Object(a.createElement)("path",{d:"M45 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"}),Object(a.createElement)("path",{d:"M785 685 l-25 -24 0 -284 c0 -265 1 -286 19 -308 l19 -24 660 -3\nc655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0\n-472 0 -24 -25z"}),Object(a.createElement)("path",{d:"M3303 679 c-142 -51 -235 -59 -665 -59 l-388 0 0 -267 c0 -148 4\n-273 8 -279 21 -33 50 -34 691 -34 457 0 647 3 665 11 14 7 30 25 36 42 14 41\n13 524 -1 566 -6 17 -19 36 -29 41 -10 6 -67 10 -127 9 -92 -1 -120 -5 -190\n-30z"}),Object(a.createElement)("path",{d:"M3755 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"}))),category:"widgets",keywords:["paywall","end-video-paywall"],edit:e=>Object(a.createElement)("hr",{class:"btcpw_pay__gutenberg_block_separator"}),save:e=>null}),Object(n.registerBlockType)("btc-paywall/gutenberg-file-block",{title:"BTCPW Pay-per-File",icon:Object(a.createElement)("svg",{version:"1.0",xmlns:"http://www.w3.org/2000/svg",width:"517.000000pt",height:"372.000000pt",viewBox:"0 0 517.000000 372.000000",preserveAspectRatio:"xMidYMid meet"},Object(a.createElement)("g",{transform:"translate(0.000000,372.000000) scale(0.100000,-0.100000)",fill:"#000000",stroke:"none"},Object(a.createElement)("path",{d:"M45 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"}),Object(a.createElement)("path",{d:"M785 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 470 0 471 0 -6 29\n-6 29 216 -5 216 -6 0 287 0 287 -25 24 -24 25 -656 0 -656 0 -24 -25z"}),Object(a.createElement)("path",{d:"M2276 3659 l-26 -20 0 -289 0 -288 418 -5 c387 -4 423 -5 500 -25 70\n-19 111 -22 258 -22 97 0 184 4 194 10 10 5 23 24 29 41 14 42 15 525 1 566\n-6 17 -22 35 -36 42 -18 8 -209 11 -668 11 -636 0 -644 0 -670 -21z"}),Object(a.createElement)("path",{d:"M3755 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"}),Object(a.createElement)("path",{d:"M63 2930 c-12 -5 -26 -18 -32 -29 -7 -13 -11 -122 -11 -304 0 -283 0\n-284 23 -305 l23 -22 661 0 662 0 20 26 c20 26 21 39 21 306 0 163 -4 287 -10\n298 -5 10 -24 23 -41 29 -39 13 -1282 14 -1316 1z"}),Object(a.createElement)("path",{d:"M1549 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -25 c24 -24 29 -25\n132 -22 l108 3 -3 324 c-1 178 -5 327 -8 332 -7 12 -172 10 -205 -2z"}),Object(a.createElement)("path",{d:"M3479 2873 c80 -80 133 -180 152 -287 12 -70 8 -264 -6 -298 -7 -17\n14 -18 363 -18 l371 0 20 26 c20 26 21 39 21 300 0 289 -3 313 -47 333 -16 8\n-168 11 -483 11 l-460 0 69 -67z"}),Object(a.createElement)("path",{d:"M4519 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -24 24 -25 289 0\n289 0 21 23 c22 23 22 29 22 309 0 266 -1 287 -19 309 l-19 24 -279 2 c-162 1\n-289 -2 -304 -8z"}),Object(a.createElement)("path",{d:"M2260 2460 l0 -190 305 0 c292 0 306 1 325 20 18 18 20 33 20 184 l0\n163 -52 7 c-29 3 -176 6 -325 6 l-273 0 0 -190z"}),Object(a.createElement)("path",{d:"M2990 2465 c0 -142 2 -157 20 -175 26 -26 114 -29 124 -4 12 32 6\n165 -10 202 -17 43 -67 97 -106 118 l-28 15 0 -156z"}),Object(a.createElement)("path",{d:"M40 2170 c-19 -19 -20 -33 -20 -310 0 -277 1 -291 20 -310 19 -19 33\n-20 314 -20 l295 0 20 26 c20 26 21 39 21 304 0 265 -1 278 -21 304 l-20 26\n-295 0 c-281 0 -295 -1 -314 -20z"}),Object(a.createElement)("path",{d:"M781 2164 c-20 -26 -21 -38 -21 -304 0 -266 1 -278 21 -304 l21 -26\n481 2 482 3 0 325 0 325 -482 3 -481 2 -21 -26z"}),Object(a.createElement)("path",{d:"M2272 2178 c-7 -7 -12 -29 -12 -51 l0 -38 338 3 c328 3 338 4 389 26\n28 13 61 35 74 48 l22 24 -399 0 c-298 0 -403 -3 -412 -12z"}),Object(a.createElement)("path",{d:"M3569 2148 c-37 -73 -134 -160 -228 -206 -83 -40 -84 -41 -57 -52 15\n-5 32 -10 37 -10 6 0 44 -15 85 -34 72 -34 172 -120 231 -201 l22 -30 -2 266\nc-2 247 -3 269 -21 288 -28 31 -43 26 -67 -21z"}),Object(a.createElement)("path",{d:"M3750 2168 c-19 -21 -20 -34 -20 -310 0 -275 1 -289 20 -308 20 -20\n33 -20 685 -20 652 0 665 0 685 20 19 19 20 33 20 310 0 277 -1 291 -20 310\n-20 20 -33 20 -685 20 l-664 0 -21 -22z"}),Object(a.createElement)("path",{d:"M2260 1617 c0 -36 5 -68 12 -75 14 -14 898 -18 898 -4 0 20 -78 87\n-129 111 l-56 26 -362 3 -363 3 0 -64z"}),Object(a.createElement)("path",{d:"M42 1427 c-22 -23 -22 -29 -22 -309 0 -266 1 -287 19 -309 l19 -24\n667 0 667 0 19 24 c18 22 19 42 19 306 0 270 -1 283 -21 309 l-20 26 -663 0\n-663 0 -21 -23z"}),Object(a.createElement)("path",{d:"M1529 1431 l-24 -19 -3 -278 c-2 -188 1 -286 8 -305 16 -39 49 -49\n155 -49 l95 0 1 138 c1 75 2 226 3 334 l1 198 -106 0 c-90 0 -110 -3 -130 -19z"}),Object(a.createElement)("path",{d:"M2260 1245 l0 -205 325 0 325 0 0 185 c0 172 -1 186 -20 205 -19 19\n-33 20 -325 20 l-305 0 0 -205z"}),Object(a.createElement)("path",{d:"M3012 1430 c-21 -20 -22 -29 -22 -195 0 -128 3 -175 12 -175 29 0\n101 45 136 85 50 57 72 126 72 226 l0 79 -88 0 c-75 0 -92 -3 -110 -20z"}),Object(a.createElement)("path",{d:"M3716 1428 c14 -41 7 -250 -10 -320 -22 -96 -79 -202 -144 -270 l-55\n-58 412 0 c444 0 461 2 475 52 3 13 6 146 6 296 l0 273 -25 24 -24 25 -321 0\n-321 0 7 -22z"}),Object(a.createElement)("path",{d:"M4495 1425 l-25 -24 0 -275 c0 -183 4 -283 11 -300 20 -44 46 -47\n343 -44 l278 3 19 24 c18 22 19 43 19 310 l0 288 -23 21 c-23 22 -29 22 -311\n22 l-287 0 -24 -25z"}),Object(a.createElement)("path",{d:"M45 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"}),Object(a.createElement)("path",{d:"M785 685 l-25 -24 0 -284 c0 -265 1 -286 19 -308 l19 -24 660 -3\nc655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0\n-472 0 -24 -25z"}),Object(a.createElement)("path",{d:"M3303 679 c-142 -51 -235 -59 -665 -59 l-388 0 0 -267 c0 -148 4\n-273 8 -279 21 -33 50 -34 691 -34 457 0 647 3 665 11 14 7 30 25 36 42 14 41\n13 524 -1 566 -6 17 -19 36 -29 41 -10 6 -67 10 -127 9 -92 -1 -120 -5 -190\n-30z"}),Object(a.createElement)("path",{d:"M3755 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"}))),category:"widgets",keywords:["paywall","file-paywall"],attributes:{className:{type:"string",default:""},pay_file_block:{type:"boolean",default:!0},btc_format:{type:"string"},file:{type:"string",default:""},title:{type:"string",default:"Untitled"},description:{type:"string",default:"No description"},preview:{type:"string",default:""},currency:{type:"string"},price:{type:"number"},duration_type:{type:"string"},duration:{type:"number"}},example:{},edit:e=>{const{attributes:{pay_file_block:t,btc_format:l,file:n,title:o,description:b,preview:u,currency:p,duration_type:d,price:s,duration:m,className:h},setAttributes:g}=e,[_,y]=Object(a.useState)("SATS"===p),E=Object(a.createElement)(i.InspectorControls,null,Object(a.createElement)(c.PanelBody,{title:"BP Paywall File",initialOpen:!0},Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.ToggleControl,{label:"Enable payment block",checked:t,onChange:e=>{g({pay_file_block:e})},value:t})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(i.MediaPlaceholder,{labels:{title:"BP Pay-per-File"},onSelect:e=>g({file:e.url}),multiple:!1,onSelectURL:e=>g({file:e})})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.TextareaControl,{label:"Title",help:"Enter file title",onChange:e=>{g({title:e})},value:o})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.TextareaControl,{label:"Description",help:"Enter file description",onChange:e=>{g({description:e})},value:b})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(i.MediaUpload,{onSelect:e=>{g({preview:e.sizes.full.url})},render:({open:e})=>Object(a.createElement)(c.Button,{onClick:e},"File preview")})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.SelectControl,{label:"Currency",value:p,onChange:e=>{y("SATS"===e),g({currency:e})},options:[{value:"",label:"Default"},{value:"SATS",label:"SATS"},{value:"EUR",label:"EUR"},{value:"USD",label:"USD"}]})),_&&Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.SelectControl,{label:"BTC format",value:l,onChange:e=>g({btc_format:e}),options:[{value:"",label:"Default"},{value:"SATS",label:"SATS"},{value:"BTC",label:"BTC"}]})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.__experimentalNumberControl,{label:"Price",value:s,onChange:e=>g({price:Number(e)})})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.SelectControl,{label:"Duration type",value:d,onChange:e=>g({duration_type:e}),options:[{value:"",label:"Default"},{value:"minute",label:"Minute"},{value:"hour",label:"Hour"},{value:"week",label:"Week"},{value:"month",label:"Month"},{value:"year",label:"Year"},{value:"onetime",label:"Onetime"},{value:"unlimited",label:"Unlimited"}]})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.__experimentalNumberControl,{label:"Duration",value:m,onChange:e=>g({duration:Number(e)})}))));return[Object(a.createElement)("div",null,Object(a.createElement)(r.a,{block:"btc-paywall/gutenberg-file-block",attributes:h}),E)]},save:e=>null}),Object(n.registerBlockType)("btc-paywall/gutenberg-tipping-box",{title:"BTCPW Tipping Box",icon:"dashicons-screenoptions",category:"widgets",keywords:["tipping","tipping-box"],attributes:{className:{type:"string",default:""},dimension:{type:"string",default:"250x300"},title:{type:"string",default:"Support my work"},description:{type:"string"},currency:{type:"string",default:"SATS"},title_text_color:{type:"string"},tipping_text:{type:"string",default:"Enter Tipping Amount"},tipping_text_color:{type:"string"},background_image:{type:"string",default:""},redirect:{type:"string"},description_color:{type:"string"},button_text:{type:"string",default:"Tipping now"},button_text_color:{type:"string"},button_color:{type:"string",default:"#FE642E"},input_background:{type:"string"},logo_id:{type:"string",default:"https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg"},background:{type:"string"},background_color:{type:"string"},background_id:{type:"string"}},example:{},edit:e=>{const{attributes:{dimension:t,background_color:l,background:n,background_id:o,logo_id:b,input_background:u,button_color:p,button_text:d,button_text_color:s,description_color:m,redirect:h,title:g,title_text_color:_,tipping_text:y,tipping_text_color:E,description:O,background_image:j,currency:C,className:v},setAttributes:f}=e,k=Object(a.createElement)(i.InspectorControls,null,Object(a.createElement)(c.Panel,null,Object(a.createElement)(c.PanelBody,{title:"Dimension",initialOpen:!0},Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{value:t,onChange:e=>{f({dimension:e})},options:[{value:"250x300",label:"250x300"},{value:"300x300",label:"300x300"}]}))),Object(a.createElement)(c.PanelBody,{title:"Background"},Object(a.createElement)(i.MediaPlaceholder,{labels:{title:"Background"},onSelect:e=>f({background_id:e.url}),multiple:!1,onSelectURL:e=>f({background_id:e})}),Object(a.createElement)("p",null,"Background color"),Object(a.createElement)(c.ColorPicker,{color:l,onChangeComplete:e=>f({background_color:e.hex}),disableAlpha:!0}),Object(a.createElement)("p",null,"Header and footer background color"),Object(a.createElement)(c.ColorPicker,{color:n,onChangeComplete:e=>f({background:e.hex}),disableAlpha:!0})),Object(a.createElement)(c.PanelBody,{title:"Description"},Object(a.createElement)(i.MediaPlaceholder,{labels:{title:"Logo"},onSelect:e=>f({logo_id:e.url}),multiple:!1,onSelectURL:e=>f({logo_id:e})}),Object(a.createElement)(c.TextareaControl,{label:"Title",help:"Enter title",onChange:e=>{f({title:e})},value:g}),Object(a.createElement)("p",null,"Title text color"),Object(a.createElement)(c.ColorPicker,{color:_,onChangeComplete:e=>f({title_text_color:e.hex}),disableAlpha:!0}),Object(a.createElement)(c.TextareaControl,{label:"Description",help:"Enter description",onChange:e=>{f({description:e})},value:O}),Object(a.createElement)("p",null,"Description text color"),Object(a.createElement)(c.ColorPicker,{color:m,onChangeComplete:e=>f({description_color:e.hex}),disableAlpha:!0}),Object(a.createElement)(c.TextareaControl,{label:"Tipping text",help:"Enter tipping text",onChange:e=>{f({tipping_text:e})},value:y}),Object(a.createElement)("p",null,"Tipping text color"),Object(a.createElement)(c.ColorPicker,{color:E,onChangeComplete:e=>f({tipping_text_color:e.hex}),disableAlpha:!0}),Object(a.createElement)("p",null,"Link to Thank You Page"),Object(a.createElement)(i.URLInputButton,{label:"Redirect link",value:h,onChange:e=>f({redirect:e})}),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{label:"Currency",value:C,onChange:e=>{f({currency:e})},options:[{value:"SATS",label:"SATS"},{value:"BTC",label:"BTC"},{value:"EUR",label:"EUR"},{value:"USD",label:"USD"}]})),Object(a.createElement)("p",null,"Background color for inputs"),Object(a.createElement)(c.ColorPicker,{color:u,onChangeComplete:e=>f({input_background:e.hex}),disableAlpha:!0})),Object(a.createElement)(c.PanelBody,{title:"Button"},Object(a.createElement)(c.TextareaControl,{label:"Button",help:"Enter button text",onChange:e=>{f({button_text:e})},value:d}),Object(a.createElement)("p",null,"Button color"),Object(a.createElement)(c.ColorPicker,{color:p,onChangeComplete:e=>f({button_color:e.hex}),disableAlpha:!0}),Object(a.createElement)("p",null,"Button text color"),Object(a.createElement)(c.ColorPicker,{color:s,onChangeComplete:e=>f({button_text_color:e.hex}),disableAlpha:!0}))));return[Object(a.createElement)("div",null,Object(a.createElement)(r.a,{block:"btc-paywall/gutenberg-tipping-box",attributes:v}),k)]},save:e=>null}),Object(n.registerBlockType)("btc-paywall/gutenberg-tipping-banner-wide",{title:"BTCPW Tipping Banner Wide",icon:"dashicons-screenoptions",category:"widgets",keywords:["tipping","tipping-banner-wide"],attributes:{className:{type:"string",default:""},dimension:{type:"string",default:"600x280"},title:{type:"string",default:"Support my work"},description:{type:"string",default:""},currency:{type:"string"},title_text_color:{type:"string"},tipping_text:{type:"string",default:"Enter Tipping Amount"},tipping_text_color:{type:"string"},redirect:{type:"string"},description_color:{type:"string"},button_text:{type:"string",default:"Tipping now"},button_text_color:{type:"string"},button_color:{type:"string",default:"#FE642E"},input_background:{type:"string"},logo_id:{type:"string",default:"https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg"},background:{type:"string"},background_color:{type:"string"},background_id:{type:"string"},value1_enabled:{type:"boolean",default:!0},value1_amount:{type:"number",default:1e3},value1_currency:{type:"string",default:"SATS"},value1_icon:{type:"string",default:"fas fa-coffee"},value2_enabled:{type:"boolean",default:!0},value2_amount:{type:"number",default:2e3},value2_currency:{type:"string",default:"SATS"},value2_icon:{type:"string",default:"fas fa-beer"},value3_enabled:{type:"boolean",default:!0},value3_amount:{type:"number",default:3e3},value3_currency:{type:"string",default:"SATS"},value3_icon:{type:"string",default:"fas fa-cocktail"},display_name:{type:"boolean",default:!0},mandatory_name:{type:"boolean",default:!1},display_email:{type:"boolean",default:!0},mandatory_email:{type:"boolean",default:!1},display_address:{type:"boolean",default:!0},mandatory_address:{type:"boolean",default:!1},display_phone:{type:"boolean",default:!0},mandatory_phone:{type:"boolean",default:!1},display_message:{type:"boolean",default:!0},mandatory_message:{type:"boolean",default:!1},free_input:{type:"boolean",default:!0},show_icon:{type:"boolean",default:!0}},example:{},edit:e=>{const{attributes:{dimension:t,background:l,background_color:n,background_id:o,logo_id:b,input_background:u,button_color:p,button_text:d,button_text_color:s,description_color:m,redirect:h,title:g,title_text_color:_,tipping_text:y,tipping_text_color:E,description:O,currency:j,value1_amount:C,value1_currency:v,value1_enabled:f,value1_icon:k,value2_amount:w,value2_currency:x,value2_enabled:S,value2_icon:T,value3_amount:M,value3_currency:P,value3_enabled:B,value3_icon:z,display_name:D,display_email:A,display_message:R,display_phone:U,display_address:N,mandatory_address:L,mandatory_email:I,mandatory_phone:F,mandatory_message:W,mandatory_name:Y,free_input:H,show_icon:q,className:V},setAttributes:G}=e,J=Object(a.createElement)(i.InspectorControls,null,Object(a.createElement)(c.Panel,null,Object(a.createElement)(c.PanelBody,{title:"Dimension",initialOpen:!0},Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{value:t,onChange:e=>{G({dimension:e})},options:[{value:"600x280",label:"600x280"}]}))),Object(a.createElement)(c.PanelBody,{title:"Background"},Object(a.createElement)(i.MediaPlaceholder,{labels:{title:"Background"},onSelect:e=>G({background_id:e.url}),multiple:!1,onSelectURL:e=>G({background_id:e})}),Object(a.createElement)("p",null,"Background color"),Object(a.createElement)(c.ColorPicker,{color:n,onChangeComplete:e=>G({background_color:e.hex}),disableAlpha:!0}),Object(a.createElement)("p",null,"Header and footer background color"),Object(a.createElement)(c.ColorPicker,{color:l,onChangeComplete:e=>G({background:e.hex}),disableAlpha:!0})),Object(a.createElement)(c.PanelBody,{title:"Description"},Object(a.createElement)(i.MediaPlaceholder,{labels:{title:"Logo"},onSelect:e=>G({logo_id:e.url}),multiple:!1,onSelectURL:e=>G({logo_id:e})}),Object(a.createElement)(c.TextareaControl,{label:"Title",help:"Enter title",onChange:e=>{G({title:e})},value:g}),Object(a.createElement)("p",null,"Title text color"),Object(a.createElement)(c.ColorPicker,{color:_,onChangeComplete:e=>G({title_text_color:e.hex}),disableAlpha:!0}),Object(a.createElement)(c.TextareaControl,{label:"Description",help:"Enter description",onChange:e=>{G({description:e})},value:O}),Object(a.createElement)("p",null,"Description text color"),Object(a.createElement)(c.ColorPicker,{color:m,onChangeComplete:e=>G({description_color:e.hex}),disableAlpha:!0}),Object(a.createElement)(c.TextareaControl,{label:"Tipping text",help:"Enter tipping text",onChange:e=>{G({tipping_text:e})},value:y}),Object(a.createElement)("p",null,"Tipping text color"),Object(a.createElement)(c.ColorPicker,{color:E,onChangeComplete:e=>G({tipping_text_color:e}),disableAlpha:!0}),Object(a.createElement)("p",null,"Link to Thank You Page"),Object(a.createElement)(i.URLInputButton,{label:"Redirect link",value:h,onChange:e=>G({redirect:e})}),Object(a.createElement)(c.CheckboxControl,{label:"Display free input",help:"Do you want to display free input field?",checked:H,onChange:e=>G({free_input:e})}),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{label:"Currency",value:j,onChange:e=>{G({currency:e})},options:[{value:"SATS",label:"SATS"},{value:"BTC",label:"BTC"},{value:"EUR",label:"EUR"},{value:"USD",label:"USD"}]})),Object(a.createElement)("p",null,"Background color for inputs"),Object(a.createElement)(c.ColorPicker,{color:u,onChangeComplete:e=>G({input_background:e.hex}),disableAlpha:!0}),Object(a.createElement)(c.CheckboxControl,{label:"Display icons",help:"Do you want to display icons?",checked:q,onChange:e=>G({show_icon:e})})),Object(a.createElement)(c.PanelBody,{title:"Amount"},Object(a.createElement)(c.CheckboxControl,{label:"Display value 1",help:"Do you want to display value 1?",checked:f,onChange:e=>G({value1_enabled:e})}),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{value:v,onChange:e=>{G({value1_currency:e})},options:[{value:"SATS",label:"SATS"},{value:"BTC",label:"BTC"},{value:"EUR",label:"EUR"},{value:"USD",label:"USD"}]})),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.__experimentalNumberControl,{isShiftStepEnabled:!0,onChange:e=>{G({value1_amount:e})},shiftStep:10,value:C})),Object(a.createElement)(c.TextControl,{label:"FA Icon class",value:k,onChange:e=>G({value1_icon:e})}),Object(a.createElement)(c.CheckboxControl,{label:"Display value 2",help:"Do you want to display value 2?",checked:S,onChange:e=>{G({value2_enabled:e})}}),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{value:x,onChange:e=>{G({value2_currency:e})},options:[{value:"SATS",label:"SATS"},{value:"BTC",label:"BTC"},{value:"EUR",label:"EUR"},{value:"USD",label:"USD"}]})),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.__experimentalNumberControl,{isShiftStepEnabled:!0,onChange:e=>{G({value2_amount:e})},shiftStep:10,value:w})),Object(a.createElement)(c.TextControl,{label:"FA Icon class",value:T,onChange:e=>G({value2_icon:e})}),Object(a.createElement)(c.CheckboxControl,{label:"Display value 3",help:"Do you want to display value 3?",checked:B,onChange:e=>{G({value3_enabled:e})}}),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{value:P,onChange:e=>{G({value3_currency:e})},options:[{value:"SATS",label:"SATS"},{value:"BTC",label:"BTC"},{value:"EUR",label:"EUR"},{value:"USD",label:"USD"}]})),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.__experimentalNumberControl,{isShiftStepEnabled:!0,onChange:e=>{G({value3_amount:e})},shiftStep:10,value:M})),Object(a.createElement)(c.TextControl,{label:"FA Icon class",value:z,onChange:e=>G({value3_icon:e})})),Object(a.createElement)(c.PanelBody,{title:"Button"},Object(a.createElement)(c.TextareaControl,{label:"Button",help:"Enter button text",onChange:e=>{G({button_text:e})},value:d}),Object(a.createElement)("p",null,"Button color"),Object(a.createElement)(c.ColorPicker,{color:p,onChangeComplete:e=>G({button_color:e.hex}),disableAlpha:!0}),Object(a.createElement)("p",null,"Button text color"),Object(a.createElement)(c.ColorPicker,{color:s,onChangeComplete:e=>G({button_text_color:e.hex}),disableAlpha:!0})),Object(a.createElement)(c.PanelBody,{title:"Collect further information"},Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.CheckboxControl,{label:"Full name",help:"Do you want to collect full name?",checked:D,onChange:e=>{G({display_name:e})}}),Object(a.createElement)(c.CheckboxControl,{help:"Do you want make this field mandatory?",checked:Y,onChange:e=>{G({mandatory_name:e})}})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.CheckboxControl,{label:"Email",help:"Do you want to collect email?",checked:A,onChange:e=>{G({display_email:e})}}),Object(a.createElement)(c.CheckboxControl,{help:"Do you want make this field mandatory?",checked:I,onChange:e=>{G({mandatory_email:e})}})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.CheckboxControl,{label:"Address",help:"Do you want to collect address?",checked:N,onChange:e=>{G({display_address:e})}}),Object(a.createElement)(c.CheckboxControl,{help:"Do you want make this field mandatory?",checked:L,onChange:e=>{G({mandatory_address:e})}})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.CheckboxControl,{label:"Phone",checked:U,help:"Do you want to collect phone?",onChange:e=>G({display_phone:e})}),Object(a.createElement)(c.CheckboxControl,{help:"Do you want make this field mandatory?",checked:F,onChange:e=>{G({mandatory_phone:e})}})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.CheckboxControl,{label:"Message",help:"Do you want to collect message?",checked:R,onChange:e=>{G({display_message:e})}}),Object(a.createElement)(c.CheckboxControl,{help:"Do you want make this field mandatory?",checked:W,onChange:e=>{G({mandatory_message:e})}})))));return[Object(a.createElement)("div",null,Object(a.createElement)(r.a,{block:"btc-paywall/gutenberg-tipping-banner-wide",attributes:V}),J)]},save:e=>null}),Object(n.registerBlockType)("btc-paywall/gutenberg-tipping-banner-high",{title:"BTCPW Tipping Banner High",icon:"dashicons-screenoptions",category:"widgets",keywords:["tipping","tipping-banner-high"],attributes:{className:{type:"string",default:""},dimension:{type:"string",default:"200x710"},title:{type:"string",default:"Support my work"},description:{type:"string",default:""},currency:{type:"string"},title_text_color:{type:"string"},tipping_text:{type:"string",default:"Enter Tipping Amount"},tipping_text_color:{type:"string"},redirect:{type:"string"},description_color:{type:"string"},button_text:{type:"string",default:"Tipping now"},button_text_color:{type:"string"},button_color:{type:"string",default:"#FE642E"},input_background:{type:"string"},logo_id:{type:"string",default:"https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg"},background:{type:"string"},background_color:{type:"string"},background_id:{type:"string"},value1_enabled:{type:"boolean",default:!0},value1_amount:{type:"number",default:1e3},value1_currency:{type:"string",default:"SATS"},value1_icon:{type:"string",default:"fas fa-coffee"},value2_enabled:{type:"boolean",default:!0},value2_amount:{type:"number",default:2e3},value2_currency:{type:"string",default:"SATS"},value2_icon:{type:"string",default:"fas fa-beer"},value3_enabled:{type:"boolean",default:!0},value3_amount:{type:"number",default:3e3},value3_currency:{type:"string",default:"SATS"},value3_icon:{type:"string",default:"fas fa-cocktail"},display_name:{type:"boolean",default:!0},mandatory_name:{type:"boolean",default:!1},display_email:{type:"boolean",default:!0},mandatory_email:{type:"boolean",default:!1},display_address:{type:"boolean",default:!0},mandatory_address:{type:"boolean",default:!1},display_phone:{type:"boolean",default:!0},mandatory_phone:{type:"boolean",default:!1},display_message:{type:"boolean",default:!0},mandatory_message:{type:"boolean",default:!1},free_input:{type:"boolean",default:!0},show_icon:{type:"boolean",default:!0}},example:{},edit:e=>{const{attributes:{dimension:t,background:l,background_id:n,background_color:o,logo_id:b,input_background:u,button_color:p,button_text:d,button_text_color:s,description_color:m,redirect:h,title:g,title_text_color:_,tipping_text:y,tipping_text_color:E,description:O,currency:j,value1_amount:C,value1_currency:v,value1_enabled:f,value1_icon:k,value2_amount:w,value2_currency:x,value2_enabled:S,value2_icon:T,value3_amount:M,value3_currency:P,value3_enabled:B,value3_icon:z,display_name:D,display_email:A,display_message:R,display_phone:U,display_address:N,mandatory_address:L,mandatory_email:I,mandatory_phone:F,mandatory_message:W,mandatory_name:Y,free_input:H,show_icon:q,className:V},setAttributes:G}=e,J=Object(a.createElement)(i.InspectorControls,null,Object(a.createElement)(c.Panel,null,Object(a.createElement)(c.PanelBody,{title:"Dimension",initialOpen:!0},Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{value:t,onChange:e=>{G({dimension:e})},options:[{value:"200x710",label:"200x710"}]}))),Object(a.createElement)(c.PanelBody,{title:"Background"},Object(a.createElement)(i.MediaPlaceholder,{labels:{title:"Background"},onSelect:e=>G({background_id:e.url}),multiple:!1,onSelectURL:e=>G({background_id:e})}),Object(a.createElement)("p",null,"Background color"),Object(a.createElement)(c.ColorPicker,{color:o,onChangeComplete:e=>G({background_color:e.hex}),disableAlpha:!0}),Object(a.createElement)("p",null,"Header and footer background color"),Object(a.createElement)(c.ColorPicker,{color:l,onChangeComplete:e=>G({background:e.hex}),disableAlpha:!0})),Object(a.createElement)(c.PanelBody,{title:"Description"},Object(a.createElement)(i.MediaPlaceholder,{labels:{title:"Logo"},onSelect:e=>G({logo_id:e.url}),multiple:!1,onSelectURL:e=>G({logo_id:e})}),Object(a.createElement)(c.TextareaControl,{label:"Title",help:"Enter title",onChange:e=>{G({title:e})},value:g}),Object(a.createElement)("p",null,"Title text color"),Object(a.createElement)(c.ColorPicker,{color:_,onChangeComplete:e=>G({title_text_color:e.hex}),disableAlpha:!0}),Object(a.createElement)(c.TextareaControl,{label:"Description",help:"Enter description",onChange:e=>{G({description:e})},value:O}),Object(a.createElement)("p",null,"Description text color"),Object(a.createElement)(c.ColorPicker,{color:m,onChangeComplete:e=>G({description_color:e.hex}),disableAlpha:!0}),Object(a.createElement)(c.TextareaControl,{label:"Tipping text",help:"Enter tipping text",onChange:e=>{G({tipping_text:e})},value:y}),Object(a.createElement)("p",null,"Tipping text color"),Object(a.createElement)(c.ColorPicker,{color:E,onChangeComplete:e=>G({tipping_text_color:e}),disableAlpha:!0}),Object(a.createElement)("p",null,"Link to Thank You Page"),Object(a.createElement)(i.URLInputButton,{label:"Redirect link",value:h,onChange:e=>G({redirect:e})}),Object(a.createElement)(c.CheckboxControl,{label:"Display free input",help:"Do you want to display free input field?",checked:H,onChange:e=>G({free_input:e})}),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{label:"Currency",value:j,onChange:e=>{G({currency:e})},options:[{value:"SATS",label:"SATS"},{value:"BTC",label:"BTC"},{value:"EUR",label:"EUR"},{value:"USD",label:"USD"}]})),Object(a.createElement)("p",null,"Background color for inputs"),Object(a.createElement)(c.ColorPicker,{color:u,onChangeComplete:e=>G({input_background:e.hex}),disableAlpha:!0}),Object(a.createElement)(c.CheckboxControl,{label:"Display icons",help:"Do you want to display icons?",checked:q,onChange:e=>G({show_icon:e})})),Object(a.createElement)(c.PanelBody,{title:"Amount"},Object(a.createElement)(c.CheckboxControl,{label:"Display value 1",help:"Do you want to display value 1?",checked:f,onChange:e=>G({value1_enabled:e})}),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{value:v,onChange:e=>{G({value1_currency:e})},options:[{value:"SATS",label:"SATS"},{value:"BTC",label:"BTC"},{value:"EUR",label:"EUR"},{value:"USD",label:"USD"}]})),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.__experimentalNumberControl,{isShiftStepEnabled:!0,onChange:e=>{G({value1_amount:e})},shiftStep:10,value:C})),Object(a.createElement)(c.TextControl,{label:"FA Icon class",value:k,onChange:e=>G({value1_icon:e})}),Object(a.createElement)(c.CheckboxControl,{label:"Display value 2",help:"Do you want to display value 2?",checked:S,onChange:e=>{G({value2_enabled:e})}}),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{value:x,onChange:e=>{G({value2_currency:e})},options:[{value:"SATS",label:"SATS"},{value:"BTC",label:"BTC"},{value:"EUR",label:"EUR"},{value:"USD",label:"USD"}]})),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.__experimentalNumberControl,{isShiftStepEnabled:!0,onChange:e=>{G({value2_amount:e})},shiftStep:10,value:w})),Object(a.createElement)(c.TextControl,{label:"FA Icon class",value:T,onChange:e=>G({value2_icon:e})}),Object(a.createElement)(c.CheckboxControl,{label:"Display value 3",help:"Do you want to display value 3?",checked:B,onChange:e=>{G({value3_enabled:e})}}),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{value:P,onChange:e=>{G({value3_currency:e})},options:[{value:"SATS",label:"SATS"},{value:"BTC",label:"BTC"},{value:"EUR",label:"EUR"},{value:"USD",label:"USD"}]})),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.__experimentalNumberControl,{isShiftStepEnabled:!0,onChange:e=>{G({value3_amount:e})},shiftStep:10,value:M})),Object(a.createElement)(c.TextControl,{label:"FA Icon class",value:z,onChange:e=>G({value3_icon:e})})),Object(a.createElement)(c.PanelBody,{title:"Button"},Object(a.createElement)(c.TextareaControl,{label:"Button",help:"Enter button text",onChange:e=>{G({button_text:e})},value:d}),Object(a.createElement)("p",null,"Button color"),Object(a.createElement)(c.ColorPicker,{color:p,onChangeComplete:e=>G({button_color:e.hex}),disableAlpha:!0}),Object(a.createElement)("p",null,"Button text color"),Object(a.createElement)(c.ColorPicker,{color:s,onChangeComplete:e=>G({button_text_color:e.hex}),disableAlpha:!0})),Object(a.createElement)(c.PanelBody,{title:"Collect further information"},Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.CheckboxControl,{label:"Full name",help:"Do you want to collect full name?",checked:D,onChange:e=>{G({display_name:e})}}),Object(a.createElement)(c.CheckboxControl,{help:"Do you want make this field mandatory?",checked:Y,onChange:e=>{G({mandatory_name:e})}})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.CheckboxControl,{label:"Email",help:"Do you want to collect email?",checked:A,onChange:e=>{G({display_email:e})}}),Object(a.createElement)(c.CheckboxControl,{help:"Do you want make this field mandatory?",checked:I,onChange:e=>{G({mandatory_email:e})}})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.CheckboxControl,{label:"Address",help:"Do you want to collect address?",checked:N,onChange:e=>{G({display_address:e})}}),Object(a.createElement)(c.CheckboxControl,{help:"Do you want make this field mandatory?",checked:L,onChange:e=>{G({mandatory_address:e})}})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.CheckboxControl,{label:"Phone",checked:U,help:"Do you want to collect phone?",onChange:e=>G({display_phone:e})}),Object(a.createElement)(c.CheckboxControl,{help:"Do you want make this field mandatory?",checked:F,onChange:e=>{G({mandatory_phone:e})}})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.CheckboxControl,{label:"Message",help:"Do you want to collect message?",checked:R,onChange:e=>{G({display_message:e})}}),Object(a.createElement)(c.CheckboxControl,{help:"Do you want make this field mandatory?",checked:W,onChange:e=>{G({mandatory_message:e})}})))));return[Object(a.createElement)("div",null,Object(a.createElement)(r.a,{block:"btc-paywall/gutenberg-tipping-banner-high",attributes:V}),J)]},save:e=>null}),Object(n.registerBlockType)("btc-paywall/gutenberg-tipping-page",{title:"BTCPW Tipping Page",icon:"dashicons-screenoptions",category:"widgets",keywords:["tipping","tipping-page"],attributes:{className:{type:"string",default:""},dimension:{type:"string",default:"520x600"},title:{type:"string",default:"Support my work"},description:{type:"string",default:""},currency:{type:"string"},title_text_color:{type:"string"},tipping_text:{type:"string",default:"Enter Tipping Amount"},tipping_text_color:{type:"string"},redirect:{type:"string"},description_color:{type:"string"},button_text:{type:"string",default:"Tipping now"},button_text_color:{type:"string"},button_color:{type:"string",default:"#FE642E"},input_background:{type:"string"},logo_id:{type:"string",default:"https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg"},background:{type:"string"},background_color:{type:"string"},background_id:{type:"string"},value1_enabled:{type:"boolean",default:!0},value1_amount:{type:"number",default:1e3},value1_currency:{type:"string",default:"SATS"},value1_icon:{type:"string",default:"fas fa-coffee"},value2_enabled:{type:"boolean",default:!0},value2_amount:{type:"number",default:2e3},value2_currency:{type:"string",default:"SATS"},value2_icon:{type:"string",default:"fas fa-beer"},value3_enabled:{type:"boolean",default:!0},value3_amount:{type:"number",default:3e3},value3_currency:{type:"string",default:"SATS"},value3_icon:{type:"string",default:"fas fa-cocktail"},display_name:{type:"boolean",default:!0},mandatory_name:{type:"boolean",default:!1},display_email:{type:"boolean",default:!0},mandatory_email:{type:"boolean",default:!1},display_address:{type:"boolean",default:!0},mandatory_address:{type:"boolean",default:!1},display_phone:{type:"boolean",default:!0},mandatory_phone:{type:"boolean",default:!1},display_message:{type:"boolean",default:!0},mandatory_message:{type:"boolean",default:!1},step1:{type:"string",default:"Pledge"},step2:{type:"string",default:"Info"},active_color:{type:"string",default:"#808080"},inactive_color:{type:"string",default:"#D3D3D3"},free_input:{type:"boolean",default:!0},show_icon:{type:"boolean",default:!0}},example:{},edit:e=>{const{attributes:{dimension:t,background:l,background_id:n,logo_id:o,input_background:b,button_color:u,button_text:p,button_text_color:d,description_color:s,redirect:m,background_color:h,title:g,title_text_color:_,tipping_text:y,tipping_text_color:E,description:O,currency:j,value1_amount:C,value1_currency:v,value1_enabled:f,value1_icon:k,value2_amount:w,value2_currency:x,value2_enabled:S,value2_icon:T,value3_amount:M,value3_currency:P,value3_enabled:B,value3_icon:z,display_name:D,display_email:A,display_message:R,display_phone:U,display_address:N,mandatory_address:L,mandatory_email:I,mandatory_phone:F,mandatory_message:W,mandatory_name:Y,free_input:H,step1:q,step2:V,active_color:G,inactive_color:J,show_icon:K,className:Q},setAttributes:X}=e,Z=Object(a.createElement)(i.InspectorControls,null,Object(a.createElement)(c.Panel,null,Object(a.createElement)(c.PanelBody,{title:"Dimension",initialOpen:!0},Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{value:t,onChange:e=>{X({dimension:e})},options:[{value:"520x600",label:"520x600"}]}))),Object(a.createElement)(c.PanelBody,{title:"Background"},Object(a.createElement)(i.MediaPlaceholder,{labels:{title:"Background"},onSelect:e=>X({background_id:e.url}),multiple:!1,onSelectURL:e=>X({background_id:e})}),Object(a.createElement)("p",null,"Background color"),Object(a.createElement)(c.ColorPicker,{color:h,onChangeComplete:e=>X({background_color:e.hex}),disableAlpha:!0}),Object(a.createElement)("p",null,"Header and footer background color"),Object(a.createElement)(c.ColorPicker,{color:l,onChangeComplete:e=>X({background:e.hex}),disableAlpha:!0})),Object(a.createElement)(c.PanelBody,{title:"Description"},Object(a.createElement)(i.MediaPlaceholder,{labels:{title:"Logo"},onSelect:e=>X({logo_id:e.url}),multiple:!1,onSelectURL:e=>X({logo_id:e})}),Object(a.createElement)(c.TextareaControl,{label:"Title",help:"Enter title",onChange:e=>{X({title:e})},value:g}),Object(a.createElement)("p",null,"Title text color"),Object(a.createElement)(c.ColorPicker,{color:_,onChangeComplete:e=>X({title_text_color:e.hex}),disableAlpha:!0}),Object(a.createElement)(c.TextareaControl,{label:"Description",help:"Enter description",onChange:e=>{X({description:e})},value:O}),Object(a.createElement)("p",null,"Description text color"),Object(a.createElement)(c.ColorPicker,{color:s,onChangeComplete:e=>X({description_color:e.hex}),disableAlpha:!0}),Object(a.createElement)(c.TextareaControl,{label:"Tipping text",help:"Enter tipping text",onChange:e=>{X({tipping_text:e})},value:y}),Object(a.createElement)("p",null,"Tipping text color"),Object(a.createElement)(c.ColorPicker,{color:E,onChangeComplete:e=>X({tipping_text_color:e}),disableAlpha:!0}),Object(a.createElement)("p",null,"Link to Thank You Page"),Object(a.createElement)(i.URLInputButton,{label:"Link to Thank You Page",value:m,onChange:e=>X({redirect:e})}),Object(a.createElement)(c.CheckboxControl,{label:"Display free input",help:"Do you want to display free input field?",checked:H,onChange:e=>{X({free_input:e})}}),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{label:"Currency",value:j,onChange:e=>{X({currency:e})},options:[{value:"SATS",label:"SATS"},{value:"BTC",label:"BTC"},{value:"EUR",label:"EUR"},{value:"USD",label:"USD"}]})),Object(a.createElement)("p",null,"Background color for inputs"),Object(a.createElement)(c.ColorPicker,{color:b,onChangeComplete:e=>X({input_background:e.hex}),disableAlpha:!0}),Object(a.createElement)(c.CheckboxControl,{label:"Display icon",help:"Do you want to display icons?",checked:K,onChange:e=>{X({show_icon:e})}})),Object(a.createElement)(c.PanelBody,{title:"Amount"},Object(a.createElement)(c.CheckboxControl,{label:"Display value 1",help:"Do you want to display value 1?",checked:f,onChange:e=>X({value1_enabled:e})}),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{value:v,onChange:e=>{X({value1_currency:e})},options:[{value:"SATS",label:"SATS"},{value:"BTC",label:"BTC"},{value:"EUR",label:"EUR"},{value:"USD",label:"USD"}]})),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.__experimentalNumberControl,{isShiftStepEnabled:!0,onChange:e=>{X({value1_amount:e})},shiftStep:10,value:C})),Object(a.createElement)(c.TextControl,{label:"FA Icon class",value:k,onChange:e=>X({value1_icon:e})}),Object(a.createElement)(c.CheckboxControl,{label:"Display value 2",help:"Do you want to display value 2?",checked:S,onChange:e=>{X({value2_enabled:e})}}),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{value:x,onChange:e=>{X({value2_currency:e})},options:[{value:"SATS",label:"SATS"},{value:"BTC",label:"BTC"},{value:"EUR",label:"EUR"},{value:"USD",label:"USD"}]})),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.__experimentalNumberControl,{isShiftStepEnabled:!0,onChange:e=>{X({value2_amount:e})},shiftStep:10,value:w})),Object(a.createElement)(c.TextControl,{label:"FA Icon class",value:T,onChange:e=>X({value2_icon:e})}),Object(a.createElement)(c.CheckboxControl,{label:"Display value 3",help:"Do you want to display value 3?",checked:B,onChange:e=>{X({value3_enabled:e})}}),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{value:P,onChange:e=>{X({value3_currency:e})},options:[{value:"SATS",label:"SATS"},{value:"BTC",label:"BTC"},{value:"EUR",label:"EUR"},{value:"USD",label:"USD"}]})),Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.__experimentalNumberControl,{isShiftStepEnabled:!0,onChange:e=>{X({value3_amount:e})},shiftStep:10,value:M})),Object(a.createElement)(c.TextControl,{label:"FA Icon class",value:z,onChange:e=>X({value3_icon:e})})),Object(a.createElement)(c.PanelBody,{title:"Button"},Object(a.createElement)(c.TextareaControl,{label:"Button",help:"Enter button text",onChange:e=>{X({button_text:e})},value:p}),Object(a.createElement)("p",null,"Button color"),Object(a.createElement)(c.ColorPicker,{color:u,onChangeComplete:e=>X({button_color:e.hex}),disableAlpha:!0}),Object(a.createElement)("p",null,"Button text color"),Object(a.createElement)(c.ColorPicker,{color:d,onChangeComplete:e=>X({button_text_color:e.hex}),disableAlpha:!0})),Object(a.createElement)(c.PanelBody,{title:"Tabs"},Object(a.createElement)(c.TextareaControl,{label:"Step1",help:"Enter text for first tab in progress bar",onChange:e=>{X({step1:e})},value:q}),Object(a.createElement)("p",null,"Background color for active tab in progress bar"),Object(a.createElement)(c.ColorPicker,{color:G,onChangeComplete:e=>X({active_color:e.hex}),disableAlpha:!0}),Object(a.createElement)(c.TextareaControl,{label:"Step2",help:"Enter text for second step in progress bar",onChange:e=>{X({step2:e})},value:V}),Object(a.createElement)("p",null,"Background color for inactive tab in progress bar"),Object(a.createElement)(c.ColorPicker,{color:J,onChangeComplete:e=>X({inactive_color:e.hex}),disableAlpha:!0})),Object(a.createElement)(c.PanelBody,{title:"Collect further information"},Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.CheckboxControl,{label:"Full name",help:"Do you want to collect full name?",checked:D,onChange:e=>{X({display_name:e})}}),Object(a.createElement)(c.CheckboxControl,{help:"Do you want make this field mandatory?",checked:Y,onChange:e=>{X({mandatory_name:e})}})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.CheckboxControl,{label:"Email",help:"Do you want to collect email?",checked:A,onChange:e=>{X({display_email:e})}}),Object(a.createElement)(c.CheckboxControl,{help:"Do you want make this field mandatory?",checked:I,onChange:e=>{X({mandatory_email:e})}})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.CheckboxControl,{label:"Address",help:"Do you want to collect address?",checked:N,onChange:e=>{X({display_address:e})}}),Object(a.createElement)(c.CheckboxControl,{help:"Do you want make this field mandatory?",checked:L,onChange:e=>{X({mandatory_address:e})}})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.CheckboxControl,{label:"Phone",checked:U,help:"Do you want to collect phone?",onChange:e=>{X({display_phone:e})}}),Object(a.createElement)(c.CheckboxControl,{help:"Do you want make this field mandatory?",checked:F,onChange:e=>{X({mandatory_phone:e})}})),Object(a.createElement)(c.PanelRow,null,Object(a.createElement)(c.CheckboxControl,{label:"Message",help:"Do you want to collect message?",checked:R,onChange:e=>{X({display_message:displayMessage})}}),Object(a.createElement)(c.CheckboxControl,{help:"Do you want make this field mandatory?",checked:W,onChange:e=>{X({mandatory_message:W})}})))));return[Object(a.createElement)("div",null,Object(a.createElement)(r.a,{block:"btc-paywall/gutenberg-tipping-page",attributes:Q}),Z)]},save:e=>null});var b=l(5),u=l(6),p=l.n(u);const d={shortcodeList:{}},s={setShortcodeList:e=>({type:"SET_SHORTCODE_LIST",shortcodeList:e}),getShortcodeList:e=>({type:"GET_SHORTCODE_LIST",path:e})},m={reducer:(e=d,t)=>{switch(t.type){case"SET_SHORTCODE_LIST":return{...e,shortcodeList:t.shortcodeList};default:return e}},controls:{GET_SHORTCODE_LIST:e=>p()({path:e.path})},selectors:{getShortcodeList(e){const{shortcodeList:t}=e;return t}},resolvers:{*getShortcodeList(){const e=yield s.getShortcodeList("/btcpaywall/shortcode-list/v1");return s.setShortcodeList(e)}},actions:s};Object(b.registerStore)("btcpaywall/shortcode_data",m),Object(n.registerBlockType)("btc-paywall/gutenberg-shortcode-list",{title:"BTCPW Shortcode List",icon:"dashicons-screenoptions",category:"widgets",keywords:["paywall","shortcode-list"],attributes:{className:{type:"string",default:""},shortcode:{type:"string",default:""}},edit:e=>{const{attributes:{shortcode:t},setAttributes:l}=e,n=Object(b.useSelect)(e=>e("btcpaywall/shortcode_data").getShortcodeList());return Object(a.createElement)("div",null,Object(a.createElement)(i.InspectorControls,null,Object(a.createElement)(c.Panel,null,Object(a.createElement)(c.PanelBody,{title:"Shortcodes",initialOpen:!0},Object(a.createElement)("div",{className:"btcpw_gutenberg_sel_num_control"},Object(a.createElement)(c.SelectControl,{value:t,onChange:e=>{l({shortcode:e})},options:Object.entries(n).map(e=>({label:e[0],value:e[1]}))}))))))},save:e=>null})}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./blocks/index.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./blocks/blocks/end_content.js":
+/*!**************************************!*\
+  !*** ./blocks/blocks/end_content.js ***!
+  \**************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("btc-paywall/gutenberg-end-block", {
+  title: "BTCPW Pay-per-Post End",
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+    version: "1.0",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "517.000000pt",
+    height: "372.000000pt",
+    viewBox: "0 0 517.000000 372.000000",
+    preserveAspectRatio: "xMidYMid meet"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    transform: "translate(0.000000,372.000000) scale(0.100000,-0.100000)",
+    fill: "#000000",
+    stroke: "none"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M45 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M785 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 470 0 471 0 -6 29\n-6 29 216 -5 216 -6 0 287 0 287 -25 24 -24 25 -656 0 -656 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2276 3659 l-26 -20 0 -289 0 -288 418 -5 c387 -4 423 -5 500 -25 70\n-19 111 -22 258 -22 97 0 184 4 194 10 10 5 23 24 29 41 14 42 15 525 1 566\n-6 17 -22 35 -36 42 -18 8 -209 11 -668 11 -636 0 -644 0 -670 -21z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3755 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M63 2930 c-12 -5 -26 -18 -32 -29 -7 -13 -11 -122 -11 -304 0 -283 0\n-284 23 -305 l23 -22 661 0 662 0 20 26 c20 26 21 39 21 306 0 163 -4 287 -10\n298 -5 10 -24 23 -41 29 -39 13 -1282 14 -1316 1z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M1549 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -25 c24 -24 29 -25\n132 -22 l108 3 -3 324 c-1 178 -5 327 -8 332 -7 12 -172 10 -205 -2z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3479 2873 c80 -80 133 -180 152 -287 12 -70 8 -264 -6 -298 -7 -17\n14 -18 363 -18 l371 0 20 26 c20 26 21 39 21 300 0 289 -3 313 -47 333 -16 8\n-168 11 -483 11 l-460 0 69 -67z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M4519 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -24 24 -25 289 0\n289 0 21 23 c22 23 22 29 22 309 0 266 -1 287 -19 309 l-19 24 -279 2 c-162 1\n-289 -2 -304 -8z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2260 2460 l0 -190 305 0 c292 0 306 1 325 20 18 18 20 33 20 184 l0\n163 -52 7 c-29 3 -176 6 -325 6 l-273 0 0 -190z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2990 2465 c0 -142 2 -157 20 -175 26 -26 114 -29 124 -4 12 32 6\n165 -10 202 -17 43 -67 97 -106 118 l-28 15 0 -156z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M40 2170 c-19 -19 -20 -33 -20 -310 0 -277 1 -291 20 -310 19 -19 33\n-20 314 -20 l295 0 20 26 c20 26 21 39 21 304 0 265 -1 278 -21 304 l-20 26\n-295 0 c-281 0 -295 -1 -314 -20z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M781 2164 c-20 -26 -21 -38 -21 -304 0 -266 1 -278 21 -304 l21 -26\n481 2 482 3 0 325 0 325 -482 3 -481 2 -21 -26z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2272 2178 c-7 -7 -12 -29 -12 -51 l0 -38 338 3 c328 3 338 4 389 26\n28 13 61 35 74 48 l22 24 -399 0 c-298 0 -403 -3 -412 -12z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3569 2148 c-37 -73 -134 -160 -228 -206 -83 -40 -84 -41 -57 -52 15\n-5 32 -10 37 -10 6 0 44 -15 85 -34 72 -34 172 -120 231 -201 l22 -30 -2 266\nc-2 247 -3 269 -21 288 -28 31 -43 26 -67 -21z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3750 2168 c-19 -21 -20 -34 -20 -310 0 -275 1 -289 20 -308 20 -20\n33 -20 685 -20 652 0 665 0 685 20 19 19 20 33 20 310 0 277 -1 291 -20 310\n-20 20 -33 20 -685 20 l-664 0 -21 -22z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2260 1617 c0 -36 5 -68 12 -75 14 -14 898 -18 898 -4 0 20 -78 87\n-129 111 l-56 26 -362 3 -363 3 0 -64z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M42 1427 c-22 -23 -22 -29 -22 -309 0 -266 1 -287 19 -309 l19 -24\n667 0 667 0 19 24 c18 22 19 42 19 306 0 270 -1 283 -21 309 l-20 26 -663 0\n-663 0 -21 -23z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M1529 1431 l-24 -19 -3 -278 c-2 -188 1 -286 8 -305 16 -39 49 -49\n155 -49 l95 0 1 138 c1 75 2 226 3 334 l1 198 -106 0 c-90 0 -110 -3 -130 -19z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2260 1245 l0 -205 325 0 325 0 0 185 c0 172 -1 186 -20 205 -19 19\n-33 20 -325 20 l-305 0 0 -205z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3012 1430 c-21 -20 -22 -29 -22 -195 0 -128 3 -175 12 -175 29 0\n101 45 136 85 50 57 72 126 72 226 l0 79 -88 0 c-75 0 -92 -3 -110 -20z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3716 1428 c14 -41 7 -250 -10 -320 -22 -96 -79 -202 -144 -270 l-55\n-58 412 0 c444 0 461 2 475 52 3 13 6 146 6 296 l0 273 -25 24 -24 25 -321 0\n-321 0 7 -22z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M4495 1425 l-25 -24 0 -275 c0 -183 4 -283 11 -300 20 -44 46 -47\n343 -44 l278 3 19 24 c18 22 19 43 19 310 l0 288 -23 21 c-23 22 -29 22 -311\n22 l-287 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M45 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M785 685 l-25 -24 0 -284 c0 -265 1 -286 19 -308 l19 -24 660 -3\nc655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0\n-472 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3303 679 c-142 -51 -235 -59 -665 -59 l-388 0 0 -267 c0 -148 4\n-273 8 -279 21 -33 50 -34 691 -34 457 0 647 3 665 11 14 7 30 25 36 42 14 41\n13 524 -1 566 -6 17 -19 36 -29 41 -10 6 -67 10 -127 9 -92 -1 -120 -5 -190\n-30z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3755 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"
+  }))),
+  category: "widgets",
+  keywords: ["paywall", "end-paywall"],
+  edit: props => {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("hr", {
+      class: "btcpw_pay__gutenberg_block_separator"
+    });
+  },
+  save: props => {
+    return null;
+  }
+});
+
+/***/ }),
+
+/***/ "./blocks/blocks/end_video.js":
+/*!************************************!*\
+  !*** ./blocks/blocks/end_video.js ***!
+  \************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("btc-paywall/gutenberg-end-video-block", {
+  title: "BTCPW Pay-per-View End",
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+    version: "1.0",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "517.000000pt",
+    height: "372.000000pt",
+    viewBox: "0 0 517.000000 372.000000",
+    preserveAspectRatio: "xMidYMid meet"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    transform: "translate(0.000000,372.000000) scale(0.100000,-0.100000)",
+    fill: "#000000",
+    stroke: "none"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M45 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M785 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 470 0 471 0 -6 29\n-6 29 216 -5 216 -6 0 287 0 287 -25 24 -24 25 -656 0 -656 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2276 3659 l-26 -20 0 -289 0 -288 418 -5 c387 -4 423 -5 500 -25 70\n-19 111 -22 258 -22 97 0 184 4 194 10 10 5 23 24 29 41 14 42 15 525 1 566\n-6 17 -22 35 -36 42 -18 8 -209 11 -668 11 -636 0 -644 0 -670 -21z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3755 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M63 2930 c-12 -5 -26 -18 -32 -29 -7 -13 -11 -122 -11 -304 0 -283 0\n-284 23 -305 l23 -22 661 0 662 0 20 26 c20 26 21 39 21 306 0 163 -4 287 -10\n298 -5 10 -24 23 -41 29 -39 13 -1282 14 -1316 1z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M1549 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -25 c24 -24 29 -25\n132 -22 l108 3 -3 324 c-1 178 -5 327 -8 332 -7 12 -172 10 -205 -2z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3479 2873 c80 -80 133 -180 152 -287 12 -70 8 -264 -6 -298 -7 -17\n14 -18 363 -18 l371 0 20 26 c20 26 21 39 21 300 0 289 -3 313 -47 333 -16 8\n-168 11 -483 11 l-460 0 69 -67z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M4519 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -24 24 -25 289 0\n289 0 21 23 c22 23 22 29 22 309 0 266 -1 287 -19 309 l-19 24 -279 2 c-162 1\n-289 -2 -304 -8z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2260 2460 l0 -190 305 0 c292 0 306 1 325 20 18 18 20 33 20 184 l0\n163 -52 7 c-29 3 -176 6 -325 6 l-273 0 0 -190z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2990 2465 c0 -142 2 -157 20 -175 26 -26 114 -29 124 -4 12 32 6\n165 -10 202 -17 43 -67 97 -106 118 l-28 15 0 -156z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M40 2170 c-19 -19 -20 -33 -20 -310 0 -277 1 -291 20 -310 19 -19 33\n-20 314 -20 l295 0 20 26 c20 26 21 39 21 304 0 265 -1 278 -21 304 l-20 26\n-295 0 c-281 0 -295 -1 -314 -20z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M781 2164 c-20 -26 -21 -38 -21 -304 0 -266 1 -278 21 -304 l21 -26\n481 2 482 3 0 325 0 325 -482 3 -481 2 -21 -26z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2272 2178 c-7 -7 -12 -29 -12 -51 l0 -38 338 3 c328 3 338 4 389 26\n28 13 61 35 74 48 l22 24 -399 0 c-298 0 -403 -3 -412 -12z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3569 2148 c-37 -73 -134 -160 -228 -206 -83 -40 -84 -41 -57 -52 15\n-5 32 -10 37 -10 6 0 44 -15 85 -34 72 -34 172 -120 231 -201 l22 -30 -2 266\nc-2 247 -3 269 -21 288 -28 31 -43 26 -67 -21z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3750 2168 c-19 -21 -20 -34 -20 -310 0 -275 1 -289 20 -308 20 -20\n33 -20 685 -20 652 0 665 0 685 20 19 19 20 33 20 310 0 277 -1 291 -20 310\n-20 20 -33 20 -685 20 l-664 0 -21 -22z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2260 1617 c0 -36 5 -68 12 -75 14 -14 898 -18 898 -4 0 20 -78 87\n-129 111 l-56 26 -362 3 -363 3 0 -64z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M42 1427 c-22 -23 -22 -29 -22 -309 0 -266 1 -287 19 -309 l19 -24\n667 0 667 0 19 24 c18 22 19 42 19 306 0 270 -1 283 -21 309 l-20 26 -663 0\n-663 0 -21 -23z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M1529 1431 l-24 -19 -3 -278 c-2 -188 1 -286 8 -305 16 -39 49 -49\n155 -49 l95 0 1 138 c1 75 2 226 3 334 l1 198 -106 0 c-90 0 -110 -3 -130 -19z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2260 1245 l0 -205 325 0 325 0 0 185 c0 172 -1 186 -20 205 -19 19\n-33 20 -325 20 l-305 0 0 -205z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3012 1430 c-21 -20 -22 -29 -22 -195 0 -128 3 -175 12 -175 29 0\n101 45 136 85 50 57 72 126 72 226 l0 79 -88 0 c-75 0 -92 -3 -110 -20z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3716 1428 c14 -41 7 -250 -10 -320 -22 -96 -79 -202 -144 -270 l-55\n-58 412 0 c444 0 461 2 475 52 3 13 6 146 6 296 l0 273 -25 24 -24 25 -321 0\n-321 0 7 -22z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M4495 1425 l-25 -24 0 -275 c0 -183 4 -283 11 -300 20 -44 46 -47\n343 -44 l278 3 19 24 c18 22 19 43 19 310 l0 288 -23 21 c-23 22 -29 22 -311\n22 l-287 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M45 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M785 685 l-25 -24 0 -284 c0 -265 1 -286 19 -308 l19 -24 660 -3\nc655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0\n-472 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3303 679 c-142 -51 -235 -59 -665 -59 l-388 0 0 -267 c0 -148 4\n-273 8 -279 21 -33 50 -34 691 -34 457 0 647 3 665 11 14 7 30 25 36 42 14 41\n13 524 -1 566 -6 17 -19 36 -29 41 -10 6 -67 10 -127 9 -92 -1 -120 -5 -190\n-30z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3755 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"
+  }))),
+  category: "widgets",
+  keywords: ["paywall", "end-video-paywall"],
+  edit: props => {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("hr", {
+      class: "btcpw_pay__gutenberg_block_separator"
+    });
+  },
+  save: props => {
+    return null;
+  }
+});
+
+/***/ }),
+
+/***/ "./blocks/blocks/file.js":
+/*!*******************************!*\
+  !*** ./blocks/blocks/file.js ***!
+  \*******************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('btc-paywall/gutenberg-file-block', {
+  title: 'BTCPW Pay-per-File',
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+    version: "1.0",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "517.000000pt",
+    height: "372.000000pt",
+    viewBox: "0 0 517.000000 372.000000",
+    preserveAspectRatio: "xMidYMid meet"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    transform: "translate(0.000000,372.000000) scale(0.100000,-0.100000)",
+    fill: "#000000",
+    stroke: "none"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M45 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M785 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 470 0 471 0 -6 29\n-6 29 216 -5 216 -6 0 287 0 287 -25 24 -24 25 -656 0 -656 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2276 3659 l-26 -20 0 -289 0 -288 418 -5 c387 -4 423 -5 500 -25 70\n-19 111 -22 258 -22 97 0 184 4 194 10 10 5 23 24 29 41 14 42 15 525 1 566\n-6 17 -22 35 -36 42 -18 8 -209 11 -668 11 -636 0 -644 0 -670 -21z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3755 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M63 2930 c-12 -5 -26 -18 -32 -29 -7 -13 -11 -122 -11 -304 0 -283 0\n-284 23 -305 l23 -22 661 0 662 0 20 26 c20 26 21 39 21 306 0 163 -4 287 -10\n298 -5 10 -24 23 -41 29 -39 13 -1282 14 -1316 1z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M1549 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -25 c24 -24 29 -25\n132 -22 l108 3 -3 324 c-1 178 -5 327 -8 332 -7 12 -172 10 -205 -2z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3479 2873 c80 -80 133 -180 152 -287 12 -70 8 -264 -6 -298 -7 -17\n14 -18 363 -18 l371 0 20 26 c20 26 21 39 21 300 0 289 -3 313 -47 333 -16 8\n-168 11 -483 11 l-460 0 69 -67z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M4519 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -24 24 -25 289 0\n289 0 21 23 c22 23 22 29 22 309 0 266 -1 287 -19 309 l-19 24 -279 2 c-162 1\n-289 -2 -304 -8z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2260 2460 l0 -190 305 0 c292 0 306 1 325 20 18 18 20 33 20 184 l0\n163 -52 7 c-29 3 -176 6 -325 6 l-273 0 0 -190z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2990 2465 c0 -142 2 -157 20 -175 26 -26 114 -29 124 -4 12 32 6\n165 -10 202 -17 43 -67 97 -106 118 l-28 15 0 -156z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M40 2170 c-19 -19 -20 -33 -20 -310 0 -277 1 -291 20 -310 19 -19 33\n-20 314 -20 l295 0 20 26 c20 26 21 39 21 304 0 265 -1 278 -21 304 l-20 26\n-295 0 c-281 0 -295 -1 -314 -20z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M781 2164 c-20 -26 -21 -38 -21 -304 0 -266 1 -278 21 -304 l21 -26\n481 2 482 3 0 325 0 325 -482 3 -481 2 -21 -26z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2272 2178 c-7 -7 -12 -29 -12 -51 l0 -38 338 3 c328 3 338 4 389 26\n28 13 61 35 74 48 l22 24 -399 0 c-298 0 -403 -3 -412 -12z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3569 2148 c-37 -73 -134 -160 -228 -206 -83 -40 -84 -41 -57 -52 15\n-5 32 -10 37 -10 6 0 44 -15 85 -34 72 -34 172 -120 231 -201 l22 -30 -2 266\nc-2 247 -3 269 -21 288 -28 31 -43 26 -67 -21z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3750 2168 c-19 -21 -20 -34 -20 -310 0 -275 1 -289 20 -308 20 -20\n33 -20 685 -20 652 0 665 0 685 20 19 19 20 33 20 310 0 277 -1 291 -20 310\n-20 20 -33 20 -685 20 l-664 0 -21 -22z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2260 1617 c0 -36 5 -68 12 -75 14 -14 898 -18 898 -4 0 20 -78 87\n-129 111 l-56 26 -362 3 -363 3 0 -64z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M42 1427 c-22 -23 -22 -29 -22 -309 0 -266 1 -287 19 -309 l19 -24\n667 0 667 0 19 24 c18 22 19 42 19 306 0 270 -1 283 -21 309 l-20 26 -663 0\n-663 0 -21 -23z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M1529 1431 l-24 -19 -3 -278 c-2 -188 1 -286 8 -305 16 -39 49 -49\n155 -49 l95 0 1 138 c1 75 2 226 3 334 l1 198 -106 0 c-90 0 -110 -3 -130 -19z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2260 1245 l0 -205 325 0 325 0 0 185 c0 172 -1 186 -20 205 -19 19\n-33 20 -325 20 l-305 0 0 -205z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3012 1430 c-21 -20 -22 -29 -22 -195 0 -128 3 -175 12 -175 29 0\n101 45 136 85 50 57 72 126 72 226 l0 79 -88 0 c-75 0 -92 -3 -110 -20z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3716 1428 c14 -41 7 -250 -10 -320 -22 -96 -79 -202 -144 -270 l-55\n-58 412 0 c444 0 461 2 475 52 3 13 6 146 6 296 l0 273 -25 24 -24 25 -321 0\n-321 0 7 -22z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M4495 1425 l-25 -24 0 -275 c0 -183 4 -283 11 -300 20 -44 46 -47\n343 -44 l278 3 19 24 c18 22 19 43 19 310 l0 288 -23 21 c-23 22 -29 22 -311\n22 l-287 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M45 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M785 685 l-25 -24 0 -284 c0 -265 1 -286 19 -308 l19 -24 660 -3\nc655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0\n-472 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3303 679 c-142 -51 -235 -59 -665 -59 l-388 0 0 -267 c0 -148 4\n-273 8 -279 21 -33 50 -34 691 -34 457 0 647 3 665 11 14 7 30 25 36 42 14 41\n13 524 -1 566 -6 17 -19 36 -29 41 -10 6 -67 10 -127 9 -92 -1 -120 -5 -190\n-30z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3755 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"
+  }))),
+  category: 'widgets',
+  keywords: ['paywall', 'file-paywall'],
+  attributes: {
+    className: {
+      type: 'string',
+      default: ''
+    },
+    pay_file_block: {
+      type: 'boolean',
+      default: true
+    },
+    btc_format: {
+      type: 'string'
+    },
+    file: {
+      type: 'string',
+      default: ''
+    },
+    title: {
+      type: 'string',
+      default: 'Untitled'
+    },
+    description: {
+      type: 'string',
+      default: 'No description'
+    },
+    preview: {
+      type: 'string',
+      default: ''
+    },
+    currency: {
+      type: 'string'
+    },
+    price: {
+      type: 'number'
+    },
+    duration_type: {
+      type: 'string'
+    },
+    duration: {
+      type: 'number'
+    }
+  },
+  example: {},
+  edit: props => {
+    const {
+      attributes: {
+        pay_file_block,
+        btc_format,
+        file,
+        title,
+        description,
+        preview,
+        currency,
+        duration_type,
+        price,
+        duration,
+        className
+      },
+      setAttributes
+    } = props;
+    const [show, setShow] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useState"])(currency === 'SATS');
+    const inspectorControls = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
+      title: "BP Paywall File",
+      initialOpen: true
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["ToggleControl"], {
+      label: "Enable payment block",
+      checked: pay_file_block,
+      onChange: checked => {
+        setAttributes({
+          pay_file_block: checked
+        });
+      },
+      value: pay_file_block
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["MediaPlaceholder"], {
+      labels: {
+        title: 'BP Pay-per-File'
+      },
+      onSelect: el => setAttributes({
+        file: el.url
+      }),
+      multiple: false,
+      onSelectURL: el => setAttributes({
+        file: el
+      })
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["TextareaControl"], {
+      label: "Title",
+      help: "Enter file title",
+      onChange: content => {
+        setAttributes({
+          title: content
+        });
+      },
+      value: title
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["TextareaControl"], {
+      label: "Description",
+      help: "Enter file description",
+      onChange: desc => {
+        setAttributes({
+          description: desc
+        });
+      },
+      value: description
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["MediaUpload"], {
+      onSelect: pic => {
+        setAttributes({
+          preview: pic.sizes.full.url
+        });
+      },
+      render: ({
+        open
+      }) => Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        onClick: open
+      }, "File preview")
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
+      label: "Currency",
+      value: currency,
+      onChange: selectedItem => {
+        selectedItem === 'SATS' ? setShow(true) : setShow(false);
+        setAttributes({
+          currency: selectedItem
+        });
+      },
+      options: [{
+        value: '',
+        label: 'Default'
+      }, {
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'EUR',
+        label: 'EUR'
+      }, {
+        value: 'USD',
+        label: 'USD'
+      }]
+    })), show && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
+      label: "BTC format",
+      value: btc_format,
+      onChange: selectedItem => setAttributes({
+        btc_format: selectedItem
+      }),
+      options: [{
+        value: '',
+        label: 'Default'
+      }, {
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'BTC',
+        label: 'BTC'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["__experimentalNumberControl"], {
+      label: "Price",
+      value: price,
+      onChange: nextValue => setAttributes({
+        price: Number(nextValue)
+      })
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
+      label: "Duration type",
+      value: duration_type,
+      onChange: selectedItem => setAttributes({
+        duration_type: selectedItem
+      }),
+      options: [{
+        value: '',
+        label: 'Default'
+      }, {
+        value: 'minute',
+        label: 'Minute'
+      }, {
+        value: 'hour',
+        label: 'Hour'
+      }, {
+        value: 'week',
+        label: 'Week'
+      }, {
+        value: 'month',
+        label: 'Month'
+      }, {
+        value: 'year',
+        label: 'Year'
+      }, {
+        value: 'onetime',
+        label: 'Onetime'
+      }, {
+        value: 'unlimited',
+        label: 'Unlimited'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["__experimentalNumberControl"], {
+      label: "Duration",
+      value: duration,
+      onChange: nextValue => setAttributes({
+        duration: Number(nextValue)
+      })
+    }))));
+    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4___default.a, {
+      block: "btc-paywall/gutenberg-file-block",
+      attributes: (pay_file_block, btc_format, file, title, description, preview, currency, duration_type, price, duration, className)
+    }), inspectorControls)];
+  },
+  save: props => {
+    return null;
+  }
+});
+
+/***/ }),
+
+/***/ "./blocks/blocks/shortcode_store.js":
+/*!******************************************!*\
+  !*** ./blocks/blocks/shortcode_store.js ***!
+  \******************************************/
+/*! exports provided: STORE_NAME */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "STORE_NAME", function() { return STORE_NAME; });
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__);
+
+
+const DEFAULT_STATE = {
+  shortcodeList: {}
+};
+const STORE_NAME = 'btcpaywall/shortcode_data';
+const actions = {
+  setShortcodeList(shortcodeList) {
+    return {
+      type: 'SET_SHORTCODE_LIST',
+      shortcodeList
+    };
+  },
+
+  getShortcodeList(path) {
+    return {
+      type: 'GET_SHORTCODE_LIST',
+      path
+    };
+  }
+
+};
+
+const reducer = (state = DEFAULT_STATE, action) => {
+  switch (action.type) {
+    case 'SET_SHORTCODE_LIST':
+      {
+        return { ...state,
+          shortcodeList: action.shortcodeList
+        };
+      }
+
+    default:
+      {
+        return state;
+      }
+  }
+};
+
+const selectors = {
+  getShortcodeList(state) {
+    const {
+      shortcodeList
+    } = state;
+    return shortcodeList;
+  }
+
+};
+const controls = {
+  GET_SHORTCODE_LIST(action) {
+    return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()({
+      path: action.path
+    });
+  }
+
+};
+const resolvers = {
+  *getShortcodeList() {
+    const shortcodeList = yield actions.getShortcodeList('/btcpaywall/shortcode-list/v1');
+    return actions.setShortcodeList(shortcodeList);
+  }
+
+};
+const storeConfig = {
+  reducer,
+  controls,
+  selectors,
+  resolvers,
+  actions
+};
+Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__["registerStore"])(STORE_NAME, storeConfig);
+
+
+/***/ }),
+
+/***/ "./blocks/blocks/start_content.js":
+/*!****************************************!*\
+  !*** ./blocks/blocks/start_content.js ***!
+  \****************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('btc-paywall/gutenberg-start-block', {
+  title: 'BTCPW Pay-per-Post Start',
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+    version: "1.0",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "517.000000pt",
+    height: "372.000000pt",
+    viewBox: "0 0 517.000000 372.000000",
+    preserveAspectRatio: "xMidYMid meet"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    transform: "translate(0.000000,372.000000) scale(0.100000,-0.100000)",
+    fill: "#000000",
+    stroke: "none"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M45 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M785 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 470 0 471 0 -6 29\n-6 29 216 -5 216 -6 0 287 0 287 -25 24 -24 25 -656 0 -656 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2276 3659 l-26 -20 0 -289 0 -288 418 -5 c387 -4 423 -5 500 -25 70\n-19 111 -22 258 -22 97 0 184 4 194 10 10 5 23 24 29 41 14 42 15 525 1 566\n-6 17 -22 35 -36 42 -18 8 -209 11 -668 11 -636 0 -644 0 -670 -21z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3755 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M63 2930 c-12 -5 -26 -18 -32 -29 -7 -13 -11 -122 -11 -304 0 -283 0\n-284 23 -305 l23 -22 661 0 662 0 20 26 c20 26 21 39 21 306 0 163 -4 287 -10\n298 -5 10 -24 23 -41 29 -39 13 -1282 14 -1316 1z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M1549 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -25 c24 -24 29 -25\n132 -22 l108 3 -3 324 c-1 178 -5 327 -8 332 -7 12 -172 10 -205 -2z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3479 2873 c80 -80 133 -180 152 -287 12 -70 8 -264 -6 -298 -7 -17\n14 -18 363 -18 l371 0 20 26 c20 26 21 39 21 300 0 289 -3 313 -47 333 -16 8\n-168 11 -483 11 l-460 0 69 -67z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M4519 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -24 24 -25 289 0\n289 0 21 23 c22 23 22 29 22 309 0 266 -1 287 -19 309 l-19 24 -279 2 c-162 1\n-289 -2 -304 -8z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2260 2460 l0 -190 305 0 c292 0 306 1 325 20 18 18 20 33 20 184 l0\n163 -52 7 c-29 3 -176 6 -325 6 l-273 0 0 -190z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2990 2465 c0 -142 2 -157 20 -175 26 -26 114 -29 124 -4 12 32 6\n165 -10 202 -17 43 -67 97 -106 118 l-28 15 0 -156z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M40 2170 c-19 -19 -20 -33 -20 -310 0 -277 1 -291 20 -310 19 -19 33\n-20 314 -20 l295 0 20 26 c20 26 21 39 21 304 0 265 -1 278 -21 304 l-20 26\n-295 0 c-281 0 -295 -1 -314 -20z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M781 2164 c-20 -26 -21 -38 -21 -304 0 -266 1 -278 21 -304 l21 -26\n481 2 482 3 0 325 0 325 -482 3 -481 2 -21 -26z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2272 2178 c-7 -7 -12 -29 -12 -51 l0 -38 338 3 c328 3 338 4 389 26\n28 13 61 35 74 48 l22 24 -399 0 c-298 0 -403 -3 -412 -12z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3569 2148 c-37 -73 -134 -160 -228 -206 -83 -40 -84 -41 -57 -52 15\n-5 32 -10 37 -10 6 0 44 -15 85 -34 72 -34 172 -120 231 -201 l22 -30 -2 266\nc-2 247 -3 269 -21 288 -28 31 -43 26 -67 -21z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3750 2168 c-19 -21 -20 -34 -20 -310 0 -275 1 -289 20 -308 20 -20\n33 -20 685 -20 652 0 665 0 685 20 19 19 20 33 20 310 0 277 -1 291 -20 310\n-20 20 -33 20 -685 20 l-664 0 -21 -22z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2260 1617 c0 -36 5 -68 12 -75 14 -14 898 -18 898 -4 0 20 -78 87\n-129 111 l-56 26 -362 3 -363 3 0 -64z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M42 1427 c-22 -23 -22 -29 -22 -309 0 -266 1 -287 19 -309 l19 -24\n667 0 667 0 19 24 c18 22 19 42 19 306 0 270 -1 283 -21 309 l-20 26 -663 0\n-663 0 -21 -23z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M1529 1431 l-24 -19 -3 -278 c-2 -188 1 -286 8 -305 16 -39 49 -49\n155 -49 l95 0 1 138 c1 75 2 226 3 334 l1 198 -106 0 c-90 0 -110 -3 -130 -19z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2260 1245 l0 -205 325 0 325 0 0 185 c0 172 -1 186 -20 205 -19 19\n-33 20 -325 20 l-305 0 0 -205z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3012 1430 c-21 -20 -22 -29 -22 -195 0 -128 3 -175 12 -175 29 0\n101 45 136 85 50 57 72 126 72 226 l0 79 -88 0 c-75 0 -92 -3 -110 -20z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3716 1428 c14 -41 7 -250 -10 -320 -22 -96 -79 -202 -144 -270 l-55\n-58 412 0 c444 0 461 2 475 52 3 13 6 146 6 296 l0 273 -25 24 -24 25 -321 0\n-321 0 7 -22z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M4495 1425 l-25 -24 0 -275 c0 -183 4 -283 11 -300 20 -44 46 -47\n343 -44 l278 3 19 24 c18 22 19 43 19 310 l0 288 -23 21 c-23 22 -29 22 -311\n22 l-287 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M45 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M785 685 l-25 -24 0 -284 c0 -265 1 -286 19 -308 l19 -24 660 -3\nc655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0\n-472 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3303 679 c-142 -51 -235 -59 -665 -59 l-388 0 0 -267 c0 -148 4\n-273 8 -279 21 -33 50 -34 691 -34 457 0 647 3 665 11 14 7 30 25 36 42 14 41\n13 524 -1 566 -6 17 -19 36 -29 41 -10 6 -67 10 -127 9 -92 -1 -120 -5 -190\n-30z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3755 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"
+  }))),
+  category: 'widgets',
+  keywords: ['paywall', 'start-paywall'],
+  attributes: {
+    className: {
+      type: 'string',
+      default: ''
+    },
+    pay_block: {
+      type: 'boolean',
+      default: true
+    },
+    btc_format: {
+      type: 'string'
+    },
+    currency: {
+      type: 'string'
+    },
+    price: {
+      type: 'number'
+    },
+    duration_type: {
+      type: 'string'
+    },
+    duration: {
+      type: 'number'
+    }
+  },
+  example: {},
+  edit: props => {
+    const {
+      attributes: {
+        pay_block,
+        btc_format,
+        currency,
+        duration_type,
+        price,
+        duration,
+        className
+      },
+      setAttributes
+    } = props;
+    const [show, setShow] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useState"])(currency === 'SATS');
+    const inspectorControls = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
+      title: "BP Paywall Text",
+      initialOpen: true
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["ToggleControl"], {
+      label: "Enable paywall",
+      checked: pay_block,
+      onChange: checked => {
+        setAttributes({
+          pay_block: checked
+        });
+      },
+      value: pay_block
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
+      label: "Currency",
+      value: currency,
+      onChange: selectedItem => {
+        selectedItem === 'SATS' ? setShow(true) : setShow(false);
+        setAttributes({
+          currency: selectedItem
+        });
+      },
+      options: [{
+        value: '',
+        label: 'Default'
+      }, {
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'EUR',
+        label: 'EUR'
+      }, {
+        value: 'USD',
+        label: 'USD'
+      }]
+    })), show && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
+      label: "BTC format",
+      value: btc_format,
+      onChange: selectedItem => setAttributes({
+        btc_format: selectedItem
+      }),
+      options: [{
+        value: '',
+        label: 'Default'
+      }, {
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'BTC',
+        label: 'BTC'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["__experimentalNumberControl"], {
+      label: "Price",
+      value: price,
+      onChange: nextValue => setAttributes({
+        price: Number(nextValue)
+      })
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
+      label: "Duration type",
+      value: duration_type,
+      onChange: selectedItem => setAttributes({
+        duration_type: selectedItem
+      }),
+      options: [{
+        value: '',
+        label: 'Default'
+      }, {
+        value: 'minute',
+        label: 'Minute'
+      }, {
+        value: 'hour',
+        label: 'Hour'
+      }, {
+        value: 'week',
+        label: 'Week'
+      }, {
+        value: 'month',
+        label: 'Month'
+      }, {
+        value: 'year',
+        label: 'Year'
+      }, {
+        value: 'onetime',
+        label: 'Onetime'
+      }, {
+        value: 'unlimited',
+        label: 'Unlimited'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["__experimentalNumberControl"], {
+      label: "Duration",
+      value: duration,
+      onChange: nextValue => setAttributes({
+        duration: Number(nextValue)
+      })
+    }))));
+    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      block: "btc-paywall/gutenberg-start-block",
+      attributes: (pay_block, btc_format, currency, duration_type, price, duration, className)
+    }), inspectorControls)];
+  },
+  save: props => {
+    return null;
+  }
+});
+
+/***/ }),
+
+/***/ "./blocks/blocks/start_video.js":
+/*!**************************************!*\
+  !*** ./blocks/blocks/start_video.js ***!
+  \**************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('btc-paywall/gutenberg-start-video-block', {
+  title: 'BTCPW Pay-per-View Start',
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+    version: "1.0",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "517.000000pt",
+    height: "372.000000pt",
+    viewBox: "0 0 517.000000 372.000000",
+    preserveAspectRatio: "xMidYMid meet"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    transform: "translate(0.000000,372.000000) scale(0.100000,-0.100000)",
+    fill: "#000000",
+    stroke: "none"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M45 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M785 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 470 0 471 0 -6 29\n-6 29 216 -5 216 -6 0 287 0 287 -25 24 -24 25 -656 0 -656 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2276 3659 l-26 -20 0 -289 0 -288 418 -5 c387 -4 423 -5 500 -25 70\n-19 111 -22 258 -22 97 0 184 4 194 10 10 5 23 24 29 41 14 42 15 525 1 566\n-6 17 -22 35 -36 42 -18 8 -209 11 -668 11 -636 0 -644 0 -670 -21z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3755 3655 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M63 2930 c-12 -5 -26 -18 -32 -29 -7 -13 -11 -122 -11 -304 0 -283 0\n-284 23 -305 l23 -22 661 0 662 0 20 26 c20 26 21 39 21 306 0 163 -4 287 -10\n298 -5 10 -24 23 -41 29 -39 13 -1282 14 -1316 1z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M1549 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -25 c24 -24 29 -25\n132 -22 l108 3 -3 324 c-1 178 -5 327 -8 332 -7 12 -172 10 -205 -2z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3479 2873 c80 -80 133 -180 152 -287 12 -70 8 -264 -6 -298 -7 -17\n14 -18 363 -18 l371 0 20 26 c20 26 21 39 21 300 0 289 -3 313 -47 333 -16 8\n-168 11 -483 11 l-460 0 69 -67z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M4519 2929 c-46 -17 -49 -40 -49 -335 l0 -275 25 -24 24 -25 289 0\n289 0 21 23 c22 23 22 29 22 309 0 266 -1 287 -19 309 l-19 24 -279 2 c-162 1\n-289 -2 -304 -8z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2260 2460 l0 -190 305 0 c292 0 306 1 325 20 18 18 20 33 20 184 l0\n163 -52 7 c-29 3 -176 6 -325 6 l-273 0 0 -190z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2990 2465 c0 -142 2 -157 20 -175 26 -26 114 -29 124 -4 12 32 6\n165 -10 202 -17 43 -67 97 -106 118 l-28 15 0 -156z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M40 2170 c-19 -19 -20 -33 -20 -310 0 -277 1 -291 20 -310 19 -19 33\n-20 314 -20 l295 0 20 26 c20 26 21 39 21 304 0 265 -1 278 -21 304 l-20 26\n-295 0 c-281 0 -295 -1 -314 -20z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M781 2164 c-20 -26 -21 -38 -21 -304 0 -266 1 -278 21 -304 l21 -26\n481 2 482 3 0 325 0 325 -482 3 -481 2 -21 -26z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2272 2178 c-7 -7 -12 -29 -12 -51 l0 -38 338 3 c328 3 338 4 389 26\n28 13 61 35 74 48 l22 24 -399 0 c-298 0 -403 -3 -412 -12z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3569 2148 c-37 -73 -134 -160 -228 -206 -83 -40 -84 -41 -57 -52 15\n-5 32 -10 37 -10 6 0 44 -15 85 -34 72 -34 172 -120 231 -201 l22 -30 -2 266\nc-2 247 -3 269 -21 288 -28 31 -43 26 -67 -21z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3750 2168 c-19 -21 -20 -34 -20 -310 0 -275 1 -289 20 -308 20 -20\n33 -20 685 -20 652 0 665 0 685 20 19 19 20 33 20 310 0 277 -1 291 -20 310\n-20 20 -33 20 -685 20 l-664 0 -21 -22z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2260 1617 c0 -36 5 -68 12 -75 14 -14 898 -18 898 -4 0 20 -78 87\n-129 111 l-56 26 -362 3 -363 3 0 -64z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M42 1427 c-22 -23 -22 -29 -22 -309 0 -266 1 -287 19 -309 l19 -24\n667 0 667 0 19 24 c18 22 19 42 19 306 0 270 -1 283 -21 309 l-20 26 -663 0\n-663 0 -21 -23z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M1529 1431 l-24 -19 -3 -278 c-2 -188 1 -286 8 -305 16 -39 49 -49\n155 -49 l95 0 1 138 c1 75 2 226 3 334 l1 198 -106 0 c-90 0 -110 -3 -130 -19z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M2260 1245 l0 -205 325 0 325 0 0 185 c0 172 -1 186 -20 205 -19 19\n-33 20 -325 20 l-305 0 0 -205z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3012 1430 c-21 -20 -22 -29 -22 -195 0 -128 3 -175 12 -175 29 0\n101 45 136 85 50 57 72 126 72 226 l0 79 -88 0 c-75 0 -92 -3 -110 -20z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3716 1428 c14 -41 7 -250 -10 -320 -22 -96 -79 -202 -144 -270 l-55\n-58 412 0 c444 0 461 2 475 52 3 13 6 146 6 296 l0 273 -25 24 -24 25 -321 0\n-321 0 7 -22z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M4495 1425 l-25 -24 0 -275 c0 -183 4 -283 11 -300 20 -44 46 -47\n343 -44 l278 3 19 24 c18 22 19 43 19 310 l0 288 -23 21 c-23 22 -29 22 -311\n22 l-287 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M45 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 284 0 c266 0 286 1\n308 19 l24 19 0 297 0 297 -24 19 c-22 18 -42 19 -308 19 l-284 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M785 685 l-25 -24 0 -284 c0 -265 1 -286 19 -308 l19 -24 660 -3\nc655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0\n-472 0 -24 -25z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3303 679 c-142 -51 -235 -59 -665 -59 l-388 0 0 -267 c0 -148 4\n-273 8 -279 21 -33 50 -34 691 -34 457 0 647 3 665 11 14 7 30 25 36 42 14 41\n13 524 -1 566 -6 17 -19 36 -29 41 -10 6 -67 10 -127 9 -92 -1 -120 -5 -190\n-30z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    d: "M3755 685 l-25 -24 0 -286 0 -286 25 -24 24 -25 656 0 656 0 24 25\n25 24 0 286 0 286 -25 24 -24 25 -656 0 -656 0 -24 -25z"
+  }))),
+  category: 'widgets',
+  keywords: ['paywall', 'start-video-paywall'],
+  attributes: {
+    className: {
+      type: 'string',
+      default: ''
+    },
+    pay_view_block: {
+      type: 'boolean',
+      default: true
+    },
+    btc_format: {
+      type: 'string'
+    },
+    title: {
+      type: 'string',
+      default: 'Untitled'
+    },
+    description: {
+      type: 'string',
+      default: 'No description'
+    },
+    preview: {
+      type: 'string',
+      default: ''
+    },
+    currency: {
+      type: 'string'
+    },
+    price: {
+      type: 'number'
+    },
+    duration_type: {
+      type: 'string'
+    },
+    duration: {
+      type: 'number'
+    }
+  },
+  example: {},
+  edit: props => {
+    const {
+      attributes: {
+        pay_view_block,
+        btc_format,
+        title,
+        description,
+        preview,
+        currency,
+        duration_type,
+        price,
+        duration,
+        className
+      },
+      setAttributes
+    } = props;
+    const [show, setShow] = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useState"])(currency === 'SATS');
+    const inspectorControls = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: "BP Paywall Video",
+      initialOpen: true
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToggleControl"], {
+      label: "Enable payment block",
+      checked: pay_view_block,
+      onChange: checked => {
+        setAttributes({
+          pay_view_block: checked
+        });
+      },
+      value: pay_view_block
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextareaControl"], {
+      label: "Title",
+      help: "Enter video title",
+      onChange: content => {
+        setAttributes({
+          title: content
+        });
+      },
+      value: title
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextareaControl"], {
+      label: "Description",
+      help: "Enter video description",
+      onChange: desc => {
+        setAttributes({
+          description: desc
+        });
+      },
+      value: description
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["MediaUpload"], {
+      onSelect: pic => {
+        setAttributes({
+          preview: pic.sizes.full.url
+        });
+      },
+      render: ({
+        open
+      }) => Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+        onClick: open
+      }, "Video preview")
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
+      label: "Currency",
+      value: currency,
+      onChange: selectedItem => {
+        selectedItem === 'SATS' ? setShow(true) : setShow(false);
+        setAttributes({
+          currency: selectedItem
+        });
+      },
+      options: [{
+        value: '',
+        label: 'Default'
+      }, {
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'EUR',
+        label: 'EUR'
+      }, {
+        value: 'USD',
+        label: 'USD'
+      }]
+    })), show && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
+      label: "BTC format",
+      value: btc_format,
+      onChange: selectedItem => setAttributes({
+        btc_format: selectedItem
+      }),
+      options: [{
+        value: '',
+        label: 'Default'
+      }, {
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'BTC',
+        label: 'BTC'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["__experimentalNumberControl"], {
+      label: "Price",
+      value: price,
+      onChange: nextValue => setAttributes({
+        price: Number(nextValue)
+      })
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
+      label: "Duration type",
+      value: duration_type,
+      onChange: selectedItem => setAttributes({
+        duration_type: selectedItem
+      }),
+      options: [{
+        value: '',
+        label: 'Default'
+      }, {
+        value: 'minute',
+        label: 'Minute'
+      }, {
+        value: 'hour',
+        label: 'Hour'
+      }, {
+        value: 'week',
+        label: 'Week'
+      }, {
+        value: 'month',
+        label: 'Month'
+      }, {
+        value: 'year',
+        label: 'Year'
+      }, {
+        value: 'onetime',
+        label: 'Onetime'
+      }, {
+        value: 'unlimited',
+        label: 'Unlimited'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["__experimentalNumberControl"], {
+      label: "Duration",
+      value: duration,
+      onChange: nextValue => setAttributes({
+        duration: Number(nextValue)
+      })
+    }))));
+    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4___default.a, {
+      block: "btc-paywall/gutenberg-start-video-block",
+      attributes: (pay_view_block, btc_format, title, description, preview, currency, duration_type, price, duration, className)
+    }), inspectorControls)];
+  },
+  save: props => {
+    return null;
+  }
+});
+
+/***/ }),
+
+/***/ "./blocks/blocks/tipping_banner_high.js":
+/*!**********************************************!*\
+  !*** ./blocks/blocks/tipping_banner_high.js ***!
+  \**********************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('btc-paywall/gutenberg-tipping-banner-high', {
+  title: 'BTCPW Tipping Banner High',
+  icon: 'dashicons-screenoptions',
+  category: 'widgets',
+  keywords: ['tipping', 'tipping-banner-high'],
+  attributes: {
+    className: {
+      type: 'string',
+      default: ''
+    },
+    dimension: {
+      type: 'string',
+      default: '200x710'
+    },
+    title: {
+      type: 'string',
+      default: 'Support my work'
+    },
+    description: {
+      type: 'string',
+      default: ''
+    },
+    currency: {
+      type: 'string'
+    },
+    title_text_color: {
+      type: 'string'
+    },
+    tipping_text: {
+      type: 'string',
+      default: 'Enter Tipping Amount'
+    },
+    tipping_text_color: {
+      type: 'string'
+    },
+    redirect: {
+      type: 'string'
+    },
+    description_color: {
+      type: 'string'
+    },
+    button_text: {
+      type: 'string',
+      default: 'Tipping now'
+    },
+    button_text_color: {
+      type: 'string'
+    },
+    button_color: {
+      type: 'string',
+      default: '#FE642E'
+    },
+    input_background: {
+      type: 'string'
+    },
+    logo_id: {
+      type: 'string',
+      default: 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg'
+    },
+    background: {
+      type: 'string'
+    },
+    background_color: {
+      type: 'string'
+    },
+    background_id: {
+      type: 'string'
+    },
+    value1_enabled: {
+      type: 'boolean',
+      default: true
+    },
+    value1_amount: {
+      type: 'number',
+      default: 1000
+    },
+    value1_currency: {
+      type: 'string',
+      default: 'SATS'
+    },
+    value1_icon: {
+      type: 'string',
+      default: 'fas fa-coffee'
+    },
+    value2_enabled: {
+      type: 'boolean',
+      default: true
+    },
+    value2_amount: {
+      type: 'number',
+      default: 2000
+    },
+    value2_currency: {
+      type: 'string',
+      default: 'SATS'
+    },
+    value2_icon: {
+      type: 'string',
+      default: 'fas fa-beer'
+    },
+    value3_enabled: {
+      type: 'boolean',
+      default: true
+    },
+    value3_amount: {
+      type: 'number',
+      default: 3000
+    },
+    value3_currency: {
+      type: 'string',
+      default: 'SATS'
+    },
+    value3_icon: {
+      type: 'string',
+      default: 'fas fa-cocktail'
+    },
+    display_name: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_name: {
+      type: 'boolean',
+      default: false
+    },
+    display_email: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_email: {
+      type: 'boolean',
+      default: false
+    },
+    display_address: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_address: {
+      type: 'boolean',
+      default: false
+    },
+    display_phone: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_phone: {
+      type: 'boolean',
+      default: false
+    },
+    display_message: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_message: {
+      type: 'boolean',
+      default: false
+    },
+    free_input: {
+      type: 'boolean',
+      default: true
+    },
+    show_icon: {
+      type: 'boolean',
+      default: true
+    }
+  },
+  example: {},
+  edit: props => {
+    const {
+      attributes: {
+        dimension,
+        background,
+        background_id,
+        background_color,
+        logo_id,
+        input_background,
+        button_color,
+        button_text,
+        button_text_color,
+        description_color,
+        redirect,
+        title,
+        title_text_color,
+        tipping_text,
+        tipping_text_color,
+        description,
+        currency,
+        value1_amount,
+        value1_currency,
+        value1_enabled,
+        value1_icon,
+        value2_amount,
+        value2_currency,
+        value2_enabled,
+        value2_icon,
+        value3_amount,
+        value3_currency,
+        value3_enabled,
+        value3_icon,
+        display_name,
+        display_email,
+        display_message,
+        display_phone,
+        display_address,
+        mandatory_address,
+        mandatory_email,
+        mandatory_phone,
+        mandatory_message,
+        mandatory_name,
+        free_input,
+        show_icon,
+        className
+      },
+      setAttributes
+    } = props;
+    const inspectorControls = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Panel"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: "Dimension",
+      initialOpen: true
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
+      value: dimension,
+      onChange: selectedItem => {
+        setAttributes({
+          dimension: selectedItem
+        });
+      },
+      options: [{
+        value: '200x710',
+        label: '200x710'
+      }]
+    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: "Background"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["MediaPlaceholder"], {
+      labels: {
+        title: 'Background'
+      },
+      onSelect: el => setAttributes({
+        background_id: el.url
+      }),
+      multiple: false,
+      onSelectURL: el => setAttributes({
+        background_id: el
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Background color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: background_color,
+      onChangeComplete: value => setAttributes({
+        background_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Header and footer background color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: background,
+      onChangeComplete: value => setAttributes({
+        background: value.hex
+      }),
+      disableAlpha: true
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: "Description"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["MediaPlaceholder"], {
+      labels: {
+        title: 'Logo'
+      },
+      onSelect: el => setAttributes({
+        logo_id: el.url
+      }),
+      multiple: false,
+      onSelectURL: el => setAttributes({
+        logo_id: el
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextareaControl"], {
+      label: "Title",
+      help: "Enter title",
+      onChange: content => {
+        setAttributes({
+          title: content
+        });
+      },
+      value: title
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Title text color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: title_text_color,
+      onChangeComplete: value => setAttributes({
+        title_text_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextareaControl"], {
+      label: "Description",
+      help: "Enter description",
+      onChange: content => {
+        setAttributes({
+          description: content
+        });
+      },
+      value: description
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Description text color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: description_color,
+      onChangeComplete: value => setAttributes({
+        description_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextareaControl"], {
+      label: "Tipping text",
+      help: "Enter tipping text",
+      onChange: content => {
+        setAttributes({
+          tipping_text: content
+        });
+      },
+      value: tipping_text
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Tipping text color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: tipping_text_color,
+      onChangeComplete: value => setAttributes({
+        tipping_text_color: value
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Link to Thank You Page"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["URLInputButton"], {
+      label: "Redirect link",
+      value: redirect,
+      onChange: value => setAttributes({
+        redirect: value
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Display free input",
+      help: "Do you want to display free input field?",
+      checked: free_input,
+      onChange: newvalue => setAttributes({
+        free_input: newvalue
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
+      label: "Currency",
+      value: currency,
+      onChange: selectedItem => {
+        setAttributes({
+          currency: selectedItem
+        });
+      },
+      options: [{
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'BTC',
+        label: 'BTC'
+      }, {
+        value: 'EUR',
+        label: 'EUR'
+      }, {
+        value: 'USD',
+        label: 'USD'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Background color for inputs"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: input_background,
+      onChangeComplete: value => setAttributes({
+        input_background: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Display icons",
+      help: "Do you want to display icons?",
+      checked: show_icon,
+      onChange: newvalue => setAttributes({
+        show_icon: newvalue
+      })
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: "Amount"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Display value 1",
+      help: "Do you want to display value 1?",
+      checked: value1_enabled,
+      onChange: newval => setAttributes({
+        value1_enabled: newval
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
+      value: value1_currency,
+      onChange: selectedItem => {
+        setAttributes({
+          value1_currency: selectedItem
+        });
+      },
+      options: [{
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'BTC',
+        label: 'BTC'
+      }, {
+        value: 'EUR',
+        label: 'EUR'
+      }, {
+        value: 'USD',
+        label: 'USD'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["__experimentalNumberControl"], {
+      isShiftStepEnabled: true,
+      onChange: amount => {
+        setAttributes({
+          value1_amount: amount
+        });
+      },
+      shiftStep: 10,
+      value: value1_amount
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextControl"], {
+      label: "FA Icon class",
+      value: value1_icon,
+      onChange: value => setAttributes({
+        value1_icon: value
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Display value 2",
+      help: "Do you want to display value 2?",
+      checked: value2_enabled,
+      onChange: value => {
+        setAttributes({
+          value2_enabled: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
+      value: value2_currency,
+      onChange: selectedItem => {
+        setAttributes({
+          value2_currency: selectedItem
+        });
+      },
+      options: [{
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'BTC',
+        label: 'BTC'
+      }, {
+        value: 'EUR',
+        label: 'EUR'
+      }, {
+        value: 'USD',
+        label: 'USD'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["__experimentalNumberControl"], {
+      isShiftStepEnabled: true,
+      onChange: amount => {
+        setAttributes({
+          value2_amount: amount
+        });
+      },
+      shiftStep: 10,
+      value: value2_amount
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextControl"], {
+      label: "FA Icon class",
+      value: value2_icon,
+      onChange: value => setAttributes({
+        value2_icon: value
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Display value 3",
+      help: "Do you want to display value 3?",
+      checked: value3_enabled,
+      onChange: value => {
+        setAttributes({
+          value3_enabled: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
+      value: value3_currency,
+      onChange: selectedItem => {
+        setAttributes({
+          value3_currency: selectedItem
+        });
+      },
+      options: [{
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'BTC',
+        label: 'BTC'
+      }, {
+        value: 'EUR',
+        label: 'EUR'
+      }, {
+        value: 'USD',
+        label: 'USD'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["__experimentalNumberControl"], {
+      isShiftStepEnabled: true,
+      onChange: amount => {
+        setAttributes({
+          value3_amount: amount
+        });
+      },
+      shiftStep: 10,
+      value: value3_amount
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextControl"], {
+      label: "FA Icon class",
+      value: value3_icon,
+      onChange: value => setAttributes({
+        value3_icon: value
+      })
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: "Button"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextareaControl"], {
+      label: "Button",
+      help: "Enter button text",
+      onChange: content => {
+        setAttributes({
+          button_text: content
+        });
+      },
+      value: button_text
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Button color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: button_color,
+      onChangeComplete: value => setAttributes({
+        button_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Button text color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: button_text_color,
+      onChangeComplete: value => setAttributes({
+        button_text_color: value.hex
+      }),
+      disableAlpha: true
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: "Collect further information"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Full name",
+      help: "Do you want to collect full name?",
+      checked: display_name,
+      onChange: value => {
+        setAttributes({
+          display_name: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      help: "Do you want make this field mandatory?",
+      checked: mandatory_name,
+      onChange: value => {
+        setAttributes({
+          mandatory_name: value
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Email",
+      help: "Do you want to collect email?",
+      checked: display_email,
+      onChange: value => {
+        setAttributes({
+          display_email: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      help: "Do you want make this field mandatory?",
+      checked: mandatory_email,
+      onChange: value => {
+        setAttributes({
+          mandatory_email: value
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Address",
+      help: "Do you want to collect address?",
+      checked: display_address,
+      onChange: value => {
+        setAttributes({
+          display_address: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      help: "Do you want make this field mandatory?",
+      checked: mandatory_address,
+      onChange: value => {
+        setAttributes({
+          mandatory_address: value
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Phone",
+      checked: display_phone,
+      help: "Do you want to collect phone?",
+      onChange: value => setAttributes({
+        display_phone: value
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      help: "Do you want make this field mandatory?",
+      checked: mandatory_phone,
+      onChange: value => {
+        setAttributes({
+          mandatory_phone: value
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Message",
+      help: "Do you want to collect message?",
+      checked: display_message,
+      onChange: value => {
+        setAttributes({
+          display_message: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      help: "Do you want make this field mandatory?",
+      checked: mandatory_message,
+      onChange: value => {
+        setAttributes({
+          mandatory_message: value
+        });
+      }
+    })))));
+    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4___default.a, {
+      block: "btc-paywall/gutenberg-tipping-banner-high",
+      attributes: (dimension, background, background_id, background_color, logo_id, input_background, button_color, button_text, button_text_color, description_color, redirect, title, title_text_color, tipping_text, tipping_text_color, description, currency, value1_amount, value1_currency, value1_enabled, value1_icon, value2_amount, value2_currency, value2_enabled, value2_icon, value3_amount, value3_currency, value3_enabled, value3_icon, display_name, display_email, display_message, display_phone, display_address, mandatory_address, mandatory_email, mandatory_phone, mandatory_message, mandatory_name, free_input, show_icon, className)
+    }), inspectorControls)];
+  },
+  save: props => {
+    return null;
+  }
+});
+
+/***/ }),
+
+/***/ "./blocks/blocks/tipping_banner_wide.js":
+/*!**********************************************!*\
+  !*** ./blocks/blocks/tipping_banner_wide.js ***!
+  \**********************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('btc-paywall/gutenberg-tipping-banner-wide', {
+  title: 'BTCPW Tipping Banner Wide',
+  icon: 'dashicons-screenoptions',
+  category: 'widgets',
+  keywords: ['tipping', 'tipping-banner-wide'],
+  attributes: {
+    className: {
+      type: 'string',
+      default: ''
+    },
+    dimension: {
+      type: 'string',
+      default: '600x280'
+    },
+    title: {
+      type: 'string',
+      default: 'Support my work'
+    },
+    description: {
+      type: 'string',
+      default: ''
+    },
+    currency: {
+      type: 'string'
+    },
+    title_text_color: {
+      type: 'string'
+    },
+    tipping_text: {
+      type: 'string',
+      default: 'Enter Tipping Amount'
+    },
+    tipping_text_color: {
+      type: 'string'
+    },
+    redirect: {
+      type: 'string'
+    },
+    description_color: {
+      type: 'string'
+    },
+    button_text: {
+      type: 'string',
+      default: 'Tipping now'
+    },
+    button_text_color: {
+      type: 'string'
+    },
+    button_color: {
+      type: 'string',
+      default: '#FE642E'
+    },
+    input_background: {
+      type: 'string'
+    },
+    logo_id: {
+      type: 'string',
+      default: 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg'
+    },
+    background: {
+      type: 'string'
+    },
+    background_color: {
+      type: 'string'
+    },
+    background_id: {
+      type: 'string'
+    },
+    value1_enabled: {
+      type: 'boolean',
+      default: true
+    },
+    value1_amount: {
+      type: 'number',
+      default: 1000
+    },
+    value1_currency: {
+      type: 'string',
+      default: 'SATS'
+    },
+    value1_icon: {
+      type: 'string',
+      default: 'fas fa-coffee'
+    },
+    value2_enabled: {
+      type: 'boolean',
+      default: true
+    },
+    value2_amount: {
+      type: 'number',
+      default: 2000
+    },
+    value2_currency: {
+      type: 'string',
+      default: 'SATS'
+    },
+    value2_icon: {
+      type: 'string',
+      default: 'fas fa-beer'
+    },
+    value3_enabled: {
+      type: 'boolean',
+      default: true
+    },
+    value3_amount: {
+      type: 'number',
+      default: 3000
+    },
+    value3_currency: {
+      type: 'string',
+      default: 'SATS'
+    },
+    value3_icon: {
+      type: 'string',
+      default: 'fas fa-cocktail'
+    },
+    display_name: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_name: {
+      type: 'boolean',
+      default: false
+    },
+    display_email: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_email: {
+      type: 'boolean',
+      default: false
+    },
+    display_address: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_address: {
+      type: 'boolean',
+      default: false
+    },
+    display_phone: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_phone: {
+      type: 'boolean',
+      default: false
+    },
+    display_message: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_message: {
+      type: 'boolean',
+      default: false
+    },
+    free_input: {
+      type: 'boolean',
+      default: true
+    },
+    show_icon: {
+      type: 'boolean',
+      default: true
+    }
+  },
+  example: {},
+  edit: props => {
+    const {
+      attributes: {
+        dimension,
+        background,
+        background_color,
+        background_id,
+        logo_id,
+        input_background,
+        button_color,
+        button_text,
+        button_text_color,
+        description_color,
+        redirect,
+        title,
+        title_text_color,
+        tipping_text,
+        tipping_text_color,
+        description,
+        currency,
+        value1_amount,
+        value1_currency,
+        value1_enabled,
+        value1_icon,
+        value2_amount,
+        value2_currency,
+        value2_enabled,
+        value2_icon,
+        value3_amount,
+        value3_currency,
+        value3_enabled,
+        value3_icon,
+        display_name,
+        display_email,
+        display_message,
+        display_phone,
+        display_address,
+        mandatory_address,
+        mandatory_email,
+        mandatory_phone,
+        mandatory_message,
+        mandatory_name,
+        free_input,
+        show_icon,
+        className
+      },
+      setAttributes
+    } = props;
+    const inspectorControls = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Panel"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
+      title: "Dimension",
+      initialOpen: true
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["SelectControl"], {
+      value: dimension,
+      onChange: selectedItem => {
+        setAttributes({
+          dimension: selectedItem
+        });
+      },
+      options: [{
+        value: '600x280',
+        label: '600x280'
+      }]
+    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
+      title: "Background"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["MediaPlaceholder"], {
+      labels: {
+        title: 'Background'
+      },
+      onSelect: el => setAttributes({
+        background_id: el.url
+      }),
+      multiple: false,
+      onSelectURL: el => setAttributes({
+        background_id: el
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Background color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ColorPicker"], {
+      color: background_color,
+      onChangeComplete: value => setAttributes({
+        background_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Header and footer background color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ColorPicker"], {
+      color: background,
+      onChangeComplete: value => setAttributes({
+        background: value.hex
+      }),
+      disableAlpha: true
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
+      title: "Description"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["MediaPlaceholder"], {
+      labels: {
+        title: 'Logo'
+      },
+      onSelect: el => setAttributes({
+        logo_id: el.url
+      }),
+      multiple: false,
+      onSelectURL: el => setAttributes({
+        logo_id: el
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextareaControl"], {
+      label: "Title",
+      help: "Enter title",
+      onChange: content => {
+        setAttributes({
+          title: content
+        });
+      },
+      value: title
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Title text color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ColorPicker"], {
+      color: title_text_color,
+      onChangeComplete: value => setAttributes({
+        title_text_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextareaControl"], {
+      label: "Description",
+      help: "Enter description",
+      onChange: content => {
+        setAttributes({
+          description: content
+        });
+      },
+      value: description
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Description text color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ColorPicker"], {
+      color: description_color,
+      onChangeComplete: value => setAttributes({
+        description_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextareaControl"], {
+      label: "Tipping text",
+      help: "Enter tipping text",
+      onChange: content => {
+        setAttributes({
+          tipping_text: content
+        });
+      },
+      value: tipping_text
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Tipping text color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ColorPicker"], {
+      color: tipping_text_color,
+      onChangeComplete: value => setAttributes({
+        tipping_text_color: value
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Link to Thank You Page"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["URLInputButton"], {
+      label: "Redirect link",
+      value: redirect,
+      onChange: value => setAttributes({
+        redirect: value
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
+      label: "Display free input",
+      help: "Do you want to display free input field?",
+      checked: free_input,
+      onChange: newvalue => setAttributes({
+        free_input: newvalue
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["SelectControl"], {
+      label: "Currency",
+      value: currency,
+      onChange: selectedItem => {
+        setAttributes({
+          currency: selectedItem
+        });
+      },
+      options: [{
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'BTC',
+        label: 'BTC'
+      }, {
+        value: 'EUR',
+        label: 'EUR'
+      }, {
+        value: 'USD',
+        label: 'USD'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Background color for inputs"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ColorPicker"], {
+      color: input_background,
+      onChangeComplete: value => setAttributes({
+        input_background: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
+      label: "Display icons",
+      help: "Do you want to display icons?",
+      checked: show_icon,
+      onChange: newvalue => setAttributes({
+        show_icon: newvalue
+      })
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
+      title: "Amount"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
+      label: "Display value 1",
+      help: "Do you want to display value 1?",
+      checked: value1_enabled,
+      onChange: newval => setAttributes({
+        value1_enabled: newval
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["SelectControl"], {
+      value: value1_currency,
+      onChange: selectedItem => {
+        setAttributes({
+          value1_currency: selectedItem
+        });
+      },
+      options: [{
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'BTC',
+        label: 'BTC'
+      }, {
+        value: 'EUR',
+        label: 'EUR'
+      }, {
+        value: 'USD',
+        label: 'USD'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["__experimentalNumberControl"], {
+      isShiftStepEnabled: true,
+      onChange: amount => {
+        setAttributes({
+          value1_amount: amount
+        });
+      },
+      shiftStep: 10,
+      value: value1_amount
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextControl"], {
+      label: "FA Icon class",
+      value: value1_icon,
+      onChange: value => setAttributes({
+        value1_icon: value
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
+      label: "Display value 2",
+      help: "Do you want to display value 2?",
+      checked: value2_enabled,
+      onChange: value => {
+        setAttributes({
+          value2_enabled: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["SelectControl"], {
+      value: value2_currency,
+      onChange: selectedItem => {
+        setAttributes({
+          value2_currency: selectedItem
+        });
+      },
+      options: [{
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'BTC',
+        label: 'BTC'
+      }, {
+        value: 'EUR',
+        label: 'EUR'
+      }, {
+        value: 'USD',
+        label: 'USD'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["__experimentalNumberControl"], {
+      isShiftStepEnabled: true,
+      onChange: amount => {
+        setAttributes({
+          value2_amount: amount
+        });
+      },
+      shiftStep: 10,
+      value: value2_amount
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextControl"], {
+      label: "FA Icon class",
+      value: value2_icon,
+      onChange: value => setAttributes({
+        value2_icon: value
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
+      label: "Display value 3",
+      help: "Do you want to display value 3?",
+      checked: value3_enabled,
+      onChange: value => {
+        setAttributes({
+          value3_enabled: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["SelectControl"], {
+      value: value3_currency,
+      onChange: selectedItem => {
+        setAttributes({
+          value3_currency: selectedItem
+        });
+      },
+      options: [{
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'BTC',
+        label: 'BTC'
+      }, {
+        value: 'EUR',
+        label: 'EUR'
+      }, {
+        value: 'USD',
+        label: 'USD'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["__experimentalNumberControl"], {
+      isShiftStepEnabled: true,
+      onChange: amount => {
+        setAttributes({
+          value3_amount: amount
+        });
+      },
+      shiftStep: 10,
+      value: value3_amount
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextControl"], {
+      label: "FA Icon class",
+      value: value3_icon,
+      onChange: value => setAttributes({
+        value3_icon: value
+      })
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
+      title: "Button"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextareaControl"], {
+      label: "Button",
+      help: "Enter button text",
+      onChange: content => {
+        setAttributes({
+          button_text: content
+        });
+      },
+      value: button_text
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Button color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ColorPicker"], {
+      color: button_color,
+      onChangeComplete: value => setAttributes({
+        button_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Button text color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ColorPicker"], {
+      color: button_text_color,
+      onChangeComplete: value => setAttributes({
+        button_text_color: value.hex
+      }),
+      disableAlpha: true
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
+      title: "Collect further information"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
+      label: "Full name",
+      help: "Do you want to collect full name?",
+      checked: display_name,
+      onChange: value => {
+        setAttributes({
+          display_name: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
+      help: "Do you want make this field mandatory?",
+      checked: mandatory_name,
+      onChange: value => {
+        setAttributes({
+          mandatory_name: value
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
+      label: "Email",
+      help: "Do you want to collect email?",
+      checked: display_email,
+      onChange: value => {
+        setAttributes({
+          display_email: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
+      help: "Do you want make this field mandatory?",
+      checked: mandatory_email,
+      onChange: value => {
+        setAttributes({
+          mandatory_email: value
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
+      label: "Address",
+      help: "Do you want to collect address?",
+      checked: display_address,
+      onChange: value => {
+        setAttributes({
+          display_address: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
+      help: "Do you want make this field mandatory?",
+      checked: mandatory_address,
+      onChange: value => {
+        setAttributes({
+          mandatory_address: value
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
+      label: "Phone",
+      checked: display_phone,
+      help: "Do you want to collect phone?",
+      onChange: value => setAttributes({
+        display_phone: value
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
+      help: "Do you want make this field mandatory?",
+      checked: mandatory_phone,
+      onChange: value => {
+        setAttributes({
+          mandatory_phone: value
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
+      label: "Message",
+      help: "Do you want to collect message?",
+      checked: display_message,
+      onChange: value => {
+        setAttributes({
+          display_message: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
+      help: "Do you want make this field mandatory?",
+      checked: mandatory_message,
+      onChange: value => {
+        setAttributes({
+          mandatory_message: value
+        });
+      }
+    })))));
+    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      block: "btc-paywall/gutenberg-tipping-banner-wide",
+      attributes: (dimension, background_color, background, background_id, logo_id, input_background, button_color, button_text, button_text_color, description_color, redirect, title, title_text_color, tipping_text, tipping_text_color, description, currency, value1_amount, value1_currency, value1_enabled, value1_icon, value2_amount, value2_currency, value2_enabled, value2_icon, value3_amount, value3_currency, value3_enabled, value3_icon, display_name, display_email, display_message, display_phone, display_address, mandatory_address, mandatory_email, mandatory_phone, mandatory_message, mandatory_name, free_input, show_icon, className)
+    }), inspectorControls)];
+  },
+  save: props => {
+    return null;
+  }
+});
+
+/***/ }),
+
+/***/ "./blocks/blocks/tipping_box.js":
+/*!**************************************!*\
+  !*** ./blocks/blocks/tipping_box.js ***!
+  \**************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('btc-paywall/gutenberg-tipping-box', {
+  title: 'BTCPW Tipping Box',
+  icon: 'dashicons-screenoptions',
+  category: 'widgets',
+  keywords: ['tipping', 'tipping-box'],
+  attributes: {
+    className: {
+      type: 'string',
+      default: ''
+    },
+    dimension: {
+      type: 'string',
+      default: '250x300'
+    },
+    title: {
+      type: 'string',
+      default: 'Support my work'
+    },
+    description: {
+      type: 'string'
+    },
+    currency: {
+      type: 'string',
+      default: 'SATS'
+    },
+    title_text_color: {
+      type: 'string'
+    },
+    tipping_text: {
+      type: 'string',
+      default: 'Enter Tipping Amount'
+    },
+    tipping_text_color: {
+      type: 'string'
+    },
+    background_image: {
+      type: 'string',
+      default: ''
+    },
+    redirect: {
+      type: 'string'
+    },
+    description_color: {
+      type: 'string'
+    },
+    button_text: {
+      type: 'string',
+      default: 'Tipping now'
+    },
+    button_text_color: {
+      type: 'string'
+    },
+    button_color: {
+      type: 'string',
+      default: '#FE642E'
+    },
+    input_background: {
+      type: 'string'
+    },
+    logo_id: {
+      type: 'string',
+      default: 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg'
+    },
+    background: {
+      type: 'string'
+    },
+    background_color: {
+      type: 'string'
+    },
+    background_id: {
+      type: 'string'
+    }
+  },
+  example: {},
+  edit: props => {
+    const {
+      attributes: {
+        dimension,
+        background_color,
+        background,
+        background_id,
+        logo_id,
+        input_background,
+        button_color,
+        button_text,
+        button_text_color,
+        description_color,
+        redirect,
+        title,
+        title_text_color,
+        tipping_text,
+        tipping_text_color,
+        description,
+        background_image,
+        currency,
+        className
+      },
+      setAttributes
+    } = props;
+    const inspectorControls = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Panel"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
+      title: "Dimension",
+      initialOpen: true
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["SelectControl"], {
+      value: dimension,
+      onChange: selectedItem => {
+        setAttributes({
+          dimension: selectedItem
+        });
+      },
+      options: [{
+        value: '250x300',
+        label: '250x300'
+      }, {
+        value: '300x300',
+        label: '300x300'
+      }]
+    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
+      title: "Background"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["MediaPlaceholder"], {
+      labels: {
+        title: 'Background'
+      },
+      onSelect: el => setAttributes({
+        background_id: el.url
+      }),
+      multiple: false,
+      onSelectURL: el => setAttributes({
+        background_id: el
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Background color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ColorPicker"], {
+      color: background_color,
+      onChangeComplete: value => setAttributes({
+        background_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Header and footer background color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ColorPicker"], {
+      color: background,
+      onChangeComplete: value => setAttributes({
+        background: value.hex
+      }),
+      disableAlpha: true
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
+      title: "Description"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["MediaPlaceholder"], {
+      labels: {
+        title: 'Logo'
+      },
+      onSelect: el => setAttributes({
+        logo_id: el.url
+      }),
+      multiple: false,
+      onSelectURL: el => setAttributes({
+        logo_id: el
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextareaControl"], {
+      label: "Title",
+      help: "Enter title",
+      onChange: content => {
+        setAttributes({
+          title: content
+        });
+      },
+      value: title
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Title text color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ColorPicker"], {
+      color: title_text_color,
+      onChangeComplete: value => setAttributes({
+        title_text_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextareaControl"], {
+      label: "Description",
+      help: "Enter description",
+      onChange: content => {
+        setAttributes({
+          description: content
+        });
+      },
+      value: description
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Description text color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ColorPicker"], {
+      color: description_color,
+      onChangeComplete: value => setAttributes({
+        description_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextareaControl"], {
+      label: "Tipping text",
+      help: "Enter tipping text",
+      onChange: content => {
+        setAttributes({
+          tipping_text: content
+        });
+      },
+      value: tipping_text
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Tipping text color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ColorPicker"], {
+      color: tipping_text_color,
+      onChangeComplete: value => setAttributes({
+        tipping_text_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Link to Thank You Page"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["URLInputButton"], {
+      label: "Redirect link",
+      value: redirect,
+      onChange: value => setAttributes({
+        redirect: value
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["SelectControl"], {
+      label: "Currency",
+      value: currency,
+      onChange: selectedItem => {
+        setAttributes({
+          currency: selectedItem
+        });
+      },
+      options: [{
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'BTC',
+        label: 'BTC'
+      }, {
+        value: 'EUR',
+        label: 'EUR'
+      }, {
+        value: 'USD',
+        label: 'USD'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Background color for inputs"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ColorPicker"], {
+      color: input_background,
+      onChangeComplete: value => setAttributes({
+        input_background: value.hex
+      }),
+      disableAlpha: true
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
+      title: "Button"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextareaControl"], {
+      label: "Button",
+      help: "Enter button text",
+      onChange: content => {
+        setAttributes({
+          button_text: content
+        });
+      },
+      value: button_text
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Button color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ColorPicker"], {
+      color: button_color,
+      onChangeComplete: value => setAttributes({
+        button_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Button text color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ColorPicker"], {
+      color: button_text_color,
+      onChangeComplete: value => setAttributes({
+        button_text_color: value.hex
+      }),
+      disableAlpha: true
+    }))));
+    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      block: "btc-paywall/gutenberg-tipping-box",
+      attributes: (dimension, background_color, background, background_id, logo_id, input_background, button_color, button_text, button_text_color, description_color, redirect, title, title_text_color, tipping_text, tipping_text_color, description, background_image, currency, className)
+    }), inspectorControls)];
+  },
+  save: props => {
+    return null;
+  }
+});
+
+/***/ }),
+
+/***/ "./blocks/blocks/tipping_list_shortcodes.js":
+/*!**************************************************!*\
+  !*** ./blocks/blocks/tipping_list_shortcodes.js ***!
+  \**************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _shortcode_store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./shortcode_store */ "./blocks/blocks/shortcode_store.js");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__);
+
+
+
+
+
+
+
+
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('btc-paywall/gutenberg-shortcode-list', {
+  title: 'BTCPW Shortcode List',
+  icon: 'dashicons-screenoptions',
+  category: 'widgets',
+  keywords: ['paywall', 'shortcode-list'],
+  attributes: {
+    className: {
+      type: 'string',
+      default: ''
+    },
+    shortcode: {
+      type: 'string',
+      default: ''
+    }
+  },
+  edit: props => {
+    const {
+      attributes: {
+        shortcode
+      },
+      setAttributes
+    } = props;
+    const shortcodes = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__["useSelect"])(select => select('btcpaywall/shortcode_data').getShortcodeList());
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Panel"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["PanelBody"], {
+      title: "Shortcodes",
+      initialOpen: true
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["SelectControl"], {
+      value: shortcode,
+      onChange: selectedItem => {
+        setAttributes({
+          shortcode: selectedItem
+        });
+      },
+      options: Object.entries(shortcodes).map(pair => ({
+        label: pair[0],
+        value: pair[1]
+      }))
+    }))))));
+  },
+  save: props => {
+    return null;
+  }
+});
+
+/***/ }),
+
+/***/ "./blocks/blocks/tipping_page.js":
+/*!***************************************!*\
+  !*** ./blocks/blocks/tipping_page.js ***!
+  \***************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('btc-paywall/gutenberg-tipping-page', {
+  title: 'BTCPW Tipping Page',
+  icon: 'dashicons-screenoptions',
+  category: 'widgets',
+  keywords: ['tipping', 'tipping-page'],
+  attributes: {
+    className: {
+      type: 'string',
+      default: ''
+    },
+    dimension: {
+      type: 'string',
+      default: '520x600'
+    },
+    title: {
+      type: 'string',
+      default: 'Support my work'
+    },
+    description: {
+      type: 'string',
+      default: ''
+    },
+    currency: {
+      type: 'string'
+    },
+    title_text_color: {
+      type: 'string'
+    },
+    tipping_text: {
+      type: 'string',
+      default: 'Enter Tipping Amount'
+    },
+    tipping_text_color: {
+      type: 'string'
+    },
+    redirect: {
+      type: 'string'
+    },
+    description_color: {
+      type: 'string'
+    },
+    button_text: {
+      type: 'string',
+      default: 'Tipping now'
+    },
+    button_text_color: {
+      type: 'string'
+    },
+    button_color: {
+      type: 'string',
+      default: '#FE642E'
+    },
+    input_background: {
+      type: 'string'
+    },
+    logo_id: {
+      type: 'string',
+      default: 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg'
+    },
+    background: {
+      type: 'string'
+    },
+    background_color: {
+      type: 'string'
+    },
+    background_id: {
+      type: 'string'
+    },
+    value1_enabled: {
+      type: 'boolean',
+      default: true
+    },
+    value1_amount: {
+      type: 'number',
+      default: 1000
+    },
+    value1_currency: {
+      type: 'string',
+      default: 'SATS'
+    },
+    value1_icon: {
+      type: 'string',
+      default: 'fas fa-coffee'
+    },
+    value2_enabled: {
+      type: 'boolean',
+      default: true
+    },
+    value2_amount: {
+      type: 'number',
+      default: 2000
+    },
+    value2_currency: {
+      type: 'string',
+      default: 'SATS'
+    },
+    value2_icon: {
+      type: 'string',
+      default: 'fas fa-beer'
+    },
+    value3_enabled: {
+      type: 'boolean',
+      default: true
+    },
+    value3_amount: {
+      type: 'number',
+      default: 3000
+    },
+    value3_currency: {
+      type: 'string',
+      default: 'SATS'
+    },
+    value3_icon: {
+      type: 'string',
+      default: 'fas fa-cocktail'
+    },
+    display_name: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_name: {
+      type: 'boolean',
+      default: false
+    },
+    display_email: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_email: {
+      type: 'boolean',
+      default: false
+    },
+    display_address: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_address: {
+      type: 'boolean',
+      default: false
+    },
+    display_phone: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_phone: {
+      type: 'boolean',
+      default: false
+    },
+    display_message: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_message: {
+      type: 'boolean',
+      default: false
+    },
+    step1: {
+      type: 'string',
+      default: 'Pledge'
+    },
+    step2: {
+      type: 'string',
+      default: 'Info'
+    },
+    active_color: {
+      type: 'string',
+      default: '#808080'
+    },
+    inactive_color: {
+      type: 'string',
+      default: '#D3D3D3'
+    },
+    free_input: {
+      type: 'boolean',
+      default: true
+    },
+    show_icon: {
+      type: 'boolean',
+      default: true
+    }
+  },
+  example: {},
+  edit: props => {
+    const {
+      attributes: {
+        dimension,
+        background,
+        background_id,
+        logo_id,
+        input_background,
+        button_color,
+        button_text,
+        button_text_color,
+        description_color,
+        redirect,
+        background_color,
+        title,
+        title_text_color,
+        tipping_text,
+        tipping_text_color,
+        description,
+        currency,
+        value1_amount,
+        value1_currency,
+        value1_enabled,
+        value1_icon,
+        value2_amount,
+        value2_currency,
+        value2_enabled,
+        value2_icon,
+        value3_amount,
+        value3_currency,
+        value3_enabled,
+        value3_icon,
+        display_name,
+        display_email,
+        display_message,
+        display_phone,
+        display_address,
+        mandatory_address,
+        mandatory_email,
+        mandatory_phone,
+        mandatory_message,
+        mandatory_name,
+        free_input,
+        step1,
+        step2,
+        active_color,
+        inactive_color,
+        show_icon,
+        className
+      },
+      setAttributes
+    } = props;
+    const inspectorControls = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Panel"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: "Dimension",
+      initialOpen: true
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
+      value: dimension,
+      onChange: selectedItem => {
+        setAttributes({
+          dimension: selectedItem
+        });
+      },
+      options: [{
+        value: '520x600',
+        label: '520x600'
+      }]
+    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: "Background"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["MediaPlaceholder"], {
+      labels: {
+        title: 'Background'
+      },
+      onSelect: el => setAttributes({
+        background_id: el.url
+      }),
+      multiple: false,
+      onSelectURL: el => setAttributes({
+        background_id: el
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Background color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: background_color,
+      onChangeComplete: value => setAttributes({
+        background_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Header and footer background color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: background,
+      onChangeComplete: value => setAttributes({
+        background: value.hex
+      }),
+      disableAlpha: true
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: "Description"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["MediaPlaceholder"], {
+      labels: {
+        title: 'Logo'
+      },
+      onSelect: el => setAttributes({
+        logo_id: el.url
+      }),
+      multiple: false,
+      onSelectURL: el => setAttributes({
+        logo_id: el
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextareaControl"], {
+      label: "Title",
+      help: "Enter title",
+      onChange: content => {
+        setAttributes({
+          title: content
+        });
+      },
+      value: title
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Title text color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: title_text_color,
+      onChangeComplete: value => setAttributes({
+        title_text_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextareaControl"], {
+      label: "Description",
+      help: "Enter description",
+      onChange: content => {
+        setAttributes({
+          description: content
+        });
+      },
+      value: description
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Description text color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: description_color,
+      onChangeComplete: value => setAttributes({
+        description_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextareaControl"], {
+      label: "Tipping text",
+      help: "Enter tipping text",
+      onChange: content => {
+        setAttributes({
+          tipping_text: content
+        });
+      },
+      value: tipping_text
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Tipping text color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: tipping_text_color,
+      onChangeComplete: value => setAttributes({
+        tipping_text_color: value
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Link to Thank You Page"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["URLInputButton"], {
+      label: "Link to Thank You Page",
+      value: redirect,
+      onChange: value => setAttributes({
+        redirect: value
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Display free input",
+      help: "Do you want to display free input field?",
+      checked: free_input,
+      onChange: newvalue => {
+        setAttributes({
+          free_input: newvalue
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
+      label: "Currency",
+      value: currency,
+      onChange: selectedItem => {
+        setAttributes({
+          currency: selectedItem
+        });
+      },
+      options: [{
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'BTC',
+        label: 'BTC'
+      }, {
+        value: 'EUR',
+        label: 'EUR'
+      }, {
+        value: 'USD',
+        label: 'USD'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Background color for inputs"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: input_background,
+      onChangeComplete: value => setAttributes({
+        input_background: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Display icon",
+      help: "Do you want to display icons?",
+      checked: show_icon,
+      onChange: value => {
+        setAttributes({
+          show_icon: value
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: "Amount"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Display value 1",
+      help: "Do you want to display value 1?",
+      checked: value1_enabled,
+      onChange: newval => setAttributes({
+        value1_enabled: newval
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
+      value: value1_currency,
+      onChange: selectedItem => {
+        setAttributes({
+          value1_currency: selectedItem
+        });
+      },
+      options: [{
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'BTC',
+        label: 'BTC'
+      }, {
+        value: 'EUR',
+        label: 'EUR'
+      }, {
+        value: 'USD',
+        label: 'USD'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["__experimentalNumberControl"], {
+      isShiftStepEnabled: true,
+      onChange: amount => {
+        setAttributes({
+          value1_amount: amount
+        });
+      },
+      shiftStep: 10,
+      value: value1_amount
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextControl"], {
+      label: "FA Icon class",
+      value: value1_icon,
+      onChange: value => setAttributes({
+        value1_icon: value
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Display value 2",
+      help: "Do you want to display value 2?",
+      checked: value2_enabled,
+      onChange: value => {
+        setAttributes({
+          value2_enabled: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
+      value: value2_currency,
+      onChange: selectedItem => {
+        setAttributes({
+          value2_currency: selectedItem
+        });
+      },
+      options: [{
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'BTC',
+        label: 'BTC'
+      }, {
+        value: 'EUR',
+        label: 'EUR'
+      }, {
+        value: 'USD',
+        label: 'USD'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["__experimentalNumberControl"], {
+      isShiftStepEnabled: true,
+      onChange: amount => {
+        setAttributes({
+          value2_amount: amount
+        });
+      },
+      shiftStep: 10,
+      value: value2_amount
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextControl"], {
+      label: "FA Icon class",
+      value: value2_icon,
+      onChange: value => setAttributes({
+        value2_icon: value
+      })
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Display value 3",
+      help: "Do you want to display value 3?",
+      checked: value3_enabled,
+      onChange: value => {
+        setAttributes({
+          value3_enabled: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
+      value: value3_currency,
+      onChange: selectedItem => {
+        setAttributes({
+          value3_currency: selectedItem
+        });
+      },
+      options: [{
+        value: 'SATS',
+        label: 'SATS'
+      }, {
+        value: 'BTC',
+        label: 'BTC'
+      }, {
+        value: 'EUR',
+        label: 'EUR'
+      }, {
+        value: 'USD',
+        label: 'USD'
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "btcpw_gutenberg_sel_num_control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["__experimentalNumberControl"], {
+      isShiftStepEnabled: true,
+      onChange: amount => {
+        setAttributes({
+          value3_amount: amount
+        });
+      },
+      shiftStep: 10,
+      value: value3_amount
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextControl"], {
+      label: "FA Icon class",
+      value: value3_icon,
+      onChange: value => setAttributes({
+        value3_icon: value
+      })
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: "Button"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextareaControl"], {
+      label: "Button",
+      help: "Enter button text",
+      onChange: content => {
+        setAttributes({
+          button_text: content
+        });
+      },
+      value: button_text
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Button color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: button_color,
+      onChangeComplete: value => setAttributes({
+        button_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Button text color"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: button_text_color,
+      onChangeComplete: value => setAttributes({
+        button_text_color: value.hex
+      }),
+      disableAlpha: true
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: "Tabs"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextareaControl"], {
+      label: "Step1",
+      help: "Enter text for first tab in progress bar",
+      onChange: content => {
+        setAttributes({
+          step1: content
+        });
+      },
+      value: step1
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Background color for active tab in progress bar"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: active_color,
+      onChangeComplete: value => setAttributes({
+        active_color: value.hex
+      }),
+      disableAlpha: true
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextareaControl"], {
+      label: "Step2",
+      help: "Enter text for second step in progress bar",
+      onChange: content => {
+        setAttributes({
+          step2: content
+        });
+      },
+      value: step2
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Background color for inactive tab in progress bar"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPicker"], {
+      color: inactive_color,
+      onChangeComplete: value => setAttributes({
+        inactive_color: value.hex
+      }),
+      disableAlpha: true
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: "Collect further information"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Full name",
+      help: "Do you want to collect full name?",
+      checked: display_name,
+      onChange: value => {
+        setAttributes({
+          display_name: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      help: "Do you want make this field mandatory?",
+      checked: mandatory_name,
+      onChange: value => {
+        setAttributes({
+          mandatory_name: value
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Email",
+      help: "Do you want to collect email?",
+      checked: display_email,
+      onChange: value => {
+        setAttributes({
+          display_email: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      help: "Do you want make this field mandatory?",
+      checked: mandatory_email,
+      onChange: value => {
+        setAttributes({
+          mandatory_email: value
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Address",
+      help: "Do you want to collect address?",
+      checked: display_address,
+      onChange: value => {
+        setAttributes({
+          display_address: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      help: "Do you want make this field mandatory?",
+      checked: mandatory_address,
+      onChange: value => {
+        setAttributes({
+          mandatory_address: value
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Phone",
+      checked: display_phone,
+      help: "Do you want to collect phone?",
+      onChange: value => {
+        setAttributes({
+          display_phone: value
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      help: "Do you want make this field mandatory?",
+      checked: mandatory_phone,
+      onChange: value => {
+        setAttributes({
+          mandatory_phone: value
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      label: "Message",
+      help: "Do you want to collect message?",
+      checked: display_message,
+      onChange: value => {
+        setAttributes({
+          display_message: displayMessage
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
+      help: "Do you want make this field mandatory?",
+      checked: mandatory_message,
+      onChange: value => {
+        setAttributes({
+          mandatory_message: mandatory_message
+        });
+      }
+    })))));
+    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4___default.a, {
+      block: "btc-paywall/gutenberg-tipping-page",
+      attributes: (dimension, background_color, background, background_id, logo_id, input_background, button_color, button_text, button_text_color, description_color, redirect, title, title_text_color, tipping_text, tipping_text_color, description, currency, value1_amount, value1_currency, value1_enabled, value1_icon, value2_amount, value2_currency, value2_enabled, value2_icon, value3_amount, value3_currency, value3_enabled, value3_icon, display_name, display_email, display_message, display_phone, display_address, mandatory_address, mandatory_email, mandatory_phone, mandatory_message, mandatory_name, free_input, step1, step2, active_color, inactive_color, show_icon, className)
+    }), inspectorControls)];
+  },
+  save: props => {
+    return null;
+  }
+});
+
+/***/ }),
+
+/***/ "./blocks/index.js":
+/*!*************************!*\
+  !*** ./blocks/index.js ***!
+  \*************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _blocks_start_content__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blocks/start_content */ "./blocks/blocks/start_content.js");
+/* harmony import */ var _blocks_end_content__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blocks/end_content */ "./blocks/blocks/end_content.js");
+/* harmony import */ var _blocks_start_video__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./blocks/start_video */ "./blocks/blocks/start_video.js");
+/* harmony import */ var _blocks_end_video__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./blocks/end_video */ "./blocks/blocks/end_video.js");
+/* harmony import */ var _blocks_file__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./blocks/file */ "./blocks/blocks/file.js");
+/* harmony import */ var _blocks_tipping_box__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./blocks/tipping_box */ "./blocks/blocks/tipping_box.js");
+/* harmony import */ var _blocks_tipping_banner_wide__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./blocks/tipping_banner_wide */ "./blocks/blocks/tipping_banner_wide.js");
+/* harmony import */ var _blocks_tipping_banner_high__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./blocks/tipping_banner_high */ "./blocks/blocks/tipping_banner_high.js");
+/* harmony import */ var _blocks_tipping_page__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./blocks/tipping_page */ "./blocks/blocks/tipping_page.js");
+/* harmony import */ var _blocks_tipping_list_shortcodes__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./blocks/tipping_list_shortcodes */ "./blocks/blocks/tipping_list_shortcodes.js");
+
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+
+/***/ "@wordpress/api-fetch":
+/*!**********************************!*\
+  !*** external ["wp","apiFetch"] ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["apiFetch"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/block-editor":
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["blockEditor"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/blocks":
+/*!********************************!*\
+  !*** external ["wp","blocks"] ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["blocks"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["components"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/data":
+/*!******************************!*\
+  !*** external ["wp","data"] ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["data"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/element":
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["element"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/server-side-render":
+/*!******************************************!*\
+  !*** external ["wp","serverSideRender"] ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["serverSideRender"]; }());
+
+/***/ })
+
+/******/ });
+//# sourceMappingURL=index.js.map

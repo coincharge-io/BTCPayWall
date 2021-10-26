@@ -14,32 +14,34 @@ function get_post_info_string($post_id = null)
     if (get_post_meta($post_id, 'btcpw_price', true)) {
         $price = get_post_meta($post_id, 'btcpw_price', true);
     } else {
-        //$price = get_option('btcpw_default_price');
-        $price = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['price'];
+        $price = get_option('btcpw_default_price');
+        //$price = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['price'];
     }
 
     if (get_post_meta($post_id, 'btcpw_duration', true)) {
         $duration = get_post_meta($post_id, 'btcpw_duration', true);
     } else {
-        //$duration = get_option('btcpw_default_duration');
-        $duration = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['duration'];
+        $duration = get_option('btcpw_default_duration');
+        //$duration = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['duration'];
     }
 
     if (get_post_meta($post_id, 'btcpw_duration_type', true)) {
         $duration_type = get_post_meta($post_id, 'btcpw_duration_type', true);
     } else {
-        //$duration_type = get_option('btcpw_default_duration_type', 'unlimited');
-        $duration_type = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['duration_type'];
+        $duration_type = get_option('btcpw_default_duration_type', 'unlimited');
+        //$duration_type = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['duration_type'];
     }
 
 
     if (get_post_meta($post_id, 'btcpw_currency', true)) {
         $currency = get_post_meta($post_id, 'btcpw_currency', true);
     } else {
-        //$currency = get_option('btcpw_default_currency', 'SATS');
-        $currency = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['currency'];
+        $currency = get_option('btcpw_default_currency', 'SATS');
+        //$currency = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['currency'];
     }
-    $btc_format = get_post_meta(get_the_ID(), 'btcpw_btc_format', true) ?: getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['btc_format'];
+    $btc_format = get_post_meta(get_the_ID(), 'btcpw_btc_format', true) ?: get_option('btcpw_default_btc_format');
+
+    //getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['btc_format'];
     //get_option('btcpw_default_btc_format');
 
     if ($currency === 'SATS' && $btc_format === 'BTC') {
@@ -127,7 +129,9 @@ function getDefaultValues($name)
 }
 function calculate_price_for_invoice($post_id)
 {
-    $currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ?: getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['currency'];
+    $currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ?: get_option('btcpw_default_currency', 'SATS');
+
+    //getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['currency'];
 
     //get_option('btcpw_default_currency', 'SATS');
 
@@ -138,8 +142,8 @@ function calculate_price_for_invoice($post_id)
             $price = get_post_meta($post_id, 'btcpw_price', true);
         } else {
 
-            //$price = get_option('btcpw_default_price');
-            $price = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['price'];
+            $price = get_option('btcpw_default_price');
+            //$price = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['price'];
         }
 
         $value = $price / 100000000;
@@ -151,7 +155,9 @@ function calculate_price_for_invoice($post_id)
         return $value;
     }
 
-    return get_post_meta($post_id, 'btcpw_price', true) ?: getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['price'];
+    return get_post_meta($post_id, 'btcpw_price', true) ?: get_option('btcpw_default_price');
+
+    //getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['price'];
     //get_option('btcpw_default_price');
 }
 
@@ -225,15 +231,15 @@ function get_cookie_duration($post_id)
     $duration = get_post_meta($post_id, 'btcpw_duration', true);
 
     if (empty($duration)) {
-        //$duration = get_option('btcpw_default_duration');
-        $duration = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['duration'];
+        $duration = get_option('btcpw_default_duration');
+        //$duration = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['duration'];
     }
 
     $duration_type = get_post_meta($post_id, 'btcpw_duration_type', true);
 
     if (empty($duration_type)) {
-        //$duration_type = get_option('btcpw_default_duration_type');
-        getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['duration_type'];
+        $duration_type = get_option('btcpw_default_duration_type');
+        //getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['duration_type'];
     }
 
     return $duration_type === 'unlimited' ? strtotime("14 Jan 2038") : ($duration_type === 'onetime' ? 0 : strtotime("+{$duration} {$duration_type}"));
@@ -242,9 +248,9 @@ function get_cookie_duration($post_id)
 
 function update_meta_settings($atts)
 {
-    $valid_currency = in_array($atts['currency'], self::CURRENCIES);
-    $valid_duration = in_array($atts['duration_type'], self::DURATIONS);
-    $valid_btc_format = in_array($atts['btc_format'], self::BTC_FORMAT);
+    $valid_currency = in_array($atts['currency'], BTCPayWall::CURRENCIES);
+    $valid_duration = in_array($atts['duration_type'], BTCPayWall::DURATIONS);
+    $valid_btc_format = in_array($atts['btc_format'], BTCPayWall::BTC_FORMAT);
 
     if (($atts['currency'] != "") && $valid_currency) {
         update_post_meta(get_the_ID(), 'btcpw_currency', sanitize_text_field($atts['currency']));
@@ -348,19 +354,19 @@ function getFixedAmount($atts)
     return array(
         'value_1' => array(
             'enabled' => (filter_var($atts['value1_enabled'], FILTER_VALIDATE_BOOLEAN)),
-            'currency' => in_array($atts['value1_currency'], self::TIPPING_CURRENCIES) === true ? $atts['value1_currency'] : 'SATS',
+            'currency' => in_array($atts['value1_currency'], BTCPayWall::TIPPING_CURRENCIES) === true ? $atts['value1_currency'] : 'SATS',
             'amount' => esc_html($atts['value1_amount']),
             'icon' => esc_html($atts['value1_icon'])
         ),
         'value_2' => array(
             'enabled' => (filter_var($atts['value2_enabled'], FILTER_VALIDATE_BOOLEAN)),
-            'currency' => in_array($atts['value2_currency'], self::TIPPING_CURRENCIES) === true ? $atts['value2_currency'] : 'SATS',
+            'currency' => in_array($atts['value2_currency'], BTCPayWall::TIPPING_CURRENCIES) === true ? $atts['value2_currency'] : 'SATS',
             'amount' => esc_html($atts['value2_amount']),
             'icon' => esc_html($atts['value2_icon'])
         ),
         'value_3' => array(
             'enabled' => (filter_var($atts['value3_enabled'], FILTER_VALIDATE_BOOLEAN)),
-            'currency' => in_array($atts['value3_currency'], self::TIPPING_CURRENCIES) === true ? $atts['value3_currency'] : 'SATS',
+            'currency' => in_array($atts['value3_currency'], BTCPayWall::TIPPING_CURRENCIES) === true ? $atts['value3_currency'] : 'SATS',
             'amount' => esc_html($atts['value3_amount']),
             'icon' => esc_html($atts['value3_icon'])
         ),

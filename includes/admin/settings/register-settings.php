@@ -8,11 +8,11 @@ function register_settings()
     register_setting('btcpw_general_settings', 'btcpw_btcpay_auth_key_view', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_auth_key'));
     register_setting('btcpw_general_settings', 'btcpw_btcpay_auth_key_create', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_auth_key'));
 
-    register_setting('btcpw_general_options', 'btcpw_general_settings_currency', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'sanitize_text'));
-    register_setting('btcpw_general_options', 'btcpw_general_settings_btc_format', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'sanitize_text'));
-    register_setting('btcpw_general_options', 'btcpw_general_settings_price', array('type' => 'number', 'default' => 1000, 'sanitize_callback' => 'sanitize_number'));
-    register_setting('btcpw_general_options', 'btcpw_general_settings_duration', array('type' => 'integer', 'default' => '', 'sanitize_callback' => 'sanitize_text'));
-    register_setting('btcpw_general_options', 'btcpw_general_settings_duration_type', array('type' => 'string', 'default' => 'unlimited', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_options', 'btcpw_default_currency', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_options', 'btcpw_default_btc_format', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_options', 'btcpw_default_price', array('type' => 'number', 'default' => 1000, 'sanitize_callback' => 'sanitize_number'));
+    register_setting('btcpw_general_options', 'btcpw_default_duration', array('type' => 'integer', 'default' => '', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_options', 'btcpw_default_duration_type', array('type' => 'string', 'default' => 'unlimited', 'sanitize_callback' => 'sanitize_text'));
 
     register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_currency', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'sanitize_text'));
     register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_btc_format', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'sanitize_text'));
