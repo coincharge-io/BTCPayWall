@@ -1172,9 +1172,9 @@ div.btcpw_page_header_container > div:nth-child(2) {
 /*
 Revenue types
 */
-.btcpw_pay_post,
-.btcpw_pay_view,
-.btcpw_pay_file {
+.btcpw_revenue_post_container,
+.btcpw_revenue_view_container,
+.btcpw_revenue_file_container {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-color: #ecf0f1;
@@ -1183,13 +1183,7 @@ Revenue types
   justify-content: space-between;
   align-items: center;
 }
-.btcpw_revenue_post_container,
-.btcpw_revenue_view_container,
-.btcpw_revenue_file_container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+
 #post_revenue_type fieldset:not(:first-of-type),
 #view_revenue_type fieldset:not(:first-of-type),
 #file_revenue_type fieldset:not(:first-of-type) {
@@ -1212,7 +1206,20 @@ Revenue types
   border: 0;
   min-width: 0;
   padding: 0;
+  height: 75%;
 }
+
+/* .btcpw_revenue_post_container fieldset,
+.btcpw_revenue_view_container fieldset,
+.btcpw_revenue_file_container fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 0;
+  min-width: 0;
+  padding: 0;
+} */
 .btcpw_revenue_post_container,
 .btcpw_revenue_view_container,
 .btcpw_revenue_file_container {
@@ -1227,12 +1234,13 @@ Revenue types
   align-items: center;
   gap: 2em;
 }
-#btcpw_revenue_post_button {
+#btcpw_revenue_post_button,
+#btcpw_revenue_view_button,
+#btcpw_revenue_file_button {
   position: absolute;
   display: inline-flex;
   bottom: 0;
   width: 100%;
-  right: 0;
 }
 
 #btcpw_revenue_post_button > input.revenue-post-next-form,
@@ -1240,14 +1248,18 @@ Revenue types
 #btcpw_revenue_file_button > input.revenue-file-next-form {
   width: 50%;
 }
-
+#btcpw_revenue_post_button,
+#btcpw_revenue_view_button,
+#btcpw_revenue_file_button {
+  height: 70px;
+}
 #btcpw_revenue_post_button > div,
 #btcpw_revenue_view_button > div,
 #btcpw_revenue_file_button > div {
   display: flex;
-  align-items: center;
+  justify-content: center;
   width: 50%;
-  margin: 10px 0 !important;
+  margin: 0 auto !important;
 }
 
 #btcpw_revenue_post_button > div:nth-child(1) > input,
@@ -1262,8 +1274,7 @@ Revenue types
 #btcpw_revenue_view_button > input.revenue-view-next-form,
 #btcpw_revenue_file_button > button[type='submit'],
 #btcpw_revenue_file_button > input.revenue-file-next-form {
-  width: 50%;
-  margin: 10px auto !important;
+  margin: 0 auto !important;
   color: white;
   border-radius: 2em;
   -moz-border-radius: 2em;
