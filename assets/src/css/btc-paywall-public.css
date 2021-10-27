@@ -1,15 +1,6 @@
-.btcpw_pay {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #ecf0f1;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 30px;
-}
-
-.btcpw_pay h2 {
+.btcpw_revenue_post_container h2,
+.btcpw_revenue_view_container h2,
+.btcpw_revenue_file_container h2 {
   font-size: 40px;
 }
 .btcpw_pay__preview {
@@ -382,9 +373,7 @@ a.btcpw_pay__download {
   height: 80px;
   gap: 10px;
 }
-/* div.btcpw_skyscraper_header_container.wide > div:nth-child(2) > h6 {
-  padding-left: 2em;
-} */
+
 #btcpw_skyscraper_logo_wrap_high {
   padding: 0.1em 0.1em 0 0.1em;
 }
@@ -1183,9 +1172,117 @@ div.btcpw_page_header_container > div:nth-child(2) {
 /*
 Revenue types
 */
-
+.btcpw_pay_post,
+.btcpw_pay_view,
+.btcpw_pay_file {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.btcpw_revenue_post_container,
+.btcpw_revenue_view_container,
+.btcpw_revenue_file_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 #post_revenue_type fieldset:not(:first-of-type),
 #view_revenue_type fieldset:not(:first-of-type),
 #file_revenue_type fieldset:not(:first-of-type) {
   display: none;
+}
+.btcpw_revenue_post_container form,
+.btcpw_revenue_view_container form,
+.btcpw_revenue_file_container form {
+  height: 100%;
+  width: 100%;
+}
+
+.btcpw_revenue_post_container fieldset,
+.btcpw_revenue_view_container fieldset,
+.btcpw_revenue_file_container fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 0;
+  min-width: 0;
+  padding: 0;
+}
+.btcpw_revenue_post_container,
+.btcpw_revenue_view_container,
+.btcpw_revenue_file_container {
+  position: relative;
+}
+.btcpw_revenue_post_customer_information,
+.btcpw_revenue_view_customer_information,
+.btcpw_revenue_file_customer_information {
+  display: flex;
+  margin: 1em 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+#btcpw_revenue_post_button {
+  position: absolute;
+  display: inline-flex;
+  bottom: 0;
+  width: 100%;
+  right: 0;
+}
+
+#btcpw_revenue_post_button > input.revenue-post-next-form,
+#btcpw_revenue_view_button > input.revenue-view-next-form,
+#btcpw_revenue_file_button > input.revenue-file-next-form {
+  width: 50%;
+}
+
+#btcpw_revenue_post_button > div,
+#btcpw_revenue_view_button > div,
+#btcpw_revenue_file_button > div {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin: 10px 0 !important;
+}
+
+#btcpw_revenue_post_button > div:nth-child(1) > input,
+#btcpw_revenue_view_button > div:nth-child(1) > input,
+#btcpw_revenue_file_button > div:nth-child(1) > input {
+  color: white;
+}
+
+#btcpw_revenue_post_button > button[type='submit'],
+#btcpw_revenue_post_button > input.revenue-post-next-form,
+#btcpw_revenue_view_button > button[type='submit'],
+#btcpw_revenue_view_button > input.revenue-view-next-form,
+#btcpw_revenue_file_button > button[type='submit'],
+#btcpw_revenue_file_button > input.revenue-file-next-form {
+  width: 50%;
+  margin: 10px auto !important;
+  color: white;
+  border-radius: 2em;
+  -moz-border-radius: 2em;
+  -webkit-border-radius: 2em;
+}
+/* #btcpw_page_tipping__button {
+  border-radius: 2em;
+  -moz-border-radius: 2em;
+  -webkit-border-radius: 2em;
+} */
+#btcpw_revenue_post_button button,
+#btcpw_revenue_post_button input[type='button'],
+#btcpw_revenue_post_button input[type='submit'],
+#btcpw_revenue_view_button button,
+#btcpw_revenue_view_button input[type='button'],
+#btcpw_revenue_view_button input[type='submit'],
+#btcpw_revenue_file_button button,
+#btcpw_revenue_file_button input[type='button'],
+#btcpw_revenue_file_button input[type='submit'] {
+  padding: 10px;
+  text-transform: uppercase;
 }

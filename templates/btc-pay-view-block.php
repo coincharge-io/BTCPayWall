@@ -29,11 +29,8 @@ $image = wp_get_attachment_image_src($atts['preview']);
 $preview_url = $image ? $image[0] : $atts['preview'];
 ?>
 <style>
-    .btcpw_pay {
+    .btcpw_pay_view {
         background-color: <?php echo esc_html($background); ?>;
-    }
-
-    .btcpw_revenue_view_container {
         width: <?php echo esc_html($width) . 'px'; ?>;
         height: <?php echo esc_html($height) . 'px'; ?>;
     }
@@ -59,7 +56,7 @@ $preview_url = $image ? $image[0] : $atts['preview'];
         color: <?php echo esc_html($button_text_color); ?>;
     }
 </style>
-<div class="btcpw_pay">
+<div class="btcpw_pay_view">
     <div class="btcpw_revenue_view_container">
         <form method="POST" action="" id="view_revenue_type">
             <fieldset>
@@ -82,18 +79,17 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                         <?php echo get_post_info_string() ?>
                     </p>
                 </div>
-                <div class="btcpw_pay__footer">
-
-                    <?php if ($help === true) : ?>
-                        <div class="btcpw_help">
-                            <a class="btcpw_help__link" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
-                        </div>
-                    <?php endif; ?>
-                    <?php if ($additional_help === true) : ?>
-                        <div class="btcpw_help">
-                            <a class="btcpw_help__link" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
-                        </div>
-                    <?php endif; ?>
+                <?php if ($help === true) : ?>
+                    <div class="btcpw_help">
+                        <a class="btcpw_help__link" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
+                    </div>
+                <?php endif; ?>
+                <?php if ($additional_help === true) : ?>
+                    <div class="btcpw_help">
+                        <a class="btcpw_help__link" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
+                    </div>
+                <?php endif; ?>
+                <div class="btcpw_revenue_view_button" id="btcpw_revenue_view_button">
                     <?php if (true === $collect_data) : ?>
 
                         <div>
@@ -120,7 +116,7 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
-                    <div class="<?php echo "btcpw_revenue_view_button"; ?>" id="btcpw_revenue_view_button">
+                    <div class="btcpw_revenue_view_button" id="btcpw_revenue_view_button">
                         <div>
                             <input type="button" name="previous" class="revenue-view-previous-form" value="< Previous" />
                         </div>

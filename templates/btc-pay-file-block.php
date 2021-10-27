@@ -26,14 +26,13 @@ $image = wp_get_attachment_image_src($atts['preview']);
 $preview_url = $image ? $image[0] : $atts['preview'];
 ?>
 <style>
-    .btcpw_pay {
+    .btcpw_pay_file {
         background-color: <?php echo esc_html($background); ?>;
-    }
-
-    .btcpw_revenue_file_container {
         width: <?php echo esc_html($width) . 'px'; ?>;
         height: <?php echo esc_html($height) . 'px'; ?>;
     }
+
+
 
     .btcpw_pay__content h2 {
         color: <?php echo esc_html($header_color); ?>;
@@ -56,7 +55,7 @@ $preview_url = $image ? $image[0] : $atts['preview'];
         color: <?php echo esc_html($button_text_color); ?>;
     }
 </style>
-<div class="btcpw_pay">
+<div class="btcpw_pay_file">
     <div class="btcpw_revenue_file_container">
         <form method="POST" action="" id="file_revenue_type">
             <fieldset>
@@ -79,13 +78,6 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                         <?php echo get_post_info_string() ?>
                     </p>
                 </div>
-                <div class="btcpw_pay__footer">
-                    <div>
-                        <button type="button" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo get_payblock_button_string() ?></button>
-                    </div>
-                    <div class="btcpw_pay__loading">
-                        <p class="loading"></p>
-                    </div>
                     <?php if ($help === true) : ?>
                         <div class="btcpw_help">
                             <a class="btcpw_help__link" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
@@ -96,17 +88,18 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                             <a class="btcpw_help__link" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
                         </div>
                     <?php endif; ?>
-                    <?php if (true === $collect_data) : ?>
+                    <div class="btcpw_revenue_file_button" id="btcpw_revenue_file_button">
+                        <?php if (true === $collect_data) : ?>
 
-                        <div>
-                            <input type="button" name="next" class="revenue-file-next-form" value="Continue">
-                        </div>
+                            <div>
+                                <input type="button" name="next" class="revenue-file-next-form" value="Continue">
+                            </div>
 
-                    <?php else : ?>
-                        <div>
-                            <button type="button" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo get_payblock_button_string() ?></button>
-                        </div>
-                    <?php endif; ?>
+                        <?php else : ?>
+                            <div>
+                                <button type="button" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo get_payblock_button_string() ?></button>
+                            </div>
+                        <?php endif; ?>
                 </div>
             </fieldset>
             <?php if ($collect_data === true) : ?>
@@ -135,4 +128,5 @@ $preview_url = $image ? $image[0] : $atts['preview'];
             <?php endif; ?>
         </form>
     </div>
-    <?php
+</div>
+<?php

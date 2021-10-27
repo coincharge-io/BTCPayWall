@@ -3,7 +3,15 @@
 if (!defined('ABSPATH')) exit;
 
 
-
+/**
+ * Get price information for protected post/video/file 
+ * 
+ * @param int $post_id  Post id
+ * 
+ * @since 1.0
+ * 
+ * @return string Display information about price inside paywall
+ */
 function get_post_info_string($post_id = null)
 {
 
@@ -79,17 +87,37 @@ function get_post_info_string($post_id = null)
 
     return $duration_type === 'unlimited' ? $unlimited : ($duration_type === 'onetime' ? $onetime : $other);
 }
-
+/**
+ * Get paywall title
+ * 
+ * @since 1.0
+ * 
+ * @return string Display paywall title
+ */
 function get_payblock_header_string()
 {
 
     return getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['title'] ?: 'For access to ' . get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] . ' first pay';
 }
+/**
+ * Get paywall button text
+ * 
+ * @since 1.0
+ * 
+ * @return string Display paywall button text
+ */
 function get_payblock_button_string()
 {
     return getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['button'] ?: 'Pay';
 }
-
+/**
+ * Return default values for each revenue type
+ * 
+ * @params string $name The name of revenue type.
+ * @since 1.0
+ * 
+ * @return array Show default values for choosen project.
+ */
 function getDefaultValues($name)
 {
     switch ($name) {
@@ -127,6 +155,15 @@ function getDefaultValues($name)
             return null;
     }
 }
+/**
+ * Calculate price for invoice 
+ * 
+ * @params int $post_id Post id.
+ * 
+ * @since 1.0
+ * 
+ * @return string Price 
+ */
 function calculate_price_for_invoice($post_id)
 {
     $currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ?: get_option('btcpw_default_currency', 'SATS');
@@ -161,7 +198,15 @@ function calculate_price_for_invoice($post_id)
     //get_option('btcpw_default_price');
 }
 
-
+/**
+ * Check if protected content is paid
+ * 
+ * @params int $post_id Post id. 
+ * 
+ * @since 1.0
+ * 
+ * @return bool Whether or not content is paid
+ */
 function is_paid_content($post_id = null)
 {
 
@@ -199,9 +244,13 @@ function is_paid_content($post_id = null)
 }
 
 /**
- * @param $post_id
+ * Generate order id
+ * 
+ * @param $post_id Post id.
  *
- * @return int
+ * @since 1.0
+ * 
+ * @return int Order id.
  * @throws Exception
  */
 function generate_order_id($post_id)
@@ -221,9 +270,13 @@ function generate_order_id($post_id)
     return $order_id;
 }
 /**
- * @param $post_id
- *
- * @return false|int
+ * Get cookie duration
+ * 
+ * @param $post_id Post id. 
+ * 
+ * @since 1.0
+ * 
+ * @return false|int Cookie duration.
  */
 function get_cookie_duration($post_id)
 {
@@ -244,7 +297,21 @@ function get_cookie_duration($post_id)
 
     return $duration_type === 'unlimited' ? strtotime("14 Jan 2038") : ($duration_type === 'onetime' ? 0 : strtotime("+{$duration} {$duration_type}"));
 }
-
+/**
+ * Update post meta values
+ * 
+ * @params array $atts Attribute values.
+ * 
+ * @type string $currency   
+ * @type string $duration_type
+ * @type string $duration
+ * @type string $btc_format
+ * @type int $price
+ * 
+ * @since 1.0
+ * 
+ * @return string|bool Update meta values or false.
+ */
 
 function update_meta_settings($atts)
 {
@@ -280,7 +347,15 @@ function update_meta_settings($atts)
 }
 
 
-
+/**
+ * Display fields for collecting donor/customer information
+ * 
+ * @params array $arr 
+ * 
+ * @since 1.0
+ * 
+ * @return bool Whether or not to display fields
+ */
 
 function display_is_enabled($arr)
 {
@@ -304,9 +379,12 @@ function display_is_enabled($arr)
 
 
 /**
+ * 
  * @param $atts
  *
- * @return string
+ * @since 1.0
+ * 
+ * @return array
  */
 function getCollect($atts)
 {
