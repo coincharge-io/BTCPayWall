@@ -130,7 +130,7 @@ class BTCPayWall_DB_Donors extends BTCPayWall_DB
 
         $charset_collate = $wpdb->get_charset_collate();
 
-        $sql = "CREATE TABLE IF NOT EXISTS {$this->table_name}(
+        $sql = "CREATE TABLE {$this->table_name}(
 			  id bigint(20) NOT NULL AUTO_INCREMENT,
 			  full_name TINYTEXT,
               email varchar(255),

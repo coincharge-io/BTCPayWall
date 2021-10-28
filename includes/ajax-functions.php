@@ -2,7 +2,13 @@
 
 // Exit if accessed directly
 if (!defined('ABSPATH')) exit;
-
+/**
+ * Generate invoice and order id
+ * 
+ * @since 1.0
+ * 
+ * @return void
+ */
 function ajax_get_invoice_id()
 {
 
@@ -29,13 +35,25 @@ function ajax_get_invoice_id()
 add_action('wp_ajax_btcpw_get_invoice_id',  'ajax_get_invoice_id');
 add_action('wp_ajax_nopriv_btcpw_get_invoice_id',  'ajax_get_invoice_id');
 
+/**
+ * Retrieve order id and invoice id from the server
+ * 
+ * @param int $post_id WP Post id.
+ * @param int $order_id Order id.
+ * 
+ * @since 1.0
+ * 
+ * @return array Return invoice id and amount
+ * @throws WP_Error
+ */
 function generate_invoice_id($post_id, $order_id)
 {
     $amount = calculate_price_for_invoice($post_id);
 
     $url = get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
 
-    $currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ?: getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['currency'];
+    $currency_scope = get_post_meta($post_id, 'btcpw_default_currency', true) ?: get_option('btcpw_default_currency', 'SATS');
+    //getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['currency'];
     //get_option('btcpw_default_currency', 'SATS');
     $currency = $currency_scope != 'SATS' ? $currency_scope : 'BTC';
     $blogname = get_option('blogname');
@@ -86,7 +104,13 @@ function generate_invoice_id($post_id, $order_id)
         'amount' => $body['amount'] . $body['currency']
     );
 }
-
+/**
+ * Fetch exchange rates
+ * 
+ * @since 1.0
+ * 
+ * @return void
+ */
 function ajax_convert_currencies()
 {
 
@@ -123,6 +147,8 @@ function ajax_convert_currencies()
 
 add_action('wp_ajax_btcpw_convert_currencies',  'ajax_convert_currencies');
 add_action('wp_ajax_nopriv_btcpw_convert_currencies',  'ajax_convert_currencies');
+
+
 function ajax_tipping()
 {
     $collect = "Donor Information: \n";
@@ -279,6 +305,9 @@ function ajax_paid_invoice()
 
         update_post_meta($order_id, 'btcpw_status', 'success');
 
+        $customer = new BTCPayWall_DB_Customers();
+        $customer->add($_POST);
+        var_dump($customer);
         wp_send_json_success(['notify' => $message]);
     }
     wp_send_json_error(['message' => 'invoice is not paid']);

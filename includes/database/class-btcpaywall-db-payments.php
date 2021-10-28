@@ -139,7 +139,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
 
         $charset_collate = $wpdb->get_charset_collate();
 
-        $sql = "CREATE TABLE IF NOT EXISTS {$this->table_name}(
+        $sql = "CREATE TABLE {$this->table_name}(
 			  id BIGINT(20) NOT NULL,
 			  customer_id BIGINT(20) NOT NULL,
               page_title TINYTEXT,

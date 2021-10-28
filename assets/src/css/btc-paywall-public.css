@@ -1251,7 +1251,7 @@ Revenue types
 #btcpw_revenue_post_button,
 #btcpw_revenue_view_button,
 #btcpw_revenue_file_button {
-  height: 70px;
+  height: 65px;
 }
 #btcpw_revenue_post_button > div,
 #btcpw_revenue_view_button > div,

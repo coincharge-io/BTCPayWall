@@ -128,7 +128,7 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
 
             $sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
         }
-        
+
         $result = $wpdb->get_results($sql, 'ARRAY_A');
 
         return $result;
@@ -139,7 +139,7 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
 
         $charset_collate = $wpdb->get_charset_collate();
 
-        $sql = "CREATE TABLE IF NOT EXISTS {$this->table_name}(
+        $sql = "CREATE TABLE {$this->table_name}(
             id BIGINT(20) NOT NULL AUTO_INCREMENT,
             donor_id BIGINT(20) NOT NULL,
             page_title TINYTEXT,

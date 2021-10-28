@@ -60,7 +60,7 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
         if (empty($id)) {
             return false;
         }
-        $customer  = $this->get_customer_by('id');
+        $customer  = $this->get_customer_by('id', $id);
 
         if ($customer->id > 0) {
 
@@ -78,7 +78,7 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
             return false;
         }
 
-        $customer = $this->get_customer_by('id');
+        $customer = $this->get_customer_by('id', $data['id']);
         if ($customer) {
 
             $this->update($customer->id, $data);
@@ -89,11 +89,11 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
             return $this->insert($data, 'customer');
         }
     }
-    public function get_customer_by($id)
+    public function get_customer_by($field = 'id', $value)
     {
         global $wpdb;
         $row = $wpdb->get_row(
-            $wpdb->prepare("SELECT * FROM {$this->table_name} WHERE id = %s LIMIT 1", $id)
+            $wpdb->prepare("SELECT * FROM {$this->table_name} WHERE {$field} = %s LIMIT 1", $value)
         );
         return $row;
     }
@@ -119,7 +119,7 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
 
             $sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
         }
-        
+
         $result = $wpdb->get_results($sql, 'ARRAY_A');
 
         return $result;
@@ -130,7 +130,7 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
 
         $charset_collate = $wpdb->get_charset_collate();
 
-        $sql = "CREATE TABLE IF NOT EXISTS {$this->table_name}(
+        $sql = "CREATE TABLE {$this->table_name}(
 			  id bigint(20) NOT NULL AUTO_INCREMENT,
 			  full_name TINYTEXT,
               email varchar(255),

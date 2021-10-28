@@ -6,7 +6,11 @@
     var amount
 
     $('#btcpw_pay__button').click(function () {
-      $('.btcpw_pay__loading p.loading').addClass('spinner')
+      var text = $('#btcpw_pay__button').text()
+      $('#btcpw_pay__button').html(
+        `<span class="tipping-border" role="status" aria-hidden="true"></span>`
+      )
+      //$('.btcpw_pay__loading p.loading').addClass('spinner')
       var post_id = $(this).data('post_id')
       if (btcpw_invoice_id && btcpw_order_id) {
         btcpwShowInvoice(btcpw_invoice_id, btcpw_order_id)
@@ -21,7 +25,7 @@
           post_id: post_id
         },
         success: function (response) {
-          $('.btcpw_pay__loading p.loading').removeClass('spinner')
+          $('#btcpw_pay__button').html(text)
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id
             btcpw_order_id = response.data.order_id
@@ -35,7 +39,7 @@
     })
   })
 
-  function btcpwShowInvoice (invoice_id, order_id, amount) {
+  /* function btcpwShowInvoice (invoice_id, order_id, amount) {
     btcpay.onModalReceiveMessage(function (event) {
       if (event.data.status === 'complete') {
         $.ajax({
@@ -46,6 +50,44 @@
             invoice_id: invoice_id,
             order_id: order_id,
             amount: amount
+          },
+          success: function (response) {
+            if (response.success) {
+              notifyAdmin(response.data.notify + 'Url:' + window.location.href)
+              location.reload(true)
+            } else {
+              console.error(response)
+            }
+          }
+        })
+      }
+    }) */
+  function btcpwShowInvoice (invoice_id, order_id, amount) {
+    btcpay.onModalReceiveMessage(function (event) {
+      if (event.data.status === 'complete') {
+        $.ajax({
+          url: '/wp-admin/admin-ajax.php',
+          method: 'POST',
+          data: {
+            action: 'btcpw_paid_invoice',
+            invoice_id: invoice_id,
+            order_id: order_id,
+            amount: amount,
+            full_name: $(
+              '#btcpw_revenue_post_customer_name, #btcpw_revenue_view_customer_name, #btcpw_revenue_file_customer_name'
+            ).val(),
+            email: $(
+              '#btcpw_revenue_post_customer_email, #btcpw_revenue_view_customer_email, #btcpw_revenue_file_customer_email'
+            ).val(),
+            address: $(
+              '#btcpw_revenue_post_customer_address, #btcpw_revenue_view_customer_address, #btcpw_revenue_file_customer_address'
+            ).val(),
+            phone: $(
+              '#btcpw_revenue_post_customer_phone, #btcpw_revenue_view_customer_phone, #btcpw_revenue_file_customer_phone'
+            ).val(),
+            message: $(
+              '#btcpw_revenue_post_customer_message, #btcpw_revenue_view_customer_message, #btcpw_revenue_file_customer_message'
+            ).val()
           },
           success: function (response) {
             if (response.success) {
