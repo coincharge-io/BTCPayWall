@@ -144,7 +144,7 @@ class BTCPayWall_Customer
                     if (!is_string($key)) {
                         $data[$key] = $default_values[$key];
                     } else {
-                        $data[$key] = sanitize_text_field($data[$key]);
+                        $data[$key] = empty($data[$key]) ? sanitize_text_field($data[$key]) : $default_values[$key];
                     }
                     break;
 

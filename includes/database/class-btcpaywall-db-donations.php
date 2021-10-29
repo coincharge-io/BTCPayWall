@@ -20,6 +20,7 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
     {
         return array(
             'id' => '%d',
+            'invoice_id' => '%d',
             'donor_id' => '%d',
             'page_title' => '%s',
             'type' => '%s',
@@ -35,6 +36,7 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
     public function get_column_defaults()
     {
         return array(
+            'invoice_id' => 0,
             'donor_id' => 0,
             'page_title' => '',
             'type' => '',
@@ -67,7 +69,7 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
         if (empty($id)) {
             return false;
         }
-        $donation  = $this->get_donation_by('id');
+        $donation  = $this->get_donation_by('id', $id);
 
         if ($donation->id > 0) {
 
@@ -85,7 +87,7 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
             return false;
         }
 
-        $donation = $this->get_donation_by('id');
+        $donation = $this->get_donation_by('id', $data['id']);
         if ($donation) {
 
             $this->update($donation->id, $data);
@@ -96,11 +98,11 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
             return $this->insert($data, 'donation');
         }
     }
-    public function get_donation_by($id)
+    public function get_donation_by($field = 'id', $value)
     {
         global $wpdb;
         $row = $wpdb->get_row(
-            $wpdb->prepare("SELECT * FROM {$this->table_name} WHERE id = %s LIMIT 1", $id)
+            $wpdb->prepare("SELECT * FROM {$this->table_name} WHERE {$field} = %s LIMIT 1", $value)
         );
         return $row;
     }
@@ -142,6 +144,7 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
         $sql = "CREATE TABLE {$this->table_name}(
             id BIGINT(20) NOT NULL AUTO_INCREMENT,
             donor_id BIGINT(20) NOT NULL,
+            invoice_id BIGINT(20) NOT NULL,
             page_title TINYTEXT,
             type TINYTEXT,
             currency CHAR(4),
@@ -149,6 +152,7 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
             status TINYTEXT,
             gateway TINYTEXT,
             payment_method TINYTEXT,
+            date_created TIMESTAMP,
             PRIMARY KEY  (id),
             KEY donor (donor_id)) {$charset_collate};";
 

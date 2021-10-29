@@ -55,12 +55,12 @@ function generate_invoice_id($post_id, $order_id)
     $currency_scope = get_post_meta($post_id, 'btcpw_default_currency', true) ?: get_option('btcpw_default_currency', 'SATS');
     //getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['currency'];
     //get_option('btcpw_default_currency', 'SATS');
-    $currency = $currency_scope != 'SATS' ? $currency_scope : 'BTC';
+    //$currency = $currency_scope != 'SATS' ? $currency_scope : 'BTC';
     $blogname = get_option('blogname');
 
     $data = array(
         'amount' => $amount,
-        'currency' => $currency,
+        'currency' => $currency_scope,
         'metadata' => array(
             'orderId' => $order_id,
             'type' => 'Pay-per-' . get_post_meta($post_id, 'btcpw_invoice_content', true)['project'],
@@ -103,6 +103,50 @@ function generate_invoice_id($post_id, $order_id)
         'id' => $body['id'],
         'amount' => $body['amount'] . $body['currency']
     );
+}
+
+/**
+ * Get payment method
+ * 
+ * @param int $invoice_id   Invoice id.
+ * 
+ * @since 1.0
+ * 
+ * @return array Array of enabled payment methods
+ * @throws WP_Error
+ */
+function get_payment_method($invoice_id)
+{
+    $url = get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices/' . $invoice_id . '/payment-methods';
+
+    $args = array(
+        'headers' => array(
+            'Authorization' => 'token ' . get_option('btcpw_btcpay_auth_key_view'),
+            'Content-Type' => 'application/json',
+        ),
+        'method' => 'GET',
+        'timeout' => 60,
+    );
+
+    $response = wp_remote_request($url, $args);
+    if (is_wp_error($response)) {
+        return $response;
+    }
+
+    if ($response['response']['code'] != 200) {
+        return new WP_Error($response['response']['code'], 'HTTP Error ' . $response['response']['code']);
+    }
+
+    $body = json_decode($response['body'], true);
+
+    if (empty($body) || !empty($body['error'])) {
+        return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
+    }
+    foreach ($body as $method) {
+        if ($method['activated'] === true) {
+            return $method['paymentMethod'];
+        }
+    }
 }
 /**
  * Fetch exchange rates
@@ -233,7 +277,24 @@ function ajax_tipping()
     if (empty($body) || !empty($body['error'])) {
         return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
     }
+    $payment_method = get_payment_method($body['id']);
+    $donor = new BTCPayWall_Donor();
 
+    $donor->create($_POST);
+
+    $donation = new BTCPayWall_Donation();
+
+    $donation->create([
+        'invoice_id' => $body['id'],
+        'donor_id' => $donor->id,
+        'amount' => $body['amount'],
+        'page_title' => $body['metadata']['blog'],
+        'revenue_type' => $body['metadata']['type'],
+        'currency' => $body['currency'],
+        'status' => $body['status'],
+        'payment_method' => $payment_method,
+        'date_created'  => date('Y-m-d H:i:s', $body['createdTime'])
+    ]);
     wp_send_json_success([
         'invoice_id' => $body['id'],
         'donor' => $body['metadata']['donor'],
@@ -303,11 +364,28 @@ function ajax_paid_invoice()
 
         setcookie('btcpw_' . $post_id, $secret, get_cookie_duration($post_id), $cookie_path);
 
+
+        $payment_method = get_payment_method($body['id']);
+        $customer = new BTCPayWall_Customer();
+
+        $customer->create($_POST);
+
+        $payment = new BTCPayWall_Payment();
+
+        $payment->create([
+            'invoice_id' => $body['id'],
+            'customer_id' => $customer->id,
+            'amount' => $body['amount'],
+            'page_title' => $body['metadata']['blog'],
+            'revenue_type' => $body['metadata']['type'],
+            'currency' => $body['currency'],
+            'status' => $body['status'],
+            'payment_method' => $payment_method,
+            'date_created'  => date('Y-m-d H:i:s', $body['createdTime'])
+        ]);
+
         update_post_meta($order_id, 'btcpw_status', 'success');
 
-        $customer = new BTCPayWall_DB_Customers();
-        $customer->add($_POST);
-        var_dump($customer);
         wp_send_json_success(['notify' => $message]);
     }
     wp_send_json_error(['message' => 'invoice is not paid']);

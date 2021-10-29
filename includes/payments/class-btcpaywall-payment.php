@@ -9,10 +9,11 @@ class BTCPayWall_Payment
 
 
     public $id = 0;
+    public $invoice_id = 0;
     public $customer_id = 0;
     public $amount;
     public $page_title;
-    public $type;
+    public $revenue_type;
     public $currency;
     public $status;
     public $gateway;
@@ -30,7 +31,7 @@ class BTCPayWall_Payment
             return false;
         }
 
-        $payment = $this->db->get_payment_by($payment_id);
+        $payment = $this->db->get_payment_by('id', $payment_id);
 
         if (empty($payment) || !is_object($payment)) {
             return false;
@@ -46,7 +47,7 @@ class BTCPayWall_Payment
         if (!is_object($payment)) {
             return false;
         }
-        $valid_keys = ['id', 'customer_id', 'amount', 'page_title', 'type', 'currency', 'status', 'gateway', 'payment_method'];
+        $valid_keys = ['id', 'invoice_id', 'customer_id', 'amount', 'page_title', 'type', 'currency', 'status', 'gateway', 'payment_method'];
 
         foreach ($payment as $key => $value) {
             if (in_array($key, $valid_keys)) {
@@ -78,7 +79,7 @@ class BTCPayWall_Payment
         if ($create_or_update) {
 
 
-            $payment = $this->db->get_payment_by($create_or_update);
+            $payment = $this->db->get_payment_by('id', $create_or_update);
 
             $this->setup_payment($payment);
 
@@ -101,7 +102,7 @@ class BTCPayWall_Payment
 
         if ($this->db->update($this->id, $data)) {
 
-            $payment = $this->db->get_payment_by($this->id);
+            $payment = $this->db->get_payment_by('id', $this->id);
             $this->setup_payment($payment);
 
             $updated = true;

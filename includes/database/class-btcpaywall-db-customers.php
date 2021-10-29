@@ -137,8 +137,7 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
               address TINYTEXT,
               phone TINYTEXT,
               message TEXT,
-			  PRIMARY KEY  (id),
-              UNIQUE KEY email (email)) {$charset_collate};";
+			  PRIMARY KEY  (id)) {$charset_collate};";
 
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 

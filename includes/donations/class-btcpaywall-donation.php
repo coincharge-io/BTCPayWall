@@ -9,6 +9,7 @@ class BTCPayWall_Donation
 
 
     public $id = 0;
+    public $invoice_id = 0;
     public $donor_id = 0;
     public $amount;
     public $page_title;
@@ -30,7 +31,7 @@ class BTCPayWall_Donation
             return false;
         }
 
-        $donation = $this->db->get_donation_by($donation_id);
+        $donation = $this->db->get_donation_by('id', $donation_id);
 
         if (empty($donation) || !is_object($donation)) {
             return false;
@@ -46,7 +47,7 @@ class BTCPayWall_Donation
         if (!is_object($donation)) {
             return false;
         }
-        $valid_keys = ['id', 'donation_id', 'amount', 'page_title', 'type', 'currency', 'status', 'gateway', 'payment_method'];
+        $valid_keys = ['id', 'invoice_id', 'donation_id', 'amount', 'page_title', 'type', 'currency', 'status', 'gateway', 'payment_method'];
 
         foreach ($donation as $key => $value) {
             if (in_array($key, $valid_keys)) {
@@ -78,7 +79,7 @@ class BTCPayWall_Donation
         if ($create_or_update) {
 
 
-            $donation = $this->db->get_donation_by($create_or_update);
+            $donation = $this->db->get_donation_by('id', $create_or_update);
 
             $this->setup_donation($donation);
 

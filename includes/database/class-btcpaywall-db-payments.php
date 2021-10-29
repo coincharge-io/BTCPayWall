@@ -20,9 +20,10 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
     {
         return array(
             'id' => '%d',
+            'invoice_id' => '%d',
             'customer_id' => '%d',
             'page_title' => '%s',
-            'type' => '%s',
+            'revenue_type' => '%s',
             'currency' => '%s',
             'amount' => '%f',
             'status' => '%s',
@@ -35,14 +36,15 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
     public function get_column_defaults()
     {
         return array(
+            'invoice_id'  => 0,
             'customer_id' => 0,
             'page_title' => '',
-            'type' => '',
+            'revenue_type' => '',
             'currency' => '',
             'amount' => '',
             'status' => 'New',
-            'gateway' => '',
-            'payment_method' => '',
+            'gateway' => 'BTCPayServer',
+            'payment_method' => 'BTC-LightningNetwork',
             'date_created'    => date('Y-m-d H:i:s'),
 
         );
@@ -68,7 +70,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
         if (empty($id)) {
             return false;
         }
-        $payment  = $this->get_payment_by('id');
+        $payment  = $this->get_payment_by('id', $id);
 
         if ($payment->id > 0) {
 
@@ -86,7 +88,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
             return false;
         }
 
-        $payment = $this->get_payment_by('payment_id');
+        $payment = $this->get_payment_by('id', $data['id']);
         if ($payment) {
 
             $this->update($payment->id, $data);
@@ -97,11 +99,11 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
             return $this->insert($data, 'payment');
         }
     }
-    public function get_payment_by($id)
+    public function get_payment_by($field = 'id', $value)
     {
         global $wpdb;
         $row = $wpdb->get_row(
-            $wpdb->prepare("SELECT * FROM {$this->table_name} WHERE payment_id = %s LIMIT 1", $id)
+            $wpdb->prepare("SELECT * FROM {$this->table_name} WHERE {$field} = %s LIMIT 1", $value)
         );
         return $row;
     }
@@ -140,15 +142,17 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
         $charset_collate = $wpdb->get_charset_collate();
 
         $sql = "CREATE TABLE {$this->table_name}(
-			  id BIGINT(20) NOT NULL,
+			  id BIGINT(20) NOT NULL AUTO_INCREMENT,
+              invoice_id BIGINT(20) NOT NULL,
 			  customer_id BIGINT(20) NOT NULL,
               page_title TINYTEXT,
-              type TINYTEXT,
+              revenue_type TINYTEXT,
               currency CHAR(4),
               amount DECIMAL(16,8),
               status TINYTEXT,
               gateway TINYTEXT,
               payment_method TINYTEXT,
+              date_created TIMESTAMP,
 			  PRIMARY KEY  (id),
               KEY customer (customer_id)
             ) {$charset_collate};";

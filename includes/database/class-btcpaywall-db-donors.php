@@ -60,7 +60,7 @@ class BTCPayWall_DB_Donors extends BTCPayWall_DB
         if (empty($id)) {
             return false;
         }
-        $donor  = $this->get_donor_by('id');
+        $donor  = $this->get_donor_by('id', $id);
 
         if ($donor->id > 0) {
 
@@ -78,7 +78,7 @@ class BTCPayWall_DB_Donors extends BTCPayWall_DB
             return false;
         }
 
-        $donor = $this->get_donor_by('id');
+        $donor = $this->get_donor_by('id', $data['id']);
         if ($donor) {
 
             $this->update($donor->id, $data);
@@ -86,14 +86,14 @@ class BTCPayWall_DB_Donors extends BTCPayWall_DB
             return $donor->id;
         } else {
 
-            return $this->insert($data, 'customer');
+            return $this->insert($data, 'donor');
         }
     }
-    public function get_donor_by($id)
+    public function get_donor_by($field = 'id', $value)
     {
         global $wpdb;
         $row = $wpdb->get_row(
-            $wpdb->prepare("SELECT * FROM {$this->table_name} WHERE id = %s LIMIT 1", $id)
+            $wpdb->prepare("SELECT * FROM {$this->table_name} WHERE {$field} = %s LIMIT 1", $value)
         );
         return $row;
     }
@@ -137,8 +137,7 @@ class BTCPayWall_DB_Donors extends BTCPayWall_DB
               address TINYTEXT,
               phone TINYTEXT,
               message TEXT,
-			  PRIMARY KEY  (id),
-              UNIQUE KEY email (email)) {$charset_collate};";
+			  PRIMARY KEY  (id)) {$charset_collate};";
 
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
