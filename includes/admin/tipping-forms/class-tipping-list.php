@@ -63,7 +63,7 @@ class Tipping_Forms_Table extends WP_List_Table
     public static function record_count()
     {
 
-        $shortcodes = new BTCPayWall_Donation_Form();
+        $shortcodes = new BTCPayWall_Tipping_Form();
         return $shortcodes->form_count();
     }
 
@@ -77,7 +77,7 @@ class Tipping_Forms_Table extends WP_List_Table
      */
     public static function get_shortcodes($per_page = 5, $page_number = 1)
     {
-        $shortcodes = new BTCPayWall_Donation_Form();
+        $shortcodes = new BTCPayWall_Tipping_Form();
 
         return $shortcodes->get_forms($per_page, $page_number);
     }
@@ -88,7 +88,7 @@ class Tipping_Forms_Table extends WP_List_Table
      */
     public static function delete_shortcode($id)
     {
-        $shortcodes = new BTCPayWall_Donation_Form();
+        $shortcodes = new BTCPayWall_Tipping_Form();
         return $shortcodes->delete($id);
     }
 

@@ -1,9 +1,8 @@
 <?php
 $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
 $id = $_GET['id'] ?? null;
-$form = new BTCPayWall_Donation_Form($id);
+$form = new BTCPayWall_Tipping_Form($id);
 $result = json_decode(json_encode($form), true);
-
 $predefined_enabled = $result['free_input'] ?? true;
 $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
 $used_currency = $result['currency'] ?? 'SATS';
@@ -80,6 +79,7 @@ $background = wp_get_attachment_image_src($image['background']);
 $show_icon = $result['show_icon'] ?? true;
 $shortcode = !empty($result) ? outputShortcodeAttributes($result['name'], $result['id']) : '';
 $id = $result['id'] ?? null;
+
 
 //TODO class_Exists
 

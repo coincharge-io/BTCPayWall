@@ -4,7 +4,7 @@
 if (!defined('ABSPATH')) exit;
 
 
-class BTCPayWall_Donation_Form
+class BTCPayWall_Tipping_Form
 {
     public $id = 0;
     public $name;
@@ -165,7 +165,7 @@ class BTCPayWall_Donation_Form
         if ($create_or_update) {
 
             $form = $this->db->get_form_by($create_or_update);
-            //var_dump($this);
+
             $this->setup_form($form);
 
             $created = $this->id;
@@ -208,11 +208,11 @@ class BTCPayWall_Donation_Form
 
     private function get_type($dim)
     {
-        return extractName(sanitize_text_field($_POST['dimension']))['type'];
+        return extractName($dim)['type'];
     }
     private function get_name($dim)
     {
-        return extractName(sanitize_text_field($_POST['dimension']))['name'];
+        return extractName($dim)['name'];
     }
     public function form_count()
     {
@@ -244,8 +244,8 @@ class BTCPayWall_Donation_Form
                         $data[$key] = sanitize_hex_color_no_hash($data[$key]);
                     } elseif ($key === 'dimension') {
                         $data[$key] = sanitize_text_field($data[$key]);
-                        $data['type'] = $this->get_type($key);
-                        $data['name'] = $this->get_name($key);
+                        $data['type'] = $this->get_type(sanitize_text_field($data[$key]));
+                        $data['name'] = $this->get_name(sanitize_text_field($data[$key]));
                     } elseif (!is_string($key)) {
                         $data[$key] = $default_values[$key];
                     } else {
@@ -276,6 +276,7 @@ class BTCPayWall_Donation_Form
                     break;
             }
         }
+
         return $data;
     }
 }

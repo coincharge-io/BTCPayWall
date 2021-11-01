@@ -6,9 +6,8 @@ $result = $wpdb->get_results(
     $wpdb->prepare("SELECT * FROM $table_name WHERE id=%d", $id),
     ARRAY_A
 ); */
-$form = new BTCPayWall_Donation_Form($id);
+$form = new BTCPayWall_Tipping_Form($id);
 $result = json_decode(json_encode($form), true);
-
 ?>
 <div class="btcpw_edit_shortcode">
     <?php switch ($result['name']):

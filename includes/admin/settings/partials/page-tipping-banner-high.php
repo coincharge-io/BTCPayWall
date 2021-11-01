@@ -2,7 +2,7 @@
 $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
 $id = $_GET['id'] ?? null;
 
-$form = new BTCPayWall_Donation_Form($id);
+$form = new BTCPayWall_Tipping_Form($id);
 $result = json_decode(json_encode($form), true);
 
 $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;

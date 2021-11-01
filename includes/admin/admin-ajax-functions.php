@@ -214,10 +214,9 @@ function createShortcode()
         'active_color'    => $active_color,
         'inactive_color'    => $inactive_color,
     );*/
-    $row = new BTCPayWall_Donation_Form();
+    $row = new BTCPayWall_Tipping_Form();
 
     $row->create($_POST);
-
     /* if (empty($id)) {
         $row->insert($data);
     } else {

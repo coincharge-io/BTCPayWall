@@ -24,7 +24,7 @@ function checkPermission($list, $permission)
 function allCreatedForms()
 {
     global $wpdb;
-    $table_name = "{$wpdb->prefix}btc_forms";
+    $table_name = "{$wpdb->prefix}btcpaywall_forms";
     $result = $wpdb->get_results(
         "SELECT * FROM $table_name",
         ARRAY_A
@@ -49,7 +49,7 @@ function outputShortcodeAttributes($name, $id)
         case 'Tipping Page':
             return "[btcpw_tipping_page id={$id}]";
         default:
-            return 'Shortcode could not be created! Please try again.';
+            return null;
     }
 }
 /**

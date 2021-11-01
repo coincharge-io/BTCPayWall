@@ -174,7 +174,7 @@ class Payments_Table extends WP_List_Table
      * 
      * @param string $which The location of the bulk actions: 'top' or 'bottom'.
      */
-    protected function display_tablenav($which)
+    /*  protected function display_tablenav($which)
     {
 ?>
         <div class="tablenav <?php echo esc_attr($which); ?>">
@@ -187,8 +187,25 @@ class Payments_Table extends WP_List_Table
             <br class="clear" />
         </div>
     <?php
-    }
+    } */
+    protected function display_tablenav($which)
+    {
+?>
+        <div class="tablenav <?php echo esc_attr($which); ?>">
 
+            <div class="alignleft actions bulkactions">
+                <?php $this->bulk_actions($which); ?>
+            </div>
+            <?php
+            $this->extra_tablenav($which);
+            $this->pagination($which);
+
+            ?>
+
+            <br class="clear" />
+        </div>
+    <?php
+    }
 
 
     public function display()
