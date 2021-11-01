@@ -4,7 +4,7 @@
 if (!defined('ABSPATH')) exit;
 
 
-class BTCPayWall_Donor
+class BTCPayWall_Tipper
 {
 
 
@@ -18,34 +18,34 @@ class BTCPayWall_Donor
     protected $db;
 
 
-    public function __construct($donor_id = false)
+    public function __construct($tipper_id = false)
     {
 
-        $this->db = new BTCPayWall_DB_Donors;
+        $this->db = new BTCPayWall_DB_Tippers;
 
-        if ((is_numeric($donor_id) && (int) $donor_id !== absint($donor_id))) {
+        if ((is_numeric($tipper_id) && (int) $tipper_id !== absint($tipper_id))) {
             return false;
         }
 
-        $donor = $this->db->get_donor_by($donor_id);
+        $tipper = $this->db->get_tipper_by('id', $tipper_id);
 
-        if (empty($donor) || !is_object($donor)) {
+        if (empty($tipper) || !is_object($tipper)) {
             return false;
         }
 
-        $this->setup_donor($donor);
+        $this->setup_tipper($tipper);
     }
 
 
-    private function setup_donor($donor)
+    private function setup_tipper($tipper)
     {
 
-        if (!is_object($donor)) {
+        if (!is_object($tipper)) {
             return false;
         }
         $valid_keys = ['id', 'full_name', 'email', 'address', 'phone', 'message'];
 
-        foreach ($donor as $key => $value) {
+        foreach ($tipper as $key => $value) {
             if (in_array($key, $valid_keys)) {
                 $this->$key = $value;
             }
@@ -76,9 +76,9 @@ class BTCPayWall_Donor
         if ($create_or_update) {
 
 
-            $donor = $this->db->get_donor_by($create_or_update);
+            $tipper = $this->db->get_tipper_by('id', $create_or_update);
 
-            $this->setup_donor($donor);
+            $this->setup_tipper($tipper);
 
             $created = $this->id;
         }
@@ -99,8 +99,8 @@ class BTCPayWall_Donor
 
         if ($this->db->update($this->id, $data)) {
 
-            $donor = $this->db->get_donor_by('id', $this->id);
-            $this->setup_donor($donor);
+            $tipper = $this->db->get_tipper_by('id', $this->id);
+            $this->setup_tipper($tipper);
 
             $updated = true;
         }
@@ -110,12 +110,12 @@ class BTCPayWall_Donor
     }
 
 
-    public function get_donors()
+    public function get_tippers()
     {
 
-        $donors = $this->db->get_donors();
+        $tippers = $this->db->get_tippers();
 
-        return $donors;
+        return $tippers;
     }
 
 

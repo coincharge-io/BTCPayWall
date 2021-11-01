@@ -16,10 +16,10 @@ function register_tables()
 
     $tables = [
         'customers_db'     => new BTCPayWall_DB_Customers(),
-        'donation_forms_db' => new BTCPayWall_DB_Donation_Forms(),
-        'donors_db'        => new BTCPayWall_DB_Donors(),
+        'tipping_forms_db' => new BTCPayWall_DB_Tipping_Forms(),
+        'tippers_db'        => new BTCPayWall_DB_Tippers(),
         'payments_db'      => new BTCPayWall_DB_Payments(),
-        'donations_db'     => new BTCPayWall_DB_Donations(),
+        'tippings_db'     => new BTCPayWall_DB_Tippings(),
     ];
 
     foreach ($tables  as $table) {

@@ -20,7 +20,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
     {
         return array(
             'id' => '%d',
-            'invoice_id' => '%d',
+            'invoice_id' => '%s',
             'customer_id' => '%d',
             'page_title' => '%s',
             'revenue_type' => '%s',
@@ -36,7 +36,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
     public function get_column_defaults()
     {
         return array(
-            'invoice_id'  => 0,
+            'invoice_id'  => '0',
             'customer_id' => 0,
             'page_title' => '',
             'revenue_type' => '',
@@ -143,7 +143,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
 
         $sql = "CREATE TABLE {$this->table_name}(
 			  id BIGINT(20) NOT NULL AUTO_INCREMENT,
-              invoice_id BIGINT(20) NOT NULL,
+              invoice_id TINYTEXT,
 			  customer_id BIGINT(20) NOT NULL,
               page_title TINYTEXT,
               revenue_type TINYTEXT,

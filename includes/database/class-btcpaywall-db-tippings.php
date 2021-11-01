@@ -4,13 +4,13 @@
 if (!defined('ABSPATH')) exit;
 
 
-class BTCPayWall_DB_Donations extends BTCPayWall_DB
+class BTCPayWall_DB_Tippings extends BTCPayWall_DB
 {
     public function __construct()
     {
         global $wpdb;
 
-        $this->table_name = "{$wpdb->prefix}btcpaywall_donations";
+        $this->table_name = "{$wpdb->prefix}btcpaywall_tippings";
         $this->primary_key = 'id';
         $this->version     = '1.0';
 
@@ -20,10 +20,10 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
     {
         return array(
             'id' => '%d',
-            'invoice_id' => '%d',
-            'donor_id' => '%d',
+            'invoice_id' => '%s',
+            'tipper_id' => '%d',
             'page_title' => '%s',
-            'type' => '%s',
+            'revenue_type' => '%s',
             'currency' => '%s',
             'amount' => '%f',
             'status' => '%s',
@@ -36,10 +36,10 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
     public function get_column_defaults()
     {
         return array(
-            'invoice_id' => 0,
-            'donor_id' => 0,
+            'invoice_id' => '',
+            'tipper_id' => 0,
             'page_title' => '',
-            'type' => '',
+            'revenue_type' => '',
             'currency' => '',
             'amount' => '',
             'status' => 'New',
@@ -58,9 +58,9 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
 
     public function insert($data, $type = '')
     {
-        $form_id = parent::insert($data, $type);
+        $tipping_id = parent::insert($data, $type);
 
-        return $form_id;
+        return $tipping_id;
     }
 
     public function delete($id = null)
@@ -69,13 +69,13 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
         if (empty($id)) {
             return false;
         }
-        $donation  = $this->get_donation_by('id', $id);
+        $tipping  = $this->get_tipping_by('id', $id);
 
-        if ($donation->id > 0) {
+        if ($tipping->id > 0) {
 
             global $wpdb;
 
-            return $wpdb->delete($this->table_name, array('id' => $donation->id), array('%d'));
+            return $wpdb->delete($this->table_name, array('id' => $tipping->id), array('%d'));
         } else {
             return false;
         }
@@ -87,18 +87,18 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
             return false;
         }
 
-        $donation = $this->get_donation_by('id', $data['id']);
-        if ($donation) {
+        $tipping = $this->get_tipping_by('id', $data['id']);
+        if ($tipping) {
 
-            $this->update($donation->id, $data);
+            $this->update($tipping->id, $data);
 
-            return $donation->id;
+            return $tipping->id;
         } else {
 
-            return $this->insert($data, 'donation');
+            return $this->insert($data, 'tipping');
         }
     }
-    public function get_donation_by($field = 'id', $value)
+    public function get_tipping_by($field = 'id', $value)
     {
         global $wpdb;
         $row = $wpdb->get_row(
@@ -114,7 +114,7 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
 
         return $wpdb->get_var($sql);
     }
-    public function get_donations($per_page = null, $page_number = null)
+    public function get_tippings($per_page = null, $page_number = null)
     {
 
         global $wpdb;
@@ -143,10 +143,10 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
 
         $sql = "CREATE TABLE {$this->table_name}(
             id BIGINT(20) NOT NULL AUTO_INCREMENT,
-            donor_id BIGINT(20) NOT NULL,
-            invoice_id BIGINT(20) NOT NULL,
+            tipper_id BIGINT(20) NOT NULL,
+            invoice_id TINYTEXT,
             page_title TINYTEXT,
-            type TINYTEXT,
+            revenue_type TINYTEXT,
             currency CHAR(4),
             amount DECIMAL(16,8),
             status TINYTEXT,
@@ -154,7 +154,7 @@ class BTCPayWall_DB_Donations extends BTCPayWall_DB
             payment_method TINYTEXT,
             date_created TIMESTAMP,
             PRIMARY KEY  (id),
-            KEY donor (donor_id)) {$charset_collate};";
+            KEY tipper (tipper_id)) {$charset_collate};";
 
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 

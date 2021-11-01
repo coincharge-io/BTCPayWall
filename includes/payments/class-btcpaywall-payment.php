@@ -47,7 +47,7 @@ class BTCPayWall_Payment
         if (!is_object($payment)) {
             return false;
         }
-        $valid_keys = ['id', 'invoice_id', 'customer_id', 'amount', 'page_title', 'type', 'currency', 'status', 'gateway', 'payment_method'];
+        $valid_keys = ['id', 'invoice_id', 'customer_id', 'amount', 'page_title', 'revenue_type', 'currency', 'status', 'gateway', 'payment_method'];
 
         foreach ($payment as $key => $value) {
             if (in_array($key, $valid_keys)) {
@@ -71,7 +71,6 @@ class BTCPayWall_Payment
             return false;
         }
 
-
         $data = $this->sanitize_columns($data);
 
         $created = false;
@@ -88,7 +87,10 @@ class BTCPayWall_Payment
 
         return $created;
     }
-
+    public function payment_count()
+    {
+        return $this->db->record_count();
+    }
     public function update($data = array())
     {
 
@@ -107,11 +109,8 @@ class BTCPayWall_Payment
 
             $updated = true;
         }
-
-
         return $updated;
     }
-
 
     public function get_payments()
     {
@@ -120,9 +119,6 @@ class BTCPayWall_Payment
 
         return $payments;
     }
-
-
-
 
     private function sanitize_columns($data)
     {

@@ -3,9 +3,9 @@
 if (!defined('ABSPATH')) exit;
 function render_tipping_list()
 {
-	require_once __DIR__ . '/class-donation-list.php';
+	require_once __DIR__ . '/class-tipping-list.php';
 
-	$table = new Donation_Forms_Table();
+	$table = new Tipping_Forms_Table();
 
 ?>
 	<div class="wrap">

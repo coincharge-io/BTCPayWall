@@ -4,13 +4,13 @@
 if (!defined('ABSPATH')) exit;
 
 
-class BTCPayWall_DB_Donors extends BTCPayWall_DB
+class BTCPayWall_DB_Tippers extends BTCPayWall_DB
 {
     public function __construct()
     {
         global $wpdb;
 
-        $this->table_name = "{$wpdb->prefix}btcpaywall_donors";
+        $this->table_name = "{$wpdb->prefix}btcpaywall_tippers";
         $this->primary_key = 'id';
         $this->version     = '1.0';
 
@@ -49,9 +49,9 @@ class BTCPayWall_DB_Donors extends BTCPayWall_DB
 
     public function insert($data, $type = '')
     {
-        $donor_id = parent::insert($data, $type);
+        $tipper_id = parent::insert($data, $type);
 
-        return $donor_id;
+        return $tipper_id;
     }
 
     public function delete($id = null)
@@ -60,13 +60,13 @@ class BTCPayWall_DB_Donors extends BTCPayWall_DB
         if (empty($id)) {
             return false;
         }
-        $donor  = $this->get_donor_by('id', $id);
+        $tipper  = $this->get_tipper_by('id', $id);
 
-        if ($donor->id > 0) {
+        if ($tipper->id > 0) {
 
             global $wpdb;
 
-            return $wpdb->delete($this->table_name, array('id' => $donor->id), array('%d'));
+            return $wpdb->delete($this->table_name, array('id' => $tipper->id), array('%d'));
         } else {
             return false;
         }
@@ -78,18 +78,18 @@ class BTCPayWall_DB_Donors extends BTCPayWall_DB
             return false;
         }
 
-        $donor = $this->get_donor_by('id', $data['id']);
-        if ($donor) {
+        $tipper = $this->get_tipper_by('id', $data['id']);
+        if ($tipper) {
 
-            $this->update($donor->id, $data);
+            $this->update($tipper->id, $data);
 
-            return $donor->id;
+            return $tipper->id;
         } else {
 
-            return $this->insert($data, 'donor');
+            return $this->insert($data, 'tipper');
         }
     }
-    public function get_donor_by($field = 'id', $value)
+    public function get_tipper_by($field = 'id', $value)
     {
         global $wpdb;
         $row = $wpdb->get_row(
@@ -97,7 +97,7 @@ class BTCPayWall_DB_Donors extends BTCPayWall_DB
         );
         return $row;
     }
-    public function donor_count()
+    public function tipper_count()
     {
         global $wpdb;
 
@@ -105,7 +105,7 @@ class BTCPayWall_DB_Donors extends BTCPayWall_DB
 
         return $wpdb->get_var($sql);
     }
-    public function get_donors($per_page = null, $page_number = null)
+    public function get_tippers($per_page = null, $page_number = null)
     {
         global $wpdb;
         $sql = "SELECT * FROM {$this->table_name}";

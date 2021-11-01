@@ -61,7 +61,7 @@ class BTCPayWall_Donation_Form
     public function __construct($form_id = false)
     {
 
-        $this->db = new BTCPayWall_DB_Donation_Forms;
+        $this->db = new BTCPayWall_DB_Tipping_Forms;
 
         if ((is_numeric($form_id) && (int) $form_id !== absint($form_id))) {
             return false;

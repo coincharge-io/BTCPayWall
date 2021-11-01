@@ -277,16 +277,23 @@ function ajax_tipping()
     if (empty($body) || !empty($body['error'])) {
         return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
     }
+
     $payment_method = get_payment_method($body['id']);
-    $donor = new BTCPayWall_Donor();
 
-    $donor->create($_POST);
+    $tipper = new BTCPayWall_Tipper();
 
-    $donation = new BTCPayWall_Donation();
+    $tipper->create([
+        'full_name' => $_POST['name'],
+        'email' => $_POST['email'],
+        'phone' => $_POST['phone'],
+        'address' => $_POST['address'],
+        'message' => $_POST['message'],
+    ]);
+    $tipping = new BTCPayWall_Tipping();
 
-    $donation->create([
+    $tipping->create([
+        'tipper_id' => $tipper->id,
         'invoice_id' => $body['id'],
-        'donor_id' => $donor->id,
         'amount' => $body['amount'],
         'page_title' => $body['metadata']['blog'],
         'revenue_type' => $body['metadata']['type'],
@@ -295,6 +302,7 @@ function ajax_tipping()
         'payment_method' => $payment_method,
         'date_created'  => date('Y-m-d H:i:s', $body['createdTime'])
     ]);
+
     wp_send_json_success([
         'invoice_id' => $body['id'],
         'donor' => $body['metadata']['donor'],

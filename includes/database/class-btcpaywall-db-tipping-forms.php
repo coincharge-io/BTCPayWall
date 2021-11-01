@@ -4,7 +4,7 @@
 if (!defined('ABSPATH')) exit;
 
 
-class BTCPayWall_DB_Donation_Forms extends BTCPayWall_DB
+class BTCPayWall_DB_Tipping_Forms extends BTCPayWall_DB
 {
     public function __construct()
     {

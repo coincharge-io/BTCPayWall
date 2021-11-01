@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) exit;
 if (!class_exists('WP_List_Table')) {
     require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
 }
-class Donation_Forms_Table extends WP_List_Table
+class Tipping_Forms_Table extends WP_List_Table
 {
     public $items;
     public function __construct()
@@ -41,7 +41,6 @@ class Donation_Forms_Table extends WP_List_Table
     public function prepare_items()
     {
 
-        //$this->_column_headers = $this->get_column_info();
         $this->_column_headers = array($this->get_columns(), array(), array(), 'cb');
         $this->process_bulk_action();
 
@@ -63,11 +62,7 @@ class Donation_Forms_Table extends WP_List_Table
      */
     public static function record_count()
     {
-        /* global $wpdb;
 
-        $sql = "SELECT COUNT(*) FROM {$wpdb->prefix}btcpw_forms";
-
-        return $wpdb->get_var($sql); */
         $shortcodes = new BTCPayWall_Donation_Form();
         return $shortcodes->form_count();
     }
@@ -82,23 +77,6 @@ class Donation_Forms_Table extends WP_List_Table
      */
     public static function get_shortcodes($per_page = 5, $page_number = 1)
     {
-
-        /* global $wpdb;
-
-        $sql = "SELECT * FROM {$wpdb->prefix}btc_forms";
-
-        if (!empty($_REQUEST['orderby'])) {
-            $sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
-            $sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
-        }
-
-        $sql .= " LIMIT $per_page";
-
-        $sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
-
-        $result = $wpdb->get_results($sql, 'ARRAY_A');
-
-        return $result; */
         $shortcodes = new BTCPayWall_Donation_Form();
 
         return $shortcodes->get_forms($per_page, $page_number);
@@ -110,13 +88,6 @@ class Donation_Forms_Table extends WP_List_Table
      */
     public static function delete_shortcode($id)
     {
-        /* global $wpdb;
-
-        $wpdb->delete(
-            "{$wpdb->prefix}btc_forms",
-            ['id' => $id],
-            ['%d']
-        ); */
         $shortcodes = new BTCPayWall_Donation_Form();
         return $shortcodes->delete($id);
     }
@@ -175,35 +146,7 @@ class Donation_Forms_Table extends WP_List_Table
         return $actions;
     }
 
-    /* protected function column_title($item)
-    {
 
-        $page = wp_unslash($_REQUEST['page']);
-        $delete_query_args = array(
-            'page'   => $page,
-            'action' => 'delete',
-            'id'  => $item['id'],
-        );
-        $edit_query_args = array(
-            'page'   => 'btcpw_edit',
-            'action' => 'edit',
-            'id'  => $item['id'],
-        );
-
-        $actions['edit'] = sprintf(
-            '<a href="%1$s">%2$s</a>',
-            esc_url(wp_nonce_url(add_query_arg($edit_query_args, 'admin.php'), 'id' . $item['id'])),
-            _x('Edit', 'List table row action', 'wp-list-table')
-        );
-        $actions['delete'] = sprintf(
-            '<a href="%1$s">%2$s</a>',
-            esc_url(wp_nonce_url(add_query_arg($delete_query_args, 'admin.php'), 'id' . $item['id'])),
-            _x('Delete', 'List table row action', 'wp-list-table')
-        );
-        $item_json = json_decode(json_encode($item), true);
-
-        return '<em>' . sprintf('%s %s', $item_json['title_text'], $this->row_actions($actions)) . '</em>';
-    } */
 
     protected function column_template($item)
     {
@@ -330,4 +273,4 @@ class Donation_Forms_Table extends WP_List_Table
 <?php
     }
 }
-new Donation_Forms_Table();
+new Tipping_Forms_Table();

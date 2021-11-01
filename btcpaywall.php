@@ -52,9 +52,9 @@ if (!class_exists('BTCPayWall')) :
             'BTC',
         ];
         public $forms;
-        public $donors;
+        public $tippers;
         public $customers;
-        public $donations;
+        public $tippings;
         public $payments;
 
         public static function instance()
@@ -66,11 +66,11 @@ if (!class_exists('BTCPayWall')) :
                 add_action('plugins_loaded', array(self::$instance, 'load_textdomain'));
 
                 self::$instance->includes();
-                self::$instance->donors = new BTCPayWall_DB_Donors();
+                self::$instance->tippers = new BTCPayWall_DB_Tippers();
                 self::$instance->customers = new BTCPayWall_DB_Customers();
                 self::$instance->payments = new BTCPayWall_DB_Payments();
-                self::$instance->donations = new BTCPayWall_DB_Donations();
-                self::$instance->forms = new BTCPayWall_DB_Donation_Forms();
+                self::$instance->tippings = new BTCPayWall_DB_Tippings();
+                self::$instance->forms = new BTCPayWall_DB_Tipping_Forms();
             }
 
             return self::$instance;
@@ -138,17 +138,17 @@ if (!class_exists('BTCPayWall')) :
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/shortcodes.php';
 
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-customer.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-donor.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-tipper.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-form.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/donations/class-btcpaywall-donation.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/tippings/class-btcpaywall-tipping.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/payments/class-btcpaywall-payment.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db.php';
 
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-customers.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-donors.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-tippers.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-payments.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-donations.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-donation-forms.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-tippings.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-tipping-forms.php';
 
             if (is_admin()) {
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/settings/functions.php';
@@ -156,7 +156,7 @@ if (!class_exists('BTCPayWall')) :
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-actions.php';
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-scripts.php';
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/payments/view.php';
-                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/donation-forms/view.php';
+                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/tipping-forms/view.php';
 
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-pages.php';
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-functions.php';

@@ -4,52 +4,52 @@
 if (!defined('ABSPATH')) exit;
 
 
-class BTCPayWall_Donation
+class BTCPayWall_Tipping
 {
 
 
     public $id = 0;
-    public $invoice_id = 0;
-    public $donor_id = 0;
+    public $invoice_id;
+    public $tipper_id;
     public $amount;
     public $page_title;
-    public $type;
+    public $revenue_type;
     public $currency;
     public $status;
     public $gateway;
-    public $donation_method;
+    public $payment_method;
 
     protected $db;
 
 
-    public function __construct($donation_id = false)
+    public function __construct($tipping_id = false)
     {
 
-        $this->db = new BTCPayWall_DB_Donations;
+        $this->db = new BTCPayWall_DB_Tippings;
 
-        if ((is_numeric($donation_id) && (int) $donation_id !== absint($donation_id))) {
+        if ((is_numeric($tipping_id) && (int) $tipping_id !== absint($tipping_id))) {
             return false;
         }
 
-        $donation = $this->db->get_donation_by('id', $donation_id);
+        $tipping = $this->db->get_tipping_by('id', $tipping_id);
 
-        if (empty($donation) || !is_object($donation)) {
+        if (empty($tipping) || !is_object($tipping)) {
             return false;
         }
 
-        $this->setup_donation($donation);
+        $this->setup_tipping($tipping);
     }
 
 
-    private function setup_donation($donation)
+    private function setup_tipping($tipping)
     {
 
-        if (!is_object($donation)) {
+        if (!is_object($tipping)) {
             return false;
         }
-        $valid_keys = ['id', 'invoice_id', 'donation_id', 'amount', 'page_title', 'type', 'currency', 'status', 'gateway', 'payment_method'];
+        $valid_keys = ['id', 'invoice_id', 'tipper_id', 'amount', 'page_title', 'revenue_type', 'currency', 'status', 'gateway', 'payment_method'];
 
-        foreach ($donation as $key => $value) {
+        foreach ($tipping as $key => $value) {
             if (in_array($key, $valid_keys)) {
                 $this->$key = $value;
             }
@@ -66,22 +66,21 @@ class BTCPayWall_Donation
 
     public function create($data = array())
     {
-
         if ($this->id != 0 || empty($data)) {
             return false;
         }
-
-
         $data = $this->sanitize_columns($data);
 
         $created = false;
         $create_or_update = $this->db->add($data);
+
+
         if ($create_or_update) {
 
 
-            $donation = $this->db->get_donation_by('id', $create_or_update);
+            $tipping = $this->db->get_tipping_by('id', $create_or_update);
 
-            $this->setup_donation($donation);
+            $this->setup_tipping($tipping);
 
             $created = $this->id;
         }
@@ -102,8 +101,9 @@ class BTCPayWall_Donation
 
         if ($this->db->update($this->id, $data)) {
 
-            $donation = $this->db->get_donation_by('id', $this->id);
-            $this->setup_donation($donation);
+            $tipping = $this->db->get_tipping_by('id', $this->id);
+
+            $this->setup_tipping($tipping);
 
             $updated = true;
         }
@@ -113,12 +113,12 @@ class BTCPayWall_Donation
     }
 
 
-    public function get_donations()
+    public function get_tippings()
     {
 
-        $donations = $this->db->get_donations();
+        $tippings = $this->db->get_tippings();
 
-        return $donations;
+        return $tippings;
     }
 
 
@@ -135,6 +135,7 @@ class BTCPayWall_Donation
             if (!array_key_exists($key, $data)) {
                 continue;
             }
+
             switch ($type) {
 
                 case '%s':
@@ -168,7 +169,6 @@ class BTCPayWall_Donation
                     break;
             }
         }
-
         return $data;
     }
 }

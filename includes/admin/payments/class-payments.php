@@ -15,7 +15,7 @@ class Payments_Table extends WP_List_Table
         parent::__construct([
             'singular' => __('Payment', 'sd'),
             'plural'   => __('Payments', 'sd'),
-            'ajax'     => true
+            'ajax'     => false
         ]);
     }
     /**
@@ -26,20 +26,22 @@ class Payments_Table extends WP_List_Table
     public function get_columns()
     {
         return array(
+            'id'    => __('Id'),
             'date' => __('Date'),
             'blog'   => __('Post/Page'),
             'type'   => __('Type'),
             'status'    => __('Status'),
+            'payment_method'    => __('Payment method'),
             'amount'  => __('Amount'),
             'currency'    => __('Currency'),
-            'id'    => __('Invoice id'),
+            'invoice_id'    => __('Invoice id'),
         );
     }
 
 
     public function prepare_items()
     {
-        $this->_column_headers = array($this->get_columns(), array(), array(), 'cb');
+        /* $this->_column_headers = array($this->get_columns(), array(), array(), 'cb');
         $per_page = $this->get_items_per_page('invoices_per_page', 5);
         $current_page = $this->get_pagenum();
 
@@ -78,34 +80,62 @@ class Payments_Table extends WP_List_Table
                 'per_page' => $perpage
             ]);
             $this->items = array_slice($data, $paged, $perpage);
-        }
+        } */
+        //$this->_column_headers = $this->get_column_info();
+        $this->_column_headers = array($this->get_columns(), array(), array(), 'cb');
+        $this->process_bulk_action();
+
+        $per_page = $this->get_items_per_page('payments_per_page', 5);
+        $current_page = $this->get_pagenum();
+        $total_items = self::record_count();
+
+        $this->set_pagination_args([
+            'total_items' => $total_items,
+            'per_page' => $per_page
+        ]);
+
+        $this->items = self::get_payments($per_page, $current_page);
     }
     public function display_rows()
     {
 
 
-        $invoices = $this->items;
+        $payments = $this->items;
 
-        if (!empty($invoices)) {
-            foreach ($invoices as $inv) {
-                $blog = $inv['metadata']['blog'] ?? null;
-                $type = $inv['metadata']['type'] ?? null;
-
-                $creationTime = date('Y-m-d H:i:s', $inv['createdTime']);
+        if (!empty($payments)) {
+            foreach ($payments as $inv) {
+                $invoice_url = get_option('btcpw_btcpay_server_url') . '/invoices/' . $inv['invoice_id'];
                 echo "<tr class=btcpw_invoices>";
 
-                echo "<td data-colname=Date class=status column-status>{$creationTime}</td>";
-                echo "<td data-colname=Content title class=status column-status>{$blog}</td>";
-                echo "<td data-colname=Content title class=status column-status>{$type}</td>";
+                echo '</tr>';
+                echo "<td data-colname=Id class=status column-status>{$inv['id']}</td>";
+                echo "<td data-colname=Date class=status column-status>{$inv['date_created']}</td>";
+                echo "<td data-colname=Content title class=status column-status>{$inv['page_title']}</td>";
+                echo "<td data-colname=Content title class=status column-status>{$inv['revenue_type']}</td>";
                 echo "<td data-colname=Status class={$inv['status']} status column-status>{$inv['status']}</td>";
+                echo "<td data-colname=Method class={$inv['payment_method']} status column-status>{$inv['payment_method']}</td>";
                 echo "<td data-colname=Amount class=status column-status>{$inv['amount']}</td>";
                 echo "<td data-colname=Currency class=status column-status>{$inv['currency']}</td>";
-                echo "<td data-colname=Id class=status column-status>{$inv['id']}</td>";
+                echo "<td data-colname=Invoice id class=status column-status><a href={$invoice_url} target=_blank>{$inv['invoice_id']}</a></td>";
                 echo '</tr>';
             }
         }
     }
+    public static function record_count()
+    {
 
+        $record = new BTCPayWall_Payment();
+
+        return $record->payment_count();
+    }
+    public static function get_payments($per_page = 5, $page_number = 1)
+    {
+
+
+        $payments = new BTCPayWall_Payment();
+
+        return $payments->get_payments($per_page, $page_number);
+    }
     /**
      * Generates content for a single row of the table.
      * 
@@ -115,20 +145,25 @@ class Payments_Table extends WP_List_Table
     protected function column_default($item, $column_name)
     {
         switch ($column_name) {
+            case 'id':
+                return esc_html($item['id']);
             case 'date':
-                return esc_html(date('Y-m-d H:i:s', $item['createdTime']));
+                return esc_html($item['date_created']);
             case 'blog':
-                return esc_html($item['metadata']['blog'] ?? null);
+                return esc_html($item['title_page']);
             case 'type':
-                return esc_html($item['metadata']['type'] ?? null);
+                return esc_html($item['revenue_type']);
             case 'status':
                 return esc_html($item['status']);
+            case 'payment_method':
+                return esc_html($item['payment_method']);
             case 'amount':
                 return esc_html($item['amount']);
             case 'currency':
                 return esc_html($item['currency']);
-            case 'id':
-                return esc_html($item['id']);
+            case 'invoice_id':
+                return esc_html($item['invoice_id']);
+
             default:
                 return 'Unknown';
         }
