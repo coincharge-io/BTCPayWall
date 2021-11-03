@@ -294,7 +294,7 @@ function ajax_tipping()
     $tipping->create([
         'tipper_id' => $tipper->id,
         'invoice_id' => $body['id'],
-        'amount' => $body['amount'],
+        'amount' => floatval($body['amount']),
         'page_title' => $body['metadata']['blog'],
         'revenue_type' => $body['metadata']['type'],
         'currency' => $body['currency'],
@@ -383,7 +383,7 @@ function ajax_paid_invoice()
         $payment->create([
             'invoice_id' => $body['id'],
             'customer_id' => $customer->id,
-            'amount' => $body['amount'],
+            'amount' => floatval($body['amount']),
             'page_title' => $body['metadata']['blog'],
             'revenue_type' => $body['metadata']['type'],
             'currency' => $body['currency'],

@@ -24,13 +24,13 @@ class Tipping_Forms_Table extends WP_List_Table
     {
         return array(
             'cb'      => '<input type="checkbox" />',
-            'template' => wp_strip_all_tags(__('Template')),
-            'title'   => wp_strip_all_tags(__('Title')),
-            'logo'    => wp_strip_all_tags(__('Logo')),
-            'description'  => wp_strip_all_tags(__('Description')),
-            'tipping-text'    => wp_strip_all_tags(__('Tipping text')),
-            'button-text'    => wp_strip_all_tags(__('Button text')),
-            'shortcode'      => wp_strip_all_tags(__('Shortcode')),
+            'template' => (__('Template')),
+            'title'   => (__('Title')),
+            'logo'    => (__('Logo')),
+            'description'  => (__('Description')),
+            'tipping-text'    => (__('Tipping text')),
+            'button-text'    => (__('Button text')),
+            'shortcode'      => (__('Shortcode')),
         );
     }
 

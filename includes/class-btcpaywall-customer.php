@@ -18,12 +18,12 @@ class BTCPayWall_Customer
     protected $db;
 
 
-    public function __construct($email_or_name = false, $by_email = false)
+    public function __construct($customer_id)
     {
 
         $this->db = new BTCPayWall_DB_Customers;
 
-        if (!is_email($email_or_name)) {
+        /* if (!is_email($email_or_name)) {
             return false;
         }
         $by_email = is_bool($by_email) ? $by_email : false;
@@ -34,6 +34,16 @@ class BTCPayWall_Customer
             $field = 'name';
         }
         $customer = $this->db->get_customer_by($field, $email_or_name);
+
+        if (empty($customer) || !is_object($customer)) {
+            return false;
+        }
+ */
+        if ((is_numeric($customer_id) && (int) $customer_id !== absint($customer_id))) {
+            return false;
+        }
+
+        $customer = $this->db->get_customer_by('id', $customer_id);
 
         if (empty($customer) || !is_object($customer)) {
             return false;

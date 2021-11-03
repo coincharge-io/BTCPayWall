@@ -26,7 +26,9 @@ class Payments_Table extends WP_List_Table
     public function get_columns()
     {
         return array(
+            'cb'    => '<input type="checkbox" />',
             'id'    => __('Id'),
+            'details'   => __('Details'),
             'date' => __('Date'),
             'blog'   => __('Post/Page'),
             'type'   => __('Type'),
@@ -96,7 +98,21 @@ class Payments_Table extends WP_List_Table
 
         $this->items = self::get_payments($per_page, $current_page);
     }
-    public function display_rows()
+    protected function column_details($item)
+    {
+
+        return '<a href="' . add_query_arg('id', $item['id'], admin_url('admin.php?page=btcpw_payments&view=view-payment')) . '">' . __('View Payment Details', 'btcpaywall') . '</a>';
+    }
+    protected function column_cb($item)
+    {
+        return sprintf(
+            '<input type="checkbox" name="bulk-delete[]" value="%1$s" />',
+            $item['id']
+        );
+    }
+
+
+    /*  public function display_rows()
     {
 
 
@@ -120,7 +136,7 @@ class Payments_Table extends WP_List_Table
                 echo '</tr>';
             }
         }
-    }
+    }*/
     public static function record_count()
     {
 
@@ -147,10 +163,12 @@ class Payments_Table extends WP_List_Table
         switch ($column_name) {
             case 'id':
                 return esc_html($item['id']);
+            case 'details':
+                return 'Details';
             case 'date':
                 return esc_html($item['date_created']);
             case 'blog':
-                return esc_html($item['title_page']);
+                return esc_html($item['page_title']);
             case 'type':
                 return esc_html($item['revenue_type']);
             case 'status':
@@ -169,25 +187,7 @@ class Payments_Table extends WP_List_Table
         }
     }
 
-    /**
-     * Generates custom table navigation to prevent conflicting nonces.
-     * 
-     * @param string $which The location of the bulk actions: 'top' or 'bottom'.
-     */
-    /*  protected function display_tablenav($which)
-    {
-?>
-        <div class="tablenav <?php echo esc_attr($which); ?>">
-            <?php
-            $this->extra_tablenav($which);
-            $this->pagination($which);
 
-            ?>
-
-            <br class="clear" />
-        </div>
-    <?php
-    } */
     protected function display_tablenav($which)
     {
 ?>

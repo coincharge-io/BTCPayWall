@@ -422,3 +422,17 @@ div.btcpw_help_link a:hover {
   color: #fff;
   cursor: pointer;
 }
+
+.btcpaywall_payment_container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.btcpaywall_payment_container input {
+  width: 50%;
+}
+
+.btcpaywall_payment_container label {
+  display: inline-block;
+  vertical-align: baseline;
+}
