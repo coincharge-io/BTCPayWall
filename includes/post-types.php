@@ -24,5 +24,25 @@ function register_post_types()
         'rewrite' => true,
         'query_var' => true,
     ]);
+    register_post_type('btcpw_product', [
+        'labels' => array(
+            'name'          => __('Digital Product', 'btcpaywall'),
+            'singular_name' => __('Digital Product', 'btcpaywall'),
+            'add_new'       => __('Add New Product', 'btcpaywall')
+        ),
+        'public' => true,
+        'show_ui'         => true,
+        'show_in_menu'    => false,
+        'rest_base' => null,
+        'menu_position' => null,
+        'menu_icon' => null,
+        'hierarchical' => false,
+        'supports'           => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments'),
+        'taxonomies' => [],
+        'has_archive' => false,
+        'rewrite' => true,
+        'query_var' => true,
+
+    ]);
 }
 add_action('init', 'register_post_types');

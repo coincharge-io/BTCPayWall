@@ -163,6 +163,8 @@ if (!class_exists('BTCPayWall')) :
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-ajax-functions.php';
 
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/widgets/functions.php';
+
+                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/digital-products/metabox.php';
             }
 
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/install.php';

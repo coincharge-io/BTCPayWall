@@ -10,7 +10,7 @@ function render_shortcode_banner_wide_tipping($atts)
 {
 
     $id = !empty($atts['id']) ? intval($atts['id']) : null;
-    $form = new BTCPayWall_Donation_Form($id);
+    $form = new BTCPayWall_Tipping_Form($id);
     $result = json_decode(json_encode($form), true);
     $atts = shortcode_atts(array(
         'dimension' => $id ? $result['dimension'] : '600x200',
@@ -248,7 +248,7 @@ function render_shortcode_banner_high_tipping($atts)
 {
 
     $id = !empty($atts['id']) ? intval($atts['id']) : null;
-    $form = new BTCPayWall_Donation_Form($id);
+    $form = new BTCPayWall_Tipping_Form($id);
     $result = json_decode(json_encode($form), true);
     $atts = shortcode_atts(array(
         'dimension' => $id ? $result['dimension'] : '200x710',
@@ -480,7 +480,7 @@ function render_shortcode_page_tipping($atts)
 {
 
     $id = !empty($atts['id']) ? intval($atts['id']) : null;
-    $form = new BTCPayWall_Donation_Form($id);
+    $form = new BTCPayWall_Tipping_Form($id);
     $result = json_decode(json_encode($form), true);
     $atts = shortcode_atts(array(
         'dimension' => $id ? $result['dimension'] : '520x600',
@@ -758,7 +758,7 @@ function render_shortcode_box_tipping($atts)
 {
 
     $id = !empty($atts['id']) ? intval($atts['id']) : null;
-    $form = new BTCPayWall_Donation_Form($id);
+    $form = new BTCPayWall_Tipping_Form($id);
     $result = json_decode(json_encode($form), true);
 
     $atts = shortcode_atts(array(
