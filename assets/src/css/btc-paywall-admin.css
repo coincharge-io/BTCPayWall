@@ -436,3 +436,12 @@ div.btcpw_help_link a:hover {
   display: inline-block;
   vertical-align: baseline;
 }
+
+.btcpw_product_file_download {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.btcpw_download_product {
+  display: flex;
+}

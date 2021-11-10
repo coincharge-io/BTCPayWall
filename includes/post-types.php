@@ -24,10 +24,10 @@ function register_post_types()
         'rewrite' => true,
         'query_var' => true,
     ]);
-    register_post_type('btcpw_product', [
+    register_post_type('digital_download', [
         'labels' => array(
-            'name'          => __('Digital Product', 'btcpaywall'),
-            'singular_name' => __('Digital Product', 'btcpaywall'),
+            'name'          => __('Digital Download', 'btcpaywall'),
+            'singular_name' => __('Digital Download', 'btcpaywall'),
             'add_new'       => __('Add New Product', 'btcpaywall')
         ),
         'public' => true,
