@@ -732,4 +732,43 @@
       })
     })
   })
+
+  function uploadFile (click_elem, fileUrl, fileName) {
+    var custom_uploader, click_elem, fileUrl, fileName
+
+    click_elem.click(function (e) {
+      e.preventDefault()
+      if (custom_uploader) {
+        custom_uploader.open()
+        return
+      }
+
+      custom_uploader = wp.media.frames.file_frame = wp.media({
+        title: 'Choose File',
+        button: {
+          text: 'Choose File'
+        },
+        multiple: false
+      })
+
+      custom_uploader.on('select', function () {
+        var attachment = custom_uploader
+          .state()
+          .get('selection')
+          .first()
+          .toJSON()
+        fileUrl.val(attachment.url)
+        fileName.val(attachment.filename)
+      })
+
+      custom_uploader.open()
+    })
+  }
+  $(document).ready(function () {
+    uploadFile(
+      $('#btcpw_digital_download_upload_button'),
+      $('#btcpw_product_file'),
+      $('#btcpw_product_filename')
+    )
+  })
 })(jQuery)

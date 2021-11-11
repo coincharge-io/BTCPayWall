@@ -14,13 +14,13 @@ if (!defined('ABSPATH')) exit;
 
 function add_btcpw_product_meta_boxes()
 {
-    add_meta_box('btcpw_product_amount', __('Product price', 'btcpaywall'), 'render_btcpw_amount', 'btcpw_product');
+    add_meta_box('btcpw_product_amount', __('Product price', 'btcpaywall'), 'render_btcpw_amount', 'digital_download');
 
-    add_meta_box('btcpw_product_files', __('Product files', 'btcpaywall'), 'render_btcpw_file_upload', 'btcpw_product');
+    //add_meta_box('btcpw_product_files', __('Product files', 'btcpaywall'), 'render_btcpw_file_upload', 'digital_download');
 
-    //add_meta_box('btcpw_product_stats', __('Product stats', 'btcpaywall'), 'render_btcpw_product_stats', 'btcpw_product', 'side', 'high');
-    add_meta_box('btcpw_product_settings', __('Product settings', 'btcpaywall'), 'render_btcpw_product_settings', 'btcpw_product', 'side', 'high');
-    add_meta_box('btcpw_product_customer', __('Collect customer information', 'btcpaywall'), 'render_btcpw_product_collect_info', 'btcpw_product');
+    //add_meta_box('btcpw_product_stats', __('Product stats', 'btcpaywall'), 'render_btcpw_product_stats', 'digital_download', 'side', 'high');
+    //add_meta_box('btcpw_product_limit', __('Product settings', 'btcpaywall'), 'render_btcpw_product_settings', 'digital_download');
+    add_meta_box('btcpw_product_customer', __('Collect customer information', 'btcpaywall'), 'render_btcpw_product_collect_info', 'digital_download');
 }
 
 add_action('add_meta_boxes', 'add_btcpw_product_meta_boxes');
@@ -31,9 +31,10 @@ function btcpw_meta_fields()
         [
             'btcpw_product_price',
             'btcpw_product_currency',
-            'btcpw_product_files',
+            'btcpw_digital_product_file',
+            'btcpw_digital_product_filename',
             'btcpw_product_sales',
-            'btcpw_product_download_limit',
+            'btcpw_product_limit',
             'btcpw_collect_customer_name',
             'btcpw_mandatory_customer_name',
             'btcpw_collect_customer_email',
@@ -50,18 +51,20 @@ function btcpw_meta_fields()
 
 function render_btcpw_product_settings($post)
 {
+    $limit = $btcpw_stored_meta['btcpw_product_download_limit'][0] ?? 0;
 
 ?>
     <div class='btcpw_settings_meta'>
         <div>
             <label for="btcpw_product_download_limit">Download limit</label>
-            <input type="number" name="btcpw_product_download_limit" id="btcpw_product_download_limit" />
+
+            <input type="number" name="btcpw_product_download_limit" id="btcpw_product_download_limit" min="0" value="<?php echo $limit; ?>" />
         </div>
 
 
         <div>
             <label for="btcpw_product_download_shortcode">Shortcode</label>
-            <input type="number" name="btcpw_product_download_shortcode" id="btcpw_product_download_shortcode" readonly />
+            <input type="text" name="btcpw_product_download_shortcode" id="btcpw_product_download_shortcode" readonly value="<?php echo "[btcpw_digital_download post_id=$post->ID]"; ?>" />
         </div>
 
     </div>
@@ -82,10 +85,27 @@ function render_btcpw_amount($post)
     $btcpw_stored_meta = get_post_meta($post->ID);
     $currency = $btcpw_stored_meta['btcpw_product_currency'][0] ?? 'SATS';
     $price = $btcpw_stored_meta['btcpw_product_price'][0] ?? 0;
-    var_dump($btcpw_stored_meta);
+    $limit = $btcpw_stored_meta['btcpw_product_limit'][0] ?? 0;
+    $file = $btcpw_stored_meta['btcpw_digital_product_file'][0] ?? '';
+    $filename = $btcpw_stored_meta['btcpw_digital_product_filename'][0] ?? '';
+
 ?>
+    <div class='btcpw_product_limit'>
+        <div>
+            <label for="btcpw_product_download_limit">Download limit</label>
+
+            <input type="number" name="btcpw_product_limit" id="btcpw_product_download_limit" min="0" value="<?php echo $limit; ?>" />
+        </div>
+
+
+        <div>
+            <label for="btcpw_product_download_shortcode">Shortcode</label>
+            <input type="text" name="btcpw_product_download_shortcode" id="btcpw_product_download_shortcode" readonly value="<?php echo "[btcpw_digital_download post_id=$post->ID]"; ?>" />
+        </div>
+
+    </div>
     <div class='btcpw_price_meta'>
-        <input type="number" name="btcpw_product_price" id="btcpw_product_price" value="<?php echo $price; ?>" />
+        <input type="number" name="btcpw_product_price" id="btcpw_product_price" min="0" value="<?php echo $price; ?>" />
 
         <select required name="btcpw_product_currency">
             <option disabled value="">Select currency</option>
@@ -96,10 +116,22 @@ function render_btcpw_amount($post)
         </select>
 
     </div>
+    <div id="btcpw_file" class="btcpw_repeatable_product_wrap">
+        <div class="btcpw_repeat_file_header">
+            <span>Product</span>
+            <a>Delete</a>
+        </div>
+        <div class="btcpw_download_product">
+            <input type="text" placeholder="File name" name="btcpw_digital_product_filename" id="btcpw_product_filename" value="<?php echo $filename; ?>" />
+            <input type="text" name="btcpw_digital_product_file" id="btcpw_product_file" value="<?php echo $file; ?>" placeholder="Upload file or enter file url here" />
+            <button id="btcpw_digital_download_upload_button">Upload</button>
+        </div>
+    </div>
+
 <?php
 }
 
-function render_btcpw_file_upload($post_id = 0)
+function render_btcpw_file_upload($post)
 {
 ?>
     <div class='btcpw_product_file_download'>
@@ -120,17 +152,22 @@ function render_add_new_product()
 add_action('render_file_add_new', 'render_add_new_product');
 
 
-function render_file_row()
-{ ?>
+function render_file_row($post_id)
+{
+    $btcpw_stored_meta = get_post_meta($post_id);
+
+    $file = $btcpw_stored_meta['btcpw_digital_product_file'][0] ?? '';
+    $filename = $btcpw_stored_meta['btcpw_digital_product_filename'][0] ?? '';
+?>
     <div id="btcpw_file" class="btcpw_repeatable_product_wrap">
         <div class="btcpw_repeat_file_header">
             <span>Product</span>
             <a>Delete</a>
         </div>
         <div class="btcpw_download_product">
-            <input type="text" />
-            <input type="hidden" />
-            <a href="#">Upload</a>
+            <input type="text" placeholder="File name" name="btcpw_digital_product_filename" id="btcpw_product_filename" value="<?php echo $filename; ?>" />
+            <input type="text" name="btcpw_digital_product_file" id="btcpw_product_file" value="<?php echo $file; ?>" placeholder="Upload file or enter file url here" />
+            <button id="btcpw_digital_download_upload_button">Upload</button>
         </div>
     </div>
 <?php
@@ -248,8 +285,8 @@ function btcpw_meta_save($post_id)
         return;
     }
 
-
     $fields = btcpw_meta_fields();
+
     $booleans = [
         'btcpw_collect_customer_name',
         'btcpw_mandatory_customer_name',
@@ -262,6 +299,7 @@ function btcpw_meta_save($post_id)
         'btcpw_collect_customer_message',
         'btcpw_mandatory_customer_message'
     ];
+
     foreach ($fields as $field) {
         if (in_array($field, $booleans)) {
             $bool = filter_var($_POST[$field], FILTER_VALIDATE_BOOLEAN);
@@ -270,15 +308,16 @@ function btcpw_meta_save($post_id)
             } else {
                 delete_post_meta($post_id, $field);
             }
-        } elseif ($field === 'btcpw_product_price' || $field = 'btcpw_product_download_limit' || $field = 'btcpw_product_sales') {
+        } elseif (('btcpw_product_limit' === $field) || ('btcpw_product_price' === $field)  || ('btcpw_product_sales' === $field)) {
             if (!empty($_POST[$field])) {
-                update_post_meta($post_id, $field, (int)$_POST[$field]);
+                update_post_meta($post_id, $field, intval($_POST[$field]));
             } else {
                 delete_post_meta($post_id, $field);
             }
         } else {
             if (!empty($_POST[$field])) {
-                update_post_meta($post_id, $field, sanitize_text_field($_POST[$field]));
+                $new_value = filter_var($_POST[$field], FILTER_SANITIZE_STRING);;
+                update_post_meta($post_id, $field, $new_value);
             } else {
                 delete_post_meta($post_id, $field);
             }

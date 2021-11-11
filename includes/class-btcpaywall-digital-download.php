@@ -43,27 +43,7 @@ class BTCPayWall_Digital_Download
      */
     private $price;
 
-    /**
-     * Digital Download Amount
-     * 
-     * @since 1.0
-     * 
-     * @access private
-     * 
-     * @var float
-     */
-    private $amount;
 
-    /**
-     * Digital Download Currency
-     * 
-     * @since 1.0
-     * 
-     * @access private
-     * 
-     * @var string
-     */
-    private $currency;
     /**
      * Download Limit
      *
@@ -108,6 +88,17 @@ class BTCPayWall_Digital_Download
     private $file;
 
     /**
+     * Digital Download Filename
+     * 
+     * @since 1.0
+     * 
+     * @access private
+     * 
+     * @var string
+     */
+    private $filename;
+
+    /**
      * Digital Download Collect Customer Name
      * 
      * @since 1.0
@@ -116,7 +107,7 @@ class BTCPayWall_Digital_Download
      * 
      * @var bool
      */
-    private $collect_name;
+    private $collect_customer_name;
 
     /**
      * Digital Download Mandatory Customer Name
@@ -127,7 +118,7 @@ class BTCPayWall_Digital_Download
      * 
      * @var bool
      */
-    private $mandatory_name;
+    private $mandatory_customer_name;
 
     /**
      * Digital Download Collect Customer Email
@@ -138,7 +129,7 @@ class BTCPayWall_Digital_Download
      * 
      * @var bool
      */
-    private $collect_email;
+    private $collect_customer_email;
 
     /**
      * Digital Download Mandatory Customer Email
@@ -149,7 +140,7 @@ class BTCPayWall_Digital_Download
      * 
      * @var bool
      */
-    private $mandatory_email;
+    private $mandatory_customer_email;
 
     /**
      * Digital Download Collect Customer Address
@@ -160,7 +151,7 @@ class BTCPayWall_Digital_Download
      * 
      * @var bool
      */
-    private $collect_address;
+    private $collect_customer_address;
 
     /**
      * Digital Download Mandatory Customer Address
@@ -171,7 +162,7 @@ class BTCPayWall_Digital_Download
      * 
      * @var bool
      */
-    private $mandatory_address;
+    private $mandatory_customer_address;
 
     /**
      * Digital Download Collect Customer Phone
@@ -182,7 +173,7 @@ class BTCPayWall_Digital_Download
      * 
      * @var bool
      */
-    private $collect_phone;
+    private $collect_customer_phone;
 
     /**
      * Digital Download Mandatory Customer Phone
@@ -193,7 +184,7 @@ class BTCPayWall_Digital_Download
      * 
      * @var bool
      */
-    private $mandatory_phone;
+    private $mandatory_customer_phone;
 
     /**
      * Digital Download Collect Customer Message
@@ -204,7 +195,7 @@ class BTCPayWall_Digital_Download
      * 
      * @var bool
      */
-    private $collect_message;
+    private $collect_customer_message;
 
     /**
      * Digital Download Mandatory Customer Message
@@ -215,7 +206,7 @@ class BTCPayWall_Digital_Download
      * 
      * @var bool
      */
-    private $mandatory_message;
+    private $mandatory_customer_message;
 
     /**
      * Post Author
@@ -491,10 +482,11 @@ class BTCPayWall_Digital_Download
         }
 
         foreach ($download as $key => $value) {
+
             $this->$key = $value;
         }
 
-        return $download->ID;
+        return true;
     }
 
     /**
@@ -573,12 +565,14 @@ class BTCPayWall_Digital_Download
         if (!isset($this->price)) {
             $amount = get_post_meta($this->ID, 'btcpw_product_price', true);
             $currency = get_post_meta($this->ID, 'btcpw_product_currency', true);
+
             $this->price = "{$amount} {$currency}";
 
-            if (!$this->price) {
+            if (empty($amount) || empty($currency)) {
                 $this->price = "0 SATS";
             }
         }
+        return $this->price;
     }
     /**
      * Retrieve Number of Sales
@@ -643,20 +637,86 @@ class BTCPayWall_Digital_Download
         if (!isset($this->download_limit)) {
 
 
-            $limit  = get_post_meta($this->ID, 'btcpw_product_download_limit', true);
-
+            $limit  = get_post_meta($this->ID, 'btcpw_product_limit', true);
             if (!empty($limit) || (is_numeric($limit) && (int)$limit == 0)) {
 
-                $ret = absint($limit);
+                $restrict = absint($limit);
             } else {
 
-                $ret =  0;
+                $restrict =  0;
             }
 
-            $this->download_limit = $ret;
+            $this->download_limit = $restrict;
         }
-        update_post_meta($this->ID, 'btcpw_product_download_limit', $this->download_limit);
 
-        return $ret;
+        return $restrict;
+    }
+    /**
+     * Return Publisher Choices for Collecting Customer's Data
+     * 
+     * @since 1.0
+     * 
+     * @access public
+     * 
+     * @return array Return information for every field
+     */
+    public function get_collect()
+    {
+        foreach ($this as $key => $value) {
+            if ((substr($key, 0, 7) === 'collect') || (substr($key, 0, 9) === 'mandatory'))
+                $this->$key = get_post_meta($this->ID, 'btcpw_' . $key, true);
+        }
+        return array(
+            array(
+                'id' => 'name',
+                'label' => 'Full name' .  (filter_var($this->mandatory_customer_name, FILTER_VALIDATE_BOOLEAN) ? '*' : ''),
+                'display' => filter_var($this->collect_customer_name, FILTER_VALIDATE_BOOLEAN),
+                'mandatory' => filter_var($this->mandatory_customer_name, FILTER_VALIDATE_BOOLEAN)
+            ),
+            array(
+                'id' => 'email',
+                'label' => 'Email' .  (filter_var($this->mandatory_customer_email, FILTER_VALIDATE_BOOLEAN) ? '*' : ''),
+                'display' => filter_var($this->collect_customer_email, FILTER_VALIDATE_BOOLEAN),
+                'mandatory' => filter_var($this->mandatory_customer_email, FILTER_VALIDATE_BOOLEAN)
+            ),
+            array(
+                'id' => 'address',
+                'label' => 'Address' .  (filter_var($this->mandatory_customer_address, FILTER_VALIDATE_BOOLEAN) ? '*' : ''),
+                'display' => filter_var($this->collect_customer_address, FILTER_VALIDATE_BOOLEAN),
+                'mandatory' => filter_var($this->mandatory_customer_address, FILTER_VALIDATE_BOOLEAN)
+            ),
+            array(
+                'id' => 'phone',
+                'label' => 'Phone' .  (filter_var($this->mandatory_customer_phone, FILTER_VALIDATE_BOOLEAN) ? '*' : ''),
+                'display' => filter_var($this->collect_customer_phone, FILTER_VALIDATE_BOOLEAN),
+                'mandatory' => filter_var($this->mandatory_customer_phone, FILTER_VALIDATE_BOOLEAN)
+            ),
+            array(
+                'id' => 'message',
+                'label' => 'Message' .  (filter_var($this->mandatory_customer_message, FILTER_VALIDATE_BOOLEAN) ? '*' : ''),
+                'display' => filter_var($this->collect_customer_message, FILTER_VALIDATE_BOOLEAN),
+                'mandatory' => filter_var($this->mandatory_customer_message, FILTER_VALIDATE_BOOLEAN)
+            ),
+        );
+    }
+    /**
+     * Return Digital Download Filename
+     * 
+     * @since 1.0
+     * 
+     * @access public
+     * 
+     * @return string
+     */
+    public function get_filename()
+    {
+        if (!isset($this->filename)) {
+            if (get_post_meta($this->ID, 'btcpw_digital_product_filename', true)) {
+                $this->filename = get_post_meta($this->ID, 'btcpw_digital_product_filename', true);
+            } else {
+                $this->filename = '';
+            }
+        }
+        return $this->filename;
     }
 }

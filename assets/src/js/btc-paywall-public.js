@@ -1725,4 +1725,38 @@
       previous_form.hide()
     })
   })
+
+  /**Pay-per-file */
+  $(document).ready(function () {
+    var form_count = 1,
+      previous_form,
+      next_form,
+      total_forms
+    total_forms = $('.btcpw_digital_download_protected_area fieldset').length
+
+    $('input.btcpw_digital_download.next-form').click(function () {
+      previous_form = $(this)
+        .parent()
+        .parent()
+      next_form = $(this)
+        .parent()
+        .parent()
+        .next()
+      next_form.show()
+      previous_form.hide()
+    })
+    $('input.btcpw_digital_download.previous-form').click(function () {
+      previous_form = $(this)
+        .parent()
+        .parent()
+        .parent()
+      next_form = $(this)
+        .parent()
+        .parent()
+        .parent()
+        .prev()
+      next_form.show()
+      previous_form.hide()
+    })
+  })
 })(jQuery)
