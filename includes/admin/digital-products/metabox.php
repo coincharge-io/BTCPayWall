@@ -31,6 +31,7 @@ function btcpw_meta_fields()
         [
             'btcpw_product_price',
             'btcpw_product_currency',
+            'btcpw_digital_product_id',
             'btcpw_digital_product_file',
             'btcpw_digital_product_filename',
             'btcpw_product_sales',
@@ -88,6 +89,8 @@ function render_btcpw_amount($post)
     $limit = $btcpw_stored_meta['btcpw_product_limit'][0] ?? 0;
     $file = $btcpw_stored_meta['btcpw_digital_product_file'][0] ?? '';
     $filename = $btcpw_stored_meta['btcpw_digital_product_filename'][0] ?? '';
+    $file_id = $btcpw_stored_meta['btcpw_digital_product_id'][0] ?? 0;
+
 
 ?>
     <div class='btcpw_product_limit'>
@@ -122,6 +125,7 @@ function render_btcpw_amount($post)
             <a>Delete</a>
         </div>
         <div class="btcpw_download_product">
+            <input type="hidden" name="btcpw_digital_product_id" id="btcpw_product_id" value="<?php echo $file_id; ?>" />
             <input type="text" placeholder="File name" name="btcpw_digital_product_filename" id="btcpw_product_filename" value="<?php echo $filename; ?>" />
             <input type="text" name="btcpw_digital_product_file" id="btcpw_product_file" value="<?php echo $file; ?>" placeholder="Upload file or enter file url here" />
             <button id="btcpw_digital_download_upload_button">Upload</button>

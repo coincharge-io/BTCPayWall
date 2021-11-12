@@ -119,7 +119,7 @@ class BTCPayWall_Payment
 
         return $payments;
     }
-
+    
     private function sanitize_columns($data)
     {
 

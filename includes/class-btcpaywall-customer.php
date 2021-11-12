@@ -18,7 +18,7 @@ class BTCPayWall_Customer
     protected $db;
 
 
-    public function __construct($customer_id)
+    public function __construct($customer_id=false)
     {
 
         $this->db = new BTCPayWall_DB_Customers;

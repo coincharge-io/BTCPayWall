@@ -108,7 +108,7 @@ function generate_invoice_id($post_id, $order_id)
 /**
  * Get payment method
  * 
- * @param int $invoice_id   Invoice id.
+ * @param int $invoice_id   Invoice ID.
  * 
  * @since 1.0
  * 

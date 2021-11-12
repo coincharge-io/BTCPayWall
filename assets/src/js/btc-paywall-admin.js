@@ -733,8 +733,8 @@
     })
   })
 
-  function uploadFile (click_elem, fileUrl, fileName) {
-    var custom_uploader, click_elem, fileUrl, fileName
+  function uploadFile (click_elem, fileUrl, fileName, fileId) {
+    var custom_uploader, click_elem, fileUrl, fileName, fileId
 
     click_elem.click(function (e) {
       e.preventDefault()
@@ -759,6 +759,7 @@
           .toJSON()
         fileUrl.val(attachment.url)
         fileName.val(attachment.filename)
+        fileId.val(attachment.id)
       })
 
       custom_uploader.open()
@@ -768,7 +769,8 @@
     uploadFile(
       $('#btcpw_digital_download_upload_button'),
       $('#btcpw_product_file'),
-      $('#btcpw_product_filename')
+      $('#btcpw_product_filename',
+      $('#btcpw_product_file_id'))
     )
   })
 })(jQuery)

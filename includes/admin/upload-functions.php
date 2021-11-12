@@ -24,14 +24,22 @@ if (!defined('ABSPATH')) exit;
  * @return void
  */
 
-function change_digital_downloads_upload_directory()
+function change_digital_download_upload_dir()
 {
     global $pagenow;
+
     if (!empty($_REQUEST['post_id']) && ('async-upload.php' == $pagenow || 'media-upload.php' == $pagenow)) {
         if ('digital-download' == get_post_type($_REQUEST['post_id'])) {
-            add_filter('upload_dir', 'btcpw_set_upload_dir');
+            add_filter('upload_dir', 'btcpaywall_upload_dir');
         }
     }
 }
+add_action('admin_init', 'edd_change_downloads_upload_dir', 999);
+function btcpaywall_upload_dir($upload)
+{
 
-add_action('admin_init', 'change_digital_downloads_upload_directory', 999);
+    $upload['path'] = $upload['basedir'] . $upload['subdir'];
+    $upload['url']  = $upload['baseurl'] . $upload['subdir'];
+
+    return $upload;
+}
