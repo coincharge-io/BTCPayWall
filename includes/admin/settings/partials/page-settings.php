@@ -9,6 +9,8 @@ $supported_btc_format = BTCPayWall::BTC_FORMAT;
 $used_format = get_option("btcpw_default_btc_format");
 $disabled_field = ($default_duration_type === 'unlimited') || ($default_duration_type === 'onetime');
 $disable = $disabled_field ? 'disabled' : '';
+
+var_dump(get_download_url(1, 'https://pdf.zlibcdn.com/dtoken/a46fa91b9f453fa189c81ffadcd2cf1f/Smart_Thinking_Skills_for_Critical_Understanding__554686_(z-lib.org).pdf', 1, 1, null));
 ?>
 <div id="btcpw_general_options_paywall">
     <div>

@@ -29,17 +29,68 @@ function change_digital_download_upload_dir()
     global $pagenow;
 
     if (!empty($_REQUEST['post_id']) && ('async-upload.php' == $pagenow || 'media-upload.php' == $pagenow)) {
-        if ('digital-download' == get_post_type($_REQUEST['post_id'])) {
+        if ('digital_download' == get_post_type($_REQUEST['post_id'])) {
             add_filter('upload_dir', 'btcpaywall_upload_dir');
         }
     }
 }
-add_action('admin_init', 'edd_change_downloads_upload_dir', 999);
-function btcpaywall_upload_dir($upload)
+add_action('admin_init', 'change_digital_download_upload_dir', 999);
+function btcpaywall_upload_dir($param)
 {
 
-    $upload['path'] = $upload['basedir'] . $upload['subdir'];
-    $upload['url']  = $upload['baseurl'] . $upload['subdir'];
-
-    return $upload;
+    $mydir         = '/btcpaywall-uploads';
+    $param['path'] = $param['basedir'] . $mydir;
+    $param['url']  = $param['baseurl'] . $mydir;
+    return $param;
 }
+
+
+
+function get_protected_dir()
+{
+
+    $dir_level1 = 'btcpaywall-uploads';
+
+
+    $upload_dir = wp_upload_dir();
+
+    return $upload_dir['basedir'] . '/' . $dir_level1;
+}
+function btcpaywall_protect_upload_dir()
+{
+
+    $dir_level1 = 'btcpaywall-uploads';
+
+
+    $upload_dir = wp_upload_dir();
+
+    $files = array(
+        array(
+            'base'    => $upload_dir['basedir'] . '/' . $dir_level1,
+            'file'    => '.htaccess',
+            'content' =>  'Options -Indexes' . "\n"
+                . 'deny from all'
+        ), array(
+            'base'    => $upload_dir['basedir'] . '/' . $dir_level1,
+            'file'    => 'index.php',
+            'content' => '<?php ' . "\n"
+                . '// Silence is golden.'
+
+        )
+    );
+
+    foreach ($files as $file) {
+
+        if ((wp_mkdir_p($file['base']))
+            && (!file_exists(trailingslashit($file['base']) . $file['file']))                // If file not exist
+        ) {
+
+            if ($file_handle = @fopen(trailingslashit($file['base']) . $file['file'], 'w')) {
+
+                fwrite($file_handle, $file['content']);
+                fclose($file_handle);
+            }
+        }
+    }
+}
+add_action('admin_init', 'btcpaywall_protect_upload_dir');
