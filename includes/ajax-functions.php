@@ -52,7 +52,7 @@ function generate_invoice_id($post_id, $order_id)
 
     $url = get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
 
-    $currency_scope = get_post_meta($post_id, 'btcpw_default_currency', true) ?: get_option('btcpw_default_currency', 'SATS');
+    $currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ? get_post_meta($post_id, 'btcpw_currency', true) : get_option('btcpw_default_currency', 'SATS');
     //getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['currency'];
     //get_option('btcpw_default_currency', 'SATS');
     //$currency = $currency_scope != 'SATS' ? $currency_scope : 'BTC';
@@ -369,8 +369,7 @@ function ajax_paid_invoice()
 
     if ($body['status'] === 'Settled') {
         $cookie_path = parse_url(get_permalink($post_id), PHP_URL_PATH);
-
-        setcookie('btcpw_' . $post_id, $secret, get_cookie_duration($post_id), $cookie_path);
+        $revenue_type = $body['metadata']['type'];
 
 
         $payment_method = get_payment_method($body['id']);
@@ -385,12 +384,28 @@ function ajax_paid_invoice()
             'customer_id' => $customer->id,
             'amount' => floatval($body['amount']),
             'page_title' => $body['metadata']['blog'],
-            'revenue_type' => $body['metadata']['type'],
+            'revenue_type' => $revenue_type,
             'currency' => $body['currency'],
             'status' => $body['status'],
             'payment_method' => $payment_method,
             'date_created'  => date('Y-m-d H:i:s', $body['createdTime'])
         ]);
+
+        if ($payment->revenue_type === 'Pay-per-file') {
+
+            setcookie('btcpw_payment_id_' . $post_id, $payment->id, strtotime('+' . get_option('btcpw_link_expiration', 24) . 'hours', current_time('timestamp')), $cookie_path);
+
+            setcookie('btcpw_link_expiration_' . $post_id, get_option('btcpw_link_expiration', 24), strtotime('+' . get_option('btcpw_link_expiration', 24) . 'hours', current_time('timestamp')), $cookie_path);
+            $download = new BTCPayWall_Digital_Download($post_id);
+            $download->increase_sales();
+            if (is_email($customer->email) && !empty($customer->email)) {
+                $link = get_download_url($payment->id, $download->get_file_url(), $download->ID, $customer->email);
+                wp_mail($customer->email, 'BTCPayWall Digital Download Link', $link);
+            }
+        }
+        update_post_meta($body['metadata']['orderId'], 'btcpw_payment_id', $payment->id);
+
+        setcookie("btcpw_{$post_id}", $secret, get_cookie_duration($post_id), $cookie_path);
 
         update_post_meta($order_id, 'btcpw_status', 'success');
 
@@ -415,3 +430,36 @@ function ajax_notify_administrator()
 }
 add_action('wp_ajax_btcpw_notify_admin',  'ajax_notify_administrator');
 add_action('wp_ajax_nopriv_btcpw_notify_admin',  'ajax_notify_administrator');
+
+/**
+ * Regulate Digital Download Permissions
+ * 
+ * Check if customer has reached download limit for the specific product or if download link is still valid
+ * 
+ * @since 1.0
+ * 
+ * @return void 
+ */
+function ajax_btcpw_check_download_limit()
+{
+    if (empty($_POST['post_id'])) {
+        wp_send_json_error(['message' => 'post_id required']);
+    }
+    $post_id = $_POST['post_id'];
+    $download = new BTCPayWall_Digital_Download($post_id);
+    $payment_id = $_COOKIE["btcpw_payment_id_{$post_id}"];
+    $payment = new BTCPayWall_Payment($payment_id);
+
+    //$download->get_download_is_allowed($payment->id) == false ||
+    /* if (!isset($_COOKIE["btcpw_link_expiration_{$post_id}"]) || ($download->get_download_is_allowed($payment->id) == false)) {
+        unset($_COOKIE["btcpw_payment_id_{$post_id}"]);
+        setcookie("btcpw_payment_id_{$post_id}", '', time() - 3600, '/');
+        unset($_COOKIE["btcpw_link_expiration_{$post_id}"]);
+        setcookie("btcpw_link_expiration_{$post_id}", '', time() - 3600, '/');
+        wp_send_json_error(["error" => "The link has expired or you have reached the download limit"]);
+    } */
+    $payment->increase_download_number();
+    wp_send_json_success(["success" => true, "download_number" => $payment->get_download_number()]);
+}
+add_action('wp_ajax_btcpw_check_download_limit',  'ajax_btcpw_check_download_limit');
+add_action('wp_ajax_nopriv_btcpw_check_download_limit',  'ajax_btcpw_check_download_limit');

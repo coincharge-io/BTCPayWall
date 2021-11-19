@@ -27,6 +27,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
             'currency' => '%s',
             'amount' => '%f',
             'status' => '%s',
+            'download_number'   => '%d',
             'gateway' => '%s',
             'payment_method' => '%s',
             'date_created'   => '%s'
@@ -44,6 +45,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
             'amount' => '',
             'status' => 'New',
             'gateway' => 'BTCPayServer',
+            'download_number' => 0,
             'payment_method' => 'BTC-LightningNetwork',
             'date_created'    => date('Y-m-d H:i:s'),
 
@@ -152,6 +154,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
               status TINYTEXT,
               gateway TINYTEXT,
               payment_method TINYTEXT,
+              download_number SMALLINT,
               date_created TIMESTAMP,
 			  PRIMARY KEY  (id),
               KEY customer (customer_id)

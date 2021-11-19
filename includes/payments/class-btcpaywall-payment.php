@@ -16,6 +16,7 @@ class BTCPayWall_Payment
     public $revenue_type;
     public $currency;
     public $status;
+    public $download_number = 0;
     public $gateway;
     public $payment_method;
 
@@ -47,7 +48,7 @@ class BTCPayWall_Payment
         if (!is_object($payment)) {
             return false;
         }
-        $valid_keys = ['id', 'invoice_id', 'customer_id', 'amount', 'page_title', 'revenue_type', 'currency', 'status', 'gateway', 'payment_method'];
+        $valid_keys = ['id', 'invoice_id', 'customer_id', 'amount', 'page_title', 'revenue_type', 'currency', 'status', 'download_number', 'gateway', 'payment_method'];
 
         foreach ($payment as $key => $value) {
             if (in_array($key, $valid_keys)) {
@@ -91,6 +92,12 @@ class BTCPayWall_Payment
     {
         return $this->db->record_count();
     }
+    public function get_download_number()
+    {
+
+        return $this->download_number;
+    }
+
     public function update($data = array())
     {
 
@@ -119,7 +126,7 @@ class BTCPayWall_Payment
 
         return $payments;
     }
-    
+
     private function sanitize_columns($data)
     {
 
@@ -167,5 +174,27 @@ class BTCPayWall_Payment
         }
 
         return $data;
+    }
+    /**
+     * Increase Download Number
+     * 
+     * @since 1.0
+     * 
+     * @access public
+     * 
+     * @return int|false Number of downloads.
+     */
+
+    public function increase_download_number()
+    {
+        $new_total = (int)$this->download_number + 1;
+
+        if ($this->update(['download_number' => $new_total])) {
+
+            $this->download_number = (int)$new_total;
+
+            return $this->download_number;
+        }
+        return false;
     }
 }

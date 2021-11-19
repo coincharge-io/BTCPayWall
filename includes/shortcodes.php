@@ -2,7 +2,6 @@
 
 // Exit if accessed directly
 
-use Elementor\Core\App\Modules\KitLibrary\Data\Kits\Endpoints\Download_Link;
 
 if (!defined('ABSPATH')) exit;
 
@@ -1243,7 +1242,7 @@ function render_shortcode_protected_file($atts)
 
     <a class="btcpw_pay__download" href=<?php echo esc_url($href) ?> target="_blank" download>Download</a>
 
-<?php
+    <?php
 
 
     return ob_get_clean();
@@ -1279,15 +1278,34 @@ function render_shortcode_protected_digital_download($atts)
     $post_data = new BTCPayWall_Digital_Download($_id);
     $collect = $post_data->get_collect();
     $collect_data = display_is_enabled($collect);
+    $invoice_content = array('title' => 'Pay-per-file: ' . get_the_title(), 'project' => 'file');
+    update_post_meta(get_the_ID(), 'btcpw_invoice_content', $invoice_content);
 
-?><div class="btcpw_digital_download_protected_area">
+
+    if (is_paid_content($_id)) {
+        $payment_id = $_COOKIE['btcpw_payment_id_' . $post_id];
+        $download = new BTCPayWall_Digital_Download($_id);
+        $payment = new BTCPayWall_Payment($payment_id);
+        $customer_id = $payment->customer_id;
+        $customer = new BTCPayWall_Customer($customer_id);
+        $link = get_download_url($payment->id, $download->get_file_url(), $download->ID, $customer->email);
+
+
+        ob_start();
+    ?>
+        <a id="btcpw_download_file" href="<?php echo $link; ?>" data-post_id="<?php echo $_id; ?>">Download</a>
+    <?php
+        return ob_get_clean();
+    }
+
+    ?><div class="btcpw_digital_download_protected_area">
         <fieldset>
             <p>The <?php echo esc_html($post_data->get_filename()); ?> cost <?php echo esc_html($post_data->get_price()); ?></p>
             <div id="btcpw_digital_download">
                 <?php if ($collect_data === true) : ?>
                     <input type="button" name="next" class="btcpw_digital_download next-form" value="Continue" />
                 <?php else : ?>
-                    <button type="submit" id="btcpw_digital_download__button"><?php echo (!empty($atts['text']) ? esc_html($atts['text']) : 'Pay'); ?></button>
+                    <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" id="btcpw_pay__button"><?php echo (!empty($atts['text']) ? esc_html($atts['text']) : 'Pay'); ?></button>
                 <?php endif; ?>
             </div>
         </fieldset>
@@ -1309,7 +1327,7 @@ function render_shortcode_protected_digital_download($atts)
                         <input type="button" name="previous" class="btcpw_digital_download previous-form" value="< Previous" />
                     </div>
                     <div>
-                        <button type="submit" id="btcpw_digital_download_button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
+                        <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" id="btcpw_pay__button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Download'); ?></button>
                     </div>
                 </div>
             </fieldset>
@@ -1318,3 +1336,8 @@ function render_shortcode_protected_digital_download($atts)
 <?php
 }
 add_shortcode('btcpw_digital_download', 'render_shortcode_protected_digital_download');
+
+
+/**
+ * 
+ */

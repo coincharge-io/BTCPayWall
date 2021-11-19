@@ -14,6 +14,8 @@ function add_menu_pages()
     add_submenu_page('btcpw_general_settings', 'Add form', 'Add form', 'manage_options', 'btcpw_form', 'render_new_form');
     add_submenu_page(null, 'Edit shortcode', 'Edit shortcode', 'manage_options', 'btcpw_edit', 'render_edit_page');
 
+
+    add_submenu_page('btcpw_general_settings', 'All products', 'All products', 'manage_options', 'edit.php?post_type=digital_download');
     add_submenu_page('btcpw_general_settings', 'Add product', 'Add product', 'manage_options', 'post-new.php?post_type=digital_download');
 }
 add_action('admin_menu', 'add_menu_pages');

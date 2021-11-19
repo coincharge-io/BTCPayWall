@@ -77,15 +77,15 @@ class BTCPayWall_Digital_Download
     private $earnings;
 
     /**
-     * Digital Download File
+     * Digital Download File ID
      * 
      * @since 1.0
      * 
      * @access private
      * 
-     * @var string
+     * @var int
      */
-    private $file;
+    private $file_id;
 
     /**
      * Digital Download Filename
@@ -97,6 +97,17 @@ class BTCPayWall_Digital_Download
      * @var string
      */
     private $filename;
+
+    /**
+     * Digital Download File Url
+     * 
+     * @since 1.0
+     * 
+     * @access private
+     * 
+     * @var string
+     */
+    private $file_url;
 
     /**
      * Digital Download Collect Customer Name
@@ -563,8 +574,8 @@ class BTCPayWall_Digital_Download
     public function get_price()
     {
         if (!isset($this->price)) {
-            $amount = get_post_meta($this->ID, 'btcpw_product_price', true);
-            $currency = get_post_meta($this->ID, 'btcpw_product_currency', true);
+            $amount = get_post_meta($this->ID, 'btcpw_price', true);
+            $currency = get_post_meta($this->ID, 'btcpw_currency', true);
 
             $this->price = "{$amount} {$currency}";
 
@@ -586,13 +597,13 @@ class BTCPayWall_Digital_Download
 
     public function get_sales()
     {
-        if (!isset($this->sales)) {
-            $this->sales = get_post_meta($this->ID, 'btcpw_product_sales', true);
 
-            if ($this->sales < 0) {
-                $this->sales = 0;
-            }
+        $this->sales = get_post_meta($this->ID, 'btcpw_product_sales', true);
+
+        if ($this->sales < 0) {
+            $this->sales = 0;
         }
+
 
         return $this->sales;
     }
@@ -608,7 +619,7 @@ class BTCPayWall_Digital_Download
      * @return int|false Number of total sales.
      */
 
-    public function increase_sales($quantity)
+    public function increase_sales($quantity = 1)
     {
         $new_total = $this->sales + absint($quantity);
         if (update_post_meta($this->ID, 'btcpw_product_sales', $new_total)) {
@@ -649,7 +660,7 @@ class BTCPayWall_Digital_Download
             $this->download_limit = $restrict;
         }
 
-        return $restrict;
+        return $this->download_limit;
     }
     /**
      * Return Publisher Choices for Collecting Customer's Data
@@ -700,6 +711,26 @@ class BTCPayWall_Digital_Download
         );
     }
     /**
+     * Return Digital Download Limit
+     * 
+     * @since 1.0
+     * 
+     * @access public
+     * 
+     * @return int Download limit number 
+     */
+    public function get_download_limit()
+    {
+
+        if (get_post_meta($this->ID, 'btcpw_product_limit', true)) {
+            $this->download_limit = get_post_meta($this->ID, 'btcpw_product_limit', true);
+        } else {
+            $this->download_limit = 0;
+        }
+
+        return $this->download_limit;
+    }
+    /**
      * Return Digital Download Filename
      * 
      * @since 1.0
@@ -718,5 +749,68 @@ class BTCPayWall_Digital_Download
             }
         }
         return $this->filename;
+    }
+    /**
+     * Check If Payment Reached Download Limit
+     * 
+     * @param int $payment_id Payment ID for Digital Download
+     * 
+     * @since 1.0 
+     * 
+     * @access public
+     * 
+     * @return bool Whether a payment has reached the limit
+     */
+    public function get_download_is_allowed($payment_id)
+    {
+        $payment = new BTCPayWall_Payment($payment_id);
+
+        if ((int)$this->get_download_limit() == 0) {
+            return true;
+        }
+
+
+        return (int)$payment->get_download_number() <= (int)$this->get_download_limit();
+    }
+
+    /**
+     * Return Digital Download Filename
+     * 
+     * @since 1.0
+     * 
+     * @access public
+     * 
+     * @return string
+     */
+    public function get_file_url()
+    {
+        if (!isset($this->file_url)) {
+            if (get_post_meta($this->ID, 'btcpw_digital_product_file', true)) {
+                $this->file_url = get_post_meta($this->ID, 'btcpw_digital_product_file', true);
+            } else {
+                $this->file_url = '';
+            }
+        }
+        return $this->file_url;
+    }
+    /**
+     * Return Digital Download Filename
+     * 
+     * @since 1.0
+     * 
+     * @access public
+     * 
+     * @return string
+     */
+    public function get_file_id()
+    {
+        if (!isset($this->file_id)) {
+            if (get_post_meta($this->ID, 'btcpw_digital_product_id', true)) {
+                $this->file_id = get_post_meta($this->ID, 'btcpw_digital_product_id', true);
+            } else {
+                $this->file_id = 0;
+            }
+        }
+        return $this->file_id;
     }
 }

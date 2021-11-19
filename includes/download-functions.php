@@ -20,29 +20,31 @@ if (!defined('ABSPATH')) exit;
  * 
  * @param int $payment_id Payment ID.
  * 
- * @param string $file File for download.
+ * @param int $file_url File URL.
  * 
  * @param int $download_id Digital Download ID.
  * 
  * @param string $email Optional. Customer email.
  * 
- * @param
  * @since 1.0
  * 
  * @return string Download url
  */
 
-function get_download_url($payment_id, $file, $download_id, $email)
+function get_download_url($payment_id, $file_url, $download_id, $email)
 {
     if (!get_option('btcpaywall_secret_key')) {
-        update_option('btcpaywall_secret_key', bin2hex(random_bytes(14)));
+        update_option('btcpw_secret_key', bin2hex(random_bytes(14)));
     }
-    $secret_key = get_option('btcpaywall_secret_key');
-    $date = strtotime("14 Jan 2038");
+    $secret_key = get_option('btcpw_secret_key');
+    $hours = absint(get_option('btcpw_link_expiration', 24));
 
+    if (!($date = strtotime('+' . $hours . 'hours', current_time('timestamp')))) {
+        $date = strtotime("14 Jan 2038");
+    }
     $params = array(
         'payment_id'     => (int)$payment_id,
-        'digital_file'          => rawurlencode($file),
+        'digital_file'          => rawurlencode($file_url),
         'download_id'   => (int)$download_id,
         'expire'        => rawurlencode($date),
         'email'         => rawurlencode($email)
@@ -81,19 +83,7 @@ function get_download_url($payment_id, $file, $download_id, $email)
 
 function process_download()
 {
-    /*  $file = $_GET['digital_file'] ?? null;
-    $cookie = !empty($_GET['ttl']) ? $_GET['ttl'] : '';
-    if (isset($_GET['digital_file'])) {
-        header('Content-Description: File Transfer');
-        header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename="' . basename($file) . '"');
-        header('Expires: ' . $cookie);
-        header('Cache-Control: must-revalidate');
-        header('Pragma: public');
-        header('Content-Length: ' . filesize($file));
-        readfile($file);
-        exit;
-    } */
+
     $args = array(
         'download_id' => (isset($_GET['download_id']))  ? (int) $_GET['download_id']                       : '',
         'payment_id' => (isset($_GET['payment_id']))  ? (int) $_GET['payment_id']                       : '',
@@ -102,36 +92,56 @@ function process_download()
         'ttl'      => (isset($_GET['ttl']))          ? $_GET['ttl']                                     : '',
         'token'    => (isset($_GET['token']))        ? $_GET['token']                                   : ''
     );
-    if (!empty($args['btcpw_file']) && !empty($args['ttl']) && !empty($args['token'])) {
+
+
+    if (!empty($args['btcpw_file']) && !empty($args['payment_id']) && !empty($args['download_id']) && !empty($args['ttl']) && !empty($args['token'])) {
+        $payment = new BTCPayWall_Payment($args['payment_id']);
+        $download = new BTCPayWall_Digital_Download($args['download_id']);
+
+        if ($download->get_download_is_allowed($payment->id) == false || !isset($_COOKIE["btcpw_link_expiration_{$download->ID}"])) {
+            unset($_COOKIE["btcpw_payment_id_{$download->ID}"]);
+            setcookie("btcpw_payment_id_{$download->ID}", '', time() - 3600, '/');
+            unset($_COOKIE["btcpw_link_expiration_{$download->ID}"]);
+            setcookie("btcpw_link_expiration_{$download->ID}", '', time() - 3600, '/');
+            wp_die(__('You have reached download limit for this payment.', 'btcpaywall'));
+        }
         $file = array();
 
         $download_args = process_download_url($args);
+
+        if ($download_args['valid_token'] === false) {
+            return false;
+        }
+
+
         $file['url'] = $download_args['btcpw_file'];
+        $id = get_attachment_id($download_args['btcpw_file']);
+
+        $file_path = get_attached_file($id);
+
+        $file['name'] = get_file_name_from_path($download_args['btcpw_file']);
 
 
-        $file['name'] = get_file_name_from_path($file['local_path']);
+        $file['extension'] = get_file_extension($download_args['btcpw_file']);
 
-
-        $file['extension'] = get_file_extension($file['name']);
-
-        $file['is_local'] = (int) is_file_local($file['url']); // 1 | 0
+        $file['is_local'] = (int) is_file_local($file_path); // 1 | 0
 
         $file['content_type'] = get_file_content_type($file['extension']);
 
         $headers = get_all_headers();
 
-        if (in_array($file['extension'], array('php'))) {
-            return array('file' => $file, 'error' => 'file_not_permit');
+        if (in_array($file['extension'], array('php', 'js'))) {
+            wp_die(__('File extension is not supported.', 'btcpaywall'));
         }
 
         if (headers_sent()) {
-            return array('file' => $file, 'error' => 'headers_sent_before_download');
+            wp_die(__('Headers sent before download.', 'btcpaywall'));
         }
-        if (isset($headers["Range"])) {  // Resume file download
+        if (isset($headers["Range"])) {
             prepare_system_before_download_file();
             $file_read_is_success = file_resume_download($file, $headers);
         } else {
-            $file['url'] = str_replace(" ", "%", $file['url']);
+            //$file['url'] = str_replace(" ", "%", $file['url']);
 
             prepare_system_before_download_file();
 
@@ -141,7 +151,7 @@ function process_download()
         }
 
         if (!$file_read_is_success) {
-            return array('file' => $file, 'error' => 'error_opening_file');
+            wp_die(__('There is a problem with opening file', 'btcpaywall'));
         }
 
         return array('file' => $file, 'error' => 0);
@@ -1162,14 +1172,16 @@ function process_download_url($args)
 
     wp_parse_str($parts['query'], $query_args);
 
-    $secret_key = get_option("btcpaywall_secret_key");
+    $secret_key = get_option("btcpw_secret_key");
 
     $valid_token = wp_check_password($secret_key . rawurldecode($query_args['ttl']) . rawurldecode($query_args['btcpw_file']) . (int)$query_args['payment_id'] . (int)$query_args['download_id'] . rawurldecode($query_args['email']), rawurldecode($query_args['token']));
 
+    if (isset($query_args['ttl']) && current_time('timestamp') > $query_args['ttl']) {
+
+        wp_die(__('Download link has expired.', 'btcpaywall'), array('response' => 403));
+    }
     if (!$valid_token) {
         $args['valid_token']    = false;
-
-        return $args;
     }
 
     return $args;
@@ -1218,67 +1230,7 @@ function readable_format_seconds_to_words($seconds)
 }
 
 
-function start_download_process($file_url = '')
-{
 
-    $file = array();
-
-    $file['url'] = $_GET['btcpw_file'];
-
-    /* $file['local_path'] = get_local_path_from_real_link($file['url']);
-
-
-    if (!file_exists($file['local_path'])) {
-        return array('file' => $file, 'error' => 'file_not_exist');
-    } */
-
-    $file['name'] = get_file_name_from_path($file['local_path']); // product_premium.zip
-
-    $file['extension'] = get_file_extension($file['name']); // zip
-
-    //$file['size'] = get_file_size($file['local_path']); // XXX bytes
-
-    // $file['readable_size'] = readable_format_file_size($file['size']); // . MB
-
-    $file['is_local'] = (int)is_file_local($file['url']); // |
-
-    $file['content_type'] = get_file_content_type($file['extension']); // application/zip
-
-
-    $headers = get_all_headers(); // May be resume download
-
-    if (in_array($file['extension'], array('php'))) {
-        return array('file' => $file, 'error' => 'file_not_permit');
-        /*
-    // Probabaly its does not secure way of including PHP files in such way, so do not permit it.
-    include $file['local_path'];
-    return array( 'file' => $file, 'error' => );
-    */
-    }
-
-    if (headers_sent()) {
-        return array('file' => $file, 'error' => 'headers_sent_before_download');
-    }
-
-
-
-
-    $file['url'] = str_replace(" ", "%", $file['url']);
-
-    prepare_system_before_download_file(); // Prepeare system // set time limits, server output options, etc...
-
-    set_headers_for_file_download($file); // H E A D E R S
-
-    $file_read_is_success = readfile_by_parts($file['local_path']); // Output file
-
-
-
-    if (!$file_read_is_success) {
-        return array('file' => $file, 'error' => 'error_opening_file');
-    }
-
-    return array('file' => $file, 'error' => 404);
-}
 function set_headers_for_file_download($file)
 {
 

@@ -1524,6 +1524,27 @@
       previous_form.hide()
     })
   })
+
+  $(document).ready(function () {
+    $('#btcpw_download_file').click(function () {
+      var post_id = $(this).data('post_id')
+      $.ajax({
+        url: '/wp-admin/admin-ajax.php',
+        method: 'POST',
+        data: {
+          action: 'btcpw_check_download_limit',
+          post_id: post_id
+        },
+        success: function (response) {
+          if (response.success) {
+            console.log(response)
+          } else {
+            console.error(response)
+          }
+        }
+      })
+    })
+  })
   $(document).ready(function () {
     var form_count = 1,
       previous_form,

@@ -172,7 +172,7 @@ function calculate_price_for_invoice($post_id)
 
     //get_option('btcpw_default_currency', 'SATS');
 
-    if ($currency_scope === 'SATS') {
+    /*if ($currency_scope === 'SATS') {
 
         if (get_post_meta($post_id, 'btcpw_price', true)) {
 
@@ -190,9 +190,9 @@ function calculate_price_for_invoice($post_id)
         $value = rtrim($value, '0');
 
         return $value;
-    }
+    }*/
 
-    return get_post_meta($post_id, 'btcpw_price', true) ?: get_option('btcpw_default_price');
+    return get_post_meta($post_id, 'btcpw_price', true) ? get_post_meta($post_id, 'btcpw_price', true) : get_option('btcpw_default_price');
 
     //getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['price'];
     //get_option('btcpw_default_price');
@@ -213,28 +213,53 @@ function is_paid_content($post_id = null)
     if (empty($post_id)) {
         $post_id = get_the_ID();
     }
+    $custom_post_type = get_post($post_id)->post_type === 'digital_download';
+
+    if ($custom_post_type && empty($_COOKIE['btcpw_payment_id_' . $post_id])) {
+        return false;
+    }
+
+
 
     if (empty($_COOKIE['btcpw_' . $post_id])) {
         return false;
     }
 
+    $meta_query = $custom_post_type ? [
+        'relation' => 'AND',
+        [
+            'key' => 'btcpw_post_id',
+            'value' => $post_id,
+            'type' => 'NUMERIC',
+        ],
+        [
+            'key' => 'btcpw_secret',
+            'value' => sanitize_text_field($_COOKIE['btcpw_' . $post_id]),
+        ],
+        [
+            'key' => 'btcpw_payment_id',
+            'value' => sanitize_text_field($_COOKIE['btcpw_payment_id_' . $post_id]),
+        ],
+    ] : [
+        'relation' => 'AND',
+        [
+            'key' => 'btcpw_post_id',
+            'value' => $post_id,
+            'type' => 'NUMERIC',
+        ],
+        [
+            'key' => 'btcpw_secret',
+            'value' => sanitize_text_field($_COOKIE['btcpw_' . $post_id]),
+        ]
+    ];
+
     $order = get_posts([
         'post_type' => 'btcpw_order',
         'fields' => 'ids',
         'no_found_rows' => true,
-        'meta_query' => [
-            'relation' => 'AND',
-            [
-                'key' => 'btcpw_post_id',
-                'value' => $post_id,
-                'type' => 'NUMERIC',
-            ],
-            [
-                'key' => 'btcpw_secret',
-                'value' => sanitize_text_field($_COOKIE['btcpw_' . $post_id]),
-            ],
-        ],
+        'meta_query' => $meta_query,
     ]);
+
 
     if (empty($order)) {
         return false;
@@ -300,7 +325,7 @@ function get_cookie_duration($post_id)
 /**
  * Update post meta values
  * 
- * @params array $atts Attribute values.
+ * @param array $atts Attribute values.
  * 
  * @type string $currency   
  * @type string $duration_type
@@ -371,12 +396,6 @@ function display_is_enabled($arr)
     }
     return false;
 }
-/**
- * @param $atts
- *
- * @return string
- */
-
 
 /**
  * 
@@ -451,3 +470,54 @@ function getFixedAmount($atts)
     );
 }
 
+/**
+ * Get an attachment ID given a URL.
+ * 
+ * @param string $url
+ *
+ * @return int Attachment ID on success, 0 on failure
+ */
+function get_attachment_id($url)
+{
+
+    $attachment_id = 0;
+
+    $dir = wp_upload_dir();
+
+    if (false !== strpos($url, $dir['baseurl'] . '/')) { // Is URL in uploads directory?
+        $file = basename($url);
+
+        $query_args = array(
+            'post_type'   => 'attachment',
+            'post_status' => 'inherit',
+            'fields'      => 'ids',
+            'meta_query'  => array(
+                array(
+                    'value'   => $file,
+                    'compare' => 'LIKE',
+                    'key'     => '_wp_attachment_metadata',
+                ),
+            )
+        );
+
+        $query = new WP_Query($query_args);
+
+        if ($query->have_posts()) {
+
+            foreach ($query->posts as $post_id) {
+
+                $meta = wp_get_attachment_metadata($post_id);
+
+                $original_file       = basename($meta['file']);
+                $cropped_image_files = wp_list_pluck($meta['sizes'], 'file');
+
+                if ($original_file === $file || in_array($file, $cropped_image_files)) {
+                    $attachment_id = $post_id;
+                    break;
+                }
+            }
+        }
+    }
+
+    return $attachment_id;
+}

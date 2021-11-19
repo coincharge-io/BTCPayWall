@@ -14,13 +14,15 @@ if (!defined('ABSPATH')) exit;
 
 function add_btcpw_product_meta_boxes()
 {
-    add_meta_box('btcpw_product_amount', __('Product price', 'btcpaywall'), 'render_btcpw_amount', 'digital_download');
+    add_meta_box('btcpw_product_amount', __('BTCPayWall Product  Price', 'btcpaywall'), 'render_btcpw_amount', 'digital_download');
 
-    //add_meta_box('btcpw_product_files', __('Product files', 'btcpaywall'), 'render_btcpw_file_upload', 'digital_download');
+    add_meta_box('btcpw_product_files', __('BTCPayWall Upload File', 'btcpaywall'), 'render_btcpw_file_upload', 'digital_download');
 
-    //add_meta_box('btcpw_product_stats', __('Product stats', 'btcpaywall'), 'render_btcpw_product_stats', 'digital_download', 'side', 'high');
-    //add_meta_box('btcpw_product_limit', __('Product settings', 'btcpaywall'), 'render_btcpw_product_settings', 'digital_download');
-    add_meta_box('btcpw_product_customer', __('Collect customer information', 'btcpaywall'), 'render_btcpw_product_collect_info', 'digital_download');
+    add_meta_box('btcpw_product_stats', __('BTCPayWall Product Sales', 'btcpaywall'), 'render_btcpw_product_stats', 'digital_download', 'side', 'high');
+
+    add_meta_box('btcpw_product_limit', __('BTCPayWall Product Download Limit', 'btcpaywall'), 'render_btcpw_product_settings', 'digital_download', 'side', 'normal');
+
+    add_meta_box('btcpw_product_customer', __('BTCPayWall Product Collect Data', 'btcpaywall'), 'render_btcpw_product_collect_info', 'digital_download');
 }
 
 add_action('add_meta_boxes', 'add_btcpw_product_meta_boxes');
@@ -29,8 +31,8 @@ function btcpw_meta_fields()
 {
     $fields =
         [
-            'btcpw_product_price',
-            'btcpw_product_currency',
+            'btcpw_price',
+            'btcpw_currency',
             'btcpw_digital_product_id',
             'btcpw_digital_product_file',
             'btcpw_digital_product_filename',
@@ -52,14 +54,15 @@ function btcpw_meta_fields()
 
 function render_btcpw_product_settings($post)
 {
-    $limit = $btcpw_stored_meta['btcpw_product_download_limit'][0] ?? 0;
+    $btcpw_stored_meta = get_post_meta($post->ID);
+    $limit = $btcpw_stored_meta['btcpw_product_limit'][0] ?? 0;
 
 ?>
-    <div class='btcpw_settings_meta'>
+    <div class='btcpw_product_limit'>
         <div>
             <label for="btcpw_product_download_limit">Download limit</label>
 
-            <input type="number" name="btcpw_product_download_limit" id="btcpw_product_download_limit" min="0" value="<?php echo $limit; ?>" />
+            <input type="number" name="btcpw_product_limit" id="btcpw_product_download_limit" min="0" value="<?php echo $limit; ?>" />
         </div>
 
 
@@ -84,33 +87,15 @@ function render_btcpw_amount($post)
     $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
     wp_nonce_field(basename(__FILE__), 'btcpw_nonce');
     $btcpw_stored_meta = get_post_meta($post->ID);
-    $currency = $btcpw_stored_meta['btcpw_product_currency'][0] ?? 'SATS';
-    $price = $btcpw_stored_meta['btcpw_product_price'][0] ?? 0;
-    $limit = $btcpw_stored_meta['btcpw_product_limit'][0] ?? 0;
-    $file = $btcpw_stored_meta['btcpw_digital_product_file'][0] ?? '';
-    $filename = $btcpw_stored_meta['btcpw_digital_product_filename'][0] ?? '';
-    $file_id = $btcpw_stored_meta['btcpw_digital_product_id'][0] ?? 0;
-
+    $currency = $btcpw_stored_meta['btcpw_currency'][0] ?? 'SATS';
+    $price = $btcpw_stored_meta['btcpw_price'][0] ?? 0;
 
 ?>
-    <div class='btcpw_product_limit'>
-        <div>
-            <label for="btcpw_product_download_limit">Download limit</label>
 
-            <input type="number" name="btcpw_product_limit" id="btcpw_product_download_limit" min="0" value="<?php echo $limit; ?>" />
-        </div>
-
-
-        <div>
-            <label for="btcpw_product_download_shortcode">Shortcode</label>
-            <input type="text" name="btcpw_product_download_shortcode" id="btcpw_product_download_shortcode" readonly value="<?php echo "[btcpw_digital_download post_id=$post->ID]"; ?>" />
-        </div>
-
-    </div>
     <div class='btcpw_price_meta'>
-        <input type="number" name="btcpw_product_price" id="btcpw_product_price" min="0" value="<?php echo $price; ?>" />
+        <input type="number" name="btcpw_price" id="btcpw_price" min="0" value="<?php echo $price; ?>" />
 
-        <select required name="btcpw_product_currency">
+        <select required name="btcpw_currency">
             <option disabled value="">Select currency</option>
             <?php foreach ($supported_currencies as $curr) : ?>
                 <option <?php echo $currency === $curr ? 'selected' : ''; ?> value="<?php echo $curr; ?>">
@@ -119,75 +104,68 @@ function render_btcpw_amount($post)
         </select>
 
     </div>
-    <div id="btcpw_file" class="btcpw_repeatable_product_wrap">
-        <div class="btcpw_repeat_file_header">
-            <span>Product</span>
-            <a>Delete</a>
-        </div>
-        <div class="btcpw_download_product">
-            <input type="hidden" name="btcpw_digital_product_id" id="btcpw_product_id" value="<?php echo $file_id; ?>" />
-            <input type="text" placeholder="File name" name="btcpw_digital_product_filename" id="btcpw_product_filename" value="<?php echo $filename; ?>" />
-            <input type="text" name="btcpw_digital_product_file" id="btcpw_product_file" value="<?php echo $file; ?>" placeholder="Upload file or enter file url here" />
-            <button id="btcpw_digital_download_upload_button">Upload</button>
-        </div>
-    </div>
+
 
 <?php
 }
 
 function render_btcpw_file_upload($post)
 {
-?>
-    <div class='btcpw_product_file_download'>
-
-        <?php do_action('render_file_row'); ?>
-    </div>
-<?php }
-
-/*Planned for next release*/
-function render_add_new_product()
-{
-?>
-    <div>
-        <button>Add File</button>
-    </div>
-<?php
-}
-add_action('render_file_add_new', 'render_add_new_product');
-
-
-function render_file_row($post_id)
-{
-    $btcpw_stored_meta = get_post_meta($post_id);
+    $btcpw_stored_meta = get_post_meta($post->ID);
 
     $file = $btcpw_stored_meta['btcpw_digital_product_file'][0] ?? '';
     $filename = $btcpw_stored_meta['btcpw_digital_product_filename'][0] ?? '';
+    $file_id = $btcpw_stored_meta['btcpw_digital_product_id'][0] ?? 0;
 ?>
-    <div id="btcpw_file" class="btcpw_repeatable_product_wrap">
-        <div class="btcpw_repeat_file_header">
-            <span>Product</span>
-            <a>Delete</a>
+    <div class='btcpw_product_file_download'>
+
+        <div id="btcpw_file" class="btcpw_repeatable_product_wrap">
+            <div class="btcpw_download_product">
+                <input type="hidden" name="btcpw_digital_product_id" id="btcpw_product_id" value="<?php echo $file_id; ?>" />
+                <input type="text" placeholder="File name" name="btcpw_digital_product_filename" id="btcpw_product_filename" value="<?php echo $filename; ?>" />
+                <input type="text" name="btcpw_digital_product_file" id="btcpw_product_file" value="<?php echo $file; ?>" placeholder="Upload file or enter file url here" />
+                <button id="btcpw_digital_download_upload_button">Upload</button>
+            </div>
+
         </div>
+    </div>
+<?php }
+
+
+
+/* function render_file_row($post)
+{
+    $btcpw_stored_meta = get_post_meta($post->ID);
+
+    $file = $btcpw_stored_meta['btcpw_digital_product_file'][0] ?? '';
+    $filename = $btcpw_stored_meta['btcpw_digital_product_filename'][0] ?? '';
+    $file_id = $btcpw_stored_meta['btcpw_digital_product_id'][0] ?? 0;
+
+?>
+
+    <div id="btcpw_file" class="btcpw_repeatable_product_wrap">
         <div class="btcpw_download_product">
+            <input type="hidden" name="btcpw_digital_product_id" id="btcpw_product_id" value="<?php echo $file_id; ?>" />
             <input type="text" placeholder="File name" name="btcpw_digital_product_filename" id="btcpw_product_filename" value="<?php echo $filename; ?>" />
             <input type="text" name="btcpw_digital_product_file" id="btcpw_product_file" value="<?php echo $file; ?>" placeholder="Upload file or enter file url here" />
             <button id="btcpw_digital_download_upload_button">Upload</button>
         </div>
+
     </div>
 <?php
 }
-add_action('render_file_row', 'render_file_row');
+add_action('render_file_row', 'render_file_row'); */
 
-/* function render_btcpw_product_stats()
+function render_btcpw_product_stats($post)
 {
+    $download = new BTCPayWall_Digital_Download($post->ID);
 ?>
     <div class="btcpw_product_stats">
-        <p>Sales:</p>
-        <p>Earnings:</p>
+        <p>Sales: <?php echo $download->get_sales(); ?></p>
     </div>
 <?php
 }
- */
+
 function render_btcpw_product_collect_info($post)
 {
     $collect_data = get_post_meta($post->ID);
@@ -312,7 +290,7 @@ function btcpw_meta_save($post_id)
             } else {
                 delete_post_meta($post_id, $field);
             }
-        } elseif (('btcpw_product_limit' === $field) || ('btcpw_product_price' === $field)  || ('btcpw_product_sales' === $field)) {
+        } elseif (('btcpw_product_limit' === $field) || ('btcpw_price' === $field)  || ('btcpw_product_sales' === $field)) {
             if (!empty($_POST[$field])) {
                 update_post_meta($post_id, $field, intval($_POST[$field]));
             } else {
