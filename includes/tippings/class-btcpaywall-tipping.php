@@ -22,16 +22,16 @@ class BTCPayWall_Tipping
     protected $db;
 
 
-    public function __construct($tipping_id = false)
+    public function __construct($invoice_id = false)
     {
 
         $this->db = new BTCPayWall_DB_Tippings;
 
-        if ((is_numeric($tipping_id) && (int) $tipping_id !== absint($tipping_id))) {
+        if ((is_numeric($invoice_id) && (int) $invoice_id !== absint($invoice_id))) {
             return false;
         }
 
-        $tipping = $this->db->get_tipping_by('id', $tipping_id);
+        $tipping = $this->db->get_tipping_by('invoice_id', $invoice_id);
 
         if (empty($tipping) || !is_object($tipping)) {
             return false;

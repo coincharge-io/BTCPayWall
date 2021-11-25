@@ -22,7 +22,27 @@
         method: 'GET',
         data: {
           action: 'btcpw_get_invoice_id',
-          post_id: post_id
+          post_id: post_id,
+          full_name: $(
+            '#btcpw_revenue_post_customer_name, #btcpw_revenue_view_customer_name, #btcpw_revenue_file_customer_name',
+            '#btcpw_digital_download_customer_name'
+          ).val(),
+          email: $(
+            '#btcpw_revenue_post_customer_email, #btcpw_revenue_view_customer_email, #btcpw_revenue_file_customer_email',
+            '#btcpw_digital_download_customer_email'
+          ).val(),
+          address: $(
+            '#btcpw_revenue_post_customer_address, #btcpw_revenue_view_customer_address, #btcpw_revenue_file_customer_address',
+            '#btcpw_digital_download_customer_address'
+          ).val(),
+          phone: $(
+            '#btcpw_revenue_post_customer_phone, #btcpw_revenue_view_customer_phone, #btcpw_revenue_file_customer_phone',
+            '#btcpw_digital_download_customer_phone'
+          ).val(),
+          message: $(
+            '#btcpw_revenue_post_customer_message, #btcpw_revenue_view_customer_message, #btcpw_revenue_file_customer_message',
+            '#btcpw_digital_download_customer_message'
+          ).val()
         },
         success: function (response) {
           $('#btcpw_pay__button').html(text)
@@ -30,6 +50,9 @@
             btcpw_invoice_id = response.data.invoice_id
             btcpw_order_id = response.data.order_id
             amount = response.data.amount
+            /* location.replace(
+              'https://checkout.opennode.com/' + btcpw_invoice_id
+            ) */
             btcpwShowInvoice(btcpw_invoice_id, btcpw_order_id, amount)
           } else {
             console.error(response)
@@ -540,7 +563,7 @@
       })
     })
   })
-  function btcpwShowDonationBoxInvoice (invoice_id, donor, redirect) {
+  /* function btcpwShowDonationBoxInvoice (invoice_id, donor, redirect) {
     btcpay.onModalReceiveMessage(function (event) {
       if (event.data.status === 'complete') {
         notifyAdmin(donor)
@@ -550,9 +573,32 @@
     })
 
     btcpay.showInvoice(invoice_id)
-  }
+  } */
+  function btcpwShowDonationBoxInvoice (invoice_id, donor, redirect) {
+    btcpay.onModalReceiveMessage(function (event) {
+      if (event.data.status === 'complete') {
+        $.ajax({
+          url: '/wp-admin/admin-ajax.php',
+          method: 'POST',
+          data: {
+            action: 'btcpw_paid_tipping',
+            invoice_id: invoice_id
+          },
+          success: function (response) {
+            if (response.success) {
+              notifyAdmin(donor)
+              !redirect ? location.reload(true) : location.replace(redirect)
+            } else {
+              console.error(response)
+            }
+          }
+        })
+      }
+    })
 
-  function btcpwShowDonationBannerInvoice (invoice_id, donor, redirect) {
+    btcpay.showInvoice(invoice_id)
+  }
+  /* function btcpwShowDonationBannerInvoice (invoice_id, donor, redirect) {
     btcpay.onModalReceiveMessage(function (event) {
       if (event.data.status === 'complete') {
         notifyAdmin(donor)
@@ -561,7 +607,64 @@
     })
 
     btcpay.showInvoice(invoice_id)
+  } */
+  function btcpwShowDonationBannerInvoice (invoice_id, donor, redirect) {
+    btcpay.onModalReceiveMessage(function (event) {
+      if (event.data.status === 'complete') {
+        $.ajax({
+          url: '/wp-admin/admin-ajax.php',
+          method: 'POST',
+          data: {
+            action: 'btcpw_paid_tipping',
+            invoice_id: invoice_id
+          },
+          success: function (response) {
+            if (response.success) {
+              notifyAdmin(donor)
+              !redirect ? location.reload(true) : location.replace(redirect)
+            } else {
+              console.error(response)
+            }
+          }
+        })
+      }
+    })
+
+    btcpay.showInvoice(invoice_id)
   }
+  /*$.ajax({
+          url: '/wp-admin/admin-ajax.php',
+          method: 'POST',
+          data: {
+            action: 'btcpw_paid_invoice',
+            invoice_id: invoice_id,
+            order_id: order_id,
+            amount: amount,
+            full_name: $(
+              '#btcpw_revenue_post_customer_name, #btcpw_revenue_view_customer_name, #btcpw_revenue_file_customer_name'
+            ).val(),
+            email: $(
+              '#btcpw_revenue_post_customer_email, #btcpw_revenue_view_customer_email, #btcpw_revenue_file_customer_email'
+            ).val(),
+            address: $(
+              '#btcpw_revenue_post_customer_address, #btcpw_revenue_view_customer_address, #btcpw_revenue_file_customer_address'
+            ).val(),
+            phone: $(
+              '#btcpw_revenue_post_customer_phone, #btcpw_revenue_view_customer_phone, #btcpw_revenue_file_customer_phone'
+            ).val(),
+            message: $(
+              '#btcpw_revenue_post_customer_message, #btcpw_revenue_view_customer_message, #btcpw_revenue_file_customer_message'
+            ).val()
+          },
+          success: function (response) {
+            if (response.success) {
+              notifyAdmin(response.data.notify + 'Url:' + window.location.href)
+              location.reload(true)
+            } else {
+              console.error(response)
+            }
+          }
+        })*/
   function notifyAdmin (donor_info) {
     $.ajax({
       url: '/wp-admin/admin-ajax.php',

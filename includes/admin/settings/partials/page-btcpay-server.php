@@ -26,7 +26,7 @@ $store_id = get_option('btcpw_btcpay_store_id');
     <div style="margin-top: 25px;">
 
         <form method="POST" action="options.php">
-            <?php settings_fields('btcpw_general_settings'); ?>
+            <?php settings_fields('btcpw_btcpay_server_settings'); ?>
             <div>
                 <h2>Store</h2>
                 <div class="row">

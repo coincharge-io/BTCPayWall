@@ -23,16 +23,16 @@ class BTCPayWall_Payment
     protected $db;
 
 
-    public function __construct($payment_id = false)
+    public function __construct($invoice_id = false)
     {
 
         $this->db = new BTCPayWall_DB_Payments;
 
-        if ((is_numeric($payment_id) && (int) $payment_id !== absint($payment_id))) {
+        if ((is_numeric($invoice_id) && (int) $invoice_id !== absint($invoice_id))) {
             return false;
         }
 
-        $payment = $this->db->get_payment_by('id', $payment_id);
+        $payment = $this->db->get_payment_by('invoice_id', $invoice_id);
 
         if (empty($payment) || !is_object($payment)) {
             return false;

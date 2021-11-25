@@ -3,10 +3,14 @@ if (!defined('ABSPATH')) exit;
 
 function register_settings()
 {
+    register_setting('btcpw_general_payment_gateway_options', 'btcpw_selected_payment_gateway', array('type' => 'string', 'sanitize_callback' => 'sanitize_text'));
 
-    register_setting('btcpw_general_settings', 'btcpw_btcpay_server_url', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_server_url'));
-    register_setting('btcpw_general_settings', 'btcpw_btcpay_auth_key_view', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_auth_key'));
-    register_setting('btcpw_general_settings', 'btcpw_btcpay_auth_key_create', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_auth_key'));
+    register_setting('btcpw_btcpay_server_settings', 'btcpw_btcpay_server_url', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_server_url'));
+    register_setting('btcpw_btcpay_server_settings', 'btcpw_btcpay_auth_key_view', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_auth_key'));
+    register_setting('btcpw_btcpay_server_settings', 'btcpw_btcpay_auth_key_create', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_auth_key'));
+
+    register_setting('btcpw_opennode_settings', 'btcpw_opennode_url', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_server_url'));
+    register_setting('btcpw_opennode_settings', 'btcpw_opennode_auth_key', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_auth_key'));
 
     register_setting('btcpw_general_options', 'btcpw_default_currency', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'sanitize_text'));
     register_setting('btcpw_general_options', 'btcpw_default_btc_format', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'sanitize_text'));
