@@ -44,7 +44,7 @@ class BTCPayWall_DB_Tippings extends BTCPayWall_DB
             'amount' => '',
             'status' => 'New',
             'gateway' => '',
-            'payment_method' => '',
+            'payment_method' => 'BTC-LightningNetwork',
             'date_created'    => date('Y-m-d H:i:s'),
         );
     }
@@ -87,7 +87,8 @@ class BTCPayWall_DB_Tippings extends BTCPayWall_DB
             return false;
         }
 
-        $tipping = $this->get_tipping_by('id', $data['id']);
+        $tipping = $this->get_tipping_by('invoice_id', $data['invoice_id']);
+
         if ($tipping) {
 
             $this->update($tipping->id, $data);

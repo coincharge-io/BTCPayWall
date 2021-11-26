@@ -75,7 +75,10 @@ class BTCPayWall_Payment
         $data = $this->sanitize_columns($data);
 
         $created = false;
+
+
         $create_or_update = $this->db->add($data);
+
         if ($create_or_update) {
 
 

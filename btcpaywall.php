@@ -137,7 +137,7 @@ if (!class_exists('BTCPayWall')) :
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/scripts.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/post-types.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/shortcodes.php';
-
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/api/actions.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-customer.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-tipper.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-form.php';

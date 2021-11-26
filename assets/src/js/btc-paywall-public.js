@@ -95,22 +95,7 @@
             action: 'btcpw_paid_invoice',
             invoice_id: invoice_id,
             order_id: order_id,
-            amount: amount,
-            full_name: $(
-              '#btcpw_revenue_post_customer_name, #btcpw_revenue_view_customer_name, #btcpw_revenue_file_customer_name'
-            ).val(),
-            email: $(
-              '#btcpw_revenue_post_customer_email, #btcpw_revenue_view_customer_email, #btcpw_revenue_file_customer_email'
-            ).val(),
-            address: $(
-              '#btcpw_revenue_post_customer_address, #btcpw_revenue_view_customer_address, #btcpw_revenue_file_customer_address'
-            ).val(),
-            phone: $(
-              '#btcpw_revenue_post_customer_phone, #btcpw_revenue_view_customer_phone, #btcpw_revenue_file_customer_phone'
-            ).val(),
-            message: $(
-              '#btcpw_revenue_post_customer_message, #btcpw_revenue_view_customer_message, #btcpw_revenue_file_customer_message'
-            ).val()
+            amount: amount
           },
           success: function (response) {
             if (response.success) {

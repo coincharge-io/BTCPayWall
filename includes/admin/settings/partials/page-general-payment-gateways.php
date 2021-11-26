@@ -6,8 +6,8 @@ $supported_gateways = array(
     'BTCPayServer',
     'OpenNode'
 );
-var_dump(BTCPAYWALL_PLUGIN_URL . 'btcpaywall/v1/webhook');
-//var_dump(plugin_dir_path(__FILE__));
+
+
 ?>
 <div id="btcpw_general_payment_gateway_options">
     <div>

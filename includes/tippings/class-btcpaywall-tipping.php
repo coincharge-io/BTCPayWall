@@ -71,7 +71,9 @@ class BTCPayWall_Tipping
         }
         $data = $this->sanitize_columns($data);
 
+
         $created = false;
+
         $create_or_update = $this->db->add($data);
 
 
@@ -169,6 +171,7 @@ class BTCPayWall_Tipping
                     break;
             }
         }
+
         return $data;
     }
 }

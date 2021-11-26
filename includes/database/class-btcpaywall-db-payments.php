@@ -90,7 +90,8 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
             return false;
         }
 
-        $payment = $this->get_payment_by('id', $data['id']);
+        $payment = $this->get_payment_by('invoice_id', $data['invoice_id']);
+        
         if ($payment) {
 
             $this->update($payment->id, $data);
@@ -144,7 +145,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
         $charset_collate = $wpdb->get_charset_collate();
 
         $sql = "CREATE TABLE {$this->table_name}(
-			  id BIGINT(20) NOT NULL AUTO_INCREMENT,
+			  id bigint(20) NOT NULL AUTO_INCREMENT,
               invoice_id TINYTEXT,
 			  customer_id BIGINT(20) NOT NULL,
               page_title TINYTEXT,

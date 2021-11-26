@@ -344,6 +344,8 @@ function ajax_tipping()
         'date_created'  => date('Y-m-d H:i:s', $body['createdTime'])
     ]);
 
+
+
     /* var_dump($body);
     wp_send_json_success([
         'invoice_id' => $body['id'],
@@ -452,9 +454,9 @@ function ajax_paid_invoice()
             setcookie('btcpw_link_expiration_' . $post_id, get_option('btcpw_link_expiration', 24), strtotime('+' . get_option('btcpw_link_expiration', 24) . 'hours', current_time('timestamp')), $cookie_path);
             $download = new BTCPayWall_Digital_Download($post_id);
             $download->increase_sales();
-            if (is_email($body['checkout']['customer_data']['email']) && !empty($body['checkout']['customer_data']['email'])) {
-                $link = get_download_url($payment->id, $download->get_file_url(), $download->ID, $body['checkout']['customer_data']['email']);
-                wp_mail($body['checkout']['customer_data']['email'], 'BTCPayWall Digital Download Link', $link);
+            if (is_email($body['metadata']['customer_data']['email']) && !empty($body['metadata']['customer_data']['email'])) {
+                $link = get_download_url($payment->id, $download->get_file_url(), $download->ID, $body['metadata']['customer_data']['email']);
+                wp_mail($body['metadata']['customer_data']['email'], 'BTCPayWall Digital Download Link', $link);
             }
         }
         update_post_meta($body['metadata']['orderId'], 'btcpw_payment_id', $payment->id);
@@ -503,11 +505,10 @@ function ajax_paid_tipping()
     if (empty($body) || !empty($body['error'])) {
         return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
     }
-    $tipping = new BTCPayWall_Tipping(sanitize_text_field($_POST['invoice_id']));
+    $tipping = new BTCPayWall_Tipping($invoice_id);
     $payment_method = get_payment_method($body['id']);
 
     $tipping->update(array('status' => $body['status'], 'payment_method' => $payment_method));
-
 
     wp_send_json_success();
 }
@@ -620,7 +621,7 @@ function generate_opennode_invoice_id($post_id, $order_id, $customer_data)
     if (empty($body) || !empty($body['error'])) {
         return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
     }
-    $revenue_type = $body['metadata']['type'];
+    $revenue_type = $body['data']['metadata']['type'];
 
 
     //$payment_method = get_payment_method($body['id']);
@@ -631,16 +632,30 @@ function generate_opennode_invoice_id($post_id, $order_id, $customer_data)
     $payment = new BTCPayWall_Payment();
 
     $payment->create([
+        'invoice_id' => $body['data']['id'],
+        'customer_id' => $customer->id,
+        'amount' => floatval($body['data']['amount']),
+        'page_title' => $body['data']['metadata']['blog'],
+        'revenue_type' => $revenue_type,
+        'currency' => $body['data']['currency'],
+        'status' => $body['data']['status'],
+        'payment_method' => '',
+        'gateway' => get_option('btcpw_selected_payment_gateway', 'BTCPayServer'),
+        'date_created'  => date('Y-m-d H:i:s', $body['data']['created_at'])
+    ]);
+    /*  var_dump([
         'invoice_id' => $body['id'],
         'customer_id' => $customer->id,
         'amount' => floatval($body['amount']),
         'page_title' => $body['metadata']['blog'],
         'revenue_type' => $revenue_type,
         'currency' => $body['currency'],
+        'gateway' => get_option('btcpw_selected_payment_gateway', 'BTCPayServer'),
         'status' => $body['status'],
         'payment_method' => '',
-        'date_created'  => date('Y-m-d H:i:s', $body['createdTime'])
-    ]);
+        'date_created'  => date('Y-m-d H:i:s', $body['created_at'])
+
+    ]); */
     update_post_meta($order_id, 'btcpw_invoice_id', $body['id']);
 
     return array(
