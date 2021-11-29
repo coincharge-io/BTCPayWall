@@ -1,4 +1,6 @@
 <?php
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 $default_tab = null;
 $tab = isset($_GET['tab']) ? $_GET['tab'] : $default_tab;
 

@@ -1,5 +1,6 @@
 <?php
-
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 $id = $_GET['id'] ?? null;
 $dimensions = ['600x280'];
 

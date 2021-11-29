@@ -1,6 +1,7 @@
 <?php
 
-
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 {
 

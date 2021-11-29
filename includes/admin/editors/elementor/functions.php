@@ -1,5 +1,6 @@
 <?php
-
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 function load_elementor_widgets()
 {
     require_once __DIR__ . '/class-start-content-widget.php';

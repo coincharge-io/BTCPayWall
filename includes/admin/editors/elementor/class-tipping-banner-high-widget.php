@@ -1,5 +1,6 @@
 <?php
-
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 
 class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
 {

@@ -1,4 +1,6 @@
 <?php
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 $default_section = null;
 $section = isset($_GET['section']) ? $_GET['section'] : $default_section;
 ?>

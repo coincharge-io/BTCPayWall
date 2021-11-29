@@ -1,4 +1,6 @@
 <?php
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
 $id = $_GET['id'] ?? null;
 

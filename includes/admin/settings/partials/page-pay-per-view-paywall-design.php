@@ -1,4 +1,6 @@
 <?php
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 $help = filter_var(get_option('btcpw_pay_per_view_show_help_link'), FILTER_VALIDATE_BOOLEAN);
 $help_link = get_option('btcpw_pay_per_view_help_link');
 $help_text = get_option('btcpw_pay_per_view_help_link_text');

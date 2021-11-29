@@ -1,4 +1,6 @@
 <?php
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 $used_currency = get_option('btcpw_default_currency');
 $supported_currencies = BTCPayWall::CURRENCIES;
 $default_price = get_option('btcpw_default_price');

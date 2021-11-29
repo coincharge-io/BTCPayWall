@@ -1,4 +1,7 @@
 <?php
+
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 $id = $_GET['id'] ?? null;
 
 $form = new BTCPayWall_Tipping_Form($id);

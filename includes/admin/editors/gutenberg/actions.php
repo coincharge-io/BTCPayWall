@@ -1,4 +1,6 @@
 <?php
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 function load_gutenberg()
 {
     $asset_file = BTCPAYWALL_PLUGIN_DIR . 'assets/dist/js/index.asset.php';

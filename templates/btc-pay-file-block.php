@@ -1,4 +1,8 @@
 <?php
+
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
+
 $help = filter_var(get_option('btcpw_pay_per_file_show_help_link', true), FILTER_VALIDATE_BOOLEAN);
 $help_link = get_option('btcpw_pay_per_file_help_link', 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/');
 $help_text = get_option('btcpw_pay_per_file_help_link_text', 'Help');

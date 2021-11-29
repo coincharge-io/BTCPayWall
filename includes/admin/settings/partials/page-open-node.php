@@ -1,4 +1,6 @@
 <?php
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 $btcpw_opennode_url = get_option('btcpw_opennode_url');
 $btcpw_opennode_auth_key = get_option('btcpw_opennode_auth_key');
 ?>

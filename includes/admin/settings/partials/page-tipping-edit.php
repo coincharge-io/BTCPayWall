@@ -1,5 +1,7 @@
 <?php
-global $wpdb;
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
+//global $wpdb;
 $id = $_GET['id'];
 /* $table_name = "{$wpdb->prefix}btcpaywall_forms";
 $result = $wpdb->get_results(

@@ -51,6 +51,7 @@ function btcpw_success_url($request)
     $invoice_id = get_post_meta($body['data']['metadata']['orderId'], 'btcpw_invoice_id', true);
     $secret = get_post_meta($body['data']['metadata']['orderId'], 'btcpw_secret', true);
     $content_title = get_post_meta($post_id, 'btcpw_invoice_content', true)['title'];
+
     if ($body['data']['status'] === 'paid') {
         $cookie_path = parse_url(get_permalink($post_id), PHP_URL_PATH);
         /* $revenue_type = $body['data']['metadata']['type'];
@@ -98,7 +99,7 @@ function btcpw_success_url($request)
         //$tipping = new BTCPayWall_Tipping(sanitize_text_field($_POST['invoice_id']));
         //$payment_method = get_payment_method($body['id']);
 
-        $payment->update(array('status' => $body['status']));
+        $payment->update(array('status' => $body['data']['status'], 'payment_method' => $request['data']['payment_method']));
 
         if ($payment->revenue_type === 'Pay-per-file') {
 
@@ -116,7 +117,7 @@ function btcpw_success_url($request)
             $tipping = new BTCPayWall_Tipping($invoice_id);
             //$payment_method = get_payment_method($body['id']);
 
-            $tipping->update(array('status' => $body['data']['status']));
+            $tipping->update(array('status' => $body['data']['status'], 'payment_method' => $request['data']['payment_method']));
         }
         update_post_meta($body['data']['metadata']['orderId'], 'btcpw_payment_id', $payment->id);
 
@@ -128,10 +129,10 @@ function btcpw_success_url($request)
 
         //wp_send_json_success(['notify' => $message]);
     }
-    add_action('rest_api_init', function () {
-        register_rest_route('btcpaywall/v1', '/webhook', array(
-            'methods'  => 'POST',
-            'callback' => 'btcpw_success_url',
-        ));
-    });
 }
+add_action('rest_api_init', function () {
+    register_rest_route('btcpaywall/v1', '/webhook', array(
+        'methods'  => 'POST',
+        'callback' => 'btcpw_success_url',
+    ));
+});

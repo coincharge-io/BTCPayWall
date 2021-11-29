@@ -1,6 +1,7 @@
 <?php
 
-
+// Exit if accessed directly.
+if (!defined('ABSPATH')) exit;
 class Tipping_Banner_High extends WP_Widget
 {
     public function __construct()
