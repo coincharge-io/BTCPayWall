@@ -46,7 +46,7 @@ const controls = {
 const resolvers = {
   * getShortcodeList () {
     const shortcodeList = yield actions.getShortcodeList(
-      '/btcpaywall/shortcode-list/v1'
+      '/btcpaywall/v1/shortcode-list'
     )
     return actions.setShortcodeList(shortcodeList)
   }

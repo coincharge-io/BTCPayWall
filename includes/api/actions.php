@@ -130,9 +130,23 @@ function btcpw_success_url($request)
         //wp_send_json_success(['notify' => $message]);
     }
 }
-add_action('rest_api_init', function () {
+/* add_action('rest_api_init', function () {
     register_rest_route('btcpaywall/v1', '/webhook', array(
         'methods'  => 'POST',
         'callback' => 'btcpw_success_url',
     ));
+}); */
+add_action('rest_api_init', function () {
+    register_rest_route(
+        'btcpaywall/v1',
+        '/webhook',
+        array(
+            'methods'             => 'POST',
+            'callback'            => 'btcpw_success_url',
+            'args' => array(),
+    'permission_callback' => function () {
+      return true;
+    }
+        )
+    );
 });
