@@ -4,8 +4,8 @@ if (!defined('ABSPATH')) exit;
 function register_shortcode_list()
 {
     register_rest_route(
-        'btcpaywall',
-        '/shortcode-list/v1',
+        'btcpaywall/v1',
+        '/shortcode-list',
         array(
             'methods'             => 'GET',
             'callback'            => array('allCreatedForms'),
@@ -14,11 +14,28 @@ function register_shortcode_list()
             },
         )
     );
+    register_rest_route(
+        'btcpaywall/v1',
+        'webhook',
+        array(
+            'methods'             => WP_REST_Server::CREATABLE,
+            'callback'            => 'btcpw_success_url',
+            'args' => array(),
+            'permission_callback' => function () {
+                return true;
+            }
+        )
+    );
 }
 add_action('rest_api_init',  'register_shortcode_list');
-function btcpw_success_url($request)
+function btcpw_success_url(WP_REST_Request  $request)
 {
     $id = $request->get_param('id');
+    if ($id) {
+        return new WP_Error(
+            __("Invalid invoice.", 'btcpaywall')
+        );
+    }
     $url = "https://api.opennode.com/v1/charge/{$id}";
 
 
@@ -130,23 +147,3 @@ function btcpw_success_url($request)
         //wp_send_json_success(['notify' => $message]);
     }
 }
-/* add_action('rest_api_init', function () {
-    register_rest_route('btcpaywall/v1', '/webhook', array(
-        'methods'  => 'POST',
-        'callback' => 'btcpw_success_url',
-    ));
-}); */
-add_action('rest_api_init', function () {
-    register_rest_route(
-        'btcpaywall/v1',
-        '/webhook',
-        array(
-            'methods'             => 'POST',
-            'callback'            => 'btcpw_success_url',
-            'args' => array(),
-    'permission_callback' => function () {
-      return true;
-    }
-        )
-    );
-});

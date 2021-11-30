@@ -1,23 +1,25 @@
 <?php
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
+
 function load_gutenberg()
 {
-    $asset_file = BTCPAYWALL_PLUGIN_DIR . 'assets/dist/js/index.asset.php';
+    $asset_file = include(BTCPAYWALL_PLUGIN_DIR . 'assets/dist/js/index.asset.php');
+
+
 
     wp_register_script(
         'gutenberg-block-script',
-        BTCPAYWALL_PLUGIN_DIR . 'assets/dist/js/index.js',
+        BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/index.js',
         $asset_file['dependencies'],
         BTCPAYWALL_VERSION
     );
 
-
     register_block_type(
-        'btc-paywall/gutenberg-start-block',
+        'btcpaywall/gutenberg-start-block',
         [
             'editor_script' => 'gutenberg-block-script',
-            'render_callback' => (array('render_gutenberg')),
+            'render_callback' => 'render_gutenberg',
             'attributes' => array(
                 'className' => array(
                     'default' => '',
@@ -47,30 +49,71 @@ function load_gutenberg()
                     'type' => 'string',
                     'default' => 'minute'
                 ),
+                'display_name' => array(
+                    'type' => 'boolean',
+                    'default' => true
+                ),
+                'mandatory_name' => array(
+                    'type' => 'boolean',
+                    'default' => false
+                ),
+                'display_email' => array(
+                    'type' => 'boolean',
+                    'default' => true
+                ),
+                'mandatory_email' => array(
+                    'type' => 'boolean',
+                    'default' => false
+                ),
+                'display_phone' => array(
+                    'type' => 'boolean',
+                    'default' => true
+                ),
+                'mandatory_phone' => array(
+                    'type' => 'boolean',
+                    'default' => false
+                ),
+                'display_address' => array(
+                    'type' => 'boolean',
+                    'default' => true
+                ),
+                'mandatory_address' => array(
+                    'type' => 'boolean',
+                    'default' => false
+                ),
+                'display_message' => array(
+                    'type' => 'boolean',
+                    'default' => true
+                ),
+                'mandatory_message' => array(
+                    'type' => 'boolean',
+                    'default' => false
+                ),
             )
         ]
     );
 
+
     register_block_type(
-        'btc-paywall/gutenberg-end-block',
+        'btcpaywall/gutenberg-end-block',
         [
             'editor_script' => 'gutenberg-block-script',
-            'render_callback' => (array('render_end_gutenberg')),
+            'render_callback' => 'render_end_gutenberg',
         ]
     );
 
 
     register_block_type(
-        'btc-paywall/gutenberg-start-video-block',
+        'btcpaywall/gutenberg-start-video-block',
         [
             'editor_script' => 'gutenberg-block-script',
-            'render_callback' => (array('render_start_video_gutenberg')),
+            'render_callback' => 'render_start_video_gutenberg',
             'attributes' => array(
                 'className' => array(
                     'default' => '',
                     'type' => 'string'
                 ),
-                'pay_block' => array(
+                'pay_view_block' => array(
                     'type' => 'boolean',
                     'default' => true
                 ),
@@ -106,29 +149,69 @@ function load_gutenberg()
                     'type' => 'string',
                     'default' => 'minute'
                 ),
+                'display_name' => array(
+                    'type' => 'boolean',
+                    'default' => true
+                ),
+                'mandatory_name' => array(
+                    'type' => 'boolean',
+                    'default' => false
+                ),
+                'display_email' => array(
+                    'type' => 'boolean',
+                    'default' => true
+                ),
+                'mandatory_email' => array(
+                    'type' => 'boolean',
+                    'default' => false
+                ),
+                'display_phone' => array(
+                    'type' => 'boolean',
+                    'default' => true
+                ),
+                'mandatory_phone' => array(
+                    'type' => 'boolean',
+                    'default' => false
+                ),
+                'display_address' => array(
+                    'type' => 'boolean',
+                    'default' => true
+                ),
+                'mandatory_address' => array(
+                    'type' => 'boolean',
+                    'default' => false
+                ),
+                'display_message' => array(
+                    'type' => 'boolean',
+                    'default' => true
+                ),
+                'mandatory_message' => array(
+                    'type' => 'boolean',
+                    'default' => false
+                ),
             )
         ]
     );
 
     register_block_type(
-        'btc-paywall/gutenberg-end-video-block',
+        'btcpaywall/gutenberg-end-video-block',
         [
             'editor_script' => 'gutenberg-block-script',
-            'render_callback' => (array('render_end_gutenberg')),
+            'render_callback' => 'render_end_gutenberg',
         ]
     );
     register_block_type(
-        'btc-paywall/gutenberg-shortcode-list',
+        'btcpaywall/gutenberg-shortcode-list',
         [
             'editor_script' => 'gutenberg-block-script',
-            'render_callback' => (array('render_shortcodes_gutenberg')),
+            'render_callback' => 'render_shortcodes_gutenberg',
         ]
     );
     register_block_type(
-        'btc-paywall/gutenberg-file-block',
+        'btcpaywall/gutenberg-file-block',
         [
             'editor_script' => 'gutenberg-block-script',
-            'render_callback' => (array('render_file_gutenberg')),
+            'render_callback' => 'render_file_gutenberg',
             'attributes' => array(
                 'className' => array(
                     'default' => '',
@@ -179,10 +262,10 @@ function load_gutenberg()
     );
 
     register_block_type(
-        'btc-paywall/gutenberg-tipping-box',
+        'btcpaywall/gutenberg-tipping-box',
         [
             'editor_script' => 'gutenberg-block-script',
-            'render_callback' => (array('render_tipping_box')),
+            'render_callback' => 'render_tipping_box',
             'attributes' => array(
                 'className' => array(
                     'default' => '',
@@ -261,10 +344,10 @@ function load_gutenberg()
     );
 
     register_block_type(
-        'btc-paywall/gutenberg-tipping-banner-wide',
+        'btcpaywall/gutenberg-tipping-banner-wide',
         [
             'editor_script' => 'gutenberg-block-script',
-            'render_callback' => (array('render_tipping_banner_wide')),
+            'render_callback' => 'render_tipping_banner_wide',
             'attributes' => array(
                 'className' => array(
                     'default' => '',
@@ -439,10 +522,10 @@ function load_gutenberg()
     );
 
     register_block_type(
-        'btc-paywall/gutenberg-tipping-banner-high',
+        'btcpaywall/gutenberg-tipping-banner-high',
         [
             'editor_script' => 'gutenberg-block-script',
-            'render_callback' => (array('render_tipping_banner_high')),
+            'render_callback' => 'render_tipping_banner_high',
             'attributes' => array(
                 'className' => array(
                     'type' => 'string',
@@ -617,10 +700,10 @@ function load_gutenberg()
     );
 
     register_block_type(
-        'btc-paywall/gutenberg-tipping-page',
+        'btcpaywall/gutenberg-tipping-page',
         [
             'editor_script' => 'gutenberg-block-script',
-            'render_callback' => (array('render_tipping_pages')),
+            'render_callback' => 'render_tipping_pages',
             'attributes' => array(
                 'className' => array(
                     'default' => '',

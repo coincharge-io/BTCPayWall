@@ -22,7 +22,6 @@ $default_info = get_option('btcpw_pay_per_post_info', 'For [price] [currency] yo
 $collect = getCollect($atts);
 
 $collect_data = display_is_enabled($collect);
-
 /**<div class="btcpw_pay__loading">
             <p class="loading"></p>
         </div> */

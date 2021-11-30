@@ -17,7 +17,7 @@ import {
 import ServerSideRender from '@wordpress/server-side-render'
 import { useState } from '@wordpress/element'
 
-registerBlockType('btc-paywall/gutenberg-file-block', {
+registerBlockType('btcpaywall/gutenberg-file-block', {
   title: 'BTCPW Pay-per-File',
   icon: (
     <svg
@@ -341,7 +341,7 @@ c655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0
     return [
       <div>
         <ServerSideRender
-          block='btc-paywall/gutenberg-file-block'
+          block='btcpaywall/gutenberg-file-block'
           attributes={
             (pay_file_block,
             btc_format,

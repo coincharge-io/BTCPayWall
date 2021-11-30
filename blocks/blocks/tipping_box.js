@@ -17,7 +17,7 @@ import {
   Panel
 } from '@wordpress/components'
 
-registerBlockType('btc-paywall/gutenberg-tipping-box', {
+registerBlockType('btcpaywall/gutenberg-tipping-box', {
   title: 'BTCPW Tipping Box',
   icon: 'dashicons-screenoptions',
   category: 'widgets',
@@ -280,7 +280,7 @@ registerBlockType('btc-paywall/gutenberg-tipping-box', {
     return [
       <div>
         <ServerSideRender
-          block='btc-paywall/gutenberg-tipping-box'
+          block='btcpaywall/gutenberg-tipping-box'
           attributes={
             (dimension,
             background_color,

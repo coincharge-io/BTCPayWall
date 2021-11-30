@@ -6,14 +6,16 @@ import {
   ToggleControl,
   PanelBody,
   PanelRow,
+  Panel,
   TextareaControl,
   Button,
   __experimentalNumberControl as NumberControl,
-  SelectControl
+  SelectControl,
+  CheckboxControl
 } from '@wordpress/components'
 import ServerSideRender from '@wordpress/server-side-render'
 
-registerBlockType('btc-paywall/gutenberg-start-video-block', {
+registerBlockType('btcpaywall/gutenberg-start-video-block', {
   title: 'BTCPW Pay-per-View Start',
   icon: (
     <svg
@@ -186,6 +188,46 @@ c655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0
     },
     duration: {
       type: 'number'
+    },
+    display_name: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_name: {
+      type: 'boolean',
+      default: false
+    },
+    display_email: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_email: {
+      type: 'boolean',
+      default: false
+    },
+    display_address: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_address: {
+      type: 'boolean',
+      default: false
+    },
+    display_phone: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_phone: {
+      type: 'boolean',
+      default: false
+    },
+    display_message: {
+      type: 'boolean',
+      default: true
+    },
+    mandatory_message: {
+      type: 'boolean',
+      default: false
     }
   },
   example: {},
@@ -201,6 +243,16 @@ c655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0
         duration_type,
         price,
         duration,
+        display_name,
+        display_email,
+        display_message,
+        display_phone,
+        display_address,
+        mandatory_address,
+        mandatory_email,
+        mandatory_phone,
+        mandatory_message,
+        mandatory_name,
         className
       },
       setAttributes
@@ -209,125 +261,212 @@ c655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0
 
     const inspectorControls = (
       <InspectorControls>
-        <PanelBody title='BP Paywall Video' initialOpen={true}>
-          <PanelRow>
-            <ToggleControl
-              label='Enable payment block'
-              checked={pay_view_block}
-              onChange={checked => {
-                setAttributes({ pay_view_block: checked })
-              }}
-              value={pay_view_block}
-            />
-          </PanelRow>
-          <PanelRow>
-            <TextareaControl
-              label='Title'
-              help='Enter video title'
-              onChange={content => {
-                setAttributes({ title: content })
-              }}
-              value={title}
-            />
-          </PanelRow>
-          <PanelRow>
-            <TextareaControl
-              label='Description'
-              help='Enter video description'
-              onChange={desc => {
-                setAttributes({ description: desc })
-              }}
-              value={description}
-            />
-          </PanelRow>
-          <PanelRow>
-            <MediaUpload
-              onSelect={pic => {
-                setAttributes({ preview: pic.sizes.full.url })
-              }}
-              render={({ open }) => (
-                <Button onClick={open}>Video preview</Button>
-              )}
-            />
-          </PanelRow>
-          <PanelRow>
-            <SelectControl
-              label='Currency'
-              value={currency}
-              onChange={selectedItem => {
-                selectedItem === 'SATS' ? setShow(true) : setShow(false)
-                setAttributes({ currency: selectedItem })
-              }}
-              options={[
-                { value: '', label: 'Default' },
-                { value: 'SATS', label: 'SATS' },
-                { value: 'EUR', label: 'EUR' },
-                { value: 'USD', label: 'USD' }
-              ]}
-            />
-          </PanelRow>
-          {show && (
+        <Panel>
+          <PanelBody title='BP Paywall Video' initialOpen={true}>
+            <PanelRow>
+              <ToggleControl
+                label='Enable payment block'
+                checked={pay_view_block}
+                onChange={checked => {
+                  setAttributes({ pay_view_block: checked })
+                }}
+                value={pay_view_block}
+              />
+            </PanelRow>
+            <PanelRow>
+              <TextareaControl
+                label='Title'
+                help='Enter video title'
+                onChange={content => {
+                  setAttributes({ title: content })
+                }}
+                value={title}
+              />
+            </PanelRow>
+            <PanelRow>
+              <TextareaControl
+                label='Description'
+                help='Enter video description'
+                onChange={desc => {
+                  setAttributes({ description: desc })
+                }}
+                value={description}
+              />
+            </PanelRow>
+            <PanelRow>
+              <MediaUpload
+                onSelect={pic => {
+                  setAttributes({ preview: pic.sizes.full.url })
+                }}
+                render={({ open }) => (
+                  <Button onClick={open}>Video preview</Button>
+                )}
+              />
+            </PanelRow>
             <PanelRow>
               <SelectControl
-                label='BTC format'
-                value={btc_format}
-                onChange={selectedItem =>
-                  setAttributes({ btc_format: selectedItem })
-                }
+                label='Currency'
+                value={currency}
+                onChange={selectedItem => {
+                  selectedItem === 'SATS' ? setShow(true) : setShow(false)
+                  setAttributes({ currency: selectedItem })
+                }}
                 options={[
                   { value: '', label: 'Default' },
                   { value: 'SATS', label: 'SATS' },
-                  { value: 'BTC', label: 'BTC' }
+                  { value: 'EUR', label: 'EUR' },
+                  { value: 'USD', label: 'USD' }
                 ]}
               />
             </PanelRow>
-          )}
-          <PanelRow>
-            <NumberControl
-              label='Price'
-              value={price}
-              onChange={nextValue =>
-                setAttributes({ price: Number(nextValue) })
-              }
-            />
-          </PanelRow>
-          <PanelRow>
-            <SelectControl
-              label='Duration type'
-              value={duration_type}
-              onChange={selectedItem =>
-                setAttributes({ duration_type: selectedItem })
-              }
-              options={[
-                { value: '', label: 'Default' },
-                { value: 'minute', label: 'Minute' },
-                { value: 'hour', label: 'Hour' },
-                { value: 'week', label: 'Week' },
-                { value: 'month', label: 'Month' },
-                { value: 'year', label: 'Year' },
-                { value: 'onetime', label: 'Onetime' },
-                { value: 'unlimited', label: 'Unlimited' }
-              ]}
-            />
-          </PanelRow>
-          <PanelRow>
-            <NumberControl
-              label='Duration'
-              value={duration}
-              onChange={nextValue =>
-                setAttributes({ duration: Number(nextValue) })
-              }
-            />
-          </PanelRow>
-        </PanelBody>
+            {show && (
+              <PanelRow>
+                <SelectControl
+                  label='BTC format'
+                  value={btc_format}
+                  onChange={selectedItem =>
+                    setAttributes({ btc_format: selectedItem })
+                  }
+                  options={[
+                    { value: '', label: 'Default' },
+                    { value: 'SATS', label: 'SATS' },
+                    { value: 'BTC', label: 'BTC' }
+                  ]}
+                />
+              </PanelRow>
+            )}
+            <PanelRow>
+              <NumberControl
+                label='Price'
+                value={price}
+                onChange={nextValue =>
+                  setAttributes({ price: Number(nextValue) })
+                }
+              />
+            </PanelRow>
+            <PanelRow>
+              <SelectControl
+                label='Duration type'
+                value={duration_type}
+                onChange={selectedItem =>
+                  setAttributes({ duration_type: selectedItem })
+                }
+                options={[
+                  { value: '', label: 'Default' },
+                  { value: 'minute', label: 'Minute' },
+                  { value: 'hour', label: 'Hour' },
+                  { value: 'week', label: 'Week' },
+                  { value: 'month', label: 'Month' },
+                  { value: 'year', label: 'Year' },
+                  { value: 'onetime', label: 'Onetime' },
+                  { value: 'unlimited', label: 'Unlimited' }
+                ]}
+              />
+            </PanelRow>
+            <PanelRow>
+              <NumberControl
+                label='Duration'
+                value={duration}
+                onChange={nextValue =>
+                  setAttributes({ duration: Number(nextValue) })
+                }
+              />
+            </PanelRow>
+          </PanelBody>
+          <PanelBody title='Collect further information'>
+            <PanelRow>
+              <CheckboxControl
+                label='Full name'
+                help='Do you want to collect full name?'
+                checked={display_name}
+                onChange={value => {
+                  setAttributes({ display_name: value })
+                }}
+              />
+              <CheckboxControl
+                help='Do you want make this field mandatory?'
+                checked={mandatory_name}
+                onChange={value => {
+                  setAttributes({ mandatory_name: value })
+                }}
+              />
+            </PanelRow>
+            <PanelRow>
+              <CheckboxControl
+                label='Email'
+                help='Do you want to collect email?'
+                checked={display_email}
+                onChange={value => {
+                  setAttributes({ display_email: value })
+                }}
+              />
+              <CheckboxControl
+                help='Do you want make this field mandatory?'
+                checked={mandatory_email}
+                onChange={value => {
+                  setAttributes({ mandatory_email: value })
+                }}
+              />
+            </PanelRow>
+            <PanelRow>
+              <CheckboxControl
+                label='Address'
+                help='Do you want to collect address?'
+                checked={display_address}
+                onChange={value => {
+                  setAttributes({ display_address: value })
+                }}
+              />
+              <CheckboxControl
+                help='Do you want make this field mandatory?'
+                checked={mandatory_address}
+                onChange={value => {
+                  setAttributes({ mandatory_address: value })
+                }}
+              />
+            </PanelRow>
+            <PanelRow>
+              <CheckboxControl
+                label='Phone'
+                checked={display_phone}
+                help='Do you want to collect phone?'
+                onChange={value => setAttributes({ display_phone: value })}
+              />
+              <CheckboxControl
+                help='Do you want make this field mandatory?'
+                checked={mandatory_phone}
+                onChange={value => {
+                  setAttributes({ mandatory_phone: value })
+                }}
+              />
+            </PanelRow>
+            <PanelRow>
+              <CheckboxControl
+                label='Message'
+                help='Do you want to collect message?'
+                checked={display_message}
+                onChange={value => {
+                  setAttributes({ display_message: value })
+                }}
+              />
+              <CheckboxControl
+                help='Do you want make this field mandatory?'
+                checked={mandatory_message}
+                onChange={value => {
+                  setAttributes({ mandatory_message: value })
+                }}
+              />
+            </PanelRow>
+          </PanelBody>
+        </Panel>
       </InspectorControls>
     )
     return [
       <div>
         <ServerSideRender
-          block='btc-paywall/gutenberg-start-video-block'
-          attributes={
-            (pay_view_block,
+          block='btcpaywall/gutenberg-start-video-block'
+          attributes={{
+            pay_view_block,
             btc_format,
             title,
             description,
@@ -336,8 +475,18 @@ c655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0
             duration_type,
             price,
             duration,
-            className)
-          }
+            display_name,
+            display_email,
+            display_message,
+            display_phone,
+            display_address,
+            mandatory_address,
+            mandatory_email,
+            mandatory_phone,
+            mandatory_message,
+            mandatory_name,
+            className
+          }}
         />
         {inspectorControls}
       </div>

@@ -11,7 +11,7 @@ import {
   SelectControl,
   Panel
 } from '@wordpress/components'
-registerBlockType('btc-paywall/gutenberg-shortcode-list', {
+registerBlockType('btcpaywall/gutenberg-shortcode-list', {
   title: 'BTCPW Shortcode List',
   icon: 'dashicons-screenoptions',
   category: 'widgets',

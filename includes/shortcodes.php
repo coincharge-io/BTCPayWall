@@ -1073,12 +1073,14 @@ function render_shortcode_btcpw_start_video($atts)
         'mandatory_message' =>  false,
     ), $atts);
 
+
     update_meta_settings($atts);
 
     $invoice_content = array('title' => 'Pay-per-view: ' . sanitize_text_field($atts['title']), 'project' => 'video');
     update_post_meta(get_the_ID(), 'btcpw_invoice_content', $invoice_content);
 
     $payblock = filter_var($atts['pay_view_block'], FILTER_VALIDATE_BOOLEAN);
+
 
 
     $s_data = '<!-- btcpw:start_content -->';

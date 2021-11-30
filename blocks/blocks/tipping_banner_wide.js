@@ -19,7 +19,7 @@ import {
   __experimentalNumberControl as NumberControl
 } from '@wordpress/components'
 
-registerBlockType('btc-paywall/gutenberg-tipping-banner-wide', {
+registerBlockType('btcpaywall/gutenberg-tipping-banner-wide', {
   title: 'BTCPW Tipping Banner Wide',
   icon: 'dashicons-screenoptions',
   category: 'widgets',
@@ -606,7 +606,7 @@ registerBlockType('btc-paywall/gutenberg-tipping-banner-wide', {
     return [
       <div>
         <ServerSideRender
-          block='btc-paywall/gutenberg-tipping-banner-wide'
+          block='btcpaywall/gutenberg-tipping-banner-wide'
           attributes={
             (dimension,
             background_color,

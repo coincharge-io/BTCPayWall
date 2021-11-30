@@ -1,6 +1,7 @@
 <?php
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
+
 function render_gutenberg($atts)
 {
 	$atts = shortcode_atts(array(
@@ -10,9 +11,19 @@ function render_gutenberg($atts)
 		'price' => '',
 		'duration_type' => '',
 		'duration' => '',
+		'display_name' =>  true,
+		'mandatory_name' =>  false,
+		'display_email' =>  true,
+		'mandatory_email' =>  false,
+		'display_phone' =>  true,
+		'mandatory_phone' =>  false,
+		'display_address' =>  true,
+		'mandatory_address' => false,
+		'display_message' =>  true,
+		'mandatory_message' => false,
 	), $atts);
 
-	return do_shortcode("[btcpw_start_content pay_block='{$atts['pay_block']}' btc_format='{$atts['btc_format']}' price='{$atts['price']}' duration_type='{$atts['duration_type']}' duration='{$atts['duration']}' currency='{$atts['currency']}']");
+	return do_shortcode("[btcpw_start_content pay_block='{$atts['pay_block']}' btc_format='{$atts['btc_format']}' price='{$atts['price']}' duration_type='{$atts['duration_type']}' duration='{$atts['duration']}' currency='{$atts['currency']}' display_name='{$atts['display_name']}' mandatory_name='{$atts['mandatory_name']}' display_email='{$atts['display_email']}' mandatory_email='{$atts['mandatory_email']}' display_phone='{$atts['display_phone']}' mandatory_phone='{$atts['mandatory_phone']}' display_address='{$atts['display_address']}' mandatory_address='{$atts['mandatory_address']}' display_message='{$atts['display_message']}' mandatory_message='{$atts['mandatory_message']}']");
 }
 
 function render_end_gutenberg()
@@ -57,9 +68,19 @@ function render_start_video_gutenberg($atts)
 		'price' => '',
 		'duration_type' => '',
 		'duration' => '',
+		'display_name' =>  true,
+		'mandatory_name' =>  false,
+		'display_email' =>  true,
+		'mandatory_email' =>  false,
+		'display_phone' =>  true,
+		'mandatory_phone' =>  false,
+		'display_address' =>  true,
+		'mandatory_address' => false,
+		'display_message' =>  true,
+		'mandatory_message' => false,
 	), $atts);
 
-	return do_shortcode("[btcpw_start_video pay_view_block='{$atts['pay_view_block']}' btc_format='{$atts['btc_format']}' title='{$atts['title']}' description='{$atts['description']}' preview={$atts['preview']} price='{$atts['price']}' duration_type='{$atts['duration_type']}' duration='{$atts['duration']}' currency='{$atts['currency']}']");
+	return do_shortcode("[btcpw_start_video pay_view_block='{$atts['pay_view_block']}' btc_format='{$atts['btc_format']}' title='{$atts['title']}' description='{$atts['description']}' preview={$atts['preview']} price='{$atts['price']}' duration_type='{$atts['duration_type']}' duration='{$atts['duration']}' currency='{$atts['currency']}' display_name='{$atts['display_name']}' mandatory_name='{$atts['mandatory_name']}' display_email='{$atts['display_email']}' mandatory_email='{$atts['mandatory_email']}' display_phone='{$atts['display_phone']}' mandatory_phone='{$atts['mandatory_phone']}' display_address='{$atts['display_address']}' mandatory_address='{$atts['mandatory_address']}' display_message='{$atts['display_message']}' mandatory_message='{$atts['mandatory_message']}']");
 }
 function render_tipping_box($atts)
 {

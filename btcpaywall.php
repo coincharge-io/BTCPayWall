@@ -151,9 +151,11 @@ if (!class_exists('BTCPayWall')) :
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-payments.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-tippings.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-tipping-forms.php';
-
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/gutenberg/functions.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/gutenberg/actions.php';
             if (is_admin()) {
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/settings/functions.php';
+
 
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-actions.php';
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-scripts.php';

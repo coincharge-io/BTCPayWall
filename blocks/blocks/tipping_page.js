@@ -19,7 +19,7 @@ import {
 } from '@wordpress/components'
 import ServerSideRender from '@wordpress/server-side-render'
 
-registerBlockType('btc-paywall/gutenberg-tipping-page', {
+registerBlockType('btcpaywall/gutenberg-tipping-page', {
   title: 'BTCPW Tipping Page',
   icon: 'dashicons-screenoptions',
   category: 'widgets',
@@ -664,7 +664,7 @@ registerBlockType('btc-paywall/gutenberg-tipping-page', {
     return [
       <div>
         <ServerSideRender
-          block='btc-paywall/gutenberg-tipping-page'
+          block='btcpaywall/gutenberg-tipping-page'
           attributes={
             (dimension,
             background_color,
