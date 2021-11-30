@@ -47,7 +47,7 @@ class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'content_section',
             [
-                'label' => __('Content', 'btc-paywall'),
+                'label' => __('Content', 'btcpaywall'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
