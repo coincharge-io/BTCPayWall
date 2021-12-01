@@ -120,7 +120,7 @@ function btcpw_success_url(WP_REST_Request  $request)
 
         if ($payment->revenue_type === 'Pay-per-file') {
 
-            setcookie('btcpw_payment_id_' . $post_id, $payment->id, strtotime('+' . get_option('btcpw_link_expiration', 24) . 'hours', current_time('timestamp')), $cookie_path);
+            setcookie('btcpw_payment_id_' . $post_id, $payment->invoice_id, strtotime('+' . get_option('btcpw_link_expiration', 24) . 'hours', current_time('timestamp')), $cookie_path);
 
             setcookie('btcpw_link_expiration_' . $post_id, get_option('btcpw_link_expiration', 24), strtotime('+' . get_option('btcpw_link_expiration', 24) . 'hours', current_time('timestamp')), $cookie_path);
             $download = new BTCPayWall_Digital_Download($post_id);

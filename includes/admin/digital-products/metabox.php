@@ -20,7 +20,7 @@ function add_btcpw_product_meta_boxes()
 
     add_meta_box('btcpw_product_stats', __('BTCPayWall Product Sales', 'btcpaywall'), 'render_btcpw_product_stats', 'digital_download', 'side', 'high');
 
-    add_meta_box('btcpw_product_limit', __('BTCPayWall Product Download Limit', 'btcpaywall'), 'render_btcpw_product_settings', 'digital_download', 'side', 'normal');
+    add_meta_box('btcpw_product_limit', __('BTCPayWall Product Download Limit', 'btcpaywall'), 'render_btcpw_product_settings', 'digital_download', 'side');
 
     add_meta_box('btcpw_product_customer', __('BTCPayWall Product Collect Data', 'btcpaywall'), 'render_btcpw_product_collect_info', 'digital_download');
 }

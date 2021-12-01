@@ -449,7 +449,7 @@ function ajax_paid_invoice()
 
         if ($payment->revenue_type === 'Pay-per-file') {
 
-            setcookie('btcpw_payment_id_' . $post_id, $payment->id, strtotime('+' . get_option('btcpw_link_expiration', 24) . 'hours', current_time('timestamp')), $cookie_path);
+            setcookie('btcpw_payment_id_' . $post_id, $payment->invoice_id, strtotime('+' . get_option('btcpw_link_expiration', 24) . 'hours', current_time('timestamp')), $cookie_path);
 
             setcookie('btcpw_link_expiration_' . $post_id, get_option('btcpw_link_expiration', 24), strtotime('+' . get_option('btcpw_link_expiration', 24) . 'hours', current_time('timestamp')), $cookie_path);
             $download = new BTCPayWall_Digital_Download($post_id);
@@ -459,7 +459,7 @@ function ajax_paid_invoice()
                 wp_mail($body['metadata']['customer_data']['email'], 'BTCPayWall Digital Download Link', $link);
             }
         }
-        update_post_meta($body['metadata']['orderId'], 'btcpw_payment_id', $payment->id);
+        update_post_meta($body['metadata']['orderId'], 'btcpw_payment_id', $payment->invoice_id);
 
         setcookie("btcpw_{$post_id}", $secret, get_cookie_duration($post_id), $cookie_path);
 

@@ -43,7 +43,7 @@ function get_download_url($payment_id, $file_url, $download_id, $email)
         $date = strtotime("14 Jan 2038");
     }
     $params = array(
-        'payment_id'     => (int)$payment_id,
+        'payment_id'     => rawurlencode($payment_id),
         'digital_file'          => rawurlencode($file_url),
         'download_id'   => (int)$download_id,
         'expire'        => rawurlencode($date),
@@ -57,6 +57,7 @@ function get_download_url($payment_id, $file_url, $download_id, $email)
     }
 
     $args = array();
+
     if (!empty($payment->id)) {
 
 
@@ -72,7 +73,7 @@ function get_download_url($payment_id, $file_url, $download_id, $email)
             $args['ttl'] = $params['expire'];
         }
 
-        $args['token'] = rawurlencode(wp_hash_password($secret_key . rawurldecode($args['ttl']) . rawurldecode($args['btcpw_file']) . (int)$args['payment_id'] . (int)$args['download_id'] . rawurldecode($args['email'])));
+        $args['token'] = rawurlencode(wp_hash_password($secret_key . rawurldecode($args['ttl']) . rawurldecode($args['btcpw_file']) . rawurldecode($args['payment_id']) . (int)$args['download_id'] . rawurldecode($args['email'])));
     }
 
     $download_url = add_query_arg($args, site_url('index.php'));
@@ -86,26 +87,30 @@ function process_download()
 
     $args = array(
         'download_id' => (isset($_GET['download_id']))  ? (int) $_GET['download_id']                       : '',
-        'payment_id' => (isset($_GET['payment_id']))  ? (int) $_GET['payment_id']                       : '',
+        'payment_id' => (isset($_GET['payment_id']))  ? rawurldecode($_GET['payment_id'])                       : '',
         'email'    => (isset($_GET['email']))        ? rawurldecode($_GET['email'])                   : '',
         'btcpw_file'  => (isset($_GET['btcpw_file']))      ? $_GET['btcpw_file']                                 : '',
         'ttl'      => (isset($_GET['ttl']))          ? $_GET['ttl']                                     : '',
         'token'    => (isset($_GET['token']))        ? $_GET['token']                                   : ''
     );
 
-
     if (!empty($args['btcpw_file']) && !empty($args['payment_id']) && !empty($args['download_id']) && !empty($args['ttl']) && !empty($args['token'])) {
         $payment = new BTCPayWall_Payment($args['payment_id']);
         $download = new BTCPayWall_Digital_Download($args['download_id']);
 
-        if ($download->get_download_is_allowed($payment->id) == false || !isset($_COOKIE["btcpw_link_expiration_{$download->ID}"])) {
+        if ($download->get_download_is_allowed($payment->invoice_id) == false || !isset($_COOKIE["btcpw_link_expiration_{$download->ID}"])) {
             unset($_COOKIE["btcpw_payment_id_{$download->ID}"]);
             setcookie("btcpw_payment_id_{$download->ID}", '', time() - 3600, '/');
             unset($_COOKIE["btcpw_link_expiration_{$download->ID}"]);
             setcookie("btcpw_link_expiration_{$download->ID}", '', time() - 3600, '/');
-            wp_redirect('/', 403, 'BTCPayWall');
-            exit;
-            //wp_die(__('You have reached download limit for this payment.', 'btcpaywall'));
+
+            wp_die(__('You have reached download limit for this payment.', 'btcpaywall'), '', array(
+                'response' => 403,
+                'link_url' => '/',
+                'link_text' => 'Go to the homepage.',
+                'back_link' => true
+
+            ));
         }
         $file = array();
 
@@ -156,11 +161,12 @@ function process_download()
             wp_die(__('There is a problem with opening file', 'btcpaywall'));
         }
 
+
         return array('file' => $file, 'error' => 0);
     }
 }
 
-add_action('init', 'process_download', 100);
+add_action('init', 'process_download', 500);
 
 
 /**
@@ -1095,24 +1101,6 @@ function file_resume_download($file, $headers)
     header("Content-Disposition: attachment; filename=\"" . $file['name'] . "\"" . "\n");
     header("Content-Transfer-Encoding: binary" . "\n");
 
-    /* if (1) {
-        $content_length = '';
-        $val = split("=", $headers["Range"]);
-        if (ereg("^-", $val[])) {
-            $slen = ereg_replace("-", "", $val[]);
-            $file_seek_offset = $file['size'] - $slen;
-            $content_length = $slen;
-        } else if (ereg("-$", $val[])) {
-            $file_seek_offset = ereg_replace("-", "", $val[]);
-            $slen = $file['size'] - $file_seek_offset;
-            $content_length = (string) ((int) $file['size'] - (int) $file_seek_offset);
-        } else if (is_integer(strpos($val[], "-"))) {
-            $ranges = split("-", $val[]);
-            $file_seek_offset = $ranges[];
-            $slen = $ranges[] - $ranges[];
-            $content_length = (string) ((int) $file['size'] - (int) $file_seek_offset);
-        }
-    } */
 
     list($size_unit, $range) = explode('=', $headers['Range'], 2);
     if ('bytes' === $size_unit) {
@@ -1140,26 +1128,7 @@ function file_resume_download($file, $headers)
         header("Content-Length: $file[size]");
     }
     header('Accept-Ranges: bytes');
-    //header("Content-Length: " . ($seek_end - $seek_start + 1) . "\n");
 
-
-    /*  header("Content-Range: bytes " .  $seek_start . '-' . $seek_end . '/' . $file['size'] . "\n");
-    header("Connection: close"); */
-
-    /* if ($seek_start > 0 || $seek_end < ($file['size'] - 1)) {
-        header('HTTP/1.1 206 Partial Content');
-        header('Content-Range: bytes ' . $seek_start . '-' . $seek_end . '/' . $file['size']);
-        header('Content-Length: ' . ($seek_end - $seek_start + 1));
-    } else {
-        header("Content-Length: $file[size]");
-    }
-
-    header('Accept-Ranges: bytes');
-    header("Content-Length: " . ($seek_end - $seek_start + 1) . "\n");
-
-    $br = $seek_start . '-' . $seek_end . '/' . $file['size'];
-    header("Content-Range: bytes " . $br . "\n");
-    header("Connection: close"); */
 
     $file_read_status = readfile_by_parts($file['url'], $seek_start);
 
@@ -1176,7 +1145,7 @@ function process_download_url($args)
 
     $secret_key = get_option("btcpw_secret_key");
 
-    $valid_token = wp_check_password($secret_key . rawurldecode($query_args['ttl']) . rawurldecode($query_args['btcpw_file']) . (int)$query_args['payment_id'] . (int)$query_args['download_id'] . rawurldecode($query_args['email']), rawurldecode($query_args['token']));
+    $valid_token = wp_check_password($secret_key . rawurldecode($query_args['ttl']) . rawurldecode($query_args['btcpw_file']) . rawurldecode($query_args['payment_id']) . (int)$query_args['download_id'] . rawurldecode($query_args['email']), rawurldecode($query_args['token']));
 
     if (isset($query_args['ttl']) && current_time('timestamp') > $query_args['ttl']) {
 
@@ -1302,68 +1271,6 @@ function get_file_extension($file_name)
 }
 
 
-
-/* function get_file_size($url)
-{
-
-    $size = 0;
-
-    $pos = strpos(strtolower($url), "http://");
-    $pos = strpos(strtolower($url), "https://");
-
-    if (is_integer($pos) || is_integer($pos)) {
-        $s = get_file_size_remote($url);
-        if (is_integer($s))
-            $size = $s;
-    } else {
-        $size = @filesize($url);
-    }
-    return $size;
-} */
-
-
-
-/* function get_file_size_remote($url)
-{
-
-    $url = parse_url($url);
-    if ($fp = @fsockopen($url['host'], ($url['port'] ? $url['port'] : 80), $errno, $errstr)) {
-        fwrite($fp, 'HEAD ' . $url['path'] . ((!empty($url['query'])) ? $url['query'] : '') . " HTTP/.\r\nHost: " . $url['host'] . "\r\n\r\n");
-        @stream_set_timeout($fp, 20);
-        while (!feof($fp)) {
-            $size = fgets($fp,);
-            if (stristr($size, 'Content-Length') !== false) {
-                $size = trim(substr($size, 16));
-                break;
-            }
-        }
-        fclose($fp);
-    }
-    return is_numeric($size) ? intval($size) : false;
-}
-
-
-function readable_format_file_size($bytes)
-{
-    if ($bytes >= 1073741824) {
-        $bytes = number_format($bytes / 1073741824, 2) . ' GB';
-    } elseif ($bytes >= 1048576) {
-        $bytes = number_format($bytes / 1048576, 2) . ' MB';
-    } elseif ($bytes >= 1024) {
-        $bytes = number_format($bytes / 1024, 2) . ' kB';
-    } elseif ($bytes > 1) {
-        $bytes = $bytes . ' bytes';
-    } elseif ($bytes == 1) {
-        $bytes = $bytes . ' byte';
-    } else {
-        $bytes = ' bytes';
-    }
-
-    return $bytes;
-}
-
-
- */
 function is_file_local($download_file)
 {
 

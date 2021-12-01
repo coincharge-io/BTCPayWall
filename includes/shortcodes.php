@@ -1292,15 +1292,17 @@ function render_shortcode_protected_digital_download($atts)
         $payment = new BTCPayWall_Payment($payment_id);
         $customer_id = $payment->customer_id;
         $customer = new BTCPayWall_Customer($customer_id);
-        $link = get_download_url($payment->id, $download->get_file_url(), $download->ID, $customer->email);
-
+        
+        $link = get_download_url($payment->invoice_id, $download->get_file_url(), $download->ID, $customer->email);
 
         ob_start();
     ?>
-        #btcpw_download_file {
-        background-color: <?php echo esc_html($button_color); ?>;
-        color: <?php echo esc_html($button_text_color); ?>;
-        }
+        <style>
+            #btcpw_download_file {
+                background-color: <?php echo esc_html($button_color); ?>;
+                color: <?php echo esc_html($button_text_color); ?>;
+            }
+        </style>
         <a id="btcpw_download_file" href="<?php echo $link; ?>" data-post_id="<?php echo $_id; ?>"><?php echo esc_html($button_text_success); ?></a>
     <?php
         return ob_get_clean();
