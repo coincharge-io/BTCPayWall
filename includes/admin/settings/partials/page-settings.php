@@ -11,6 +11,18 @@ $supported_btc_format = BTCPayWall::BTC_FORMAT;
 $used_format = get_option("btcpw_default_btc_format");
 $disabled_field = ($default_duration_type === 'unlimited') || ($default_duration_type === 'onetime');
 $disable = $disabled_field ? 'disabled' : '';
+$collect_name = get_option('btcpw_default_display_name', false);
+$collect_email = get_option('btcpw_default_display_email', false);
+$collect_address = get_option('btcpw_default_display_address', false);
+$collect_phone = get_option('btcpw_default_display_phone', false);
+$collect_message = get_option('btcpw_default_display_message', false);
+
+
+$mandatory_name = get_option('btcpw_default_mandatory_name', false);
+$mandatory_email = get_option('btcpw_default_mandatory_email', false);
+$mandatory_address = get_option('btcpw_default_mandatory_address', false);
+$mandatory_phone = get_option('btcpw_default_mandatory_phone', false);
+$mandatory_message = get_option('btcpw_default_mandatory_message', false);
 ?>
 <div id="btcpw_general_options_paywall">
     <div>
@@ -57,6 +69,75 @@ $disable = $disabled_field ? 'disabled' : '';
                             </option>
                         <?php endforeach; ?>
                     </select>
+                </div>
+            </div>
+            <h4>Collect further information</h4>
+            <div class="row">
+                <div class="col-50">
+                    <p>Full name</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_display_name">Display</label>
+
+                    <input type="checkbox" class="btcpw_default__name" name="btcpw_default_display_name" <?php checked($collect_name); ?> value="true" />
+
+                    <label for="btcpw_default_mandatory_name">Mandatory</label>
+                    <input type="checkbox" class="btcpw_default__name_mandatory" name="btcpw_default_mandatory_name" <?php checked($mandatory_name); ?> value="true" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p>Email</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_display_email">Display</label>
+
+                    <input type="checkbox" class="btcpw_default__email" name="btcpw_default_display_email" <?php checked($collect_email); ?> value="true" />
+
+                    <label for="btcpw_default_mandatory_email">Mandatory</label>
+                    <input type="checkbox" class="btcpw_default__email_mandatory" name="btcpw_default_mandatory_email" <?php checked($mandatory_email); ?> value="true" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p>Address</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_display_address">Display</label>
+
+                    <input type="checkbox" class="btcpw_default__address" name="btcpw_default_display_address" <?php checked($collect_address); ?> value="true" />
+
+                    <label for="btcpw_default_mandatory_address">Mandatory</label>
+                    <input type="checkbox" class="btcpw_default__address_mandatory" name="btcpw_default_mandatory_address" <?php checked($mandatory_address); ?> value="true" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p>Phone number</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_display_phone">Display</label>
+
+                    <input type="checkbox" class="btcpw_default__phone" name="btcpw_default_display_phone" <?php checked($collect_phone); ?> value="true" />
+
+                    <label for="btcpw_default_mandatory_phone">Mandatory</label>
+                    <input type="checkbox" class="btcpw_default__phone_mandatory" name="btcpw_default_mandatory_phone" <?php checked($mandatory_phone); ?> value="true" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p>Message</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_display_message">Display</label>
+                    <input type="checkbox" class="btcpw_default__message" name="btcpw_default_display_message" <?php checked($collect_message); ?> value="true" />
+
+                    <label for="btcpw_default_mandatory_message">Mandatory</label>
+                    <input type="checkbox" class="btcpw_default__message_mandatory" name="btcpw_default_mandatory_message" <?php checked($mandatory_message); ?> value="true" />
+
                 </div>
             </div>
             <div class="btcpw__paywall_submit_button" style="display: inline-block;">

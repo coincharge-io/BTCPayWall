@@ -127,7 +127,7 @@ if (!class_exists('BTCPayWall')) :
         private function includes()
         {
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/settings/register-settings.php';
-
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-functions.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/actions.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/functions.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/download-functions.php';
@@ -154,7 +154,7 @@ if (!class_exists('BTCPayWall')) :
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/gutenberg/functions.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/gutenberg/actions.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/wpbakery/actions.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/elementor/actions.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/elementor/functions.php';
             if (is_admin()) {
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/settings/functions.php';
 
@@ -165,7 +165,8 @@ if (!class_exists('BTCPayWall')) :
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/tipping-forms/view.php';
 
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-pages.php';
-                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-functions.php';
+
+
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-ajax-functions.php';
 
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/widgets/functions.php';

@@ -1662,7 +1662,7 @@ function load_vc_widgets()
                 'type' => 'dropdown',
                 'heading' => 'Shortcode',
                 'param_name' => 'shortcode',
-                'value' => BTCPayWall_Admin::allCreatedForms(),
+                'value' => allCreatedForms(),
                 'description' => 'Shortcode',
             ),
         )

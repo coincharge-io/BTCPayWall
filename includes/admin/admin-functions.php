@@ -23,12 +23,14 @@ function checkPermission($list, $permission)
 }
 function allCreatedForms()
 {
-    global $wpdb;
+    /* global $wpdb;
     $table_name = "{$wpdb->prefix}btcpaywall_forms";
     $result = $wpdb->get_results(
         "SELECT * FROM $table_name",
         ARRAY_A
-    );
+    ); */
+    $form = new BTCPayWall_Tipping_Form();
+    $result = $form->get_forms();
     $shortcodes = array();
     foreach ($result as $row) {
         $placeholder = "#{$row['id']} {$row['form_name']} - {$row['name']}";
