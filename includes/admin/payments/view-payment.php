@@ -2,14 +2,13 @@
 // Exit if accessed directly
 if (!defined('ABSPATH')) exit;
 
-if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+if (!isset($_GET['id'])) {
     wp_die(__('Payment ID not supplied. Please try again', 'btcpaywall'), __('Error', 'btcpaywall'));
 }
-$id = absint($_GET['id']);
-
+$id = $_GET['id'];
 $payment = new BTCPayWall_Payment($id);
 $customer = new BTCPayWall_Customer($payment->id);
-var_dump($payment, $customer);
+
 ?>
 <div class="wrap">
 

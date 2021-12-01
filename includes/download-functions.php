@@ -103,7 +103,9 @@ function process_download()
             setcookie("btcpw_payment_id_{$download->ID}", '', time() - 3600, '/');
             unset($_COOKIE["btcpw_link_expiration_{$download->ID}"]);
             setcookie("btcpw_link_expiration_{$download->ID}", '', time() - 3600, '/');
-            wp_die(__('You have reached download limit for this payment.', 'btcpaywall'));
+            wp_redirect('/', 403, 'BTCPayWall');
+            exit;
+            //wp_die(__('You have reached download limit for this payment.', 'btcpaywall'));
         }
         $file = array();
 

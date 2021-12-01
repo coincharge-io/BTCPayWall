@@ -59,8 +59,7 @@ class Payments_Table extends WP_List_Table
     }
     protected function column_details($item)
     {
-
-        return '<a href="' . add_query_arg('id', $item['id'], admin_url('admin.php?page=btcpw_payments&view=view-payment')) . '">' . __('View Payment Details', 'btcpaywall') . '</a>';
+        return '<a href="' . add_query_arg('id', $item['invoice_id'], admin_url('admin.php?page=btcpw_payments&view=view-payment')) . '">' . __('View Payment Details', 'btcpaywall') . '</a>';
     }
     protected function column_cb($item)
     {

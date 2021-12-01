@@ -1270,11 +1270,7 @@ function render_shortcode_protected_digital_download($atts)
 
     $atts = shortcode_atts(
         array(
-            'id'             => $post_id,
-            'text'          => 'Pay',
-            'color'         => '#000000',
-            'text_color'    => '#000000',
-            'success_text', 'Download'
+            'id'             => $post_id
         ),
         $atts
     );
@@ -1285,10 +1281,10 @@ function render_shortcode_protected_digital_download($atts)
     $invoice_content = array('title' => 'Pay-per-file: ' . get_the_title(), 'project' => 'file');
     update_post_meta(get_the_ID(), 'btcpw_invoice_content', $invoice_content);
 
-    $button_color = !empty($atts['color']) ? $atts['color'] : get_option('btcpw_pay_per_file_button_color');
-    $button_text = !empty($atts['text']) ? $atts['text'] : get_option('btcpw_pay_per_file_button_text');
-    $button_text_color = !empty($atts['text_color']) ? $atts['text_color'] : get_option('btcpw_pay_per_file_button_text_color');
-    $button_text_success = !empty($atts['success_text']) ? $atts['success_text'] : get_option('btcpw_pay_per_file_button_text_success');
+    $button_color =  get_option('btcpw_pay_per_file_button_color');
+    $button_text = get_option('btcpw_pay_per_file_button_text');
+    $button_text_color = get_option('btcpw_pay_per_file_button_text_color');
+    $button_text_success = get_option('btcpw_pay_per_file_button_text_success');
 
     if (is_paid_content($_id)) {
         $payment_id = $_COOKIE['btcpw_payment_id_' . $post_id];
