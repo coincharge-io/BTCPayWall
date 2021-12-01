@@ -303,7 +303,7 @@
 
       palettes: true
     })
-    $('#btcpw_pay_per_file_width').on('input, change', function () {
+    /*  $('#btcpw_pay_per_file_width').on('input, change', function () {
       $('.btcpw_pay_preview.pay_per_file').css('width', $(this).val() + 'px')
     })
     $('#btcpw_pay_per_file_height').on('input, change', function () {
@@ -314,11 +314,14 @@
     })
     $('#btcpw_pay_per_file_info').on('change input', function () {
       $('.btcpw_pay__content_preview.pay_per_file p').text($(this).val())
-    })
-    $('#btcpw_pay_per_file_button').on('input', function () {
+    }) */
+    $('#btcpw_pay_per_file_button_text').on('input', function () {
       $('#btcpw_pay__button_preview_pay_per_file').text($(this).val())
     })
-    $('#btcpw_pay_per_file_show_help_link').change(function () {
+    $('#btcpw_pay_per_file_button_success').on('input', function () {
+      $('#btcpw_pay__button_preview_pay_per_file_success').text($(this).val())
+    })
+    /* $('#btcpw_pay_per_file_show_help_link').change(function () {
       $('.btcpw_help_preview.pay_per_file').toggle()
     })
     $('#btcpw_pay_per_file_help_link_text').on('input', function () {
@@ -345,8 +348,8 @@
       } else {
         $('#btcpw_pay_per_file_duration').prop('disabled', false)
       }
-    })
-    $(
+    }) */
+    /* $(
       '.btcpw_pay_per_file_price_placeholder, .btcpw_pay_per_file_currency_placeholder, .btcpw_pay_per_file_duration_placeholder, .btcpw_pay_per_file_duration_type_placeholder'
     ).click(function () {
       var buttonValue = $(this).val()
@@ -355,7 +358,7 @@
         return $(this).prop('value') + ' ' + buttonValue
       })
       $('#btcpw_pay_per_file_info').trigger('change')
-    })
+    }) */
     $('.btcpw_pay_per_file_button_color').iris({
       defaultColor: true,
 
@@ -372,7 +375,7 @@
 
       palettes: true
     })
-    $('.btcpw_pay_per_file_background').iris({
+    /* $('.btcpw_pay_per_file_background').iris({
       defaultColor: true,
 
       change: function (event, ui) {
@@ -387,9 +390,9 @@
       hide: true,
 
       palettes: true
-    })
+    }) */
 
-    $('.btcpw_pay_per_file_header_color').iris({
+    /* $('.btcpw_pay_per_file_header_color').iris({
       defaultColor: true,
 
       change: function (event, ui) {
@@ -421,7 +424,7 @@
 
       palettes: true
     })
-
+ */
     $('.btcpw_pay_per_file_button_text_color').iris({
       defaultColor: true,
 
@@ -435,7 +438,7 @@
 
       palettes: true
     })
-    $('.btcpw_pay_per_file_preview_title_color').iris({
+    /* $('.btcpw_pay_per_file_preview_title_color').iris({
       defaultColor: true,
 
       change: function (event, ui) {
@@ -466,6 +469,6 @@
       hide: true,
 
       palettes: true
-    })
+    }) */
   })
 })(jQuery)

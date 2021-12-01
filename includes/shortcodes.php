@@ -1272,7 +1272,9 @@ function render_shortcode_protected_digital_download($atts)
         array(
             'id'             => $post_id,
             'text'          => 'Pay',
-            'color'         => 'blue'
+            'color'         => '#000000',
+            'text_color'    => '#000000',
+            'success_text', 'Download'
         ),
         $atts
     );
@@ -1283,6 +1285,10 @@ function render_shortcode_protected_digital_download($atts)
     $invoice_content = array('title' => 'Pay-per-file: ' . get_the_title(), 'project' => 'file');
     update_post_meta(get_the_ID(), 'btcpw_invoice_content', $invoice_content);
 
+    $button_color = !empty($atts['color']) ? $atts['color'] : get_option('btcpw_pay_per_file_button_color');
+    $button_text = !empty($atts['text']) ? $atts['text'] : get_option('btcpw_pay_per_file_button_text');
+    $button_text_color = !empty($atts['text_color']) ? $atts['text_color'] : get_option('btcpw_pay_per_file_button_text_color');
+    $button_text_success = !empty($atts['success_text']) ? $atts['success_text'] : get_option('btcpw_pay_per_file_button_text_success');
 
     if (is_paid_content($_id)) {
         $payment_id = $_COOKIE['btcpw_payment_id_' . $post_id];
@@ -1295,19 +1301,30 @@ function render_shortcode_protected_digital_download($atts)
 
         ob_start();
     ?>
-        <a id="btcpw_download_file" href="<?php echo $link; ?>" data-post_id="<?php echo $_id; ?>">Download</a>
+        #btcpw_download_file {
+        background-color: <?php echo esc_html($button_color); ?>;
+        color: <?php echo esc_html($button_text_color); ?>;
+        }
+        <a id="btcpw_download_file" href="<?php echo $link; ?>" data-post_id="<?php echo $_id; ?>"><?php echo esc_html($button_text_success); ?></a>
     <?php
         return ob_get_clean();
     }
 
-    ?><div class="btcpw_digital_download_protected_area">
+    ?>
+    <style>
+        #btcpw_pay__button {
+            background-color: <?php echo esc_html($button_color); ?>;
+            color: <?php echo esc_html($button_text_color); ?>;
+        }
+    </style>
+    <div class="btcpw_digital_download_protected_area">
         <fieldset>
             <p>The <?php echo esc_html($post_data->get_filename()); ?> cost <?php echo esc_html($post_data->get_price()); ?></p>
             <div id="btcpw_digital_download">
                 <?php if ($collect_data === true) : ?>
                     <input type="button" name="next" class="btcpw_digital_download next-form" value="Continue" />
                 <?php else : ?>
-                    <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" id="btcpw_pay__button"><?php echo (!empty($atts['text']) ? esc_html($atts['text']) : 'Pay'); ?></button>
+                    <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" id="btcpw_pay__button"><?php echo (!empty($button_text) ? esc_html($button_text) : 'Pay'); ?></button>
                 <?php endif; ?>
             </div>
         </fieldset>
@@ -1329,7 +1346,7 @@ function render_shortcode_protected_digital_download($atts)
                         <input type="button" name="previous" class="btcpw_digital_download previous-form" value="< Previous" />
                     </div>
                     <div>
-                        <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" id="btcpw_pay__button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Download'); ?></button>
+                        <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" id="btcpw_pay__button"><?php echo (!empty($button_text) ? esc_html($button_text) : 'Pay'); ?></button>
                     </div>
                 </div>
             </fieldset>

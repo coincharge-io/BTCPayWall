@@ -348,6 +348,13 @@ div.btcpw_help_link a:hover {
   display: flex;
   align-items: center;
 }
+#btcpw_pay_per_file_paywall_preview {
+  flex-direction: column;
+}
+.btcpw_pay_preview.pay_per_file {
+  width: 300px;
+  align-items: center;
+}
 .btcpw__paywall_submit_button {
   margin-top: 50px;
 }

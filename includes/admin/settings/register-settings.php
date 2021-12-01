@@ -72,6 +72,15 @@ function register_settings()
     register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_additional_help_link_text', array('type' => 'string', 'default' => '', 'sanitize_callback' => 'sanitize_text'));
     register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_width', array('type' => 'string', 'default' => '350', 'sanitize_callback' => 'sanitize_text'));
     register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_height', array('type' => 'string', 'default' => '550', 'sanitize_callback' => 'sanitize_text'));
+
+
+
+
+
+    register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_button_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => 'sanitize_color'));
+    register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_button_text', array('type' => 'string', 'default' => 'Pay', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_button_text_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => 'sanitize_color'));
+    register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_button_text_success', array('type' => 'string', 'default' => 'Download', 'sanitize_callback' => 'sanitize_text'));
 }
 
 

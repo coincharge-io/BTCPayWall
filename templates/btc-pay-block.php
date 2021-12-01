@@ -19,7 +19,19 @@ $button_text_color = get_option('btcpw_pay_per_post_button_text_color', '#FFFFFF
 $default_text = get_option('btcpw_pay_per_post_title', 'Pay now to unlock blogpost');
 $default_button = get_option('btcpw_pay_per_post_button', 'Pay');
 $default_info = get_option('btcpw_pay_per_post_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]');
-$collect = getCollect($atts);
+$collect_atts = array(
+    'display_name' => empty($atts['display_name']) ? get_option('btcpw_default_display_name', false) : $atts['display_name'],
+    'display_email' => empty($atts['display_email']) ? get_option('btcpw_default_display_email', false) : $atts['display_email'],,
+    'display_phone' => empty($atts['display_phone']) ? get_option('btcpw_default_display_phone', false) : $atts['display_phone'],,
+    'display_address' => empty($atts['display_address']) ? get_option('btcpw_default_display_address', false) : $atts['display_address'],,
+    'display_message' => empty($atts['display_message']) ? get_option('btcpw_default_display_message', false) : $atts['display_message'],,
+    'mandatory_name' => empty($atts['mandatory_name']) ? get_option('btcpw_default_mandatory_name', false) : $atts['mandatory_name'],
+    'mandatory_email' => empty($atts['mandatory_email']) ? get_option('btcpw_default_mandatory_email', false) : $atts['mandatory_email'],
+    'mandatory_address' => empty($atts['mandatory_address']) ? get_option('btcpw_default_mandatory_address', false) : $atts['mandatory_address'],
+    'mandatory_phone' => empty($atts['mandatory_phone']) ? get_option('btcpw_default_mandatory_phone', false) : $atts['mandatory_phone'],
+    'mandatory_message' => empty($atts['mandatory_message']) ? get_option('btcpw_default_mandatory_message', false) : $atts['mandatory_message']
+);
+$collect = getCollect($collect_atts);
 
 $collect_data = display_is_enabled($collect);
 /**<div class="btcpw_pay__loading">
