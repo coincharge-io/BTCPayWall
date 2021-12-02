@@ -449,9 +449,9 @@ function ajax_paid_invoice()
 
         if ($payment->revenue_type === 'Pay-per-file') {
 
-            setcookie('btcpw_payment_id_' . $post_id, $payment->invoice_id, strtotime('+' . get_option('btcpw_link_expiration', 24) . 'hours', current_time('timestamp')), $cookie_path);
+            setcookie('btcpw_payment_id_' . $post_id, $payment->invoice_id, strtotime("14 Jan 2038"), $cookie_path);
 
-            setcookie('btcpw_link_expiration_' . $post_id, get_option('btcpw_link_expiration', 24), strtotime('+' . get_option('btcpw_link_expiration', 24) . 'hours', current_time('timestamp')), $cookie_path);
+            setcookie('btcpw_link_expiration_' . $post_id, strtotime("14 Jan 2038"), strtotime("14 Jan 2038"), $cookie_path);
             $download = new BTCPayWall_Digital_Download($post_id);
             $download->increase_sales();
             if (is_email($body['metadata']['customer_data']['email']) && !empty($body['metadata']['customer_data']['email'])) {
@@ -568,18 +568,11 @@ function generate_opennode_invoice_id($post_id, $order_id, $customer_data)
 {
     $amount = calculate_price_for_invoice($post_id);
 
-    //$url = get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
     $url = get_option('btcpw_opennode_url') . '/v1/charges';
     $currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ? get_post_meta($post_id, 'btcpw_currency', true) : get_option('btcpw_default_currency', 'SATS');
-    //getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['currency'];
-    //get_option('btcpw_default_currency', 'SATS');
-    //$currency = $currency_scope != 'SATS' ? $currency_scope : 'BTC';
+
     $blogname = get_option('blogname');
     $currency = $currency_scope === 'SATS' ? 'BTC' : $currency_scope;
-    //var_dump($currency_scope);
-    //'BTCPAYWALL_PLUGIN_URL . 'btcpaywall/v1/webhook'
-    // var_dump(BTCPAYWALL_PLUGIN_URL . 'btcpaywall/v1/webhook');
-    //get_site_url() . '/wp-json/btcpaywall/v1/webhook'
 
 
     $data = array(
@@ -646,19 +639,7 @@ function generate_opennode_invoice_id($post_id, $order_id, $customer_data)
         'gateway' => get_option('btcpw_selected_payment_gateway', 'BTCPayServer'),
         'date_created'  => date('Y-m-d H:i:s', $body['data']['created_at'])
     ]);
-    /*  var_dump([
-        'invoice_id' => $body['id'],
-        'customer_id' => $customer->id,
-        'amount' => floatval($body['amount']),
-        'page_title' => $body['metadata']['blog'],
-        'revenue_type' => $revenue_type,
-        'currency' => $body['currency'],
-        'gateway' => get_option('btcpw_selected_payment_gateway', 'BTCPayServer'),
-        'status' => $body['status'],
-        'payment_method' => '',
-        'date_created'  => date('Y-m-d H:i:s', $body['created_at'])
 
-    ]); */
     update_post_meta($order_id, 'btcpw_invoice_id', $body['data']['id']);
 
     return array(

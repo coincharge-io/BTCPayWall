@@ -28,9 +28,9 @@ function register_apis()
     );
 }
 add_action('rest_api_init',  'register_apis');
-function btcpw_success_url(WP_REST_Request  $request)
+function btcpw_success_url($request)
 {
-    $json = json_decode(file_get_contents('php://input'));
+    $json = $request->get_params();
     $id = $json->id;
     if (!$id) {
         return [
@@ -100,9 +100,9 @@ function btcpw_success_url(WP_REST_Request  $request)
 
         if ($payment->revenue_type === 'Pay-per-file') {
 
-            setcookie('btcpw_payment_id_' . $post_id, $payment->id, strtotime('+' . get_option('btcpw_link_expiration', 24) . 'hours', current_time('timestamp')), $cookie_path);
+            setcookie('btcpw_payment_id_' . $post_id, $payment->id, strtotime("14 Jan 2038"), $cookie_path);
 
-            setcookie('btcpw_link_expiration_' . $post_id, get_option('btcpw_link_expiration', 24), strtotime('+' . get_option('btcpw_link_expiration', 24) . 'hours', current_time('timestamp')), $cookie_path);
+            setcookie('btcpw_link_expiration_' . $post_id, get_option('btcpw_link_expiration', 24), strtotime("14 Jan 2038"), $cookie_path);
             $download = new BTCPayWall_Digital_Download($post_id);
             $download->increase_sales();
             if (is_email($customer->email) && !empty($customer->email)) {
@@ -125,9 +125,9 @@ function btcpw_success_url(WP_REST_Request  $request)
 
         if ($payment->revenue_type === 'Pay-per-file') {
 
-            setcookie('btcpw_payment_id_' . $post_id, $payment->invoice_id, strtotime('+' . get_option('btcpw_link_expiration', 24) . 'hours', current_time('timestamp')), $cookie_path);
+            setcookie('btcpw_payment_id_' . $post_id, $payment->invoice_id, strtotime("14 Jan 2038"), $cookie_path);
 
-            setcookie('btcpw_link_expiration_' . $post_id, get_option('btcpw_link_expiration', 24), strtotime('+' . get_option('btcpw_link_expiration', 24) . 'hours', current_time('timestamp')), $cookie_path);
+            setcookie('btcpw_link_expiration_' . $post_id, get_option('btcpw_link_expiration', 24), strtotime("14 Jan 2038"), $cookie_path);
             $download = new BTCPayWall_Digital_Download($post_id);
             $download->increase_sales();
             if (is_email($body['data']['metadata']['customer_data']['email']) && !empty($body['data']['metadata']['customer_data']['email'])) {

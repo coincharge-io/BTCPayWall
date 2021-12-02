@@ -1305,3 +1305,29 @@ Pay-per-file
 .btcpw_digital_download_protected_area fieldset:not(:first-of-type) {
   display: none;
 }
+.btcpw_digital_download_protected_area > fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  position: relative;
+}
+.btcpw_digital_download_protected_area {
+  width: 500px;
+}
+.btcpw_digital_download.next-form,
+.btcpw_digital_download.previous-form {
+  height: 80px;
+  width: 80px;
+}
+#btcpw_digital_download_button {
+  display: flex;
+  position: absolute;
+  display: inline-flex;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  height: 75px;
+  justify-content: center;
+}

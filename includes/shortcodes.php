@@ -1292,7 +1292,7 @@ function render_shortcode_protected_digital_download($atts)
         $payment = new BTCPayWall_Payment($payment_id);
         $customer_id = $payment->customer_id;
         $customer = new BTCPayWall_Customer($customer_id);
-        
+
         $link = get_download_url($payment->invoice_id, $download->get_file_url(), $download->ID, $customer->email);
 
         ob_start();
@@ -1317,8 +1317,8 @@ function render_shortcode_protected_digital_download($atts)
     </style>
     <div class="btcpw_digital_download_protected_area">
         <fieldset>
-            <p>The <?php echo esc_html($post_data->get_filename()); ?> cost <?php echo esc_html($post_data->get_price()); ?></p>
-            <div id="btcpw_digital_download">
+            <p>Price: <?php echo esc_html($post_data->get_price()); ?></p>
+            <div id="btcpw_digital_download_button">
                 <?php if ($collect_data === true) : ?>
                     <input type="button" name="next" class="btcpw_digital_download next-form" value="Continue" />
                 <?php else : ?>

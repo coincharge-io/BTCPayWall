@@ -37,11 +37,8 @@ function get_download_url($payment_id, $file_url, $download_id, $email)
         update_option('btcpw_secret_key', bin2hex(random_bytes(14)));
     }
     $secret_key = get_option('btcpw_secret_key');
-    $hours = absint(get_option('btcpw_link_expiration', 24));
+    $date = strtotime("14 Jan 2038");
 
-    if (!($date = strtotime('+' . $hours . 'hours', current_time('timestamp')))) {
-        $date = strtotime("14 Jan 2038");
-    }
     $params = array(
         'payment_id'     => rawurlencode($payment_id),
         'digital_file'          => rawurlencode($file_url),
