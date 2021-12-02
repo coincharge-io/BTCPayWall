@@ -1,7 +1,7 @@
 <?php
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
-function register_shortcode_list()
+function register_apis()
 {
     register_rest_route(
         'btcpaywall/v1',
@@ -27,14 +27,16 @@ function register_shortcode_list()
         )
     );
 }
-add_action('rest_api_init',  'register_shortcode_list');
+add_action('rest_api_init',  'register_apis');
 function btcpw_success_url(WP_REST_Request  $request)
 {
-    $id = $request->get_param('id');
-    if ($id) {
-        return new WP_Error(
-            __("Invalid invoice.", 'btcpaywall')
-        );
+    $json = json_decode(file_get_contents('php://input'));
+    $id = $json->id;
+    if (!$id) {
+        return [
+            'message' => 'Invoice doesn\'t exist',
+            'status' => 404
+        ];
     }
     $url = "https://api.opennode.com/v1/charge/{$id}";
 
@@ -50,12 +52,15 @@ function btcpw_success_url(WP_REST_Request  $request)
     $response = wp_remote_request($url, $args);
 
     if (is_wp_error($response)) {
-        return $response;
+        return [
+            'message' => 'Invoice doesn\'t exist',
+            'status' => 404
+        ];
     }
 
-    if ($response['response']['code'] != 200) {
+    /*if ($response['response']['code'] != 200) {
         return new WP_Error($response['response']['code'], 'HTTP Error ' . $response['response']['code']);
-    }
+    }*/
 
     $body = json_decode($response['body'], true);
 
@@ -116,7 +121,7 @@ function btcpw_success_url(WP_REST_Request  $request)
         //$tipping = new BTCPayWall_Tipping(sanitize_text_field($_POST['invoice_id']));
         //$payment_method = get_payment_method($body['id']);
 
-        $payment->update(array('status' => $body['data']['status'], 'payment_method' => $request['data']['payment_method']));
+        $payment->update(array('status' => $body['data']['status'], 'payment_method' => $json->payment_method));
 
         if ($payment->revenue_type === 'Pay-per-file') {
 
@@ -134,9 +139,9 @@ function btcpw_success_url(WP_REST_Request  $request)
             $tipping = new BTCPayWall_Tipping($invoice_id);
             //$payment_method = get_payment_method($body['id']);
 
-            $tipping->update(array('status' => $body['data']['status'], 'payment_method' => $request['data']['payment_method']));
+            $tipping->update(array('status' => $body['data']['status'], 'payment_method' => $json->payment_method));
         }
-        update_post_meta($body['data']['metadata']['orderId'], 'btcpw_payment_id', $payment->id);
+        update_post_meta($body['data']['metadata']['orderId'], 'btcpw_payment_id', $payment->invoice_id);
 
         setcookie("btcpw_{$post_id}", $secret, get_cookie_duration($post_id), $cookie_path);
 

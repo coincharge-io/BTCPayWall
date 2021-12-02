@@ -580,10 +580,13 @@ function generate_opennode_invoice_id($post_id, $order_id, $customer_data)
     //'BTCPAYWALL_PLUGIN_URL . 'btcpaywall/v1/webhook'
     // var_dump(BTCPAYWALL_PLUGIN_URL . 'btcpaywall/v1/webhook');
     //get_site_url() . '/wp-json/btcpaywall/v1/webhook'
+
+
     $data = array(
         'amount' => $amount,
         'currency' => $currency,
         'order_id' => $order_id,
+        'success_url' => get_permalink($post_id),
         'callback_url'  => get_site_url() . '/wp-json/btcpaywall/v1/webhook',
         'metadata' => array(
             'orderId' => $order_id,
@@ -656,7 +659,7 @@ function generate_opennode_invoice_id($post_id, $order_id, $customer_data)
         'date_created'  => date('Y-m-d H:i:s', $body['created_at'])
 
     ]); */
-    update_post_meta($order_id, 'btcpw_invoice_id', $body['id']);
+    update_post_meta($order_id, 'btcpw_invoice_id', $body['data']['id']);
 
     return array(
         'id' => $body['data']['id'],
