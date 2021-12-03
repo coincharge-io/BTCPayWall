@@ -12,25 +12,41 @@ function register_settings()
     register_setting('btcpw_opennode_settings', 'btcpw_opennode_url', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_server_url'));
     register_setting('btcpw_opennode_settings', 'btcpw_opennode_auth_key', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_auth_key'));
 
-    register_setting('btcpw_general_options', 'btcpw_default_currency', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'sanitize_text'));
-    register_setting('btcpw_general_options', 'btcpw_default_btc_format', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'sanitize_text'));
-    register_setting('btcpw_general_options', 'btcpw_default_price', array('type' => 'number', 'default' => 1000, 'sanitize_callback' => 'sanitize_number'));
-    register_setting('btcpw_general_options', 'btcpw_default_duration', array('type' => 'integer', 'default' => '', 'sanitize_callback' => 'sanitize_text'));
-    register_setting('btcpw_general_options', 'btcpw_default_duration_type', array('type' => 'string', 'default' => 'unlimited', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_currency', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_btc_format', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_price', array('type' => 'number', 'default' => 1000, 'sanitize_callback' => 'sanitize_number'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_duration', array('type' => 'integer', 'default' => '', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_duration_type', array('type' => 'string', 'default' => 'unlimited', 'sanitize_callback' => 'sanitize_text'));
 
 
-    register_setting('btcpw_general_options', 'btcpw_default_display_name', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
-    register_setting('btcpw_general_options', 'btcpw_default_display_email', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
-    register_setting('btcpw_general_options', 'btcpw_default_display_address', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
-    register_setting('btcpw_general_options', 'btcpw_default_display_phone', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
-    register_setting('btcpw_general_options', 'btcpw_default_display_message', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
-    register_setting('btcpw_general_options', 'btcpw_default_mandatory_name', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
-    register_setting('btcpw_general_options', 'btcpw_default_mandatory_email', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
-    register_setting('btcpw_general_options', 'btcpw_default_mandatory_address', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
-    register_setting('btcpw_general_options', 'btcpw_default_mandatory_phone', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
-    register_setting('btcpw_general_options', 'btcpw_default_mandatory_message', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_display_name', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_display_email', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_display_address', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_display_phone', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_display_message', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_mandatory_name', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_mandatory_email', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_mandatory_address', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_mandatory_phone', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_mandatory_message', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_default_pay_per_view_currency', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_default_pay_per_view_btc_format', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_default_pay_per_view_price', array('type' => 'number', 'default' => 1000, 'sanitize_callback' => 'sanitize_number'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_default_pay_per_view_duration', array('type' => 'integer', 'default' => '', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_default_pay_per_view_duration_type', array('type' => 'string', 'default' => 'unlimited', 'sanitize_callback' => 'sanitize_text'));
 
 
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_default_pay_per_view_display_name', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_default_pay_per_view_display_email', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_default_pay_per_view_display_address', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_default_pay_per_view_display_phone', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_default_pay_per_view_display_message', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_default_pay_per_view_mandatory_name', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_default_pay_per_view_mandatory_email', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_default_pay_per_view_mandatory_address', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_default_pay_per_view_mandatory_phone', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_default_pay_per_view_mandatory_message', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
 
     register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_background', array('type' => 'string', 'default' => '#ECF0F1', 'sanitize_callback' => 'sanitize_color'));
     register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_header_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => 'sanitize_color'));
