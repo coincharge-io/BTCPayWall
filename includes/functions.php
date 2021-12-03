@@ -14,6 +14,7 @@ if (!defined('ABSPATH')) exit;
  */
 function get_post_info_string($post_id = null)
 {
+    $project = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] ? get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] : 'post';
 
     if (!$post_id) {
         $post_id = get_the_ID();
@@ -22,21 +23,21 @@ function get_post_info_string($post_id = null)
     if (get_post_meta($post_id, 'btcpw_price', true)) {
         $price = get_post_meta($post_id, 'btcpw_price', true);
     } else {
-        $price = get_option('btcpw_default_price');
+        $price = get_option('btcpw_default_pay_per_' . $project . '_price');
         //$price = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['price'];
     }
 
     if (get_post_meta($post_id, 'btcpw_duration', true)) {
         $duration = get_post_meta($post_id, 'btcpw_duration', true);
     } else {
-        $duration = get_option('btcpw_default_duration');
+        $duration = get_option('btcpw_default_pay_per_' . $project . '_duration');
         //$duration = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['duration'];
     }
 
     if (get_post_meta($post_id, 'btcpw_duration_type', true)) {
         $duration_type = get_post_meta($post_id, 'btcpw_duration_type', true);
     } else {
-        $duration_type = get_option('btcpw_default_duration_type', 'unlimited');
+        $duration_type = get_option('btcpw_default_pay_per_' . $project . '_duration_type', 'unlimited');
         //$duration_type = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['duration_type'];
     }
 
@@ -44,10 +45,10 @@ function get_post_info_string($post_id = null)
     if (get_post_meta($post_id, 'btcpw_currency', true)) {
         $currency = get_post_meta($post_id, 'btcpw_currency', true);
     } else {
-        $currency = get_option('btcpw_default_currency', 'SATS');
+        $currency = get_option('btcpw_default_pay_per_' . $project . '_currency', 'SATS');
         //$currency = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['currency'];
     }
-    $btc_format = get_post_meta(get_the_ID(), 'btcpw_btc_format', true) ?: get_option('btcpw_default_btc_format');
+    $btc_format = get_post_meta(get_the_ID(), 'btcpw_btc_format', true) ?: get_option('btcpw_default_pay_per_' . $project . '_btc_format');
 
     //getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['btc_format'];
     //get_option('btcpw_default_btc_format');
@@ -166,7 +167,8 @@ function getDefaultValues($name)
  */
 function calculate_price_for_invoice($post_id)
 {
-    $currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ?: get_option('btcpw_default_currency', 'SATS');
+    $project = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] ? get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] : 'post';
+    //$currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ?: get_option('btcpw_default_pay_per_'.$project.'_currency', 'SATS');
 
     //getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['currency'];
 
@@ -192,7 +194,7 @@ function calculate_price_for_invoice($post_id)
         return $value;
     }*/
 
-    return get_post_meta($post_id, 'btcpw_price', true) ? get_post_meta($post_id, 'btcpw_price', true) : get_option('btcpw_default_price');
+    return get_post_meta($post_id, 'btcpw_price', true) ? get_post_meta($post_id, 'btcpw_price', true) : get_option('btcpw_default_pay_per' . $project . '_price');
 
     //getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['price'];
     //get_option('btcpw_default_price');
@@ -307,16 +309,16 @@ function get_cookie_duration($post_id)
 {
 
     $duration = get_post_meta($post_id, 'btcpw_duration', true);
-
+    $project = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] ? get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] : 'post';
     if (empty($duration)) {
-        $duration = get_option('btcpw_default_duration');
+        $duration = get_option('btcpw_default_pay_per_' . $project . 'duration');
         //$duration = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['duration'];
     }
 
     $duration_type = get_post_meta($post_id, 'btcpw_duration_type', true);
 
     if (empty($duration_type)) {
-        $duration_type = get_option('btcpw_default_duration_type');
+        $duration_type = get_option('btcpw_default_pay_per_' . $project . 'duration_type');
         //getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['duration_type'];
     }
 

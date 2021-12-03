@@ -18,7 +18,7 @@ $default_button_text_success = get_option('btcpw_pay_per_file_button_text_succes
         <form method="POST" action="options.php">
             <?php settings_fields('btcpw_pay_per_file_paywall_options'); ?>
 
-            <h3>Button</h3>
+            <h3>Button Design</h3>
             <div class="row">
                 <div class="col-20">
                     <label for="btcpw_pay_per_file_button_text">Button text</label>

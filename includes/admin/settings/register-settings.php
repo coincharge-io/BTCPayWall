@@ -70,24 +70,24 @@ function register_settings()
 
 
 
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_preview_title_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => 'sanitize_color'));
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_preview_description_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => 'sanitize_color'));
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_background', array('type' => 'string', 'default' => '#ECF0F1', 'sanitize_callback' => 'sanitize_color'));
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_header_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => 'sanitize_color'));
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_info_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => 'sanitize_color'));
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_button_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => 'sanitize_color'));
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_button_text_color', array('type' => 'string', 'default' => '#FFFFFF', 'sanitize_callback' => 'sanitize_color'));
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_show_help_link', array('type' => 'boolean', 'default' => true, 'sanitize_callback' => 'sanitize_boolean'));
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_help_link', array('type' => 'string', 'default' => 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/', 'sanitize_callback' => 'sanitize_text'));
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_help_link_text', array('type' => 'string', 'default' => 'Help', 'sanitize_callback' => 'sanitize_text'));
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_title', array('type' => 'string', 'default' => 'Pay now to watch the whole video', 'sanitize_callback' => 'sanitize_text'));
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_info', array('type' => 'string', 'default' => 'For [price] [currency] you will have access to the video for [duration] [dtype]', 'sanitize_callback' => 'sanitize_text'));
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_button', array('type' => 'string', 'default' => 'Pay', 'sanitize_callback' => 'sanitize_text'));
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_show_additional_help_link', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_additional_help_link', array('type' => 'string', 'default' => '', 'sanitize_callback' => 'sanitize_text'));
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_additional_help_link_text', array('type' => 'string', 'default' => '', 'sanitize_callback' => 'sanitize_text'));
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_width', array('type' => 'string', 'default' => '350', 'sanitize_callback' => 'sanitize_text'));
-    register_setting('btcpw_pay_per_view_paywall_options', 'btcpw_pay_per_view_height', array('type' => 'string', 'default' => '550', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_preview_title_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => 'sanitize_color'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_preview_description_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => 'sanitize_color'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_background', array('type' => 'string', 'default' => '#ECF0F1', 'sanitize_callback' => 'sanitize_color'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_header_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => 'sanitize_color'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_info_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => 'sanitize_color'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_button_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => 'sanitize_color'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_button_text_color', array('type' => 'string', 'default' => '#FFFFFF', 'sanitize_callback' => 'sanitize_color'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_show_help_link', array('type' => 'boolean', 'default' => true, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_help_link', array('type' => 'string', 'default' => 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_help_link_text', array('type' => 'string', 'default' => 'Help', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_title', array('type' => 'string', 'default' => 'Pay now to watch the whole video', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_info', array('type' => 'string', 'default' => 'For [price] [currency] you will have access to the video for [duration] [dtype]', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_button', array('type' => 'string', 'default' => 'Pay', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_show_additional_help_link', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_additional_help_link', array('type' => 'string', 'default' => '', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_additional_help_link_text', array('type' => 'string', 'default' => '', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_width', array('type' => 'string', 'default' => '350', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_height', array('type' => 'string', 'default' => '550', 'sanitize_callback' => 'sanitize_text'));
 
 
 

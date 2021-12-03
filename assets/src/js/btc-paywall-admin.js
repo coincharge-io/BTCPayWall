@@ -72,13 +72,35 @@
     })
   })
   $(document).ready(function () {
-    $('#btcpw_default_duration_type').change(function () {
+    $('#btcpw_default_pay_per_post_duration_type').change(function () {
       var dtype = $(this).val()
 
       if (dtype === 'unlimited' || dtype === 'onetime') {
-        $('#btcpw_default_duration').prop({ required: false, disabled: true })
+        $('#btcpw_default_pay_per_post_duration').prop({
+          required: false,
+          disabled: true
+        })
       } else {
-        $('#btcpw_default_duration').prop({ required: true, disabled: false })
+        $('#btcpw_default_pay_per_post_duration').prop({
+          required: true,
+          disabled: false
+        })
+      }
+    })
+
+    $('#btcpw_default_pay_per_view_duration_type').change(function () {
+      var dtype = $(this).val()
+
+      if (dtype === 'unlimited' || dtype === 'onetime') {
+        $('#btcpw_default_pay_per_view_duration').prop({
+          required: false,
+          disabled: true
+        })
+      } else {
+        $('#btcpw_default_pay_per_view_duration').prop({
+          required: true,
+          disabled: false
+        })
       }
     })
   })
@@ -136,55 +158,7 @@
   $('#design-button').click(function (e) {
     e.preventDefault()
   })
-  /* $(document).ready(function () {
-    $.ajax({
-      url: '/wp-admin/admin-ajax.php',
-      method: 'GET',
-      data: {
-        action: 'btcpw_get_greenfield_invoices'
-      },
-      success: function (response) {
-        if (response.success) {
-          var data = JSON.parse(JSON.stringify(response['data']))
 
-          var body = $('.section.invoices')
-          $.each(data, function (i, value) {
-            var parseUrl = value['checkoutLink'].split('/')
-
-            var base = parseUrl[0] + '//' + parseUrl[2]
-
-            var redirectLink = base + '/invoices/' + value['id']
-
-            var creationDate = new Date(parseInt(value['createdTime']) * 1000)
-
-            var formatted = convertDate(creationDate)
-
-            body.append(
-              '<tr><td>' +
-                formatted +
-                '</td><td>' +
-                value['metadata']['itemDesc'] +
-                '</td><td class=' +
-                value['status'] +
-                '>' +
-                value['status'] +
-                '</td><td>' +
-                value['amount'] +
-                '</td><td>' +
-                value['currency'] +
-                '</td><td><a target=_blank href=' +
-                redirectLink +
-                '>' +
-                value['id'] +
-                '</a></td></tr>'
-            )
-          })
-        } else {
-          console.log(response)
-        }
-      }
-    })
-  }) */
   $(document).ready(function () {
     $('.btcpw_fixed_amount_enable').change(function () {
       $(this).is(':checked')
@@ -769,8 +743,7 @@
     uploadFile(
       $('#btcpw_digital_download_upload_button'),
       $('#btcpw_product_file'),
-      $('#btcpw_product_filename',
-      $('#btcpw_product_file_id'))
+      $('#btcpw_product_filename', $('#btcpw_product_file_id'))
     )
   })
 })(jQuery)
