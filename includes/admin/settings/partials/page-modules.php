@@ -32,7 +32,7 @@ $section = isset($_GET['section']) ? $_GET['section'] : $default_section;
                 require('page-content-store.php');
                 break;
             case 'tipping':
-                require('page-add-form.php');
+                require('page-tipping.php');
                 break;
             default:
                 require('page-pay-per-post.php');
