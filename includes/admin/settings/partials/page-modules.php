@@ -15,7 +15,7 @@ $section = isset($_GET['section']) ? $_GET['section'] : $default_section;
                 <a href="?page=btcpw_general_settings&tab=modules&section=pay-post" class="nav-tab <?php if ($section === 'pay-post') : ?>nav-tab-active<?php endif; ?>">Pay-per-post</a>
             </li>
             <li>
-                <a href="?page=btcpw_general_settings&tab=modules&section=content-store" class="nav-tab <?php if ($section === 'content-store') : ?>nav-tab-active<?php endif; ?>">Content store</a>
+                <a href="?page=btcpw_general_settings&tab=modules&section=content-store" class="nav-tab <?php if ($section === 'content-store') : ?>nav-tab-active<?php endif; ?>">Content Store</a>
             </li>
             <li>
                 <a href="?page=btcpw_general_settings&tab=modules&section=tipping" class="nav-tab <?php if ($section === 'tipping') : ?>nav-tab-active<?php endif; ?>">Tipping</a>
@@ -31,9 +31,9 @@ $section = isset($_GET['section']) ? $_GET['section'] : $default_section;
             case 'content-store':
                 require('page-content-store.php');
                 break;
-                /* case 'tipping':
-                require('page-pay-per-file-paywall-design.php');
-                break; */
+            case 'tipping':
+                require('page-add-form.php');
+                break;
             default:
                 require('page-pay-per-post.php');
                 break;

@@ -150,8 +150,8 @@ $default_info = get_option('btcpw_pay_per_view_info');
                     <label for="btcpw_general_pay_per_view_settings_duration">Default duration</label>
                 </div>
                 <div class="col-80">
-                    <input type="number" min="1" placeholder="Default Access Duration" name="btcpw_default_pay_per_view_duration" id="btcpw_general_pay_per_view_settings_duration" <?php echo $disable; ?> value="<?php echo $default_duration ?>">
-                    <select required name="btcpw_default_pay_per_view_duration_type" id="btcpw_general_pay_per_view_settings_duration_type">
+                    <input type="number" min="1" placeholder="Default Access Duration" name="btcpw_default_pay_per_view_duration" id="btcpw_default_pay_per_view_duration" <?php echo $disable; ?> value="<?php echo $default_duration ?>">
+                    <select required name="btcpw_default_pay_per_view_duration_type" id="btcpw_default_pay_per_view_duration_type">
                         <option disabled value="">Select duration type</option>
                         <?php foreach ($supported_durations as $duration) : ?>
                             <option <?php echo $default_duration_type === $duration ? 'selected' : ''; ?> value="<?php echo $duration; ?>">
@@ -161,7 +161,7 @@ $default_info = get_option('btcpw_pay_per_view_info');
                     </select>
                 </div>
             </div>
-            <h4>Collect further information</h4>
+            <h3>Collect further information</h3>
             <div class="row">
                 <div class="col-50">
                     <p>Full name</p>

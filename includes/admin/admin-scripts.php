@@ -9,7 +9,7 @@ function admin_enqueue_styles()
 
     wp_enqueue_style('wp-color-picker');
     wp_enqueue_style('load-fa', 'https://use.fontawesome.com/releases/v5.12.1/css/all.css');
-    if (isset($_GET['page']) && $_GET['page'] == 'btcpw_form') {
+    if (isset($_GET['page']) && $_GET['page'] == 'btcpw_general_settings' && isset($_GET['tab']) && $_GET['tab'] == 'modules') {
         wp_enqueue_style('btcpaywall' . '_preview', BTCPAYWALL_PLUGIN_URL . 'assets/src/css/btc-paywall-preview-admin.css', array(), BTCPAYWALL_VERSION, 'all');
     }
 }
@@ -40,7 +40,7 @@ function enqueue_scripts_admin()
     if (isset($_GET['page']) && $_GET['page'] == 'btcpw_general_settings') {
         wp_enqueue_script('btcpaywall' . '_design_preview', BTCPAYWALL_PLUGIN_URL . 'assets/src/js/btc-paywall-design-preview-admin.js', array('jquery'), BTCPAYWALL_VERSION, false);
     }
-    if (isset($_GET['page']) && $_GET['page'] == 'btcpw_form') {
+    if (isset($_GET['page']) && $_GET['page'] == 'btcpw_form' && isset($_GET['tab']) && $_GET['tab'] == 'modules') {
         wp_enqueue_script('btcpaywall' . '_preview', BTCPAYWALL_PLUGIN_URL . 'assets/src/js/btc-paywall-preview-admin.js', array('jquery'), BTCPAYWALL_VERSION, false);
     }
 

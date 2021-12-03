@@ -9,9 +9,15 @@ $subsection = isset($_GET['subsection']) ? $_GET['subsection'] : $default_subsec
 
 <div class="wrap">
 
-    <nav class="nav-tab-wrapper">
-        <a href="?page=btcpw_general_settings&tab=modules&section=pay-post&subsection=general" class="nav-tab <?php if ($subsection === 'general') : ?>nav-tab-active<?php endif; ?>">General Settings</a>
-        <a href="?page=btcpw_general_settings&tab=modules&section=pay-post&subsection=design" class="nav-tab <?php if ($subsection === 'design') : ?>nav-tab-active<?php endif; ?>">Paywall Design</a>
+    <nav class="btcpw nav-tab-wrapper">
+        <ul class="btcpw subsub modules_sub_nav">
+            <li>
+                <a href="?page=btcpw_general_settings&tab=modules&section=pay-post&subsection=general" class="nav-tab <?php if ($subsection === null) : ?>nav-tab-active<?php endif; ?>">General Settings</a>
+            </li>
+            <li>
+                <a href="?page=btcpw_general_settings&tab=modules&section=pay-post&subsection=design" class="nav-tab <?php if ($subsection === 'design') : ?>nav-tab-active<?php endif; ?>">Paywall Design</a>
+            </li>
+        </ul>
     </nav>
 
     <div class="tab-content">

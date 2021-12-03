@@ -10,9 +10,15 @@ $subsection = isset($_GET['subsection']) ? $_GET['subsection'] : $default_subsec
 
 <div class="wrap">
 
-    <nav class="nav-tab-wrapper">
-        <a href="?page=btcpw_general_settings&tab=modules&section=content-store&subsection=pay-per-view" class="nav-tab <?php if ($subsection === 'pay-per-view') : ?>nav-tab-active<?php endif; ?>">View</a>
-        <a href="?page=btcpw_general_settings&tab=modules&section=content-store&subsection=pay-per-file" class="nav-tab <?php if ($subsection === 'pay-per-file') : ?>nav-tab-active<?php endif; ?>">File</a>
+    <nav class="btcpw nav-tab-wrapper">
+        <ul class="btcpw subsub modules_sub_nav">
+            <li>
+                <a href="?page=btcpw_general_settings&tab=modules&section=content-store&subsection=pay-per-view" class="nav-tab <?php if ($subsection === null) : ?>nav-tab-active<?php endif; ?>">Content Store View</a>
+            </li>
+            <li>
+                <a href="?page=btcpw_general_settings&tab=modules&section=content-store&subsection=pay-per-file" class="nav-tab <?php if ($subsection === 'pay-per-file') : ?>nav-tab-active<?php endif; ?>">Content Store File</a>
+            </li>
+        </ul>
     </nav>
 
     <div class="tab-content">
