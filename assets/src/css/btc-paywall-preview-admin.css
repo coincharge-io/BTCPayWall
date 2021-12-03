@@ -900,6 +900,7 @@ div.preview_btcpw_page_header_container > div:nth-child(2) {
 .btcpw_add_form_preview form {
   display: flex;
   flex-direction: column;
+  width: 120px;
 }
 
 #btcpw_form_preview {

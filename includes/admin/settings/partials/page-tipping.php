@@ -12,10 +12,10 @@ $subsection = isset($_GET['subsection']) ? $_GET['subsection'] : $default_subsec
     <nav class="btcpw nav-tab-wrapper">
         <ul class="btcpw subsub modules_sub_nav">
             <li>
-                <a href="?page=btcpw_general_settings&tab=modules&section=tipping&subsection=all" class="nav-tab <?php if ($subsection === null) : ?>nav-tab-active<?php endif; ?>">All created forms</a>
+                <a href="?page=btcpw_general_settings&tab=modules&section=tipping&subsection=all" class="nav-tab <?php if ($subsection === null) : ?>nav-tab-active<?php endif; ?>">All forms</a>
             </li>
             <li>
-                <a href="?page=btcpw_general_settings&tab=modules&section=tipping&subsection=new" class="nav-tab <?php if ($subsection === 'new') : ?>nav-tab-active<?php endif; ?>">Create new form</a>
+                <a href="?page=btcpw_general_settings&tab=modules&section=tipping&subsection=new" class="nav-tab <?php if ($subsection === 'new') : ?>nav-tab-active<?php endif; ?>">Add new</a>
             </li>
 
         </ul>
