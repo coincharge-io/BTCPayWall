@@ -1,9 +1,10 @@
 ;(function ($) {
   'use strict'
   $(document).ready(function () {
-    var btcpw_invoice_id = null
+    var btcpw_invoice_id = localStorage.getItem('opennode_invoice_id')
     var btcpw_order_id = null
     var amount
+    btcpwShowOpenNodeInvoice(btcpw_invoice_id)
 
     $('#btcpw_pay__button').click(function () {
       var text = $('#btcpw_pay__button').text()
@@ -14,6 +15,7 @@
       var post_id = $(this).data('post_id')
       if (btcpw_invoice_id && btcpw_order_id) {
         btcpwShowInvoice(btcpw_invoice_id, btcpw_order_id)
+        btcpwShowOpenNodeInvoice(btcpw_invoice_id)
         return
       }
 
@@ -50,10 +52,17 @@
             btcpw_invoice_id = response.data.invoice_id
             btcpw_order_id = response.data.order_id
             amount = response.data.amount
+            localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
             /* location.replace(
               'https://checkout.opennode.com/' + btcpw_invoice_id
             ) */
-            btcpwShowInvoice(btcpw_invoice_id, btcpw_order_id, amount)
+            var urlRedirect =
+              'https://checkout.opennode.com/' + btcpw_invoice_id
+            $('.btcpw_digital_download_protected_area').html(`
+<iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
+            //btcpwShowOpenNodeInvoice(btcpw_invoice_id)
+
+            //btcpwShowInvoice(btcpw_invoice_id, btcpw_order_id, amount)
           } else {
             console.error(response)
           }
@@ -85,6 +94,34 @@
         })
       }
     }) */
+  function btcpwShowOpenNodeInvoice (invoice_id) {
+    var status, expire
+
+    if (status !== 'paid' || new Date() > Date.parse(expire)) {
+      $.ajax({
+        url: '/wp-admin/admin-ajax.php',
+        method: 'POST',
+        data: {
+          action: 'btcpw_paid_opennode_invoice',
+          id: invoice_id
+        },
+        success: function (response) {
+          if (response.success) {
+            setTimeout(btcpwShowOpenNodeInvoice, 3000)
+
+            status = response.data.status
+            expire = response.data.expires_at
+            if (status === 'paid') {
+              localStorage.setItem('opennode_invoice_id'.null)
+            }
+            /*notifyAdmin(response.data.notify + 'Url:' + window.location.href)*/
+          } else {
+            console.error(response)
+          }
+        }
+      })
+    }
+  }
   function btcpwShowInvoice (invoice_id, order_id, amount) {
     btcpay.onModalReceiveMessage(function (event) {
       if (event.data.status === 'complete') {
@@ -236,7 +273,6 @@
         },
         success: function (response) {
           $("#btcpw_skyscraper_tipping__button").html(text);
-
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id;
             donor =
@@ -556,7 +592,6 @@
         !redirect ? location.reload(true) : location.replace(redirect)
       }
     })
-
     btcpay.showInvoice(invoice_id)
   } */
   function btcpwShowDonationBoxInvoice (invoice_id, donor, redirect) {
@@ -590,7 +625,6 @@
         !redirect ? location.reload(true) : location.replace(redirect)
       }
     })
-
     btcpay.showInvoice(invoice_id)
   } */
   function btcpwShowDonationBannerInvoice (invoice_id, donor, redirect) {
