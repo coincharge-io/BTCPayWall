@@ -1,7 +1,6 @@
 <?php
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
-$btcpw_opennode_url = get_option('btcpw_opennode_url');
 $btcpw_opennode_auth_key = get_option('btcpw_opennode_auth_key');
 ?>
 <div class="btcpw_general_settings">
@@ -11,15 +10,6 @@ $btcpw_opennode_auth_key = get_option('btcpw_opennode_auth_key');
             <?php settings_fields('btcpw_opennode_settings'); ?>
             <div>
                 <h2>OpenNode</h2>
-
-                <div class="row">
-                    <div class="col-20">
-                        <label>OpenNode Url</label>
-                    </div>
-                    <div class="col-80">
-                        <input type="url" placeholder="OpenNode Url" name="btcpw_opennode_url" id="btcpw_opennode_url" value="<?php echo $btcpw_opennode_url ?>" style="min-width: 335px;">
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-20">
                         <label for="btcpw_btcpay_auth_key_view">OpenNode API Key</label>

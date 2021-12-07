@@ -416,9 +416,11 @@ function ajax_paid_invoice()
     $message .= "Credit on Store ID: {$storeId} \n";
     $message .= "Type: $content_title \n";
 
-    if ($body['status'] === 'Settled') {
-        $cookie_path = parse_url(get_permalink($post_id), PHP_URL_PATH);
-        /* $revenue_type = $body['metadata']['type'];
+    if ($body['status'] !== 'Settled') {
+        wp_send_json_error(['message' => 'Invoice is not paid.']);
+    }
+    $cookie_path = parse_url(get_permalink($post_id), PHP_URL_PATH);
+    /* $revenue_type = $body['metadata']['type'];
 
 
         $payment_method = get_payment_method($body['id']);
@@ -439,35 +441,33 @@ function ajax_paid_invoice()
             'payment_method' => $payment_method,
             'date_created'  => date('Y-m-d H:i:s', $body['createdTime'])
         ]); */
-        $payment = new BTCPayWall_Payment($invoice_id);
+    $payment = new BTCPayWall_Payment($invoice_id);
 
 
-        //$tipping = new BTCPayWall_Tipping(sanitize_text_field($_POST['invoice_id']));
-        $payment_method = get_payment_method($body['id']);
+    //$tipping = new BTCPayWall_Tipping(sanitize_text_field($_POST['invoice_id']));
+    $payment_method = get_payment_method($body['id']);
 
-        $payment->update(array('status' => $body['status'], 'payment_method' => $payment_method));
+    $payment->update(array('status' => $body['status'], 'payment_method' => $payment_method));
 
-        if ($payment->revenue_type === 'Pay-per-file') {
+    if ($payment->revenue_type === 'Pay-per-file') {
 
-            setcookie('btcpw_payment_id_' . $post_id, $payment->invoice_id, strtotime("14 Jan 2038"), $cookie_path);
+        setcookie('btcpw_payment_id_' . $post_id, $payment->invoice_id, strtotime("14 Jan 2038"), $cookie_path);
 
-            setcookie('btcpw_link_expiration_' . $post_id, strtotime("14 Jan 2038"), strtotime("14 Jan 2038"), $cookie_path);
-            $download = new BTCPayWall_Digital_Download($post_id);
-            $download->increase_sales();
-            if (is_email($body['metadata']['customer_data']['email']) && !empty($body['metadata']['customer_data']['email'])) {
-                $link = get_download_url($payment->id, $download->get_file_url(), $download->ID, $body['metadata']['customer_data']['email']);
-                wp_mail($body['metadata']['customer_data']['email'], 'BTCPayWall Digital Download Link', $link);
-            }
+        setcookie('btcpw_link_expiration_' . $post_id, strtotime("14 Jan 2038"), strtotime("14 Jan 2038"), $cookie_path);
+        $download = new BTCPayWall_Digital_Download($post_id);
+        $download->increase_sales();
+        if (is_email($body['metadata']['customer_data']['email']) && !empty($body['metadata']['customer_data']['email'])) {
+            $link = get_download_url($payment->id, $download->get_file_url(), $download->ID, $body['metadata']['customer_data']['email']);
+            wp_mail($body['metadata']['customer_data']['email'], 'BTCPayWall Digital Download Link', $link);
         }
-        update_post_meta($body['metadata']['orderId'], 'btcpw_payment_id', $payment->invoice_id);
-
-        setcookie("btcpw_{$post_id}", $secret, get_cookie_duration($post_id), $cookie_path);
-
-        update_post_meta($order_id, 'btcpw_status', 'success');
-
-        wp_send_json_success(['notify' => $message]);
     }
-    wp_send_json_error(['message' => 'invoice is not paid']);
+    update_post_meta($body['metadata']['orderId'], 'btcpw_payment_id', $payment->invoice_id);
+
+    setcookie("btcpw_{$post_id}", $secret, get_cookie_duration($post_id), $cookie_path);
+
+    update_post_meta($order_id, 'btcpw_status', 'success');
+
+    wp_send_json_success(['notify' => $message]);
 }
 
 add_action('wp_ajax_btcpw_paid_invoice',  'ajax_paid_invoice');
@@ -568,7 +568,7 @@ function generate_opennode_invoice_id($post_id, $order_id, $customer_data)
 {
     $amount = calculate_price_for_invoice($post_id);
 
-    $url = get_option('btcpw_opennode_url') . '/v1/charges';
+    $url = 'https://api.opennode.com/v1/charges';
     $currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ? get_post_meta($post_id, 'btcpw_currency', true) : get_option('btcpw_default_currency', 'SATS');
 
     $blogname = get_option('blogname');
@@ -681,7 +681,7 @@ function tipping_invoice_args($amount, $currency, $type, $blogname, $collects)
             'args' => $args
         );
     }
-    $url = get_option('btcpw_opennode_url') . '/v1/charges';
+    $url = 'https://api.opennode.com/v1/charges';
 
 
     $data = array(

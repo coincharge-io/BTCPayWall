@@ -9,7 +9,7 @@ function register_settings()
     register_setting('btcpw_btcpay_server_settings', 'btcpw_btcpay_auth_key_view', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_auth_key'));
     register_setting('btcpw_btcpay_server_settings', 'btcpw_btcpay_auth_key_create', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_auth_key'));
 
-    register_setting('btcpw_opennode_settings', 'btcpw_opennode_url', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_server_url'));
+    
     register_setting('btcpw_opennode_settings', 'btcpw_opennode_auth_key', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_auth_key'));
 
     register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_currency', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'sanitize_text'));
