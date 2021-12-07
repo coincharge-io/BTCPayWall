@@ -371,7 +371,6 @@ function ajax_paid_invoice()
     $invoice_id = get_post_meta($order_id, 'btcpw_invoice_id', true);
     $secret = get_post_meta($order_id, 'btcpw_secret', true);
     $content_title = get_post_meta($post_id, 'btcpw_invoice_content', true)['title'];
-    $store_id = get_option('btcpw_btcpay_store_id');
 
 
     if (empty($post_id) || empty($invoice_id)) {

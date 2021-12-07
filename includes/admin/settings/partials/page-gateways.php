@@ -9,7 +9,7 @@ $section = isset($_GET['section']) ? $_GET['section'] : $default_section;
     <nav class="btcpw nav-tab-wrapper">
         <ul class="btcpw subsub modules_sub_nav">
             <li>
-                <a href="?page=btcpw_general_settings&tab=gateways&section=" class="nav-tab <?php if ($section === null) : ?>nav-tab-active<?php endif; ?>">General</a>
+                <a href="?page=btcpw_general_settings&tab=gateways&section=gateways" class="nav-tab <?php if ($section === null || $section === 'gateways') : ?>nav-tab-active<?php endif; ?>">General</a>
             </li>
             <li>
                 <a href="?page=btcpw_general_settings&tab=gateways&section=btcpayserver" class="nav-tab <?php if ($section === 'btcpayserver') : ?>nav-tab-active<?php endif; ?>">BTCPayServer</a>

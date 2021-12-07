@@ -4,8 +4,9 @@
     var btcpw_invoice_id = localStorage.getItem('opennode_invoice_id')
     var btcpw_order_id = null
     var amount
-    btcpwShowOpenNodeInvoice(btcpw_invoice_id)
-
+    if (btcpw_invoice_id) {
+      btcpwShowOpenNodeInvoice(btcpw_invoice_id)
+    }
     $('#btcpw_pay__button').click(function () {
       var text = $('#btcpw_pay__button').text()
       $('#btcpw_pay__button').html(
@@ -15,7 +16,6 @@
       var post_id = $(this).data('post_id')
       if (btcpw_invoice_id && btcpw_order_id) {
         btcpwShowInvoice(btcpw_invoice_id, btcpw_order_id)
-        btcpwShowOpenNodeInvoice(btcpw_invoice_id)
         return
       }
 
@@ -53,14 +53,12 @@
             btcpw_order_id = response.data.order_id
             amount = response.data.amount
             localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
-            /* location.replace(
-              'https://checkout.opennode.com/' + btcpw_invoice_id
-            ) */
             var urlRedirect =
               'https://checkout.opennode.com/' + btcpw_invoice_id
-            $('.btcpw_digital_download_protected_area').html(`
+            $(
+              '.btcpw_digital_download_protected_area, .btcpw_revenue_post_container,.btcpw_revenue_view_container'
+            ).html(`
 <iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
-            //btcpwShowOpenNodeInvoice(btcpw_invoice_id)
 
             //btcpwShowInvoice(btcpw_invoice_id, btcpw_order_id, amount)
           } else {
@@ -107,12 +105,10 @@
         },
         success: function (response) {
           if (response.success) {
-            setTimeout(btcpwShowOpenNodeInvoice, 3000)
-
             status = response.data.status
             expire = response.data.expires_at
             if (status === 'paid') {
-              localStorage.setItem('opennode_invoice_id'.null)
+              localStorage.removeItem('opennode_invoice_id')
             }
             /*notifyAdmin(response.data.notify + 'Url:' + window.location.href)*/
           } else {
@@ -150,8 +146,12 @@
   }
 
   $(document).ready(function () {
-    var btcpw_invoice_id = null
+    var btcpw_invoice_id = localStorage.getItem('opennode_invoice_id')
     var donor
+
+    if (btcpw_invoice_id) {
+      btcpwShowOpenNodeInvoice(btcpw_invoice_id)
+    }
     $('#tipping_form_box').submit(function (e) {
       var text = $('#btcpw_tipping__button').text()
       $('#btcpw_tipping__button').html(
@@ -185,6 +185,13 @@
               window.location.href +
               '\n' +
               response.data.donor
+
+            localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
+            var urlRedirect =
+              'https://checkout.opennode.com/' + btcpw_invoice_id
+            $('.btcpw_tipping_box_container').html(`
+<iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
+
             btcpwShowDonationBoxInvoice(
               btcpw_invoice_id,
               donor,
@@ -230,6 +237,11 @@
               window.location.href +
               '\n' +
               response.data.donor
+            localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
+            var urlRedirect =
+              'https://checkout.opennode.com/' + btcpw_invoice_id
+            $('.btcpw_widget.btcpw_tipping_box_container').html(`
+<iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
             btcpwShowDonationBoxInvoice(
               btcpw_invoice_id,
               donor,
@@ -244,56 +256,6 @@
         }
       })
     })
-
-    /* $("#skyscraper_tipping_form").submit(function (e) {
-      e.preventDefault();
-      var text = $("#btcpw_skyscraper_tipping__button").text();
-      $("#btcpw_skyscraper_tipping__button").html(
-        `<span class="tipping-border" role="status" aria-hidden="true"></span>`
-      );
-      if (btcpw_invoice_id) {
-        btcpwShowDonationBannerInvoice(btcpw_invoice_id);
-        return;
-      }
-      $.ajax({
-        url: "/wp-admin/admin-ajax.php",
-        method: "POST",
-        data: {
-          action: "btcpw_tipping",
-          currency: $("#btcpw_skyscraper_tipping_currency").val(),
-          amount: $("#btcpw_skyscraper_tipping_amount").val(),
-          predefined_amount: $(
-            "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]:checked, input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]:checked"
-          ).val(),
-          name: $("#btcpw_skyscraper_tipping_donor_name_wide,#btcpw_skyscraper_tipping_donor_name_high").val(),
-          email: $("#btcpw_skyscraper_tipping_donor_email_wide,#btcpw_skyscraper_tipping_donor_email_high").val(),
-          address: $("#btcpw_skyscraper_tipping_donor_address_wide,#btcpw_skyscraper_tipping_donor_address_high").val(),
-          phone: $("#btcpw_skyscraper_tipping_donor_phone_wide,#btcpw_skyscraper_tipping_donor_phone_high").val(),
-          message: $("#btcpw_skyscraper_tipping_donor_message_wide, #btcpw_skyscraper_tipping_donor_message_high").val(),
-        },
-        success: function (response) {
-          $("#btcpw_skyscraper_tipping__button").html(text);
-          if (response.success) {
-            btcpw_invoice_id = response.data.invoice_id;
-            donor =
-              "Type: Tipping Banner" +
-              "\n" +
-              "Url: " +
-              window.location.href +"\n"+response.data.donor;
-            btcpwShowDonationBannerInvoice(
-              btcpw_invoice_id,
-              donor,
-              $("#btcpw_skyscraper_redirect_link_wide, #btcpw_skyscraper_redirect_link_high").val()
-            );
-          } else {
-            console.error(response);
-          }
-        },
-        error: function (error) {
-          console.log(error);
-        },
-      });
-    }); */
 
     $('#page_tipping_form').submit(function (e) {
       e.preventDefault()
@@ -333,6 +295,11 @@
               window.location.href +
               '\n' +
               response.data.donor
+            localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
+            var urlRedirect =
+              'https://checkout.opennode.com/' + btcpw_invoice_id
+            $('.btcpw_page_tipping_container').html(`
+<iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
               donor,
@@ -386,6 +353,12 @@
               window.location.href +
               '\n' +
               response.data.donor
+
+            localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
+            var urlRedirect =
+              'https://checkout.opennode.com/' + btcpw_invoice_id
+            $('.btcpw_skyscraper_banner.high').html(`
+<iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
               donor,
@@ -452,6 +425,12 @@
               window.location.href +
               '\n' +
               response.data.donor
+
+            localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
+            var urlRedirect =
+              'https://checkout.opennode.com/' + btcpw_invoice_id
+            $('.btcpw_widget.btcpw_skyscraper_banner.high').html(`
+<iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
               donor,
@@ -505,6 +484,12 @@
               window.location.href +
               '\n' +
               response.data.donor
+
+            localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
+            var urlRedirect =
+              'https://checkout.opennode.com/' + btcpw_invoice_id
+            $('.btcpw_skyscraper_banner.wide').html(`
+<iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
               donor,
@@ -569,6 +554,12 @@
               window.location.href +
               '\n' +
               response.data.donor
+
+            localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
+            var urlRedirect =
+              'https://checkout.opennode.com/' + btcpw_invoice_id
+            $('.btcpw_widget.btcpw_skyscraper_banner.wide').html(`
+<iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
             btcpwShowDonationBannerInvoice(
               btcpw_invoice_id,
               donor,

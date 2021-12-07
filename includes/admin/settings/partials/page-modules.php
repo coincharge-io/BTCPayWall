@@ -12,7 +12,7 @@ $section = isset($_GET['section']) ? $_GET['section'] : $default_section;
     <nav class="btcpw nav-tab-wrapper">
         <ul class="btcpw subsub modules_sub_nav">
             <li>
-                <a href="?page=btcpw_general_settings&tab=modules&section=pay-post" class="nav-tab <?php if ($section === null) : ?>nav-tab-active<?php endif; ?>">Pay-per-post</a>
+                <a href="?page=btcpw_general_settings&tab=modules&section=pay-post" class="nav-tab <?php if ($section === null || $section === 'pay-post') : ?>nav-tab-active<?php endif; ?>">Pay-per-post</a>
             </li>
             <li>
                 <a href="?page=btcpw_general_settings&tab=modules&section=content-store" class="nav-tab <?php if ($section === 'content-store') : ?>nav-tab-active<?php endif; ?>">Content Store</a>
