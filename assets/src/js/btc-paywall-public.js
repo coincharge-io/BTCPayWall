@@ -1,10 +1,11 @@
 ;(function ($) {
   'use strict'
+  var gateway = payment_gateways.gateway
   $(document).ready(function () {
     var btcpw_invoice_id = localStorage.getItem('opennode_invoice_id')
     var btcpw_order_id = null
     var amount
-    if (btcpw_invoice_id) {
+    if (btcpw_invoice_id && gateway === 'OpenNode') {
       btcpwShowOpenNodeInvoice(btcpw_invoice_id)
     }
     $('#btcpw_pay__button').click(function () {
@@ -14,7 +15,7 @@
       )
       //$('.btcpw_pay__loading p.loading').addClass('spinner')
       var post_id = $(this).data('post_id')
-      if (btcpw_invoice_id && btcpw_order_id) {
+      if (btcpw_invoice_id && btcpw_order_id && gateway === 'BTCPayServer') {
         btcpwShowInvoice(btcpw_invoice_id, btcpw_order_id)
         return
       }
@@ -52,15 +53,17 @@
             btcpw_invoice_id = response.data.invoice_id
             btcpw_order_id = response.data.order_id
             amount = response.data.amount
-            localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
-            var urlRedirect =
-              'https://checkout.opennode.com/' + btcpw_invoice_id
-            $(
-              '.btcpw_digital_download_protected_area, .btcpw_revenue_post_container,.btcpw_revenue_view_container'
-            ).html(`
+            if (gateway === 'OpenNode') {
+              localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
+              var urlRedirect =
+                'https://checkout.opennode.com/' + btcpw_invoice_id
+              $(
+                '.btcpw_digital_download_protected_area, .btcpw_revenue_post_container,.btcpw_revenue_view_container'
+              ).html(`
 <iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
-
-            //btcpwShowInvoice(btcpw_invoice_id, btcpw_order_id, amount)
+            } else {
+              btcpwShowInvoice(btcpw_invoice_id, btcpw_order_id, amount)
+            }
           } else {
             console.error(response)
           }
@@ -69,54 +72,30 @@
     })
   })
 
-  /* function btcpwShowInvoice (invoice_id, order_id, amount) {
-    btcpay.onModalReceiveMessage(function (event) {
-      if (event.data.status === 'complete') {
-        $.ajax({
-          url: '/wp-admin/admin-ajax.php',
-          method: 'POST',
-          data: {
-            action: 'btcpw_paid_invoice',
-            invoice_id: invoice_id,
-            order_id: order_id,
-            amount: amount
-          },
-          success: function (response) {
-            if (response.success) {
-              notifyAdmin(response.data.notify + 'Url:' + window.location.href)
-              location.reload(true)
-            } else {
-              console.error(response)
-            }
-          }
-        })
-      }
-    }) */
-  function btcpwShowOpenNodeInvoice (invoice_id) {
-    var status, expire
-
-    if (status !== 'paid' || new Date() > Date.parse(expire)) {
-      $.ajax({
-        url: '/wp-admin/admin-ajax.php',
-        method: 'POST',
-        data: {
-          action: 'btcpw_paid_opennode_invoice',
-          id: invoice_id
-        },
-        success: function (response) {
-          if (response.success) {
-            status = response.data.status
-            expire = response.data.expires_at
-            if (status === 'paid') {
-              localStorage.removeItem('opennode_invoice_id')
-            }
-            /*notifyAdmin(response.data.notify + 'Url:' + window.location.href)*/
-          } else {
-            console.error(response)
-          }
+  function btcpwShowOpenNodeInvoice () {
+    /* var status, expire
+    alert('dsadada')
+    console.log(new Date() > Date.parse(expire))
+    if (status !== 'paid' || new Date() > Date.parse(expire)) { */
+    $.ajax({
+      url: '/wp-admin/admin-ajax.php',
+      method: 'POST',
+      data: {
+        action: 'btcpw_paid_opennode_invoice',
+        id: localStorage.getItem('opennode_invoice_id')
+      },
+      success: function (response) {
+        if (response.success) {
+          //if (response.data.status === 'paid') {
+          localStorage.removeItem('opennode_invoice_id')
+          //}
+          notifyAdmin(response.data.notify + 'Url:' + window.location.href)
+        } else {
+          console.error(response)
         }
-      })
-    }
+      }
+    })
+    //}
   }
   function btcpwShowInvoice (invoice_id, order_id, amount) {
     btcpay.onModalReceiveMessage(function (event) {
@@ -150,7 +129,7 @@
     var donor
 
     if (btcpw_invoice_id) {
-      btcpwShowOpenNodeInvoice(btcpw_invoice_id)
+      btcpwShowOpenNodeInvoice(btcpw_invoice_id && gateway === 'OpenNode')
     }
     $('#tipping_form_box').submit(function (e) {
       var text = $('#btcpw_tipping__button').text()
@@ -158,7 +137,7 @@
         `<span class="tipping-border" role="status" aria-hidden="true"></span>`
       )
       e.preventDefault()
-      if (btcpw_invoice_id) {
+      if (btcpw_invoice_id && gateway === 'BTCPayServer') {
         btcpwShowDonationBoxInvoice(btcpw_invoice_id)
         return
       }
@@ -185,18 +164,19 @@
               window.location.href +
               '\n' +
               response.data.donor
-
-            localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
-            var urlRedirect =
-              'https://checkout.opennode.com/' + btcpw_invoice_id
-            $('.btcpw_tipping_box_container').html(`
+            if (gateway === 'OpenNode') {
+              localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
+              var urlRedirect =
+                'https://checkout.opennode.com/' + btcpw_invoice_id
+              $('.btcpw_tipping_box_container').html(`
 <iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
-
-            btcpwShowDonationBoxInvoice(
-              btcpw_invoice_id,
-              donor,
-              $('#btcpw_redirect_link').val()
-            )
+            } else {
+              btcpwShowDonationBoxInvoice(
+                btcpw_invoice_id,
+                donor,
+                $('#btcpw_redirect_link').val()
+              )
+            }
           } else {
             console.error(response)
           }
@@ -213,7 +193,7 @@
       $('#btcpw_tipping__button_btcpw_widget').html(
         `<span class="tipping-border" role="status" aria-hidden="true"></span>`
       )
-      if (btcpw_invoice_id) {
+      if (btcpw_invoice_id && gateway === 'BTCPayServer') {
         btcpwShowDonationBoxInvoice(btcpw_invoice_id)
         return
       }
@@ -237,16 +217,19 @@
               window.location.href +
               '\n' +
               response.data.donor
-            localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
-            var urlRedirect =
-              'https://checkout.opennode.com/' + btcpw_invoice_id
-            $('.btcpw_widget.btcpw_tipping_box_container').html(`
+            if (gateway === 'OpenNode') {
+              localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
+              var urlRedirect =
+                'https://checkout.opennode.com/' + btcpw_invoice_id
+              $('.btcpw_widget.btcpw_tipping_box_container').html(`
 <iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
-            btcpwShowDonationBoxInvoice(
-              btcpw_invoice_id,
-              donor,
-              $('#btcpw_redirect_link_btcpw_widget').val()
-            )
+            } else {
+              btcpwShowDonationBoxInvoice(
+                btcpw_invoice_id,
+                donor,
+                $('#btcpw_redirect_link_btcpw_widget').val()
+              )
+            }
           } else {
             console.error(response)
           }
@@ -263,7 +246,7 @@
       $('#btcpw_page_tipping__button').html(
         `<span class="tipping-border" role="status" aria-hidden="true"></span>`
       )
-      if (btcpw_invoice_id) {
+      if (btcpw_invoice_id && gateway === 'BTCPayServer') {
         btcpwShowDonationBannerInvoice(btcpw_invoice_id)
         return
       }
@@ -295,16 +278,19 @@
               window.location.href +
               '\n' +
               response.data.donor
-            localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
-            var urlRedirect =
-              'https://checkout.opennode.com/' + btcpw_invoice_id
-            $('.btcpw_page_tipping_container').html(`
+            if (gateway === 'OpenNode') {
+              localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
+              var urlRedirect =
+                'https://checkout.opennode.com/' + btcpw_invoice_id
+              $('.btcpw_page_tipping_container').html(`
 <iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
-            btcpwShowDonationBannerInvoice(
-              btcpw_invoice_id,
-              donor,
-              $('#btcpw_page_redirect_link').val()
-            )
+            } else {
+              btcpwShowDonationBannerInvoice(
+                btcpw_invoice_id,
+                donor,
+                $('#btcpw_page_redirect_link').val()
+              )
+            }
           } else {
             console.error(response)
           }
@@ -320,7 +306,7 @@
       $('#btcpw_skyscraper_tipping_high_button').html(
         `<span class="tipping-border" role="status" aria-hidden="true"></span>`
       )
-      if (btcpw_invoice_id) {
+      if (btcpw_invoice_id && gateway === 'BTCPayServer') {
         btcpwShowDonationBannerInvoice(btcpw_invoice_id)
         return
       }
@@ -353,17 +339,19 @@
               window.location.href +
               '\n' +
               response.data.donor
-
-            localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
-            var urlRedirect =
-              'https://checkout.opennode.com/' + btcpw_invoice_id
-            $('.btcpw_skyscraper_banner.high').html(`
+            if (gateway === 'OpenNode') {
+              localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
+              var urlRedirect =
+                'https://checkout.opennode.com/' + btcpw_invoice_id
+              $('.btcpw_skyscraper_banner.high').html(`
 <iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
-            btcpwShowDonationBannerInvoice(
-              btcpw_invoice_id,
-              donor,
-              $('#btcpw_skyscraper_redirect_link_high').val()
-            )
+            } else {
+              btcpwShowDonationBannerInvoice(
+                btcpw_invoice_id,
+                donor,
+                $('#btcpw_skyscraper_redirect_link_high').val()
+              )
+            }
           } else {
             console.error(response)
           }
@@ -381,7 +369,7 @@
         `<span class="tipping-border" role="status" aria-hidden="true"></span>`
       )
 
-      if (btcpw_invoice_id) {
+      if (btcpw_invoice_id && gateway === 'BTCPayServer') {
         btcpwShowDonationBannerInvoice(btcpw_invoice_id)
         return
       }
@@ -425,17 +413,19 @@
               window.location.href +
               '\n' +
               response.data.donor
-
-            localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
-            var urlRedirect =
-              'https://checkout.opennode.com/' + btcpw_invoice_id
-            $('.btcpw_widget.btcpw_skyscraper_banner.high').html(`
+            if (gateway === 'OpenNode') {
+              localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
+              var urlRedirect =
+                'https://checkout.opennode.com/' + btcpw_invoice_id
+              $('.btcpw_widget.btcpw_skyscraper_banner.high').html(`
 <iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
-            btcpwShowDonationBannerInvoice(
-              btcpw_invoice_id,
-              donor,
-              $('#btcpw_widget_btcpw_skyscraper_redirect_link_high').val()
-            )
+            } else {
+              btcpwShowDonationBannerInvoice(
+                btcpw_invoice_id,
+                donor,
+                $('#btcpw_widget_btcpw_skyscraper_redirect_link_high').val()
+              )
+            }
           } else {
             console.error(response)
           }
@@ -451,7 +441,7 @@
       $('#btcpw_skyscraper_tipping_wide_button').html(
         `<span class="tipping-border" role="status" aria-hidden="true"></span>`
       )
-      if (btcpw_invoice_id) {
+      if (btcpw_invoice_id && gateway === 'BTCPayServer') {
         btcpwShowDonationBannerInvoice(btcpw_invoice_id)
         return
       }
@@ -484,17 +474,19 @@
               window.location.href +
               '\n' +
               response.data.donor
-
-            localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
-            var urlRedirect =
-              'https://checkout.opennode.com/' + btcpw_invoice_id
-            $('.btcpw_skyscraper_banner.wide').html(`
+            if (gateway === 'OpenNode') {
+              localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
+              var urlRedirect =
+                'https://checkout.opennode.com/' + btcpw_invoice_id
+              $('.btcpw_skyscraper_banner.wide').html(`
 <iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
-            btcpwShowDonationBannerInvoice(
-              btcpw_invoice_id,
-              donor,
-              $('#btcpw_skyscraper_redirect_link_wide').val()
-            )
+            } else {
+              btcpwShowDonationBannerInvoice(
+                btcpw_invoice_id,
+                donor,
+                $('#btcpw_skyscraper_redirect_link_wide').val()
+              )
+            }
           } else {
             console.error(response)
           }
@@ -510,7 +502,7 @@
       $('#btcpw_widget_btcpw_skyscraper_tipping__button_wide').html(
         `<span class="tipping-border" role="status" aria-hidden="true"></span>`
       )
-      if (btcpw_invoice_id) {
+      if (btcpw_invoice_id && gateway === 'BTCPayServer') {
         btcpwShowDonationBannerInvoice(btcpw_invoice_id)
         return
       }
@@ -554,17 +546,19 @@
               window.location.href +
               '\n' +
               response.data.donor
-
-            localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
-            var urlRedirect =
-              'https://checkout.opennode.com/' + btcpw_invoice_id
-            $('.btcpw_widget.btcpw_skyscraper_banner.wide').html(`
+            if (gateway === 'OpenNode') {
+              localStorage.setItem('opennode_invoice_id', btcpw_invoice_id)
+              var urlRedirect =
+                'https://checkout.opennode.com/' + btcpw_invoice_id
+              $('.btcpw_widget.btcpw_skyscraper_banner.wide').html(`
 <iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
-            btcpwShowDonationBannerInvoice(
-              btcpw_invoice_id,
-              donor,
-              $('#btcpw_widget_btcpw_skyscraper_redirect_link_wide').val()
-            )
+            } else {
+              btcpwShowDonationBannerInvoice(
+                btcpw_invoice_id,
+                donor,
+                $('#btcpw_widget_btcpw_skyscraper_redirect_link_wide').val()
+              )
+            }
           } else {
             console.error(response)
           }
@@ -575,16 +569,7 @@
       })
     })
   })
-  /* function btcpwShowDonationBoxInvoice (invoice_id, donor, redirect) {
-    btcpay.onModalReceiveMessage(function (event) {
-      if (event.data.status === 'complete') {
-        notifyAdmin(donor)
-        //(redirect.is(":empty")? location.reload(true): location.replace(redirect));
-        !redirect ? location.reload(true) : location.replace(redirect)
-      }
-    })
-    btcpay.showInvoice(invoice_id)
-  } */
+
   function btcpwShowDonationBoxInvoice (invoice_id, donor, redirect) {
     btcpay.onModalReceiveMessage(function (event) {
       if (event.data.status === 'complete') {
@@ -609,15 +594,7 @@
 
     btcpay.showInvoice(invoice_id)
   }
-  /* function btcpwShowDonationBannerInvoice (invoice_id, donor, redirect) {
-    btcpay.onModalReceiveMessage(function (event) {
-      if (event.data.status === 'complete') {
-        notifyAdmin(donor)
-        !redirect ? location.reload(true) : location.replace(redirect)
-      }
-    })
-    btcpay.showInvoice(invoice_id)
-  } */
+
   function btcpwShowDonationBannerInvoice (invoice_id, donor, redirect) {
     btcpay.onModalReceiveMessage(function (event) {
       if (event.data.status === 'complete') {
@@ -642,39 +619,7 @@
 
     btcpay.showInvoice(invoice_id)
   }
-  /*$.ajax({
-          url: '/wp-admin/admin-ajax.php',
-          method: 'POST',
-          data: {
-            action: 'btcpw_paid_invoice',
-            invoice_id: invoice_id,
-            order_id: order_id,
-            amount: amount,
-            full_name: $(
-              '#btcpw_revenue_post_customer_name, #btcpw_revenue_view_customer_name, #btcpw_revenue_file_customer_name'
-            ).val(),
-            email: $(
-              '#btcpw_revenue_post_customer_email, #btcpw_revenue_view_customer_email, #btcpw_revenue_file_customer_email'
-            ).val(),
-            address: $(
-              '#btcpw_revenue_post_customer_address, #btcpw_revenue_view_customer_address, #btcpw_revenue_file_customer_address'
-            ).val(),
-            phone: $(
-              '#btcpw_revenue_post_customer_phone, #btcpw_revenue_view_customer_phone, #btcpw_revenue_file_customer_phone'
-            ).val(),
-            message: $(
-              '#btcpw_revenue_post_customer_message, #btcpw_revenue_view_customer_message, #btcpw_revenue_file_customer_message'
-            ).val()
-          },
-          success: function (response) {
-            if (response.success) {
-              notifyAdmin(response.data.notify + 'Url:' + window.location.href)
-              location.reload(true)
-            } else {
-              console.error(response)
-            }
-          }
-        })*/
+
   function notifyAdmin (donor_info) {
     $.ajax({
       url: '/wp-admin/admin-ajax.php',
@@ -796,19 +741,6 @@
           .attr('readonly', true)
       }
     )
-    /* $("#btcpw_skyscraper_tipping_amount").on("input", function () {
-      var currency = $("#btcpw_skyscraper_tipping_currency").val();
-      var amount = $(this).val();
-      var converted = fiat_to_crypto(currency, amount, usd, eur, sats);
-      $("#btcpw_skyscraper_converted_amount")
-        .attr("readonly", false)
-        .val(fiat_to_crypto(currency, amount, usd, eur, sats))
-        .attr("readonly", true);
-      $("#btcpw_skyscraper_converted_currency")
-        .attr("readonly", false)
-        .val(get_currency(currency))
-        .attr("readonly", true);
-    }); */
 
     $('#btcpw_skyscraper_tipping_high_amount').on('input', function () {
       var currency = $('#btcpw_skyscraper_tipping_high_currency').val()
@@ -849,30 +781,7 @@
           .attr('readonly', true)
       }
     })
-    /* $("#value_1, #value_2, #value_3").change(function () {
-      if ($(this).is(":checked")) {
-        var predefined = $(this).val().split(" ");
-        var converted_icon = fiat_to_crypto(
-          predefined[1],
-          predefined[0],
-          usd,
-          eur,
-          sats
-        );
-        var converted_icon_amount =
-          fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats) +
-          " " +
-          get_currency(predefined[1]);
-        $("#btcpw_skyscraper_converted_amount")
-          .attr("readonly", false)
-          .val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats))
-          .attr("readonly", true);
-        $("#btcpw_skyscraper_converted_currency")
-          .attr("readonly", false)
-          .val(get_currency(predefined[1]))
-          .attr("readonly", true);
-      }
-    }); */
+
     $('#btcpw_skyscraper_tipping_wide_amount').on('input', function () {
       var currency = $('#btcpw_skyscraper_tipping_wide_currency').val()
       var amount = $(this).val()

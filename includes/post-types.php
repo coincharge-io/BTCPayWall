@@ -21,7 +21,7 @@ function register_post_types()
         'supports' => ['title', 'custom-fields'],
         'taxonomies' => [],
         'has_archive' => false,
-        'rewrite' => true,
+        'rewrite' => array('slug' => 'digital_download', 'with_front' => false),
         'query_var' => true,
     ]);
     $labels = array(

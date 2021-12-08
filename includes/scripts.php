@@ -22,5 +22,14 @@ function enqueue_scripts()
     wp_enqueue_script('btcpaywall', BTCPAYWALL_PLUGIN_URL . 'assets/src/js/btc-paywall-public.js', array('jquery'), null, false);
 
     wp_enqueue_script('btcpay', get_option('btcpw_btcpay_server_url', '') . '/modal/btcpay.js', array(), null, true);
+
+
+    wp_localize_script(
+        'btcpaywall',
+        'payment_gateways',
+        [
+            'gateway' => get_option('btcpw_selected_payment_gateway', 'BTCPayServer')
+        ]
+    );
 }
 add_action('wp_enqueue_scripts',  'enqueue_scripts');
