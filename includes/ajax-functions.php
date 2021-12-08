@@ -424,9 +424,9 @@ function ajax_paid_invoice()
 
     if ($payment->revenue_type === 'Pay-per-file') {
 
-        setcookie('btcpw_payment_id_' . $post_id, $payment->invoice_id, strtotime("14 Jan 2038"), $cookie_path);
+        setcookie('btcpw_payment_id_' . $post_id, $payment->invoice_id, strtotime("14 Jan 2038"), '/');
 
-        setcookie('btcpw_link_expiration_' . $post_id, strtotime("14 Jan 2038"), strtotime("14 Jan 2038"), $cookie_path);
+        setcookie('btcpw_link_expiration_' . $post_id, strtotime("14 Jan 2038"), strtotime("14 Jan 2038"), '/');
         $download = new BTCPayWall_Digital_Download($post_id);
         $download->increase_sales();
         if (is_email($body['metadata']['customer_data']['email']) && !empty($body['metadata']['customer_data']['email'])) {

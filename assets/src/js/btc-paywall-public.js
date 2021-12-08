@@ -8,7 +8,10 @@
     if (btcpw_invoice_id && gateway === 'OpenNode') {
       btcpwShowOpenNodeInvoice(btcpw_invoice_id)
     }
-    $('#btcpw_pay__button').click(function () {
+    //$('#btcpw_pay__button').click(function () {
+    $(
+      '#btcpw_digital_download_form,#btcpw_widget_skyscraper_tipping_form_high,#btcpw_widget_skyscraper_tipping_form_wide,#view_revenue_type,#post_revenue_type,#tipping_form_box_widget'
+    ).submit(function () {
       var text = $('#btcpw_pay__button').text()
       $('#btcpw_pay__button').html(
         `<span class="tipping-border" role="status" aria-hidden="true"></span>`
@@ -73,10 +76,6 @@
   })
 
   function btcpwShowOpenNodeInvoice () {
-    /* var status, expire
-    alert('dsadada')
-    console.log(new Date() > Date.parse(expire))
-    if (status !== 'paid' || new Date() > Date.parse(expire)) { */
     $.ajax({
       url: '/wp-admin/admin-ajax.php',
       method: 'POST',
@@ -86,9 +85,7 @@
       },
       success: function (response) {
         if (response.success) {
-          //if (response.data.status === 'paid') {
           localStorage.removeItem('opennode_invoice_id')
-          //}
           notifyAdmin(response.data.notify + 'Url:' + window.location.href)
         } else {
           console.error(response)
@@ -1788,6 +1785,7 @@
       next_form.show()
       previous_form.hide()
     })
+
     $('input.btcpw_digital_download.previous-form').click(function () {
       previous_form = $(this)
         .parent()

@@ -1315,40 +1315,44 @@ function render_shortcode_protected_digital_download($atts)
             color: <?php echo esc_html($button_text_color); ?>;
         }
     </style>
-    <div class="btcpw_digital_download_protected_area">
-        <fieldset>
-            <p>Price: <?php echo esc_html($post_data->get_price()); ?></p>
-            <div id="btcpw_digital_download_button">
-                <?php if ($collect_data === true) : ?>
-                    <input type="button" name="next" class="btcpw_digital_download next-form" value="Continue" />
-                <?php else : ?>
-                    <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" id="btcpw_pay__button"><?php echo (!empty($button_text) ? esc_html($button_text) : 'Pay'); ?></button>
-                <?php endif; ?>
-            </div>
-        </fieldset>
-        <?php if ($collect_data === true) : ?>
+    <div id="btcpw_digital_download_protected_area">
+        <form method="POST" action="" id="btcpw_digital_download_form">
+
             <fieldset>
-                <div class="btcpw_digital_download_customer_information">
-                    <?php foreach ($collect as $key => $value) : ?>
-                        <?php if ($collect[$key]['display'] === true) : ?>
-                            <div class="<?php echo "btcpw_digital_download_customer_{$collect[$key]['id']}_wrap "; ?>">
-
-                                <input type="text" placeholder="<?php echo $collect[$key]['label']; ?>" id="<?php echo "btcpw_digital_download_customer_{$collect[$key]['id']}"; ?>" name="<?php echo "btcpw_digital_download_customer_{$collect[$key]['id']}"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
-
-                            </div>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                </div>
-                <div class="btcpw_digital_download_button" id="btcpw_digital_download_button">
-                    <div>
-                        <input type="button" name="previous" class="btcpw_digital_download previous-form" value="< Previous" />
-                    </div>
-                    <div>
+                <p>Price: <?php echo esc_html($post_data->get_price()); ?></p>
+                <div id="btcpw_digital_download_button">
+                    <?php if ($collect_data === true) : ?>
+                        <input type="button" name="next" class="btcpw_digital_download next-form" value="Continue" />
+                    <?php else : ?>
                         <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" id="btcpw_pay__button"><?php echo (!empty($button_text) ? esc_html($button_text) : 'Pay'); ?></button>
-                    </div>
+                    <?php endif; ?>
                 </div>
             </fieldset>
-        <?php endif; ?>
+            <?php if ($collect_data === true) : ?>
+                <fieldset>
+                    <div class="btcpw_digital_download_customer_information">
+                        <?php foreach ($collect as $key => $value) : ?>
+                            <?php if ($collect[$key]['display'] === true) : ?>
+                                <div class="<?php echo "btcpw_digital_download_customer_{$collect[$key]['id']}_wrap "; ?>">
+
+                                    <input type="text" placeholder="<?php echo $collect[$key]['label']; ?>" id="<?php echo "btcpw_digital_download_customer_{$collect[$key]['id']}"; ?>" name="<?php echo "btcpw_digital_download_customer_{$collect[$key]['id']}"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="btcpw_digital_download_button" id="btcpw_digital_download_button">
+                        <div>
+                            <input type="button" name="previous" class="btcpw_digital_download previous-form" value="< Previous" />
+                        </div>
+                        <div>
+                            <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" id="btcpw_pay__button"><?php echo (!empty($button_text) ? esc_html($button_text) : 'Pay'); ?></button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            <?php endif; ?>
+        </form>
     </div>
 <?php
 }

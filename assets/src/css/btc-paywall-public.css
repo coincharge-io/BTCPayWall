@@ -1302,20 +1302,21 @@ Revenue types
 /**
 Pay-per-file
 */
-.btcpw_digital_download_protected_area fieldset:not(:first-of-type) {
+#btcpw_digital_download_form {
+  position: relative;
+  height: 80%;
+}
+#btcpw_digital_download_protected_area fieldset:not(:first-of-type) {
   display: none;
 }
-.btcpw_digital_download_protected_area > fieldset {
+#btcpw_digital_download_protected_area {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 200px;
-  position: relative;
+  height: 400px;
 }
-.btcpw_digital_download_protected_area {
-  width: 500px;
-}
+
 .btcpw_digital_download.next-form,
 .btcpw_digital_download.previous-form {
   height: 80px;
