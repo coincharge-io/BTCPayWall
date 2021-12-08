@@ -15,7 +15,10 @@ $section = isset($_GET['section']) ? $_GET['section'] : $default_section;
                 <a href="?page=btcpw_general_settings&tab=modules&section=pay-post" class="nav-tab <?php if ($section === null || $section === 'pay-post') : ?>nav-tab-active<?php endif; ?>">Pay-per-post</a>
             </li>
             <li>
-                <a href="?page=btcpw_general_settings&tab=modules&section=content-store" class="nav-tab <?php if ($section === 'content-store') : ?>nav-tab-active<?php endif; ?>">Content Store</a>
+                <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-view" class="nav-tab <?php if ($section === 'pay-per-view') : ?>nav-tab-active<?php endif; ?>">Content Store View</a>
+            </li>
+            <li>
+                <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-file" class="nav-tab <?php if ($section === 'pay-per-file') : ?>nav-tab-active<?php endif; ?>">Content Store File</a>
             </li>
             <li>
                 <a href="?page=btcpw_general_settings&tab=modules&section=tipping" class="nav-tab <?php if ($section === 'tipping') : ?>nav-tab-active<?php endif; ?>">Tipping</a>
@@ -28,8 +31,11 @@ $section = isset($_GET['section']) ? $_GET['section'] : $default_section;
             case 'pay-post':
                 require('page-pay-per-post.php');
                 break;
-            case 'content-store':
-                require('page-content-store.php');
+            case 'pay-per-view':
+                require('page-pay-per-view.php');
+                break;
+            case 'pay-per-file':
+                require('page-pay-per-file.php');
                 break;
             case 'tipping':
                 require('page-tipping.php');

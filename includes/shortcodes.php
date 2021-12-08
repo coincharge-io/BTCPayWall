@@ -1324,7 +1324,7 @@ function render_shortcode_protected_digital_download($atts)
                     <?php if ($collect_data === true) : ?>
                         <input type="button" name="next" class="btcpw_digital_download next-form" value="Continue" />
                     <?php else : ?>
-                        <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" id="btcpw_pay__button"><?php echo (!empty($button_text) ? esc_html($button_text) : 'Pay'); ?></button>
+                        <button type="submit" class="btcpw_digital_download" data-post_id="<?php echo get_the_ID(); ?>" id="btcpw_pay__button"><?php echo (!empty($button_text) ? esc_html($button_text) : 'Pay'); ?></button>
                     <?php endif; ?>
                 </div>
             </fieldset>
@@ -1346,7 +1346,7 @@ function render_shortcode_protected_digital_download($atts)
                             <input type="button" name="previous" class="btcpw_digital_download previous-form" value="< Previous" />
                         </div>
                         <div>
-                            <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" id="btcpw_pay__button"><?php echo (!empty($button_text) ? esc_html($button_text) : 'Pay'); ?></button>
+                            <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" class="btcpw_digital_download" id="btcpw_pay__button"><?php echo (!empty($button_text) ? esc_html($button_text) : 'Pay'); ?></button>
                         </div>
                     </div>
 

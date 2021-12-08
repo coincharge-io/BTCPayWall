@@ -9,8 +9,8 @@ $default_button_text_success = get_option('btcpw_pay_per_file_button_text_succes
 ?>
 <style>
     #btcpw_pay__button_preview_pay_per_file {
-        background-color: <?php echo esc_html($button_color); ?>;
-        color: <?php echo esc_html($button_text_color); ?>;
+        background-color: <?php echo esc_html($default_button_color); ?>;
+        color: <?php echo esc_html($default_button_text_color); ?>;
     }
 </style>
 <div id="btcpw_pay_per_file_paywall">

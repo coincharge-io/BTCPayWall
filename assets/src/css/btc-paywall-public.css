@@ -1314,20 +1314,22 @@ Pay-per-file
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 400px;
+  height: 300px;
 }
 
-.btcpw_digital_download.next-form,
-.btcpw_digital_download.previous-form {
+/* .btcpw_digital_download.next-form,
+.btcpw_digital_download.previous-form,
+.btcpw_digital_download {
   height: 80px;
-  width: 80px;
+} */
+.btcpw_digital_download {
+  height: 50px;
 }
 #btcpw_digital_download_button {
   display: flex;
   position: absolute;
   display: inline-flex;
   bottom: 0;
-  width: 100%;
   left: 0;
   height: 75px;
   justify-content: center;

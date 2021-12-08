@@ -665,7 +665,6 @@ function tipping_invoice_args($amount, $currency, $type, $blogname, $collects)
             'blog'    => $blogname,
             'donor' => $collects,
         ),
-        'callback_url' => get_site_url() . '/wp-json/btcpaywall/v1/webhook',
     );
     $args = array(
         'headers' => array(
