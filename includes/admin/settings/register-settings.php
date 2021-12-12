@@ -9,7 +9,7 @@ function register_settings()
     register_setting('btcpw_btcpay_server_settings', 'btcpw_btcpay_auth_key_view', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_auth_key'));
     register_setting('btcpw_btcpay_server_settings', 'btcpw_btcpay_auth_key_create', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_auth_key'));
 
-    
+
     register_setting('btcpw_opennode_settings', 'btcpw_opennode_auth_key', array('type' => 'string', 'sanitize_callback' => 'sanitize_btcpay_auth_key'));
 
     register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_currency', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'sanitize_text'));
@@ -97,6 +97,8 @@ function register_settings()
     register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_button_text', array('type' => 'string', 'default' => 'Pay', 'sanitize_callback' => 'sanitize_text'));
     register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_button_text_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => 'sanitize_color'));
     register_setting('btcpw_pay_per_file_paywall_options', 'btcpw_pay_per_file_button_text_success', array('type' => 'string', 'default' => 'Download', 'sanitize_callback' => 'sanitize_text'));
+
+    register_setting('btcpw_general_pay_per_file_options', 'btcpw_default_pay_per_file_currency', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'sanitize_text'));
 }
 
 

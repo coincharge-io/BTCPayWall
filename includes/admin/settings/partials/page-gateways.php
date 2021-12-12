@@ -4,7 +4,6 @@ if (!defined('ABSPATH')) exit;
 $default_section = null;
 $section = isset($_GET['section']) ? $_GET['section'] : $default_section;
 ?>
-
 <div class="wrap">
     <nav class="btcpw nav-tab-wrapper">
         <ul class="btcpw subsub modules_sub_nav">

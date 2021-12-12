@@ -1,8 +1,63 @@
 ;(function ($) {
   'use strict'
-  var gateway = payment_gateways.gateway
+  var gateway = payment.gateway
   $(document).ready(function () {
-    var btcpw_invoice_id = localStorage.getItem('opennode_invoice_id')
+    var btcpw_invoice_id =
+      gateway != 'BTCPayServer'
+        ? localStorage.getItem('opennode_file_invoice_id')
+        : null
+
+    if (btcpw_invoice_id && gateway === 'OpenNode') {
+      btcpwShowOpenNodeFileInvoice(btcpw_invoice_id)
+    }
+    $('#btcpw_digital_download_form').submit(function (e) {
+      e.preventDefault()
+      var text = $('#btcpw_pay__button').text()
+      $('#btcpw_pay__button').html(
+        `<span class="tipping-border" role="status" aria-hidden="true"></span>`
+      )
+
+      if (btcpw_invoice_id && gateway === 'BTCPayServer') {
+        btcpwShowContentFileInvoice(btcpw_invoice_id)
+        return
+      }
+
+      $.ajax({
+        url: '/wp-admin/admin-ajax.php',
+        method: 'POST',
+        data: {
+          action: 'btcpw_generate_content_file_invoice_id',
+          full_name: $('#btcpw_digital_download_customer_name').val(),
+          email: $('#btcpw_digital_download_customer_email').val(),
+          address: $('#btcpw_digital_download_customer_address').val(),
+          phone: $('#btcpw_digital_download_customer_phone').val(),
+          message: $('#btcpw_digital_download_customer_message').val()
+        },
+        success: function (response) {
+          $('#btcpw_pay__button').html(text)
+          if (response.success) {
+            btcpw_invoice_id = response.data.invoice_id
+            if (gateway === 'OpenNode') {
+              localStorage.setItem('opennode_file_invoice_id', btcpw_invoice_id)
+              var urlRedirect =
+                'https://checkout.opennode.com/' + btcpw_invoice_id
+              $('#btcpw_digital_download_customer_info').html(`
+<iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`)
+            } else {
+              btcpwShowContentFileInvoice(btcpw_invoice_id)
+            }
+          } else {
+            console.error(response)
+          }
+        }
+      })
+    })
+  })
+  $(document).ready(function () {
+    var btcpw_invoice_id =
+      gateway !== 'BTCPayServer'
+        ? localStorage.getItem('opennode_invoice_id')
+        : null
     var btcpw_order_id = null
     var amount
 
@@ -11,7 +66,7 @@
     }
     //$('#btcpw_pay__button').click(function () {
     $(
-      '#btcpw_digital_download_form,#btcpw_widget_skyscraper_tipping_form_high,#btcpw_widget_skyscraper_tipping_form_wide,#view_revenue_type,#post_revenue_type,#tipping_form_box_widget'
+      '#btcpw_widget_skyscraper_tipping_form_high,#btcpw_widget_skyscraper_tipping_form_wide,#view_revenue_type,#post_revenue_type,#tipping_form_box_widget'
     ).submit(function (e) {
       e.preventDefault()
       var text = $('#btcpw_pay__button').text()
@@ -32,24 +87,19 @@
           action: 'btcpw_get_invoice_id',
           post_id: post_id,
           full_name: $(
-            '#btcpw_revenue_post_customer_name, #btcpw_revenue_view_customer_name, #btcpw_revenue_file_customer_name',
-            '#btcpw_digital_download_customer_name'
+            '#btcpw_revenue_post_customer_name, #btcpw_revenue_view_customer_name, #btcpw_revenue_file_customer_name'
           ).val(),
           email: $(
-            '#btcpw_revenue_post_customer_email, #btcpw_revenue_view_customer_email, #btcpw_revenue_file_customer_email',
-            '#btcpw_digital_download_customer_email'
+            '#btcpw_revenue_post_customer_email, #btcpw_revenue_view_customer_email, #btcpw_revenue_file_customer_email'
           ).val(),
           address: $(
-            '#btcpw_revenue_post_customer_address, #btcpw_revenue_view_customer_address, #btcpw_revenue_file_customer_address',
-            '#btcpw_digital_download_customer_address'
+            '#btcpw_revenue_post_customer_address, #btcpw_revenue_view_customer_address, #btcpw_revenue_file_customer_address'
           ).val(),
           phone: $(
-            '#btcpw_revenue_post_customer_phone, #btcpw_revenue_view_customer_phone, #btcpw_revenue_file_customer_phone',
-            '#btcpw_digital_download_customer_phone'
+            '#btcpw_revenue_post_customer_phone, #btcpw_revenue_view_customer_phone, #btcpw_revenue_file_customer_phone'
           ).val(),
           message: $(
-            '#btcpw_revenue_post_customer_message, #btcpw_revenue_view_customer_message, #btcpw_revenue_file_customer_message',
-            '#btcpw_digital_download_customer_message'
+            '#btcpw_revenue_post_customer_message, #btcpw_revenue_view_customer_message, #btcpw_revenue_file_customer_message'
           ).val()
         },
         success: function (response) {
@@ -76,7 +126,64 @@
       })
     })
   })
-
+  $(document).ready(function () {
+    $('.btcpaywall_cart_remove_item_btn').click(function (e) {
+      e.preventDefault()
+      var item = $(this).data('cart-key')
+      $.ajax({
+        url: '/wp-admin/admin-ajax.php',
+        type: 'POST',
+        data: {
+          action: 'btcpw_remove_from_cart',
+          cart_item: item
+        },
+        success: function (response) {
+          location.reload()
+        }
+      })
+    })
+    $('#btcpaywall_download_form').submit(function (e) {
+      e.preventDefault()
+      var id = $('#btcpw_download_id').data('post_id')
+      var title = $('#btcpw_download_id').data('post_title')
+      $.ajax({
+        url: '/wp-admin/admin-ajax.php',
+        method: 'POST',
+        data: {
+          action: 'btcpw_add_to_cart',
+          id: id,
+          title: title
+        },
+        success: function (response) {
+          if (response.success) {
+            location.reload()
+          } else {
+            console.error(response)
+          }
+        }
+      })
+    })
+  })
+  function btcpwShowOpenNodeFileInvoice () {
+    $.ajax({
+      url: '/wp-admin/admin-ajax.php',
+      method: 'POST',
+      data: {
+        action: 'btcpw_paid_content_file_invoice',
+        invoice_id: localStorage.getItem('opennode_file_invoice_id')
+      },
+      success: function (response) {
+        if (response.success) {
+          localStorage.removeItem('opennode_file_invoice_id')
+          notifyAdmin(response.data.notify + 'Url:' + window.location.href)
+          location.replace(payment.success_url)
+        } else {
+          console.error(response)
+        }
+      }
+    })
+    //}
+  }
   function btcpwShowOpenNodeInvoice () {
     $.ajax({
       url: '/wp-admin/admin-ajax.php',
@@ -122,9 +229,35 @@
 
     btcpay.showInvoice(invoice_id)
   }
+  function btcpwShowContentFileInvoice (invoice_id) {
+    btcpay.onModalReceiveMessage(function (event) {
+      if (event.data.status === 'complete') {
+        $.ajax({
+          url: '/wp-admin/admin-ajax.php',
+          method: 'POST',
+          data: {
+            action: 'btcpw_paid_content_file_invoice',
+            invoice_id: invoice_id
+          },
+          success: function (response) {
+            if (response.success) {
+              notifyAdmin(response.data.notify + 'Url:' + window.location.href)
+              location.replace(payment.success_url)
+            } else {
+              console.error(response)
+            }
+          }
+        })
+      }
+    })
 
+    btcpay.showInvoice(invoice_id)
+  }
   $(document).ready(function () {
-    var btcpw_invoice_id = localStorage.getItem('opennode_invoice_id')
+    var btcpw_invoice_id =
+      gateway !== 'BTCPayServer'
+        ? localStorage.getItem('opennode_invoice_id')
+        : null
     var donor
 
     if (btcpw_invoice_id) {

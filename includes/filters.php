@@ -38,7 +38,7 @@ function filter_the_content($content)
 add_filter('the_content',  'filter_the_content', 50);
 
 
-
+/* 
 
 
 function add_digital_download($content)
@@ -56,3 +56,16 @@ function add_digital_download($content)
 }
 
 add_filter('the_content', 'add_digital_download');
+
+ */
+
+function btcpw_digital_download_template($single_template)
+{
+    global $post;
+
+    if ($post->post_type == 'digital_download') {
+        $single_template = BTCPAYWALL_PLUGIN_DIR . 'templates/btcpw-digital-download-template.php';
+    }
+    return $single_template;
+}
+add_filter('single_template', 'btcpw_digital_download_template');

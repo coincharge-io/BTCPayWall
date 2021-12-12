@@ -27,7 +27,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
             'currency' => '%s',
             'amount' => '%f',
             'status' => '%s',
-            'download_number'   => '%d',
+            'download_ids'     => '%s',
             'gateway' => '%s',
             'payment_method' => '%s',
             'date_created'   => '%s'
@@ -45,7 +45,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
             'amount' => '',
             'status' => 'New',
             'gateway' => 'BTCPayServer',
-            'download_number' => 0,
+            'download_ids' => '',
             'payment_method' => 'BTC-LightningNetwork',
             'date_created'    => date('Y-m-d H:i:s'),
 
@@ -89,11 +89,29 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
         if (empty($data)) {
             return false;
         }
-
+        $defaults = array(
+            'download_ids' => '',
+        );
+        if (!empty($args['download_ids']) && is_array($args['download_ids'])) {
+            $args['download_ids'] = implode(',', array_unique(array_values($args['download_ids'])));
+        }
         $payment = $this->get_payment_by('invoice_id', $data['invoice_id']);
-        
         if ($payment) {
+            if (!empty($payment['download_ids'])) {
 
+                if (empty($payment->download_ids)) {
+
+                    $payment->download_ids = $data['download_ids'];
+                } else {
+
+                    $existing_ids       = array_map('absint', explode(',', $payment->download_ids));
+                    $download_ids        = array_map('absint', explode(',', $data['download_ids']));
+                    $download_ids        = array_merge($download_ids, $existing_ids);
+                    $payment->download_ids = implode(',', array_unique(array_values($download_ids)));
+                }
+
+                $data['download_ids'] = $payment->download_ids;
+            }
             $this->update($payment->id, $data);
 
             return $payment->id;
@@ -155,7 +173,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
               status TINYTEXT,
               gateway TINYTEXT,
               payment_method TINYTEXT,
-              download_number SMALLINT,
+              download_ids longtext,
               date_created TIMESTAMP,
 			  PRIMARY KEY  (id),
               KEY customer (customer_id)

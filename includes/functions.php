@@ -215,34 +215,13 @@ function is_paid_content($post_id = null)
     if (empty($post_id)) {
         $post_id = get_the_ID();
     }
-    $custom_post_type = get_post($post_id)->post_type === 'digital_download';
-
-    if ($custom_post_type && empty($_COOKIE['btcpw_payment_id_' . $post_id])) {
-        return false;
-    }
-
 
 
     if (empty($_COOKIE['btcpw_' . $post_id])) {
         return false;
     }
 
-    $meta_query = $custom_post_type ? [
-        'relation' => 'AND',
-        [
-            'key' => 'btcpw_post_id',
-            'value' => $post_id,
-            'type' => 'NUMERIC',
-        ],
-        [
-            'key' => 'btcpw_secret',
-            'value' => sanitize_text_field($_COOKIE['btcpw_' . $post_id]),
-        ],
-        [
-            'key' => 'btcpw_payment_id',
-            'value' => sanitize_text_field($_COOKIE['btcpw_payment_id_' . $post_id]),
-        ],
-    ] : [
+    $meta_query = [
         'relation' => 'AND',
         [
             'key' => 'btcpw_post_id',

@@ -95,10 +95,7 @@ function process_download()
         $payment = new BTCPayWall_Payment($args['payment_id']);
         $download = new BTCPayWall_Digital_Download($args['download_id']);
         if ($download->get_download_is_allowed($payment->invoice_id) == false || !isset($_COOKIE["btcpw_link_expiration_{$download->ID}"])) {
-            unset($_COOKIE["btcpw_payment_id_{$download->ID}"]);
-            setcookie("btcpw_payment_id_{$download->ID}", '', time() - 3600, '/');
-            unset($_COOKIE["btcpw_link_expiration_{$download->ID}"]);
-            setcookie("btcpw_link_expiration_{$download->ID}", '', time() - 3600, '/');
+
 
             wp_die(__('You have reached download limit for this payment.', 'btcpaywall'), '', array(
                 'response' => 403,

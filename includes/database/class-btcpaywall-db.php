@@ -89,14 +89,11 @@ abstract class BTCPayWall_DB
 
 
         $column_formats = $this->get_columns();
-
         $data = array_change_key_case($data);
-
         $data = array_intersect_key($data, $column_formats);
-
         $data_keys = array_keys($data);
-        $column_formats = array_merge(array_flip($data_keys), $column_formats);
 
+        $column_formats = array_merge(array_flip($data_keys), $column_formats);
         $wpdb->insert($this->table_name, $data, $column_formats);
         $wpdb_insert_id = $wpdb->insert_id;
 

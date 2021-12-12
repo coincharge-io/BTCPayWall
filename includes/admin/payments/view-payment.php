@@ -8,7 +8,6 @@ if (!isset($_GET['id'])) {
 $id = $_GET['id'];
 $payment = new BTCPayWall_Payment($id);
 $customer = new BTCPayWall_Customer($payment->id);
-
 ?>
 <div class="wrap">
 

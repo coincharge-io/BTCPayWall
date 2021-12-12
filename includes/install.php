@@ -4,9 +4,43 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+function create_pages()
+{
+    $checkout_page  = get_option('btcpw_checkout_page') ? get_post(get_option('btcpw_checkout_page')) : false;
+    if (empty($checkout_page)) {
+        $checkout = wp_insert_post(
+            array(
+                'post_title'     => __('Checkout', 'btcpaywall'),
+                'post_content'   => '[btcpaywall_checkout]',
+                'post_status'    => 'publish',
+                'post_author'    => 1,
+                'post_type'      => 'page',
+                'comment_status' => 'closed'
+            )
+        );
+        update_option('btcpw_checkout_page', $checkout);
+    }
 
+    $success_page = get_option('btcpw_success_page') ? get_post(get_option('btcpw_success_page')) : false;
+    if (empty($success_page)) {
+        $success = wp_insert_post(
+            array(
+                'post_title'     => __('Purchase Confirmation', 'btcpaywall'),
+                'post_content'   => __('Thank you for your purchase! [btcpaywall_receipt]', 'btcpaywall'),
+                'post_status'    => 'publish',
+                'post_author'    => 1,
+                'post_parent'    => $checkout,
+                'post_type'      => 'page',
+                'comment_status' => 'closed'
+            )
+        );
+        update_option('btcpw_success_page', $success);
+    }
+}
 function btcpaywall_run_install()
 {
+    create_pages();
+
     register_tables();
 }
 register_activation_hook(BTCPAYWALL_PLUGIN_FILE, 'btcpaywall_run_install');

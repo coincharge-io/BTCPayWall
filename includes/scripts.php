@@ -23,12 +23,12 @@ function enqueue_scripts()
 
     wp_enqueue_script('btcpay', get_option('btcpw_btcpay_server_url', '') . '/modal/btcpay.js', array(), null, true);
 
-
     wp_localize_script(
         'btcpaywall',
-        'payment_gateways',
+        'payment',
         [
-            'gateway' => get_option('btcpw_selected_payment_gateway', 'BTCPayServer')
+            'gateway' => get_option('btcpw_selected_payment_gateway', 'BTCPayServer'),
+            'success_url' => get_permalink(get_option('btcpw_success_page')),
         ]
     );
 }

@@ -16,7 +16,7 @@ class BTCPayWall_Payment
     public $revenue_type;
     public $currency;
     public $status;
-    public $download_number = 0;
+    public $download_ids;
     public $gateway;
     public $payment_method;
 
@@ -48,7 +48,7 @@ class BTCPayWall_Payment
         if (!is_object($payment)) {
             return false;
         }
-        $valid_keys = ['id', 'invoice_id', 'customer_id', 'amount', 'page_title', 'revenue_type', 'currency', 'status', 'download_number', 'gateway', 'payment_method'];
+        $valid_keys = ['id', 'invoice_id', 'customer_id', 'amount', 'page_title', 'revenue_type', 'currency', 'status', 'download_ids', 'gateway', 'payment_method'];
 
         foreach ($payment as $key => $value) {
             if (in_array($key, $valid_keys)) {
@@ -71,14 +71,17 @@ class BTCPayWall_Payment
         if ($this->id != 0 || empty($data)) {
             return false;
         }
-
+        $defaults = [
+            'download_ids' => '',
+        ];
+        if (!empty($data['download_ids']) && is_array($data['download_ids'])) {
+            $data['download_ids'] = implode(',', array_unique(array_values($data['download_ids'])));
+        }
         $data = $this->sanitize_columns($data);
 
         $created = false;
 
-
         $create_or_update = $this->db->add($data);
-
         if ($create_or_update) {
 
 

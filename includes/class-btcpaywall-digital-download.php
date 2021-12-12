@@ -43,6 +43,16 @@ class BTCPayWall_Digital_Download
      */
     private $price;
 
+    /**
+     * Digital Download Amount
+     * 
+     * @since 1.0
+     * 
+     * @access private
+     * 
+     * @var string
+     */
+    private $amount;
 
     /**
      * Download Limit
@@ -558,7 +568,7 @@ class BTCPayWall_Digital_Download
 
     public function get_name()
     {
-        return get_the_title($this->ID);
+        return get_the_title($this->ID) ? get_the_title($this->ID) : $this->ID;
     }
 
     /**
@@ -575,7 +585,7 @@ class BTCPayWall_Digital_Download
     {
         if (!isset($this->price)) {
             $amount = get_post_meta($this->ID, 'btcpw_price', true);
-            $currency = get_post_meta($this->ID, 'btcpw_currency', true);
+            $currency = get_option('btcpw_default_pay_per_file_currency', 'SATS');
 
             $this->price = "{$amount} {$currency}";
 
@@ -584,6 +594,34 @@ class BTCPayWall_Digital_Download
             }
         }
         return $this->price;
+    }
+
+
+
+
+
+    /**
+     * Retrieve Price Without Currency
+     * 
+     * @since 1.0
+     * 
+     * @access public
+     * 
+     * @return string Price
+     */
+
+    public function get_amount()
+    {
+        if (!isset($this->amount)) {
+            $amount = get_post_meta($this->ID, 'btcpw_price', true);
+
+            $this->amount = "{$amount}";
+
+            if (empty($amount)) {
+                $this->amount = "0";
+            }
+        }
+        return $this->amount;
     }
     /**
      * Retrieve Number of Sales

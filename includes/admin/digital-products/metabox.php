@@ -21,8 +21,6 @@ function add_btcpw_product_meta_boxes()
     add_meta_box('btcpw_product_stats', __('BTCPayWall Product Sales', 'btcpaywall'), 'render_btcpw_product_stats', 'digital_download', 'side', 'high');
 
     add_meta_box('btcpw_product_limit', __('BTCPayWall Product Download Limit', 'btcpaywall'), 'render_btcpw_product_settings', 'digital_download', 'side');
-
-    add_meta_box('btcpw_product_customer', __('BTCPayWall Product Collect Data', 'btcpaywall'), 'render_btcpw_product_collect_info', 'digital_download');
 }
 
 add_action('add_meta_boxes', 'add_btcpw_product_meta_boxes');
@@ -37,17 +35,7 @@ function btcpw_meta_fields()
             'btcpw_digital_product_file',
             'btcpw_digital_product_filename',
             'btcpw_product_sales',
-            'btcpw_product_limit',
-            'btcpw_collect_customer_name',
-            'btcpw_mandatory_customer_name',
-            'btcpw_collect_customer_email',
-            'btcpw_mandatory_customer_email',
-            'btcpw_collect_customer_address',
-            'btcpw_mandatory_customer_address',
-            'btcpw_collect_customer_phone',
-            'btcpw_mandatory_customer_phone',
-            'btcpw_collect_customer_message',
-            'btcpw_mandatory_customer_message',
+            'btcpw_product_limit'
         ];
     return $fields;
 }
@@ -63,12 +51,6 @@ function render_btcpw_product_settings($post)
             <label for="btcpw_product_download_limit">Download limit</label>
 
             <input type="number" name="btcpw_product_limit" id="btcpw_product_download_limit" min="0" value="<?php echo $limit; ?>" />
-        </div>
-
-
-        <div>
-            <label for="btcpw_product_download_shortcode">Shortcode</label>
-            <input type="text" name="btcpw_product_download_shortcode" id="btcpw_product_download_shortcode" readonly value="<?php echo "[btcpw_digital_download post_id=$post->ID]"; ?>" />
         </div>
 
     </div>
@@ -87,21 +69,15 @@ function render_btcpw_amount($post)
     $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
     wp_nonce_field(basename(__FILE__), 'btcpw_nonce');
     $btcpw_stored_meta = get_post_meta($post->ID);
-    $currency = $btcpw_stored_meta['btcpw_currency'][0] ?? 'SATS';
+    $currency = get_option('btcpw_default_pay_per_file_currency', 'SATS');
     $price = $btcpw_stored_meta['btcpw_price'][0] ?? 0;
 
 ?>
 
     <div class='btcpw_price_meta'>
         <input type="number" name="btcpw_price" id="btcpw_price" min="0" value="<?php echo $price; ?>" />
+        <input type="text" name="btcpw_currency" id="btcpw_currency" value="<?php echo $currency; ?>" disabled />
 
-        <select required name="btcpw_currency">
-            <option disabled value="">Select currency</option>
-            <?php foreach ($supported_currencies as $curr) : ?>
-                <option <?php echo $currency === $curr ? 'selected' : ''; ?> value="<?php echo $curr; ?>">
-                    <?php echo $curr; ?>
-                <?php endforeach; ?>
-        </select>
 
     </div>
 

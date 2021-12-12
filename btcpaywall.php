@@ -56,6 +56,7 @@ if (!class_exists('BTCPayWall')) :
         public $customers;
         public $tippings;
         public $payments;
+        public $cart;
 
         public static function instance()
         {
@@ -71,6 +72,7 @@ if (!class_exists('BTCPayWall')) :
                 self::$instance->payments = new BTCPayWall_DB_Payments();
                 self::$instance->tippings = new BTCPayWall_DB_Tippings();
                 self::$instance->forms = new BTCPayWall_DB_Tipping_Forms();
+                self::$instance->cart = new BTCPayWall_Cart();
             }
 
             return self::$instance;
@@ -142,6 +144,9 @@ if (!class_exists('BTCPayWall')) :
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/post-types.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/shortcodes.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/api/actions.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/cart/class-btcpaywall-cart.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/cart/actions.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/cart/functions.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-customer.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-tipper.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-form.php';

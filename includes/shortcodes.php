@@ -1362,3 +1362,180 @@ add_shortcode('btcpw_digital_download', 'render_shortcode_protected_digital_down
 /**
  * 
  */
+function render_checkout()
+{
+    $products = BTCPayWall()->cart->get_contents();
+    $total = btcpaywall_get_total() . ' ' . get_option('btcpw_default_pay_per_file_currency');
+?>
+    <table id="btcpaywall_checkout_cart">
+        <thead>
+            <tr class="btcpaywall_cart_header_row">
+                <?php do_action('btcpaywall_checkout_table_header_first'); ?>
+                <th class="btcpaywall_cart_item_name"><?php _e('Item Name', 'btcpaywall'); ?></th>
+                <th class="btcpaywall_cart_item_price"><?php _e('Item Price', 'btcpaywall'); ?></th>
+                <th class="btcpaywall_cart_actions"><?php _e('Actions', 'btcpaywall'); ?></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <?php if ($products) : ?>
+                <?php foreach ($products as $key => $item) : ?>
+                    <tr class="btcpaywall_cart_item" id="btcpaywall_cart_item_<?php echo esc_attr($key) . '_' . esc_attr($item['id']); ?>" data-download-id="<?php echo esc_attr($item['id']); ?>">
+
+                        <td class="btcpaywall_cart_item_name">
+                            <span class="btcpaywall_checkout_cart_item_title"><?php echo esc_html(btcpaywall_get_cart_item_name($item)); ?></span>
+                        </td>
+                        <td class="btcpaywall_cart_item_price">
+                            <span><?php
+                                    echo btcpaywall_cart_item_price($item['id']); ?></span>
+
+                        </td>
+                        <td class="btcpaywall_cart_actions">
+                            <a data-cart-key=<?php echo $key; ?> class="btcpaywall_cart_remove_item_btn" href="#"><?php _e('Remove', 'btcpaywall'); ?></a>
+
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+        </tbody>
+        <tfoot>
+            <tr class="btcpaywall_cart_footer_row">
+                <th colspan="3">
+                    Total: <?php echo $total; ?>
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+    <div id="btcpw_digital_download_customer_info">
+        <h2>Personal Info</h2>
+        <form method="POST" action="" id="btcpw_digital_download_form">
+            <fieldset>
+                <div class="btcpw_digital_download_customer_information">
+
+                    <div class="btcpw_digital_download_customer_name_wrap ">
+
+                        <input type="text" placeholder="Full name" id="btcpw_digital_download_customer_name" name="btcpw_digital_download_customer_name" />
+
+                    </div>
+                    <div class="btcpw_digital_download_customer_email_wrap ">
+
+                        <input type="email" placeholder="Email*" id="btcpw_digital_download_customer_email" name="btcpw_digital_download_customer_email" required />
+
+                    </div>
+                    <div class="btcpw_digital_download_customer_phone_wrap ">
+
+                        <input type="number" placeholder="Phone" id="btcpw_digital_download_customer_phone" name="btcpw_digital_download_customer_phone" />
+
+                    </div>
+
+                    <div class="btcpw_digital_download_customer_address_wrap ">
+
+                        <input type="text" placeholder="Address" id="btcpw_digital_download_customer_address" name="btcpw_digital_download_customer_address" />
+
+                    </div>
+
+                    <div class="btcpw_digital_download_customer_message_wrap ">
+
+                        <input type="textarea" placeholder="Message" id="btcpw_digital_download_customer_message" name="btcpw_digital_download_customer_message" />
+
+                    </div>
+                </div>
+                <div class="btcpw_digital_download_button" id="btcpw_digital_download_button">
+                    <div>
+                        <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" class="btcpw_digital_download" id="btcpw_pay__button"><?php echo (!empty($button_text) ? esc_html($button_text) : 'Pay'); ?></button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+<?php
+}
+
+add_shortcode('btcpaywall_checkout', 'render_checkout');
+
+
+function render_receipt()
+{
+
+    $payment = new BTCPayWall_Payment($_SESSION['btcpaywall_purchase']);
+    $download_ids = explode(',', $payment->download_ids);
+
+    //$link = get_download_url($payment->invoice_id, $download->get_file_url(), $download->ID, $customer->email);
+
+?>
+    <table id="btcpaywall_purchase_receipt" class="btcpaywall-table">
+        <thead>
+            <tr>
+                <th><strong><?php _e('Payment', 'btcpaywall'); ?>:</strong></th>
+                <th><?php echo  $payment->id; ?></th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td class="btcpaywall_receipt_payment_status"><strong><?php _e('Payment Status', 'btcpaywall'); ?>:</strong></td>
+                <td class="btcpaywall_receipt_payment_status <?php echo  $payment->status; ?>"><?php echo $payment->status; ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php _e('Payment ID', 'btcpaywall'); ?>:</strong></td>
+                <td><?php echo  $payment->id; ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php _e('Payment Method', 'btcpaywall'); ?>:</strong></td>
+                <td><?php echo $payment->payment_method; ?></td>
+            </tr>
+
+            <tr>
+                <td><strong><?php _e('Total Price', 'btcpaywall'); ?>:</strong></td>
+                <td><?php echo $payment->amount; ?></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <?php if (!empty($download_ids)) : ?>
+
+        <h3><?php echo __('Products', 'btcpaywall'); ?></h3>
+
+        <table id="btcpaywall_purchase_receipt_products" class="btcpaywall-table">
+            <thead>
+                <th><?php _e('Name', 'btcpaywall'); ?></th>
+                <th><?php _e('Price', 'btcpaywall'); ?></th>
+            </thead>
+
+            <tbody>
+                <?php if ($download_ids) : ?>
+                    <?php foreach ($download_ids as $key => $item) : ?>
+
+                        <tr>
+                            <?php
+                            $download       = new BTCPayWall_Digital_Download($item);
+                            $link = get_download_url($payment->invoice_id, $download->get_file_url(), $item, '');
+                            ?>
+                            <td>
+
+
+                                <div class="btcpaywall_purchase_receipt_product_name">
+                                    <a href="<?php echo esc_url($link); ?>" class="btcpaywall_download_file_link"><?php echo esc_html($download->get_name()); ?></a>
+                                </div>
+
+                            </td>
+                            <td class="btcpaywall_purchase_receipt_product_price">
+                                <?php echo ($download->get_price()); ?>
+                            </td>
+
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
+            </tbody>
+
+        </table>
+    <?php endif; ?>
+
+<?php
+}
+
+add_shortcode('btcpaywall_receipt', 'render_receipt');
