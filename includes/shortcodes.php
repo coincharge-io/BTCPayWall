@@ -1414,36 +1414,36 @@ function render_checkout()
                 <div class="btcpw_digital_download_customer_information">
 
                     <div class="btcpw_digital_download_customer_name_wrap ">
-
-                        <input type="text" placeholder="Full name" id="btcpw_digital_download_customer_name" name="btcpw_digital_download_customer_name" />
+                        <label for="btcpw_digital_download_customer_name">Full name</label>
+                        <input type="text" id="btcpw_digital_download_customer_name" name="btcpw_digital_download_customer_name" />
 
                     </div>
                     <div class="btcpw_digital_download_customer_email_wrap ">
-
-                        <input type="email" placeholder="Email*" id="btcpw_digital_download_customer_email" name="btcpw_digital_download_customer_email" required />
+                        <label for="btcpw_digital_download_customer_email">Email<span style="color:red">*</span></label>
+                        <input type="email" id="btcpw_digital_download_customer_email" name="btcpw_digital_download_customer_email" required />
 
                     </div>
                     <div class="btcpw_digital_download_customer_phone_wrap ">
-
-                        <input type="number" placeholder="Phone" id="btcpw_digital_download_customer_phone" name="btcpw_digital_download_customer_phone" />
+                        <label for="btcpw_digital_download_customer_phone">Phone</label>
+                        <input type="number" id="btcpw_digital_download_customer_phone" name="btcpw_digital_download_customer_phone" />
 
                     </div>
 
                     <div class="btcpw_digital_download_customer_address_wrap ">
-
-                        <input type="text" placeholder="Address" id="btcpw_digital_download_customer_address" name="btcpw_digital_download_customer_address" />
+                        <label for="btcpw_digital_download_customer_address">Address</label>
+                        <input type="text" id="btcpw_digital_download_customer_address" name="btcpw_digital_download_customer_address" />
 
                     </div>
 
                     <div class="btcpw_digital_download_customer_message_wrap ">
-
-                        <input type="textarea" placeholder="Message" id="btcpw_digital_download_customer_message" name="btcpw_digital_download_customer_message" />
+                        <label for="btcpw_digital_download_customer_message">Message</label>
+                        <textarea id="btcpw_digital_download_customer_message" name="btcpw_digital_download_customer_message"></textarea>
 
                     </div>
                 </div>
                 <div class="btcpw_digital_download_button" id="btcpw_digital_download_button">
                     <div>
-                        <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" class="btcpw_digital_download" id="btcpw_pay__button"><?php echo (!empty($button_text) ? esc_html($button_text) : 'Pay'); ?></button>
+                        <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" class="btcpw_digital_download"><?php echo (!empty($button_text) ? esc_html($button_text) : 'Pay'); ?></button>
                     </div>
                 </div>
             </fieldset>
@@ -1461,7 +1461,6 @@ function render_receipt()
     $payment = new BTCPayWall_Payment($_SESSION['btcpaywall_purchase']);
     $download_ids = explode(',', $payment->download_ids);
 
-    //$link = get_download_url($payment->invoice_id, $download->get_file_url(), $download->ID, $customer->email);
 
 ?>
     <table id="btcpaywall_purchase_receipt" class="btcpaywall-table">

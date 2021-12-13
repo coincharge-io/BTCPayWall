@@ -686,16 +686,11 @@ class BTCPayWall_Digital_Download
         if (!isset($this->download_limit)) {
 
 
-            $limit  = get_post_meta($this->ID, 'btcpw_product_limit', true);
-            if (!empty($limit) || (is_numeric($limit) && (int)$limit == 0)) {
-
-                $restrict = absint($limit);
+            if (get_post_meta($this->ID, 'btcpw_product_limit', true)) {
+                $this->download_limit = get_post_meta($this->ID, 'btcpw_product_limit', true);
             } else {
-
-                $restrict =  0;
+                $this->download_limit = 0;
             }
-
-            $this->download_limit = $restrict;
         }
 
         return $this->download_limit;
@@ -748,26 +743,7 @@ class BTCPayWall_Digital_Download
             ),
         );
     }
-    /**
-     * Return Digital Download Limit
-     * 
-     * @since 1.0
-     * 
-     * @access public
-     * 
-     * @return int Download limit number 
-     */
-    public function get_download_limit()
-    {
 
-        if (get_post_meta($this->ID, 'btcpw_product_limit', true)) {
-            $this->download_limit = get_post_meta($this->ID, 'btcpw_product_limit', true);
-        } else {
-            $this->download_limit = 0;
-        }
-
-        return $this->download_limit;
-    }
     /**
      * Return Digital Download Filename
      * 
@@ -801,14 +777,14 @@ class BTCPayWall_Digital_Download
      */
     public function get_download_is_allowed($payment_id)
     {
-        $payment = new BTCPayWall_Payment($payment_id);
+        $payment_count = $_COOKIE['btcpw_' . $payment_id . $this->ID];
 
-        if ((int)$this->get_download_limit() == 0) {
+        if ((int)$this->get_file_download_limit() == 0) {
             return true;
         }
 
 
-        return (int)$payment->get_download_number() <= (int)$this->get_download_limit();
+        return (int)$payment_count <= (int)$this->get_file_download_limit();
     }
 
     /**

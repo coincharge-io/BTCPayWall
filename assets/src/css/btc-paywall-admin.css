@@ -432,7 +432,7 @@ div.btcpw_help_link a:hover {
   cursor: pointer;
 }
 
-.btcpaywall_payment_container {
+/* .btcpaywall_payment_container {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -444,7 +444,7 @@ div.btcpw_help_link a:hover {
 .btcpaywall_payment_container label {
   display: inline-block;
   vertical-align: baseline;
-}
+} */
 
 .btcpw_product_file_download {
   display: flex;

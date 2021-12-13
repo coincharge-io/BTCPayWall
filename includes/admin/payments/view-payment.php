@@ -7,7 +7,8 @@ if (!isset($_GET['id'])) {
 }
 $id = $_GET['id'];
 $payment = new BTCPayWall_Payment($id);
-$customer = new BTCPayWall_Customer($payment->id);
+$customer = new BTCPayWall_Customer($payment->customer_id);
+$download_ids = explode(',', $payment->download_ids);
 ?>
 <div class="wrap">
 
@@ -22,25 +23,46 @@ $customer = new BTCPayWall_Customer($payment->id);
             <div id="post-body-content">
 
                 <div class="meta-box-sortables ui-sortable">
+                    <?php if ($payment->revenue_type === 'Pay-per-file') : ?>
+                        <div class="postbox btcpaywall_payment">
 
-                    <div class="postbox btcpaywall_payment">
+                            <h2><span><?php esc_attr_e('Files', 'posts-in-page'); ?></span></h2>
 
-                        <h2><span><?php esc_attr_e('Blog', 'posts-in-page'); ?></span></h2>
+                            <div class="inside">
+                                <div class="meta-box-sortables" style="min-height: 0">
 
-                        <div class="inside">
-                            <div class="meta-box-sortables" style="min-height: 0">
-                                <div id="btcpaywall_payment_container_type" class="btcpaywall_payment_container_type ">
-                                    <div class="btcpaywall_payment_container inside_wrap">
-                                        <h4>Name: <?php echo $payment->page_title; ?></h4>
-                                        <h4> Revenue type: <?php echo $payment->revenue_type; ?></h4>
+                                    <div id="btcpaywall_payment_container_type" class="btcpaywall_payment_container_type ">
+                                        <ul>
+                                            <?php foreach ($download_ids as $id) : ?>
+                                                <?php $download = new BTCPayWall_Digital_Download($id); ?>
+                                                <div class="btcpaywall_payment_container inside_wrap">
+                                                    <li><span>File name: <?php echo $download->get_name(); ?></span> <span>Price: <?php echo $download->get_price(); ?></span>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                        </ul>
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-                        <!-- .inside -->
+                    <?php else : ?>
+                        <div class="postbox btcpaywall_payment">
 
-                    </div>
+                            <h2><span><?php esc_attr_e('Blog', 'posts-in-page'); ?></span></h2>
+
+                            <div class="inside">
+                                <div class="meta-box-sortables" style="min-height: 0">
+                                    <div id="btcpaywall_payment_container_type" class="btcpaywall_payment_container_type ">
+                                        <div class="btcpaywall_payment_container inside_wrap">
+                                            <h4>Name: <?php echo $payment->page_title; ?></h4>
+                                            <h4> Revenue type: <?php echo $payment->revenue_type; ?></h4>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                     <div class="postbox btcpaywall_payment">
 
                         <h2><span><?php esc_attr_e('Customer Details', 'posts-in-page'); ?></span></h2>
@@ -75,7 +97,7 @@ $customer = new BTCPayWall_Customer($payment->id);
                             <div class="meta-box-sortables" style="min-height: 0">
                                 <div id="btcpaywall_payment_container_customer_message" class="btcpaywall_payment_container_customer_message postbox">
 
-                                    <p><?php echo $customer->message; ?></p>
+                                    <textarea disabled><?php echo $customer->message; ?></textarea>
 
 
                                 </div>

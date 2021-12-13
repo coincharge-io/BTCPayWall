@@ -1281,11 +1281,7 @@ Revenue types
   -moz-border-radius: 2em;
   -webkit-border-radius: 2em;
 }
-/* #btcpw_page_tipping__button {
-  border-radius: 2em;
-  -moz-border-radius: 2em;
-  -webkit-border-radius: 2em;
-} */
+
 #btcpw_revenue_post_button button,
 #btcpw_revenue_post_button input[type='button'],
 #btcpw_revenue_post_button input[type='submit'],
@@ -1303,34 +1299,34 @@ Revenue types
 Pay-per-file
 */
 #btcpw_digital_download_form {
-  position: relative;
-  height: 80%;
-}
-#btcpw_digital_download_protected_area fieldset:not(:first-of-type) {
-  display: none;
-}
-#btcpw_digital_download_protected_area {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 300px;
+  flex-wrap: wrap;
 }
-
-/* .btcpw_digital_download.next-form,
-.btcpw_digital_download.previous-form,
-.btcpw_digital_download {
-  height: 80px;
-} */
-.btcpw_digital_download {
-  height: 50px;
+#btcpw_digital_download_form fieldset {
+  position: relative;
+}
+.btcpw_digital_download_customer_information {
+  display: flex;
+  flex-direction: column;
 }
 #btcpw_digital_download_button {
-  display: flex;
+  margin-top: 50px;
+}
+.btcpw_digital_download {
   position: absolute;
-  display: inline-flex;
   bottom: 0;
   left: 0;
-  height: 75px;
-  justify-content: center;
+}
+
+.btcpw_digital_download_customer_information input[type='text'],
+.btcpw_digital_download_customer_information input[type='email'],
+.btcpw_digital_download_customer_information input[type='number'],
+.btcpw_digital_download_customer_information textarea {
+  width: 100%;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 20px 0;
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.062);
 }
