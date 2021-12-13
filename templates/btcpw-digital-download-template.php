@@ -23,7 +23,7 @@ if (btcpaywall_item_in_cart($download->ID)) {
 <?php get_header(); ?>
 <div id="primary">
     <div id="content" role="main">
-
+        <?php the_content(); ?>
         <form id="btcpaywall_download_form" action="" method="POST">
 
             <a href="<?php esc_attr(the_permalink(get_option('btcpw_checkout_page'))); ?>" class="btcpaywall_checkout" style=<?php echo "{$checkout_display}"; ?>>Checkout</a>

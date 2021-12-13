@@ -229,8 +229,8 @@ add_action('wp_ajax_nopriv_btcpw_convert_currencies',  'ajax_convert_currencies'
 
 function ajax_tipping()
 {
-    $collect = "Donor Information: \n";
 
+    $collect = "Donor Information: \n";
     if (!empty($_POST['name'])) {
         $name = sanitize_text_field($_POST['name']);
         $collect .= "Name: {$name} \n";
@@ -251,6 +251,7 @@ function ajax_tipping()
         $message = sanitize_text_field($_POST['message']);
         $collect .= "Message: {$message} \n";
     }
+
 
     $currency = sanitize_text_field($_POST['currency']);
     $amount = sanitize_text_field($_POST['amount']);
@@ -275,26 +276,8 @@ function ajax_tipping()
     $type = sanitize_text_field($_POST['type']);
     $itemDesc = "\nType: {$type}\n";
     $itemDesc .= "Weblog title: {$blogname} \n";
-    /* $url = get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
 
-    $data = array(
-        'amount' => $amount,
-        'currency' => $currency,
-        'metadata' => array(
-            'type' => $type,
-            'blog'    => $blogname,
-            'donor' => $collects,
-        )
-    );
-    $args = array(
-        'headers' => array(
-            'Authorization' => 'token ' . get_option('btcpw_btcpay_auth_key_create'),
-            'Content-Type' => 'application/json',
-        ),
-        'body' => json_encode($data),
-        'method' => 'POST',
-        'timeout' => 60,
-    ); */
+
     $url = tipping_invoice_args($amount, $currency, $type, $blogname, $collects)['url'];
 
     $args = tipping_invoice_args($amount, $currency, $type, $blogname, $collects)['args'];
@@ -315,7 +298,6 @@ function ajax_tipping()
         return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
     }
 
-    //$payment_method = get_payment_method($body['id']);
 
     $tipper = new BTCPayWall_Tipper();
 
@@ -356,7 +338,27 @@ function ajax_paid_invoice()
     if (empty($_POST['order_id'])) {
         wp_send_json_error();
     }
-
+    $collect = "Donor Information: \n";
+    if (!empty($_POST['name'])) {
+        $name = sanitize_text_field($_POST['name']);
+        $collect .= "Name: {$name} \n";
+    }
+    if (!empty($_POST['email'])) {
+        $email = sanitize_text_field($_POST['email']);
+        $collect .= "Email: {$email} \n";
+    }
+    if (!empty($_POST['address'])) {
+        $address = sanitize_text_field($_POST['address']);
+        $collect .= "Address: {$address} \n";
+    }
+    if (!empty($_POST['phone'])) {
+        $phone = sanitize_text_field($_POST['phone']);
+        $collect .= "Phone: {$phone} \n";
+    }
+    if (!empty($_POST['message'])) {
+        $message = sanitize_text_field($_POST['message']);
+        $collect .= "Message: {$message} \n";
+    }
     $order_id = sanitize_text_field($_POST['order_id']);
     $post_id = get_post_meta($order_id, 'btcpw_post_id', true);
     $invoice_id = get_post_meta($order_id, 'btcpw_invoice_id', true);
@@ -395,16 +397,8 @@ function ajax_paid_invoice()
         return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
     }
     $amount = sanitize_text_field($_POST['amount']);
-    $storeId = get_option('btcpw_btcpay_store_id');
-    $blogname = get_option('blogname');
-    $siteurl = get_option('siteurl');
-    $date = date('Y-m-d H:i:s', current_time('timestamp', 0));
-    $message = "\nWeblog title: {$blogname} \n";
-    $message .= "Website url: {$siteurl} \n";
-    $message .= "Date: {$date} \n";
-    $message .= "Amount: {$amount} \n";
-    $message .= "Credit on Store ID: {$storeId} \n";
-    $message .= "Type: $content_title \n";
+
+    $message = btcpw_get_notify_administrator_body($amount, $collect, 'Pay-per-' . get_post_meta($post_id, 'btcpw_invoice_content', true)['project']);
 
     if ($body['status'] !== 'Settled') {
         wp_send_json_error(['message' => 'Invoice is not paid.']);
@@ -419,18 +413,7 @@ function ajax_paid_invoice()
 
     $payment->update(array('status' => $body['status'], 'payment_method' => $payment_method));
 
-    /* if ($payment->revenue_type === 'Pay-per-file') {
 
-        setcookie('btcpw_payment_id_' . $post_id, $payment->invoice_id, strtotime("14 Jan 2038"), '/');
-
-        setcookie('btcpw_link_expiration_' . $post_id, strtotime("14 Jan 2038"), strtotime("14 Jan 2038"), '/');
-        $download = new BTCPayWall_Digital_Download($post_id);
-        $download->increase_sales();
-        if (is_email($body['metadata']['customer_data']['email']) && !empty($body['metadata']['customer_data']['email'])) {
-            $link = get_download_url($payment->invoice_id, $download->get_file_url(), $download->ID, $body['metadata']['customer_data']['email']);
-            wp_mail($body['metadata']['customer_data']['email'], 'BTCPayWall Digital Download Link', $link);
-        }
-    } */
     update_post_meta($body['metadata']['orderId'], 'btcpw_payment_id', $payment->invoice_id);
 
     setcookie("btcpw_{$post_id}", $secret, get_cookie_duration($post_id), $cookie_path);
@@ -448,6 +431,7 @@ function ajax_paid_tipping()
     if (empty($_POST['invoice_id'])) {
         wp_send_json_error();
     }
+
     $invoice_id = sanitize_text_field($_POST['invoice_id']);
     $url = get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices/' . $invoice_id;
 
@@ -479,7 +463,6 @@ function ajax_paid_tipping()
     $payment_method = get_payment_method($body['id']);
 
     $tipping->update(array('status' => $body['status'], 'payment_method' => $payment_method));
-
     wp_send_json_success();
 }
 add_action('wp_ajax_btcpw_paid_tipping',  'ajax_paid_tipping');
@@ -758,20 +741,7 @@ function ajax_paid_opennode_invoice()
 
     $payment->update(array('status' => $body['data']['status'], 'payment_method' => 'Lightning-unverified'));
 
-    /* if ($payment->revenue_type === 'Pay-per-file') {
 
-        setcookie('btcpw_payment_id_' . $post_id, $payment->invoice_id, strtotime("14 Jan 2038"), '/');
-
-        setcookie('btcpw_link_expiration_' . $post_id, strtotime("14 Jan 2038"), strtotime("14 Jan 2038"), '/');
-
-
-        $download = new BTCPayWall_Digital_Download($post_id);
-        $download->increase_sales();
-        if (is_email($body['data']['metadata']['customer_data']['email']) && !empty($body['data']['metadata']['customer_data']['email'])) {
-            $link = get_download_url($payment->invoice_id, $download->get_file_url(), $download->ID, $body['data']['metadata']['customer_data']['email']);
-            wp_mail($body['metadata']['customer_data']['email'], 'BTCPayWall Digital Download Link', $link);
-        }
-    } */
     if (substr($payment->revenue_type, 0, 7)  === 'Tipping') {
         $tipping = new BTCPayWall_Tipping($invoice_id);
         //$payment_method = get_payment_method($body['id']);
@@ -897,9 +867,10 @@ function ajax_generate_invoice_id_content_file()
         'full_name' => sanitize_text_field($_POST['full_name']),
         'email' => sanitize_email($_POST['email']),
         'address' => sanitize_text_field($_POST['address']),
-        'phone' => sanitize_text_field($_POST['phone']),
+        'phone' => (int)$_POST['phone'],
         'message' => sanitize_text_field($_POST['message']),
     ]);
+    var_dump($_POST);
 
     $payment = new BTCPayWall_Payment();
 
@@ -918,6 +889,7 @@ function ajax_generate_invoice_id_content_file()
         'date_created'  => date('Y-m-d H:i:s')
 
     ]);
+
     wp_send_json_success([
         'invoice_id' => $body['id']
     ]);
@@ -964,7 +936,6 @@ function ajax_paid_content_file_invoice()
     }
     $amount = $body['amount'] . ' ' . $body['currency'];
     $storeId = get_option('btcpw_btcpay_store_id');
-    $blogname = get_option('blogname');
     $siteurl = get_option('siteurl');
     $date = date('Y-m-d H:i:s', current_time('timestamp', 0));
     $message = "Website url: {$siteurl} \n";
@@ -993,35 +964,12 @@ function ajax_paid_content_file_invoice()
         $links[] = get_download_url($payment->invoice_id, $download->get_file_url(), $download->ID, $body['metadata']['customer_data']['email']);
     }
     $_SESSION['btcpaywall_purchase'] = $payment->invoice_id;
-    /* $download = new BTCPayWall_Digital_Download($post_id);
-    $download->increase_sales(); */
-    wp_mail($body['metadata']['customer_data']['email'], 'BTCPayWall Digital Download Link', json_encode($links));
-    /* if (is_email($body['metadata']['customer_data']['email']) && !empty($body['metadata']['customer_data']['email'])) {
-        $link = get_download_url($payment->invoice_id, $download->get_file_url(), $download->ID, $body['metadata']['customer_data']['email']);
-        wp_mail($body['metadata']['customer_data']['email'], 'BTCPayWall Digital Download Link', $link);
-    } */
+    $body = btcpw_get_send_purchased_links_body($links, $body['metadata']['customer_data']['name']);
+    wp_mail($body['metadata']['customer_data']['email'], 'BTCPayWall Digital Download Link', $body);
+
     BTCPayWall()->cart->empty_cart();
     wp_send_json_success(['notify' => $message]);
 }
 
 add_action('wp_ajax_btcpw_paid_content_file_invoice',  'ajax_paid_content_file_invoice');
 add_action('wp_ajax_nopriv_btcpw_paid_content_file_invoice',  'ajax_paid_content_file_invoice');
-
-
-
-//TODO Find better way for handling download count
-
-//TODO Find better way for handling download count
-
-/* function ajax_set_download_cookies()
-{
-    $downloadID = sanitize_text_field($_POST['download_id']);
-    $paymentID = sanitize_text_field($_POST['payment_id']);
-
-    setcookie("btcpw_{$paymentID}{$downloadID}", isset($_COOKIE["btcpw_{$paymentID}{$downloadID}"]) ? ++$_COOKIE["btcpw_{$paymentID}{$downloadID}"] : 0, strtotime("14 Jan 2038"), '/');
-
-    wp_send_json_success();
-}
-
-add_action('wp_ajax_btcpw_set_download_number',  'ajax_set_download_cookies');
-add_action('wp_ajax_nopriv_btcpw_set_download_number',  'ajax_set_download_cookies'); */

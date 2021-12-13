@@ -71,9 +71,7 @@ class BTCPayWall_Payment
         if ($this->id != 0 || empty($data)) {
             return false;
         }
-        $defaults = [
-            'download_ids' => '',
-        ];
+        
         if (!empty($data['download_ids']) && is_array($data['download_ids'])) {
             $data['download_ids'] = implode(',', array_unique(array_values($data['download_ids'])));
         }

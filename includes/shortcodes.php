@@ -1443,7 +1443,7 @@ function render_checkout()
                 </div>
                 <div class="btcpw_digital_download_button" id="btcpw_digital_download_button">
                     <div>
-                        <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" class="btcpw_digital_download"><?php echo (!empty($button_text) ? esc_html($button_text) : 'Pay'); ?></button>
+                        <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" class="btcpw_digital_download"><?php echo __('Pay', 'btcpaywall'); ?></button>
                     </div>
                 </div>
             </fieldset>

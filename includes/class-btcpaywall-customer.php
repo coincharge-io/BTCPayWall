@@ -18,27 +18,12 @@ class BTCPayWall_Customer
     protected $db;
 
 
-    public function __construct($customer_id=false)
+    public function __construct($customer_id = false)
     {
 
         $this->db = new BTCPayWall_DB_Customers;
 
-        /* if (!is_email($email_or_name)) {
-            return false;
-        }
-        $by_email = is_bool($by_email) ? $by_email : false;
 
-        if (is_email($email_or_name)) {
-            $field = 'email';
-        } else {
-            $field = 'name';
-        }
-        $customer = $this->db->get_customer_by($field, $email_or_name);
-
-        if (empty($customer) || !is_object($customer)) {
-            return false;
-        }
- */
         if ((is_numeric($customer_id) && (int) $customer_id !== absint($customer_id))) {
             return false;
         }
@@ -82,19 +67,16 @@ class BTCPayWall_Customer
         if ($this->id != 0 || empty($data)) {
             return false;
         }
-
-
         $data = $this->sanitize_columns($data);
-
         $created = false;
         $create_or_update = $this->db->add($data);
+
+
         if ($create_or_update) {
 
 
             $customer = $this->db->get_customer_by('id', $create_or_update);
-
             $this->setup_customer($customer);
-
             $created = $this->id;
         }
 
@@ -141,9 +123,7 @@ class BTCPayWall_Customer
 
         $columns        = $this->db->get_columns();
         $default_values = $this->db->get_column_defaults();
-
         foreach ($columns as $key => $type) {
-
             if (!array_key_exists($key, $data)) {
                 continue;
             }
@@ -154,7 +134,7 @@ class BTCPayWall_Customer
                     if (!is_string($key)) {
                         $data[$key] = $default_values[$key];
                     } else {
-                        $data[$key] = empty($data[$key]) ? sanitize_text_field($data[$key]) : $default_values[$key];
+                        $data[$key] = sanitize_text_field($data[$key]);
                     }
                     break;
 
@@ -171,7 +151,6 @@ class BTCPayWall_Customer
                     break;
             }
         }
-
         return $data;
     }
 }

@@ -113,7 +113,7 @@ $collect_data = display_is_enabled($collect);
                     </div>
 
                     <div>
-                        <button type="button" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo get_payblock_button_string() ?></button>
+                        <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo get_payblock_button_string() ?></button>
                     </div>
                 </div>
             </fieldset>

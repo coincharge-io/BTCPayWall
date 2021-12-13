@@ -1,6 +1,6 @@
 ;(function ($) {
   'use strict'
-  var gateway = payment.gateway
+  /*var gateway = payment.gateway
   $(document).ready(function () {
     var btcpw_invoice_id =
       gateway != 'BTCPayServer'
@@ -125,7 +125,7 @@
         }
       })
     })
-  })
+  })*/
   $(document).ready(function () {
     $('.btcpaywall_cart_remove_item_btn').click(function (e) {
       e.preventDefault()
@@ -164,6 +164,7 @@
       })
     })
   })
+  /*
   function btcpwShowOpenNodeFileInvoice () {
     $.ajax({
       url: '/wp-admin/admin-ajax.php',
@@ -751,7 +752,7 @@
 
     btcpay.showInvoice(invoice_id)
   }
-
+*/
   function notifyAdmin (donor_info) {
     $.ajax({
       url: '/wp-admin/admin-ajax.php',

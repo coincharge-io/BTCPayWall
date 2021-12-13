@@ -1325,8 +1325,8 @@ Pay-per-file
 .btcpw_digital_download_customer_information textarea {
   width: 100%;
   border-radius: 15px;
-  padding: 15px;
-  margin: 20px 0;
+  padding: 5px;
+  margin: 5px 0;
   border: 0;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.062);
 }

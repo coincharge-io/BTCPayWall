@@ -85,7 +85,6 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
 
             return $customer->id;
         } else {
-
             return $this->insert($data, 'customer');
         }
     }
