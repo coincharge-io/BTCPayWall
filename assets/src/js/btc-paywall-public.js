@@ -127,24 +127,6 @@
     })
   })
   $(document).ready(function () {
-   /*  $('.btcpaywall_purchase_receipt_product_name a').click(function (e) {
-      e.preventDefault()
-      var downloadId = $(this).data('download')
-      var paymentId = $(this).data('payment')
-      $.ajax({
-        url: '/wp-admin/admin-ajax.php',
-        type: 'POST',
-        data: {
-          action: 'btcpw_set_download_number',
-          download_id: downloadId,
-          payment_id: paymentId
-        },
-        success: function (response) {
-          //location.reload()
-        },
-        error: function (response) {}
-      })
-    }) */
     $('.btcpaywall_cart_remove_item_btn').click(function (e) {
       e.preventDefault()
       var item = $(this).data('cart-key')
