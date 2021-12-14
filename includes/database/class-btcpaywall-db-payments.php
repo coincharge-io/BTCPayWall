@@ -89,9 +89,6 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
         if (empty($data)) {
             return false;
         }
-        $defaults = array(
-            'download_ids' => '',
-        );
         if (!empty($args['download_ids']) && is_array($args['download_ids'])) {
             $args['download_ids'] = implode(',', array_unique(array_values($args['download_ids'])));
         }
@@ -142,11 +139,8 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
         global $wpdb;
 
         $sql = "SELECT * FROM {$this->table_name}";
-
-        if (!empty($_REQUEST['orderby'])) {
-            $sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
-            $sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
-        }
+        $sql .= ' ORDER BY date_created';
+        $sql .= ' DESC';
         if (!empty($per_page) && !empty($page_number)) {
             $sql .= " LIMIT $per_page";
 

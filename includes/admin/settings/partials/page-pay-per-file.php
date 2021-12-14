@@ -10,15 +10,15 @@ $subsection = isset($_GET['subsection']) ? $_GET['subsection'] : $default_subsec
 <div class="wrap">
 
     <nav class="btcpw nav-tab-wrapper">
-        <ul class="btcpw subsub modules_sub_nav">
+        <ul class="btcpw subsubsub modules_subsub_nav">
             <li>
-                <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-file&subsection=general" class="nav-tab <?php if ($subsection === null || $subsection === 'general') : ?>nav-tab-active<?php endif; ?>">General</a>
+                <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-file&subsection=general" class="btcpw-nav-tab nav-tab <?php if ($subsection === null || $subsection === 'general') : ?>nav-tab-active<?php endif; ?>">General</a>
             </li>
             <li>
-                <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-file&subsection=design" class="nav-tab <?php if ($subsection === 'design') : ?>nav-tab-active<?php endif; ?>">Design</a>
+                <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-file&subsection=design" class="btcpw-nav-tab nav-tab <?php if ($subsection === 'design') : ?>nav-tab-active<?php endif; ?>">Design</a>
             </li>
             <li>
-                <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-file&subsection=products" class="nav-tab <?php if ($subsection === 'products') : ?>nav-tab-active<?php endif; ?>">Products</a>
+                <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-file&subsection=products" class="btcpw-nav-tab nav-tab <?php if ($subsection === 'products') : ?>nav-tab-active<?php endif; ?>">Products</a>
             </li>
 
         </ul>

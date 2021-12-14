@@ -47,6 +47,10 @@ $description = get_post_meta($post->ID, 'btcpw_product_description', true);
         background-image: url(<?php echo $logo[0]; ?>);
     }
 
+    .btcpw_tabset {
+        margin-top: 60px;
+    }
+
     .btcpw_tabset>input[type="radio"] {
         position: absolute;
         left: -200vw;
@@ -97,45 +101,38 @@ $description = get_post_meta($post->ID, 'btcpw_product_description', true);
 </style>
 <?php get_header(); ?>
 <?php get_the_post_thumbnail(get_the_ID(), 'thumbnail'); ?>
-<section id="primary">
-    <div class="btcpw_container">
-        <div>
-            <h2><?php the_title(); ?></h2>
-            <p><span class="btcpw_product_price"><em><?php echo $price; ?> incl. VAT</em></span></p>
-            <div class="btcpw_product_description">
-                <?php echo $description; ?>
+<div id="primary" class="content-area">
+    <section id="main">
+        <div class="btcpw_container">
+            <div>
+                <h2><?php the_title(); ?></h2>
+                <p><span class="btcpw_product_price"><em><?php echo $price; ?> incl. VAT</em></span></p>
+                <div class="btcpw_product_description">
+                    <?php echo $description; ?>
+                </div>
+                <form id="btcpaywall_download_form" action="" method="POST">
+
+                    <a href="<?php esc_attr(the_permalink(get_option('btcpw_checkout_page'))); ?>" class="btcpaywall_checkout" style=<?php echo "{$checkout_display}"; ?>>Checkout</a>
+
+                    <input type="hidden" id="btcpw_download_id" data-post_title="<?php echo esc_attr($post->post_title); ?>" data-post_id="<?php echo esc_attr($download->ID); ?>">
+                    <button type="submit" class="btcpaywall_add_to_cart" style=<?php echo "{$button_display}"; ?>>Add to cart</button>
+                </form>
             </div>
-            <form id="btcpaywall_download_form" action="" method="POST">
-
-                <a href="<?php esc_attr(the_permalink(get_option('btcpw_checkout_page'))); ?>" class="btcpaywall_checkout" style=<?php echo "{$checkout_display}"; ?>>Checkout</a>
-
-                <input type="hidden" id="btcpw_download_id" data-post_title="<?php echo esc_attr($post->post_title); ?>" data-post_id="<?php echo esc_attr($download->ID); ?>">
-                <button type="submit" class="btcpaywall_add_to_cart" style=<?php echo "{$button_display}"; ?>>Add to cart</button>
-            </form>
+            <?php if (!empty($logo_id)) : ?>
+                <div class="btcpw_product_image">
+                </div>
+            <?php endif; ?>
         </div>
-        <?php if (!empty($logo_id)) : ?>
-            <div class="btcpw_product_image">
 
-
-            </div>
-        <?php endif; ?>
-    </div>
-
-
+    </section>
     <div class="btcpw_tabset">
         <!-- Tab 1 -->
         <input type="radio" name="tabset" id="tab1" aria-controls="btcpw_product_description" checked>
         <label for="tab1">Description</label>
-
-
         <div class="btcpw_tab-panels">
             <section id="btcpw_product_description" class="btcpw_tab-panel">
                 <div><?php the_content(); ?></div>
             </section>
-
-
         </div>
-
     </div>
-
-</section>
+</div>

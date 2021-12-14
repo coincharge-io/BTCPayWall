@@ -10,18 +10,18 @@ $section = isset($_GET['section']) ? $_GET['section'] : $default_section;
 
 <div class="wrap">
     <nav class="btcpw nav-tab-wrapper">
-        <ul class="btcpw subsub modules_sub_nav">
+        <ul class="btcpw subsubsub modules_subsub_nav">
             <li>
-                <a href="?page=btcpw_general_settings&tab=modules&section=pay-post" class="nav-tab <?php if ($section === null || $section === 'pay-post') : ?>nav-tab-active<?php endif; ?>">Pay-per-post</a>
+                <a href="?page=btcpw_general_settings&tab=modules&section=pay-post" class="btcpw-nav-tab nav-tab <?php if ($section === null || $section === 'pay-post') : ?>nav-tab-active<?php endif; ?>">Pay-per-post</a>
             </li>
             <li>
-                <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-view" class="nav-tab <?php if ($section === 'pay-per-view') : ?>nav-tab-active<?php endif; ?>">Content Store View</a>
+                <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-view" class="btcpw-nav-tab nav-tab <?php if ($section === 'pay-per-view') : ?>nav-tab-active<?php endif; ?>">Pay-per-View</a>
             </li>
             <li>
-                <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-file" class="nav-tab <?php if ($section === 'pay-per-file') : ?>nav-tab-active<?php endif; ?>">Content Store File</a>
+                <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-file" class="btcpw-nav-tab nav-tab <?php if ($section === 'pay-per-file') : ?>nav-tab-active<?php endif; ?>">Content Store</a>
             </li>
             <li>
-                <a href="?page=btcpw_general_settings&tab=modules&section=tipping" class="nav-tab <?php if ($section === 'tipping') : ?>nav-tab-active<?php endif; ?>">Tipping</a>
+                <a href="?page=btcpw_general_settings&tab=modules&section=tipping" class="btcpw-nav-tab nav-tab <?php if ($section === 'tipping') : ?>nav-tab-active<?php endif; ?>">Tipping</a>
             </li>
         </ul>
     </nav>

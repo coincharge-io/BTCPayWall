@@ -462,15 +462,7 @@ Settings Tabs
   padding: 0;
   float: left;
 }
-.btcpw.subsub a {
-  line-height: 2;
-  padding: 0.2em;
-  margin: 0 3px 0 0;
-  text-decoration: none;
-  font-size: 14px;
-  box-shadow: none;
-  font-weight: 400;
-}
+
 .btcpw.subsub.modules_sub_nav li {
   display: inline-block;
   margin: 0 0 0 3px;
@@ -479,6 +471,13 @@ Settings Tabs
   color: #d3d3d3;
   font-weight: 300;
   font-size: 16px;
+}
+
+.btcpw.subsubsub.modules_subsub_nav li {
+  display: inline-block;
+  margin: 0 0 0 3px;
+  padding: 0;
+  white-space: nowrap;
 }
 
 .btcpw.nav-tab-wrapper .nav-tab.nav-tab-active {
@@ -490,6 +489,7 @@ Settings Tabs
   float: left;
   border: 1px solid #c3c4c7;
   border-bottom: none;
+  margin-bottom: 0em;
   margin-left: 0.5em;
   padding: 5px 10px;
   font-size: 14px;
@@ -500,8 +500,24 @@ Settings Tabs
   text-decoration: none;
   white-space: nowrap;
 }
+.btcpw.nav-tab-wrapper .btcpw-nav-tab.nav-tab {
+  float: left;
+  border: none;
+  padding: 5px;
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 400;
+  background: none;
+  color: #0c4279;
+  text-decoration: none;
+  white-space: nowrap;
+}
 
 .btcpw_digital_download_limit_help:before {
   content: '\003F';
   font-weight: bolder;
+}
+
+.btcpw tab-content {
+  margin-top: 0;
 }

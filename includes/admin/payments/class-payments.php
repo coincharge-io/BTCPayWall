@@ -69,32 +69,6 @@ class Payments_Table extends WP_List_Table
         );
     }
 
-
-    /*  public function display_rows()
-    {
-
-
-        $payments = $this->items;
-
-        if (!empty($payments)) {
-            foreach ($payments as $inv) {
-                $invoice_url = get_option('btcpw_btcpay_server_url') . '/invoices/' . $inv['invoice_id'];
-                echo "<tr class=btcpw_invoices>";
-
-                echo '</tr>';
-                echo "<td data-colname=Id class=status column-status>{$inv['id']}</td>";
-                echo "<td data-colname=Date class=status column-status>{$inv['date_created']}</td>";
-                echo "<td data-colname=Content title class=status column-status>{$inv['page_title']}</td>";
-                echo "<td data-colname=Content title class=status column-status>{$inv['revenue_type']}</td>";
-                echo "<td data-colname=Status class={$inv['status']} status column-status>{$inv['status']}</td>";
-                echo "<td data-colname=Method class={$inv['payment_method']} status column-status>{$inv['payment_method']}</td>";
-                echo "<td data-colname=Amount class=status column-status>{$inv['amount']}</td>";
-                echo "<td data-colname=Currency class=status column-status>{$inv['currency']}</td>";
-                echo "<td data-colname=Invoice id class=status column-status><a href={$invoice_url} target=_blank>{$inv['invoice_id']}</a></td>";
-                echo '</tr>';
-            }
-        }
-    }*/
     public static function record_count()
     {
 
@@ -104,10 +78,7 @@ class Payments_Table extends WP_List_Table
     }
     public static function get_payments($per_page = 5, $page_number = 1)
     {
-
-
         $payments = new BTCPayWall_Payment();
-
         return $payments->get_payments($per_page, $page_number);
     }
     /**

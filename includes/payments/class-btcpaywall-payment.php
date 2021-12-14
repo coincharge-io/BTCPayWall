@@ -71,7 +71,7 @@ class BTCPayWall_Payment
         if ($this->id != 0 || empty($data)) {
             return false;
         }
-        
+
         if (!empty($data['download_ids']) && is_array($data['download_ids'])) {
             $data['download_ids'] = implode(',', array_unique(array_values($data['download_ids'])));
         }
@@ -123,10 +123,10 @@ class BTCPayWall_Payment
         return $updated;
     }
 
-    public function get_payments()
+    public function get_payments($per_page, $page_number)
     {
 
-        $payments = $this->db->get_payments();
+        $payments = $this->db->get_payments($per_page, $page_number);
 
         return $payments;
     }
