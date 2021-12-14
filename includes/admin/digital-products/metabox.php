@@ -23,6 +23,8 @@ function add_btcpw_product_meta_boxes()
     add_meta_box('btcpw_product_limit', __('BTCPayWall Product Download Limit', 'btcpaywall'), 'render_btcpw_product_settings', 'digital_download', 'side');
 
     add_meta_box('btcpw_product_image', __('BTCPayWall Product Image', 'btcpaywall'), 'render_btcpw_product_image', 'digital_download', 'side');
+
+    add_meta_box('btcpw_product_description',  __('BTCPayWall Product Description', 'btcpaywall'), 'render_btcpw_product_description');
 }
 
 add_action('add_meta_boxes', 'add_btcpw_product_meta_boxes');
@@ -38,11 +40,21 @@ function btcpw_meta_fields()
             'btcpw_digital_product_filename',
             'btcpw_product_sales',
             'btcpw_product_limit',
-            'btcpw_product_image_id'
+            'btcpw_product_image_id',
+            'btcpw_product_description'
         ];
     return $fields;
 }
-
+function render_btcpw_product_description($post)
+{
+    $btcpw_stored_meta = get_post_meta($post->ID);
+    $description = $btcpw_stored_meta['btcpw_product_description'][0] ?? '';
+    $args = array(
+        'tinymce' => false,
+        'quicktags' => true,
+    );
+    wp_editor($description, 'btcpw_product_description', $args);
+}
 function render_btcpw_product_settings($post)
 {
     $btcpw_stored_meta = get_post_meta($post->ID);

@@ -96,6 +96,7 @@ $collect_data = display_is_enabled($collect);
         </fieldset>
         <?php if ($collect_data === true) : ?>
             <fieldset>
+                <h2>Personal Info</h2>
                 <div class="btcpw_revenue_post_customer_information">
                     <?php foreach ($collect as $key => $value) : ?>
                         <?php if ($collect[$key]['display'] === true) : ?>

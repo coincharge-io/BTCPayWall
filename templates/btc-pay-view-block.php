@@ -121,6 +121,7 @@ $preview_url = $image ? $image[0] : $atts['preview'];
         </fieldset>
         <?php if ($collect_data == true) : ?>
             <fieldset>
+                <h2>Personal Info</h2>
                 <div class="btcpw_revenue_view_customer_information">
                     <?php foreach ($collect as $key => $value) : ?>
                         <?php if ($collect[$key]['display'] === true) : ?>
