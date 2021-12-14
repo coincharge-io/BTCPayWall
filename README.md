@@ -8,18 +8,23 @@
 Sell individual blog articles, digital content like videos, eBooks or PDF files and receive tips and donations through your website.
 
 **Pay for a single blog article (pay-per-post)**
+
 With BTCPayWall you can offer a Bitcoin Paywall for a single blog post (pay-per-post). Instead of a monthly subscription, readers can pay for a single article.
 
 **Pay per video (pay-per-view)**
+
 Sell digital content that is played directly. With the Content Store View module, you can offer videos or audio files to your visitors for a fee and have them played directly on your own website.
 
 **Content Store**
+
 With the Content Store you can sell your digital files and the customer can download this file to his computer.
 
 **Receive tips & donations**
+
 Receive financial support from visitors to your site in the form of a tip payment or a donation to a larger project.
 
 **Advantages for the publisher**
+
 Sell high quality content to readers willing to pay who do not want to subscribe but are willing to pay for a single and high quality article.
 Publishers can become independent from banner ads, Google and clickbait content and focus more on high quality content that readers are willing to pay for.
 *	Generate revenue for your high-quality content and make yourself independent from banner ads.
@@ -28,6 +33,7 @@ Publishers can become independent from banner ads, Google and clickbait content 
 *	Each article has a free part and at a certain point the article becomes paid.
 
 **The advantages of BTCPayWall for the customer**
+
 Customers do not want to sign up for lengthy subscriptions when they really only want to read a single article.
 
 The user wants to buy digital content spontaneously and anonymously and avoid a lengthy sign-up and registration process, with the disclosure of a variety of personal data.
@@ -38,6 +44,7 @@ The user wants to buy digital content spontaneously and anonymously and avoid a 
 *	Fast and easy payment via Bitcoin and Lightning
 
 **Payment processing**
+
 Digital content is paid for via Bitcoin and Lightning payment methods.
 The payment processing is done via BTCPay Server or via opennode.
 You can use your own BTCPay server or share the BTCPay server of BTCPayWall.
