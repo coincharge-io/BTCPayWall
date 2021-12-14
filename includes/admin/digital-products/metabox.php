@@ -21,6 +21,8 @@ function add_btcpw_product_meta_boxes()
     add_meta_box('btcpw_product_stats', __('BTCPayWall Product Sales', 'btcpaywall'), 'render_btcpw_product_stats', 'digital_download', 'side', 'high');
 
     add_meta_box('btcpw_product_limit', __('BTCPayWall Product Download Limit', 'btcpaywall'), 'render_btcpw_product_settings', 'digital_download', 'side');
+
+    add_meta_box('btcpw_product_image', __('BTCPayWall Product Image', 'btcpaywall'), 'render_btcpw_product_image', 'digital_download', 'side');
 }
 
 add_action('add_meta_boxes', 'add_btcpw_product_meta_boxes');
@@ -35,7 +37,8 @@ function btcpw_meta_fields()
             'btcpw_digital_product_file',
             'btcpw_digital_product_filename',
             'btcpw_product_sales',
-            'btcpw_product_limit'
+            'btcpw_product_limit',
+            'btcpw_product_image_id'
         ];
     return $fields;
 }
@@ -53,6 +56,28 @@ function render_btcpw_product_settings($post)
             <input type="number" name="btcpw_product_limit" id="btcpw_product_download_limit" min="0" value="<?php echo $limit; ?>" />
         </div>
 
+    </div>
+<?php
+}
+function render_btcpw_product_image($post)
+{
+    $btcpw_stored_meta = get_post_meta($post->ID);
+    $logo_id = $btcpw_stored_meta['btcpw_product_image_id'][0] ?? '';
+    $logo = wp_get_attachment_image_src($logo_id);
+?>
+    <div class="row">
+
+        <div class="col-50">
+            <?php if ($logo_id) : ?>
+                <button id="btcpw_product_image_button"><img width="100" height="100" alt="Product image" src="<?php echo $logo[0]; ?>" /></button>
+                <button class="btcpw_remove_product_image"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
+                <input type="hidden" id="btcpw_product_image_id" name="btcpw_product_image_id" type="text" value="<?php echo esc_attr($logo_id); ?>" />
+            <?php else : ?>
+                <button id="btcpw_product_image_button"><?php echo esc_html__('Upload', 'btcpaywall'); ?></button>
+                <button class="btcpw_remove_product_image" style="display:none"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
+                <input type="hidden" id="btcpw_product_image_id" name="btcpw_product_image_id" type="text" value="<?php echo esc_attr($logo_id); ?>" />
+            <?php endif; ?>
+        </div>
     </div>
 <?php
 }
@@ -137,28 +162,8 @@ function btcpw_meta_save($post_id)
 
     $fields = btcpw_meta_fields();
 
-    $booleans = [
-        'btcpw_collect_customer_name',
-        'btcpw_mandatory_customer_name',
-        'btcpw_collect_customer_email',
-        'btcpw_mandatory_customer_email',
-        'btcpw_collect_customer_address',
-        'btcpw_mandatory_customer_address',
-        'btcpw_collect_customer_phone',
-        'btcpw_mandatory_customer_phone',
-        'btcpw_collect_customer_message',
-        'btcpw_mandatory_customer_message'
-    ];
-
     foreach ($fields as $field) {
-        if (in_array($field, $booleans)) {
-            $bool = filter_var($_POST[$field], FILTER_VALIDATE_BOOLEAN);
-            if (!empty($_POST[$field])) {
-                update_post_meta($post_id, $field, $bool);
-            } else {
-                delete_post_meta($post_id, $field);
-            }
-        } elseif (('btcpw_product_limit' === $field) || ('btcpw_price' === $field)  || ('btcpw_product_sales' === $field)) {
+        if (('btcpw_product_limit' === $field) || ('btcpw_price' === $field)  || ('btcpw_product_sales' === $field)) {
             if (!empty($_POST[$field])) {
                 update_post_meta($post_id, $field, intval($_POST[$field]));
             } else {

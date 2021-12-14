@@ -328,6 +328,9 @@
       $('#btcpw_tipping_page_image_background')
     )
     imageRemove($('.btcpw_tipping_page_button_remove_background'))
+
+    imagePreview($('#btcpw_product_image_button'), $('#btcpw_product_image_id'))
+    imageRemove($('.btcpw_remove_product_image'))
   })
   $(document).ready(function () {
     showMore(
@@ -503,40 +506,7 @@
       return false
     })
   })
-  /* $(document).ready(function () {
-    var custom_uploader, click_elem, target
 
-    $('#btcpw_tipping_button_image_background_box').click(function (e) {
-      e.preventDefault()
-      if (custom_uploader) {
-        custom_uploader.open()
-        return
-      }
-
-      custom_uploader = wp.media.frames.file_frame = wp.media({
-        title: 'Choose Image',
-        button: {
-          text: 'Choose Image'
-        },
-        multiple: false
-      })
-
-      custom_uploader.on('select', function () {
-        var attachment = custom_uploader
-          .state()
-          .get('selection')
-          .first()
-          .toJSON()
-        target.val(attachment.id)
-        click_elem
-          .html('<img width=100px height=100px src="' + attachment.url + '">')
-          .next()
-          .show()
-      })
-
-      custom_uploader.open()
-    })
-  }) */
   $(document).ready(function () {
     $('#btcpw_previous_page').click(function () {
       window.location.reload(false)

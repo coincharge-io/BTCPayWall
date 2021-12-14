@@ -12,18 +12,18 @@ if (!defined('ABSPATH')) exit;
 function ajax_get_invoice_id()
 {
 
-    if (empty($_GET['post_id'])) {
+    if (empty($_POST['post_id'])) {
         wp_send_json_error(['message' => 'post_id required']);
     }
 
     $customer_data = array(
-        'full_name' => sanitize_text_field($_GET['full_name']),
-        'email' => sanitize_email($_GET['email']),
-        'address' => sanitize_text_field($_GET['address']),
-        'phone' => sanitize_text_field($_GET['phone']),
-        'message' => sanitize_text_field($_GET['message']),
+        'full_name' => sanitize_text_field($_POST['full_name']),
+        'email' => sanitize_email($_POST['email']),
+        'address' => sanitize_text_field($_POST['address']),
+        'phone' => sanitize_text_field($_POST['phone']),
+        'message' => sanitize_text_field($_POST['message']),
     );
-    $post_id = sanitize_text_field($_GET['post_id']);
+    $post_id = sanitize_text_field($_POST['post_id']);
     $order_id = generate_order_id($post_id);
     $gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer');
 
@@ -864,13 +864,13 @@ function ajax_generate_invoice_id_content_file()
     $customer = new BTCPayWall_Customer();
 
     $customer->create([
-        'full_name' => sanitize_text_field($_POST['full_name']),
-        'email' => sanitize_email($_POST['email']),
-        'address' => sanitize_text_field($_POST['address']),
-        'phone' => (int)$_POST['phone'],
-        'message' => sanitize_text_field($_POST['message']),
+        'full_name' => $_POST['full_name'],
+        'email' => $_POST['email'],
+        'address' => $_POST['address'],
+        'phone' => $_POST['phone'],
+        'message' => $_POST['message'],
     ]);
-    var_dump($_POST);
+
 
     $payment = new BTCPayWall_Payment();
 

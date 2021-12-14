@@ -66,7 +66,7 @@
 
       $.ajax({
         url: '/wp-admin/admin-ajax.php',
-        method: 'GET',
+        method: 'POST',
         data: {
           action: 'btcpw_get_invoice_id',
           post_id: post_id,
