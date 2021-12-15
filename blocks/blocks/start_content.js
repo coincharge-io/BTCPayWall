@@ -183,7 +183,7 @@ c655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0
     },
     display_name: {
       type: 'boolean',
-      default: true
+      default: false
     },
     mandatory_name: {
       type: 'boolean',
@@ -191,7 +191,7 @@ c655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0
     },
     display_email: {
       type: 'boolean',
-      default: true
+      default: false
     },
     mandatory_email: {
       type: 'boolean',
@@ -199,7 +199,7 @@ c655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0
     },
     display_address: {
       type: 'boolean',
-      default: true
+      default: false
     },
     mandatory_address: {
       type: 'boolean',
@@ -207,7 +207,7 @@ c655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0
     },
     display_phone: {
       type: 'boolean',
-      default: true
+      default: false
     },
     mandatory_phone: {
       type: 'boolean',
@@ -215,7 +215,7 @@ c655 -2 659 -2 685 19 l27 20 0 271 0 271 -215 -6 -215 -5 6 49 7 49 -472 0
     },
     display_message: {
       type: 'boolean',
-      default: true
+      default: false
     },
     mandatory_message: {
       type: 'boolean',

@@ -66,7 +66,7 @@ function register_settings()
     register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_info', array('type' => 'string', 'default' => 'For [price] [currency] you will have access to the post for [duration] [dtype]', 'sanitize_callback' => 'sanitize_text'));
     register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_button', array('type' => 'string', 'default' => 'Pay', 'sanitize_callback' => 'sanitize_text'));
     register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_width', array('type' => 'string', 'default' => '400', 'sanitize_callback' => 'sanitize_text'));
-    register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_height', array('type' => 'string', 'default' => '400', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_pay_per_post_paywall_options', 'btcpw_pay_per_post_height', array('type' => 'string', 'default' => '600', 'sanitize_callback' => 'sanitize_text'));
 
 
 
@@ -87,7 +87,7 @@ function register_settings()
     register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_additional_help_link', array('type' => 'string', 'default' => '', 'sanitize_callback' => 'sanitize_text'));
     register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_additional_help_link_text', array('type' => 'string', 'default' => '', 'sanitize_callback' => 'sanitize_text'));
     register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_width', array('type' => 'string', 'default' => '450', 'sanitize_callback' => 'sanitize_text'));
-    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_height', array('type' => 'string', 'default' => '550', 'sanitize_callback' => 'sanitize_text'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_height', array('type' => 'string', 'default' => '750', 'sanitize_callback' => 'sanitize_text'));
 
 
 
