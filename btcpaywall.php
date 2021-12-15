@@ -191,7 +191,7 @@ if (!class_exists('BTCPayWall')) :
         /**
          * Loads the plugin language files.
          *
-         * @since 1.4
+         * @since 1.0.0
          * @return void
          */
         public function load_textdomain()
