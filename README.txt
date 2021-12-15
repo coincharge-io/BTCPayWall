@@ -1,13 +1,13 @@
 === BTCPayWall ===
-2	Contributors: coincharge
-3	Donate link: https://btcpaywall.com/support/
-4	Tags: btcpaywall, Bitcoin, Lightning, paywall, BTCPay, pay-per-post, pay-per-view, pay-per-content,content-store, tipping, coincharge, publisher, payment
-5	Requires at least: 5.6
-6	Requires PHP: 7.4
-7	Tested up to: 5.7
-8	Stable tag: 1.2.0
-9	License: GPLv2
-10	License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Contributors: coincharge
+Donate link: https://btcpaywall.com/support/
+Tags: btcpaywall, Bitcoin, Lightning, paywall, BTCPay, pay-per-post, pay-per-view, pay-per-content,content-store, tipping, coincharge, publisher, payment
+Requires at least: 5.6
+Requires PHP: 7.4
+Tested up to: 5.8
+Stable tag: 1.0.0
+License: GPLv2
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
