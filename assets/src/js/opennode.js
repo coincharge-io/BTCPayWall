@@ -516,4 +516,14 @@
       }
     })
   }
+  function notifyAdmin (donor_info) {
+    $.ajax({
+      url: '/wp-admin/admin-ajax.php',
+      method: 'POST',
+      data: {
+        action: 'btcpw_notify_admin',
+        donor_info: donor_info
+      }
+    })
+  }
 })(jQuery)

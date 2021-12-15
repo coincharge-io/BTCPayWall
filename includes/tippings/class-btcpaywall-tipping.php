@@ -27,12 +27,11 @@ class BTCPayWall_Tipping
 
         $this->db = new BTCPayWall_DB_Tippings;
 
-        if ((is_numeric($invoice_id) && (int) $invoice_id !== absint($invoice_id))) {
+        if ((is_numeric($invoice_id) && (int) $invoice_id !== absint($invoice_id))||$invoice_id===false) {
             return false;
         }
 
         $tipping = $this->db->get_tipping_by('invoice_id', $invoice_id);
-
         if (empty($tipping) || !is_object($tipping)) {
             return false;
         }
@@ -69,13 +68,12 @@ class BTCPayWall_Tipping
         if ($this->id != 0 || empty($data)) {
             return false;
         }
-        $data = $this->sanitize_columns($data);
 
+        $data = $this->sanitize_columns($data);
 
         $created = false;
 
         $create_or_update = $this->db->add($data);
-
 
         if ($create_or_update) {
 

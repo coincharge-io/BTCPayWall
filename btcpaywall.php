@@ -3,14 +3,17 @@
 /**
  * Plugin Name: BTCPayWall
  * Plugin URI:
- * Description: With help of WordPress BTCPayWall powered by Coincharge plugin you can offer blog posts (pay-per-post), videos (pay-per-view) and download file (pay-per-file), accepting bitcoin payment via Lightning Network.
+ * Description: BTCPayWall - The Bitcoin Paywall to sell content and  digital products on WordPress
+ * Sell individual blog articles, digital content and products like  videos, eBooks or PDF files and receive tips and donations through  your website.
  * Version: 1.0.0
  * Author: BTCPayWall by Coincharge https://btcpaywall.com
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain: btc-paywall
- * Domain Path: /languages
+ * Text Domain: btcpaywall
+ * Domain Path: languages
  */
+
+
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 

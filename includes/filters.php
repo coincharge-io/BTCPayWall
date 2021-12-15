@@ -64,8 +64,8 @@ function btcpw_digital_download_template($single_template)
     global $post;
 
     if ($post->post_type == 'digital_download') {
-        $single_template = BTCPAYWALL_PLUGIN_DIR . 'templates/btcpw-digital-download-template.php';
+        $single_template = BTCPAYWALL_PLUGIN_DIR . 'templates/single-digital_download.php';
     }
     return $single_template;
 }
-add_filter('single_template', 'btcpw_digital_download_template');
+add_filter('single_template', 'btcpw_digital_download_template', 99, 1);

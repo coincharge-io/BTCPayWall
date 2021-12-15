@@ -402,6 +402,7 @@ div.btcpw_help_link a:hover {
   flex-direction: column;
   justify-content: space-between;
   align-self: flex-start;
+  align-items: center;
 }
 
 .btcpw_pay_preview h2 {

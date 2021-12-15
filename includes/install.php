@@ -39,6 +39,7 @@ function create_pages()
 }
 function btcpaywall_run_install()
 {
+
     create_pages();
 
     register_tables();

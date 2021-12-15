@@ -14,9 +14,7 @@ $subsection = isset($_GET['subsection']) ? $_GET['subsection'] : $default_subsec
             <li>
                 <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-file&subsection=general" class="btcpw-nav-tab nav-tab <?php if ($subsection === null || $subsection === 'general') : ?>nav-tab-active<?php endif; ?>">General</a>
             </li>
-            <li>
-                <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-file&subsection=design" class="btcpw-nav-tab nav-tab <?php if ($subsection === 'design') : ?>nav-tab-active<?php endif; ?>">Design</a>
-            </li>
+
             <li>
                 <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-file&subsection=products" class="btcpw-nav-tab nav-tab <?php if ($subsection === 'products') : ?>nav-tab-active<?php endif; ?>">Products</a>
             </li>
@@ -32,9 +30,7 @@ $subsection = isset($_GET['subsection']) ? $_GET['subsection'] : $default_subsec
             case 'products':
                 require('page-download-products.php');
                 break;
-            case 'design':
-                require('page-pay-per-file-paywall-design.php');
-                break;
+
             default:
                 require('page-content-store-file-general-settings.php');
                 break;

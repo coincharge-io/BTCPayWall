@@ -23,7 +23,7 @@ function get_post_info_string($post_id = null)
     if (get_post_meta($post_id, 'btcpw_price', true)) {
         $price = get_post_meta($post_id, 'btcpw_price', true);
     } else {
-        $price = get_option('btcpw_default_pay_per_' . $project . '_price');
+        $price = get_option('btcpw_default_pay_per_' . $project . '_price', 1000);
         //$price = getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['price'];
     }
 
@@ -193,8 +193,7 @@ function calculate_price_for_invoice($post_id)
 
         return $value;
     }*/
-
-    return get_post_meta($post_id, 'btcpw_price', true) ? get_post_meta($post_id, 'btcpw_price', true) : get_option('btcpw_default_pay_per' . $project . '_price');
+    return get_post_meta($post_id, 'btcpw_price', true) ? get_post_meta($post_id, 'btcpw_price', true) : get_option('btcpw_default_pay_per_' . $project . '_price', 1000);
 
     //getDefaultValues(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['price'];
     //get_option('btcpw_default_price');

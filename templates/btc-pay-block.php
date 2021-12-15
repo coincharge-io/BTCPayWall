@@ -3,7 +3,7 @@
 if (!defined('ABSPATH')) exit;
 
 $help = filter_var(get_option('btcpw_pay_per_post_show_help_link', true), FILTER_VALIDATE_BOOLEAN);
-$help_link = get_option('btcpw_pay_per_post_help_link', 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/');
+$help_link = get_option('btcpw_pay_per_post_help_link', 'https://btcpaywall.com/how-to-pay-at-the-bitcoin-paywall/');
 $help_text = get_option('btcpw_pay_per_post_help_link_text', 'Help');
 $additional_help = filter_var(get_option('btcpw_pay_per_post_show_additional_help_link', false), FILTER_VALIDATE_BOOLEAN);
 $additional_help_link = get_option('btcpw_pay_per_post_additional_help_link');
@@ -14,7 +14,7 @@ $height = get_option('btcpw_pay_per_post_height', 300);
 
 $header_color = get_option('btcpw_pay_per_post_header_color', '#000000');
 $info_color = get_option('btcpw_pay_per_post_info_color', '#000000');
-$button_color = get_option('btcpw_pay_per_post_button_color', '#000000');
+$button_color = get_option('btcpw_pay_per_post_button_color', '#f6b330');
 $button_text_color = get_option('btcpw_pay_per_post_button_text_color', '#FFFFFF');
 $default_text = get_option('btcpw_pay_per_post_title', 'Pay now to unlock blogpost');
 $default_button = get_option('btcpw_pay_per_post_button', 'Pay');
@@ -70,6 +70,12 @@ $collect_data = display_is_enabled($collect);
                     <?php echo get_post_info_string(); ?>
                 </p>
             </div>
+            <div class="btcpw_revenue_post_button" id="btcpw_revenue_post_button">
+
+                <div>
+                    <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo get_payblock_button_string() ?></button>
+                </div>
+            </div>
             <?php if ($help === true) : ?>
                 <div class="btcpw_help">
                     <a class="btcpw_help__link" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
@@ -80,21 +86,24 @@ $collect_data = display_is_enabled($collect);
                     <a class="btcpw_additional_help__link" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
                 </div>
             <?php endif; ?>
-            <div class="btcpw_revenue_post_button" id="btcpw_revenue_post_button">
-                <?php if (true === $collect_data) : ?>
 
-                    <div>
-                        <input type="button" name="next" class="revenue-post-next-form" value="Continue">
-                    </div>
-
-                <?php else : ?>
-                    <div>
-                        <button type="button" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo get_payblock_button_string() ?></button>
-                    </div>
-                <?php endif; ?>
-            </div>
         </fieldset>
-        <?php if ($collect_data === true) : ?>
+
+    </form>
+</div>
+<?php
+/*<?php if (true === $collect_data) : ?>
+
+    <div>
+        <input type="button" name="next" class="revenue-post-next-form" value="Continue">
+    </div>
+
+<?php else : ?>
+    <?php endif; ?>
+
+
+
+<?php if ($collect_data === true) : ?>
             <fieldset>
                 <h2>Personal Info</h2>
                 <div class="btcpw_revenue_post_customer_information">
@@ -118,6 +127,4 @@ $collect_data = display_is_enabled($collect);
                     </div>
                 </div>
             </fieldset>
-        <?php endif; ?>
-    </form>
-</div>
+        <?php endif; ?>*/

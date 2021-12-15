@@ -72,7 +72,7 @@ $store_id = get_option('btcpw_btcpay_store_id');
             </div>
 
             <div class="btcpw_help_link" style="margin-top: 20px;">
-                <a href="https://btcpaywall.com/setup-btcpaywall/" target="_blank">Help</a>
+                <a href="<?php echo esc_attr("https://btcpaywall.com/"); ?>" target="_blank">Help</a>
             </div>
             <p id="btcpw_btcpay_status_success" class="btcpw_btcpay_status" style="color: green;">
                 BTCPAY SERVER CONNECTED

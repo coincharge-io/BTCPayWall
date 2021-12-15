@@ -1,36 +1,7 @@
 <?php
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
-/* $default_subsection = null;
-$subsection = isset($_GET['subsubsection']) ? $_GET['subsubsection'] : $default_subsection;
 
-
-
-?>
-
-<div class="wrap">
-
-    <nav class="nav-tab-wrapper">
-        <a href="?page=btcpw_general_settings&tab=modules&section=content-store&subsection=pay-per-view&subsubsection=general" class="nav-tab <?php if ($subsection === 'general') : ?>nav-tab-active<?php endif; ?>">General Settings</a>
-        <a href="?page=btcpw_general_settings&tab=modules&section=content-store&subsection=pay-per-view&subsubsection=design" class="nav-tab <?php if ($subsection === 'design') : ?>nav-tab-active<?php endif; ?>">Paywall Design</a>
-    </nav>
-
-    <div class="tab-content">
-        <?php switch ($subsection):
-            case 'general':
-                require('page-pay-per-view-settings.php');
-                break;
-            case 'design':
-                require('page-pay-per-view-paywall-design.php');
-                break;
-            default:
-                require('page-pay-per-view-settings.php');
-                break;
-        endswitch; ?>
-    </div>
-</div>
-<?php
- */
 $used_currency = get_option('btcpw_default_pay_per_view_currency');
 $supported_currencies = BTCPayWall::CURRENCIES;
 $default_price = get_option('btcpw_default_pay_per_view_price');
@@ -71,7 +42,6 @@ $preview_description_color = get_option('btcpw_pay_per_view_preview_description_
 $default_text = get_option('btcpw_pay_per_view_title');
 $default_button = get_option('btcpw_pay_per_view_button');
 $default_info = get_option('btcpw_pay_per_view_info');
-
 
 ?>
 <style>

@@ -13,6 +13,7 @@ $background = get_option('btcpw_pay_per_view_background');
 $header_color = get_option('btcpw_pay_per_view_header_color');
 $info_color = get_option('btcpw_pay_per_view_info_color');
 $button_color = get_option('btcpw_pay_per_view_button_color');
+
 $button_text_color = get_option('btcpw_pay_per_view_button_text_color');
 $preview_title_color = get_option('btcpw_pay_per_view_preview_title_color');
 $preview_description_color = get_option('btcpw_pay_per_view_preview_description_color');

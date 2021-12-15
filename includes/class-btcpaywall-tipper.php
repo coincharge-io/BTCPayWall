@@ -23,7 +23,7 @@ class BTCPayWall_Tipper
 
         $this->db = new BTCPayWall_DB_Tippers;
 
-        if ((is_numeric($tipper_id) && (int) $tipper_id !== absint($tipper_id))) {
+        if ((is_numeric($tipper_id) && (int) $tipper_id !== absint($tipper_id)) || $tipper_id === false) {
             return false;
         }
 

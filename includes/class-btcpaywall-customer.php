@@ -24,7 +24,7 @@ class BTCPayWall_Customer
         $this->db = new BTCPayWall_DB_Customers;
 
 
-        if ((is_numeric($customer_id) && (int) $customer_id !== absint($customer_id))) {
+        if ((is_numeric($customer_id) && (int) $customer_id !== absint($customer_id)) || $customer_id === false) {
             return false;
         }
 

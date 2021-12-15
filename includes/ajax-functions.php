@@ -255,7 +255,7 @@ function ajax_tipping()
 
     $currency = sanitize_text_field($_POST['currency']);
     $amount = sanitize_text_field($_POST['amount']);
-
+    $gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer');
 
     if (!empty($_POST['predefined_amount'])) {
         $extract = explode(' ', sanitize_text_field($_POST['predefined_amount']));
@@ -292,12 +292,11 @@ function ajax_tipping()
         return new WP_Error($response['response']['code'], 'HTTP Error ' . $response['response']['code']);
     }
 
-    $body = json_decode($response['body'], true);
+    $body = $gateway === 'OpenNode' ? json_decode($response['body'], true)['data'] : json_decode($response['body'], true);
 
     if (empty($body) || !empty($body['error'])) {
         return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
     }
-
 
     $tipper = new BTCPayWall_Tipper();
 
@@ -308,26 +307,22 @@ function ajax_tipping()
         'address' => $_POST['address'],
         'message' => $_POST['message'],
     ]);
-    $tipping = new BTCPayWall_Tipping();
 
+    $tipping = new BTCPayWall_Tipping();
     $tipping->create([
         'tipper_id' => $tipper->id,
         'invoice_id' => $body['id'],
-        'amount' => floatval($body['amount']),
+        'amount' => $body['amount'],
         'page_title' => $body['metadata']['blog'],
         'revenue_type' => $body['metadata']['type'],
         'currency' => $body['currency'],
         'status' => $body['status'],
-        'payment_method' => '',
-        'gateway' => get_option('btcpw_selected_payment_gateway', 'BTCPayServer'),
-        'date_created'  => date('Y-m-d H:i:s', $body['createdTime'])
+        'gateway' => get_option('btcpw_selected_payment_gateway', 'BTCPayServer')
     ]);
 
-
-
     wp_send_json_success([
-        'invoice_id' => tipping_invoice_response($body)['invoice_id'],
-        'donor' => tipping_invoice_response($body)['donor'],
+        'invoice_id' => $body['id'],
+        'donor' => $body['metadata']['donor'],
     ]);
 }
 add_action('wp_ajax_btcpw_tipping',  'ajax_tipping');
@@ -741,12 +736,9 @@ function ajax_paid_opennode_invoice()
 
     $payment->update(array('status' => $body['data']['status'], 'payment_method' => 'Lightning-unverified'));
 
-
-    if (substr($payment->revenue_type, 0, 7)  === 'Tipping') {
-        $tipping = new BTCPayWall_Tipping($invoice_id);
-        //$payment_method = get_payment_method($body['id']);
-
-        $tipping->update(array('status' => $body['data']['status'], 'payment_method' => 'Lightning-unverified'));
+    $tipping = new BTCPayWall_Tipping($invoice_id);
+    if ($tipping) {
+        $tipping->update(array('status' => $body['data']['status'], 'payment_method' => 'Lightning'));
     }
     update_post_meta($body['data']['metadata']['orderId'], 'btcpw_payment_id', $payment->invoice_id);
 

@@ -28,7 +28,7 @@ class BTCPayWall_Payment
 
         $this->db = new BTCPayWall_DB_Payments;
 
-        if ((is_numeric($invoice_id) && (int) $invoice_id !== absint($invoice_id))) {
+        if ((is_numeric($invoice_id) && (int) $invoice_id !== absint($invoice_id)) || $invoice_id === false) {
             return false;
         }
 

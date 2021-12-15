@@ -1,7 +1,7 @@
 <?php
 /*
-Template Name: Add to Cart
-Template Post Type: digital_download
+*Template Name: Add to Cart
+*Template Post Type: digital_download
 */
 
 // Exit if accessed directly.
@@ -26,8 +26,8 @@ $description = get_post_meta($post->ID, 'btcpw_product_description', true);
 <style>
     .btcpw_container {
         display: <?php echo isset($logo_id) ? 'flex' : '' ?>;
-        flex-direction: <?php echo isset($logo_id) ? 'row-reverse' : '' ?>;
-        justify-content: space-evenly;
+        flex-direction: <?php echo isset($logo_id) ? 'row-reverse' : 'column' ?>;
+        justify-content: <?php echo isset($logo_id) ? 'space-evenly' : 'center' ?>;
 
 
     }
@@ -98,13 +98,21 @@ $description = get_post_meta($post->ID, 'btcpw_product_description', true);
         padding: 30px 0;
         border-top: 1px solid #ccc;
     }
+
+    .btcpw_product_description {
+        padding: 0 30px;
+    }
+
+    #content {
+        display: block !important;
+    }
 </style>
 <?php get_header(); ?>
 <?php get_the_post_thumbnail(get_the_ID(), 'thumbnail'); ?>
-<div id="primary" class="content-area">
+<div id="content" class="site-content">
     <section id="main">
         <div class="btcpw_container">
-            <div>
+            <div class="btcpw_product_description">
                 <h2><?php the_title(); ?></h2>
                 <p><span class="btcpw_product_price"><em><?php echo $price; ?> incl. VAT</em></span></p>
                 <div class="btcpw_product_description">

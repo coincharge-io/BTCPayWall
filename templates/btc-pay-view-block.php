@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) exit;
 
 
 $help = filter_var(get_option('btcpw_pay_per_view_show_help_link', true), FILTER_VALIDATE_BOOLEAN);
-$help_link = get_option('btcpw_pay_per_view_help_link', 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/');
+$help_link = get_option('btcpw_pay_per_view_help_link', 'https://btcpaywall.com/how-to-pay-at-the-bitcoin-paywall/');
 $help_text = get_option('btcpw_pay_per_view_help_link_text', 'Help');
 $additional_help = filter_var(get_option('btcpw_pay_per_view_show_additional_help_link', false), FILTER_VALIDATE_BOOLEAN);
 $additional_help_link = get_option('btcpw_pay_per_view_additional_help_link');
@@ -16,7 +16,7 @@ $height = get_option('btcpw_pay_per_view_height', 300);
 
 $header_color = get_option('btcpw_pay_per_view_header_color', '#000000');
 $info_color = get_option('btcpw_pay_per_view_info_color', '#000000');
-$button_color = get_option('btcpw_pay_per_view_button_color', '#000000');
+$button_color = get_option('btcpw_pay_per_view_button_color', '#f6b330');
 $button_text_color = get_option('btcpw_pay_per_view_button_text_color', '#FFFFFF');
 $default_text = get_option('btcpw_pay_per_view_title', 'Pay now to unlock blogpost');
 $default_button = get_option('btcpw_pay_per_view_button', 'Pay');
@@ -44,6 +44,7 @@ $help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
 $image = wp_get_attachment_image_src($atts['preview']);
 
 $preview_url = $image ? $image[0] : $atts['preview'];
+
 ?>
 <style>
     .btcpw_revenue_view_container {
@@ -73,77 +74,81 @@ $preview_url = $image ? $image[0] : $atts['preview'];
         color: <?php echo esc_html($button_text_color); ?>;
     }
 </style>
-<div class="btcpw_revenue_view_container">
-    <form method="POST" action="" id="view_revenue_type">
-        <fieldset>
-            <div class="btcpw_pay__content">
-                <h2><?php echo get_payblock_header_string() ?></h2>
-
-            </div>
-            <div class="btcpw_pay__preview">
-                <div class="btcpw_pay__preview preview_img">
-                    <img src=<?php echo esc_url($preview_url); ?> alt="Video preview">
-                </div>
-                <div class="btcpw_pay__preview preview_description">
-                    <h3><?php echo esc_html($atts['title']); ?></h3>
-                    <p><?php echo esc_html($atts['description']); ?></p>
-                </div>
-
-            </div>
-            <div class="btcpw_pay__content">
-                <p>
-                    <?php echo get_post_info_string() ?>
-                </p>
-            </div>
-            <?php if ($help === true) : ?>
-                <div class="btcpw_help">
-                    <a class="btcpw_help__link" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
-                </div>
-            <?php endif; ?>
-            <?php if ($additional_help === true) : ?>
-                <div class="btcpw_help">
-                    <a class="btcpw_help__link" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
-                </div>
-            <?php endif; ?>
-            <div class="btcpw_revenue_view_button" id="btcpw_revenue_view_button">
-                <?php if (true === $collect_data) : ?>
-
-                    <div>
-                        <input type="button" name="next" class="revenue-view-next-form" value="Continue">
-                    </div>
-
-                <?php else : ?>
-                    <div>
-                        <button type="button" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo get_payblock_button_string() ?></button>
-                    </div>
-                <?php endif; ?>
-            </div>
-        </fieldset>
-        <?php if ($collect_data == true) : ?>
+<div id="btcpw_revenue_container">
+    <div class="btcpw_revenue_view_container">
+        <form method="POST" action="" id="view_revenue_type">
             <fieldset>
-                <h2>Personal Info</h2>
-                <div class="btcpw_revenue_view_customer_information">
-                    <?php foreach ($collect as $key => $value) : ?>
-                        <?php if ($collect[$key]['display'] === true) : ?>
-                            <div class="<?php echo "btcpw_revenue_view_customer_{$collect[$key]['id']}_wrap"; ?>">
+                <div class="btcpw_pay__content">
+                    <h2><?php echo get_payblock_header_string() ?></h2>
 
-                                <input type="text" placeholder="<?php echo $collect[$key]['label']; ?>" id="<?php echo "btcpw_revenue_view_customer_{$collect[$key]['id']}"; ?>" name="<?php echo "btcpw_revenue_view_customer_{$collect[$key]['id']}"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                </div>
+                <div class="btcpw_pay__preview">
+                    <div class="btcpw_pay__preview preview_img">
+                        <img src=<?php echo esc_url($preview_url); ?> alt="Video preview">
+                    </div>
+                    <div class="btcpw_pay__preview preview_description">
+                        <h3><?php echo esc_html($atts['title']); ?></h3>
+                        <p><?php echo esc_html($atts['description']); ?></p>
+                    </div>
 
-                            </div>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
+                </div>
+                <div class="btcpw_pay__content">
+                    <p>
+                        <?php echo get_post_info_string() ?>
+                    </p>
                 </div>
                 <div class="btcpw_revenue_view_button" id="btcpw_revenue_view_button">
-                    <div>
-                        <input type="button" name="previous" class="revenue-view-previous-form" value="< Previous" />
-                    </div>
 
                     <div>
                         <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo get_payblock_button_string() ?></button>
                     </div>
                 </div>
+                <?php if ($help === true) : ?>
+                    <div class="btcpw_help">
+                        <a class="btcpw_help__link" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
+                    </div>
+                <?php endif; ?>
+                <?php if ($additional_help === true) : ?>
+                    <div class="btcpw_help">
+                        <a class="btcpw_help__link" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
+                    </div>
+                <?php endif; ?>
+
             </fieldset>
-        <?php endif; ?>
-    </form>
+
+        </form>
+    </div>
 </div>
+
 <?php
+/*
+<?php if (true === $collect_data) : ?>
+
+                        <div>
+                            <input type="button" name="next" class="revenue-view-next-form" value="Continue">
+                        </div>
+                        <?php if ($collect_data == true) : ?>
+                <fieldset>
+                    <h2>Personal Info</h2>
+                    <div class="btcpw_revenue_view_customer_information">
+                        <?php foreach ($collect as $key => $value) : ?>
+                            <?php if ($collect[$key]['display'] === true) : ?>
+                                <div class="<?php echo "btcpw_revenue_view_customer_{$collect[$key]['id']}_wrap"; ?>">
+
+                                    <input type="text" placeholder="<?php echo $collect[$key]['label']; ?>" id="<?php echo "btcpw_revenue_view_customer_{$collect[$key]['id']}"; ?>" name="<?php echo "btcpw_revenue_view_customer_{$collect[$key]['id']}"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="btcpw_revenue_view_button" id="btcpw_revenue_view_button">
+                        <div>
+                            <input type="button" name="previous" class="revenue-view-previous-form" value="< Previous" />
+                        </div>
+
+                        <div>
+                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo get_payblock_button_string() ?></button>
+                        </div>
+                    </div>
+                </fieldset>
+            <?php endif; ?>

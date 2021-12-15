@@ -81,8 +81,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display name',
                 'param_name' => 'display_name',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -97,8 +97,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display email',
                 'param_name' => 'display_email',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -113,8 +113,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display phone',
                 'param_name' => 'display_phone',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -129,8 +129,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display address',
                 'param_name' => 'display_address',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -145,8 +145,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display message',
                 'param_name' => 'display_message',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -275,8 +275,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display name',
                 'param_name' => 'display_name',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -291,8 +291,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display email',
                 'param_name' => 'display_email',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -307,8 +307,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display phone',
                 'param_name' => 'display_phone',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -323,8 +323,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display address',
                 'param_name' => 'display_address',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -339,8 +339,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display message',
                 'param_name' => 'display_message',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -364,7 +364,7 @@ function load_vc_widgets()
     ));
 
 
-    vc_map(array(
+    /* vc_map(array(
         'name' => 'BTCPW Pay-per-File',
         'base' => 'btcpw_file',
         'description' => 'Area of file',
@@ -466,7 +466,7 @@ function load_vc_widgets()
         ),
     ));
 
-
+ */
 
     vc_map(array(
         'name' => 'BTCPW Tipping Banner Wide',
@@ -729,8 +729,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display name',
                 'param_name' => 'display_name',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -745,8 +745,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display email',
                 'param_name' => 'display_email',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -761,8 +761,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display phone',
                 'param_name' => 'display_phone',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -777,8 +777,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display address',
                 'param_name' => 'display_address',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -793,8 +793,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display message',
                 'param_name' => 'display_message',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -1069,8 +1069,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display name',
                 'param_name' => 'display_name',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -1085,8 +1085,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display email',
                 'param_name' => 'display_email',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -1101,8 +1101,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display phone',
                 'param_name' => 'display_phone',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -1117,8 +1117,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display address',
                 'param_name' => 'display_address',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
@@ -1133,8 +1133,8 @@ function load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display message',
                 'param_name' => 'display_message',
-                'value' => true,
-                'std' => true,
+                'value' => false,
+                'std' => false,
                 'description' => 'Collect information',
             ),
             array(
