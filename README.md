@@ -1,11 +1,11 @@
 ![Image of BTCPaywall](https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-Logo-lang.jpg)
 
 
-# BTCPayWall – The Bitcoin Paywall for WordPress!
+# BTCPayWall - The Bitcoin Paywall to sell content and digital products on WordPress
 
-**Sell digital products on WordPress with bitcoin and lightning**
 
-Sell individual blog articles, digital content like videos, eBooks or PDF files and receive tips and donations through your website.
+**Sell individual blog articles, digital content and products like videos, eBooks or PDF files and receive tips and donations through your website.**
+
 
 **Pay for a single blog article (pay-per-post)**
 
