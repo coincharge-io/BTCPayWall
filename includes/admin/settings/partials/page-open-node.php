@@ -15,7 +15,7 @@ $btcpw_opennode_auth_key = get_option('btcpw_opennode_auth_key');
                         <label for="btcpw_btcpay_auth_key_view">OpenNode API Key</label>
                     </div>
                     <div class="col-80">
-                        <input required type="text" placeholder="OpenNode Auth Key" name="btcpw_opennode_auth_key" id="btcpw_opennode_auth_key" value="<?php echo $btcpw_opennode_auth_key ?>" style="min-width: 500px;">
+                        <input required type="text" placeholder="OpenNode Auth Key" name="btcpw_opennode_auth_key" id="btcpw_opennode_auth_key" value="<?php echo esc_attr($btcpw_opennode_auth_key); ?>" style="min-width: 500px;">
                     </div>
                 </div>
                 <div class="btcpw_general_settings_buttons" style="display: inline-block;">

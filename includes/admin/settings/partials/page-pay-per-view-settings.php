@@ -34,13 +34,13 @@ $mandatory_message = get_option('btcpw_default_pay_per_view_mandatory_message', 
                 </div>
                 <div class="col-80">
 
-                    <input required type="number" min=0 placeholder="Default Price" step=1 name="btcpw_default_pay_per_view_price" id="btcpw_general_pay_per_view_settings_price" value="<?php echo $default_price ?>">
+                    <input required type="number" min=0 placeholder="Default Price" step=1 name="btcpw_default_pay_per_view_price" id="btcpw_general_pay_per_view_settings_price" value="<?php echo esc_attr($default_price); ?>">
 
                     <select required name="btcpw_default_pay_per_view_currency" id="btcpw_general_pay_per_view_settings_currency">
                         <option disabled value="">Select currency</option>
                         <?php foreach ($supported_currencies as $currency) : ?>
-                            <option <?php echo $used_currency === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
-                                <?php echo $currency; ?>
+                            <option <?php echo $used_currency === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
+                                <?php echo esc_html($currency); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -48,8 +48,8 @@ $mandatory_message = get_option('btcpw_default_pay_per_view_mandatory_message', 
                         <p>Select Bitcoin price display:</p>
                         <?php foreach ($supported_btc_format as $format) : ?>
                             <div>
-                                <input type="radio" id="btcpw_general_pay_per_view_settings_btc_format" name="btcpw_default_pay_per_view_btc_format" value="<?php echo $format ?>" <?php echo $used_format === $format ? 'checked' : '' ?>>
-                                <label for="btcpw_general_pay_per_view_settings_btc_format"><?php echo $format ?></label>
+                                <input type="radio" id="btcpw_general_pay_per_view_settings_btc_format" name="btcpw_default_pay_per_view_btc_format" value="<?php echo esc_attr($format) ?>" <?php echo $used_format === $format ? 'checked' : '' ?>>
+                                <label for="btcpw_general_pay_per_view_settings_btc_format"><?php echo esc_html($format) ?></label>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -60,12 +60,12 @@ $mandatory_message = get_option('btcpw_default_pay_per_view_mandatory_message', 
                     <label for="btcpw_general_pay_per_view_settings_duration">Default duration</label>
                 </div>
                 <div class="col-80">
-                    <input type="number" min="1" placeholder="Default Access Duration" name="btcpw_default_pay_per_view_duration" id="btcpw_general_pay_per_view_settings_duration" <?php echo $disable; ?> value="<?php echo $default_duration ?>">
+                    <input type="number" min="1" placeholder="Default Access Duration" name="btcpw_default_pay_per_view_duration" id="btcpw_general_pay_per_view_settings_duration" <?php echo $disable; ?> value="<?php echo esc_attr($default_duration); ?>">
                     <select required name="btcpw_default_pay_per_view_duration_type" id="btcpw_general_pay_per_view_settings_duration_type">
                         <option disabled value="">Select duration type</option>
                         <?php foreach ($supported_durations as $duration) : ?>
-                            <option <?php echo $default_duration_type === $duration ? 'selected' : ''; ?> value="<?php echo $duration; ?>">
-                                <?php echo $duration; ?>
+                            <option <?php echo $default_duration_type === $duration ? 'selected' : ''; ?> value="<?php echo esc_attr($duration); ?>">
+                                <?php echo esc_html($duration); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

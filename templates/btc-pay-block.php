@@ -62,19 +62,26 @@ $collect_data = display_is_enabled($collect);
     <form method="POST" action="" id="post_revenue_type">
         <fieldset>
             <div class="btcpw_pay__content paywall_header">
-                <h2><?php echo get_payblock_header_string(); ?></h2>
+                <h2><?php echo esc_html(get_payblock_header_string()); ?></h2>
 
             </div>
             <div class="btcpw_pay__content paywall_info">
                 <p>
-                    <?php echo get_post_info_string(); ?>
+                    <?php echo esc_html(get_post_info_string()); ?>
                 </p>
             </div>
             <div class="btcpw_revenue_post_button" id="btcpw_revenue_post_button">
+                <?php if (true === $collect_data) : ?>
 
-                <div>
-                    <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo get_payblock_button_string() ?></button>
-                </div>
+                    <div>
+                        <input type="button" name="next" class="revenue-post-next-form" value="<?php _e('Continue', 'btcpaywall'); ?>">
+                    </div>
+                <?php else : ?>
+
+                    <div>
+                        <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html(get_payblock_button_string()) ?></button>
+                    </div>
+                <?php endif; ?>
             </div>
             <?php if ($help === true) : ?>
                 <div class="btcpw_help">
@@ -88,22 +95,7 @@ $collect_data = display_is_enabled($collect);
             <?php endif; ?>
 
         </fieldset>
-
-    </form>
-</div>
-<?php
-/*<?php if (true === $collect_data) : ?>
-
-    <div>
-        <input type="button" name="next" class="revenue-post-next-form" value="Continue">
-    </div>
-
-<?php else : ?>
-    <?php endif; ?>
-
-
-
-<?php if ($collect_data === true) : ?>
+        <?php if ($collect_data === true) : ?>
             <fieldset>
                 <h2>Personal Info</h2>
                 <div class="btcpw_revenue_post_customer_information">
@@ -117,9 +109,9 @@ $collect_data = display_is_enabled($collect);
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
-                <div class="btcpw_revenue_post_button" id="btcpw_revenue_post_button">
+                <div class="btcpw_revenue_post_button" id="btcpw_revenue_post_button_second_step">
                     <div>
-                        <input type="button" name="previous" class="revenue-post-previous-form" value="< Previous" />
+                        <input type="button" name="previous" class="revenue-post-previous-form" value="<?php _e('< Previous', 'btcpaywall'); ?>" />
                     </div>
 
                     <div>
@@ -127,4 +119,7 @@ $collect_data = display_is_enabled($collect);
                     </div>
                 </div>
             </fieldset>
-        <?php endif; ?>*/
+        <?php endif; ?>
+    </form>
+</div>
+<?php

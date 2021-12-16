@@ -2,7 +2,7 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 $default_subsection = null;
-$subsection = isset($_GET['subsection']) ? $_GET['subsection'] : $default_subsection;
+$subsection = isset($_GET['subsection']) ? sanitize_text_field($_GET['subsection']) : $default_subsection;
 
 
 ?>

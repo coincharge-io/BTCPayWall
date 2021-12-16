@@ -3,7 +3,7 @@
 if (!defined('ABSPATH')) exit;
 
 $designs = array('Box' => 'Box', 'High Banner' => 'High-Banner', 'Wide Banner' => 'Wide-Banner', 'Page' => 'Page');
-$selected = $_POST['design'] ?? null;
+$selected = sanitize_text_field($_POST['design']) ?? null;
 ?>
 <h1>Add new form</h1>
 <?php if (empty($selected)) : ?>

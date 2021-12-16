@@ -24,7 +24,7 @@ $default_button_text_success = get_option('btcpw_pay_per_file_button_text_succes
                     <label for="btcpw_pay_per_file_button_text">Button text</label>
                 </div>
                 <div class="col-80">
-                    <input id="btcpw_pay_per_file_button_text" name="btcpw_pay_per_file_button_text" value="<?php echo $default_button_text; ?>" />
+                    <input id="btcpw_pay_per_file_button_text" name="btcpw_pay_per_file_button_text" value="<?php echo esc_attr($default_button_text); ?>" />
                 </div>
             </div>
             <div class="row">
@@ -32,7 +32,7 @@ $default_button_text_success = get_option('btcpw_pay_per_file_button_text_succes
                     <label for="btcpw_pay_per_file_button_text_success">Button text for download button</label>
                 </div>
                 <div class="col-80">
-                    <input id="btcpw_pay_per_file_button_success" name="btcpw_pay_per_file_button_text_success" value="<?php echo $default_button_text_success; ?>" />
+                    <input id="btcpw_pay_per_file_button_success" name="btcpw_pay_per_file_button_text_success" value="<?php echo esc_attr($default_button_text_success); ?>" />
                 </div>
             </div>
             <div class="row">
@@ -40,7 +40,7 @@ $default_button_text_success = get_option('btcpw_pay_per_file_button_text_succes
                     <label for="btcpw_pay_per_file_button_color">Button color</label>
                 </div>
                 <div class="col-80">
-                    <input id="btcpw_pay_per_file_button_color" class="btcpw_pay_per_file_button_color" name="btcpw_pay_per_file_button_color" type="text" value="<?php echo $default_button_color; ?>" />
+                    <input id="btcpw_pay_per_file_button_color" class="btcpw_pay_per_file_button_color" name="btcpw_pay_per_file_button_color" type="text" value="<?php echo esc_attr($default_button_color); ?>" />
                 </div>
             </div>
             <div class="row">
@@ -48,7 +48,7 @@ $default_button_text_success = get_option('btcpw_pay_per_file_button_text_succes
                     <label for="btcpw_pay_per_file_button_text_color">Button text color</label>
                 </div>
                 <div class="col-80">
-                    <input id="btcpw_pay_per_file_button_text_color" class="btcpw_pay_per_file_button_text_color" name="btcpw_pay_per_file_button_text_color" type="text" value="<?php echo $default_button_text_color; ?>" />
+                    <input id="btcpw_pay_per_file_button_text_color" class="btcpw_pay_per_file_button_text_color" name="btcpw_pay_per_file_button_text_color" type="text" value="<?php echo esc_attr($default_button_text_color); ?>" />
                 </div>
             </div>
 

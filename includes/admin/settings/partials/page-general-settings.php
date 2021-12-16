@@ -2,7 +2,7 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 $default_tab = null;
-$tab = isset($_GET['tab']) ? $_GET['tab'] : $default_tab;
+$tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : $default_tab;
 ?>
 
 <div class="btcpw_settings_page wrap">

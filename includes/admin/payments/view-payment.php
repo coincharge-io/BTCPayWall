@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) exit;
 if (!isset($_GET['id'])) {
     wp_die(__('Payment ID not supplied. Please try again', 'btcpaywall'), __('Error', 'btcpaywall'));
 }
-$id = $_GET['id'];
+$id = sanitize_text_field($_GET['id']);
 $payment = new BTCPayWall_Payment($id);
 $customer = new BTCPayWall_Customer($payment->customer_id);
 $download_ids = explode(',', $payment->download_ids);
@@ -36,7 +36,7 @@ $download_ids = explode(',', $payment->download_ids);
                                             <?php foreach ($download_ids as $id) : ?>
                                                 <?php $download = new BTCPayWall_Digital_Download($id); ?>
                                                 <div class="btcpaywall_payment_container inside_wrap">
-                                                    <li><span>File name: <?php echo $download->get_name(); ?></span> <span>Price: <?php echo $download->get_price(); ?></span>
+                                                    <li><span>File name: <?php echo esc_html($download->get_name()); ?></span> <span>Price: <?php echo esc_html($download->get_price()); ?></span>
                                                     </li>
                                                 <?php endforeach; ?>
                                         </ul>
@@ -54,8 +54,8 @@ $download_ids = explode(',', $payment->download_ids);
                                 <div class="meta-box-sortables" style="min-height: 0">
                                     <div id="btcpaywall_payment_container_type" class="btcpaywall_payment_container_type ">
                                         <div class="btcpaywall_payment_container inside_wrap">
-                                            <h4>Name: <?php echo $payment->page_title; ?></h4>
-                                            <h4> Revenue type: <?php echo $payment->revenue_type; ?></h4>
+                                            <h4>Name: <?php echo esc_html($payment->page_title); ?></h4>
+                                            <h4> Revenue type: <?php echo esc_html($payment->revenue_type); ?></h4>
                                         </div>
 
                                     </div>
@@ -71,16 +71,16 @@ $download_ids = explode(',', $payment->download_ids);
                             <div class="meta-box-sortables" style="min-height: 0">
                                 <div id="btcpaywall_payment_container_customer_details" class="btcpaywall_payment_container_customer_details">
                                     <div class="btcpaywall_payment_container_customer_name">
-                                        <p>Full name: <?php echo $customer->full_name; ?></p>
+                                        <p>Full name: <?php echo esc_html($customer->full_name); ?></p>
                                     </div>
                                     <div class="btcpaywall_payment_container_customer_email">
-                                        <p>Email: <?php echo $customer->email; ?></p>
+                                        <p>Email: <?php echo esc_html($customer->email); ?></p>
                                     </div>
                                     <div class="btcpaywall_payment_container_customer_address">
-                                        <p>Address: <?php echo $customer->address; ?></p>
+                                        <p>Address: <?php echo esc_html($customer->address); ?></p>
                                     </div>
                                     <div class="btcpaywall_payment_container_customer_phone">
-                                        <p>Phone: <?php echo $customer->phone; ?></p>
+                                        <p>Phone: <?php echo esc_html($customer->phone); ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@ $download_ids = explode(',', $payment->download_ids);
                             <div class="meta-box-sortables" style="min-height: 0">
                                 <div id="btcpaywall_payment_container_customer_message" class="btcpaywall_payment_container_customer_message postbox">
 
-                                    <textarea disabled><?php echo $customer->message; ?></textarea>
+                                    <textarea disabled><?php echo esc_html($customer->message); ?></textarea>
 
 
                                 </div>
@@ -128,15 +128,15 @@ $download_ids = explode(',', $payment->download_ids);
                                 <div id="btcpaywall_payment_container" class="btcpaywall_payment_container ">
                                     <div class="btcpaywall_payment_amount inside_wrap">
                                         <label>Amount:</label>
-                                        <input type="number" value="<?php echo $payment->amount; ?>" />
+                                        <input type="number" value="<?php echo esc_attr($payment->amount); ?>" />
                                     </div>
                                     <div class="btcpaywall_payment_currency inside_wrap">
                                         <label>Currency:</label>
-                                        <input type="text" value="<?php echo $payment->currency; ?>" />
+                                        <input type="text" value="<?php echo esc_attr($payment->currency); ?>" />
                                     </div>
                                     <div class="btcpaywall_payment_status inside_wrap">
                                         <label>Status:</label>
-                                        <input type="text" value="<?php echo $payment->status; ?>" />
+                                        <input type="text" value="<?php echo esc_attr($payment->status); ?>" />
                                     </div>
 
                                 </div>
@@ -153,13 +153,13 @@ $download_ids = explode(',', $payment->download_ids);
                             <div class="meta-box-sortables" style="min-height: 0">
                                 <div id="btcpaywall_payment_container" class="btcpaywall_payment_container ">
                                     <div class="btcpaywall_payment_container inside_wrap">
-                                        <p>Transaction id: <?php echo $payment->id; ?></p>
+                                        <p>Transaction id: <?php echo esc_html($payment->id); ?></p>
                                     </div>
                                     <div class="btcpaywall_payment_container inside_wrap">
-                                        <p>Payment method: <?php echo $payment->payment_method; ?></p>
+                                        <p>Payment method: <?php echo esc_html($payment->payment_method); ?></p>
                                     </div>
                                     <div class="btcpaywall_payment_container inside_wrap">
-                                        <p>Gateway: <?php echo $payment->gateway; ?></p>
+                                        <p>Gateway: <?php echo esc_html($payment->gateway); ?></p>
                                     </div>
                                 </div>
                             </div>

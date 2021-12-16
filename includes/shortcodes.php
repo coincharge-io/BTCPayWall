@@ -152,27 +152,27 @@ function render_shortcode_banner_wide_tipping($atts)
                             <?php foreach ($fixed_amount as $key => $value) : ?>
 
                                 <?php if ($fixed_amount[$key]['enabled'] === true) : ?>
-                                    <div class="<?php echo trim('btcpw_skyscraper_amount_' . $key . ' ' . 'wide'); ?>">
+                                    <div class="<?php echo trim('btcpw_skyscraper_amount_' . esc_attr($key) . ' ' . 'wide'); ?>">
                                         <div>
-                                            <input type="radio" class="btcpw_skyscraper_tipping_default_amount wide" id="<?php echo $key . '_wide'; ?>" name="<?php echo "btcpw_skyscraper_tipping_default_amount_wide"; ?>" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?>">
+                                            <input type="radio" class="btcpw_skyscraper_tipping_default_amount wide" id="<?php echo esc_attr($key) . '_wide'; ?>" name="btcpw_skyscraper_tipping_default_amount_wide" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_attr($fixed_amount[$key]['amount']) . ' ' . esc_attr($fixed_amount[$key]['currency']); ?>">
                                             <?php if (!empty($fixed_amount[$key]['amount'])) : ?>
                                                 <?php if (true == $atts['show_icon']) : ?>
                                                     <i class="<?php echo esc_html($fixed_amount[$key]['icon']); ?>"></i>
                                                 <?php endif; ?>
                                             <?php endif; ?>
                                         </div>
-                                        <label for="<?php echo $key; ?>"><?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?></label>
+                                        <label for="<?php echo esc_attr($key); ?>"><?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . esc_html($fixed_amount[$key]['currency'])); ?></label>
 
                                     </div>
                                 <?php endif; ?>
 
                             <?php endforeach; ?>
                             <?php if (true == $atts['free_input']) : ?>
-                                <div class="<?php echo trim("btcpw_skyscraper_tipping_free_input wide"); ?>">
-                                    <input type="number" id="<?php echo "btcpw_skyscraper_tipping_wide_amount"; ?>" name="<?php echo "btcpw_skyscraper_tipping_amount_wide"; ?>" placeholder="0.00" required />
+                                <div class="btcpw_skyscraper_tipping_free_input wide">
+                                    <input type="number" id="btcpw_skyscraper_tipping_wide_amount" name="btcpw_skyscraper_tipping_amount_wide" placeholder="0.00" required />
 
 
-                                    <select required name="<?php echo "btcpw_skyscraper_tipping_currency_wide"; ?>" id="<?php echo "btcpw_skyscraper_tipping_wide_currency"; ?>">
+                                    <select required name="btcpw_skyscraper_tipping_currency_wide" id="btcpw_skyscraper_tipping_wide_currency">
                                         <option disabled value="">Select currency</option>
                                         <?php foreach ($supported_currencies as $currency) : ?>
                                             <option <?php echo $atts['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
@@ -185,17 +185,17 @@ function render_shortcode_banner_wide_tipping($atts)
                             <?php endif; ?>
                         </div>
                         <div class="btcpw_skyscraper_tipping_converted_values wide">
-                            <input type="text" id="<?php echo "btcpw_skyscraper_wide_converted_amount"; ?>" name="<?php echo "btcpw_skyscraper_converted_amount_wide"; ?>" readonly />
-                            <input type="text" id="<?php echo "btcpw_skyscraper_wide_converted_currency"; ?>" name="<?php echo "btcpw_skyscraper_converted_currency_wide"; ?>" readonly />
+                            <input type="text" id="btcpw_skyscraper_wide_converted_amount" name="btcpw_skyscraper_converted_amount_wide" readonly />
+                            <input type="text" id="btcpw_skyscraper_wide_converted_currency" name="btcpw_skyscraper_converted_currency_wide" readonly />
                         </div>
 
 
-                        <div class="<?php echo "btcpw_skyscraper_button wide"; ?>" id="btcpw_skyscraper_wide_button">
-                            <input type="hidden" id="<?php echo "btcpw_skyscraper_redirect_link_wide"; ?>" name="<?php echo "btcpw_skyscraper_redirect_link_wide"; ?>" value="<?php echo esc_attr($atts['redirect']); ?>" />
+                        <div class="btcpw_skyscraper_button wide" id="btcpw_skyscraper_wide_button">
+                            <input type="hidden" id="btcpw_skyscraper_redirect_link_wide" name="btcpw_skyscraper_redirect_link_wide" value="<?php echo esc_attr($atts['redirect']); ?>" />
                             <?php if (true === $collect_data) : ?>
 
                                 <div>
-                                    <input type="button" name="next" class="<?php echo "skyscraper-next-form wide"; ?>" value="Continue">
+                                    <input type="button" name="next" class="skyscraper-next-form wide" value="Continue">
                                 </div>
 
                             <?php else : ?>
@@ -208,7 +208,7 @@ function render_shortcode_banner_wide_tipping($atts)
                     </fieldset>
                     <?php if ($collect_data === true) : ?>
                         <fieldset>
-                            <div class="<?php echo ltrim("btcpw_skyscraper_donor_information wide"); ?>">
+                            <div class="btcpw_skyscraper_donor_information wide">
                                 <?php foreach ($collect as $key => $value) : ?>
                                     <?php if ($collect[$key]['display'] === true) : ?>
                                         <div class="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_wrap wide"; ?>">
@@ -221,7 +221,7 @@ function render_shortcode_banner_wide_tipping($atts)
                             </div>
                             <div class="<?php echo "btcpw_skyscraper_button wide"; ?>" id="btcpw_skyscraper_wide_button">
                                 <div>
-                                    <input type="button" name="previous" class="<?php echo ("skyscraper-previous-form wide"); ?>" value="< Previous" />
+                                    <input type="button" name="previous" class="skyscraper-previous-form wide" value="<?php _e('< Previous', 'btcpaywall'); ?>" />
                                 </div>
                                 <div>
                                     <button type="submit" id="btcpw_skyscraper_tipping_wide_button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
@@ -384,9 +384,9 @@ function render_shortcode_banner_high_tipping($atts)
                             <?php foreach ($fixed_amount as $key => $value) : ?>
 
                                 <?php if ($fixed_amount[$key]['enabled'] === true) : ?>
-                                    <div class="<?php echo 'btcpw_skyscraper_amount_' . $key . ' ' . 'high'; ?>">
+                                    <div class="<?php echo 'btcpw_skyscraper_amount_' . esc_attr($key) . ' ' . 'high'; ?>">
                                         <div>
-                                            <input type="radio" class="<?php echo trim("btcpw_skyscraper_tipping_default_amount high"); ?>" id="<?php echo $key . '_high'; ?>" name="<?php echo "btcpw_skyscraper_tipping_default_amount_high"; ?>" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?>">
+                                            <input type="radio" class="btcpw_skyscraper_tipping_default_amount high" )" id="<?php echo esc_attr($key) . '_high'; ?>" name="btcpw_skyscraper_tipping_default_amount_high" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_attr($fixed_amount[$key]['amount']) . ' ' . esc_attr($fixed_amount[$key]['currency']); ?>">
                                             <?php if (!empty($fixed_amount[$key]['amount'])) : ?>
                                                 <?php if (true == $atts['show_icon']) : ?>
                                                     <i class="<?php echo esc_html($fixed_amount[$key]['icon']); ?>"></i>
@@ -401,14 +401,14 @@ function render_shortcode_banner_high_tipping($atts)
                             <?php endforeach; ?>
                             <?php if (true == $atts['free_input']) : ?>
                                 <div class="btcpw_skyscraper_tipping_free_input high">
-                                    <input type="number" id="<?php echo "btcpw_skyscraper_tipping_high_amount"; ?>" name="<?php echo "btcpw_skyscraper_tipping_amount_high"; ?>" placeholder="0.00" required />
+                                    <input type="number" id="<?php echo "btcpw_skyscraper_tipping_high_amount"; ?>" name="btcpw_skyscraper_tipping_amount_high" placeholder="0.00" required />
 
 
-                                    <select required name="<?php echo "btcpw_skyscraper_tipping_currency_high"; ?>" id="<?php echo "btcpw_skyscraper_tipping_high_currency"; ?>">
+                                    <select required name="btcpw_skyscraper_tipping_currency_high" id="btcpw_skyscraper_tipping_high_currency">
                                         <option disabled value="">Select currency</option>
                                         <?php foreach ($supported_currencies as $currency) : ?>
-                                            <option <?php echo $atts['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
-                                                <?php echo $currency; ?>
+                                            <option <?php echo $atts['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
+                                                <?php echo esc_html($currency); ?>
                                             <?php endforeach; ?>
                                     </select>
                                     <i class="fas fa-arrows-alt-v"></i>
@@ -417,17 +417,17 @@ function render_shortcode_banner_high_tipping($atts)
                             <?php endif; ?>
                         </div>
                         <div class="btcpw_skyscraper_tipping_converted_values high">
-                            <input type="text" id="btcpw_skyscraper_high_converted_amount" name="<?php echo "btcpw_skyscraper_converted_amount_high"; ?>" readonly />
-                            <input type="text" id="<?php echo "btcpw_skyscraper_high_converted_currency"; ?>" name="<?php echo "btcpw_skyscraper_converted_currency_high"; ?>" readonly />
+                            <input type="text" id="btcpw_skyscraper_high_converted_amount" name="btcpw_skyscraper_converted_amount_high" readonly />
+                            <input type="text" id="btcpw_skyscraper_high_converted_currency" name="btcpw_skyscraper_converted_currency_high" readonly />
                         </div>
 
 
-                        <div class="<?php echo "btcpw_skyscraper_button high"; ?>" id="btcpw_skyscraper_high_button">
-                            <input type="hidden" id="<?php echo "btcpw_skyscraper_redirect_link_high"; ?>" name="<?php echo "btcpw_skyscraper_redirect_link_high"; ?>" value="<?php echo esc_attr($atts['redirect']); ?>" />
+                        <div class="btcpw_skyscraper_button high" id="btcpw_skyscraper_high_button">
+                            <input type="hidden" id="btcpw_skyscraper_redirect_link_high" name="btcpw_skyscraper_redirect_link_high" value="<?php echo esc_attr($atts['redirect']); ?>" />
                             <?php if (true === $collect_data) : ?>
 
                                 <div>
-                                    <input type="button" name="next" class="<?php echo "skyscraper-next-form high"; ?>" value="Continue">
+                                    <input type="button" name="next" class="skyscraper-next-form high" value="<?php _e('Continue', 'btcpaywall'); ?>">
                                 </div>
 
                             <?php else : ?>
@@ -440,7 +440,7 @@ function render_shortcode_banner_high_tipping($atts)
                     </fieldset>
                     <?php if ($collect_data === true) : ?>
                         <fieldset>
-                            <div class="<?php echo ltrim("btcpw_skyscraper_donor_information high"); ?>">
+                            <div class="btcpw_skyscraper_donor_information high">
                                 <?php foreach ($collect as $key => $value) : ?>
                                     <?php if ($collect[$key]['display'] === true) : ?>
                                         <div class="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_wrap high"; ?>">
@@ -453,10 +453,10 @@ function render_shortcode_banner_high_tipping($atts)
                             </div>
                             <div class="<?php echo "btcpw_skyscraper_button high"; ?>" id="btcpw_skyscraper_high_button">
                                 <div>
-                                    <input type="button" name="previous" class="<?php echo ("skyscraper-previous-form high"); ?>" value="< Previous" />
+                                    <input type="button" name="previous" class="skyscraper-previous-form high" value="<?php _e('< Previous', 'btcpaywall'); ?>" />
                                 </div>
                                 <div>
-                                    <button type="submit" id=<?php echo "btcpw_skyscraper_tipping_high_button"; ?>><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
+                                    <button type="submit" id="btcpw_skyscraper_tipping_high_button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
                                 </div>
                             </div>
                         </fieldset>
@@ -643,16 +643,16 @@ function render_shortcode_page_tipping($atts)
                         <?php foreach ($fixed_amount as $key => $value) : ?>
 
                             <?php if ($fixed_amount[$key]['enabled'] === true) : ?>
-                                <div class="<?php echo 'btcpw_page_amount_' . $key; ?>">
+                                <div class="<?php echo 'btcpw_page_amount_' . esc_attr($key); ?>">
                                     <div>
-                                        <input type="radio" class="btcpw_page_tipping_default_amount" id="<?php echo "{$key}_page"; ?>" name="btcpw_page_tipping_default_amount" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . (!empty($fixed_amount[$key]['currency']) ? $fixed_amount[$key]['currency'] : 'SATS')); ?>">
+                                        <input type="radio" class="btcpw_page_tipping_default_amount" id="<?php echo esc_attr($key) . '_page'; ?>" name="btcpw_page_tipping_default_amount" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_attr($fixed_amount[$key]['amount']) . ' ' . (!empty($fixed_amount[$key]['currency']) ? esc_attr($fixed_amount[$key]['currency']) : 'SATS'); ?>">
                                         <?php if (!empty($fixed_amount[$key]['amount'])) : ?>
                                             <?php if (true == $atts['show_icon']) : ?>
                                                 <i class="<?php echo esc_html($fixed_amount[$key]['icon']); ?>"></i>
                                             <?php endif; ?>
                                         <?php endif; ?>
                                     </div>
-                                    <label for="<?php echo "{$key}_page" ?>"><?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . (!empty($fixed_amount[$key]['currency']) ? $fixed_amount[$key]['currency'] : 'SATS')); ?></label>
+                                    <label for="<?php echo esc_attr($key) . '_page' ?>"><?php echo esc_attr($fixed_amount[$key]['amount']) . ' ' . (!empty($fixed_amount[$key]['currency']) ? esc_attr($fixed_amount[$key]['currency']) : 'SATS'); ?></label>
 
                                 </div>
                             <?php endif; ?>
@@ -666,8 +666,8 @@ function render_shortcode_page_tipping($atts)
                                 <select required name="btcpw_page_tipping_currency" id="btcpw_page_tipping_currency">
                                     <option disabled value="">Select currency</option>
                                     <?php foreach ($supported_currencies as $currency) : ?>
-                                        <option <?php echo $atts['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
-                                            <?php echo $currency; ?>
+                                        <option <?php echo $atts['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
+                                            <?php echo esc_html($currency); ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
@@ -684,8 +684,8 @@ function render_shortcode_page_tipping($atts)
                             <select required name="btcpw_page_tipping_currency" id="btcpw_page_tipping_currency">
                                 <option disabled value="">Select currency</option>
                                 <?php foreach ($supported_currencies as $currency) : ?>
-                                    <option <?php echo $atts['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
-                                        <?php echo $currency; ?>
+                                    <option <?php echo $atts['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
+                                        <?php echo esc_html($currency); ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
@@ -700,9 +700,9 @@ function render_shortcode_page_tipping($atts)
 
 
                     <div id="btcpw_page_button">
-                        <input type="hidden" id="btcpw_page_redirect_link" name="btcpw_page_redirect_link" value=<?php echo $atts['redirect']; ?> />
+                        <input type="hidden" id="btcpw_page_redirect_link" name="btcpw_page_redirect_link" value=<?php echo esc_attr($atts['redirect']); ?> />
                         <?php if ($collect_data === true) : ?>
-                            <input type="button" name="next" class="page-next-form" value="continue" />
+                            <input type="button" name="next" class="page-next-form" value="<?php _e('continue', 'btcpaywall'); ?>" />
                         <?php else : ?>
                             <button type="submit" id="btcpw_page_tipping__button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
                         <?php endif; ?>
@@ -716,14 +716,14 @@ function render_shortcode_page_tipping($atts)
                                 <?php if ($collect[$key]['display'] === true) : ?>
                                     <div class="<?php echo "btcpw_page_tipping_donor_{$collect[$key]['id']}_wrap"; ?>">
 
-                                        <input type="text" placeholder="<?php echo esc_html($collect[$key]['label']); ?>" id="<?php echo "btcpw_page_tipping_donor_{$collect[$key]['id']}"; ?>" name="<?php echo "btcpw_page_tipping_donor_{$collect[$key]['id']}"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                        <input type="text" placeholder="<?php echo esc_attr($collect[$key]['label']); ?>" id="<?php echo "btcpw_page_tipping_donor_{$collect[$key]['id']}"; ?>" name="<?php echo "btcpw_page_tipping_donor_{$collect[$key]['id']}"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
                                     </div>
                                 <?php endif; ?>
                             <?php endforeach; ?>
                         </div>
                         <div id="btcpw_page_button">
                             <div>
-                                <input type="button" name="previous" class="page-previous-form" value="< previous" />
+                                <input type="button" name="previous" class="page-previous-form" value="<?php _e('< previous', 'btcpaywall'); ?>" />
                             </div>
                             <div>
                                 <button type="submit" id="btcpw_page_tipping__button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
@@ -867,18 +867,18 @@ function render_shortcode_box_tipping($atts)
                         </div>
 
                     </div>
-                    <h6><?php echo (!empty($atts['tipping_text']) ? $atts['tipping_text'] : ''); ?></h6>
+                    <h6><?php echo (!empty($atts['tipping_text']) ? esc_html($atts['tipping_text']) : ''); ?></h6>
                     <div class="btcpw_tipping_box_amount">
 
-                        <div class="<?php echo "btcpw_tipping_free_input {$is_widget}"; ?>">
+                        <div class=<?php echo 'btcpw_tipping_free_input' . ' ' . esc_attr($is_widget); ?>">
                             <input type="number" id="btcpw_tipping_amount" name="btcpw_tipping_amount" placeholder="0.00" required />
 
 
                             <select required name="btcpw_tipping_currency" id="btcpw_tipping_currency">
                                 <option disabled value="">Select currency</option>
                                 <?php foreach ($supported_currencies as $currency) : ?>
-                                    <option <?php echo $atts['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
-                                        <?php echo $currency; ?>
+                                    <option <?php echo $atts['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
+                                        <?php echo esc_html($currency); ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
@@ -890,7 +890,7 @@ function render_shortcode_box_tipping($atts)
                             <input type="text" id="btcpw_converted_currency" name="btcpw_converted_currency" readonly />
                         </div>
                     </div>
-                    <input type="hidden" id="btcpw_redirect_link" name="btcpw_redirect_link" value=<?php echo $atts['redirect']; ?> />
+                    <input type="hidden" id="btcpw_redirect_link" name="btcpw_redirect_link" value=<?php echo esc_attr($atts['redirect']); ?> />
                     <div id="button">
 
                         <button type="submit" id="btcpw_tipping__button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
@@ -903,7 +903,7 @@ function render_shortcode_box_tipping($atts)
             <p>Powered by <a href='https://btcpaywall.com/' target='_blank'>BTCPayWall</a></p>
         </div>
     </div>
-<?php
+    <?php
 
     return ob_get_clean();
 }
@@ -1023,7 +1023,6 @@ function render_shortcode_btcpw_start_content($atts)
 
     if ($payblock) {
         ob_start();
-        /*return do_shortcode("[btcpw_pay_block background_color='{$atts['background_color']}' header_color='{$atts['header_color']}' info_color='{$atts['info_color']}' button_color='{$atts['button_color']}' button_txt='{$atts['button_txt']}' link='{$atts['link']}' help_link='{$atts['help_link']}' help_text='{$atts['help_text']}']")*/
         include(BTCPAYWALL_PLUGIN_DIR . 'templates/btc-pay-block.php');
         echo "{$s_data}";
         return ob_get_clean();
@@ -1086,7 +1085,6 @@ function render_shortcode_btcpw_start_video($atts)
     $s_data = '<!-- btcpw:start_content -->';
 
     if ($payblock) {
-        /* return do_shortcode("[btcpw_pay_video_block title='{$atts['title']}' description='{$atts['description']}' preview='{$atts['preview']}' background_color='{$atts['background_color']}' header_color='{$atts['header_color']}' info_color='{$atts['info_color']}' button_color='{$atts['button_color']}' button_txt='{$atts['button_txt']}' link='{$atts['link']}' help_link='{$atts['help_link']}' help_text='{$atts['help_text']}']") . $s_data; */
         ob_start();
         include(BTCPAYWALL_PLUGIN_DIR . 'templates/btc-pay-view-block.php');
         echo "{$s_data}";
@@ -1094,83 +1092,7 @@ function render_shortcode_btcpw_start_video($atts)
     }
 }
 add_shortcode('btcpw_start_video', 'render_shortcode_btcpw_start_video');
-/**
- * @param $atts
- *
- * @return false|string
- */
-function render_shortcode_btcpw_file($atts)
-{
-    if (is_paid_content()) {
-        return '';
-    }
-    $img_preview = plugin_dir_url(__FILE__) . 'img/file_preview.png';
 
-    $atts = shortcode_atts(array(
-        'pay_file_block' => 'false',
-        'btc_format' => '',
-        'file' => '',
-        'title' => 'Untitled',
-        'description' => 'No description',
-        'preview' => $img_preview,
-        'currency' => '',
-        'price' => '',
-        'duration' => '',
-        'duration_type' => '',
-        'link'    => 'true',
-        'help_link' => '',
-        'help_text'    => 'Help',
-        'display_name' => false,
-        'mandatory_name' =>  false,
-        'display_email' => false,
-        'mandatory_email' => false,
-        'display_phone' => false,
-        'mandatory_phone' => false,
-        'display_address' =>  false,
-        'mandatory_address' =>  false,
-        'display_message' =>  false,
-        'mandatory_message' =>  false,
-    ), $atts);
-
-    update_meta_settings($atts);
-
-    $invoice_content = array('title' => 'Pay-per-file: ' . sanitize_text_field($atts['title']), 'project' => 'file');
-
-    update_post_meta(get_the_ID(), 'btcpw_invoice_content', $invoice_content);
-
-    $payblock = (filter_var($atts['pay_file_block'], FILTER_VALIDATE_BOOLEAN));
-    $file = !empty($atts['file']);
-
-    $required_attributes = $payblock && $file;
-    $href = $atts['file'];
-    if (function_exists('vc_build_link')) {
-        $href = vc_build_link($atts['file'])['url'] ?: $atts['file'];
-    }
-    $href = esc_url($href);
-    $s_data = '<!-- btcpw:start_content -->';
-    $e_data = '<!-- /btcpw:end_content -->';
-
-    if ($required_attributes) {
-        ob_start();
-
-        include(BTCPAYWALL_PLUGIN_DIR . 'templates/btc-pay-file-block.php');
-
-        echo "{$s_data}";
-
-        /*$output = do_shortcode("[btcpw_pay_file_block title='{$atts['title']}' description='{$atts['description']}' preview='{$atts['preview']}' link='{$atts['link']}' help_link='{$atts['help_link']}' help_text='{$atts['help_text']}']");*/
-        //$output .= $s_data;
-
-
-
-        echo "<a class=btcpw_pay__download href={$href} target=_blank download>Download</a>";
-        //$output .= do_shortcode("[btcpw_protected_file file='{$atts['file']}']");
-        echo "{$e_data}";
-        return ob_get_clean();
-    }
-
-    //return do_shortcode("[btcpw_protected_file file='{$atts['file']}']");
-}
-add_shortcode('btcpw_file', 'render_shortcode_btcpw_file');
 /**
  * @param array $atts
  *
@@ -1222,34 +1144,7 @@ function render_shortcode_btcpw_pay_block($atts)
 }
 add_shortcode('btcpw_pay_block', 'render_shortcode_btcpw_pay_block');
 
-/**
- * @param $atts
- *
- * @return string
- */
-function render_shortcode_protected_file($atts)
-{
 
-    $atts = shortcode_atts(array(
-        'file' => ''
-    ), $atts);
-
-    $href = $atts['file'];
-
-    if (function_exists('vc_build_link')) {
-        $href = vc_build_link($atts['file'])['url'] ?: $atts['file'];
-    }
-    ob_start();
-?>
-
-    <a class="btcpw_pay__download" href=<?php echo esc_url($href) ?> target="_blank" download>Download</a>
-
-    <?php
-
-
-    return ob_get_clean();
-}
-add_shortcode('btcpw_protected_file', 'render_shortcode_protected_file');
 /**
  * Digital Download Protected Area
  * 
@@ -1322,7 +1217,7 @@ function render_shortcode_protected_digital_download($atts)
                 <p>Price: <?php echo esc_html($post_data->get_price()); ?></p>
                 <div id="btcpw_digital_download_button">
                     <?php if ($collect_data === true) : ?>
-                        <input type="button" name="next" class="btcpw_digital_download next-form" value="Continue" />
+                        <input type="button" name="next" class="btcpw_digital_download next-form" value="<?php _e('Continue', 'btcpaywall'); ?>" />
                     <?php else : ?>
                         <button type="submit" class="btcpw_digital_download" data-post_id="<?php echo get_the_ID(); ?>" id="btcpw_pay__button"><?php echo (!empty($button_text) ? esc_html($button_text) : 'Pay'); ?></button>
                     <?php endif; ?>
@@ -1343,7 +1238,7 @@ function render_shortcode_protected_digital_download($atts)
                     </div>
                     <div class="btcpw_digital_download_button" id="btcpw_digital_download_button">
                         <div>
-                            <input type="button" name="previous" class="btcpw_digital_download previous-form" value="< Previous" />
+                            <input type="button" name="previous" class="btcpw_digital_download previous-form" value="<?php _e('< Previous', 'btcpaywall'); ?>" />
                         </div>
                         <div>
                             <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" class="btcpw_digital_download" id="btcpw_pay__button"><?php echo (!empty($button_text) ? esc_html($button_text) : 'Pay'); ?></button>

@@ -1186,9 +1186,12 @@ Revenue types
 }
 
 #post_revenue_type fieldset:not(:first-of-type),
-#view_revenue_type fieldset:not(:first-of-type),
-#file_revenue_type fieldset:not(:first-of-type) {
+#view_revenue_type fieldset:not(:first-of-type) {
   display: none;
+}
+#post_revenue_type fieldset:not(:first-of-type) h2,
+#view_revenue_type fieldset:not(:first-of-type) h2 {
+  text-align: center;
 }
 .btcpw_revenue_post_container form,
 .btcpw_revenue_view_container form,
@@ -1211,30 +1214,38 @@ Revenue types
 .btcpw_revenue_view_container fieldset {
   justify-content: space-evenly;
 }
-/* .btcpw_revenue_post_container fieldset,
-.btcpw_revenue_view_container fieldset,
-.btcpw_revenue_file_container fieldset {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  border: 0;
-  min-width: 0;
-  padding: 0;
-} */
+
 .btcpw_revenue_post_container,
-.btcpw_revenue_view_container,
-.btcpw_revenue_file_container {
+.btcpw_revenue_view_container {
   position: relative;
 }
 .btcpw_revenue_post_customer_information,
-.btcpw_revenue_view_customer_information,
-.btcpw_revenue_file_customer_information {
+.btcpw_revenue_view_customer_information {
   display: flex;
   margin: 1em 0;
   flex-direction: column;
   align-items: center;
   gap: 2em;
+}
+/* .btcpw_revenue_post_customer_name_wrap,
+.btcpw_revenue_post_customer_email_wrap,
+.btcpw_revenue_post_customer_address_wrap,
+.btcpw_revenue_post_customer_phone_wrap,
+.btcpw_revenue_post_customer_message_wrap,
+.btcpw_revenue_view_customer_name_wrap,
+.btcpw_revenue_view_customer_email_wrap,
+.btcpw_revenue_view_customer_address_wrap,
+.btcpw_revenue_view_customer_phone_wrap,
+.btcpw_revenue_view_customer_message_wrap {
+  width: 90%;
+} */
+#btcpw_revenue_post_button_second_step,
+#btcpw_revenue_view_button_second_step {
+  height: 65px;
+  position: absolute;
+  display: inline-flex;
+  bottom: 0;
+  width: 100%;
 }
 #btcpw_revenue_post_button,
 #btcpw_revenue_view_button,
@@ -1254,6 +1265,8 @@ Revenue types
 #btcpw_revenue_file_button {
   height: 65px;
 }
+#btcpw_revenue_post_button_second_step > div,
+#btcpw_revenue_view_button_second_step > div,
 #btcpw_revenue_post_button > div,
 #btcpw_revenue_view_button > div,
 #btcpw_revenue_file_button > div {
@@ -1263,25 +1276,27 @@ Revenue types
   margin: 0 auto !important;
 }
 
-#btcpw_revenue_post_button > div:nth-child(1) > input,
+/* #btcpw_revenue_post_button > div:nth-child(1) > input,
 #btcpw_revenue_view_button > div:nth-child(1) > input,
 #btcpw_revenue_file_button > div:nth-child(1) > input {
   color: white;
-}
-
+} */
+#btcpw_revenue_post_button_second_step > button[type='submit'],
+#btcpw_revenue_post_button_second_step > input.revenue-post-next-form,
 #btcpw_revenue_post_button > button[type='submit'],
 #btcpw_revenue_post_button > input.revenue-post-next-form,
 #btcpw_revenue_view_button > button[type='submit'],
 #btcpw_revenue_view_button > input.revenue-view-next-form,
-#btcpw_revenue_file_button > button[type='submit'],
-#btcpw_revenue_file_button > input.revenue-file-next-form {
+#btcpw_revenue_view_button_second_step > button[type='submit'],
+#btcpw_revenue_view_button_second_step > input.revenue-view-next-form {
   margin: 0 auto !important;
-  color: white;
   border-radius: 2em;
   -moz-border-radius: 2em;
   -webkit-border-radius: 2em;
 }
-
+#btcpw_revenue_post_button_second_step button,
+#btcpw_revenue_post_button_second_step input[type='button'],
+#btcpw_revenue_post_button_second_step input[type='submit'],
 #btcpw_revenue_post_button button,
 #btcpw_revenue_post_button input[type='button'],
 #btcpw_revenue_post_button input[type='submit'],

@@ -40,7 +40,6 @@ $collect = getCollect($collect_atts);
 $collect_data = display_is_enabled($collect);
 $help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
 
-
 $image = wp_get_attachment_image_src($atts['preview']);
 
 $preview_url = $image ? $image[0] : $atts['preview'];
@@ -79,7 +78,7 @@ $preview_url = $image ? $image[0] : $atts['preview'];
         <form method="POST" action="" id="view_revenue_type">
             <fieldset>
                 <div class="btcpw_pay__content">
-                    <h2><?php echo get_payblock_header_string() ?></h2>
+                    <h2><?php echo esc_html(get_payblock_header_string()); ?></h2>
 
                 </div>
                 <div class="btcpw_pay__preview">
@@ -94,15 +93,23 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                 </div>
                 <div class="btcpw_pay__content">
                     <p>
-                        <?php echo get_post_info_string() ?>
+                        <?php echo esc_html(get_post_info_string()); ?>
                     </p>
                 </div>
-                <div class="btcpw_revenue_view_button" id="btcpw_revenue_view_button">
 
-                    <div>
-                        <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo get_payblock_button_string() ?></button>
-                    </div>
+                <div class="btcpw_revenue_view_button" id="btcpw_revenue_view_button">
+                    <?php if (true === $collect_data) : ?>
+
+                        <div>
+                            <input type="button" name="next" class="revenue-view-next-form" value="<?php _e('Continue', 'btcpaywall'); ?>">
+                        </div>
+                    <?php else : ?>
+                        <div>
+                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html(get_payblock_button_string()); ?></button>
+                        </div>
+                    <?php endif; ?>
                 </div>
+
                 <?php if ($help === true) : ?>
                     <div class="btcpw_help">
                         <a class="btcpw_help__link" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
@@ -115,19 +122,7 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                 <?php endif; ?>
 
             </fieldset>
-
-        </form>
-    </div>
-</div>
-
-<?php
-/*
-<?php if (true === $collect_data) : ?>
-
-                        <div>
-                            <input type="button" name="next" class="revenue-view-next-form" value="Continue">
-                        </div>
-                        <?php if ($collect_data == true) : ?>
+            <?php if (true === $collect_data) : ?>
                 <fieldset>
                     <h2>Personal Info</h2>
                     <div class="btcpw_revenue_view_customer_information">
@@ -141,9 +136,9 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
-                    <div class="btcpw_revenue_view_button" id="btcpw_revenue_view_button">
+                    <div class="btcpw_revenue_view_button" id="btcpw_revenue_view_button_second_step">
                         <div>
-                            <input type="button" name="previous" class="revenue-view-previous-form" value="< Previous" />
+                            <input type="button" name="previous" class="revenue-view-previous-form" value="<?php _e('< Previous', 'btcpaywall'); ?>" />
                         </div>
 
                         <div>
@@ -152,3 +147,8 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                     </div>
                 </fieldset>
             <?php endif; ?>
+        </form>
+    </div>
+</div>
+
+<?php

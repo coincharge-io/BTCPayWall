@@ -1,13 +1,7 @@
 <?php
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
-//global $wpdb;
-$id = $_GET['id'];
-/* $table_name = "{$wpdb->prefix}btcpaywall_forms";
-$result = $wpdb->get_results(
-    $wpdb->prepare("SELECT * FROM $table_name WHERE id=%d", $id),
-    ARRAY_A
-); */
+$id = sanitize_text_field($_GET['id']);
 $form = new BTCPayWall_Tipping_Form($id);
 $result = json_decode(json_encode($form), true);
 ?>

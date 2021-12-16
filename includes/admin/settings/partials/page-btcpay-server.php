@@ -36,7 +36,7 @@ $store_id = get_option('btcpw_btcpay_store_id');
                         <label for="btcpw_btcpay_store_id">Store id</label>
                     </div>
                     <div class="col-80">
-                        <input type='text' id="btcpw_btcpay_store_id" name="btcpw_btcpay_store_id" value='<?php echo $store_id ?: 'Not connected to the store'; ?>' disabled />
+                        <input type='text' id="btcpw_btcpay_store_id" name="btcpw_btcpay_store_id" value='<?php echo $store_id ? esc_attr($store_id) : 'Not connected to the store'; ?>' disabled />
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@ $store_id = get_option('btcpw_btcpay_store_id');
                         <label>BTCPay Server Url</label>
                     </div>
                     <div class="col-80">
-                        <input type="url" placeholder="BTCPay Server Url" name="btcpw_btcpay_server_url" id="btcpw_btcpay_server_url" value="<?php echo $btcpay_server_url ?>" style="min-width: 335px;">
+                        <input type="url" placeholder="BTCPay Server Url" name="btcpw_btcpay_server_url" id="btcpw_btcpay_server_url" value="<?php echo esc_url($btcpay_server_url); ?>" style="min-width: 335px;">
                         <div class="btcpw_generate_api">Generate API keys:<a href="" class="btcpw_auth_key" target="_blank"></a></div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@ $store_id = get_option('btcpw_btcpay_store_id');
                         <label for="btcpw_btcpay_auth_key_view">BTCPay Server API Key View</label>
                     </div>
                     <div class="col-80">
-                        <input required type="text" placeholder="Auth Key View" name="btcpw_btcpay_auth_key_view" id="btcpw_btcpay_auth_key_view" value="<?php echo $btcpay_auth_key_view ?>" style="min-width: 500px;">
+                        <input required type="text" placeholder="Auth Key View" name="btcpw_btcpay_auth_key_view" id="btcpw_btcpay_auth_key_view" value="<?php echo esc_attr($btcpay_auth_key_view); ?>" style="min-width: 500px;">
                     </div>
                 </div>
                 <div class="row">
@@ -66,7 +66,7 @@ $store_id = get_option('btcpw_btcpay_store_id');
                         <label for="btcpw_btcpay_auth_key_create">BTCPay Server API Key Create</label>
                     </div>
                     <div class="col-80">
-                        <input required type="text" placeholder="Auth Key Create" name="btcpw_btcpay_auth_key_create" id="btcpw_btcpay_auth_key_create" value="<?php echo $btcpay_auth_key_create ?>" style="min-width: 500px;">
+                        <input required type="text" placeholder="Auth Key Create" name="btcpw_btcpay_auth_key_create" id="btcpw_btcpay_auth_key_create" value="<?php echo esc_attr($btcpay_auth_key_create); ?>" style="min-width: 500px;">
                     </div>
                 </div>
             </div>

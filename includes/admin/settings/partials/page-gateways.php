@@ -2,7 +2,7 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 $default_section = null;
-$section = isset($_GET['section']) ? $_GET['section'] : $default_section;
+$section = isset($_GET['section']) ? sanitize_text_field($_GET['section']) : $default_section;
 ?>
 <div class="wrap">
     <nav class="btcpw nav-tab-wrapper">

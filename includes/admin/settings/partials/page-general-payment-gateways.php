@@ -20,8 +20,8 @@ $supported_gateways = array(
 
                     <select required name="btcpw_selected_payment_gateway">
                         <?php foreach ($supported_gateways as $gateway) : ?>
-                            <option <?php echo $selected_gateway === $gateway ? 'selected' : ''; ?> value="<?php echo $gateway; ?>">
-                                <?php echo $gateway; ?>
+                            <option <?php echo $selected_gateway === $gateway ? 'selected' : ''; ?> value="<?php echo esc_attr($gateway); ?>">
+                                <?php echo esc_html($gateway); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

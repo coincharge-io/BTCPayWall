@@ -319,7 +319,19 @@ function ajax_tipping()
         'status' => $body['status'],
         'gateway' => get_option('btcpw_selected_payment_gateway', 'BTCPayServer')
     ]);
+    $payment = new BTCPayWall_Payment();
 
+    $payment->create([
+        'invoice_id' => $body['id'],
+        'customer_id' => 0,
+        'amount' => $body['amount'],
+        'page_title' => $body['metadata']['blog'],
+        'revenue_type' => $body['metadata']['type'],
+        'currency' => $body['currency'],
+        'gateway' => get_option('btcpw_selected_payment_gateway', 'BTCPayServer'),
+        'status' => $body['status'],
+        'payment_method' => ''
+    ]);
     wp_send_json_success([
         'invoice_id' => $body['id'],
         'donor' => $body['metadata']['donor'],
@@ -458,6 +470,9 @@ function ajax_paid_tipping()
     $payment_method = get_payment_method($body['id']);
 
     $tipping->update(array('status' => $body['status'], 'payment_method' => $payment_method));
+    $payment = new BTCPayWall_Payment($invoice_id);
+
+    $payment->update(array('status' => $body['status'], 'payment_method' => $payment_method));
     wp_send_json_success();
 }
 add_action('wp_ajax_btcpw_paid_tipping',  'ajax_paid_tipping');
@@ -582,7 +597,7 @@ function generate_opennode_invoice_id($post_id, $order_id, $customer_data)
         'revenue_type' => $revenue_type,
         'currency' => $body['data']['currency'],
         'status' => $body['data']['status'],
-        'payment_method' => '',
+        'payment_method' => 'BTC',
         'gateway' => get_option('btcpw_selected_payment_gateway', 'BTCPayServer'),
         'date_created'  => date('Y-m-d H:i:s', $body['data']['created_at'])
     ]);
@@ -734,11 +749,11 @@ function ajax_paid_opennode_invoice()
     $message .= "Type: $content_title \n";
     $payment = new BTCPayWall_Payment($invoice_id);;
 
-    $payment->update(array('status' => $body['data']['status'], 'payment_method' => 'Lightning-unverified'));
+    $payment->update(array('status' => $body['data']['status'], 'payment_method' => 'BTC'));
 
     $tipping = new BTCPayWall_Tipping($invoice_id);
     if ($tipping) {
-        $tipping->update(array('status' => $body['data']['status'], 'payment_method' => 'Lightning'));
+        $tipping->update(array('status' => $body['data']['status'], 'payment_method' => 'BTC'));
     }
     update_post_meta($body['data']['metadata']['orderId'], 'btcpw_payment_id', $payment->invoice_id);
 

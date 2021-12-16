@@ -99,35 +99,35 @@ class Tipping_Banner_Wide extends WP_Widget
                 <div class="btcpw_widget btcpw_skyscraper_header_container wide">
                     <?php if ($logo) : ?>
                         <div id="btcpw_skyscraper_logo_wrap_wide">
-                            <img alt="Tipping logo" src=<?php echo ($logo); ?> />
+                            <img alt="Tipping logo" src=<?php echo esc_url($logo); ?> />
                         </div>
                     <?php endif; ?>
                     <div>
                         <?php if (!empty($instance['title'])) : ?>
-                            <h6><?php echo ($instance['title']); ?></h6>
+                            <h6><?php echo esc_html($instance['title']); ?></h6>
                         <?php endif; ?>
                         <?php if (!empty($instance['description'])) : ?>
-                            <p><?php echo ($instance['description']); ?></p>
+                            <p><?php echo esc_html($instance['description']); ?></p>
                         <?php endif; ?>
                     </div>
                 </div>
                 <div class="btcpw_widget btcpw_skyscraper_tipping_container wide">
                     <form method="POST" action="" id="btcpw_widget_skyscraper_tipping_form_wide">
                         <fieldset>
-                            <h6><?php echo (!empty($instance['tipping_text']) ? ($instance['tipping_text']) : ''); ?>
+                            <h6><?php echo (!empty($instance['tipping_text']) ? esc_html($instance['tipping_text']) : ''); ?>
                             </h6>
                             <div class="btcpw_widget btcpw_skyscraper_amount wide">
                                 <?php foreach ($fixed_amount as $key => $value) : ?>
-
+                                    <?php $key=esc_attr($key);?>
                                     <?php if ($fixed_amount[$key]['enabled'] === true) : ?>
                                         <div class="<?php echo "btcpw_widget btcpw_skyscraper_amount_$key wide"; ?>">
                                             <div>
                                                 <input type="radio" class="btcpw_widget btcpw_skyscraper_tipping_default_amount wide" id="<?php echo "btcpw_widget_{$key}_wide"; ?>" name="btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo ($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?>">
                                                 <?php if (!empty($fixed_amount[$key]['amount'])) : ?>
-                                                    <i class="<?php echo ($fixed_amount[$key]['icon']); ?>"></i>
+                                                    <i class="<?php echo esc_attr($fixed_amount[$key]['icon']); ?>"></i>
                                                 <?php endif; ?>
                                             </div>
-                                            <label for="<?php echo $key; ?>"><?php echo ($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?></label>
+                                            <label for="<?php echo $key; ?>"><?php echo esc_attr($fixed_amount[$key]['amount']) . ' ' . esc_attr($fixed_amount[$key]['currency']); ?></label>
 
                                         </div>
                                     <?php endif; ?>
@@ -141,8 +141,8 @@ class Tipping_Banner_Wide extends WP_Widget
                                         <select required name="btcpw_widget_btcpw_skyscraper_tipping_currency_wide" id="btcpw_widget_btcpw_skyscraper_tipping_currency_wide" ; ?>">
                                             <option disabled value="">Select currency</option>
                                             <?php foreach ($supported_currencies as $currency) : ?>
-                                                <option <?php echo $instance['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
-                                                    <?php echo $currency; ?>
+                                                <option <?php echo $instance['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
+                                                    <?php echo esc_html($currency); ?>
                                                 <?php endforeach; ?>
                                         </select>
                                         <i class="fas fa-arrows-alt-v"></i>
@@ -164,7 +164,7 @@ class Tipping_Banner_Wide extends WP_Widget
                                     </div>
                                 <?php else : ?>
                                     <div>
-                                        <button type="submit" id="btcpw_widget_btcpw_skyscraper_tipping__button_wide"><?php echo (!empty($instance['button_text']) ? ($instance['button_text']) : 'Tip'); ?></button>
+                                        <button type="submit" id="btcpw_widget_btcpw_skyscraper_tipping__button_wide"><?php echo (!empty($instance['button_text']) ? esc_html($instance['button_text']) : 'Tip'); ?></button>
                                     </div>
                                 <?php endif; ?>
                             </div>
@@ -188,7 +188,7 @@ class Tipping_Banner_Wide extends WP_Widget
                                         <input type="button" name="previous" class="btcpw_widget_ skyscraper-previous-form wide" value="< Previous" />
                                     </div>
                                     <div>
-                                        <button type="submit" id="btcpw_widget_btcpw_skyscraper_tipping__button_wide"><?php echo (!empty($instance['button_text']) ? ($instance['button_text']) : 'Tip'); ?></button>
+                                        <button type="submit" id="btcpw_widget_btcpw_skyscraper_tipping__button_wide"><?php echo (!empty($instance['button_text']) ? esc_html($instance['button_text']) : 'Tip'); ?></button>
                                     </div>
                                 </div>
                             </fieldset>
@@ -207,68 +207,68 @@ class Tipping_Banner_Wide extends WP_Widget
     {
         $dimensions = array('160x600', '600x160');
         $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
-        $title = !empty($instance['title']) ? $instance['title'] : esc_html__('Support my work', 'text_domain');
+        $title = !empty($instance['title']) ? $instance['title'] : esc_html__('Support my work', 'btcpaywall');
 
-        $description = !empty($instance['description']) ? $instance['description'] : esc_html__('', 'text_domain');
-
-
-        $currency = !empty($instance['currency']) ? $instance['currency'] : esc_html__('SATS', 'text_domain');
-
-        $background_color = !empty($instance['background_color']) ? $instance['background_color'] : esc_html__('#E6E6E6', 'text_domain');
-        $title_text_color = !empty($instance['title_text_color']) ? $instance['title_text_color'] : esc_html__('#FFFFFF', 'text_domain');
-
-        $tipping_text = !empty($instance['tipping_text']) ? $instance['tipping_text'] : esc_html__('Enter Tipping Amount', 'text_domain');
-        $tipping_text_color = !empty($instance['tipping_text_color']) ? $instance['tipping_text_color'] : esc_html__('#000000', 'text_domain');
-        $redirect = !empty($instance['redirect']) ? $instance['redirect'] : esc_html__('', 'text_domain');
-        $amount = !empty($instance['amount']) ? $instance['amount'] : esc_html__('', 'text_domain');
-        $description_color = !empty($instance['description_color']) ? $instance['description_color'] : esc_html__('#000000', 'text_domain');
-
-        $button_text = !empty($instance['button_text']) ? $instance['button_text'] : esc_html__('Tipping now', 'text_domain');
-        $button_text_color = !empty($instance['button_text_color']) ? $instance['button_text_color'] : esc_html__('#FFFFFF', 'text_domain');
-
-        $button_color = !empty($instance['button_color']) ? $instance['button_color'] : esc_html__('#FE642E', 'text_domain');
+        $description = !empty($instance['description']) ? $instance['description'] : esc_html__('', 'btcpaywall');
 
 
-        $logo_id = !empty($instance['logo_id']) ? $instance['logo_id'] : esc_html__('https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg', 'text_domain');
-        $background_id = !empty($instance['background_id']) ? $instance['background_id'] : esc_html__('', 'text_domain');
+        $currency = !empty($instance['currency']) ? $instance['currency'] : esc_html__('SATS', 'btcpaywall');
+
+        $background_color = !empty($instance['background_color']) ? $instance['background_color'] : esc_html__('#E6E6E6', 'btcpaywall');
+        $title_text_color = !empty($instance['title_text_color']) ? $instance['title_text_color'] : esc_html__('#FFFFFF', 'btcpaywall');
+
+        $tipping_text = !empty($instance['tipping_text']) ? $instance['tipping_text'] : esc_html__('Enter Tipping Amount', 'btcpaywall');
+        $tipping_text_color = !empty($instance['tipping_text_color']) ? $instance['tipping_text_color'] : esc_html__('#000000', 'btcpaywall');
+        $redirect = !empty($instance['redirect']) ? $instance['redirect'] : esc_html__('', 'btcpaywall');
+        $amount = !empty($instance['amount']) ? $instance['amount'] : esc_html__('', 'btcpaywall');
+        $description_color = !empty($instance['description_color']) ? $instance['description_color'] : esc_html__('#000000', 'btcpaywall');
+
+        $button_text = !empty($instance['button_text']) ? $instance['button_text'] : esc_html__('Tipping now', 'btcpaywall');
+        $button_text_color = !empty($instance['button_text_color']) ? $instance['button_text_color'] : esc_html__('#FFFFFF', 'btcpaywall');
+
+        $button_color = !empty($instance['button_color']) ? $instance['button_color'] : esc_html__('#FE642E', 'btcpaywall');
+
+
+        $logo_id = !empty($instance['logo_id']) ? $instance['logo_id'] : esc_html__('https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg', 'btcpaywall');
+        $background_id = !empty($instance['background_id']) ? $instance['background_id'] : esc_html__('', 'btcpaywall');
 
         $logo = wp_get_attachment_image_src($logo_id);
         $background = wp_get_attachment_image_src($background_id);
 
-        $display_name = !empty($instance['display_name']) ? $instance['display_name'] : esc_html__('true', 'text_domain');
-        $mandatory_name = !empty($instance['mandatory_name']) ? $instance['mandatory_name'] : esc_html__('', 'text_domain');
+        $display_name = !empty($instance['display_name']) ? $instance['display_name'] : esc_html__('true', 'btcpaywall');
+        $mandatory_name = !empty($instance['mandatory_name']) ? $instance['mandatory_name'] : esc_html__('', 'btcpaywall');
 
-        $display_email = !empty($instance['display_email']) ? $instance['display_email'] : esc_html__('true', 'text_domain');
-        $mandatory_email = !empty($instance['mandatory_email']) ? $instance['mandatory_email'] : esc_html__('', 'text_domain');
+        $display_email = !empty($instance['display_email']) ? $instance['display_email'] : esc_html__('true', 'btcpaywall');
+        $mandatory_email = !empty($instance['mandatory_email']) ? $instance['mandatory_email'] : esc_html__('', 'btcpaywall');
 
-        $display_address = !empty($instance['display_address']) ? $instance['display_address'] : esc_html__('true', 'text_domain');
-        $mandatory_address = !empty($instance['mandatory_address']) ? $instance['mandatory_address'] : esc_html__('', 'text_domain');
+        $display_address = !empty($instance['display_address']) ? $instance['display_address'] : esc_html__('true', 'btcpaywall');
+        $mandatory_address = !empty($instance['mandatory_address']) ? $instance['mandatory_address'] : esc_html__('', 'btcpaywall');
 
-        $display_phone = !empty($instance['display_phone']) ? $instance['display_phone'] : esc_html__('true', 'text_domain');
-        $mandatory_phone = !empty($instance['mandatory_phone']) ? $instance['mandatory_phone'] : esc_html__('', 'text_domain');
+        $display_phone = !empty($instance['display_phone']) ? $instance['display_phone'] : esc_html__('true', 'btcpaywall');
+        $mandatory_phone = !empty($instance['mandatory_phone']) ? $instance['mandatory_phone'] : esc_html__('', 'btcpaywall');
 
-        $display_message = !empty($instance['display_message']) ? $instance['display_message'] : esc_html__('true', 'text_domain');
-        $mandatory_message = !empty($instance['mandatory_message']) ? $instance['mandatory_message'] : esc_html__('', 'text_domain');
+        $display_message = !empty($instance['display_message']) ? $instance['display_message'] : esc_html__('true', 'btcpaywall');
+        $mandatory_message = !empty($instance['mandatory_message']) ? $instance['mandatory_message'] : esc_html__('', 'btcpaywall');
 
-        $value1_enabled = !empty($instance['value1_enabled']) ? $instance['value1_enabled'] : esc_html__('true', 'text_domain');
-        $value1_amount = !empty($instance['value1_amount']) ? $instance['value1_amount'] : esc_html__('1000', 'text_domain');
-        $value1_icon = !empty($instance['value1_icon']) ? $instance['value1_icon'] : esc_html__('fas fa-coffee', 'text_domain');
-        $value1_currency = !empty($instance['value1_currency']) ? $instance['value1_currency'] : esc_html__('', 'text_domain');
+        $value1_enabled = !empty($instance['value1_enabled']) ? $instance['value1_enabled'] : esc_html__('true', 'btcpaywall');
+        $value1_amount = !empty($instance['value1_amount']) ? $instance['value1_amount'] : esc_html__('1000', 'btcpaywall');
+        $value1_icon = !empty($instance['value1_icon']) ? $instance['value1_icon'] : esc_html__('fas fa-coffee', 'btcpaywall');
+        $value1_currency = !empty($instance['value1_currency']) ? $instance['value1_currency'] : esc_html__('', 'btcpaywall');
 
-        $value2_enabled = !empty($instance['value2_enabled']) ? $instance['value2_enabled'] : esc_html__('true', 'text_domain');
-        $value2_amount = !empty($instance['value2_amount']) ? $instance['value2_amount'] : esc_html__('2000', 'text_domain');
-        $value2_icon = !empty($instance['value2_icon']) ? $instance['value2_icon'] : esc_html__('fas fa-beer', 'text_domain');
-        $value2_currency = !empty($instance['value2_currency']) ? $instance['value2_currency'] : esc_html__('', 'text_domain');
+        $value2_enabled = !empty($instance['value2_enabled']) ? $instance['value2_enabled'] : esc_html__('true', 'btcpaywall');
+        $value2_amount = !empty($instance['value2_amount']) ? $instance['value2_amount'] : esc_html__('2000', 'btcpaywall');
+        $value2_icon = !empty($instance['value2_icon']) ? $instance['value2_icon'] : esc_html__('fas fa-beer', 'btcpaywall');
+        $value2_currency = !empty($instance['value2_currency']) ? $instance['value2_currency'] : esc_html__('', 'btcpaywall');
 
-        $value3_enabled = !empty($instance['value3_enabled']) ? $instance['value3_enabled'] : esc_html__('true', 'text_domain');
-        $value3_amount = !empty($instance['value3_amount']) ? $instance['value3_amount'] : esc_html__('3000', 'text_domain');
-        $value3_icon = !empty($instance['value3_icon']) ? $instance['value3_icon'] : esc_html__('fas fa-cocktail', 'text_domain');
-        $value3_currency = !empty($instance['value3_currency']) ? $instance['value3_currency'] : esc_html__('', 'text_domain');
+        $value3_enabled = !empty($instance['value3_enabled']) ? $instance['value3_enabled'] : esc_html__('true', 'btcpaywall');
+        $value3_amount = !empty($instance['value3_amount']) ? $instance['value3_amount'] : esc_html__('3000', 'btcpaywall');
+        $value3_icon = !empty($instance['value3_icon']) ? $instance['value3_icon'] : esc_html__('fas fa-cocktail', 'btcpaywall');
+        $value3_currency = !empty($instance['value3_currency']) ? $instance['value3_currency'] : esc_html__('', 'btcpaywall');
 
-        $free_input = !empty($instance['free_input']) ? $instance['free_input'] : esc_html__('true', 'text_domain');
+        $free_input = !empty($instance['free_input']) ? $instance['free_input'] : esc_html__('true', 'btcpaywall');
 
-        $fixed_background = !empty($instance['fixed_background']) ? $instance['fixed_background'] : esc_html__('#ffa500 ', 'text_domain');
-        $hf_color = !empty($instance['hf_color']) ? $instance['hf_color'] : esc_html__('#1d5aa3', 'text_domain');
+        $fixed_background = !empty($instance['fixed_background']) ? $instance['fixed_background'] : esc_html__('#ffa500 ', 'btcpaywall');
+        $hf_color = !empty($instance['hf_color']) ? $instance['hf_color'] : esc_html__('#1d5aa3', 'btcpaywall');
     ?>
         <div class="tipping_banner">
             <h1>Tipping</h1>
@@ -277,80 +277,80 @@ class Tipping_Banner_Wide extends WP_Widget
             </div>
             <div class="row">
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('background_image')); ?>"><?php echo esc_html__('Background image', 'text_domain'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('background_image')); ?>"><?php echo esc_html__('Background image', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-50">
                     <?php if ($background) : ?>
-                        <button id="lnpw_tipping_button_image_background_banner_wide" class="widget-tipping-basic-upload_box_image_wide" name="lnpw_tipping_button_image_background"><img width="100" height="100" alt="Tipping box background" src="<?php echo $background[0]; ?>" /></a></button>
+                        <button id="lnpw_tipping_button_image_background_banner_wide" class="widget-tipping-basic-upload_box_image_wide" name="lnpw_tipping_button_image_background"><img width="100" height="100" alt="Tipping box background" src="<?php echo esc_url($background[0]); ?>" /></a></button>
                         <button class="widget-tipping-basic-remove_box_image_wide">
-                            <?php echo esc_html__('Remove', 'text_domain'); ?></button>
+                            <?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-background_id_wide" id="<?php echo esc_attr($this->get_field_id('background_id')); ?>" name="<?php echo esc_attr($this->get_field_name('background_id')); ?>" type="text" value="<?php echo esc_attr($background_id); ?>" />
                     <?php else : ?>
-                        <button id="lnpw_tipping_button_image_background_banner_wide" class="widget-tipping-basic-upload_box_image_wide" name="lnpw_tipping_button_image_background"><?php echo esc_html__('Upload', 'text_domain'); ?></button>
-                        <button class="widget-tipping-basic-remove_box_image_wide" style="display:none"><?php echo esc_html__('Remove', 'text_domain'); ?></button>
+                        <button id="lnpw_tipping_button_image_background_banner_wide" class="widget-tipping-basic-upload_box_image_wide" name="lnpw_tipping_button_image_background"><?php echo esc_html__('Upload', 'btcpaywall'); ?></button>
+                        <button class="widget-tipping-basic-remove_box_image_wide" style="display:none"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-background_id_wide" id="<?php echo esc_attr($this->get_field_id('background_id')); ?>" name="<?php echo esc_attr($this->get_field_name('background_id')); ?>" type="text" value="<?php echo esc_attr($background_id); ?>" />
                     <?php endif; ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('background_color')); ?>"><?php echo esc_html__('Background color', 'text_domain'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('background_color')); ?>"><?php echo esc_html__('Background color', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-50">
                     <input id="<?php echo esc_attr($this->get_field_id('background_color')); ?>" class="widget-tipping-basic-background_color_wide" name="<?php echo esc_attr($this->get_field_name('background_color')); ?>" type="text" value="<?php echo esc_attr($background_color); ?>" type="text" />
                 </div>
             </div>
             <div class="row">
-                <label for="<?php echo esc_attr($this->get_field_id('hf_color')); ?>"><?php echo esc_html__('Header and footer background color', 'text_domain'); ?></label>
+                <label for="<?php echo esc_attr($this->get_field_id('hf_color')); ?>"><?php echo esc_html__('Header and footer background color', 'btcpaywall'); ?></label>
 
                 <input id="<?php echo esc_attr($this->get_field_id('hf_color')); ?>" class="widget-tipping-basic-hf_color_wide" name="<?php echo esc_attr($this->get_field_name('hf_color')); ?>" type="text" value="<?php echo esc_attr($hf_color); ?>" />
 
             </div>
-            <h3><?php echo esc_html__('Description', 'text_domain'); ?></h3>
+            <h3><?php echo esc_html__('Description', 'btcpaywall'); ?></h3>
 
             <div class="row">
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('logo')); ?>"><?php echo esc_html__('Tipping logo', 'text_domain'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('logo')); ?>"><?php echo esc_html__('Tipping logo', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-50">
                     <?php if ($logo_id) : ?>
                         <button id="lnpw_tipping_button_logo_banner_wide" class="widget-tipping-basic-upload_box_logo_wide" name="lnpw_tipping_button_image"><img width="100" height="100" alt="Tipping box logo" src="<?php echo $logo[0]; ?>" /></a></button>
-                        <button class="widget-tipping-basic-remove_box_image_wide"><?php echo esc_html__('Remove', 'text_domain'); ?></button>
+                        <button class="widget-tipping-basic-remove_box_image_wide"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-logo_id_wide" id="<?php echo esc_attr($this->get_field_id('logo_id')); ?>" name="<?php echo esc_attr($this->get_field_name('logo_id')); ?>" type="text" value="<?php echo esc_attr($logo_id); ?>" />
                     <?php else : ?>
-                        <button id="lnpw_tipping_button_logo_banner_wide" class="widget-tipping-basic-upload_box_logo_wide" name="lnpw_tipping_button_image"><?php echo esc_html__('Upload', 'text_domain'); ?></button>
-                        <button class="widget-tipping-basic-remove_box_image_wide" style="display:none"><?php echo esc_html__('Remove', 'text_domain'); ?></button>
+                        <button id="lnpw_tipping_button_logo_banner_wide" class="widget-tipping-basic-upload_box_logo_wide" name="lnpw_tipping_button_image"><?php echo esc_html__('Upload', 'btcpaywall'); ?></button>
+                        <button class="widget-tipping-basic-remove_box_image_wide" style="display:none"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-logo_id_wide" id="<?php echo esc_attr($this->get_field_id('logo_id')); ?>" name="<?php echo esc_attr($this->get_field_name('logo_id')); ?>" type="text" value="<?php echo esc_attr($logo_id); ?>" />
                     <?php endif; ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php echo esc_html__('Title:', 'text_domain'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php echo esc_html__('Title:', 'btcpaywall'); ?></label>
                     <textarea id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text"><?php echo esc_attr($title); ?></textarea>
                 </div>
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('title_text_color')); ?>"><?php echo esc_html__('Title text color', 'text_domain'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('title_text_color')); ?>"><?php echo esc_html__('Title text color', 'btcpaywall'); ?></label>
                     <input id="<?php echo esc_attr($this->get_field_id('title_text_color')); ?>" name="<?php echo esc_attr($this->get_field_name('title_text_color')); ?>" class="widget-tipping-basic-title_text_color_wide" type="text" value="<?php echo esc_attr($title_text_color); ?>" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('description')); ?>"><?php echo esc_html__('Description:', 'text_domain'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('description')); ?>"><?php echo esc_html__('Description:', 'btcpaywall'); ?></label>
                     <textarea id="<?php echo esc_attr($this->get_field_id('description')); ?>" name="<?php echo esc_attr($this->get_field_name('description')); ?>" type="text"><?php echo esc_html($description); ?></textarea>
                 </div>
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('description_color')); ?>"><?php echo esc_html__('Description text color:', 'text_domain'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('description_color')); ?>"><?php echo esc_html__('Description text color:', 'btcpaywall'); ?></label>
                     <input id="<?php echo esc_attr($this->get_field_id('description_color')); ?>" name="<?php echo esc_attr($this->get_field_name('description_color')); ?>" class="widget-tipping-basic-description-color_wide" type="text" value="<?php echo esc_attr($description_color); ?>" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('tipping_text')); ?>"><?php echo esc_html__('Tipping text', 'text_domain'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('tipping_text')); ?>"><?php echo esc_html__('Tipping text', 'btcpaywall'); ?></label>
                     <textarea id="<?php echo esc_attr($this->get_field_id('tipping_text')); ?>" name="<?php echo esc_attr($this->get_field_name('tipping_text')); ?>" type="text"><?php echo esc_html($tipping_text); ?></textarea>
                 </div>
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('tipping_text_color')); ?>"><?php echo esc_html__('Tipping text color', 'text_domain'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('tipping_text_color')); ?>"><?php echo esc_html__('Tipping text color', 'btcpaywall'); ?></label>
                     <input id="<?php echo esc_attr($this->get_field_id('tipping_text_color')); ?>" name="<?php echo esc_attr($this->get_field_name('tipping_text_color')); ?>" type="text" class="widget-tipping-basic-tipping-color_wide" value="<?php echo esc_attr($tipping_text_color); ?>" />
                 </div>
             </div>
@@ -367,9 +367,9 @@ class Tipping_Banner_Wide extends WP_Widget
                     <input id="<?php echo esc_attr($this->get_field_id('free_input')); ?>" name="<?php echo esc_attr($this->get_field_name('free_input')); ?>" type="checkbox" <?php echo $free_input === 'true' ? 'checked' : ''; ?> value="true" />
                 </div>
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('currency')); ?>"><?php echo esc_html__('Currency', 'text_domain'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('currency')); ?>"><?php echo esc_html__('Currency', 'btcpaywall'); ?></label>
                     <select required id="<?php echo esc_attr($this->get_field_id('currency')); ?>" name="<?php echo esc_attr($this->get_field_name('currency')); ?>">
-                        <option disabled value=""><?php echo esc_html__('Select currency', 'text_domain'); ?></option>
+                        <option disabled value=""><?php echo esc_html__('Select currency', 'btcpaywall'); ?></option>
                         <?php foreach ($supported_currencies as $curr) : ?>
                             <option <?php echo $currency === $curr ? 'selected' : ''; ?> value="<?php echo $curr; ?>">
                                 <?php echo $curr; ?>
@@ -380,7 +380,7 @@ class Tipping_Banner_Wide extends WP_Widget
             </div>
             <div class="row">
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('fixed_background')); ?>"><?php echo esc_html__('Background color for fixed amount', 'text_domain'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('fixed_background')); ?>"><?php echo esc_html__('Background color for fixed amount', 'btcpaywall'); ?></label>
                     <input id="<?php echo esc_attr($this->get_field_id('fixed_background')); ?>" name="<?php echo esc_attr($this->get_field_name('fixed_background')); ?>" type="text" class="widget-tipping-basic-fixed_background_wide" value="<?php echo esc_attr($fixed_background); ?>" />
                 </div>
             </div>
@@ -449,17 +449,17 @@ class Tipping_Banner_Wide extends WP_Widget
                     </div>
                 </div>
             </div>
-            <h3><?php echo esc_html__('Button', 'text_domain'); ?></h3>
+            <h3><?php echo esc_html__('Button', 'btcpaywall'); ?></h3>
             <div class="row">
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('button_text')); ?>"><?php echo esc_html__('Button text', 'text_domain'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('button_text')); ?>"><?php echo esc_html__('Button text', 'btcpaywall'); ?></label>
 
                     <textarea id="<?php echo esc_attr($this->get_field_id('button_text')); ?>" name="<?php echo esc_attr($this->get_field_name('button_text')); ?>" type="text" value="<?php echo esc_attr($button_text); ?>"><?php echo esc_html($button_text); ?></textarea>
                 </div>
             </div>
             <div class="row">
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('button_text_color')); ?>"><?php echo esc_html__('Button text color', 'text_domain'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('button_text_color')); ?>"><?php echo esc_html__('Button text color', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-50">
                     <input id="<?php echo esc_attr($this->get_field_id('button_text_color')); ?>" class="widget-tipping-basic-button_text_color_wide" name="<?php echo esc_attr($this->get_field_name('button_text_color')); ?>" type="text" value="<?php echo esc_attr($button_text_color); ?>" />
@@ -469,89 +469,89 @@ class Tipping_Banner_Wide extends WP_Widget
 
 
             <div class="row">
-                <label for="<?php echo esc_attr($this->get_field_id('button_color')); ?>"><?php echo esc_html__('Button color', 'text_domain'); ?></label>
+                <label for="<?php echo esc_attr($this->get_field_id('button_color')); ?>"><?php echo esc_html__('Button color', 'btcpaywall'); ?></label>
 
                 <input id="<?php echo esc_attr($this->get_field_id('button_color')); ?>" class="widget-tipping-basic-button_color_wide" name="<?php echo esc_attr($this->get_field_name('button_color')); ?>" type="text" value="<?php echo esc_attr($button_color); ?>" />
 
             </div>
 
-            <h4><?php echo esc_html__('Collect further information', 'text_domain'); ?></h4>
+            <h4><?php echo esc_html__('Collect further information', 'btcpaywall'); ?></h4>
             <div class="row">
                 <div class="col-50">
-                    <p><?php echo esc_html__('Full name', 'text_domain'); ?></p>
+                    <p><?php echo esc_html__('Full name', 'btcpaywall'); ?></p>
                 </div>
                 <div class="col-50 col-2">
                     <div>
-                        <label for="<?php echo esc_attr($this->get_field_id('display_name')); ?>"><?php echo esc_html__('Display', 'text_domain'); ?></label>
+                        <label for="<?php echo esc_attr($this->get_field_id('display_name')); ?>"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
 
                         <input id="<?php echo esc_attr($this->get_field_id('display_name')); ?>" name="<?php echo esc_attr($this->get_field_name('display_name')); ?>" type="checkbox" <?php echo $display_name === 'true' ? 'checked' : ''; ?> value="true" />
                     </div>
                     <div>
-                        <label for="<?php echo esc_attr($this->get_field_id('mandatory_name')); ?>"><?php echo esc_html__('Mandatory', 'text_domain'); ?></label>
+                        <label for="<?php echo esc_attr($this->get_field_id('mandatory_name')); ?>"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
                         <input id="<?php echo esc_attr($this->get_field_id('mandatory_name')); ?>" name="<?php echo esc_attr($this->get_field_name('mandatory_name')); ?>" type="checkbox" <?php echo $mandatory_name === 'true' ? 'checked' : ''; ?> value="true" />
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-50">
-                    <p><?php echo esc_html__('Email', 'text_domain'); ?></p>
+                    <p><?php echo esc_html__('Email', 'btcpaywall'); ?></p>
                 </div>
                 <div class="col-50 col-2">
                     <div>
-                        <label for="<?php echo esc_attr($this->get_field_id('display_email')); ?>"><?php echo esc_html__('Display', 'text_domain'); ?></label>
+                        <label for="<?php echo esc_attr($this->get_field_id('display_email')); ?>"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
 
                         <input id="<?php echo esc_attr($this->get_field_id('display_email')); ?>" name="<?php echo esc_attr($this->get_field_name('display_email')); ?>" type="checkbox" <?php echo $display_email === 'true' ? 'checked' : ''; ?> value="true" />
                     </div>
                     <div>
-                        <label for="<?php echo esc_attr($this->get_field_id('mandatory_email')); ?>"><?php echo esc_html__('Mandatory', 'text_domain'); ?></label>
+                        <label for="<?php echo esc_attr($this->get_field_id('mandatory_email')); ?>"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
                         <input id="<?php echo esc_attr($this->get_field_id('mandatory_email')); ?>" name="<?php echo esc_attr($this->get_field_name('mandatory_email')); ?>" type="checkbox" <?php echo $mandatory_email === 'true' ? 'checked' : ''; ?> value="true" />
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-50">
-                    <p><?php echo esc_html__('Address', 'text_domain'); ?></p>
+                    <p><?php echo esc_html__('Address', 'btcpaywall'); ?></p>
                 </div>
                 <div class="col-50 col-2">
                     <div>
-                        <label for="<?php echo esc_attr($this->get_field_id('display_address')); ?>"><?php echo esc_html__('Display', 'text_domain'); ?></label>
+                        <label for="<?php echo esc_attr($this->get_field_id('display_address')); ?>"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
 
                         <input id="<?php echo esc_attr($this->get_field_id('display_address')); ?>" name="<?php echo esc_attr($this->get_field_name('display_address')); ?>" type="checkbox" <?php echo $display_address === 'true' ? 'checked' : ''; ?> value="true" />
                     </div>
                     <div>
-                        <label for="<?php echo esc_attr($this->get_field_id('mandatory_address')); ?>"><?php echo esc_html__('Mandatory', 'text_domain'); ?></label>
+                        <label for="<?php echo esc_attr($this->get_field_id('mandatory_address')); ?>"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
                         <input id="<?php echo esc_attr($this->get_field_id('mandatory_address')); ?>" name="<?php echo esc_attr($this->get_field_name('mandatory_address')); ?>" type="checkbox" <?php echo $mandatory_address === 'true' ? 'checked' : ''; ?> value="true" />
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-50">
-                    <p><?php echo esc_html__('Phone number', 'text_domain'); ?></p>
+                    <p><?php echo esc_html__('Phone number', 'btcpaywall'); ?></p>
                 </div>
                 <div class="col-50 col-2">
                     <div>
-                        <label for="<?php echo esc_attr($this->get_field_id('display_phone')); ?>"><?php echo esc_html__('Display', 'text_domain'); ?></label>
+                        <label for="<?php echo esc_attr($this->get_field_id('display_phone')); ?>"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
 
                         <input id="<?php echo esc_attr($this->get_field_id('display_phone')); ?>" name="<?php echo esc_attr($this->get_field_name('display_phone')); ?>" type="checkbox" <?php echo $display_phone === 'true' ? 'checked' : ''; ?> value="true" />
                     </div>
                     <div>
-                        <label for="<?php echo esc_attr($this->get_field_id('mandatory_phone')); ?>"><?php echo esc_html__('Mandatory', 'text_domain'); ?></label>
+                        <label for="<?php echo esc_attr($this->get_field_id('mandatory_phone')); ?>"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
                         <input id="<?php echo esc_attr($this->get_field_id('mandatory_phone')); ?>" name="<?php echo esc_attr($this->get_field_name('mandatory_phone')); ?>" type="checkbox" <?php echo $mandatory_phone === 'true' ? 'checked' : ''; ?> value="true" />
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-50">
-                    <p><?php echo esc_html__('Message', 'text_domain'); ?></p>
+                    <p><?php echo esc_html__('Message', 'btcpaywall'); ?></p>
                 </div>
                 <div class="col-50 col-2">
                     <div>
-                        <label for="<?php echo esc_attr($this->get_field_id('display_message')); ?>"><?php echo esc_html__('Display', 'text_domain'); ?></label>
+                        <label for="<?php echo esc_attr($this->get_field_id('display_message')); ?>"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
 
                         <input id="<?php echo esc_attr($this->get_field_id('display_message')); ?>" name="<?php echo esc_attr($this->get_field_name('display_message')); ?>" type="checkbox" <?php echo $display_message === 'true' ? 'checked' : ''; ?> value="true" />
                     </div>
                     <div>
-                        <label for="<?php echo esc_attr($this->get_field_id('mandatory_message')); ?>"><?php echo esc_html__('Mandatory', 'text_domain'); ?></label>
+                        <label for="<?php echo esc_attr($this->get_field_id('mandatory_message')); ?>"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
                         <input id="<?php echo esc_attr($this->get_field_id('mandatory_message')); ?>" name="<?php echo esc_attr($this->get_field_name('mandatory_message')); ?>" type="checkbox" value="true" <?php echo $mandatory_message === 'true' ? 'checked' : ''; ?> />
                     </div>
                 </div>

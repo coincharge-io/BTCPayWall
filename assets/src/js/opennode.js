@@ -52,9 +52,7 @@
     if (btcpw_invoice_id) {
       btcpwShowOpenNodeInvoice(btcpw_invoice_id)
     }
-    /*$(
-      '#btcpw_widget_skyscraper_tipping_form_high, #btcpw_widget_skyscraper_tipping_form_wide, #view_revenue_type,#post_revenue_type, #tipping_form_box_widget'
-    )*/
+
     $('#view_revenue_type, #post_revenue_type').submit(function (e) {
       e.preventDefault()
       localStorage.removeItem('opennode_invoice_id')
@@ -509,6 +507,7 @@
         if (response.success) {
           localStorage.removeItem('opennode_invoice_id')
           notifyAdmin(response.data.notify + 'Url:' + window.location.href)
+          location.reload(true)
         }
       },
       error: function (error) {

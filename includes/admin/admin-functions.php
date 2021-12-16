@@ -99,7 +99,7 @@ function render_post_settings_meta_box($post, $meta)
 
     wp_nonce_field(plugin_basename(__FILE__), 'btcpw_post_meta_box_nonce');
 }
-function roundAmount($currency, $amount)
+function btcpaywall_round_amount($currency, $amount)
 {
     switch ($currency) {
         case 'BTC':

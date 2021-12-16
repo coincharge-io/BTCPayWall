@@ -2,9 +2,9 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
-function render_payments_page()
+function btcpaywall_render_payments_page()
 {
-    if (isset($_GET['view']) && 'view-payment' == $_GET['view']) {
+    if (isset($_GET['view']) && 'view-payment' == sanitize_text_field($_GET['view'])) {
         require_once __DIR__ . '/view-payment.php';
     } else {
         require_once __DIR__ . '/class-payments.php';
