@@ -19,7 +19,7 @@ function btcpw_get_notify_administrator_body($amount, $collect_data = null, $typ
         $email_body .= "Donor Information: \n";
         $email_body .= $collect_data;
     }
-
+    $email_body .= "Thank you for using BTCPayWall";
     return $email_body;
 }
 

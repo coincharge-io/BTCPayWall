@@ -273,6 +273,7 @@ function ajax_tipping()
     $collects .= "Amount: {$amount} {$currency} \n";
     $collects .= "Credit on Store ID: {$storeId} \n";
     $collects .= $collect;
+    $collects .= "Thank you for using BTCPayWall.";
     $type = sanitize_text_field($_POST['type']);
     $itemDesc = "\nType: {$type}\n";
     $itemDesc .= "Weblog title: {$blogname} \n";
@@ -747,6 +748,8 @@ function ajax_paid_opennode_invoice()
     $message .= "Date: {$date} \n";
     $message .= "Amount: {$amount} \n";
     $message .= "Type: $content_title \n";
+    $message .= "Thank you for using BTCPayWall.";
+
     $payment = new BTCPayWall_Payment($invoice_id);;
 
     $payment->update(array('status' => $body['data']['status'], 'payment_method' => 'BTC'));
