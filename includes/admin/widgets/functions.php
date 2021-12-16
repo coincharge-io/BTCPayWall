@@ -13,8 +13,7 @@ function btcpaywall_wpdocs_register_tiping_banner_high_widget()
     require_once __DIR__ . '/tipping_banner_high.php';
     register_widget(new Tipping_Banner_High());
 }
-add_action('widgets_init', 'function btcpaywall_wpdocs_register_tiping_banner_high_widget()
-');
+add_action('widgets_init', 'btcpaywall_wpdocs_register_tiping_banner_high_widget');
 function btcpaywall_wpdocs_register_tiping_banner_wide_widget()
 {
     require_once __DIR__ . '/tipping_banner_wide.php';
