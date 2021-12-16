@@ -1192,6 +1192,7 @@ Revenue types
 #post_revenue_type fieldset:not(:first-of-type) h2,
 #view_revenue_type fieldset:not(:first-of-type) h2 {
   text-align: center;
+  margin-bottom: 1em;
 }
 .btcpw_revenue_post_container form,
 .btcpw_revenue_view_container form,
