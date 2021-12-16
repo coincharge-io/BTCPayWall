@@ -109,18 +109,20 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                         </div>
                     <?php endif; ?>
                 </div>
-
-                <?php if ($help === true) : ?>
-                    <div class="btcpw_help">
-                        <a class="btcpw_help__link" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
+                <?php if ($help === true || $additional_help === true) : ?>
+                    <div class="btcpw_help_links">
+                        <?php if ($help === true) : ?>
+                            <div class="btcpw_help">
+                                <a class="btcpw_help__link" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
+                            </div>
+                        <?php endif; ?>
+                        <?php if ($additional_help === true) : ?>
+                            <div class="btcpw_help">
+                                <a class="btcpw_help__link" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 <?php endif; ?>
-                <?php if ($additional_help === true) : ?>
-                    <div class="btcpw_help">
-                        <a class="btcpw_help__link" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
-                    </div>
-                <?php endif; ?>
-
             </fieldset>
             <?php if (true === $collect_data) : ?>
                 <fieldset>

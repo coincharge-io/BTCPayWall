@@ -1183,8 +1183,13 @@ Revenue types
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
 }
-
+.btcpw_help_links {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+}
 #post_revenue_type fieldset:not(:first-of-type),
 #view_revenue_type fieldset:not(:first-of-type) {
   display: none;

@@ -392,11 +392,13 @@ $default_info = get_option('btcpw_pay_per_view_info');
                 <div class="btcpw_pay__loading">
                     <p class="loading"></p>
                 </div>
-                <div class="btcpw_help_preview pay_per_view">
-                    <a class="btcpw_help__link_preview pay_per_view" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
-                </div>
-                <div class="btcpw_additional_help_preview pay_per_view">
-                    <a class="btcpw_additional_help__link_preview pay_per_view" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
+                <div class="btcpw_links_preview">
+                    <div class="btcpw_help_preview pay_per_view">
+                        <a class="btcpw_help__link_preview pay_per_view" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
+                    </div>
+                    <div class="btcpw_additional_help_preview pay_per_view">
+                        <a class="btcpw_additional_help__link_preview pay_per_view" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
+                    </div>
                 </div>
             </div>
         </div>

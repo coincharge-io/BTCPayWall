@@ -217,13 +217,15 @@ $default_info = get_option('btcpw_pay_per_post_info');
             <div class="btcpw_pay__loading_preview pay_per_post">
                 <p class="loading_preview"></p>
             </div>
-            <div class="btcpw_help_preview pay_per_post">
-                <a class="btcpw_help__link_preview pay_per_post" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
-            </div>
-            <div class="btcpw_additional_help_preview pay_per_post">
-                <a class="btcpw_help__additional_link_preview pay_per_post" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
-            </div>
+            <div class="btcpw_links_preview">
 
+                <div class="btcpw_help_preview pay_per_post">
+                    <a class="btcpw_help__link_preview pay_per_post" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
+                </div>
+                <div class="btcpw_additional_help_preview pay_per_post">
+                    <a class="btcpw_help__additional_link_preview pay_per_post" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

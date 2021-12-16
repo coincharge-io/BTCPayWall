@@ -404,7 +404,11 @@ div.btcpw_help_link a:hover {
   align-self: flex-start;
   align-items: center;
 }
-
+.btcpw_links_preview {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+}
 .btcpw_pay_preview h2 {
   font-size: 23px;
 }
