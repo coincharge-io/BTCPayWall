@@ -3,19 +3,19 @@
 if (!defined('ABSPATH')) exit;
 
 $help = filter_var(get_option('btcpw_pay_per_post_show_help_link', true), FILTER_VALIDATE_BOOLEAN);
-$help_link = get_option('btcpw_pay_per_post_help_link', 'https://btcpaywall.com/how-to-pay-at-the-bitcoin-paywall/');
-$help_text = get_option('btcpw_pay_per_post_help_link_text', 'Help');
+$help_link = get_option('btcpw_pay_per_post_help_link');
+$help_text = get_option('btcpw_pay_per_post_help_link_text');
 $additional_help = filter_var(get_option('btcpw_pay_per_post_show_additional_help_link', false), FILTER_VALIDATE_BOOLEAN);
 $additional_help_link = get_option('btcpw_pay_per_post_additional_help_link');
 $additional_help_text = get_option('btcpw_pay_per_post_additional_help_link_text');
-$background = get_option('btcpw_pay_per_post_background', '#ECF0F1');
-$width = get_option('btcpw_pay_per_post_width', 300);
-$height = get_option('btcpw_pay_per_post_height', 300);
+$background = get_option('btcpw_pay_per_post_background');
+$width = get_option('btcpw_pay_per_post_width');
+$height = get_option('btcpw_pay_per_post_height');
 
-$header_color = get_option('btcpw_pay_per_post_header_color', '#000000');
-$info_color = get_option('btcpw_pay_per_post_info_color', '#000000');
-$button_color = get_option('btcpw_pay_per_post_button_color', '#f6b330');
-$button_text_color = get_option('btcpw_pay_per_post_button_text_color', '#FFFFFF');
+$header_color = get_option('btcpw_pay_per_post_header_color');
+$info_color = get_option('btcpw_pay_per_post_info_color');
+$button_color = get_option('btcpw_pay_per_post_button_color');
+$button_text_color = get_option('btcpw_pay_per_post_button_text_color');
 $default_text = get_option('btcpw_pay_per_post_title', 'Pay now to unlock blogpost');
 $default_button = get_option('btcpw_pay_per_post_button', 'Pay');
 $default_info = get_option('btcpw_pay_per_post_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]');
@@ -56,6 +56,13 @@ $collect_data = display_is_enabled($collect);
     #btcpw_pay__button {
         background-color: <?php echo esc_html($button_color); ?>;
         color: <?php echo esc_html($button_text_color); ?>;
+    }
+
+    .btcpw_help_links {
+        display: flex;
+        flex-direction: <?php ($help === true && $additional_help === true) ? 'column' : ''; ?>;
+        justify-content: space-between;
+        gap: 1em;
     }
 </style>
 <div class="btcpw_revenue_post_container">

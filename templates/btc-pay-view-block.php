@@ -5,24 +5,24 @@ if (!defined('ABSPATH')) exit;
 
 
 $help = filter_var(get_option('btcpw_pay_per_view_show_help_link', true), FILTER_VALIDATE_BOOLEAN);
-$help_link = get_option('btcpw_pay_per_view_help_link', 'https://btcpaywall.com/how-to-pay-at-the-bitcoin-paywall/');
-$help_text = get_option('btcpw_pay_per_view_help_link_text', 'Help');
+$help_link = get_option('btcpw_pay_per_view_help_link');
+$help_text = get_option('btcpw_pay_per_view_help_link_text');
 $additional_help = filter_var(get_option('btcpw_pay_per_view_show_additional_help_link', false), FILTER_VALIDATE_BOOLEAN);
 $additional_help_link = get_option('btcpw_pay_per_view_additional_help_link');
 $additional_help_text = get_option('btcpw_pay_per_view_additional_help_link_text');
-$background = get_option('btcpw_pay_per_view_background', '#ECF0F1');
-$width = get_option('btcpw_pay_per_view_width', 300);
-$height = get_option('btcpw_pay_per_view_height', 300);
+$background = get_option('btcpw_pay_per_view_background');
+$width = get_option('btcpw_pay_per_view_width');
+$height = get_option('btcpw_pay_per_view_height');
 
-$header_color = get_option('btcpw_pay_per_view_header_color', '#000000');
-$info_color = get_option('btcpw_pay_per_view_info_color', '#000000');
+$header_color = get_option('btcpw_pay_per_view_header_color');
+$info_color = get_option('btcpw_pay_per_view_info_color');
 $button_color = get_option('btcpw_pay_per_view_button_color', '#f6b330');
-$button_text_color = get_option('btcpw_pay_per_view_button_text_color', '#FFFFFF');
+$button_text_color = get_option('btcpw_pay_per_view_button_text_color');
 $default_text = get_option('btcpw_pay_per_view_title', 'Pay now to unlock blogpost');
 $default_button = get_option('btcpw_pay_per_view_button', 'Pay');
 $default_info = get_option('btcpw_pay_per_view_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]');
-$preview_title_color = get_option('btcpw_pay_per_view_preview_title_color', '#000000');
-$preview_description_color = get_option('btcpw_pay_per_view_preview_description_color', '#000000');
+$preview_title_color = get_option('btcpw_pay_per_view_preview_title_color');
+$preview_description_color = get_option('btcpw_pay_per_view_preview_description_color');
 $collect_atts = array(
     'display_name' => empty($atts['display_name']) ? get_option('btcpw_default_pay_per_view_display_name', false) : $atts['display_name'],
     'display_email' => empty($atts['display_email']) ? get_option('btcpw_default_pay_per_view_display_email', false) : $atts['display_email'],
@@ -71,6 +71,13 @@ $preview_url = $image ? $image[0] : $atts['preview'];
     #btcpw_pay__button {
         background-color: <?php echo esc_html($button_color); ?>;
         color: <?php echo esc_html($button_text_color); ?>;
+    }
+
+    .btcpw_help_links {
+        display: flex;
+        flex-direction: <?php ($help === true && $additional_help === true) ? 'column' : ''; ?>;
+        justify-content: space-between;
+        gap: 1em;
     }
 </style>
 <div id="btcpw_revenue_container">
