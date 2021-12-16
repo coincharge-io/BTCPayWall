@@ -4,16 +4,18 @@
 if (!defined('ABSPATH')) exit;
 
 
-$help = filter_var(get_option('btcpw_pay_per_view_show_help_link', true), FILTER_VALIDATE_BOOLEAN);
-$help_link = get_option('btcpw_pay_per_view_help_link');
-$help_text = get_option('btcpw_pay_per_view_help_link_text');
-$additional_help = filter_var(get_option('btcpw_pay_per_view_show_additional_help_link', false), FILTER_VALIDATE_BOOLEAN);
+$help = filter_var(get_option('btcpw_pay_per_view_show_help_link',true), FILTER_VALIDATE_BOOLEAN);
+
+$help_link = get_option('btcpw_pay_per_view_help_link','https://btcpaywall.com/how-to-pay-at-the-bitcoin-paywall/');
+$help_text = get_option('btcpw_pay_per_view_help_link_text','Help');
+
+
+$additional_help = filter_var(get_option('btcpw_pay_per_view_show_additional_help_link'), FILTER_VALIDATE_BOOLEAN);
 $additional_help_link = get_option('btcpw_pay_per_view_additional_help_link');
 $additional_help_text = get_option('btcpw_pay_per_view_additional_help_link_text');
 $background = get_option('btcpw_pay_per_view_background');
 $width = get_option('btcpw_pay_per_view_width');
 $height = get_option('btcpw_pay_per_view_height');
-
 $header_color = get_option('btcpw_pay_per_view_header_color');
 $info_color = get_option('btcpw_pay_per_view_info_color');
 $button_color = get_option('btcpw_pay_per_view_button_color', '#f6b330');
@@ -124,8 +126,8 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                             </div>
                         <?php endif; ?>
                         <?php if ($additional_help === true) : ?>
-                            <div class="btcpw_help">
-                                <a class="btcpw_help__link" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
+                            <div class="btcpw_additional_help">
+                                <a class="btcpw_additional_help__link" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
                             </div>
                         <?php endif; ?>
                     </div>

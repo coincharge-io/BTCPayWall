@@ -18,7 +18,6 @@ $collect_address = get_option('btcpw_default_pay_per_view_display_address', fals
 $collect_phone = get_option('btcpw_default_pay_per_view_display_phone', false);
 $collect_message = get_option('btcpw_default_pay_per_view_display_message', false);
 
-
 $mandatory_name = get_option('btcpw_default_pay_per_view_mandatory_name', false);
 $mandatory_email = get_option('btcpw_default_pay_per_view_mandatory_email', false);
 $mandatory_address = get_option('btcpw_default_pay_per_view_mandatory_address', false);

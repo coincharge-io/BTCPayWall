@@ -3,9 +3,9 @@
 if (!defined('ABSPATH')) exit;
 
 $help = filter_var(get_option('btcpw_pay_per_post_show_help_link', true), FILTER_VALIDATE_BOOLEAN);
-$help_link = get_option('btcpw_pay_per_post_help_link');
-$help_text = get_option('btcpw_pay_per_post_help_link_text');
-$additional_help = filter_var(get_option('btcpw_pay_per_post_show_additional_help_link', false), FILTER_VALIDATE_BOOLEAN);
+$help_link = get_option('btcpw_pay_per_post_help_link', 'https://btcpaywall.com/how-to-pay-at-the-bitcoin-paywall/');
+$help_text = get_option('btcpw_pay_per_post_help_link_text', 'Help');
+$additional_help = filter_var(get_option('btcpw_pay_per_post_show_additional_help_link'), FILTER_VALIDATE_BOOLEAN);
 $additional_help_link = get_option('btcpw_pay_per_post_additional_help_link');
 $additional_help_text = get_option('btcpw_pay_per_post_additional_help_link_text');
 $background = get_option('btcpw_pay_per_post_background');
