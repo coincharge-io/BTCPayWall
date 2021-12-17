@@ -956,8 +956,8 @@ function ajax_btcpaywall_paid_content_file_invoice()
         $links[] = btcpaywall_get_download_url($payment->invoice_id, $download->get_file_url(), $download->ID, $body['metadata']['customer_data']['email']);
     }
     $_SESSION['btcpaywall_purchase'] = $payment->invoice_id;
-    $body = btcpaywall_get_send_purchased_links_body($links, $body['metadata']['customer_data']['name']);
-    wp_mail($body['metadata']['customer_data']['email'], 'BTCPayWall Digital Download Link', $body);
+    $email_body = btcpaywall_get_send_purchased_links_body($links, $body['metadata']['customer_data']['name']);
+    wp_mail($body['metadata']['customer_data']['email'], 'BTCPayWall Digital Download Link', $email_body);
 
     BTCPayWall()->cart->empty_cart();
     wp_send_json_success(['notify' => $message]);

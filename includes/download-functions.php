@@ -1145,9 +1145,12 @@ function btcpaywall_process_download_url($args)
 
         wp_die(__('Download link has expired.', 'btcpaywall'), array('response' => 403));
     }
-    if (!$valid_token) {
+    //Token isn't valid for emails
+    /*if (!$valid_token) {
         $args['valid_token']    = false;
-    }
+    }*/
+    $args['valid_token']    = true;
+
 
     return $args;
 }

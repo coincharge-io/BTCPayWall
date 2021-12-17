@@ -20,7 +20,7 @@ if (btcpaywall_item_in_cart($download->ID)) {
 }
 $logo_id = get_post_meta($post->ID, 'btcpw_product_image_id', true);
 $logo = wp_get_attachment_image_src($logo_id);
-$price = get_post_meta($post->ID, 'btcpw_price', true) . get_option('btcpw_default_pay_per_file_currency', 'SATS');
+$price = get_post_meta($post->ID, 'btcpw_price', true) . ' ' . get_option('btcpw_default_pay_per_file_currency', 'SATS');
 $description = get_post_meta($post->ID, 'btcpw_product_description', true);
 ?>
 <style>

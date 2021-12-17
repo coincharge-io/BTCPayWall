@@ -28,6 +28,8 @@ function btcpaywall_get_send_purchased_links_body($links, $name)
     $customer = !empty($name) ? $name : 'customer';
     $email_body = "Dear ${customer},\n\n";
     $email_body .= "Thank you for your purchase. Please click on the link(s) below to download your files.\n\n";
-    $email_body = "{$links}";
+    foreach ($links as $link) {
+        $email_body .= "{$link}";
+    }
     return $email_body;
 }
