@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit;
 
 
 
-function render_shortcode_banner_wide_tipping($atts)
+function btcpaywall_render_shortcode_banner_wide_tipping($atts)
 {
 
     $id = !empty($atts['id']) ? intval($atts['id']) : null;
@@ -63,9 +63,9 @@ function render_shortcode_banner_wide_tipping($atts)
     $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
     $logo = wp_get_attachment_image_src($atts['logo_id']) ? wp_get_attachment_image_src($atts['logo_id'])[0] : $atts['logo_id'];
     $background = wp_get_attachment_image_src($atts['background_id']) ? wp_get_attachment_image_src($atts['background_id'])[0] : $atts['background_id'];
-    $collect = getCollect($atts);
-    $collect_data = display_is_enabled($collect);
-    $fixed_amount = getFixedAmount($atts);
+    $collect = btcpaywall_get_collect($atts);
+    $collect_data = btcpaywall_display_is_enabled($collect);
+    $fixed_amount = btcpaywall_get_fixed_amount($atts);
     $first_enabled = array_column($fixed_amount, 'enabled');
     $d = array_search('true', $first_enabled);
     $index = 'value' . ($d + 1);
@@ -240,13 +240,13 @@ function render_shortcode_banner_wide_tipping($atts)
 
     return ob_get_clean();
 }
-add_shortcode('btcpw_tipping_banner_wide', 'render_shortcode_banner_wide_tipping');
+add_shortcode('btcpw_tipping_banner_wide', 'btcpaywall_render_shortcode_banner_wide_tipping');
 /**
  * @param $atts
  *
  * @return string
  */
-function render_shortcode_banner_high_tipping($atts)
+function btcpaywall_render_shortcode_banner_high_tipping($atts)
 {
 
     $id = !empty($atts['id']) ? intval($atts['id']) : null;
@@ -301,9 +301,9 @@ function render_shortcode_banner_high_tipping($atts)
     $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
     $logo = wp_get_attachment_image_src($atts['logo_id']) ? wp_get_attachment_image_src($atts['logo_id'])[0] : $atts['logo_id'];
     $background = wp_get_attachment_image_src($atts['background_id']) ? wp_get_attachment_image_src($atts['background_id'])[0] : $atts['background_id'];
-    $collect = getCollect($atts);
-    $collect_data = display_is_enabled($collect);
-    $fixed_amount = getFixedAmount($atts);
+    $collect = btcpaywall_get_collect($atts);
+    $collect_data = btcpaywall_display_is_enabled($collect);
+    $fixed_amount = btcpaywall_get_fixed_amount($atts);
     $first_enabled = array_column($fixed_amount, 'enabled');
     $d = array_search('true', $first_enabled);
     $index = 'value' . ($d + 1);
@@ -472,13 +472,13 @@ function render_shortcode_banner_high_tipping($atts)
 
     return ob_get_clean();
 }
-add_shortcode('btcpw_tipping_banner_high', 'render_shortcode_banner_high_tipping');
+add_shortcode('btcpw_tipping_banner_high', 'btcpaywall_render_shortcode_banner_high_tipping');
 /**
  * @param $atts
  *
  * @return string
  */
-function render_shortcode_page_tipping($atts)
+function btcpaywall_render_shortcode_page_tipping($atts)
 {
 
     $id = !empty($atts['id']) ? intval($atts['id']) : null;
@@ -537,9 +537,9 @@ function render_shortcode_page_tipping($atts)
     $logo = wp_get_attachment_image_src($atts['logo_id']) ? wp_get_attachment_image_src($atts['logo_id'])[0] : $atts['logo_id'];
 
     $background = wp_get_attachment_image_src($atts['background_id']) ? wp_get_attachment_image_src($atts['background_id'])[0] : $atts['background_id'];
-    $collect = getCollect($atts);
-    $collect_data = display_is_enabled($collect);
-    $fixed_amount = getFixedAmount($atts);
+    $collect = btcpaywall_get_collect($atts);
+    $collect_data = btcpaywall_display_is_enabled($collect);
+    $fixed_amount = btcpaywall_get_fixed_amount($atts);
     $first_enabled = array_column($fixed_amount, 'enabled');
     $d = array_search('true', $first_enabled);
     $index = 'value' . ($d + 1);
@@ -741,7 +741,7 @@ function render_shortcode_page_tipping($atts)
 
     return ob_get_clean();
 }
-add_shortcode('btcpw_tipping_page', 'render_shortcode_page_tipping');
+add_shortcode('btcpw_tipping_page', 'btcpaywall_render_shortcode_page_tipping');
 function displayShortcodeList($atts)
 {
     $atts = shortcode_atts(array(
@@ -756,7 +756,7 @@ function displayShortcodeList($atts)
  *
  * @return string
  */
-function render_shortcode_box_tipping($atts)
+function btcpaywall_render_shortcode_box_tipping($atts)
 {
 
     $id = !empty($atts['id']) ? intval($atts['id']) : null;
@@ -903,14 +903,14 @@ function render_shortcode_box_tipping($atts)
             <p>Powered by <a href='https://btcpaywall.com/' target='_blank'>BTCPayWall</a></p>
         </div>
     </div>
-    <?php
+<?php
 
     return ob_get_clean();
 }
-add_shortcode('btcpw_tipping_box', 'render_shortcode_box_tipping');
-function render_shortcode_btcpw_pay_file_block($atts)
+add_shortcode('btcpw_tipping_box', 'btcpaywall_render_shortcode_box_tipping');
+function btcpaywall_render_shortcode_btcpw_pay_file_block($atts)
 {
-    if (is_paid_content()) {
+    if (btcpaywall_is_paid_content()) {
         return '';
     }
 
@@ -934,15 +934,15 @@ function render_shortcode_btcpw_pay_file_block($atts)
 
     return ob_get_clean();
 }
-add_shortcode('btcpw_pay_file_block', 'render_shortcode_btcpw_pay_file_block');
+add_shortcode('btcpw_pay_file_block', 'btcpaywall_render_shortcode_btcpw_pay_file_block');
 /**
  * @param $atts
  *
  * @return string
  */
-function render_shortcode_btcpw_pay_view_block($atts)
+function btcpaywall_render_shortcode_btcpw_pay_view_block($atts)
 {
-    if (is_paid_content()) {
+    if (btcpaywall_is_paid_content()) {
         return '';
     }
 
@@ -974,15 +974,15 @@ function render_shortcode_btcpw_pay_view_block($atts)
 
     return ob_get_clean();
 }
-add_shortcode('btcpw_pay_video_block', 'render_shortcode_btcpw_pay_view_block');
+add_shortcode('btcpw_pay_video_block', 'btcpaywall_render_shortcode_btcpw_pay_view_block');
 /**
  * @param array $atts
  *
  * @return false|string
  */
-function render_shortcode_btcpw_start_content($atts)
+function btcpaywall_render_shortcode_btcpw_start_content($atts)
 {
-    if (is_paid_content()) {
+    if (btcpaywall_is_paid_content()) {
         return '';
     }
     $atts = shortcode_atts(array(
@@ -1013,7 +1013,7 @@ function render_shortcode_btcpw_start_content($atts)
     ), $atts);
 
 
-    update_meta_settings($atts);
+    btcpaywall_update_meta_settings($atts);
 
     $invoice_content = array('title' => 'Pay-per-post: ' . get_the_title(get_the_ID()), 'project' => 'post');
     update_post_meta(get_the_ID(), 'btcpw_invoice_content', $invoice_content);
@@ -1028,16 +1028,16 @@ function render_shortcode_btcpw_start_content($atts)
         return ob_get_clean();
     }
 }
-add_shortcode('btcpw_start_content', 'render_shortcode_btcpw_start_content');
+add_shortcode('btcpw_start_content', 'btcpaywall_render_shortcode_btcpw_start_content');
 /**
  * @param $atts
  *
  * @return false|string
  */
 
-function render_shortcode_btcpw_start_video($atts)
+function btcpaywall_render_shortcode_btcpw_start_video($atts)
 {
-    if (is_paid_content()) {
+    if (btcpaywall_is_paid_content()) {
         return '';
     }
     $img_preview = plugin_dir_url(__FILE__) . 'img/preview.png';
@@ -1073,7 +1073,7 @@ function render_shortcode_btcpw_start_video($atts)
     ), $atts);
 
 
-    update_meta_settings($atts);
+    btcpaywall_update_meta_settings($atts);
 
     $invoice_content = array('title' => 'Pay-per-view: ' . sanitize_text_field($atts['title']), 'project' => 'view');
     update_post_meta(get_the_ID(), 'btcpw_invoice_content', $invoice_content);
@@ -1091,28 +1091,28 @@ function render_shortcode_btcpw_start_video($atts)
         return ob_get_clean();
     }
 }
-add_shortcode('btcpw_start_video', 'render_shortcode_btcpw_start_video');
+add_shortcode('btcpw_start_video', 'btcpaywall_render_shortcode_btcpw_start_video');
 
 /**
  * @param array $atts
  *
  * @return string
  */
-function render_shortcode_btcpw_end_content($atts)
+function btcpaywall_render_shortcode_btcpw_end_content($atts)
 {
 
     return '<!-- /btcpw:end_content -->';
 }
-add_shortcode('btcpw_end_content', 'render_shortcode_btcpw_end_content');
-add_shortcode('btcpw_end_video', 'render_shortcode_btcpw_end_content');
+add_shortcode('btcpw_end_content', 'btcpaywall_render_shortcode_btcpw_end_content');
+add_shortcode('btcpw_end_video', 'btcpaywall_render_shortcode_btcpw_end_content');
 /**
  * @param $atts
  *
  * @return false|string
  */
-function render_shortcode_btcpw_pay_block($atts)
+function btcpaywall_render_shortcode_btcpw_pay_block($atts)
 {
-    if (is_paid_content()) {
+    if (btcpaywall_is_paid_content()) {
         return '';
     }
     $atts = shortcode_atts(array(
@@ -1142,122 +1142,15 @@ function render_shortcode_btcpw_pay_block($atts)
 
     return ob_get_clean();
 }
-add_shortcode('btcpw_pay_block', 'render_shortcode_btcpw_pay_block');
+add_shortcode('btcpw_pay_block', 'btcpaywall_render_shortcode_btcpw_pay_block');
 
 
-/**
- * Digital Download Protected Area
- * 
- * Paywall for Digital Download
- * 
- * @since 1.0
- * 
- * @param array $atts Shortcode attributes.
- * 
- * @return string 
- */
-function render_shortcode_protected_digital_download($atts)
-{
-    global $post;
-
-    $post_id = is_object($post) ? $post->ID : 0;
-
-
-    $atts = shortcode_atts(
-        array(
-            'id'             => $post_id
-        ),
-        $atts
-    );
-    $_id = $atts['id'] ? $atts['id'] : $post_id;
-    $post_data = new BTCPayWall_Digital_Download($_id);
-    $collect = $post_data->get_collect();
-    $collect_data = display_is_enabled($collect);
-    $invoice_content = array('title' => 'Pay-per-file: ' . get_the_title(), 'project' => 'file');
-    update_post_meta(get_the_ID(), 'btcpw_invoice_content', $invoice_content);
-
-    $button_color =  get_option('btcpw_pay_per_file_button_color');
-    $button_text = get_option('btcpw_pay_per_file_button_text');
-    $button_text_color = get_option('btcpw_pay_per_file_button_text_color');
-    $button_text_success = get_option('btcpw_pay_per_file_button_text_success');
-
-    if (is_paid_content($_id)) {
-        $payment_id = $_COOKIE['btcpw_payment_id_' . $post_id];
-        $download = new BTCPayWall_Digital_Download($_id);
-        $payment = new BTCPayWall_Payment($payment_id);
-        $customer_id = $payment->customer_id;
-        $customer = new BTCPayWall_Customer($customer_id);
-
-        $link = get_download_url($payment->invoice_id, $download->get_file_url(), $download->ID, $customer->email);
-
-        ob_start();
-    ?>
-        <style>
-            #btcpw_download_file {
-                background-color: <?php echo esc_html($button_color); ?>;
-                color: <?php echo esc_html($button_text_color); ?>;
-            }
-        </style>
-        <a id="btcpw_download_file" href="<?php echo $link; ?>" data-post_id="<?php echo $_id; ?>"><?php echo esc_html($button_text_success); ?></a>
-    <?php
-        return ob_get_clean();
-    }
-
-    ?>
-    <style>
-        #btcpw_pay__button {
-            background-color: <?php echo esc_html($button_color); ?>;
-            color: <?php echo esc_html($button_text_color); ?>;
-        }
-    </style>
-    <div id="btcpw_digital_download_protected_area">
-        <form method="POST" action="" id="btcpw_digital_download_form">
-
-            <fieldset>
-                <p>Price: <?php echo esc_html($post_data->get_price()); ?></p>
-                <div id="btcpw_digital_download_button">
-                    <?php if ($collect_data === true) : ?>
-                        <input type="button" name="next" class="btcpw_digital_download next-form" value="<?php _e('Continue', 'btcpaywall'); ?>" />
-                    <?php else : ?>
-                        <button type="submit" class="btcpw_digital_download" data-post_id="<?php echo get_the_ID(); ?>" id="btcpw_pay__button"><?php echo (!empty($button_text) ? esc_html($button_text) : 'Pay'); ?></button>
-                    <?php endif; ?>
-                </div>
-            </fieldset>
-            <?php if ($collect_data === true) : ?>
-                <fieldset>
-                    <div class="btcpw_digital_download_customer_information">
-                        <?php foreach ($collect as $key => $value) : ?>
-                            <?php if ($collect[$key]['display'] === true) : ?>
-                                <div class="<?php echo "btcpw_digital_download_customer_{$collect[$key]['id']}_wrap "; ?>">
-
-                                    <input type="text" placeholder="<?php echo $collect[$key]['label']; ?>" id="<?php echo "btcpw_digital_download_customer_{$collect[$key]['id']}"; ?>" name="<?php echo "btcpw_digital_download_customer_{$collect[$key]['id']}"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
-
-                                </div>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    </div>
-                    <div class="btcpw_digital_download_button" id="btcpw_digital_download_button">
-                        <div>
-                            <input type="button" name="previous" class="btcpw_digital_download previous-form" value="<?php _e('< Previous', 'btcpaywall'); ?>" />
-                        </div>
-                        <div>
-                            <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" class="btcpw_digital_download" id="btcpw_pay__button"><?php echo (!empty($button_text) ? esc_html($button_text) : 'Pay'); ?></button>
-                        </div>
-                    </div>
-
-                </fieldset>
-            <?php endif; ?>
-        </form>
-    </div>
-<?php
-}
-add_shortcode('btcpw_digital_download', 'render_shortcode_protected_digital_download');
 
 
 /**
  * 
  */
-function render_checkout()
+function btcpaywall_render_checkout()
 {
     $products = BTCPayWall()->cart->get_contents();
     $total = btcpaywall_get_total() . ' ' . get_option('btcpw_default_pay_per_file_currency');
@@ -1347,22 +1240,22 @@ function render_checkout()
 <?php
 }
 
-add_shortcode('btcpaywall_checkout', 'render_checkout');
+add_shortcode('btcpaywall_checkout', 'btcpaywall_render_checkout');
 
 
-function render_receipt()
+function btcpaywall_render_receipt()
 {
 
     $payment = new BTCPayWall_Payment($_SESSION['btcpaywall_purchase']);
+    $currency = get_option('btcpw_default_pay_per_file_currency', 'SATS');
     $download_ids = explode(',', $payment->download_ids);
-
 
 ?>
     <table id="btcpaywall_purchase_receipt" class="btcpaywall-table">
         <thead>
             <tr>
                 <th><strong><?php _e('Payment', 'btcpaywall'); ?>:</strong></th>
-                <th><?php echo  $payment->id; ?></th>
+                <th><?php echo  esc_html($payment->id); ?></th>
             </tr>
         </thead>
 
@@ -1370,20 +1263,20 @@ function render_receipt()
 
             <tr>
                 <td class="btcpaywall_receipt_payment_status"><strong><?php _e('Payment Status', 'btcpaywall'); ?>:</strong></td>
-                <td class="btcpaywall_receipt_payment_status <?php echo  $payment->status; ?>"><?php echo $payment->status; ?></td>
+                <td class="btcpaywall_receipt_payment_status <?php echo  esc_attr($payment->status); ?>"><?php echo esc_html($payment->status); ?></td>
             </tr>
             <tr>
                 <td><strong><?php _e('Payment ID', 'btcpaywall'); ?>:</strong></td>
-                <td><?php echo  $payment->id; ?></td>
+                <td><?php echo  esc_html($payment->id); ?></td>
             </tr>
             <tr>
                 <td><strong><?php _e('Payment Method', 'btcpaywall'); ?>:</strong></td>
-                <td><?php echo $payment->payment_method; ?></td>
+                <td><?php echo esc_html($payment->payment_method ? $payment->payment_method : 'BTC'); ?></td>
             </tr>
 
             <tr>
                 <td><strong><?php _e('Total Price', 'btcpaywall'); ?>:</strong></td>
-                <td><?php echo $payment->amount; ?></td>
+                <td><?php echo esc_html(btcpaywall_round_amount($currency, $payment->amount) . ' ' . $currency); ?></td>
             </tr>
 
         </tbody>
@@ -1406,7 +1299,7 @@ function render_receipt()
                         <tr>
                             <?php
                             $download       = new BTCPayWall_Digital_Download($item);
-                            $link = get_download_url($payment->invoice_id, $download->get_file_url(), $item, '');
+                            $link = btcpaywall_get_download_url($payment->invoice_id, $download->get_file_url(), $item, '');
                             ?>
                             <td>
 
@@ -1417,7 +1310,7 @@ function render_receipt()
 
                             </td>
                             <td class="btcpaywall_purchase_receipt_product_price">
-                                <?php echo ($download->get_price()); ?>
+                                <?php echo esc_html($download->get_price()); ?>
                             </td>
 
                         </tr>
@@ -1432,4 +1325,4 @@ function render_receipt()
 <?php
 }
 
-add_shortcode('btcpaywall_receipt', 'render_receipt');
+add_shortcode('btcpaywall_receipt', 'btcpaywall_render_receipt');

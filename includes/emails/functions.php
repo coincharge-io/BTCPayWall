@@ -3,7 +3,7 @@
 // Exit if accessed directly
 if (!defined('ABSPATH')) exit;
 
-function btcpw_get_notify_administrator_body($amount, $collect_data = null, $type = 'Pay-per-file')
+function btcpaywall_get_notify_administrator_body($amount, $collect_data = null, $type = 'Pay-per-file')
 {
     $storeId = get_option('btcpw_btcpay_store_id');
     $siteurl = get_option('siteurl');
@@ -23,7 +23,7 @@ function btcpw_get_notify_administrator_body($amount, $collect_data = null, $typ
     return $email_body;
 }
 
-function btcpw_get_send_purchased_links_body($links, $name)
+function btcpaywall_get_send_purchased_links_body($links, $name)
 {
     $customer = !empty($name) ? $name : 'customer';
     $email_body = "Dear ${customer},\n\n";

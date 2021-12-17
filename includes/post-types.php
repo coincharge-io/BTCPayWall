@@ -1,7 +1,7 @@
 <?php
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
-function register_post_types()
+function btcpaywall_register_post_types()
 {
 
     register_post_type('btcpw_order', [
@@ -56,4 +56,4 @@ function register_post_types()
         'query_var' => true,
     ]);
 }
-add_action('init', 'register_post_types');
+add_action('init', 'btcpaywall_register_post_types');

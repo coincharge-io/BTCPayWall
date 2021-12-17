@@ -63,7 +63,7 @@ class BTCPayWall_Tipping_Form
 
         $this->db = new BTCPayWall_DB_Tipping_Forms;
 
-        if ((is_numeric($form_id) && (int) $form_id !== absint($form_id))) {
+        if ((is_numeric($form_id) && (int) $form_id !== absint($form_id)) || $form_id === false) {
             return false;
         }
 
@@ -208,11 +208,11 @@ class BTCPayWall_Tipping_Form
 
     private function get_type($dim)
     {
-        return extractName($dim)['type'];
+        return btcpaywall_extract_name($dim)['type'];
     }
     private function get_name($dim)
     {
-        return extractName($dim)['name'];
+        return btcpaywall_extract_name($dim)['name'];
     }
     public function form_count()
     {

@@ -1,7 +1,7 @@
 <?php
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
-function load_vc_widgets()
+function btcpaywall_load_vc_widgets()
 {
 
     vc_map(array(
@@ -1662,10 +1662,10 @@ function load_vc_widgets()
                 'type' => 'dropdown',
                 'heading' => 'Shortcode',
                 'param_name' => 'shortcode',
-                'value' => allCreatedForms(),
+                'value' => btcpaywall_all_created_forms(),
                 'description' => 'Shortcode',
             ),
         )
     ));
 }
-add_action('vc_before_init', 'load_vc_widgets');
+add_action('vc_before_init', 'btcpaywall_load_vc_widgets');

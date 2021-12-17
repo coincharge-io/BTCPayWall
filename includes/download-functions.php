@@ -31,7 +31,7 @@ if (!defined('ABSPATH')) exit;
  * @return string Download url
  */
 
-function get_download_url($payment_id, $file_url, $download_id, $email)
+function btcpaywall_get_download_url($payment_id, $file_url, $download_id, $email)
 {
     if (!get_option('btcpaywall_secret_key')) {
         update_option('btcpw_secret_key', bin2hex(random_bytes(14)));
@@ -79,7 +79,7 @@ function get_download_url($payment_id, $file_url, $download_id, $email)
 }
 
 
-function process_download()
+function btcpaywall_process_download()
 {
 
     $args = array(
@@ -109,7 +109,7 @@ function process_download()
 
         $file = array();
 
-        $download_args = process_download_url($args);
+        $download_args = btcpaywall_process_download_url($args);
 
         if ($download_args['valid_token'] === false) {
             return false;
@@ -117,20 +117,20 @@ function process_download()
 
 
         $file['url'] = $download_args['btcpw_file'];
-        $id = get_attachment_id($download_args['btcpw_file']);
+        $id = btcpaywall_get_attachment_id($download_args['btcpw_file']);
 
         $file_path = get_attached_file($id);
 
-        $file['name'] = get_file_name_from_path($download_args['btcpw_file']);
+        $file['name'] = btcpaywall_get_file_name_from_path($download_args['btcpw_file']);
 
 
         $file['extension'] = get_file_extension($download_args['btcpw_file']);
 
         $file['is_local'] = (int) is_file_local($file_path); // 1 | 0
 
-        $file['content_type'] = get_file_content_type($file['extension']);
+        $file['content_type'] = btcpaywall_get_file_content_type($file['extension']);
         setcookie("btcpw_{$payment->invoice_id}{$download->ID}", isset($_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"]) ? ++$_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"] : 0, strtotime("14 Jan 2038"), '/');
-        $headers = get_all_headers();
+        $headers = btcpaywall_get_all_headers();
 
         if (in_array($file['extension'], array('php', 'js'))) {
             wp_die(__('File extension is not supported.', 'btcpaywall'));
@@ -140,16 +140,16 @@ function process_download()
             wp_die(__('Headers sent before download.', 'btcpaywall'));
         }
         if (isset($headers["Range"])) {
-            prepare_system_before_download_file();
-            $file_read_is_success = file_resume_download($file, $headers);
+            btcpaywall_prepare_system_before_download_file();
+            $file_read_is_success = btcpaywall_file_resume_download($file, $headers);
         } else {
             //$file['url'] = str_replace(" ", "%", $file['url']);
 
-            prepare_system_before_download_file();
+            btcpaywall_prepare_system_before_download_file();
 
-            set_headers_for_file_download($file);
+            btcpaywall_set_headers_for_file_download($file);
 
-            $file_read_is_success = readfile_by_parts($file['url']);
+            $file_read_is_success = btcpaywall_readfile_by_parts($file['url']);
         }
 
         if (!$file_read_is_success) {
@@ -160,7 +160,7 @@ function process_download()
     }
 }
 
-add_action('init', 'process_download', 500);
+add_action('init', 'btcpaywall_process_download', 500);
 
 
 /**
@@ -172,7 +172,7 @@ add_action('init', 'process_download', 500);
  * 
  * @return string Extension 
  */
-function get_file_content_type($ext)
+function btcpaywall_get_file_content_type($ext)
 {
 
     switch ($ext):
@@ -1055,7 +1055,7 @@ function get_file_content_type($ext)
     }
     return $ctype;
 }
-function readfile_by_parts($file_url, $file_seek_offset = false)
+function btcpaywall_readfile_by_parts($file_url, $file_seek_offset = false)
 {
 
 
@@ -1082,7 +1082,7 @@ function readfile_by_parts($file_url, $file_seek_offset = false)
 }
 
 
-function file_resume_download($file, $headers)
+function btcpaywall_file_resume_download($file, $headers)
 {
 
 
@@ -1124,13 +1124,13 @@ function file_resume_download($file, $headers)
     header('Accept-Ranges: bytes');
 
 
-    $file_read_status = readfile_by_parts($file['url'], $seek_start);
+    $file_read_status = btcpaywall_readfile_by_parts($file['url'], $seek_start);
 
     return $file_read_status;
 }
 
 
-function process_download_url($args)
+function btcpaywall_process_download_url($args)
 {
 
     $parts = parse_url(add_query_arg($args));
@@ -1152,7 +1152,7 @@ function process_download_url($args)
     return $args;
 }
 
-function get_all_headers()
+function btcpaywall_get_all_headers()
 {
 
     $headers = array();
@@ -1167,7 +1167,7 @@ function get_all_headers()
 }
 
 
-function readable_format_seconds_to_words($seconds)
+function btcpaywall_readable_format_seconds_to_words($seconds)
 {
     $ret = "";
 
@@ -1196,7 +1196,7 @@ function readable_format_seconds_to_words($seconds)
 
 
 
-function set_headers_for_file_download($file)
+function btcpaywall_set_headers_for_file_download($file)
 {
 
     nocache_headers();
@@ -1210,7 +1210,7 @@ function set_headers_for_file_download($file)
     if ((int) $file['size'] > 0)
         header("Content-Length: " . $file['size'] . "\n");
 }
-function prepare_system_before_download_file()
+function btcpaywall_prepare_system_before_download_file()
 {
 
     $disabled = explode(',', ini_get('disable_functions'));
@@ -1227,7 +1227,7 @@ function prepare_system_before_download_file()
 
     @ob_end_clean();
 }
-function get_local_path_from_real_link($file_url)
+function btcpaywall_get_local_path_from_real_link($file_url)
 {
 
     $file_local_path = str_replace(site_url(), '', $file_url);
@@ -1243,7 +1243,7 @@ function get_local_path_from_real_link($file_url)
  * @param string $file_path - Local path or URL
  * @return string
  */
-function get_file_name_from_path($file_path)
+function btcpaywall_get_file_name_from_path($file_path)
 {
 
     $file_name = str_replace('\\', '/', $file_path);

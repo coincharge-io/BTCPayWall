@@ -3,7 +3,7 @@
 if (!defined('ABSPATH')) exit;
 
 
-function load_gutenberg()
+function btcpaywall_load_gutenberg()
 {
     $asset_file = include(BTCPAYWALL_PLUGIN_DIR . 'assets/dist/js/index.asset.php');
 
@@ -19,7 +19,7 @@ function load_gutenberg()
         'btcpaywall/gutenberg-start-block',
         [
             'editor_script' => 'btcpaywall-gutenberg-block-script',
-            'render_callback' => 'render_gutenberg',
+            'render_callback' => 'btcpaywall_render_gutenberg',
             'attributes' => array(
                 'className' => array(
                     'default' => '',
@@ -98,7 +98,7 @@ function load_gutenberg()
         'btcpaywall/gutenberg-end-block',
         [
             'editor_script' => 'btcpaywall-gutenberg-block-script',
-            'render_callback' => 'render_end_gutenberg',
+            'render_callback' => 'btcpaywall_render_end_gutenberg',
         ]
     );
 
@@ -107,7 +107,7 @@ function load_gutenberg()
         'btcpaywall/gutenberg-start-video-block',
         [
             'editor_script' => 'btcpaywall-gutenberg-block-script',
-            'render_callback' => 'render_start_video_gutenberg',
+            'render_callback' => 'btcpaywall_render_start_video_gutenberg',
             'attributes' => array(
                 'className' => array(
                     'default' => '',
@@ -197,21 +197,21 @@ function load_gutenberg()
         'btcpaywall/gutenberg-end-video-block',
         [
             'editor_script' => 'btcpaywall-gutenberg-block-script',
-            'render_callback' => 'render_end_gutenberg',
+            'render_callback' => 'btcpaywall_render_end_gutenberg',
         ]
     );
     register_block_type(
         'btcpaywall/gutenberg-shortcode-list',
         [
             'editor_script' => 'btcpaywall-gutenberg-block-script',
-            'render_callback' => 'render_shortcodes_gutenberg',
+            'render_callback' => 'btcpaywall_render_shortcodes_gutenberg',
         ]
     );
     register_block_type(
         'btcpaywall/gutenberg-file-block',
         [
             'editor_script' => 'btcpaywall-gutenberg-block-script',
-            'render_callback' => 'render_file_gutenberg',
+            'render_callback' => 'btcpaywall_render_file_gutenberg',
             'attributes' => array(
                 'className' => array(
                     'default' => '',
@@ -265,7 +265,7 @@ function load_gutenberg()
         'btcpaywall/gutenberg-tipping-box',
         [
             'editor_script' => 'btcpaywall-gutenberg-block-script',
-            'render_callback' => 'render_tipping_box',
+            'render_callback' => 'btcpaywall_render_tipping_box',
             'attributes' => array(
                 'className' => array(
                     'default' => '',
@@ -347,7 +347,7 @@ function load_gutenberg()
         'btcpaywall/gutenberg-tipping-banner-wide',
         [
             'editor_script' => 'btcpaywall-gutenberg-block-script',
-            'render_callback' => 'render_tipping_banner_wide',
+            'render_callback' => 'btcpaywall_render_tipping_banner_wide',
             'attributes' => array(
                 'className' => array(
                     'default' => '',
@@ -525,7 +525,7 @@ function load_gutenberg()
         'btcpaywall/gutenberg-tipping-banner-high',
         [
             'editor_script' => 'btcpaywall-gutenberg-block-script',
-            'render_callback' => 'render_tipping_banner_high',
+            'render_callback' => 'btcpaywall_render_tipping_banner_high',
             'attributes' => array(
                 'className' => array(
                     'type' => 'string',
@@ -703,7 +703,7 @@ function load_gutenberg()
         'btcpaywall/gutenberg-tipping-page',
         [
             'editor_script' => 'btcpaywall-gutenberg-block-script',
-            'render_callback' => 'render_tipping_pages',
+            'render_callback' => 'btcpaywall_render_tipping_pages',
             'attributes' => array(
                 'className' => array(
                     'default' => '',
@@ -894,4 +894,4 @@ function load_gutenberg()
     );
 }
 
-add_action('init', 'load_gutenberg');
+add_action('init', 'btcpaywall_load_gutenberg');

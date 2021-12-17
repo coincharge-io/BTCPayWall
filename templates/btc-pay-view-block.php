@@ -4,10 +4,10 @@
 if (!defined('ABSPATH')) exit;
 
 
-$help = filter_var(get_option('btcpw_pay_per_view_show_help_link',true), FILTER_VALIDATE_BOOLEAN);
+$help = filter_var(get_option('btcpw_pay_per_view_show_help_link', true), FILTER_VALIDATE_BOOLEAN);
 
-$help_link = get_option('btcpw_pay_per_view_help_link','https://btcpaywall.com/how-to-pay-at-the-bitcoin-paywall/');
-$help_text = get_option('btcpw_pay_per_view_help_link_text','Help');
+$help_link = get_option('btcpw_pay_per_view_help_link', 'https://btcpaywall.com/how-to-pay-at-the-bitcoin-paywall/');
+$help_text = get_option('btcpw_pay_per_view_help_link_text', 'Help');
 
 
 $additional_help = filter_var(get_option('btcpw_pay_per_view_show_additional_help_link'), FILTER_VALIDATE_BOOLEAN);
@@ -37,9 +37,9 @@ $collect_atts = array(
     'mandatory_phone' => empty($atts['mandatory_phone']) ? get_option('btcpw_default_pay_per_view_mandatory_phone', false) : $atts['mandatory_phone'],
     'mandatory_message' => empty($atts['mandatory_message']) ? get_option('btcpw_default_pay_per_view_mandatory_message', false) : $atts['mandatory_message']
 );
-$collect = getCollect($collect_atts);
+$collect = btcpaywall_get_collect($collect_atts);
 
-$collect_data = display_is_enabled($collect);
+$collect_data = btcpaywall_display_is_enabled($collect);
 $help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
 
 $image = wp_get_attachment_image_src($atts['preview']);
@@ -87,7 +87,7 @@ $preview_url = $image ? $image[0] : $atts['preview'];
         <form method="POST" action="" id="view_revenue_type">
             <fieldset>
                 <div class="btcpw_pay__content">
-                    <h2><?php echo esc_html(get_payblock_header_string()); ?></h2>
+                    <h2><?php echo esc_html(btcpaywall_get_payblock_header_string()); ?></h2>
 
                 </div>
                 <div class="btcpw_pay__preview">
@@ -102,7 +102,7 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                 </div>
                 <div class="btcpw_pay__content">
                     <p>
-                        <?php echo esc_html(get_post_info_string()); ?>
+                        <?php echo esc_html(btcpaywall_get_post_info_string()); ?>
                     </p>
                 </div>
 
@@ -114,7 +114,7 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                         </div>
                     <?php else : ?>
                         <div>
-                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html(get_payblock_button_string()); ?></button>
+                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html(btcpaywall_get_payblock_button_string()); ?></button>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -153,7 +153,7 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                         </div>
 
                         <div>
-                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo get_payblock_button_string() ?></button>
+                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo btcpaywall_get_payblock_button_string() ?></button>
                         </div>
                     </div>
                 </fieldset>

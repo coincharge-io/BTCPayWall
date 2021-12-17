@@ -19,11 +19,11 @@ class Tipping_Banner_High extends WP_Widget
         $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
         $logo = wp_get_attachment_image_src($instance['logo_id']) ? wp_get_attachment_image_src($instance['logo_id'])[0] : $instance['logo_id'];
         $background = wp_get_attachment_image_src($instance['background_id']) ? wp_get_attachment_image_src($instance['background_id'])[0] : $instance['background_id'];
-        $collect = getCollect($instance);
-        $collect_d = display_is_enabled($collect);
+        $collect = btcpaywall_get_collect($instance);
+        $collect_d = btcpaywall_display_is_enabled($collect);
 
         $collect_data = filter_var($collect_d, FILTER_VALIDATE_BOOLEAN);
-        $fixed_amount = getFixedAmount($instance);
+        $fixed_amount = btcpaywall_get_fixed_amount($instance);
         $free_input = filter_var($instance['free_input'], FILTER_VALIDATE_BOOLEAN);
         $first_enabled = array_column($fixed_amount, 'enabled');
         $d = array_search('true', $first_enabled);

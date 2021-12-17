@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) exit;
  * @return void
  */
 
-function add_btcpw_product_meta_boxes()
+function btcpaywall_add_product_meta_boxes()
 {
     add_meta_box('btcpw_product_amount', __('BTCPayWall Product  Price', 'btcpaywall'), 'render_btcpw_amount', 'digital_download');
 
@@ -27,7 +27,7 @@ function add_btcpw_product_meta_boxes()
     add_meta_box('btcpw_product_description',  __('BTCPayWall Product Description', 'btcpaywall'), 'render_btcpw_product_description', 'digital_download');
 }
 
-add_action('add_meta_boxes', 'add_btcpw_product_meta_boxes');
+add_action('add_meta_boxes', 'btcpaywall_add_product_meta_boxes');
 
 function btcpw_meta_fields()
 {
@@ -158,7 +158,7 @@ function render_btcpw_product_stats($post)
 
 
 
-function btcpw_meta_save($post_id)
+function btcpaywall_meta_save($post_id)
 {
 
     if (empty($post_id)) {
@@ -191,4 +191,4 @@ function btcpw_meta_save($post_id)
         }
     }
 }
-add_action('save_post', 'btcpw_meta_save');
+add_action('save_post', 'btcpaywall_meta_save');

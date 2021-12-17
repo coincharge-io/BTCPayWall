@@ -12,11 +12,11 @@ if (!defined('ABSPATH')) exit;
  *
  * @return string
  */
-function filter_the_content($content)
+function btcpaywall_filter_the_content($content)
 {
 
 
-    if (is_paid_content()) {
+    if (btcpaywall_is_paid_content()) {
         return $content;
     }
 
@@ -35,31 +35,11 @@ function filter_the_content($content)
 
     return $content_start . $content_end;
 }
-add_filter('the_content',  'filter_the_content', 50);
+add_filter('the_content',  'btcpaywall_filter_the_content', 50);
 
 
-/* 
 
-
-function add_digital_download($content)
-{
-    global $post;
-    $download = new BTCPayWall_Digital_Download($post->ID);
-
-    if (!$post instanceof WP_Post) return $content;
-
-
-    if ($post->post_type !== 'digital_download' || has_shortcode($post->post_content, 'btcpw_digital_download')) {
-        return $content;
-    }
-    return  $content . "[btcpw_digital_download id={$download->ID}]";
-}
-
-add_filter('the_content', 'add_digital_download');
-
- */
-
-function btcpw_digital_download_template($single_template)
+function btcpaywall_digital_download_template($single_template)
 {
     global $post;
 
@@ -68,4 +48,4 @@ function btcpw_digital_download_template($single_template)
     }
     return $single_template;
 }
-add_filter('single_template', 'btcpw_digital_download_template', 99, 1);
+add_filter('single_template', 'btcpaywall_digital_download_template', 99, 1);

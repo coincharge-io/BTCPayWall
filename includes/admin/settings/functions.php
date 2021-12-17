@@ -5,11 +5,11 @@ if (!defined('ABSPATH')) exit;
 
 
 
-function sanitize_number($value)
+function btcpaywall_sanitize_number($value)
 {
     return filter_var($value, FILTER_SANITIZE_NUMBER_INT);
 }
-function validate_textarea($values)
+function btcpaywall_validate_textarea($values)
 {
 
     $default_values = array();
@@ -26,7 +26,7 @@ function validate_textarea($values)
     return $default_values;
 }
 
-function sanitize_btcpay_server_url($value)
+function btcpaywall_sanitize_btcpay_server_url($value)
 {
 
     $value = sanitize_text_field($value);
@@ -34,7 +34,7 @@ function sanitize_btcpay_server_url($value)
     return trim($value, '/');
 }
 
-function sanitize_btcpay_auth_key($value)
+function btcpaywall_sanitize_btcpay_auth_key($value)
 {
     $value = sanitize_text_field($value);
 
@@ -42,7 +42,7 @@ function sanitize_btcpay_auth_key($value)
 }
 
 
-function sanitize_payblock_area($value)
+function btcpaywall_sanitize_payblock_area($value)
 {
 
     $value = sanitize_textarea_field($value);
@@ -50,7 +50,7 @@ function sanitize_payblock_area($value)
     return $value;
 }
 
-function sanitize_color($value)
+function btcpaywall_sanitize_color($value)
 {
 
     $value = sanitize_hex_color($value);
@@ -58,7 +58,7 @@ function sanitize_color($value)
     return $value;
 }
 
-function sanitize_text($value)
+function btcpaywall_sanitize_text($value)
 {
 
     $value = sanitize_text_field($value);
@@ -66,23 +66,22 @@ function sanitize_text($value)
     return $value;
 }
 
-function sanitize_boolean($value)
+function btcpaywall_sanitize_boolean($value)
 {
 
     return (isset($value) ? true : false);
 }
-function render_general_settings_page()
+function btcpaywall_render_general_settings_page()
 {
     include 'partials/page-general-settings.php';
 }
-function render_edit_page()
+function btcpaywall_render_edit_page()
 {
     include 'partials/page-tipping-edit.php';
 }
 
 
-function render_new_form()
+function btcpaywall_render_new_form()
 {
     include 'partials/page-add-form.php';
 }
-

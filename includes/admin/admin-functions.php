@@ -1,7 +1,7 @@
 <?php
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
-function startsWith($string, $startString)
+function btcpaywall_starts_with($string, $startString)
 {
     $len = strlen($startString);
 
@@ -12,33 +12,27 @@ function startsWith($string, $startString)
 /**
  * Check if API key contains required permission
  */
-function checkPermission($list, $permission)
+function btcpaywall_check_permission($list, $permission)
 {
     foreach ($list as $perm) {
-        if (startsWith($perm, $permission)) {
+        if (btcpaywall_starts_with($perm, $permission)) {
             return true;
         }
     }
     return false;
 }
-function allCreatedForms()
+function btcpaywall_all_created_forms()
 {
-    /* global $wpdb;
-    $table_name = "{$wpdb->prefix}btcpaywall_forms";
-    $result = $wpdb->get_results(
-        "SELECT * FROM $table_name",
-        ARRAY_A
-    ); */
     $form = new BTCPayWall_Tipping_Form();
     $result = $form->get_forms();
     $shortcodes = array();
     foreach ($result as $row) {
         $placeholder = "#{$row['id']} {$row['form_name']} - {$row['name']}";
-        $shortcodes[$placeholder] = outputShortcodeAttributes($row['name'], $row['id']);
+        $shortcodes[$placeholder] = btcpaywall_output_shortcode_attributes($row['name'], $row['id']);
     }
     return $shortcodes;
 }
-function outputShortcodeAttributes($name, $id)
+function btcpaywall_output_shortcode_attributes($name, $id)
 {
     switch ($name) {
 
@@ -57,7 +51,7 @@ function outputShortcodeAttributes($name, $id)
 /**
  * Extract tipping name
  */
-function extractName($dimension)
+function btcpaywall_extract_name($dimension)
 {
     switch ($dimension) {
         case '250x300':
@@ -83,7 +77,7 @@ function extractName($dimension)
             );
     }
 }
-function check_store_id($store_id)
+function btcpaywall_check_store_id($store_id)
 {
 
     if (get_option("btcpw_btcpay_store_id") !== false) {
@@ -94,7 +88,7 @@ function check_store_id($store_id)
         add_option("btcpw_btcpay_store_id", $store_id, null, 'no');
     }
 }
-function render_post_settings_meta_box($post, $meta)
+function btcpaywall_render_post_settings_meta_box($post, $meta)
 {
 
     wp_nonce_field(plugin_basename(__FILE__), 'btcpw_post_meta_box_nonce');

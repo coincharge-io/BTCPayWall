@@ -1,7 +1,7 @@
 <?php
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
-function ajax_check_greenfield_api_work()
+function ajax_btcpaywall_check_greenfield_api_work()
 {
 
     if (empty($_POST['auth_key_view']) || empty($_POST['auth_key_create']) || empty($_POST['server_url'])) {
@@ -40,9 +40,9 @@ function ajax_check_greenfield_api_work()
     $view_permission = json_decode($response_view['body'])->permissions[0];
     $create_permission = json_decode($response_create['body'])->permissions[0];
 
-    $valid_view_permission = checkPermission(json_decode($response_view['body'], true)['permissions'], 'btcpay.store.canviewinvoices');
+    $valid_view_permission = btcpaywall_check_permission(json_decode($response_view['body'], true)['permissions'], 'btcpay.store.canviewinvoices');
 
-    $valid_create_permission = checkPermission(json_decode($response_create['body'], true)['permissions'], 'btcpay.store.cancreateinvoice');
+    $valid_create_permission = btcpaywall_check_permission(json_decode($response_create['body'], true)['permissions'], 'btcpay.store.cancreateinvoice');
 
     $valid_permissions = $valid_create_permission && $valid_view_permission;
 
@@ -52,18 +52,18 @@ function ajax_check_greenfield_api_work()
     $create_store_id = substr($create_permission, strrpos($create_permission, ':') + 1);
     $valid_store_id = $view_store_id === $create_store_id;
     if ($valid_permissions && $valid_store_id && $valid_response_code) {
-        check_store_id($view_store_id);
+        btcpaywall_check_store_id($view_store_id);
         wp_send_json_success(["store_id" => $view_store_id]);
     } else {
         wp_send_json_error(['message' => 'Something went wrong. Please check your credentials.']);
     }
 }
-add_action('wp_ajax_btcpw_check_greenfield_api_work', 'ajax_check_greenfield_api_work');
+add_action('wp_ajax_btcpw_check_greenfield_api_work', 'ajax_btcpaywall_check_greenfield_api_work');
 
 
 
-add_action('wp_ajax_btcpw_get_greenfield_invoices', 'get_greenfield_invoices');
-function get_greenfield_invoices()
+/*add_action('wp_ajax_btcpw_get_greenfield_invoices', 'get_greenfield_invoices');
+ function btcpget_greenfield_invoices()
 {
 
     $store_id = get_option('btcpw_btcpay_store_id');
@@ -98,10 +98,9 @@ function get_greenfield_invoices()
         wp_send_json_error($data);
     }
 }
-
-function createShortcode()
+ */
+function btcpaywall_create_shortcode()
 {
-    global $wpdb;
     check_ajax_referer('shortcode-security-nonce', 'nonce_ajax');
 
     $row = new BTCPayWall_Tipping_Form();
@@ -115,4 +114,4 @@ function createShortcode()
         wp_send_json_error(array('res' => false, 'message' => __('Something went wrong. Please try again later.')));
     }
 }
-add_action('wp_ajax_btcpw_create_shortcode', 'createShortcode');
+add_action('wp_ajax_btcpw_create_shortcode', 'btcpaywall_create_shortcode');

@@ -31,12 +31,10 @@ $collect_atts = array(
     'mandatory_phone' => empty($atts['mandatory_phone']) ? get_option('btcpw_default_pay_per_post_mandatory_phone', false) : $atts['mandatory_phone'],
     'mandatory_message' => empty($atts['mandatory_message']) ? get_option('btcpw_default_pay_per_post_mandatory_message', false) : $atts['mandatory_message']
 );
-$collect = getCollect($collect_atts);
+$collect = btcpaywall_get_collect($collect_atts);
 
-$collect_data = display_is_enabled($collect);
-/**<div class="btcpw_pay__loading">
-            <p class="loading"></p>
-        </div> */
+$collect_data = btcpaywall_display_is_enabled($collect);
+
 ?>
 <style>
     .btcpw_revenue_post_container {
@@ -69,12 +67,12 @@ $collect_data = display_is_enabled($collect);
     <form method="POST" action="" id="post_revenue_type">
         <fieldset>
             <div class="btcpw_pay__content paywall_header">
-                <h2><?php echo esc_html(get_payblock_header_string()); ?></h2>
+                <h2><?php echo esc_html(btcpaywall_get_payblock_header_string()); ?></h2>
 
             </div>
             <div class="btcpw_pay__content paywall_info">
                 <p>
-                    <?php echo esc_html(get_post_info_string()); ?>
+                    <?php echo esc_html(btcpaywall_get_post_info_string()); ?>
                 </p>
             </div>
             <div class="btcpw_revenue_post_button" id="btcpw_revenue_post_button">
@@ -86,7 +84,7 @@ $collect_data = display_is_enabled($collect);
                 <?php else : ?>
 
                     <div>
-                        <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html(get_payblock_button_string()) ?></button>
+                        <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html(btcpaywall_get_payblock_button_string()) ?></button>
                     </div>
                 <?php endif; ?>
             </div>
@@ -126,7 +124,7 @@ $collect_data = display_is_enabled($collect);
                     </div>
 
                     <div>
-                        <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo get_payblock_button_string() ?></button>
+                        <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo btcpaywall_get_payblock_button_string() ?></button>
                     </div>
                 </div>
             </fieldset>

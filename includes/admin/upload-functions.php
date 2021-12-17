@@ -24,7 +24,7 @@ if (!defined('ABSPATH')) exit;
  * @return void
  */
 
-function change_digital_download_upload_dir()
+function btcpaywall_change_digital_download_upload_dir()
 {
     global $pagenow;
 
@@ -34,7 +34,7 @@ function change_digital_download_upload_dir()
         }
     }
 }
-add_action('admin_init', 'change_digital_download_upload_dir', 999);
+add_action('admin_init', 'btcpaywall_change_digital_download_upload_dir', 999);
 function btcpaywall_upload_dir($param)
 {
 
@@ -46,7 +46,7 @@ function btcpaywall_upload_dir($param)
 
 
 
-function get_protected_dir()
+function btcpaywall_get_protected_dir()
 {
 
     $dir_level1 = 'btcpaywall-uploads';

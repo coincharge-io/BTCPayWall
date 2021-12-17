@@ -35,7 +35,7 @@ $image = array(
 );
 $logo = wp_get_attachment_image_src($image['logo']);
 $background = wp_get_attachment_image_src($image['background']);
-$shortcode = !empty($result) ? outputShortcodeAttributes($result['name'], $result['id']) : '';
+$shortcode = !empty($result) ? btcpaywall_output_shortcode_attributes($result['name'], $result['id']) : '';
 $id = $result['id'] ?? null;
 ?>
 

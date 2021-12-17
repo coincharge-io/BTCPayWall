@@ -2,10 +2,10 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
-function add_my_media_button()
+function btcpaywall_add_my_media_button()
 {
 
-    $shortcodes = allCreatedForms();
+    $shortcodes = btcpaywall_all_created_forms();
     $shortcodes_list = '';
     echo '<div id=btcpw_shortcodes>';
     echo '<button type=button id=btcpw_shortcode_button>BTCPayWall Shortcodes <span><i class="fas fa-arrow-down"></i></span></button>';
@@ -18,4 +18,4 @@ function add_my_media_button()
     echo '</div>';
     echo '</div>';
 }
-add_action('media_buttons', 'add_my_media_button', 15);
+add_action('media_buttons', 'btcpaywall_add_my_media_button', 15);

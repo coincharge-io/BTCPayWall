@@ -2,7 +2,7 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 
-function render_gutenberg($atts)
+function btcpaywall_render_gutenberg($atts)
 {
 	$atts = shortcode_atts(array(
 		'pay_block' => 'true',
@@ -26,11 +26,11 @@ function render_gutenberg($atts)
 	return do_shortcode("[btcpw_start_content pay_block='{$atts['pay_block']}' btc_format='{$atts['btc_format']}' price='{$atts['price']}' duration_type='{$atts['duration_type']}' duration='{$atts['duration']}' currency='{$atts['currency']}' display_name='{$atts['display_name']}' mandatory_name='{$atts['mandatory_name']}' display_email='{$atts['display_email']}' mandatory_email='{$atts['mandatory_email']}' display_phone='{$atts['display_phone']}' mandatory_phone='{$atts['mandatory_phone']}' display_address='{$atts['display_address']}' mandatory_address='{$atts['mandatory_address']}' display_message='{$atts['display_message']}' mandatory_message='{$atts['mandatory_message']}']");
 }
 
-function render_end_gutenberg()
+function btcpaywall_render_end_gutenberg()
 {
 	return do_shortcode("[btcpw_end_content]");
 }
-function render_shortcodes_gutenberg($atts)
+function btcpaywall_render_shortcodes_gutenberg($atts)
 {
 	$atts = shortcode_atts(array(
 		'shortcode' => '',
@@ -39,7 +39,7 @@ function render_shortcodes_gutenberg($atts)
 }
 
 
-function render_file_gutenberg($atts)
+function btcpaywall_render_file_gutenberg($atts)
 {
 	$atts = shortcode_atts(array(
 		'pay_file_block' => 'true',
@@ -56,7 +56,7 @@ function render_file_gutenberg($atts)
 
 	return do_shortcode("[btcpw_file pay_file_block='{$atts['pay_file_block']}' btc_format='{$atts['btc_format']}' file='{$atts['file']}' title='{$atts['title']}' description='{$atts['description']}' preview={$atts['preview']} price='{$atts['price']}' duration_type='{$atts['duration_type']}' duration='{$atts['duration']}' currency='{$atts['currency']}']");
 }
-function render_start_video_gutenberg($atts)
+function btcpaywall_render_start_video_gutenberg($atts)
 {
 	$atts = shortcode_atts(array(
 		'pay_view_block' => 'true',
@@ -82,7 +82,7 @@ function render_start_video_gutenberg($atts)
 
 	return do_shortcode("[btcpw_start_video pay_view_block='{$atts['pay_view_block']}' btc_format='{$atts['btc_format']}' title='{$atts['title']}' description='{$atts['description']}' preview={$atts['preview']} price='{$atts['price']}' duration_type='{$atts['duration_type']}' duration='{$atts['duration']}' currency='{$atts['currency']}' display_name='{$atts['display_name']}' mandatory_name='{$atts['mandatory_name']}' display_email='{$atts['display_email']}' mandatory_email='{$atts['mandatory_email']}' display_phone='{$atts['display_phone']}' mandatory_phone='{$atts['mandatory_phone']}' display_address='{$atts['display_address']}' mandatory_address='{$atts['mandatory_address']}' display_message='{$atts['display_message']}' mandatory_message='{$atts['mandatory_message']}']");
 }
-function render_tipping_box($atts)
+function btcpaywall_render_tipping_box($atts)
 {
 	$atts = shortcode_atts(array(
 		'dimension' =>  '250x300',
@@ -120,7 +120,7 @@ function render_tipping_box($atts)
         background = '{$atts['background']}'
         input_background = '{$atts['input_background']}']");
 }
-function render_tipping_banner_wide($atts)
+function btcpaywall_render_tipping_banner_wide($atts)
 {
 	$atts = shortcode_atts(array(
 		'dimension' =>  '200x710',
@@ -169,7 +169,7 @@ function render_tipping_banner_wide($atts)
 		"[btcpw_tipping_banner_wide dimension='{$atts['dimension']}' title='{$atts['title']}' description='{$atts['description']}' currency='{$atts['currency']}' background_color='{$atts['background_color']}'title_text_color='{$atts['title_text_color']}'tipping_text='{$atts['tipping_text']}'tipping_text_color= {$atts['tipping_text_color']}' redirect='{$atts['redirect']}' amount='{$atts['redirect']}' description_color='{$atts['description_color']}' button_text='{$atts['button_text']}' button_text_color='{$atts['button_text_color']}' button_color='{$atts['button_color']}' logo_id='{$atts['logo_id']}' background_id='{$atts['background_id']}' background='{$atts['background']}' input_background='{$atts['input_background']}' free_input='{$atts['free_input']}' value1_enabled='{$atts['value1_enabled']}' value1_amount='{$atts['value1_amount']}' value1_currency='{$atts['value1_currency']}' value1_icon='{$atts['value1_icon']}' value2_enabled='{$atts['value2_enabled']}' value2_amount='{$atts['value2_amount']}' value2_currency='{$atts['value2_currency']}' value2_icon='{$atts['value2_icon']}' value3_enabled='{$atts['value3_enabled']}' value3_amount='{$atts['value3_amount']}' value3_currency='{$atts['value3_currency']}' value3_icon='{$atts['value3_icon']}' display_name='{$atts['display_name']}' mandatory_name='{$atts['mandatory_name']}' display_email='{$atts['display_email']}' mandatory_email='{$atts['mandatory_email']}' display_phone='{$atts['display_phone']}' mandatory_phone='{$atts['mandatory_phone']}' display_address='{$atts['display_address']}' mandatory_address='{$atts['mandatory_address']}' display_message='{$atts['display_message']}' mandatory_message='{$atts['mandatory_message']}' show_icon='{$atts['show_icon']}']"
 	);
 }
-function render_tipping_banner_high($atts)
+function btcpaywall_render_tipping_banner_high($atts)
 {
 	$atts = shortcode_atts(array(
 		'dimension' =>  '200x710',
@@ -220,7 +220,7 @@ function render_tipping_banner_high($atts)
 	);
 }
 
-function render_tipping_pages($atts)
+function btcpaywall_render_tipping_pages($atts)
 {
 	$atts = shortcode_atts(array(
 		'dimension' =>  '520x600',

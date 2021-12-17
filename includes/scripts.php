@@ -4,20 +4,20 @@
 if (!defined('ABSPATH')) exit;
 
 
-function enqueue_styles()
+function btcpaywall_enqueue_styles()
 {
 
     wp_enqueue_style('btcpaywall', BTCPAYWALL_PLUGIN_URL . 'assets/src/css/btc-paywall-public.css', array(), null, 'all');
 
     wp_enqueue_style('load-fa', 'https://use.fontawesome.com/releases/v5.12.1/css/all.css');
 }
-add_action('wp_enqueue_scripts',  'enqueue_styles');
+add_action('wp_enqueue_scripts',  'btcpaywall_enqueue_styles');
 
 /**
  * Register the JavaScript for the -facing side of the site.
  *
  */
-function enqueue_scripts()
+function btcpaywall_enqueue_scripts()
 {
     $script = get_option('btcpw_selected_payment_gateway', 'BTCPayServer') == 'BTCPayServer' ? (BTCPAYWALL_PLUGIN_URL . 'assets/src/js/btcpayserver.js') : (BTCPAYWALL_PLUGIN_URL . 'assets/src/js/opennode.js');
 
@@ -37,4 +37,4 @@ function enqueue_scripts()
         ]
     );
 }
-add_action('wp_enqueue_scripts',  'enqueue_scripts');
+add_action('wp_enqueue_scripts',  'btcpaywall_enqueue_scripts');
