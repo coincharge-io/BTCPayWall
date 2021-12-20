@@ -1,11 +1,8 @@
-![Image of BTCPaywall](https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-Logo-lang.jpg)
-
+![Image of BTCPaywall](https://btcpaywall.com/wp-content/uploads/2021/12/btcpaywall_logo669x182.png)
 
 # BTCPayWall - The Bitcoin Paywall to sell content and digital products on WordPress
 
-
 **Sell individual blog articles, digital content and products like videos, eBooks or PDF files and receive tips and donations through your website.**
-
 
 **Pay for a single blog article (pay-per-post)**
 
@@ -27,10 +24,11 @@ Receive financial support from visitors to your site in the form of a tip paymen
 
 Sell high quality content to readers willing to pay who do not want to subscribe but are willing to pay for a single and high quality article.
 Publishers can become independent from banner ads, Google and clickbait content and focus more on high quality content that readers are willing to pay for.
-*	Generate revenue for your high-quality content and make yourself independent from banner ads.
-*	With BTCPayWall, you can make money without forcing users to sign up for a monthly membership.
-*	Offer free posts on your blog with pay-per-post and especially high-quality blog articles are offered for a small fee.
-*	Each article has a free part and at a certain point the article becomes paid.
+
+- Generate revenue for your high-quality content and make yourself independent from banner ads.
+- With BTCPayWall, you can make money without forcing users to sign up for a monthly membership.
+- Offer free posts on your blog with pay-per-post and especially high-quality blog articles are offered for a small fee.
+- Each article has a free part and at a certain point the article becomes paid.
 
 **The advantages of BTCPayWall for the customer**
 
@@ -38,10 +36,10 @@ Customers do not want to sign up for lengthy subscriptions when they really only
 
 The user wants to buy digital content spontaneously and anonymously and avoid a lengthy sign-up and registration process, with the disclosure of a variety of personal data.
 
-*	No login or registration required
-*	No transmission of personal data (privacy) required
-*	No lengthy subscription process if you only want to read a single article
-*	Fast and easy payment via Bitcoin and Lightning
+- No login or registration required
+- No transmission of personal data (privacy) required
+- No lengthy subscription process if you only want to read a single article
+- Fast and easy payment via Bitcoin and Lightning
 
 **Payment processing**
 
@@ -51,4 +49,3 @@ You can use your own BTCPay server or share the BTCPay server of BTCPayWall.
 A connection to the Bitcoin and Lightning payment provider opennode is also available.
 
 Further information can be found here: https://btcpaywall.com
-

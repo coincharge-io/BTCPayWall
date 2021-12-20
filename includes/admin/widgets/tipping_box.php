@@ -167,7 +167,7 @@ work', 'btcpaywall');
         $button_color = !empty($instance['button_color']) ? $instance['button_color'] :
             esc_html__('#FE642E', 'btcpaywall');
         $logo_id = !empty($instance['logo_id']) ?
-            $instance['logo_id'] : esc_html__('https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg', 'btcpaywall');
+            $instance['logo_id'] : esc_html__('https://btcpaywall.com/wp-content/uploads/2021/12/BTC_icon_144.png', 'btcpaywall');
         $background_id = !empty($instance['background_id']) ? $instance['background_id'] :
             esc_html__('', 'btcpaywall');
         $logo = wp_get_attachment_image_src($logo_id);
