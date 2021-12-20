@@ -1300,8 +1300,8 @@ function btcpaywall_render_receipt()
                         <tr>
                             <?php
                             $download       = new BTCPayWall_Digital_Download($item);
-                            $link = btcpaywall_get_download_url($payment->invoice_id, $download->get_file_url(), $item, '');
-                            //$link = $download_links[$key];
+                            //$link = btcpaywall_get_download_url($payment->invoice_id, $download->get_file_url(), $item, '');
+                            $link = $download_links[$key];
                             ?>
                             <td>
 
