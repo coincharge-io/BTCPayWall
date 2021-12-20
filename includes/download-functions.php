@@ -1149,7 +1149,7 @@ function btcpaywall_process_download_url($args)
         wp_die(__('Download link has expired.', 'btcpaywall'), array('response' => 403));
     } */
 
-    $providedToken = $_GET['token'];
+    $providedToken = sanitize_text_field($_GET['token']);
 
     $verificationToken = btcpaywall_generate_url_token($secret_key, [
         'ttl' => rawurlencode($query_args['ttl']),
@@ -1164,8 +1164,9 @@ function btcpaywall_process_download_url($args)
         $args['valid_token']    = false;
     }
 
-    if (time() > $args['ttl']) {
-        wp_die(__('The token has expired', 'btcpaywall'));
+    if (isset($query_args['ttl']) && current_time('timestamp') > $query_args['ttl']) {
+
+        wp_die(__('Download link has expired.', 'btcpaywall'), array('response' => 403));
     }
     //Token isn't valid for emails
     //if (!$valid_token) {

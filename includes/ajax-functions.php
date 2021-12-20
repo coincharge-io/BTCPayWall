@@ -762,12 +762,13 @@ function ajax_btcpaywall_add_to_cart()
         wp_die();
     }
     $download_id = absint($_POST['id']);
-    $added_to_cart = BTCPayWall()->cart->add($download_id, array('title' => sanitize_text_field($_POST['title'])));
-    if ($added_to_cart == false) {
+    BTCPayWall()->cart->add($download_id, array('title' => sanitize_text_field($_POST['title'])));
+    $checkout_page = get_permalink(get_option('btcpw_checkout_page'));
+    /* if ($added_to_cart == false) {
         wp_send_json_error();
-    }
+    } */
 
-    wp_send_json_success();
+    wp_send_json_success(['data' => $checkout_page]);
 }
 add_action('wp_ajax_btcpw_add_to_cart',  'ajax_btcpaywall_add_to_cart');
 add_action('wp_ajax_nopriv_btcpw_add_to_cart',  'ajax_btcpaywall_add_to_cart');

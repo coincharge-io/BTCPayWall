@@ -156,10 +156,11 @@
         },
         success: function (response) {
           if (response.success) {
-            location.reload()
-          } else {
-            console.error(response)
+            location.replace(response.data.data)
           }
+        },
+        error: function (error) {
+          console.error(error)
         }
       })
     })
@@ -1680,7 +1681,7 @@
     })
   })
 
-  $(document).ready(function () {
+  /* $(document).ready(function () {
     $('#btcpw_download_file').click(function () {
       var post_id = $(this).data('post_id')
       $.ajax({
@@ -1699,7 +1700,7 @@
         }
       })
     })
-  })
+  }) */
   $(document).ready(function () {
     var form_count = 1,
       previous_form,
