@@ -1249,6 +1249,7 @@ function btcpaywall_render_receipt()
     $payment = new BTCPayWall_Payment($_SESSION['btcpaywall_purchase']);
     $currency = get_option('btcpw_default_pay_per_file_currency', 'SATS');
     $download_ids = explode(',', $payment->download_ids);
+    $download_links = explode(',', $payment->download_links);
 
 ?>
     <table id="btcpaywall_purchase_receipt" class="btcpaywall-table">
@@ -1300,6 +1301,7 @@ function btcpaywall_render_receipt()
                             <?php
                             $download       = new BTCPayWall_Digital_Download($item);
                             $link = btcpaywall_get_download_url($payment->invoice_id, $download->get_file_url(), $item, '');
+                            //$link = $download_links[$key];
                             ?>
                             <td>
 

@@ -103,5 +103,4 @@ function btcpaywall_register_settings()
 
 
 
-
 add_action('admin_init', 'btcpaywall_register_settings');

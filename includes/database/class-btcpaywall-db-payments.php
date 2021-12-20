@@ -28,6 +28,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
             'amount' => '%f',
             'status' => '%s',
             'download_ids'     => '%s',
+            'download_links'     => '%s',
             'gateway' => '%s',
             'payment_method' => '%s',
             'date_created'   => '%s'
@@ -46,7 +47,8 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
             'status' => 'New',
             'gateway' => 'BTCPayServer',
             'download_ids' => '',
-            'payment_method' => 'BTC-LightningNetwork',
+            'download_links' => '',
+            'payment_method' => 'BTC',
             'date_created'    => date('Y-m-d H:i:s'),
 
         );
@@ -109,6 +111,21 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
 
                 $data['download_ids'] = $payment->download_ids;
             }
+            if (!empty($payment['download_links'])) {
+
+                if (empty($payment->download_links)) {
+
+                    $payment->download_ids = $data['download_links'];
+                } else {
+
+                    $existing_links       = array_map('absint', explode(',', $payment->download_links));
+                    $download_links        = array_map('absint', explode(',', $data['download_links']));
+                    $download_links        = array_merge($download_links, $existing_links);
+                    $payment->download_links = implode(',', array_unique(array_values($download_links)));
+                }
+
+                $data['download_links'] = $payment->download_links;
+            }
             $this->update($payment->id, $data);
 
             return $payment->id;
@@ -167,7 +184,8 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
               status TINYTEXT,
               gateway TINYTEXT,
               payment_method TINYTEXT,
-              download_ids longtext,
+              download_ids LONGTEXT,
+              download_links LONGTEXT,
               date_created TIMESTAMP,
 			  PRIMARY KEY  (id),
               KEY customer (customer_id)
