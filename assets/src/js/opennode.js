@@ -1,7 +1,7 @@
 ;(function ($) {
   'use strict'
   $(document).ready(function () {
-    var btcpw_invoice_id = localStorage.getItem('opennode_file_invoice_id')
+    /* var btcpw_invoice_id = localStorage.getItem('opennode_file_invoice_id')
     if (btcpw_invoice_id) {
       btcpwShowOpenNodeFileInvoice(btcpw_invoice_id)
     }
@@ -524,5 +524,96 @@
         donor_info: donor_info
       }
     })
+  } */
+    var btcpw_invoice_id = null
+    var form_container = null
+    $('#btcpw_digital_download_form').submit(function (e) {
+      e.preventDefault()
+      if (btcpw_invoice_id && form_container) {
+        btcpwShowOpenNodeFileInvoice(btcpw_invoice_id, form_container)
+      }
+      var text = $('.btcpw_digital_download').text()
+      $('.btcpw_digital_download').html(
+        `<span class="tipping-border" role="status" aria-hidden="true"></span>`
+      )
+
+      $.ajax({
+        url: '/wp-admin/admin-ajax.php',
+        method: 'POST',
+        data: {
+          action: 'btcpw_generate_content_file_invoice_id',
+          full_name: $('#btcpw_digital_download_customer_name').val(),
+          email: $('#btcpw_digital_download_customer_email').val(),
+          address: $('#btcpw_digital_download_customer_address').val(),
+          phone: $('#btcpw_digital_download_customer_phone').val(),
+          message: $('#btcpw_digital_download_customer_message').val()
+        },
+        success: function (response) {
+          $('.btcpw_digital_download').html(text)
+          if (response.success) {
+            btcpw_invoice_id = response.data.invoice_id
+            var urlRedirect =
+              'https://checkout.opennode.com/' + btcpw_invoice_id
+            form_container = $('#btcpw_digital_download_customer_info')
+            btcpwShowOpenNodeFileInvoice(btcpw_invoice_id, form_container)
+
+            /* $('#btcpw_digital_download_customer_info').html(
+              `
+<iframe title=NodeOpen width=500 height=600 src=${urlRedirect}> </iframe>`
+            ) */
+          }
+        },
+        error: function (error) {
+          console.error(error)
+        }
+      })
+    })
+  })
+  function btcpaywall_monitor_invoice (id) {
+    var status = null
+    $.ajax({
+      url: '/wp-admin/admin-ajax.php',
+      method: 'GET',
+      data: {
+        action: 'btcpw_opennode_monitor_invoice_status',
+        invoice_id: id
+      },
+      success: function (response) {
+        status = response.data.status
+        if (status !== 'paid') {
+          setTimeout(() => {
+            return btcpaywall_monitor_invoice(id)
+          }, 1000)
+        }
+        return status
+      }
+    })
+  }
+  function btcpwShowOpenNodeFileInvoice (invoice_id, form_container) {
+    var status = btcpaywall_monitor_invoice(invoice_id)
+    if (status === 'paid') {
+      $.ajax({
+        url: '/wp-admin/admin-ajax.php',
+        method: 'POST',
+        data: {
+          action: 'btcpw_paid_content_file_invoice',
+          invoice_id: invoice_id
+        },
+        success: function (response) {
+          if (response.success) {
+            notifyAdmin(response.data.notify + 'Url:' + window.location.href)
+            location.replace(payment.success_url)
+          }
+        },
+        error: function (error) {
+          console.error(error)
+        }
+      })
+    }
+    var redirect = 'https://checkout.opennode.com/' + invoice_id
+    form_container.html(
+      `
+<iframe title=NodeOpen width=500 height=600 src=${redirect}> </iframe>`
+    )
   }
 })(jQuery)
