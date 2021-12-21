@@ -579,13 +579,12 @@
         invoice_id: id
       },
       success: function (response) {
-        status = response.data.status
-        if (status !== 'paid') {
-          setTimeout(() => {
-            return btcpaywall_monitor_invoice(id)
-          }, 1000)
-        }
-        return status
+        status = 'paid'
+      },
+      error: function () {
+        setTimeout(() => {
+          btcpaywall_monitor_invoice(id)
+        }, 1000)
       }
     })
   }
