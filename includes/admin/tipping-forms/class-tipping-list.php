@@ -10,9 +10,9 @@ class Tipping_Forms_Table extends WP_List_Table
     public function __construct()
     {
         parent::__construct([
-            'singular' => __('Shortcode', 'sd'), //singular name of the listed records, this will show in screen options
-            'plural'   => __('Shortcodes', 'sd'), //plural name of the listed records, this will show in screen options
-            'ajax'     => false //does this table support ajax?
+            'singular' => __('Shortcode', 'sd'), 
+            'plural'   => __('Shortcodes', 'sd'), 
+            'ajax'     => false 
         ]);
     }
     /**
@@ -109,8 +109,8 @@ class Tipping_Forms_Table extends WP_List_Table
             }
         }
 
-        if ((isset($_POST['action']) && $_POST['action'] == 'bulk-delete')
-            || (isset($_POST['action2']) && $_POST['action2'] == 'bulk-delete')
+        if ((isset($_POST['action']) && sanitize_text_field($_POST['action']) == 'bulk-delete')
+            || (isset($_POST['action2']) && sanitize_text_field($_POST['action2']) == 'bulk-delete')
         ) {
 
             $delete_ids = esc_sql($_POST['bulk-delete']);
@@ -185,7 +185,7 @@ class Tipping_Forms_Table extends WP_List_Table
      */
     protected function column_default($item, $column_name)
     {
-        $shortcode = outputShortcodeAttributes(extractName($item['dimension'])['name'], $item['id']);
+        $shortcode = btcpaywall_output_shortcode_attributes(btcpaywall_extract_name($item['dimension'])['name'], $item['id']);
         switch ($column_name) {
             case 'cb':
                 return esc_html($item['cb']);
