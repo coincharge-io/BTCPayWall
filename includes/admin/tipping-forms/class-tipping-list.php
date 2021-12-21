@@ -10,9 +10,9 @@ class Tipping_Forms_Table extends WP_List_Table
     public function __construct()
     {
         parent::__construct([
-            'singular' => __('Shortcode', 'sd'), 
-            'plural'   => __('Shortcodes', 'sd'), 
-            'ajax'     => false 
+            'singular' => __('Shortcode', 'sd'),
+            'plural'   => __('Shortcodes', 'sd'),
+            'ajax'     => false
         ]);
     }
     /**
@@ -24,13 +24,13 @@ class Tipping_Forms_Table extends WP_List_Table
     {
         return array(
             'cb'      => '<input type="checkbox" />',
-            'template' => (__('Template')),
-            'title'   => (__('Title')),
-            'logo'    => (__('Logo')),
-            'description'  => (__('Description')),
-            'tipping-text'    => (__('Tipping text')),
-            'button-text'    => (__('Button text')),
-            'shortcode'      => (__('Shortcode')),
+            'template' => (__('Template', 'btcpaywall')),
+            'title'   => (__('Title', 'btcpaywall')),
+            'logo'    => (__('Logo', 'btcpaywall')),
+            'description'  => (__('Description', 'btcpaywall')),
+            'tipping-text'    => (__('Tipping text', 'btcpaywall')),
+            'button-text'    => (__('Button text', 'btcpaywall')),
+            'shortcode'      => (__('Shortcode', 'btcpaywall')),
         );
     }
 

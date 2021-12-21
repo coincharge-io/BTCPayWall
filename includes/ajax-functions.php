@@ -960,7 +960,6 @@ function ajax_btcpaywall_paid_content_file_invoice()
     $payment->update(array(
         'status' => $body['status'], 'payment_method' => $payment_method, 'download_links' => $db_links
     ));
-
     $_SESSION['btcpaywall_purchase'] = $payment->invoice_id;
     $email_body = btcpaywall_get_send_purchased_links_body($links, $body['metadata']['customer_data']['name']);
     wp_mail($body['metadata']['customer_data']['email'], 'BTCPayWall Digital Download Link', $email_body);

@@ -1152,15 +1152,15 @@ function btcpaywall_process_download_url($args)
     $providedToken = sanitize_text_field($_GET['token']);
 
     $verificationToken = btcpaywall_generate_url_token($secret_key, [
-        'ttl' => rawurlencode($query_args['ttl']),
-        'btcpw_file' => rawurlencode($query_args['btcpw_file']),
-        'payment_id' => rawurlencode($query_args['payment_id']),
+        'ttl' => rawurlencode(sanitize_text_field($query_args['ttl'])),
+        'btcpw_file' => rawurlencode(sanitize_text_field($query_args['btcpw_file'])),
+        'payment_id' => rawurlencode(sanitize_text_field($query_args['payment_id'])),
         'download_id' => (int)$query_args['download_id'],
-        'email' => rawurlencode($query_args['email']),
+        'email' => rawurlencode(sanitize_email($query_args['email'])),
         'ip' => $_SERVER['REMOTE_ADDR'],
     ]);
 
-    if (!hash_equals($verificationToken, $providedToken)) { // hash_equals instead of string 
+    if (!hash_equals($verificationToken, $providedToken)) {
         $args['valid_token']    = false;
     }
 
@@ -1180,11 +1180,11 @@ function btcpaywall_generate_url_token($secret_key, $args)
 {
 
     $tokenData = [
-        'ttl' => $args['ttl'],
-        'btcpw_file' => $args['btcpw_file'],
-        'payment_id' => $args['payment_id'],
+        'ttl' => sanitize_text_field($args['ttl']),
+        'btcpw_file' => sanitize_text_field($args['btcpw_file']),
+        'payment_id' => sanitize_text_field($args['payment_id']),
         'download_id' => (int)$args['download_id'],
-        'email' => $args['email'],
+        'email' => sanitize_email($args['email']),
         'ip' => $_SERVER['REMOTE_ADDR'],
     ];
 

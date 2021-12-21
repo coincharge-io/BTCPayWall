@@ -27,16 +27,16 @@ class Payments_Table extends WP_List_Table
     {
         return array(
             'cb'    => '<input type="checkbox" />',
-            'id'    => __('Id'),
-            'details'   => __('Details'),
-            'date' => __('Date'),
-            'blog'   => __('Post/Page'),
-            'type'   => __('Type'),
-            'status'    => __('Status'),
-            'payment_method'    => __('Payment method'),
-            'amount'  => __('Amount'),
-            'currency'    => __('Currency'),
-            'invoice_id'    => __('Invoice id'),
+            'id'    => __('Id', 'btcpaywall'),
+            'details'   => __('Details', 'btcpaywall'),
+            'date' => __('Date', 'btcpaywall'),
+            'blog'   => __('Post/Page', 'btcpaywall'),
+            'type'   => __('Type', 'btcpaywall'),
+            'status'    => __('Status', 'btcpaywall'),
+            'payment_method'    => __('Payment method', 'btcpaywall'),
+            'amount'  => __('Amount', 'btcpaywall'),
+            'currency'    => __('Currency', 'btcpaywall'),
+            'invoice_id'    => __('Invoice id', 'btcpaywall'),
         );
     }
 
