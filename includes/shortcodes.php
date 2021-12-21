@@ -28,7 +28,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
         'button_text' => $id ? $result['button_text'] : 'Tipping now',
         'button_text_color' => $id ? '#' . $result['button_text_color'] : '#FFFFFF',
         'button_color' => $id ? '#' . $result['button_color'] : '#FE642E',
-        'logo_id' => $id ? $result['logo'] : 'https://btcpaywall.com/wp-content/uploads/2021/12/BTC_icon_144.png',
+        'logo_id' => $id ? $result['logo'] : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
         'background_id' => $id ? $result['background'] : '',
         'free_input' => $id ? filter_var($result['free_input'], FILTER_VALIDATE_BOOLEAN) : true,
         'input_background' => $id ? '#' . $result['input_background'] : '#ffa500',
@@ -58,7 +58,6 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
         'show_icon'    => $id ? filter_var($result['show_icon'], FILTER_VALIDATE_BOOLEAN) : true,
         'widget'    => false
     ), $atts);
-
 
     $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
     $logo = wp_get_attachment_image_src($atts['logo_id']) ? wp_get_attachment_image_src($atts['logo_id'])[0] : $atts['logo_id'];
@@ -211,9 +210,12 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                             <div class="btcpw_skyscraper_donor_information wide">
                                 <?php foreach ($collect as $key => $value) : ?>
                                     <?php if ($collect[$key]['display'] === true) : ?>
-                                        <div class="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_wrap wide"; ?>">
+                                        <?php $id = esc_attr($collect[$key]['id']);
+                                        $label = esc_attr($collect[$key]['label']);
+                                        ?>
+                                        <div class="<?php echo "btcpw_skyscraper_tipping_donor_{$id}_wrap wide"; ?>">
 
-                                            <input type="text" placeholder="<?php echo $collect[$key]['label']; ?>" id="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_wide"; ?>" name="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_wide"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                            <input type="text" placeholder="<?php echo $label; ?>" id="<?php echo "btcpw_skyscraper_tipping_donor_{$id}_wide"; ?>" name="<?php echo "btcpw_skyscraper_tipping_donor_{$id}_wide"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                         </div>
                                     <?php endif; ?>
@@ -266,7 +268,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
         'button_text' => $id ? $result['button_text'] : 'Tipping now',
         'button_text_color' => $id ? '#' . $result['button_text_color'] : '#FFFFFF',
         'button_color' => $id ? '#' . $result['button_color'] : '#FE642E',
-        'logo_id' => $id ? $result['logo'] : 'https://btcpaywall.com/wp-content/uploads/2021/12/BTC_icon_144.png',
+        'logo_id' => $id ? $result['logo'] : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
         'background_id' => $id ? $result['background'] : '',
         'free_input' => $id ? filter_var($result['free_input'], FILTER_VALIDATE_BOOLEAN) : true,
         'input_background' => $id ? '#' . $result['input_background'] : '#ffa500',
@@ -443,9 +445,12 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                             <div class="btcpw_skyscraper_donor_information high">
                                 <?php foreach ($collect as $key => $value) : ?>
                                     <?php if ($collect[$key]['display'] === true) : ?>
-                                        <div class="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_wrap high"; ?>">
+                                        <?php $id = esc_attr($collect[$key]['id']);
+                                        $label = esc_attr($collect[$key]['label']);
+                                        ?>
+                                        <div class="<?php echo "btcpw_skyscraper_tipping_donor_{$id}_wrap high"; ?>">
 
-                                            <input type="text" placeholder="<?php echo $collect[$key]['label']; ?>" id="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_high"; ?>" name="<?php echo "btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_high"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                            <input type="text" placeholder="<?php echo $label; ?>" id="<?php echo "btcpw_skyscraper_tipping_donor_{$id}_high"; ?>" name="<?php echo "btcpw_skyscraper_tipping_donor_{$id}_high"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                         </div>
                                     <?php endif; ?>
@@ -498,7 +503,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
         'button_text' => $id ? $result['button_text'] : 'Tipping now',
         'button_text_color' => $id ? '#' . $result['button_text_color'] : '#FFFFFF',
         'button_color' => $id ? '#' . $result['button_color'] : '#FE642E',
-        'logo_id' => $id ? $result['logo'] : 'https://btcpaywall.com/wp-content/uploads/2021/12/BTC_icon_144.png',
+        'logo_id' => $id ? $result['logo'] : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
         'background_id' => $id ? $result['background'] : '',
         'input_background' => $id ? '#' . $result['input_background'] : '#ffa500',
         'background' => $id ? '#' . $result['hf_background'] : '#1d5aa3',
@@ -714,9 +719,12 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                         <div class="btcpw_page_donor_information">
                             <?php foreach ($collect as $key => $value) : ?>
                                 <?php if ($collect[$key]['display'] === true) : ?>
-                                    <div class="<?php echo "btcpw_page_tipping_donor_{$collect[$key]['id']}_wrap"; ?>">
+                                    <?php $id = esc_attr($collect[$key]['id']);
+                                    $label = esc_attr($collect[$key]['label']);
+                                    ?>
+                                    <div class="<?php echo "btcpw_page_tipping_donor_{$id}_wrap"; ?>">
 
-                                        <input type="text" placeholder="<?php echo esc_attr($collect[$key]['label']); ?>" id="<?php echo "btcpw_page_tipping_donor_{$collect[$key]['id']}"; ?>" name="<?php echo "btcpw_page_tipping_donor_{$collect[$key]['id']}"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                        <input type="text" placeholder="<?php echo esc_attr($label); ?>" id="<?php echo "btcpw_page_tipping_donor_{$id}"; ?>" name="<?php echo "btcpw_page_tipping_donor_{$id}"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
                                     </div>
                                 <?php endif; ?>
                             <?php endforeach; ?>
@@ -777,7 +785,7 @@ function btcpaywall_render_shortcode_box_tipping($atts)
         'button_text' => $id ? $result['button_text'] : 'Tipping now',
         'button_text_color' => $id ? '#' . $result['button_text_color'] : '#FFFFFF',
         'button_color' => $id ? '#' . $result['button_color'] : '#FE642E',
-        'logo_id' => $id ? $result['logo'] : 'https://btcpaywall.com/wp-content/uploads/2021/12/BTC_icon_144.png',
+        'logo_id' => $id ? $result['logo'] : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
         'background_id' => $id ? $result['background'] : '',
         'input_background' => $id ? '#' . $result['input_background'] : '#ffa500',
         'background' => $id ? '#' . $result['hf_background'] : '#1d5aa3',
@@ -1179,7 +1187,7 @@ function btcpaywall_render_checkout()
 
                         </td>
                         <td class="btcpaywall_cart_actions">
-                            <a data-cart-key=<?php echo $key; ?> class="btcpaywall_cart_remove_item_btn" href="#"><?php _e('Remove', 'btcpaywall'); ?></a>
+                            <a data-cart-key="<?php echo esc_attr($key); ?>" class="btcpaywall_cart_remove_item_btn" href="#"><?php _e('Remove', 'btcpaywall'); ?></a>
 
                         </td>
                     </tr>
@@ -1190,7 +1198,7 @@ function btcpaywall_render_checkout()
         <tfoot>
             <tr class="btcpaywall_cart_footer_row">
                 <th colspan="3">
-                    Total: <?php echo $total; ?>
+                    Total: <?php echo esc_html($total); ?>
                 </th>
             </tr>
         </tfoot>

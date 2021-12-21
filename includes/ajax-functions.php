@@ -302,11 +302,11 @@ function ajax_btcpaywall_tipping()
     $tipper = new BTCPayWall_Tipper();
 
     $tipper->create([
-        'full_name' => $_POST['name'],
-        'email' => $_POST['email'],
-        'phone' => $_POST['phone'],
-        'address' => $_POST['address'],
-        'message' => $_POST['message'],
+        'full_name' => sanitize_text_field($_POST['name']),
+        'email' => sanitize_email($_POST['email']),
+        'phone' => (int)$_POST['phone'],
+        'address' => sanitize_text_field($_POST['address']),
+        'message' => sanitize_text_field($_POST['message']),
     ]);
 
     $tipping = new BTCPayWall_Tipping();
@@ -352,7 +352,7 @@ function ajax_btcpaywall_paid_invoice()
         $collect .= "Name: {$name} \n";
     }
     if (!empty($_POST['email'])) {
-        $email = sanitize_text_field($_POST['email']);
+        $email = sanitize_email($_POST['email']);
         $collect .= "Email: {$email} \n";
     }
     if (!empty($_POST['address'])) {
@@ -955,11 +955,12 @@ function ajax_btcpaywall_paid_content_file_invoice()
         $download->increase_sales();
         $link = btcpaywall_get_download_url($payment->invoice_id, $download->get_file_url(), $download->ID, $body['metadata']['customer_data']['email']);
         $links[] = $link;
-        $db_links[] = rawurldecode($link);
+        $db_links[] = esc_url_raw(rawurldecode($link));
     }
     $payment->update(array(
         'status' => $body['status'], 'payment_method' => $payment_method, 'download_links' => $db_links
     ));
+
     $_SESSION['btcpaywall_purchase'] = $payment->invoice_id;
     $email_body = btcpaywall_get_send_purchased_links_body($links, $body['metadata']['customer_data']['name']);
     wp_mail($body['metadata']['customer_data']['email'], 'BTCPayWall Digital Download Link', $email_body);

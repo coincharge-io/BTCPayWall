@@ -9,7 +9,7 @@ function btcpaywall_load_vc_widgets()
         'base' => 'btcpw_start_content',
         'description' => 'Start area of paid content',
         'category' => 'Content',
-        'icon' => plugin_dir_url(__FILE__) . 'img/icon.svg',
+        'icon' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
         'params' => array(
             array(
                 'type' => 'checkbox',
@@ -165,7 +165,7 @@ function btcpaywall_load_vc_widgets()
         'base' => 'btcpw_end_content',
         'description' => 'End area of paid content',
         'category' => 'Content',
-        'icon' => plugin_dir_url(__FILE__) . 'img/icon.svg',
+        'icon' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
         'params' => array(),
     ));
 
@@ -174,7 +174,7 @@ function btcpaywall_load_vc_widgets()
         'base' => 'btcpw_pay_block',
         'description' => 'Show Payment Widget',
         'category' => 'Content',
-        'icon' => plugin_dir_url(__FILE__) . 'img/icon.svg',
+        'icon' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
         'params' => array(),
     ));
 
@@ -183,7 +183,7 @@ function btcpaywall_load_vc_widgets()
         'base' => 'btcpw_start_video',
         'description' => 'Start area of paid video content',
         'category' => 'Content',
-        'icon' => plugin_dir_url(__FILE__) . 'img/icon.svg',
+        'icon' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
         'params' => array(
             array(
                 'type' => 'checkbox',
@@ -359,7 +359,7 @@ function btcpaywall_load_vc_widgets()
         'base' => 'btcpw_end_video',
         'description' => 'End area of paid video content',
         'category' => 'Content',
-        'icon' => plugin_dir_url(__FILE__) . 'img/icon.svg',
+        'icon' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
         'params' => array(),
     ));
 
@@ -369,7 +369,7 @@ function btcpaywall_load_vc_widgets()
         'base' => 'btcpw_file',
         'description' => 'Area of file',
         'category' => 'Content',
-        'icon' => plugin_dir_url(__FILE__) . 'img/icon.svg',
+        'icon' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
         'params' => array(
             array(
                 'type' => 'checkbox',
@@ -473,7 +473,7 @@ function btcpaywall_load_vc_widgets()
         'base' => 'btcpw_tipping_banner_wide',
         'description' => 'Add Wide Tipping Banner',
         'category' => 'Content',
-        'icon' => plugin_dir_url(__FILE__) . 'img/icon.svg',
+        'icon' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
         'params' => array(
             array(
                 'type' => 'dropdown',
@@ -813,7 +813,7 @@ function btcpaywall_load_vc_widgets()
         'base' => 'btcpw_tipping_banner_high',
         'description' => 'Add High Tipping Banner',
         'category' => 'Content',
-        'icon' => plugin_dir_url(__FILE__) . 'img/icon.svg',
+        'icon' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
         'params' => array(
             array(
                 'type' => 'dropdown',
@@ -1152,7 +1152,7 @@ function btcpaywall_load_vc_widgets()
         'base' => 'btcpw_tipping_box',
         'description' => 'Add Tipping Box',
         'category' => 'Content',
-        'icon' => plugin_dir_url(__FILE__) . 'img/icon.svg',
+        'icon' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
         'params' => array(
             array(
                 'type' => 'dropdown',
@@ -1292,7 +1292,7 @@ function btcpaywall_load_vc_widgets()
         'base' => 'btcpw_tipping_page',
         'description' => 'Add Tipping Page',
         'category' => 'Content',
-        'icon' => plugin_dir_url(__FILE__) . 'img/icon.svg',
+        'icon' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
         'params' => array(
             array(
                 'type' => 'textfield',
@@ -1657,6 +1657,7 @@ function btcpaywall_load_vc_widgets()
         'base' => 'btcpw_list_shortcodes',
         'description' => 'Shortcode list',
         'category' => 'Content',
+        'icon' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
         'params' => array(
             array(
                 'type' => 'dropdown',

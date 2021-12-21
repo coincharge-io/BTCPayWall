@@ -110,8 +110,9 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
         $sql = "SELECT * FROM {$this->table_name}";
 
         if (!empty($_REQUEST['orderby'])) {
-            $sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
-            $sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
+            $sql .= ' ORDER BY ' . sanitize_sql_orderby($_REQUEST['orderby'] . ' ' . $_REQUEST['order']);
+
+            //$sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
         }
         if (!empty($per_page) && !empty($page_number)) {
             $sql .= " LIMIT $per_page";

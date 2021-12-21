@@ -626,9 +626,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z'
       type: 'string'
     },
     logo_id: {
-      type: 'string',
-      default:
-        'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg'
+      type: 'string'
     },
     background: {
       type: 'string'

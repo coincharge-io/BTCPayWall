@@ -106,10 +106,10 @@ class BTCPayWall_Customer
     }
 
 
-    public function get_customers()
+    public function get_customers($per_page = null, $page_number = null)
     {
 
-        $customers = $this->db->get_customers();
+        $customers = $this->db->get_customers($per_page, $page_number);
 
         return $customers;
     }

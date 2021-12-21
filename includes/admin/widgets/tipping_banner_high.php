@@ -247,8 +247,7 @@ class Tipping_Banner_High extends WP_Widget
         $button_color = !empty($instance['button_color']) ? $instance['button_color'] : esc_html__('#FE642E', 'btcpaywall');
 
 
-        $logo_id = !empty($instance['logo_id']) ? $instance['logo_id'] :
-            esc_html__('https://btcpaywall.com/wp-content/uploads/2021/12/BTC_icon_144.png', 'btcpaywall');
+        $logo_id = !empty($instance['logo_id']) ? $instance['logo_id'] : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png';
         $background_id = !empty($instance['background_id']) ? $instance['background_id'] : esc_html__('', 'btcpaywall');
 
         $logo = wp_get_attachment_image_src($logo_id);

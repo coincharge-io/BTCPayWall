@@ -12,6 +12,7 @@ function btcpaywall_enqueue_styles()
     wp_enqueue_style('load-fa', 'https://use.fontawesome.com/releases/v5.12.1/css/all.css');
 }
 add_action('wp_enqueue_scripts',  'btcpaywall_enqueue_styles');
+add_action('enqueue_block_assets', 'btcpaywall_enqueue_styles');
 
 /**
  * Register the JavaScript for the -facing side of the site.

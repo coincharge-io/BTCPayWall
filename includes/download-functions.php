@@ -85,11 +85,11 @@ function btcpaywall_process_download()
 
     $args = array(
         'download_id' => (isset($_GET['download_id']))  ? (int) $_GET['download_id']                       : '',
-        'payment_id' => (isset($_GET['payment_id']))  ? rawurldecode($_GET['payment_id'])                       : '',
-        'email'    => (isset($_GET['email']))        ? rawurldecode($_GET['email'])                   : '',
-        'btcpw_file'  => (isset($_GET['btcpw_file']))      ? $_GET['btcpw_file']                                 : '',
-        'ttl'      => (isset($_GET['ttl']))          ? $_GET['ttl']                                     : '',
-        'token'    => (isset($_GET['token']))        ? $_GET['token']                                   : ''
+        'payment_id' => (isset($_GET['payment_id']))  ? sanitize_text_field($_GET['payment_id'])                       : '',
+        'email'    => (isset($_GET['email']))        ? sanitize_email($_GET['email'])                   : '',
+        'btcpw_file'  => (isset($_GET['btcpw_file']))      ? sanitize_text_field($_GET['btcpw_file'])                                 : '',
+        'ttl'      => (isset($_GET['ttl']))          ? sanitize_text_field($_GET['ttl'])                                    : '',
+        'token'    => (isset($_GET['token']))        ? sanitize_text_field($_GET['token'])                                   : ''
     );
 
     if (!empty($args['btcpw_file']) && !empty($args['payment_id']) && !empty($args['download_id']) && !empty($args['ttl']) && !empty($args['token'])) {
