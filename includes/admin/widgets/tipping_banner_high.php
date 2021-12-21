@@ -248,6 +248,8 @@ class Tipping_Banner_High extends WP_Widget
 
 
         $logo_id = !empty($instance['logo_id']) ? $instance['logo_id'] : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png';
+
+
         $background_id = !empty($instance['background_id']) ? $instance['background_id'] : esc_html__('', 'btcpaywall');
 
         $logo = wp_get_attachment_image_src($logo_id);
@@ -328,7 +330,7 @@ class Tipping_Banner_High extends WP_Widget
                 </div>
                 <div class="col-50">
                     <?php if ($background) : ?>
-                        <button id="btcpw_tipping_button_image_background_banner_high" class="widget-tipping-basic-upload_box_image_high" name="btcpw_tipping_button_image_background"><img width="100" height="100" alt="Tipping box background" src="<?php echo esc_url($background[0]); ?>" /></a></button>
+                        <button id="btcpw_tipping_button_image_background_banner_high" class="widget-tipping-basic-upload_box_image_high" name="btcpw_tipping_button_image_background"><img width="100" height="100" alt="Tipping banner high background" src="<?php echo esc_url($background[0]); ?>" /></a></button>
                         <button class="widget-tipping-basic-remove_box_image_high">
                             <?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-background_id_high" id="<?php echo esc_attr($this->get_field_id('background_id')); ?>" name="<?php echo esc_attr($this->get_field_name('background_id')); ?>" type="text" value="<?php echo esc_attr($background_id); ?>" />
@@ -361,7 +363,7 @@ class Tipping_Banner_High extends WP_Widget
                 </div>
                 <div class="col-50">
                     <?php if ($logo_id) : ?>
-                        <button id="btcpw_tipping_button_logo_banner_high" class="widget-tipping-basic-upload_box_logo_high" name="btcpw_tipping_button_image"><img width="100" height="100" alt="Tipping box logo" src="<?php echo esc_url($logo[0]); ?>" /></a></button>
+                        <button id="btcpw_tipping_button_logo_banner_high" class="widget-tipping-basic-upload_box_logo_high" name="btcpw_tipping_button_image"><img width="100" height="100" alt="Tipping banner high logo" src="<?php echo esc_url($logo[0]); ?>" /></a></button>
                         <button class="widget-tipping-basic-remove_box_image_high"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-logo_id_high" id="<?php echo esc_attr($this->get_field_id('logo_id')); ?>" name="<?php echo esc_attr($this->get_field_name('logo_id')); ?>" type="text" value="<?php echo esc_attr($logo_id); ?>" />
                     <?php else : ?>
@@ -418,8 +420,8 @@ class Tipping_Banner_High extends WP_Widget
                     <select required id="<?php echo esc_attr($this->get_field_id('currency')); ?>" name="<?php echo esc_attr($this->get_field_name('currency')); ?>">
                         <option disabled value=""><?php echo esc_html__('Select currency', 'btcpaywall'); ?></option>
                         <?php foreach ($supported_currencies as $curr) : ?>
-                            <option <?php echo $currency === $curr ? 'selected' : ''; ?> value="<?php echo $curr; ?>">
-                                <?php echo $curr; ?>
+                            <option <?php echo $currency === $curr ? 'selected' : ''; ?> value="<?php echo esc_attr($curr); ?>">
+                                <?php echo esc_html($curr); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -446,8 +448,8 @@ class Tipping_Banner_High extends WP_Widget
                         <select required id="<?php echo esc_attr($this->get_field_id('value1_currency')); ?>" name="<?php echo esc_attr($this->get_field_name('value1_currency')); ?>">
                             <option disabled value="">Select currency</option>
                             <?php foreach ($supported_currencies as $curr1) : ?>
-                                <option <?php echo $value1_currency === $curr1 ? 'selected' : ''; ?> value="<?php echo $curr1; ?>">
-                                    <?php echo $curr1; ?>
+                                <option <?php echo $value1_currency === $curr1 ? 'selected' : ''; ?> value="<?php echo esc_attr($curr1); ?>">
+                                    <?php echo esc_html($curr1); ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -466,8 +468,8 @@ class Tipping_Banner_High extends WP_Widget
                         <select required id="<?php echo esc_attr($this->get_field_id('value2_currency')); ?>" name="<?php echo esc_attr($this->get_field_name('value2_currency')); ?>">
                             <option disabled value="">Select currency</option>
                             <?php foreach ($supported_currencies as $curr2) : ?>
-                                <option <?php echo $value2_currency === $curr2 ? 'selected' : ''; ?> value="<?php echo $curr2; ?>">
-                                    <?php echo $curr2; ?>
+                                <option <?php echo $value2_currency === $curr2 ? 'selected' : ''; ?> value="<?php echo esc_attr($curr2); ?>">
+                                    <?php echo esc_html($curr2); ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -486,8 +488,8 @@ class Tipping_Banner_High extends WP_Widget
                         <select required id="<?php echo esc_attr($this->get_field_id('value3_currency')); ?>" name="<?php echo esc_attr($this->get_field_name('value3_currency')); ?>">
                             <option disabled value="">Select currency</option>
                             <?php foreach ($supported_currencies as $curr3) : ?>
-                                <option <?php echo $value3_currency === $curr3 ? 'selected' : ''; ?> value="<?php echo $curr3; ?>">
-                                    <?php echo $curr3; ?>
+                                <option <?php echo $value3_currency === $curr3 ? 'selected' : ''; ?> value="<?php echo esc_attr($curr3); ?>">
+                                    <?php echo esc_html($curr3); ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -609,7 +611,6 @@ class Tipping_Banner_High extends WP_Widget
     public function update($new_instance, $old_instance)
     {
         $instance = array();
-
         $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
 
         $instance['description'] = !empty($new_instance['description']) ? wp_strip_all_tags($new_instance['description']) : '';
@@ -667,7 +668,6 @@ class Tipping_Banner_High extends WP_Widget
 
         $instance['free_input'] = !empty($new_instance['free_input']) ? $new_instance['free_input'] : 'false';
         $instance['fixed_background'] = !empty($new_instance['fixed_background']) ? $new_instance['fixed_background'] : '';
-
         return $instance;
     }
 }

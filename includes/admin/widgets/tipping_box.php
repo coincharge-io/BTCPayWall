@@ -19,6 +19,7 @@ class Tipping_Box extends WP_Widget
     {
         $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
         $logo = wp_get_attachment_image_src($instance['logo_id']) ? wp_get_attachment_image_src($instance['logo_id'])[0] : $instance['logo_id'];
+        var_dump(wp_get_attachment_image_src($instance['logo_id']) ? wp_get_attachment_image_src($instance['logo_id'])[0] : $instance['logo_id']);
         $background = wp_get_attachment_image_src($instance['background_id']) ? wp_get_attachment_image_src($instance['background_id'])[0] : $instance['background_id'];
         $dimension = explode('x', ($instance['dimension'] == '250x300' ? '250x300' : '300x300'));
 
@@ -230,7 +231,7 @@ work', 'btcpaywall');
                 </div>
                 <div class="col-50">
                     <?php if ($logo_id) : ?>
-                        <button class="widget-tipping-basic-upload_box_logo" name="btcpw_tipping_button_image"><img alt="Tipping box logo" src="<?php echo esc_url($logo[0]); ?>" /></a></button>
+                        <button class="widget-tipping-basic-upload_box_logo" name="btcpw_tipping_button_image"><img alt="Tipping box logo" width="100" height="100" src="<?php echo esc_url($logo[0]); ?>" /></a></button>
                         <button class="widget-tipping-basic-remove_box_image"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-logo_id" id="<?php echo esc_attr($this->get_field_id('logo_id')); ?>" name="<?php echo esc_attr($this->get_field_name('logo_id')); ?>" type="text" value="<?php echo esc_attr($logo_id); ?>" />
                     <?php else : ?>
