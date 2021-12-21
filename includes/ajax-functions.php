@@ -13,7 +13,7 @@ function ajax_btcpaywall_get_invoice_id()
 {
 
     if (empty($_POST['post_id'])) {
-        wp_send_json_error(['message' => 'post_id required']);
+        wp_send_json_error(['message' => 'Post_id required']);
     }
 
     $customer_data = array(
@@ -857,11 +857,11 @@ function ajax_btcpaywall_generate_invoice_id_content_file()
     $customer = new BTCPayWall_Customer();
 
     $customer->create([
-        'full_name' => $_POST['full_name'],
-        'email' => $_POST['email'],
-        'address' => $_POST['address'],
-        'phone' => $_POST['phone'],
-        'message' => $_POST['message'],
+        'full_name' => sanitize_text_field($_POST['full_name']),
+        'email' => sanitize_email($_POST['email']),
+        'address' => sanitize_text_field($_POST['address']),
+        'phone' => sanitize_text_field($_POST['phone']),
+        'message' => sanitize_text_field($_POST['message']),
     ]);
 
 
@@ -970,3 +970,47 @@ function ajax_btcpaywall_paid_content_file_invoice()
 
 add_action('wp_ajax_btcpw_paid_content_file_invoice',  'ajax_btcpaywall_paid_content_file_invoice');
 add_action('wp_ajax_nopriv_btcpw_paid_content_file_invoice',  'ajax_btcpaywall_paid_content_file_invoice');
+
+
+
+function ajax_btcpaywall_opennode_monitor_invoice_status()
+{
+    if (empty($_POST['invoice_id'])) {
+        wp_send_json_error(['message' => 'Invoice id required']);
+    }
+    $id = sanitize_text_field($_POST['invoice_id']);
+    $url = 'https://api.opennode.com/v1/charge/' . $id;
+
+
+    $args = array(
+        'headers' => array(
+            'Authorization' => get_option('btcpw_opennode_auth_key'),
+            'Content-Type' => 'application/json',
+        ),
+        'method' => 'GET',
+        'timeout' => 60,
+    );
+
+    $response = wp_remote_request($url, $args);
+
+    if (is_wp_error($response)) {
+        return $response;
+    }
+
+    if ($response['response']['code'] != 200) {
+        return new WP_Error($response['response']['code'], 'HTTP Error ' . $response['response']['code']);
+    }
+
+    $body = json_decode($response['body'], true)['data'];
+
+    if (empty($body) || !empty($body['error'])) {
+        return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
+    }
+
+    return array(
+        'id' => $body['data']['id'],
+        'amount' => $body['data']['amount'] . $body['data']['currency']
+    );
+}
+add_action('wp_ajax_btcpw_opennode_monitor_invoice_status',  'ajax_btcpaywall_opennode_monitor_invoice_status');
+add_action('wp_ajax_nopriv_btcpw_opennode_monitor_invoice_status',  'ajax_btcpaywall_opennode_monitor_invoice_status');
