@@ -185,8 +185,8 @@ work', 'btcpaywall');
                     <option disabled value="">
                         <?php echo esc_html__('Select dimension:', 'btcpaywall'); ?></option>
                     <?php foreach ($dimensions as $dim) : ?>
-                        <option <?php echo $dimension === $dim ? 'selected' : ''; ?> value="<?php echo $dim; ?>">
-                            <?php echo $dim; ?>
+                        <option <?php echo $dimension === $dim ? 'selected' : ''; ?> value="<?php echo esc_attr($dim); ?>">
+                            <?php echo esc_html($dim); ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
@@ -197,12 +197,12 @@ work', 'btcpaywall');
                 </div>
                 <div class="col-50">
                     <?php if ($background) : ?>
-                        <button class="widget-tipping-basic-upload_box_image" name="lnpw_tipping_button_image_background"><img width="100" height="100" alt="Tipping box background" src="<?php echo $background[0]; ?>" /></a></button>
+                        <button class="widget-tipping-basic-upload_box_image" name="btcpw_tipping_button_image_background"><img width="100" height="100" alt="Tipping box background" src="<?php echo esc_url($background[0]); ?>" /></a></button>
                         <button class="widget-tipping-basic-remove_box_image">
                             <?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-background_id" id="<?php echo esc_attr($this->get_field_id('background_id')); ?>" name="<?php echo esc_attr($this->get_field_name('background_id')); ?>" type="text" value="<?php echo esc_attr($background_id); ?>" />
                     <?php else : ?>
-                        <button class="widget-tipping-basic-upload_box_image" name="lnpw_tipping_button_image_background"><?php echo esc_html__('Upload', 'btcpaywall'); ?></button>
+                        <button class="widget-tipping-basic-upload_box_image" name="btcpw_tipping_button_image_background"><?php echo esc_html__('Upload', 'btcpaywall'); ?></button>
                         <button class="widget-tipping-basic-remove_box_image" style="display:none"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-background_id" id="<?php echo esc_attr($this->get_field_id('background_id')); ?>" name="<?php echo esc_attr($this->get_field_name('background_id')); ?>" type="text" value="<?php echo esc_attr($background_id); ?>" />
                     <?php endif; ?>
@@ -230,11 +230,11 @@ work', 'btcpaywall');
                 </div>
                 <div class="col-50">
                     <?php if ($logo_id) : ?>
-                        <button class="widget-tipping-basic-upload_box_logo" name="lnpw_tipping_button_image"><img alt="Tipping box logo" src="<?php echo $logo[0]; ?>" /></a></button>
+                        <button class="widget-tipping-basic-upload_box_logo" name="btcpw_tipping_button_image"><img alt="Tipping box logo" src="<?php echo esc_url($logo[0]); ?>" /></a></button>
                         <button class="widget-tipping-basic-remove_box_image"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-logo_id" id="<?php echo esc_attr($this->get_field_id('logo_id')); ?>" name="<?php echo esc_attr($this->get_field_name('logo_id')); ?>" type="text" value="<?php echo esc_attr($logo_id); ?>" />
                     <?php else : ?>
-                        <button class="widget-tipping-basic-upload_box_logo" name="lnpw_tipping_button_image"><?php echo esc_html__('Upload', 'btcpaywall'); ?></button>
+                        <button class="widget-tipping-basic-upload_box_logo" name="btcpw_tipping_button_image"><?php echo esc_html__('Upload', 'btcpaywall'); ?></button>
                         <button class="widget-tipping-basic-remove_box_image" style="display:none"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-logo_id" id="<?php echo esc_attr($this->get_field_id('logo_id')); ?>" name="<?php echo esc_attr($this->get_field_name('logo_id')); ?>" type="text" value="<?php echo esc_attr($logo_id); ?>" />
                     <?php endif; ?>

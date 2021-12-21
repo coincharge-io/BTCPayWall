@@ -281,12 +281,12 @@ class Tipping_Banner_Wide extends WP_Widget
                 </div>
                 <div class="col-50">
                     <?php if ($background) : ?>
-                        <button id="lnpw_tipping_button_image_background_banner_wide" class="widget-tipping-basic-upload_box_image_wide" name="lnpw_tipping_button_image_background"><img width="100" height="100" alt="Tipping box background" src="<?php echo esc_url($background[0]); ?>" /></a></button>
+                        <button id="btcpw_tipping_button_image_background_banner_wide" class="widget-tipping-basic-upload_box_image_wide" name="btcpw_tipping_button_image_background"><img width="100" height="100" alt="Tipping box background" src="<?php echo esc_url($background[0]); ?>" /></a></button>
                         <button class="widget-tipping-basic-remove_box_image_wide">
                             <?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-background_id_wide" id="<?php echo esc_attr($this->get_field_id('background_id')); ?>" name="<?php echo esc_attr($this->get_field_name('background_id')); ?>" type="text" value="<?php echo esc_attr($background_id); ?>" />
                     <?php else : ?>
-                        <button id="lnpw_tipping_button_image_background_banner_wide" class="widget-tipping-basic-upload_box_image_wide" name="lnpw_tipping_button_image_background"><?php echo esc_html__('Upload', 'btcpaywall'); ?></button>
+                        <button id="btcpw_tipping_button_image_background_banner_wide" class="widget-tipping-basic-upload_box_image_wide" name="btcpw_tipping_button_image_background"><?php echo esc_html__('Upload', 'btcpaywall'); ?></button>
                         <button class="widget-tipping-basic-remove_box_image_wide" style="display:none"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-background_id_wide" id="<?php echo esc_attr($this->get_field_id('background_id')); ?>" name="<?php echo esc_attr($this->get_field_name('background_id')); ?>" type="text" value="<?php echo esc_attr($background_id); ?>" />
                     <?php endif; ?>
@@ -314,11 +314,11 @@ class Tipping_Banner_Wide extends WP_Widget
                 </div>
                 <div class="col-50">
                     <?php if ($logo_id) : ?>
-                        <button id="lnpw_tipping_button_logo_banner_wide" class="widget-tipping-basic-upload_box_logo_wide" name="lnpw_tipping_button_image"><img width="100" height="100" alt="Tipping box logo" src="<?php echo $logo[0]; ?>" /></a></button>
+                        <button id="btcpw_tipping_button_logo_banner_wide" class="widget-tipping-basic-upload_box_logo_wide" name="btcpw_tipping_button_image"><img width="100" height="100" alt="Tipping box logo" src="<?php echo $logo[0]; ?>" /></a></button>
                         <button class="widget-tipping-basic-remove_box_image_wide"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-logo_id_wide" id="<?php echo esc_attr($this->get_field_id('logo_id')); ?>" name="<?php echo esc_attr($this->get_field_name('logo_id')); ?>" type="text" value="<?php echo esc_attr($logo_id); ?>" />
                     <?php else : ?>
-                        <button id="lnpw_tipping_button_logo_banner_wide" class="widget-tipping-basic-upload_box_logo_wide" name="lnpw_tipping_button_image"><?php echo esc_html__('Upload', 'btcpaywall'); ?></button>
+                        <button id="btcpw_tipping_button_logo_banner_wide" class="widget-tipping-basic-upload_box_logo_wide" name="btcpw_tipping_button_image"><?php echo esc_html__('Upload', 'btcpaywall'); ?></button>
                         <button class="widget-tipping-basic-remove_box_image_wide" style="display:none"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-logo_id_wide" id="<?php echo esc_attr($this->get_field_id('logo_id')); ?>" name="<?php echo esc_attr($this->get_field_name('logo_id')); ?>" type="text" value="<?php echo esc_attr($logo_id); ?>" />
                     <?php endif; ?>
