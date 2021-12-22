@@ -58,7 +58,7 @@ class Elementor_BTCPW_Shortcode_List_Widget extends \Elementor\Widget_Base
             [
                 'label' => 'Shortcodes',
                 'type' => \Elementor\Controls_Manager::SELECT,
-                'options' => array_flip(allCreatedForms()),
+                'options' => array_flip(btcpaywall_all_created_forms()),
             ]
         );
 

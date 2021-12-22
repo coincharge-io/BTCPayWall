@@ -509,7 +509,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'attach_image',
                 'heading' => 'Logo',
                 'param_name' => 'logo_id',
-                'value' => 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg',
+                'value' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
                 'description' => 'Add logo',
             ),
             array(
@@ -849,7 +849,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'attach_image',
                 'heading' => 'Logo',
                 'param_name' => 'logo_id',
-                'value' => 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg',
+                'value' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
                 'description' => 'Add logo',
             ),
             array(
@@ -1189,7 +1189,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'attach_image',
                 'heading' => 'Logo',
                 'param_name' => 'logo_id',
-                'value' => 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg',
+                'value' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
                 'description' => 'Add logo',
             ),
             array(
@@ -1325,7 +1325,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'attach_image',
                 'heading' => 'Logo',
                 'param_name' => 'logo_id',
-                'value' => 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg',
+                'value' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
                 'description' => 'Add logo',
             ),
             array(

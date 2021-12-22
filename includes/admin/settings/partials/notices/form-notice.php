@@ -1,6 +1,6 @@
 <?php if ($id) : ?>
     <div class='btcpw_form_notice'>
-        <p>Add the following shortcode where you want to display it: <?php echo $shortcode; ?></p>
+        <p>Add the following shortcode where you want to display it: <?php echo esc_html($shortcode); ?></p>
     </div>
 <?php else : ?>
     <div class='btcpw_form_notice'>

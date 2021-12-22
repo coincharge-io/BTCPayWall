@@ -86,7 +86,7 @@ class BTCPayWall_Cart
     }
     public function get_session_contents()
     {
-        $cart = $_SESSION['btcpaywall_cart'];
+        $cart = sanitize_text_field($_SESSION['btcpaywall_cart']);
         $this->content = $cart;
     }
     public function get_contents()
@@ -176,7 +176,7 @@ class BTCPayWall_Cart
         } else {
             unset($cart[$key]);
         }
-        
+
         $this->content = $cart;
         $this->update_cart();
 

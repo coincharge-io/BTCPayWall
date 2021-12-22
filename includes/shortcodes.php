@@ -719,12 +719,12 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                         <div class="btcpw_page_donor_information">
                             <?php foreach ($collect as $key => $value) : ?>
                                 <?php if ($collect[$key]['display'] === true) : ?>
-                                    <?php $id = esc_attr($collect[$key]['id']);
-                                    $label = esc_attr($collect[$key]['label']);
+                                    <?php $id = $collect[$key]['id'];
+                                    $label = $collect[$key]['label'];
                                     ?>
-                                    <div class="<?php echo "btcpw_page_tipping_donor_{$id}_wrap"; ?>">
+                                    <div class="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}_wrap"); ?>">
 
-                                        <input type="text" placeholder="<?php echo esc_attr($label); ?>" id="<?php echo "btcpw_page_tipping_donor_{$id}"; ?>" name="<?php echo "btcpw_page_tipping_donor_{$id}"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                        <input type="text" placeholder="<?php echo esc_attr($label); ?>" id="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}"); ?>" name="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
                                     </div>
                                 <?php endif; ?>
                             <?php endforeach; ?>
@@ -1254,7 +1254,7 @@ add_shortcode('btcpaywall_checkout', 'btcpaywall_render_checkout');
 function btcpaywall_render_receipt()
 {
 
-    $payment = new BTCPayWall_Payment($_SESSION['btcpaywall_purchase']);
+    $payment = new BTCPayWall_Payment(sanitize_text_field($_SESSION['btcpaywall_purchase']));
     $currency = get_option('btcpw_default_pay_per_file_currency', 'SATS');
     $download_ids = explode(',', $payment->download_ids);
     $download_links = explode(',', $payment->download_links);

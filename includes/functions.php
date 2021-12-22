@@ -437,7 +437,7 @@ function btcpaywall_get_attachment_id($url)
 
     $dir = wp_upload_dir();
 
-    if (false !== strpos($url, $dir['baseurl'] . '/')) { // Is URL in uploads directory?
+    if (false !== strpos($url, $dir['baseurl'] . '/')) {
         $file = basename($url);
 
         $query_args = array(

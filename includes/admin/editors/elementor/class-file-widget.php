@@ -93,7 +93,7 @@ class Elementor_BTCPW_File_Widget extends \Elementor\Widget_Base
 				'label' => 'Preview',
 				'type'  => \Elementor\Controls_Manager::MEDIA,
 				'default' =>
-				['url' => "plugin_dir_url(__DIR__) . 'public/img/file_preview.png'"]
+				['url' => ""]
 			]
 		);
 

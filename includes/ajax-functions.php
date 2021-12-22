@@ -490,29 +490,6 @@ function ajax_btcpaywall_notify_administrator()
 add_action('wp_ajax_btcpw_notify_admin',  'ajax_btcpaywall_notify_administrator');
 add_action('wp_ajax_nopriv_btcpw_notify_admin',  'ajax_btcpaywall_notify_administrator');
 
-/**
- * Regulate Digital Download Permissions
- * 
- * Check if customer has reached download limit for the specific product or if download link is still valid
- * 
- * @since 1.0
- * 
- * @return void 
- */
-function ajax_btcpaywall_check_download_limit()
-{
-    if (empty($_POST['post_id'])) {
-        wp_send_json_error(['message' => 'post_id required']);
-    }
-    $post_id = $_POST['post_id'];
-    $payment_id = $_COOKIE["btcpw_payment_id_{$post_id}"];
-    $payment = new BTCPayWall_Payment($payment_id);
-
-    $payment->increase_download_number();
-    wp_send_json_success(["success" => true, "download_number" => $payment->get_download_number()]);
-}
-add_action('wp_ajax_btcpw_check_download_limit',  'ajax_btcpaywall_check_download_limit');
-add_action('wp_ajax_nopriv_btcpw_check_download_limit',  'ajax_btcpaywall_check_download_limit');
 
 
 
@@ -611,9 +588,6 @@ function btcpaywall_generate_opennode_invoice_id($post_id, $order_id, $customer_
         'amount' => $body['data']['amount'] . $body['data']['currency']
     );
 }
-
-
-
 
 function btcpaywall_tipping_invoice_args($amount, $currency, $type, $blogname, $collects)
 {
@@ -970,47 +944,3 @@ function ajax_btcpaywall_paid_content_file_invoice()
 
 add_action('wp_ajax_btcpw_paid_content_file_invoice',  'ajax_btcpaywall_paid_content_file_invoice');
 add_action('wp_ajax_nopriv_btcpw_paid_content_file_invoice',  'ajax_btcpaywall_paid_content_file_invoice');
-
-
-
-function ajax_btcpaywall_opennode_monitor_invoice_status()
-{
-    if (empty($_POST['invoice_id'])) {
-        wp_send_json_error(['message' => 'Invoice id required']);
-    }
-    $id = sanitize_text_field($_POST['invoice_id']);
-    $url = 'https://api.opennode.com/v1/charge/' . $id;
-
-
-    $args = array(
-        'headers' => array(
-            'Authorization' => get_option('btcpw_opennode_auth_key'),
-            'Content-Type' => 'application/json',
-        ),
-        'method' => 'GET',
-        'timeout' => 60,
-    );
-
-    $response = wp_remote_request($url, $args);
-
-    if (is_wp_error($response)) {
-        return $response;
-    }
-
-    if ($response['response']['code'] != 200) {
-        return new WP_Error($response['response']['code'], 'HTTP Error ' . $response['response']['code']);
-    }
-
-    $body = json_decode($response['body'], true)['data'];
-
-    if (empty($body) || !empty($body['error'])) {
-        return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
-    }
-
-    return array(
-        'id' => $body['data']['id'],
-        'amount' => $body['data']['amount'] . $body['data']['currency']
-    );
-}
-add_action('wp_ajax_btcpw_opennode_monitor_invoice_status',  'ajax_btcpaywall_opennode_monitor_invoice_status');
-add_action('wp_ajax_nopriv_btcpw_opennode_monitor_invoice_status',  'ajax_btcpaywall_opennode_monitor_invoice_status');

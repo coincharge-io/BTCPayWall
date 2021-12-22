@@ -95,7 +95,7 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
                 'label' => 'Logo',
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
-                    'url' => 'https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg',
+                    'url' => "BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png'",
                 ],
             ]
         );

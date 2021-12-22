@@ -286,8 +286,8 @@ work', 'btcpaywall');
                         <option disabled value="">
                             <?php echo esc_html__('Select currency', 'btcpaywall'); ?></option>
                         <?php foreach ($supported_currencies as $curr) : ?>
-                            <option <?php echo $currency === $curr ? 'selected' : ''; ?> value="<?php echo $curr; ?>">
-                                <?php echo $curr; ?>
+                            <option <?php echo $currency === $curr ? 'selected' : ''; ?> value="<?php echo esc_attr($curr); ?>">
+                                <?php echo esc_html($curr); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

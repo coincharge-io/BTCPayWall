@@ -125,12 +125,12 @@ function btcpaywall_process_download()
         $file['name'] = btcpaywall_get_file_name_from_path($download_args['btcpw_file']);
 
 
-        $file['extension'] = get_file_extension($download_args['btcpw_file']);
+        $file['extension'] = btcpaywall_get_file_extension($download_args['btcpw_file']);
 
-        $file['is_local'] = (int) is_file_local($file_path); // 1 | 0
+        $file['is_local'] = (int) btcpaywall_is_file_local($file_path); // 1 | 0
 
         $file['content_type'] = btcpaywall_get_file_content_type($file['extension']);
-        setcookie("btcpw_{$payment->invoice_id}{$download->ID}", isset($_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"]) ? ++$_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"] : 0, strtotime("14 Jan 2038"), '/');
+        setcookie("btcpw_{$payment->invoice_id}{$download->ID}", isset(sanitize_text_field($_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"])) ? ++$_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"] : 0, strtotime("14 Jan 2038"), '/');
         $headers = btcpaywall_get_all_headers();
 
         if (in_array($file['extension'], array('php', 'js'))) {
@@ -1295,7 +1295,7 @@ function btcpaywall_get_file_name_from_path($file_path)
 
 
 
-function get_file_extension($file_name)
+function btcpaywall_get_file_extension($file_name)
 {
 
     $file_extension = explode('.', $file_name);
@@ -1305,7 +1305,7 @@ function get_file_extension($file_name)
 }
 
 
-function is_file_local($download_file)
+function btcpaywall_is_file_local($download_file)
 {
 
     $file = strtolower($download_file);

@@ -115,7 +115,7 @@ class Tipping_Banner_High extends WP_Widget
                 <div class="btcpw_widget btcpw_skyscraper_tipping_container high">
                     <form method="POST" action="" id="btcpw_widget_skyscraper_tipping_form_high">
                         <fieldset>
-                            <h6><?php echo (!empty($instance['tipping_text']) ? ($instance['tipping_text']) : ''); ?>
+                            <h6><?php echo (!empty($instance['tipping_text']) ? esc_html($instance['tipping_text']) : ''); ?>
                             </h6>
                             <div class="btcpw_widget btcpw_skyscraper_amount high">
                                 <?php foreach ($fixed_amount as $key => $value) : ?>
@@ -158,10 +158,10 @@ class Tipping_Banner_High extends WP_Widget
 
 
                             <div id="btcpw_widget_btcpw_skyscraper_button_high">
-                                <input type="hidden" id="btcpw_widget_btcpw_skyscraper_redirect_link_high" name="btcpw_widget_btcpw_skyscraper_redirect_link_high" value=<?php echo ($instance['redirect']); ?> />
+                                <input type="hidden" id="btcpw_widget_btcpw_skyscraper_redirect_link_high" name="btcpw_widget_btcpw_skyscraper_redirect_link_high" value=<?php echo esc_attr($instance['redirect']); ?> />
                                 <?php if ($collect_data === true) : ?>
                                     <div>
-                                        <input type="button" name="next" class="btcpw_widget skyscraper-next-form high" value="Continue" />
+                                        <input type="button" name="next" class="btcpw_widget skyscraper-next-form high" value="<?php _e('Continue', 'btcpaywall'); ?>" />
                                     </div>
                                 <?php else : ?>
                                     <div>
@@ -176,9 +176,11 @@ class Tipping_Banner_High extends WP_Widget
                                 <div class="btcpw_widget btcpw_skyscraper_donor_information high">
                                     <?php foreach ($collect as $key => $value) : ?>
                                         <?php if ($collect[$key]['display'] === true) : ?>
-                                            <div class="<?php echo "btcpw_widget btcpw_skyscraper_tipping_donor_{$collect[$key]['label']}_wrap high"; ?>">
+                                            <?php $label=esc_attr($collect[$key]['label']);
+                                            $id=esc_attr($collect[$key]['id']);?>
+                                            <div class="<?php echo "btcpw_widget btcpw_skyscraper_tipping_donor_{$label}_wrap high"; ?>">
 
-                                                <input type="text" placeholder="<?php echo $collect[$key]['label']; ?>" id="<?php echo "btcpw_widget_btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_high"; ?>" name="<?php echo "btcpw_widget_btcpw_skyscraper_tipping_donor_{$collect[$key]['id']}_high"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                                <input type="text" placeholder="<?php echo $label; ?>" id="<?php echo "btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_high"; ?>" name="<?php echo "btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_high"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                             </div>
                                         <?php endif; ?>
@@ -186,7 +188,7 @@ class Tipping_Banner_High extends WP_Widget
                                 </div>
                                 <div id="btcpw_widget_btcpw_skyscraper_button_high">
                                     <div>
-                                        <input type="button" name="previous" class="btcpw_widget_ skyscraper-previous-form high" value="< Previous" />
+                                        <input type="button" name="previous" class="btcpw_widget_ skyscraper-previous-form high" value="<?php _e('< Previous', 'btcpaywall'); ?>" />
                                     </div>
                                     <div>
                                         <button type="submit" id="btcpw_widget_btcpw_skyscraper_tipping__button_high"><?php echo (!empty($instance['button_text']) ? esc_html($instance['button_text']) : 'Tip'); ?></button>
@@ -405,7 +407,7 @@ class Tipping_Banner_High extends WP_Widget
             </div>
             <div class="row">
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('redirect')); ?>">Link to Thank you page</label>
+                    <label for="<?php echo esc_attr($this->get_field_id('redirect')); ?>"><?php esc_html__('Link to Thank you page','btcpaywall');?></label>
 
                     <input id="<?php echo esc_attr($this->get_field_id('redirect')); ?>" name="<?php echo esc_attr($this->get_field_name('redirect')); ?>" class="widget-tipping-basic_redirect" type="text" value="<?php echo esc_attr($redirect); ?>" />
                 </div>

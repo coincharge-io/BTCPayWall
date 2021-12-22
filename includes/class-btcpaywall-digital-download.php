@@ -777,7 +777,7 @@ class BTCPayWall_Digital_Download
      */
     public function get_download_is_allowed($payment_id)
     {
-        $payment_count = $_COOKIE['btcpw_' . $payment_id . $this->ID];
+        $payment_count = sanitize_text_field($_COOKIE['btcpw_' . $payment_id . $this->ID]);
 
         if ((int)$this->get_file_download_limit() == 0) {
             return true;
