@@ -130,7 +130,7 @@ function btcpaywall_process_download()
         $file['is_local'] = (int) btcpaywall_is_file_local($file_path); // 1 | 0
 
         $file['content_type'] = btcpaywall_get_file_content_type($file['extension']);
-        setcookie("btcpw_{$payment->invoice_id}{$download->ID}", isset(sanitize_text_field($_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"])) ? ++$_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"] : 0, strtotime("14 Jan 2038"), '/');
+        setcookie("btcpw_{$payment->invoice_id}{$download->ID}", isset($_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"]) ? ++$_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"] : 0, strtotime("14 Jan 2038"), '/');
         $headers = btcpaywall_get_all_headers();
 
         if (in_array($file['extension'], array('php', 'js'))) {

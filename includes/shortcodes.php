@@ -143,7 +143,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                 </div>
             </div>
             <div class="btcpw_skyscraper_tipping_container wide">
-                <form method="POST" action="" id="<?php echo "skyscraper_tipping_wide_form"; ?>">
+                <form method="POST" action="" id="<?php echo esc_attr("skyscraper_tipping_wide_form"); ?>">
                     <fieldset>
                         <h6><?php echo (!empty($atts['tipping_text']) ? esc_html($atts['tipping_text']) : ''); ?>
                         </h6>
@@ -151,12 +151,12 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                             <?php foreach ($fixed_amount as $key => $value) : ?>
 
                                 <?php if ($fixed_amount[$key]['enabled'] === true) : ?>
-                                    <div class="<?php echo trim('btcpw_skyscraper_amount_' . esc_attr($key) . ' ' . 'wide'); ?>">
+                                    <div class="<?php echo esc_attr("btcpw_skyscraper_amount_{$key} wide"); ?>">
                                         <div>
-                                            <input type="radio" class="btcpw_skyscraper_tipping_default_amount wide" id="<?php echo esc_attr($key) . '_wide'; ?>" name="btcpw_skyscraper_tipping_default_amount_wide" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_attr($fixed_amount[$key]['amount']) . ' ' . esc_attr($fixed_amount[$key]['currency']); ?>">
+                                            <input type="radio" class="btcpw_skyscraper_tipping_default_amount wide" id="<?php echo esc_attr("{$key}_wide"); ?>" name="btcpw_skyscraper_tipping_default_amount_wide" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_attr($fixed_amount[$key]['amount']) . ' ' . esc_attr($fixed_amount[$key]['currency']); ?>">
                                             <?php if (!empty($fixed_amount[$key]['amount'])) : ?>
                                                 <?php if (true == $atts['show_icon']) : ?>
-                                                    <i class="<?php echo esc_html($fixed_amount[$key]['icon']); ?>"></i>
+                                                    <i class="<?php echo esc_attr($fixed_amount[$key]['icon']); ?>"></i>
                                                 <?php endif; ?>
                                             <?php endif; ?>
                                         </div>
@@ -174,8 +174,8 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                                     <select required name="btcpw_skyscraper_tipping_currency_wide" id="btcpw_skyscraper_tipping_wide_currency">
                                         <option disabled value="">Select currency</option>
                                         <?php foreach ($supported_currencies as $currency) : ?>
-                                            <option <?php echo $atts['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
-                                                <?php echo $currency; ?>
+                                            <option <?php echo $atts['currency'] === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
+                                                <?php echo esc_html($currency); ?>
                                             <?php endforeach; ?>
                                     </select>
                                     <i class="fas fa-arrows-alt-v"></i>
@@ -210,12 +210,12 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                             <div class="btcpw_skyscraper_donor_information wide">
                                 <?php foreach ($collect as $key => $value) : ?>
                                     <?php if ($collect[$key]['display'] === true) : ?>
-                                        <?php $id = esc_attr($collect[$key]['id']);
-                                        $label = esc_attr($collect[$key]['label']);
+                                        <?php $id = $collect[$key]['id'];
+                                        $label = $collect[$key]['label'];
                                         ?>
-                                        <div class="<?php echo "btcpw_skyscraper_tipping_donor_{$id}_wrap wide"; ?>">
+                                        <div class="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wrap wide"); ?>">
 
-                                            <input type="text" placeholder="<?php echo $label; ?>" id="<?php echo "btcpw_skyscraper_tipping_donor_{$id}_wide"; ?>" name="<?php echo "btcpw_skyscraper_tipping_donor_{$id}_wide"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                            <input type="text" placeholder="<?php echo $label; ?>" id="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" name="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                         </div>
                                     <?php endif; ?>
@@ -386,16 +386,16 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                             <?php foreach ($fixed_amount as $key => $value) : ?>
 
                                 <?php if ($fixed_amount[$key]['enabled'] === true) : ?>
-                                    <div class="<?php echo 'btcpw_skyscraper_amount_' . esc_attr($key) . ' ' . 'high'; ?>">
+                                    <div class="<?php echo esc_attr("btcpw_skyscraper_amount_{$key} high"); ?>">
                                         <div>
-                                            <input type="radio" class="btcpw_skyscraper_tipping_default_amount high" )" id="<?php echo esc_attr($key) . '_high'; ?>" name="btcpw_skyscraper_tipping_default_amount_high" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_attr($fixed_amount[$key]['amount']) . ' ' . esc_attr($fixed_amount[$key]['currency']); ?>">
+                                            <input type="radio" class="btcpw_skyscraper_tipping_default_amount high" )" id="<?php echo esc_attr("{$key}_high"); ?>" name="btcpw_skyscraper_tipping_default_amount_high" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_attr($fixed_amount[$key]['amount']) . ' ' . esc_attr($fixed_amount[$key]['currency']); ?>">
                                             <?php if (!empty($fixed_amount[$key]['amount'])) : ?>
                                                 <?php if (true == $atts['show_icon']) : ?>
-                                                    <i class="<?php echo esc_html($fixed_amount[$key]['icon']); ?>"></i>
+                                                    <i class="<?php echo esc_attr($fixed_amount[$key]['icon']); ?>"></i>
                                                 <?php endif; ?>
                                             <?php endif; ?>
                                         </div>
-                                        <label for="<?php echo $key; ?>"><?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?></label>
+                                        <label for="<?php echo esc_attr($key); ?>"><?php echo esc_html($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?></label>
 
                                     </div>
                                 <?php endif; ?>
@@ -403,7 +403,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                             <?php endforeach; ?>
                             <?php if (true == $atts['free_input']) : ?>
                                 <div class="btcpw_skyscraper_tipping_free_input high">
-                                    <input type="number" id="<?php echo "btcpw_skyscraper_tipping_high_amount"; ?>" name="btcpw_skyscraper_tipping_amount_high" placeholder="0.00" required />
+                                    <input type="number" id="<?php echo esc_attr("btcpw_skyscraper_tipping_high_amount"); ?>" name="btcpw_skyscraper_tipping_amount_high" placeholder="0.00" required />
 
 
                                     <select required name="btcpw_skyscraper_tipping_currency_high" id="btcpw_skyscraper_tipping_high_currency">
@@ -445,12 +445,12 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                             <div class="btcpw_skyscraper_donor_information high">
                                 <?php foreach ($collect as $key => $value) : ?>
                                     <?php if ($collect[$key]['display'] === true) : ?>
-                                        <?php $id = esc_attr($collect[$key]['id']);
-                                        $label = esc_attr($collect[$key]['label']);
+                                        <?php $id = $collect[$key]['id'];
+                                        $label = $collect[$key]['label'];
                                         ?>
-                                        <div class="<?php echo "btcpw_skyscraper_tipping_donor_{$id}_wrap high"; ?>">
+                                        <div class="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wrap high"); ?>">
 
-                                            <input type="text" placeholder="<?php echo $label; ?>" id="<?php echo "btcpw_skyscraper_tipping_donor_{$id}_high"; ?>" name="<?php echo "btcpw_skyscraper_tipping_donor_{$id}_high"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                            <input type="text" placeholder="<?php echo esc_attr($label); ?>" id="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_high"); ?>" name="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_high"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                         </div>
                                     <?php endif; ?>
@@ -648,16 +648,16 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                         <?php foreach ($fixed_amount as $key => $value) : ?>
 
                             <?php if ($fixed_amount[$key]['enabled'] === true) : ?>
-                                <div class="<?php echo 'btcpw_page_amount_' . esc_attr($key); ?>">
+                                <div class="<?php echo esc_attr("btcpw_page_amount_{$key}"); ?>">
                                     <div>
-                                        <input type="radio" class="btcpw_page_tipping_default_amount" id="<?php echo esc_attr($key) . '_page'; ?>" name="btcpw_page_tipping_default_amount" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_attr($fixed_amount[$key]['amount']) . ' ' . (!empty($fixed_amount[$key]['currency']) ? esc_attr($fixed_amount[$key]['currency']) : 'SATS'); ?>">
+                                        <input type="radio" class="btcpw_page_tipping_default_amount" id="<?php echo esc_attr("{$key}_page"); ?>" name="btcpw_page_tipping_default_amount" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_attr($fixed_amount[$key]['amount']) . ' ' . (!empty($fixed_amount[$key]['currency']) ? esc_attr($fixed_amount[$key]['currency']) : 'SATS'); ?>">
                                         <?php if (!empty($fixed_amount[$key]['amount'])) : ?>
                                             <?php if (true == $atts['show_icon']) : ?>
                                                 <i class="<?php echo esc_html($fixed_amount[$key]['icon']); ?>"></i>
                                             <?php endif; ?>
                                         <?php endif; ?>
                                     </div>
-                                    <label for="<?php echo esc_attr($key) . '_page' ?>"><?php echo esc_attr($fixed_amount[$key]['amount']) . ' ' . (!empty($fixed_amount[$key]['currency']) ? esc_attr($fixed_amount[$key]['currency']) : 'SATS'); ?></label>
+                                    <label for="<?php echo esc_attr("{$key}_page"); ?>"><?php echo esc_attr($fixed_amount[$key]['amount']) . ' ' . (!empty($fixed_amount[$key]['currency']) ? esc_attr($fixed_amount[$key]['currency']) : 'SATS'); ?></label>
 
                                 </div>
                             <?php endif; ?>
@@ -878,7 +878,7 @@ function btcpaywall_render_shortcode_box_tipping($atts)
                     <h6><?php echo (!empty($atts['tipping_text']) ? esc_html($atts['tipping_text']) : ''); ?></h6>
                     <div class="btcpw_tipping_box_amount">
 
-                        <div class=<?php echo 'btcpw_tipping_free_input' . ' ' . esc_attr($is_widget); ?>">
+                        <div class=<?php echo esc_attr("btcpw_tipping_free_input $is_widget"); ?>">
                             <input type="number" id="btcpw_tipping_amount" name="btcpw_tipping_amount" placeholder="0.00" required />
 
 
@@ -1183,7 +1183,7 @@ function btcpaywall_render_checkout()
                         </td>
                         <td class="btcpaywall_cart_item_price">
                             <span><?php
-                                    echo btcpaywall_cart_item_price($item['id']); ?></span>
+                                    echo esc_html(btcpaywall_cart_item_price($item['id'])); ?></span>
 
                         </td>
                         <td class="btcpaywall_cart_actions">
@@ -1239,7 +1239,7 @@ function btcpaywall_render_checkout()
                 </div>
                 <div class="btcpw_digital_download_button" id="btcpw_digital_download_button">
                     <div>
-                        <button type="submit" data-post_id="<?php echo get_the_ID(); ?>" class="btcpw_digital_download"><?php echo __('Pay', 'btcpaywall'); ?></button>
+                        <button type="submit" data-post_id="<?php echo esc_attr(get_the_ID()); ?>" class="btcpw_digital_download"><?php echo __('Pay', 'btcpaywall'); ?></button>
                     </div>
                 </div>
             </fieldset>
@@ -1264,7 +1264,7 @@ function btcpaywall_render_receipt()
         <thead>
             <tr>
                 <th><strong><?php _e('Payment', 'btcpaywall'); ?>:</strong></th>
-                <th><?php echo  esc_html($payment->id); ?></th>
+                <th><?php echo esc_html($payment->id); ?></th>
             </tr>
         </thead>
 
@@ -1276,7 +1276,7 @@ function btcpaywall_render_receipt()
             </tr>
             <tr>
                 <td><strong><?php _e('Payment ID', 'btcpaywall'); ?>:</strong></td>
-                <td><?php echo  esc_html($payment->id); ?></td>
+                <td><?php echo esc_html($payment->id); ?></td>
             </tr>
             <tr>
                 <td><strong><?php _e('Payment Method', 'btcpaywall'); ?>:</strong></td>
@@ -1309,6 +1309,7 @@ function btcpaywall_render_receipt()
                             <?php
                             $download       = new BTCPayWall_Digital_Download($item);
                             //$link = btcpaywall_get_download_url($payment->invoice_id, $download->get_file_url(), $item, '');
+                            $key = sanitize_text_field($key);
                             $link = $download_links[$key];
                             ?>
                             <td>

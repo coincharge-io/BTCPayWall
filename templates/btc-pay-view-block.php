@@ -139,9 +139,12 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                     <div class="btcpw_revenue_view_customer_information">
                         <?php foreach ($collect as $key => $value) : ?>
                             <?php if ($collect[$key]['display'] === true) : ?>
-                                <div class="<?php echo "btcpw_revenue_view_customer_{$collect[$key]['id']}_wrap"; ?>">
+                                
+                            <?php $id=$collect[$key]['id'];
+                            $label=$collect[$key]['label'];?>
+                                <div class="<?php echo esc_attr("btcpw_revenue_view_customer_{$id}_wrap"); ?>">
 
-                                    <input type="text" placeholder="<?php echo $collect[$key]['label']; ?>" id="<?php echo "btcpw_revenue_view_customer_{$collect[$key]['id']}"; ?>" name="<?php echo "btcpw_revenue_view_customer_{$collect[$key]['id']}"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                    <input type="text" placeholder="<?php echo esc_attr($label); ?>" id="<?php echo esc_attr("btcpw_revenue_view_customer_{$id}"); ?>" name="<?php echo esc_attr("btcpw_revenue_view_customer_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                 </div>
                             <?php endif; ?>
@@ -153,7 +156,7 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                         </div>
 
                         <div>
-                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo get_the_ID(); ?>"><?php echo btcpaywall_get_payblock_button_string() ?></button>
+                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html(btcpaywall_get_payblock_button_string()); ?></button>
                         </div>
                     </div>
                 </fieldset>

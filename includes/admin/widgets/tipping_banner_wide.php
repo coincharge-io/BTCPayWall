@@ -118,11 +118,10 @@ class Tipping_Banner_Wide extends WP_Widget
                             </h6>
                             <div class="btcpw_widget btcpw_skyscraper_amount wide">
                                 <?php foreach ($fixed_amount as $key => $value) : ?>
-                                    <?php $key = esc_attr($key); ?>
                                     <?php if ($fixed_amount[$key]['enabled'] === true) : ?>
-                                        <div class="<?php echo "btcpw_widget btcpw_skyscraper_amount_$key wide"; ?>">
+                                        <div class="<?php echo esc_attr("btcpw_widget btcpw_skyscraper_amount_$key wide"); ?>">
                                             <div>
-                                                <input type="radio" class="btcpw_widget btcpw_skyscraper_tipping_default_amount wide" id="<?php echo "btcpw_widget_{$key}_wide"; ?>" name="btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo ($fixed_amount[$key]['amount'] . ' ' . $fixed_amount[$key]['currency']); ?>">
+                                                <input type="radio" class="btcpw_widget btcpw_skyscraper_tipping_default_amount wide" id="<?php echo esc_attr("btcpw_widget_{$key}_wide"); ?>" name="btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_attr($fixed_amount[$key]['amount'] . ' ' . esc_attr($fixed_amount[$key]['currency'])); ?>">
                                                 <?php if (!empty($fixed_amount[$key]['amount'])) : ?>
                                                     <i class="<?php echo esc_attr($fixed_amount[$key]['icon']); ?>"></i>
                                                 <?php endif; ?>
@@ -175,11 +174,11 @@ class Tipping_Banner_Wide extends WP_Widget
                                 <div class="btcpw_widget btcpw_skyscraper_donor_information wide">
                                     <?php foreach ($collect as $key => $value) : ?>
                                         <?php if ($collect[$key]['display'] === true) : ?>
-                                            <?php $label = esc_attr($collect[$key]['label']);
-                                            $id = esc_attr($collect[$key]['id']); ?>
-                                            <div class="<?php echo "btcpw_widget btcpw_skyscraper_tipping_donor_{$label}_wrap wide"; ?>">
+                                            <?php $label = $collect[$key]['label'];
+                                            $id = $collect[$key]['id']; ?>
+                                            <div class="<?php echo esc_attr("btcpw_widget btcpw_skyscraper_tipping_donor_{$label}_wrap wide"); ?>">
 
-                                                <input type="text" placeholder="<?php echo $label; ?>" id="<?php echo "btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_wide"; ?>" name="<?php echo "btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_wide"; ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                                <input type="text" placeholder="<?php echo esc_attr($label); ?>" id="<?php echo esc_attr("btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" name="<?php echo esc_attr("btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                             </div>
                                         <?php endif; ?>
