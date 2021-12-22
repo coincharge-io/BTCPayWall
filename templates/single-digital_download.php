@@ -37,7 +37,7 @@ $description = get_post_meta($post->ID, 'btcpw_product_description', true);
         overflow: hidden;
         background-size: cover;
         background-position: center;
-        background-image: url(<?php echo $logo[0]; ?>);
+        background-image: url(<?php echo esc_url($logo[0]); ?>);
     }
 
     .btcpw_tabset {

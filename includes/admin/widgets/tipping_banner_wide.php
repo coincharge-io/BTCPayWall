@@ -30,9 +30,9 @@ class Tipping_Banner_Wide extends WP_Widget
 ?>
         <style>
             .btcpw_widget.btcpw_skyscraper_tipping_container.wide {
-                background-color: <?php echo ($instance['background_color'] ? ($instance['background_color']) : '');
+                background-color: <?php echo ($instance['background_color'] ? esc_html($instance['background_color']) : '');
                                     ?>;
-                background-image: url(<?php echo ($background ? $background : '');
+                background-image: url(<?php echo ($background ? esc_url($background) : '');
                                         ?>);
                 width: <?php echo esc_html($dimension[0]) . 'px !important';
                         ?>;
@@ -89,7 +89,7 @@ class Tipping_Banner_Wide extends WP_Widget
             .btcpw_widget.btcpw_skyscraper_amount_value_1.wide,
             .btcpw_widget.btcpw_skyscraper_amount_value_2.wide,
             .btcpw_widget.btcpw_skyscraper_amount_value_3.wide {
-                background: <?php echo ($instance['fixed_background']);
+                background: <?php echo esc_html($instance['fixed_background']);
                             ?>;
 
             }
@@ -119,7 +119,7 @@ class Tipping_Banner_Wide extends WP_Widget
                             <div class="btcpw_widget btcpw_skyscraper_amount wide">
                                 <?php foreach ($fixed_amount as $key => $value) : ?>
                                     <?php if ($fixed_amount[$key]['enabled'] === true) : ?>
-                                        <div class="<?php echo esc_attr("btcpw_widget btcpw_skyscraper_amount_$key wide"); ?>">
+                                        <div class="<?php echo esc_attr("btcpw_widget btcpw_skyscraper_amount_{$key} wide"); ?>">
                                             <div>
                                                 <input type="radio" class="btcpw_widget btcpw_skyscraper_tipping_default_amount wide" id="<?php echo esc_attr("btcpw_widget_{$key}_wide"); ?>" name="btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_attr($fixed_amount[$key]['amount'] . ' ' . esc_attr($fixed_amount[$key]['currency'])); ?>">
                                                 <?php if (!empty($fixed_amount[$key]['amount'])) : ?>
@@ -357,7 +357,7 @@ class Tipping_Banner_Wide extends WP_Widget
             </div>
             <div class="row">
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('redirect')); ?>"><?php esc_html__('Link to Thank you page','btcpaywall');?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('redirect')); ?>"><?php esc_html__('Link to Thank you page', 'btcpaywall'); ?></label>
 
                     <input id="<?php echo esc_attr($this->get_field_id('redirect')); ?>" name="<?php echo esc_attr($this->get_field_name('redirect')); ?>" class="widget-tipping-basic_redirect" type="text" value="<?php echo esc_attr($redirect); ?>" />
                 </div>

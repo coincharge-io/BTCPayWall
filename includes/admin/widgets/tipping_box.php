@@ -27,50 +27,50 @@ class Tipping_Box extends WP_Widget
 ?>
         <style>
             .btcpw_tipping_box_container.btcpw_widget {
-                background-color: <?php echo ($instance['background_color'] ? ($instance['background_color']) : '');
+                background-color: <?php echo ($instance['background_color'] ? esc_html($instance['background_color']) : '');
                                     ?>;
                 width: <?php echo esc_html($dimension[0]) . 'px !important';
                         ?>;
                 height: <?php echo esc_html($dimension[1]) . 'px !important';
                         ?>;
-                background-image: url(<?php echo ($background ? ($background) : '');
+                background-image: url(<?php echo ($background ? esc_url($background) : '');
                                         ?>);
 
             }
 
 
             #btcpw_tipping__button_btcpw_widget {
-                color: <?php echo ($instance['button_text_color']);
+                color: <?php echo esc_html($instance['button_text_color']);
                         ?>;
-                background: <?php echo ($instance['button_color']);
+                background: <?php echo esc_html($instance['button_color']);
                             ?>;
             }
 
             #tipping_form_box_widget fieldset div.btcpw_tipping_box_header_container h6 {
-                color: <?php echo ($instance['title_text_color']);
+                color: <?php echo esc_html($instance['title_text_color']);
                         ?>
             }
 
 
 
             #tipping_form_box_widget fieldset div p {
-                color: <?php echo ($instance['description_color']);
+                color: <?php echo esc_html($instance['description_color']);
                         ?>
             }
 
             #tipping_form_box_widget fieldset div.btcpw_tipping_box_header_container,
             #button {
-                background-color: <?php echo ($instance['hf_color']);
+                background-color: <?php echo esc_html($instance['hf_color']);
                                     ?>;
             }
 
             #tipping_form_box_widget fieldset h6 {
-                color: <?php echo ($instance['tipping_text_color']);
+                color: <?php echo esc_html($instance['tipping_text_color']);
                         ?>;
             }
 
             .btcpw_tipping_free_input.btcpw_widget {
-                background-color: <?php echo ($instance['input_background']);
+                background-color: <?php echo esc_html($instance['input_background']);
                                     ?>;
             }
         </style>

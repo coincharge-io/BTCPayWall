@@ -62,50 +62,15 @@ add_action('wp_ajax_btcpw_check_greenfield_api_work', 'ajax_btcpaywall_check_gre
 
 
 
-/*add_action('wp_ajax_btcpw_get_greenfield_invoices', 'get_greenfield_invoices');
- function btcpget_greenfield_invoices()
-{
 
-    $store_id = get_option('btcpw_btcpay_store_id');
-
-    $args = array(
-        'headers' => array(
-            'Authorization' => 'token ' . get_option('btcpw_btcpay_auth_key_view'),
-            'Content-Type' => 'application/json',
-        ),
-        'method' => 'GET',
-        'timeout' => 20,
-    );
-
-    if (!empty($store_id)) {
-
-        $url = get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . $store_id . '/invoices';
-
-
-        $response = wp_remote_get($url, $args);
-
-        if (is_wp_error($response)) {
-            wp_send_json_error();
-        }
-        $body = wp_remote_retrieve_body($response);
-
-
-        $data = json_decode($body, true);
-
-        if ($data) {
-            wp_send_json_success($data);
-        }
-        wp_send_json_error($data);
-    }
-}
- */
 function btcpaywall_create_shortcode()
 {
     check_ajax_referer('shortcode-security-nonce', 'nonce_ajax');
 
     $row = new BTCPayWall_Tipping_Form();
 
-    $row->create($_POST);
+    $row->create($_POST);     //BTCPayWall_Tipping_Form class has function for sanitizing $_POST
+
 
 
     if ($row) {

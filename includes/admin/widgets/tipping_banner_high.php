@@ -31,9 +31,9 @@ class Tipping_Banner_High extends WP_Widget
 ?>
         <style>
             .btcpw_widget.btcpw_skyscraper_tipping_container.high {
-                background-color: <?php echo ($instance['background_color'] ? ($instance['background_color']) : '');
+                background-color: <?php echo ($instance['background_color'] ? esc_html($instance['background_color']) : '');
                                     ?>;
-                background-image: url(<?php echo ($background ? $background : '');
+                background-image: url(<?php echo ($background ? esc_url($background) : '');
                                         ?>);
                 width: <?php echo esc_html($dimension[0]) . 'px !important';
                         ?>;
@@ -90,7 +90,7 @@ class Tipping_Banner_High extends WP_Widget
             .btcpw_widget.btcpw_skyscraper_amount_value_1.high,
             .btcpw_widget.btcpw_skyscraper_amount_value_2.high,
             .btcpw_widget.btcpw_skyscraper_amount_value_3.high {
-                background: <?php echo ($instance['fixed_background']);
+                background: <?php echo esc_html($instance['fixed_background']);
                             ?>;
 
             }
@@ -120,7 +120,7 @@ class Tipping_Banner_High extends WP_Widget
                             <div class="btcpw_widget btcpw_skyscraper_amount high">
                                 <?php foreach ($fixed_amount as $key => $value) : ?>
                                     <?php if ($fixed_amount[$key]['enabled'] === true) : ?>
-                                        <div class="<?php echo esc_attr("btcpw_widget btcpw_skyscraper_amount_$key high"); ?>">
+                                        <div class="<?php echo esc_attr("btcpw_widget btcpw_skyscraper_amount_{$key} high"); ?>">
                                             <div>
                                                 <input type="radio" class="btcpw_widget btcpw_skyscraper_tipping_default_amount high" id="<?php echo esc_attr("btcpw_widget_{$key}_high"); ?>" name="btcpw_widget_btcpw_skyscraper_tipping_default_amount_high" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_attr($fixed_amount[$key]['amount']) . ' ' . esc_attr($fixed_amount[$key]['currency']); ?>">
                                                 <?php if (!empty($fixed_amount[$key]['amount'])) : ?>

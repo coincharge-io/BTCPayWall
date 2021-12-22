@@ -75,14 +75,14 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
         .btcpw_skyscraper_tipping_container.wide {
             background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : '');
                                 ?>;
-            background-image: url(<?php echo ($background ? esc_html($background) : '');
+            background-image: url(<?php echo ($background ? esc_url($background) : '');
                                     ?>);
         }
 
         .btcpw_skyscraper_banner.wide {
             background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : '');
                                 ?>;
-            background-image: url(<?php echo ($background ? esc_html($background) : '');
+            background-image: url(<?php echo ($background ? esc_url($background) : '');
                                     ?>);
         }
 
@@ -316,7 +316,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
         .btcpw_skyscraper_tipping_container.high {
             background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : '');
                                 ?>;
-            background-image: url(<?php echo ($background ? esc_html($background) : '');
+            background-image: url(<?php echo ($background ? esc_url($background) : '');
                                     ?>);
         }
 
@@ -555,7 +555,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
         .btcpw_page_tipping_container {
             background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : '');
                                 ?>;
-            background-image: url(<?php echo ($background ? esc_html($background) : '');
+            background-image: url(<?php echo ($background ? esc_url($background) : '');
                                     ?>);
             width: <?php echo esc_html($dimension[0]) . 'px !important';
                     ?>;
@@ -750,14 +750,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
     return ob_get_clean();
 }
 add_shortcode('btcpw_tipping_page', 'btcpaywall_render_shortcode_page_tipping');
-function displayShortcodeList($atts)
-{
-    $atts = shortcode_atts(array(
-        'shortcode' => ''
-    ), $atts);
-    $trimmed = trim($atts['shortcode'], "`{}`");
-    return do_shortcode("[{$trimmed}]");
-}
+
 
 /**
  * @param $atts
@@ -811,7 +804,7 @@ function btcpaywall_render_shortcode_box_tipping($atts)
                     ?>;
             height: <?php echo esc_html($dimension[1]) . 'px !important';
                     ?>;
-            background-image: url(<?php echo ($background ? esc_html($background) : '');
+            background-image: url(<?php echo ($background ? esc_url($background) : '');
                                     ?>);
 
         }
