@@ -71,7 +71,7 @@ $mandatory_message = get_option('btcpw_default_pay_per_post_mandatory_message', 
                     </select>
                 </div>
             </div>
-            <h4>Collect further information</h4>
+            <h4>User information</h4>
             <div class="row">
                 <div class="col-50">
                     <p>Full name</p>

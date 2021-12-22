@@ -1120,7 +1120,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z'
               disableAlpha
             />
           </PanelBody>
-          <PanelBody title='Collect further information'>
+          <PanelBody title='User information'>
             <PanelRow>
               <CheckboxControl
                 label='Full name'

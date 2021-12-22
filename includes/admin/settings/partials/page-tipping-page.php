@@ -367,7 +367,7 @@ $id = $result['id'] ?? null;
                 <input id="btcpw_tipping_page_tipping_color_inactive" class="btcpw_tipping_page_tipping_color_inactive" name="btcpw_tipping_page_color[inactive]" type="text" value=<?php echo esc_attr($color['inactive']); ?> />
             </div>
         </div>
-        <h3>Collect further information</h3>
+        <h3>User information</h3>
         <div class="row">
             <div class="col-50">
                 <p>Full name</p>

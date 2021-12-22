@@ -130,7 +130,7 @@ $default_info = get_option('btcpw_pay_per_view_info');
                     </select>
                 </div>
             </div>
-            <h3>Collect further information</h3>
+            <h3>User information</h3>
             <div class="row">
                 <div class="col-50">
                     <p>Full name</p>

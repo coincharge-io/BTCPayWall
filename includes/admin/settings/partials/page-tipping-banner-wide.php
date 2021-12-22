@@ -363,7 +363,7 @@ $id = $result['id'] ?? null;
 
             </div>
         </div>
-        <h4>Collect further information</h4>
+        <h3>User information</h3>
         <div class="row">
             <div class="col-50">
                 <p>Full name</p>
