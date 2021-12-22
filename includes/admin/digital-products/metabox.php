@@ -168,7 +168,7 @@ function btcpaywall_meta_save($post_id)
     if (defined('DOING_AUTOSAVE') || is_int(wp_is_post_revision($post_id)) || is_int(wp_is_post_autosave($post_id))) {
         return;
     }
-    if (!isset($_POST['btcpw_nonce']) || !wp_verify_nonce($_POST['btcpw_nonce'], basename(__FILE__))) {
+    if (!isset($_POST['btcpw_nonce']) || !wp_verify_nonce(sanitize_text_field($_POST['btcpw_nonce']), basename(__FILE__))) {
         return;
     }
 
@@ -183,7 +183,7 @@ function btcpaywall_meta_save($post_id)
             }
         } else {
             if (!empty($_POST[$field])) {
-                $new_value = filter_var($_POST[$field], FILTER_SANITIZE_STRING);;
+                $new_value = filter_var($_POST[$field], FILTER_SANITIZE_STRING);
                 update_post_meta($post_id, $field, $new_value);
             } else {
                 delete_post_meta($post_id, $field);

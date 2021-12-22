@@ -110,7 +110,7 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                     <?php if (true === $collect_data) : ?>
 
                         <div>
-                            <input type="button" name="next" class="revenue-view-next-form" value="<?php _e('Continue', 'btcpaywall'); ?>">
+                            <input type="button" name="next" class="revenue-view-next-form" value="<?php echo esc_html__('Continue', 'btcpaywall'); ?>">
                         </div>
                     <?php else : ?>
                         <div>
@@ -139,9 +139,9 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                     <div class="btcpw_revenue_view_customer_information">
                         <?php foreach ($collect as $key => $value) : ?>
                             <?php if ($collect[$key]['display'] === true) : ?>
-                                
-                            <?php $id=$collect[$key]['id'];
-                            $label=$collect[$key]['label'];?>
+
+                                <?php $id = $collect[$key]['id'];
+                                $label = $collect[$key]['label']; ?>
                                 <div class="<?php echo esc_attr("btcpw_revenue_view_customer_{$id}_wrap"); ?>">
 
                                     <input type="text" placeholder="<?php echo esc_attr($label); ?>" id="<?php echo esc_attr("btcpw_revenue_view_customer_{$id}"); ?>" name="<?php echo esc_attr("btcpw_revenue_view_customer_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
@@ -152,7 +152,7 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                     </div>
                     <div class="btcpw_revenue_view_button" id="btcpw_revenue_view_button_second_step">
                         <div>
-                            <input type="button" name="previous" class="revenue-view-previous-form" value="<?php _e('< Previous', 'btcpaywall'); ?>" />
+                            <input type="button" name="previous" class="revenue-view-previous-form" value="<?php echo esc_html__('< Previous', 'btcpaywall'); ?>" />
                         </div>
 
                         <div>

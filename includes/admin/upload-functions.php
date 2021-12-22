@@ -29,7 +29,7 @@ function btcpaywall_change_digital_download_upload_dir()
     global $pagenow;
 
     if (!empty($_REQUEST['post_id']) && ('async-upload.php' == $pagenow || 'media-upload.php' == $pagenow)) {
-        if ('digital_download' == get_post_type($_REQUEST['post_id'])) {
+        if ('digital_download' == get_post_type(sanitize_text_field($_REQUEST['post_id']))) {
             add_filter('upload_dir', 'btcpaywall_upload_dir');
         }
     }
@@ -82,7 +82,7 @@ function btcpaywall_protect_upload_dir()
     foreach ($files as $file) {
 
         if ((wp_mkdir_p($file['base']))
-            && (!file_exists(trailingslashit($file['base']) . $file['file']))                // If file not exist
+            && (!file_exists(trailingslashit($file['base']) . $file['file']))   
         ) {
 
             if ($file_handle = @fopen(trailingslashit($file['base']) . $file['file'], 'w')) {

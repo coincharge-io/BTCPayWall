@@ -194,7 +194,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                             <?php if (true === $collect_data) : ?>
 
                                 <div>
-                                    <input type="button" name="next" class="skyscraper-next-form wide" value="Continue">
+                                    <input type="button" name="next" class="skyscraper-next-form wide" value=<?php echo esc_html__('Continue', 'btcpaywall'); ?>>
                                 </div>
 
                             <?php else : ?>
@@ -223,7 +223,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                             </div>
                             <div class="<?php echo "btcpw_skyscraper_button wide"; ?>" id="btcpw_skyscraper_wide_button">
                                 <div>
-                                    <input type="button" name="previous" class="skyscraper-previous-form wide" value="<?php _e('< Previous', 'btcpaywall'); ?>" />
+                                    <input type="button" name="previous" class="skyscraper-previous-form wide" value="<?php echo esc_html__('< Previous', 'btcpaywall'); ?>" />
                                 </div>
                                 <div>
                                     <button type="submit" id="btcpw_skyscraper_tipping_wide_button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
@@ -429,7 +429,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                             <?php if (true === $collect_data) : ?>
 
                                 <div>
-                                    <input type="button" name="next" class="skyscraper-next-form high" value="<?php _e('Continue', 'btcpaywall'); ?>">
+                                    <input type="button" name="next" class="skyscraper-next-form high" value="<?php echo esc_html__('Continue', 'btcpaywall'); ?>">
                                 </div>
 
                             <?php else : ?>
@@ -458,7 +458,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                             </div>
                             <div class="<?php echo "btcpw_skyscraper_button high"; ?>" id="btcpw_skyscraper_high_button">
                                 <div>
-                                    <input type="button" name="previous" class="skyscraper-previous-form high" value="<?php _e('< Previous', 'btcpaywall'); ?>" />
+                                    <input type="button" name="previous" class="skyscraper-previous-form high" value="<?php echo esc_html__('< Previous', 'btcpaywall'); ?>" />
                                 </div>
                                 <div>
                                     <button type="submit" id="btcpw_skyscraper_tipping_high_button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
@@ -707,7 +707,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                     <div id="btcpw_page_button">
                         <input type="hidden" id="btcpw_page_redirect_link" name="btcpw_page_redirect_link" value=<?php echo esc_attr($atts['redirect']); ?> />
                         <?php if ($collect_data === true) : ?>
-                            <input type="button" name="next" class="page-next-form" value="<?php _e('continue', 'btcpaywall'); ?>" />
+                            <input type="button" name="next" class="page-next-form" value="<?php echo esc_html__('continue', 'btcpaywall'); ?>" />
                         <?php else : ?>
                             <button type="submit" id="btcpw_page_tipping__button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
                         <?php endif; ?>
@@ -731,7 +731,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                         </div>
                         <div id="btcpw_page_button">
                             <div>
-                                <input type="button" name="previous" class="page-previous-form" value="<?php _e('< previous', 'btcpaywall'); ?>" />
+                                <input type="button" name="previous" class="page-previous-form" value="<?php echo esc_html__('< previous', 'btcpaywall'); ?>" />
                             </div>
                             <div>
                                 <button type="submit" id="btcpw_page_tipping__button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
@@ -1159,10 +1159,10 @@ function btcpaywall_render_checkout()
     <table id="btcpaywall_checkout_cart">
         <thead>
             <tr class="btcpaywall_cart_header_row">
-                <?php do_action('btcpaywall_checkout_table_header_first'); ?>
-                <th class="btcpaywall_cart_item_name"><?php _e('Item Name', 'btcpaywall'); ?></th>
-                <th class="btcpaywall_cart_item_price"><?php _e('Item Price', 'btcpaywall'); ?></th>
-                <th class="btcpaywall_cart_actions"><?php _e('Actions', 'btcpaywall'); ?></th>
+
+                <th class="btcpaywall_cart_item_name"><?php echo esc_html__('Item Name', 'btcpaywall'); ?></th>
+                <th class="btcpaywall_cart_item_price"><?php echo esc_html__('Item Price', 'btcpaywall'); ?></th>
+                <th class="btcpaywall_cart_actions"><?php echo esc_html__('Actions', 'btcpaywall'); ?></th>
             </tr>
         </thead>
         <tbody>
@@ -1180,7 +1180,7 @@ function btcpaywall_render_checkout()
 
                         </td>
                         <td class="btcpaywall_cart_actions">
-                            <a data-cart-key="<?php echo esc_attr($key); ?>" class="btcpaywall_cart_remove_item_btn" href="#"><?php _e('Remove', 'btcpaywall'); ?></a>
+                            <a data-cart-key="<?php echo esc_attr($key); ?>" class="btcpaywall_cart_remove_item_btn" href="#"><?php echo esc_html__('Remove', 'btcpaywall'); ?></a>
 
                         </td>
                     </tr>
@@ -1232,7 +1232,7 @@ function btcpaywall_render_checkout()
                 </div>
                 <div class="btcpw_digital_download_button" id="btcpw_digital_download_button">
                     <div>
-                        <button type="submit" data-post_id="<?php echo esc_attr(get_the_ID()); ?>" class="btcpw_digital_download"><?php echo __('Pay', 'btcpaywall'); ?></button>
+                        <button type="submit" data-post_id="<?php echo esc_attr(get_the_ID()); ?>" class="btcpw_digital_download"><?php echo esc_html__('Pay', 'btcpaywall'); ?></button>
                     </div>
                 </div>
             </fieldset>
@@ -1256,7 +1256,7 @@ function btcpaywall_render_receipt()
     <table id="btcpaywall_purchase_receipt" class="btcpaywall-table">
         <thead>
             <tr>
-                <th><strong><?php _e('Payment', 'btcpaywall'); ?>:</strong></th>
+                <th><strong><?php echo esc_html__('Payment', 'btcpaywall'); ?>:</strong></th>
                 <th><?php echo esc_html($payment->id); ?></th>
             </tr>
         </thead>
@@ -1264,20 +1264,20 @@ function btcpaywall_render_receipt()
         <tbody>
 
             <tr>
-                <td class="btcpaywall_receipt_payment_status"><strong><?php _e('Payment Status', 'btcpaywall'); ?>:</strong></td>
-                <td class="btcpaywall_receipt_payment_status <?php echo  esc_attr($payment->status); ?>"><?php echo esc_html($payment->status); ?></td>
+                <td class="btcpaywall_receipt_payment_status"><strong><?php echo esc_html__('Payment Status', 'btcpaywall'); ?>:</strong></td>
+                <td class="btcpaywall_receipt_payment_status <?php echo esc_attr($payment->status); ?>"><?php echo esc_html($payment->status); ?></td>
             </tr>
             <tr>
-                <td><strong><?php _e('Payment ID', 'btcpaywall'); ?>:</strong></td>
+                <td><strong><?php echo esc_html__('Payment ID', 'btcpaywall'); ?>:</strong></td>
                 <td><?php echo esc_html($payment->id); ?></td>
             </tr>
             <tr>
-                <td><strong><?php _e('Payment Method', 'btcpaywall'); ?>:</strong></td>
+                <td><strong><?php echo esc_html__('Payment Method', 'btcpaywall'); ?>:</strong></td>
                 <td><?php echo esc_html($payment->payment_method ? $payment->payment_method : 'BTC'); ?></td>
             </tr>
 
             <tr>
-                <td><strong><?php _e('Total Price', 'btcpaywall'); ?>:</strong></td>
+                <td><strong><?php echo esc_html__('Total Price', 'btcpaywall'); ?>:</strong></td>
                 <td><?php echo esc_html(btcpaywall_round_amount($currency, $payment->amount) . ' ' . $currency); ?></td>
             </tr>
 

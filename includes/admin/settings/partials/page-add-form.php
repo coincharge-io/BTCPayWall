@@ -22,8 +22,8 @@ $selected = sanitize_text_field($_POST['design']) ?? null;
                     <select name="design" id="tipping-form-design" required>
                         <option disabled selected value="">Select design</option>
                         <?php foreach ($designs as $key => $value) : ?>
-                            <option value="<?php echo $value; ?>">
-                                <?php echo $key; ?>
+                            <option value="<?php echo esc_attr($value); ?>">
+                                <?php echo esc_html($key); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

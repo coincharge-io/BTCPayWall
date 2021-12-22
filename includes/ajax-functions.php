@@ -111,11 +111,15 @@ function btcpaywall_generate_invoice_id($post_id, $order_id, $customer_data)
     $revenue_type = $body['metadata']['type'];
 
 
-    // $payment_method = get_payment_method($body['id']);
     $customer = new BTCPayWall_Customer();
 
-    $customer->create($customer_data);
-
+    $customer->create([
+        'full_name' => sanitize_text_field($customer_data['full_name']),
+        'email' => sanitize_email($customer_data['email']),
+        'address' => sanitize_text_field($customer_data['address']),
+        'phone' => sanitize_text_field($customer_data['phone']),
+        'message' => sanitize_text_field($customer_data['message'])
+    ]);
     $payment = new BTCPayWall_Payment();
 
     $payment->create([
@@ -236,7 +240,7 @@ function ajax_btcpaywall_tipping()
         $collect .= "Name: {$name} \n";
     }
     if (!empty($_POST['email'])) {
-        $email = sanitize_text_field($_POST['email']);
+        $email = sanitize_email($_POST['email']);
         $collect .= "Email: {$email} \n";
     }
     if (!empty($_POST['address'])) {
@@ -563,7 +567,13 @@ function btcpaywall_generate_opennode_invoice_id($post_id, $order_id, $customer_
     //$payment_method = get_payment_method($body['id']);
     $customer = new BTCPayWall_Customer();
 
-    $customer->create($customer_data);
+    $customer->create([
+        'full_name' => sanitize_text_field($customer_data['full_name']),
+        'email' => sanitize_email($customer_data['email']),
+        'address' => sanitize_text_field($customer_data['address']),
+        'phone' => sanitize_text_field($customer_data['phone']),
+        'message' => sanitize_text_field($customer_data['message'])
+    ]);
 
     $payment = new BTCPayWall_Payment();
 
@@ -732,15 +742,15 @@ add_action('wp_ajax_nopriv_btcpw_paid_opennode_invoice',  'ajax_btcpaywall_paid_
 
 function ajax_btcpaywall_add_to_cart()
 {
-    if (!isset($_POST['id'])) {
-        wp_die();
+    if (empty($_POST['id'])) {
+        wp_send_json_error();
     }
     $download_id = absint($_POST['id']);
     BTCPayWall()->cart->add($download_id, array('title' => sanitize_text_field($_POST['title'])));
+
     $checkout_page = get_permalink(get_option('btcpw_checkout_page'));
-    /* if ($added_to_cart == false) {
-        wp_send_json_error();
-    } */
+
+
 
     wp_send_json_success(['data' => $checkout_page]);
 }
@@ -753,17 +763,14 @@ add_action('wp_ajax_nopriv_btcpw_add_to_cart',  'ajax_btcpaywall_add_to_cart');
 function ajax_btcpaywall_remove_from_cart()
 {
 
-    if (isset($_POST['cart_item'])) {
-
-
-        $cart_item = absint($_POST['cart_item']);
-        //$nonce     = sanitize_text_field($_POST['nonce']);
-
-        btcpaywall_remove_from_cart($cart_item);
-
-        wp_send_json_success();
+    if (empty($_POST['cart_item'])) {
+        wp_send_json_error();
     }
-    wp_send_json_error();
+    $cart_item = absint($_POST['cart_item']);
+
+    btcpaywall_remove_from_cart($cart_item);
+
+    wp_send_json_success();
 }
 add_action('wp_ajax_btcpw_remove_from_cart', 'ajax_btcpaywall_remove_from_cart');
 add_action('wp_ajax_nopriv_btcpw_remove_from_cart', 'ajax_btcpaywall_remove_from_cart');

@@ -212,7 +212,7 @@ $default_info = get_option('btcpw_pay_per_post_info');
                 </p>
             </div>
             <div>
-                <button disabled type="button" id="btcpw_pay__button_preview" data-post_id="<?php echo get_the_ID(); ?>"><?php echo esc_html($default_button); ?></button>
+                <button disabled type="button" id="btcpw_pay__button_preview" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html($default_button); ?></button>
             </div>
             <div class="btcpw_pay__loading_preview pay_per_post">
                 <p class="loading_preview"></p>

@@ -79,7 +79,7 @@ $collect_data = btcpaywall_display_is_enabled($collect);
                 <?php if (true === $collect_data) : ?>
 
                     <div>
-                        <input type="button" name="next" class="revenue-post-next-form" value="<?php _e('Continue', 'btcpaywall'); ?>">
+                        <input type="button" name="next" class="revenue-post-next-form" value="<?php echo esc_html__('Continue', 'btcpaywall'); ?>">
                     </div>
                 <?php else : ?>
 
@@ -122,7 +122,7 @@ $collect_data = btcpaywall_display_is_enabled($collect);
                 </div>
                 <div class="btcpw_revenue_post_button" id="btcpw_revenue_post_button_second_step">
                     <div>
-                        <input type="button" name="previous" class="revenue-post-previous-form" value="<?php _e('< Previous', 'btcpaywall'); ?>" />
+                        <input type="button" name="previous" class="revenue-post-previous-form" value="<?php echo esc_html__('< Previous', 'btcpaywall'); ?>" />
                     </div>
 
                     <div>

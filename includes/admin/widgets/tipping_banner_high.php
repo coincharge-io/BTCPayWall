@@ -160,7 +160,7 @@ class Tipping_Banner_High extends WP_Widget
                                 <input type="hidden" id="btcpw_widget_btcpw_skyscraper_redirect_link_high" name="btcpw_widget_btcpw_skyscraper_redirect_link_high" value=<?php echo esc_attr($instance['redirect']); ?> />
                                 <?php if ($collect_data === true) : ?>
                                     <div>
-                                        <input type="button" name="next" class="btcpw_widget skyscraper-next-form high" value="<?php _e('Continue', 'btcpaywall'); ?>" />
+                                        <input type="button" name="next" class="btcpw_widget skyscraper-next-form high" value="<?php echo esc_html__('Continue', 'btcpaywall'); ?>" />
                                     </div>
                                 <?php else : ?>
                                     <div>
@@ -187,7 +187,7 @@ class Tipping_Banner_High extends WP_Widget
                                 </div>
                                 <div id="btcpw_widget_btcpw_skyscraper_button_high">
                                     <div>
-                                        <input type="button" name="previous" class="btcpw_widget_ skyscraper-previous-form high" value="<?php _e('< Previous', 'btcpaywall'); ?>" />
+                                        <input type="button" name="previous" class="btcpw_widget_ skyscraper-previous-form high" value="<?php echo esc_html__('< Previous', 'btcpaywall'); ?>" />
                                     </div>
                                     <div>
                                         <button type="submit" id="btcpw_widget_btcpw_skyscraper_tipping__button_high"><?php echo (!empty($instance['button_text']) ? esc_html($instance['button_text']) : 'Tip'); ?></button>

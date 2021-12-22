@@ -18,4 +18,7 @@ if (!defined('ABSPATH')) exit;
     }
 </style>
 
-<div id="btcpw_content_store"><a href="post-new.php?post_type=digital_download">Add product</a><a href="edit.php?post_type=digital_download">All products</a></div>
+<div id="btcpw_content_store">
+    <a href=<?php echo esc_url("post-new.php?post_type=digital_download"); ?>>Add product</a>
+    <a href=<?php echo esc_url("edit.php?post_type=digital_download"); ?>>All products</a>
+</div>

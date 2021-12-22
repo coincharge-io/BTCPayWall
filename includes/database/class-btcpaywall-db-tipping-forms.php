@@ -204,6 +204,8 @@ class BTCPayWall_DB_Tipping_Forms extends BTCPayWall_DB
             $sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';*/
             $sql .= ' ORDER BY ' . sanitize_sql_orderby($_REQUEST['orderby'] . ' ' . $_REQUEST['order']);
         }
+        $per_page = (int)$per_page;
+        $page_number = (int)$page_number;
         if (!empty($per_page) && !empty($page_number)) {
             $sql .= " LIMIT $per_page";
 

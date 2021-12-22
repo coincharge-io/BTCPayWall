@@ -49,7 +49,7 @@ $store_id = get_option('btcpw_btcpay_store_id');
                         <label>BTCPay Server Url</label>
                     </div>
                     <div class="col-80">
-                        <input type="url" placeholder="BTCPay Server Url" name="btcpw_btcpay_server_url" id="btcpw_btcpay_server_url" value="<?php echo esc_url($btcpay_server_url); ?>" style="min-width: 335px;">
+                        <input type="url" placeholder="BTCPay Server Url" name="btcpw_btcpay_server_url" id="btcpw_btcpay_server_url" value="<?php echo esc_attr($btcpay_server_url); ?>" style="min-width: 335px;">
                         <div class="btcpw_generate_api">Generate API keys:<a href="" class="btcpw_auth_key" target="_blank"></a></div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@ $store_id = get_option('btcpw_btcpay_store_id');
             </div>
 
             <div class="btcpw_help_link" style="margin-top: 20px;">
-                <a href="<?php echo esc_attr("https://btcpaywall.com/"); ?>" target="_blank">Help</a>
+                <a href="<?php echo esc_url("https://btcpaywall.com/"); ?>" target="_blank">Help</a>
             </div>
             <p id="btcpw_btcpay_status_success" class="btcpw_btcpay_status" style="color: green;">
                 BTCPAY SERVER CONNECTED

@@ -70,7 +70,6 @@ function btcpaywall_get_download_url($payment_id, $file_url, $download_id, $emai
             $args['ttl'] = $params['expire'];
         }
 
-        //$args['token'] = rawurlencode(wp_hash_password($secret_key . rawurldecode($args['ttl']) . rawurldecode($args['btcpw_file']) . rawurldecode($args['payment_id']) . (int)$args['download_id'] . rawurldecode($args['email'])));
         $args['token'] = btcpaywall_generate_url_token($secret_key, $args);
     }
 
@@ -1137,17 +1136,7 @@ function btcpaywall_process_download_url($args)
 
     wp_parse_str($parts['query'], $query_args);
     $secret_key = get_option("btcpw_secret_key");
-    /* $parts = parse_url(add_query_arg($args));
 
-    wp_parse_str($parts['query'], $query_args);
-
-    $secret_key = get_option("btcpw_secret_key");
-
-     $valid_token = wp_check_password($secret_key . rawurldecode($query_args['ttl']) . rawurldecode($query_args['btcpw_file']) . rawurldecode($query_args['payment_id']) . (int)$query_args['download_id'] . rawurldecode($query_args['email']), rawurldecode($query_args['token'])); 
-    if (isset($query_args['ttl']) && current_time('timestamp') > $query_args['ttl']) {
-
-        wp_die(__('Download link has expired.', 'btcpaywall'), array('response' => 403));
-    } */
 
     $providedToken = sanitize_text_field($_GET['token']);
 
@@ -1168,10 +1157,6 @@ function btcpaywall_process_download_url($args)
 
         wp_die(__('Download link has expired.', 'btcpaywall'), array('response' => 403));
     }
-    //Token isn't valid for emails
-    //if (!$valid_token) {
-    //}
-    //$args['valid_token']    = true;
 
 
     return $args;
@@ -1197,7 +1182,6 @@ function btcpaywall_get_all_headers()
 
     $headers = array();
     foreach ((array) $_SERVER as $key => $value) {
-        //while ( list($key, $value) = each( $_SERVER ) ) {
         if (strncmp($key, "HTTP_", 5) == 0) {
             $key = strtr(ucwords(strtolower(strtr(substr($key, 5), "_", " "))), " ", "-");
             $headers[$key] = $value;

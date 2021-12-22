@@ -115,7 +115,7 @@ $description = get_post_meta($post->ID, 'btcpw_product_description', true);
 
 
                     <input type="hidden" id="btcpw_download_id" data-post_title="<?php echo esc_attr($post->post_title); ?>" data-post_id="<?php echo esc_attr($download->ID); ?>">
-                    <button type="submit" class="btcpaywall_add_to_cart"><?php _e('Buy now', 'btcpaywall'); ?></button>
+                    <button type="submit" class="btcpaywall_add_to_cart"><?php echo esc_html__('Buy now', 'btcpaywall'); ?></button>
                 </form>
             </div>
             <?php if (!empty($logo_id)) : ?>

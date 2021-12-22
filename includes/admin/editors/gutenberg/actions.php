@@ -207,59 +207,7 @@ function btcpaywall_load_gutenberg()
             'render_callback' => 'btcpaywall_render_shortcodes_gutenberg',
         ]
     );
-    register_block_type(
-        'btcpaywall/gutenberg-file-block',
-        [
-            'editor_script' => 'btcpaywall-gutenberg-block-script',
-            'render_callback' => 'btcpaywall_render_file_gutenberg',
-            'attributes' => array(
-                'className' => array(
-                    'default' => '',
-                    'type' => 'string'
-                ),
-                'pay_file_block' => array(
-                    'type' => 'boolean',
-                    'default' => true
-                ),
-                'btc_format' => array(
-                    'type' => 'string',
-                    'default' => 'SATS'
-                ),
-                'file' => array(
-                    'type' => 'string',
-                    'default' => 'paywall_example.pdf'
-                ),
-                'title' => array(
-                    'type' => 'string',
-                    'default' => 'Untitled'
-                ),
-                'description' => array(
-                    'type' => 'string',
-                    'default' => ''
-                ),
-                'preview' => array(
-                    'type' => 'string',
-                    'default' => ''
-                ),
-                'currency' => array(
-                    'type' => 'string',
-                    'default' => 'SATS'
-                ),
-                'price' => array(
-                    'type' => 'integer',
-                    'default' => '1000'
-                ),
-                'duration' => array(
-                    'type' => 'integer',
-                    'default' => '20'
-                ),
-                'duration_type' => array(
-                    'type' => 'string',
-                    'default' => 'minute'
-                ),
-            )
-        ]
-    );
+    
 
     register_block_type(
         'btcpaywall/gutenberg-tipping-box',

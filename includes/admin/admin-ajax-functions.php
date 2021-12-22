@@ -69,7 +69,7 @@ function btcpaywall_create_shortcode()
 
     $row = new BTCPayWall_Tipping_Form();
 
-    $row->create($_POST);     //BTCPayWall_Tipping_Form class has function for sanitizing $_POST
+    $row->create($_POST);     //BTCPayWall_Tipping_Form class has function for sanitizing $_POST before saving to DB
 
 
 

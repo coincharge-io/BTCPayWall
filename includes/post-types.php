@@ -25,8 +25,8 @@ function btcpaywall_register_post_types()
         'query_var' => true,
     ]);
     $labels = array(
-        'name'               => _x('BP Digital Download', 'post type general name', 'btcpaywall'),
-        'singular_name'      => _x('BP Digital Download', 'post type singular name', 'btcpaywall'),
+        'name'               => _x('BP Digital Download', 'BP Digital Download', 'btcpaywall'),
+        'singular_name'      => _x('BP Digital Download', 'BP Digital Download', 'btcpaywall'),
         'add_new'            => __('Add New', 'btcpaywall'),
         'add_new_item'       => __('Add New Digital Download', 'btcpaywall'),
         'edit_item'          => __('Edit Digital Download', 'btcpaywall'),

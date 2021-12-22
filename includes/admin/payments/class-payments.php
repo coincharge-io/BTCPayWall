@@ -13,8 +13,8 @@ class Payments_Table extends WP_List_Table
     public function __construct()
     {
         parent::__construct([
-            'singular' => __('Payment', 'sd'),
-            'plural'   => __('Payments', 'sd'),
+            'singular' => __('Payment', 'btcpaywall'),
+            'plural'   => __('Payments', 'btcpaywall'),
             'ajax'     => false
         ]);
     }

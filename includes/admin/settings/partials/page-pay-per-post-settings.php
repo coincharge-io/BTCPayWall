@@ -60,7 +60,7 @@ $mandatory_message = get_option('btcpw_default_pay_per_post_mandatory_message', 
                     <label for="btcpw_general_pay_per_post_settings_duration">Default duration</label>
                 </div>
                 <div class="col-80">
-                    <input type="number" min="1" placeholder="Default Access Duration" name="btcpw_default_pay_per_post_duration" id="btcpw_default_pay_per_post_duration" <?php echo $disable; ?> value="<?php echo esc_attr($default_duration); ?>">
+                    <input type="number" min="1" placeholder="Default Access Duration" name="btcpw_default_pay_per_post_duration" id="btcpw_default_pay_per_post_duration" <?php echo esc_attr($disable); ?> value="<?php echo esc_attr($default_duration); ?>">
                     <select required name="btcpw_default_pay_per_post_duration_type" id="btcpw_default_pay_per_post_duration_type">
                         <option disabled value="">Select duration type</option>
                         <?php foreach ($supported_durations as $duration) : ?>

@@ -18,8 +18,8 @@ $supported_currencies = BTCPayWall::CURRENCIES;
                     <select required name="btcpw_default_pay_per_file_currency" id="btcpw_general_pay_per_file_settings_currency">
                         <option disabled value="">Select currency</option>
                         <?php foreach ($supported_currencies as $currency) : ?>
-                            <option <?php echo $used_currency === $currency ? 'selected' : ''; ?> value="<?php echo $currency; ?>">
-                                <?php echo $currency; ?>
+                            <option <?php echo $used_currency === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
+                                <?php echo esc_html($currency); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

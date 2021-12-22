@@ -436,7 +436,7 @@ $id = $result['id'] ?? null;
 
             </div>
         </div>
-        <input type="hidden" id="btc_tipping_page_id" value="<?php echo $id; ?>" />
+        <input type="hidden" id="btc_tipping_page_id" value="<?php echo esc_attr($id); ?>" />
         <div style="display: inline-block; margin-top: 25px;">
             <button id="btcpw_previous_page" class="button button-secondary btcpw_button" type="button">Back</button>
             <button class="button button-primary btcpw_button" type="submit">Save</button>
