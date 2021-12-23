@@ -61,9 +61,9 @@ The user wants to buy digital content spontaneously and anonymously and avoid a 
 **Payment processing**
 
 Digital content is paid for via Bitcoin and Lightning payment methods.
-The payment processing is done via BTCPay Server or via opennode.
+The payment processing is done via BTCPay Server or via OpenNode.
 You can use your own BTCPay server or share the BTCPay server of BTCPayWall.
-A connection to the Bitcoin and Lightning payment provider opennode is also available.
+A connection to the Bitcoin and Lightning payment provider OpenNode is also available.
 
 Further information can be found here: https://btcpaywall.com
 
@@ -71,7 +71,7 @@ Further information can be found here: https://btcpaywall.com
 == Prerequisites ==
 
  - WordPress installation
- - BTCPay Server for Bitcoin and Lightning payment processing
+ - BTCPay Server for Bitcoin and Lightning payment processing or
  - OpenNode account
 
  == Installation ==

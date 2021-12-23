@@ -3,6 +3,7 @@
 # BTCPayWall - The Bitcoin Paywall to sell content and digital products on WordPress
 
 **BTCPayWall supports four different modules to distribute its digital products and content:**
+
 - Pay-per-post for the sale of individual blog posts and newspaper articles
 - Pay-per-view for the sale of videos that are played directly
 - Content store for selling digital files that are downloaded
@@ -50,8 +51,8 @@ The user wants to buy digital content spontaneously and anonymously and avoid a 
 **Payment processing**
 
 Digital content is paid for via Bitcoin and Lightning payment methods.
-The payment processing is done via BTCPay Server or via opennode.
+The payment processing is done via BTCPay Server or via OpenNode.
 You can use your own BTCPay server or share the BTCPay server of BTCPayWall.
-A connection to the Bitcoin and Lightning payment provider opennode is also available.
+A connection to the Bitcoin and Lightning payment provider OpenNode is also available.
 
 Further information can be found here: https://btcpaywall.com
