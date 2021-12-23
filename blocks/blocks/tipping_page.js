@@ -1195,7 +1195,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z'
                 help='Do you want to collect message?'
                 checked={display_message}
                 onChange={value => {
-                  setAttributes({ display_message: displayMessage })
+                  setAttributes({ display_message: value })
                 }}
               />
               <CheckboxControl

@@ -25,7 +25,7 @@ $default_button = get_option('btcpw_pay_per_view_button', 'Pay');
 $default_info = get_option('btcpw_pay_per_view_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]');
 $preview_title_color = get_option('btcpw_pay_per_view_preview_title_color');
 $preview_description_color = get_option('btcpw_pay_per_view_preview_description_color');
-$collect_atts = array(
+/* $collect_atts = array(
     'display_name' => empty($atts['display_name']) ? get_option('btcpw_default_pay_per_view_display_name', false) : $atts['display_name'],
     'display_email' => empty($atts['display_email']) ? get_option('btcpw_default_pay_per_view_display_email', false) : $atts['display_email'],
     'display_phone' => empty($atts['display_phone']) ? get_option('btcpw_default_pay_per_view_display_phone', false) : $atts['display_phone'],
@@ -36,6 +36,18 @@ $collect_atts = array(
     'mandatory_address' => empty($atts['mandatory_address']) ? get_option('btcpw_default_pay_per_view_mandatory_address', false) : $atts['mandatory_address'],
     'mandatory_phone' => empty($atts['mandatory_phone']) ? get_option('btcpw_default_pay_per_view_mandatory_phone', false) : $atts['mandatory_phone'],
     'mandatory_message' => empty($atts['mandatory_message']) ? get_option('btcpw_default_pay_per_view_mandatory_message', false) : $atts['mandatory_message']
+); */
+$collect_atts = array(
+    'display_name' =>  $atts['display_name'],
+    'display_email' =>  $atts['display_email'],
+    'display_phone' =>  $atts['display_phone'],
+    'display_address' =>  $atts['display_address'],
+    'display_message' =>  $atts['display_message'],
+    'mandatory_name' =>  $atts['mandatory_name'],
+    'mandatory_email' =>  $atts['mandatory_email'],
+    'mandatory_address' =>  $atts['mandatory_address'],
+    'mandatory_phone' =>  $atts['mandatory_phone'],
+    'mandatory_message' =>  $atts['mandatory_message']
 );
 $collect = btcpaywall_get_collect($collect_atts);
 

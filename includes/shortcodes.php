@@ -958,7 +958,17 @@ function btcpaywall_render_shortcode_btcpw_pay_view_block($atts)
         'button_txt' => '#FFFFFF',
         'link'    => 'true',
         'help_link' => 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/',
-        'help_text'    => 'Help'
+        'help_text'    => 'Help',
+        'display_name' => get_option('btcpw_default_pay_per_view_display_name', false),
+        'mandatory_name' => get_option('btcpw_default_pay_per_view_mandatory_name', false),
+        'display_email' => get_option('btcpw_default_pay_per_view_display_email', false),
+        'mandatory_email' => get_option('btcpw_default_pay_per_view_mandatory_email', false),
+        'display_phone' => get_option('btcpw_default_pay_per_view_display_phone', false),
+        'mandatory_phone' => get_option('btcpw_default_pay_per_view_mandatory_phone', false),
+        'display_address' => get_option('btcpw_default_pay_per_view_display_address', false),
+        'mandatory_address' => get_option('btcpw_default_pay_per_view_mandatory_address', false),
+        'display_message' => get_option('btcpw_default_pay_per_view_display_message', false),
+        'mandatory_message' => get_option('btcpw_default_pay_per_view_mandatory_message', false),
     ), $atts);
 
     $help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
@@ -986,6 +996,7 @@ function btcpaywall_render_shortcode_btcpw_start_content($atts)
     if (btcpaywall_is_paid_content()) {
         return '';
     }
+
     $atts = shortcode_atts(array(
         'pay_block' => 'false',
         'btc_format' => '',
@@ -1001,16 +1012,16 @@ function btcpaywall_render_shortcode_btcpw_start_content($atts)
         'link'    => true,
         'help_link'    => '',
         'help_text'    => 'Help',
-        'display_name' => false,
-        'mandatory_name' =>  false,
-        'display_email' => false,
-        'mandatory_email' => false,
-        'display_phone' => false,
-        'mandatory_phone' => false,
-        'display_address' =>  false,
-        'mandatory_address' =>  false,
-        'display_message' =>  false,
-        'mandatory_message' =>  false,
+        'display_name' => get_option('btcpw_default_pay_per_post_display_name', false),
+        'mandatory_name' =>  get_option('btcpw_default_pay_per_post_mandatory_name', false),
+        'display_email' => get_option('btcpw_default_pay_per_post_display_email', false),
+        'mandatory_email' => get_option('btcpw_default_pay_per_post_mandatory_email', false),
+        'display_phone' => get_option('btcpw_default_pay_per_post_display_phone', false),
+        'mandatory_phone' => get_option('btcpw_default_pay_per_post_mandatory_phone', false),
+        'display_address' =>  get_option('btcpw_default_pay_per_post_display_address', false),
+        'mandatory_address' =>  get_option('btcpw_default_pay_per_post_mandatory_address', false),
+        'display_message' =>  get_option('btcpw_default_pay_per_post_display_message', false),
+        'mandatory_message' =>  get_option('btcpw_default_pay_per_post_mandatory_message', false),
     ), $atts);
 
 

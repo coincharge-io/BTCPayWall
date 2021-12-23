@@ -601,7 +601,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z'
     },
     display_name: {
       type: 'boolean',
-      default: false
+      default: true
     },
     mandatory_name: {
       type: 'boolean',
@@ -609,7 +609,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z'
     },
     display_email: {
       type: 'boolean',
-      default: false
+      default: true
     },
     mandatory_email: {
       type: 'boolean',
@@ -617,7 +617,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z'
     },
     display_address: {
       type: 'boolean',
-      default: false
+      default: true
     },
     mandatory_address: {
       type: 'boolean',
@@ -625,7 +625,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z'
     },
     display_phone: {
       type: 'boolean',
-      default: false
+      default: true
     },
     mandatory_phone: {
       type: 'boolean',
@@ -633,12 +633,12 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z'
     },
     display_message: {
       type: 'boolean',
-      default: false
+      default: true
     },
     mandatory_message: {
       type: 'boolean',
       default: false
-    }
+    },
   },
   example: {},
   edit: props => {
