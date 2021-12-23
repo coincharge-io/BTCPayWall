@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: BTCPayWall
- * Plugin URI:
+ * Plugin URI: https://wordpress.org/plugins/btcpaywall
  * Description: BTCPayWall - The Bitcoin Paywall to sell content and  digital products on WordPress. Sell individual blog articles, digital content and products like  videos, eBooks or PDF files and receive tips and donations through  your website.
  * Version: 1.0.0
  * Author: BTCPayWall by Coincharge https://btcpaywall.com
