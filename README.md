@@ -2,7 +2,7 @@
 
 # BTCPayWall - The Bitcoin Paywall to sell content and digital products on WordPress
 
-** BTCPayWall supports four different modules to distribute its digital products and content:**
+**BTCPayWall supports four different modules to distribute its digital products and content:**
 - Pay-per-post for the sale of individual blog posts and newspaper articles
 - Pay-per-view for the sale of videos that are played directly
 - Content store for selling digital files that are downloaded
