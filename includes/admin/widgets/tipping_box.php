@@ -19,7 +19,6 @@ class Tipping_Box extends WP_Widget
     {
         $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
         $logo = wp_get_attachment_image_src($instance['logo_id']) ? wp_get_attachment_image_src($instance['logo_id'])[0] : $instance['logo_id'];
-        var_dump(wp_get_attachment_image_src($instance['logo_id']) ? wp_get_attachment_image_src($instance['logo_id'])[0] : $instance['logo_id']);
         $background = wp_get_attachment_image_src($instance['background_id']) ? wp_get_attachment_image_src($instance['background_id'])[0] : $instance['background_id'];
         $dimension = explode('x', ($instance['dimension'] == '250x300' ? '250x300' : '300x300'));
 

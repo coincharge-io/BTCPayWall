@@ -133,7 +133,11 @@
               response.data.donor
             btcpw_invoice_id = response.data.invoice_id
             form_container = $('.btcpw_tipping_box_container')
-            btcpwShowOpenNodeInvoice(btcpw_invoice_id, form_container)
+            btcpwShowOpenNodeInvoice(
+              btcpw_invoice_id,
+              form_container,
+              $('#btcpw_redirect_link').val()
+            )
           }
         },
         error: function (error) {
@@ -166,7 +170,11 @@
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id
             form_container = $('.btcpw_widget.btcpw_tipping_box_container')
-            btcpwShowOpenNodeInvoice(btcpw_invoice_id, form_container)
+            btcpwShowOpenNodeInvoice(
+              btcpw_invoice_id,
+              form_container,
+              $('#btcpw_redirect_link_btcpw_widget').val()
+            )
             donor =
               'Type: Tipping Box Widget' +
               '\n' +
@@ -215,7 +223,11 @@
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id
             form_container = $('.btcpw_page_tipping_container')
-            btcpwShowOpenNodeInvoice(btcpw_invoice_id, form_container)
+            btcpwShowOpenNodeInvoice(
+              btcpw_invoice_id,
+              form_container,
+              $('#btcpw_page_redirect_link').val()
+            )
             donor =
               'Type: Tipping Page' +
               '\n' +
@@ -264,7 +276,11 @@
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id
             form_container = $('.btcpw_skyscraper_banner.high')
-            btcpwShowOpenNodeInvoice(btcpw_invoice_id, form_container)
+            btcpwShowOpenNodeInvoice(
+              btcpw_invoice_id,
+              form_container,
+              $('#btcpw_skyscraper_redirect_link_high').val()
+            )
             donor =
               'Type: Tipping Banner High' +
               '\n' +
@@ -325,7 +341,11 @@
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id
             form_container = $('.btcpw_widget.btcpw_skyscraper_banner.high')
-            btcpwShowOpenNodeInvoice(btcpw_invoice_id, form_container)
+            btcpwShowOpenNodeInvoice(
+              btcpw_invoice_id,
+              form_container,
+              $('#btcpw_widget_btcpw_skyscraper_redirect_link_high').val()
+            )
             donor =
               'Type: Tipping Banner High Widget' +
               '\n' +
@@ -374,7 +394,11 @@
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id
             form_container = $('.btcpw_skyscraper_banner.wide')
-            btcpwShowOpenNodeInvoice(btcpw_invoice_id, form_container)
+            btcpwShowOpenNodeInvoice(
+              btcpw_invoice_id,
+              form_container,
+              $('#btcpw_skyscraper_redirect_link_wide').val()
+            )
             donor =
               'Type: Tipping Banner Wide' +
               '\n' +
@@ -434,7 +458,11 @@
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id
             form_container = $('.btcpw_widget.btcpw_skyscraper_banner.wide')
-            btcpwShowOpenNodeInvoice(btcpw_invoice_id, form_container)
+            btcpwShowOpenNodeInvoice(
+              btcpw_invoice_id,
+              form_container,
+              $('#btcpw_widget_btcpw_skyscraper_redirect_link_wide').val()
+            )
             donor =
               'Type: Tipping Banner Wide Widget' +
               '\n' +
@@ -515,7 +543,8 @@
       }
     })
   }
-  function btcpwShowOpenNodeInvoice (invoice_id, form_container) {
+  function btcpwShowOpenNodeInvoice (invoice_id, form_container, redirect) {
+    var toRedirect = redirect == '/'
     setInterval(() => {
       btcpaywall_monitor_invoice(invoice_id).done(function (response) {
         if (response.data.status === 'paid') {
@@ -530,8 +559,11 @@
               if (response.success) {
                 notifyAdmin(
                   response.data.notify + 'Url:' + window.location.href
+                )(
+                  toRedirect
+                    ? location.reload(true)
+                    : location.replace(redirect)
                 )
-                location.reload(true)
               }
             },
             error: function (error) {
