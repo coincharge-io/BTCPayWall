@@ -532,4 +532,5 @@ Settings Tabs
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  margin-right: 10px;
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Digital Download
  *
@@ -61,7 +62,6 @@ class Tipping_Forms_Table extends WP_List_Table
             'total_items' => $total_items,
             'per_page' => $per_page
         ]);
-
         $this->items = self::get_shortcodes($per_page, $current_page);
     }
     /**
@@ -103,19 +103,16 @@ class Tipping_Forms_Table extends WP_List_Table
 
     public function process_bulk_action()
     {
+
         if ('delete' === $this->current_action()) {
 
             $nonce = esc_attr($_REQUEST['_wpnonce']);
-            if (isset($_POST['_wpnonce']) && !empty($_POST['_wpnonce'])) {
 
-                $nonce  = filter_input(INPUT_POST, '_wpnonce', FILTER_SANITIZE_STRING);
-                $action = sanitize_text_field('bulk-' . $this->_args['plural']);
-
-                if (!wp_verify_nonce($nonce, $action))
-                    wp_die('Nope! Security check failed!');
-            } else {
-                self::delete_shortcode(absint($_GET['id']));
+            if (!wp_verify_nonce($nonce, 'delete')) {
+                wp_die('Nope! Security check failed!');
             }
+
+            self::delete_shortcode(absint($_GET['id']));
         }
 
         if ((isset($_POST['action']) && sanitize_text_field($_POST['action']) == 'bulk-delete')
@@ -123,7 +120,6 @@ class Tipping_Forms_Table extends WP_List_Table
         ) {
 
             $delete_ids = esc_sql($_POST['bulk-delete']);
-
             foreach ($delete_ids as $id) {
                 self::delete_shortcode($id);
             }
@@ -150,11 +146,10 @@ class Tipping_Forms_Table extends WP_List_Table
     protected function get_bulk_actions()
     {
         $actions = array(
-            'bulk-delete'    => 'Delete',
+            'bulk-delete'    => 'Delete'
         );
         return $actions;
     }
-
 
 
     protected function column_template($item)
@@ -162,7 +157,10 @@ class Tipping_Forms_Table extends WP_List_Table
 
         $page = wp_unslash(sanitize_text_field($_REQUEST['page']));
         $delete_query_args = array(
-            'page'   => $page,
+            'page'   => 'btcpw_general_settings',
+            'tab' => 'modules',
+            'section' => 'tipping',
+            'subsection' => 'all',
             'action' => 'delete',
             'id'  => $item['id'],
         );
@@ -179,7 +177,7 @@ class Tipping_Forms_Table extends WP_List_Table
         );
         $actions['delete'] = sprintf(
             '<a href="%1$s">%2$s</a>',
-            esc_url(wp_nonce_url(add_query_arg($delete_query_args, 'admin.php'), 'id' . $item['id'])),
+            esc_url(wp_nonce_url(add_query_arg($delete_query_args, 'admin.php'), 'delete')),
             _x('Delete', 'List table row action', 'wp-list-table')
         );
         $item_json = json_decode(json_encode($item), true);

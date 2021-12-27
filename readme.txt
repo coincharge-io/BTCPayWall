@@ -93,4 +93,10 @@ https://btcpaywall.com/faq-support-center/
 
 == Upgrade Notice ==
 
+= 1.0.1 =
+
+- Improve OpenNode payment modal
+
+- Fix redirect button
+
 == Screenshots ==
