@@ -507,11 +507,11 @@
     })
   })
 
-  $(document).ready(function () {
+  /* $(document).ready(function () {
     $('#btcpw_previous_page').click(function () {
       window.location.reload(false)
     })
-  })
+  }) */
   $(document).ready(function () {
     $(
       '#tipping_box_add_form, #tipping_banner_wide_add_form, #tipping_banner_high_add_form, #tipping_page_add_form'

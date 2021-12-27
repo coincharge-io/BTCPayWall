@@ -28,7 +28,7 @@ function btcpaywall_get_notify_administrator_body($amount, $collect_data = null,
         $email_body .= "Donor Information: \n";
         $email_body .= $collect_data;
     }
-    $email_body .= "Thank you for using BTCPayWall";
+    $email_body .= "\n\nThank you for using BTCPayWall";
     return $email_body;
 }
 

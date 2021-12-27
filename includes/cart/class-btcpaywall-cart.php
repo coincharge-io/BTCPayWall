@@ -103,7 +103,10 @@ class BTCPayWall_Cart
     public function sanitize_session()
     {
         $sanitized = array();
-        $session = $_SESSION['btcpaywall_cart'];
+        $session = $_SESSION['btcpaywall_cart'] ?? null;
+        if (empty($session)) {
+            return false;
+        }
         foreach ($session as $sess) {
             $sanitized[] = [
                 'id' => (int)$sess['id'],

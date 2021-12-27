@@ -526,3 +526,10 @@ Settings Tabs
 .btcpw tab-content {
   margin-top: 0;
 }
+
+#btcpw_previous_page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}

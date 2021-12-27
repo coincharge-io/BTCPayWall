@@ -3,10 +3,8 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 $id = sanitize_text_field($_GET['id']) ?? null;
-
 $form = new BTCPayWall_Tipping_Form($id);
 $result = json_decode(json_encode($form), true);
-
 $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
 $dimensions = ['250x300', '300x300'];
 $used_currency = $result['currency'] ?? 'SATS';
@@ -217,8 +215,8 @@ $id = $result['id'] ?? null;
         </div>
         <input type="hidden" id="btc_tipping_box_id" value="<?php echo esc_attr($id); ?>" />
 
-        <div style="display: inline-block; margin-top: 25px;">
-            <button id="btcpw_previous_page" class="button button-secondary btcpw_button" type="button">Back</button>
+        <div style="display: flex; margin-top: 25px;">
+            <a href="<?php echo esc_url(admin_url('admin.php?page=btcpw_general_settings&tab=modules&section=tipping&subsection=new')); ?>" id="btcpw_previous_page" class="button button-secondary btcpw_button">Back</a>
             <button class="button button-primary btcpw_button" type="submit">Save</button>
         </div>
     </form>
