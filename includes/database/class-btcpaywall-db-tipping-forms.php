@@ -209,11 +209,10 @@ class BTCPayWall_DB_Tipping_Forms extends BTCPayWall_DB
 
         $sql = "SELECT * FROM {$this->table_name}";
 
-        if (!empty($_REQUEST['orderby'])) {
-            /*$sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
-            $sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';*/
+        /* if (!empty($_REQUEST['orderby'])) {
             $sql .= ' ORDER BY ' . sanitize_sql_orderby($_REQUEST['orderby'] . ' ' . $_REQUEST['order']);
-        }
+        } */
+        $sql .= ' ORDER BY time DESC';
         $per_page = (int)$per_page;
         $page_number = (int)$page_number;
         if (!empty($per_page) && !empty($page_number)) {

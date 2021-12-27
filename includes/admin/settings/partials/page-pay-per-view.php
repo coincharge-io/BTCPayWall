@@ -243,7 +243,7 @@ $default_info = get_option('btcpw_pay_per_view_info');
                     <input id="btcpw_pay_per_view_preview_description_color" class="btcpw_pay_per_view_preview_description_color" name="btcpw_pay_per_view_preview_description_color" type="text" value="<?php echo esc_attr($preview_description_color); ?>" />
                 </div>
             </div>
-            <h3>Description</h3>
+            <h3>Header</h3>
             <div class="row">
                 <div class="col-20">
                     <label for="btcpw_pay_per_view_title">Title</label>

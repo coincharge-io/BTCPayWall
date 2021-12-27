@@ -49,7 +49,7 @@ function ajax_btcpaywall_get_invoice_id()
 
     if (is_wp_error($invoice_id)) {
         wp_send_json_error([
-            'message' => $invoice_id->get_error_message(),
+            'message' => 'Invoice could not be generated.',
         ]);
     }
 
@@ -81,7 +81,7 @@ function btcpaywall_generate_invoice_id($post_id, $order_id, $customer_data)
     $url = get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
 
     $currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ? get_post_meta($post_id, 'btcpw_currency', true) : get_option('btcpw_default_currency', 'SATS');
-    $blogname = get_option('blogname');
+    $blogname = get_post($post_id)->post_title;
 
     $data = array(
         'amount' => $amount,
@@ -108,7 +108,6 @@ function btcpaywall_generate_invoice_id($post_id, $order_id, $customer_data)
     );
 
     $response = wp_remote_request($url, $args);
-
     if (is_wp_error($response)) {
         return $response;
     }
@@ -281,7 +280,7 @@ function ajax_btcpaywall_tipping()
         $currency = $extract[1];
     }
     $storeId = get_option('btcpw_btcpay_store_id');
-    $blogname = get_option('blogname');
+    $blogname = get_post(get_the_ID())->post_title;
     $siteurl = get_option('siteurl');
     $date = date('Y-m-d H:i:s', current_time('timestamp', 0));
 
@@ -531,7 +530,8 @@ function btcpaywall_generate_opennode_invoice_id($post_id, $order_id, $customer_
     $url = 'https://api.opennode.com/v1/charges';
     $currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ? get_post_meta($post_id, 'btcpw_currency', true) : get_option('btcpw_default_currency', 'SATS');
 
-    $blogname = get_option('blogname');
+    $blogname = get_post($post_id)->post_title;
+
     $currency = $currency_scope === 'SATS' ? 'BTC' : $currency_scope;
 
 
@@ -721,7 +721,7 @@ function ajax_btcpaywall_paid_opennode_invoice()
     }
     $cookie_path = parse_url(get_permalink($post_id), PHP_URL_PATH);
     $amount = "{$body['data']['amount']} {$body['data']['currency']}";
-    $blogname = get_option('blogname');
+    $blogname = get_post(get_the_ID())->post_title;
     $siteurl = get_option('siteurl');
     $date = date('Y-m-d H:i:s', current_time('timestamp', 0));
     $message = "\nWeblog title: {$blogname} \n";

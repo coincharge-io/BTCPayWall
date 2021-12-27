@@ -293,6 +293,7 @@ div.btcpw_help_link a:hover {
 #btcpw_pay_per_post_paywall,
 #btcpw_pay_per_view_paywall,
 #btcpw_pay_per_file_paywall,
+#btcpw_general_pay_per_post_options_paywall,
 #btcpw_general_pay_per_view_options_paywall {
   display: flex;
 }
@@ -300,6 +301,7 @@ div.btcpw_help_link a:hover {
 #btcpw_pay_per_post_paywall > div,
 #btcpw_pay_per_view_paywall > div,
 #btcpw_pay_per_file_paywall > div,
+#btcpw_general_pay_per_post_options_paywall > div,
 #btcpw_general_pay_per_view_options_paywall > div {
   flex: 1;
 }

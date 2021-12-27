@@ -90,13 +90,17 @@ https://btcpaywall.com/faq-support-center/
 
  - First release.
 
-
-== Upgrade Notice ==
-
 = 1.0.1 =
 
 - Improve OpenNode payment modal
 
 - Fix redirect button
+
+- Fix delete function for Tipping form table
+
+== Upgrade Notice ==
+
+= 1.0.1 =
+
 
 == Screenshots ==

@@ -168,8 +168,8 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
         $sql = "SELECT * FROM {$this->table_name}";
         $sql .= ' ORDER BY date_created';
         $sql .= ' DESC';
-        $per_page=(int)$per_page;
-        $page_number=(int)$page_number;
+        $per_page = (int)$per_page;
+        $page_number = (int)$page_number;
         if (!empty($per_page) && !empty($page_number)) {
             $sql .= " LIMIT $per_page";
 
