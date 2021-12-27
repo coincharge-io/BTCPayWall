@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * Digital Download
+ *
+ * @package     BTCPayWall
+ * @subpackage  Classes/BTCPayWall_Tipping
+ * @copyright   Copyright (c) 2021, Coincharge
+ * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
+ * @since       1.0
+ */
 // Exit if accessed directly
 if (!defined('ABSPATH')) exit;
 
@@ -27,7 +36,7 @@ class BTCPayWall_Tipping
 
         $this->db = new BTCPayWall_DB_Tippings;
 
-        if ((is_numeric($invoice_id) && (int) $invoice_id !== absint($invoice_id))||$invoice_id===false) {
+        if ((is_numeric($invoice_id) && (int) $invoice_id !== absint($invoice_id)) || $invoice_id === false) {
             return false;
         }
 

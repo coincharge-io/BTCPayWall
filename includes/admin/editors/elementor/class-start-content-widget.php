@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * Digital Download
+ *
+ * @package     BTCPayWall
+ * @subpackage  Elementor/Elementor_BTCPW_Start_Content_Widget
+ * @copyright   Copyright (c) 2021, Coincharge
+ * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
+ * @since       1.0
+ */
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
@@ -230,15 +239,15 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 		$currency = $settings['currency'];
 		$btc_format = $settings['btc_format'];
 		$display_name = filter_var($settings['display_name'], FILTER_VALIDATE_BOOLEAN);
-        $display_email = filter_var($settings['display_email'], FILTER_VALIDATE_BOOLEAN);
-        $display_address = filter_var($settings['display_address'], FILTER_VALIDATE_BOOLEAN);
-        $display_phone = filter_var($settings['display_phone'], FILTER_VALIDATE_BOOLEAN);
-        $display_message = filter_var($settings['display_message'], FILTER_VALIDATE_BOOLEAN);
-        $mandatory_name = filter_var($settings['mandatory_name'], FILTER_VALIDATE_BOOLEAN);
-        $mandatory_email = filter_var($settings['mandatory_email'], FILTER_VALIDATE_BOOLEAN);
-        $mandatory_address = filter_var($settings['mandatory_address'], FILTER_VALIDATE_BOOLEAN);
-        $mandatory_phone = filter_var($settings['mandatory_phone'], FILTER_VALIDATE_BOOLEAN);
-        $mandatory_message = filter_var($settings['mandatory_message'], FILTER_VALIDATE_BOOLEAN);
+		$display_email = filter_var($settings['display_email'], FILTER_VALIDATE_BOOLEAN);
+		$display_address = filter_var($settings['display_address'], FILTER_VALIDATE_BOOLEAN);
+		$display_phone = filter_var($settings['display_phone'], FILTER_VALIDATE_BOOLEAN);
+		$display_message = filter_var($settings['display_message'], FILTER_VALIDATE_BOOLEAN);
+		$mandatory_name = filter_var($settings['mandatory_name'], FILTER_VALIDATE_BOOLEAN);
+		$mandatory_email = filter_var($settings['mandatory_email'], FILTER_VALIDATE_BOOLEAN);
+		$mandatory_address = filter_var($settings['mandatory_address'], FILTER_VALIDATE_BOOLEAN);
+		$mandatory_phone = filter_var($settings['mandatory_phone'], FILTER_VALIDATE_BOOLEAN);
+		$mandatory_message = filter_var($settings['mandatory_message'], FILTER_VALIDATE_BOOLEAN);
 		if ($enable_pay_block) {
 			echo do_shortcode("[btcpw_start_content pay_block='true' currency='{$currency}' btc_format='{$btc_format}' duration='{$duration}' duration_type='{$duration_type}' price='{$price}' display_name='{$display_name}' mandatory_name='{$mandatory_name}' display_email='{$display_email}' mandatory_email='{$mandatory_email}' display_phone='{$display_phone}' mandatory_phone='{$mandatory_phone}' display_address='{$display_address}' mandatory_address='{$mandatory_address}' display_message='{$display_message}' mandatory_message='{$mandatory_message}']");
 		}

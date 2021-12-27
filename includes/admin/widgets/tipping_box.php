@@ -1,4 +1,14 @@
 <?php
+
+/**
+ * Digital Download
+ *
+ * @package     BTCPayWall
+ * @subpackage  Admin/Tipping_Box
+ * @copyright   Copyright (c) 2021, Coincharge
+ * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
+ * @since       1.0
+ */
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 class Tipping_Box extends WP_Widget
