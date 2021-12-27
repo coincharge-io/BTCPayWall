@@ -75,6 +75,7 @@ $default_info = get_option('btcpw_pay_per_post_info');
     <div>
         <form method="POST" action="options.php">
             <?php settings_fields('btcpw_general_pay_per_post_options'); ?>
+            <h2>General Settings</h2>
             <div class="row">
                 <div class="col-20">
                     <label for="btcpw_general_pay_per_post_settings_price">Default price</label>

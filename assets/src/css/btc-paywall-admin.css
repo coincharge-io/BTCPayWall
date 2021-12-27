@@ -204,9 +204,10 @@ td.Settled {
 .tipping_banner_high_settings,
 .tipping_banner_wide_settings,
 .tipping_page_settings,
-#btcpw_pay_per_post_paywall,
-#btcpw_pay_per_view_paywall,
-#btcpw_pay_per_file_paywall {
+#btcpw_general_pay_per_post_options_paywall,
+#btcpw_general_pay_per_view_options_paywall,
+#btcpw_pay_per_file_paywall,
+#btcpw_general_payment_gateway_options {
   border: 1px solid #1e1e1e;
   background: #fff;
   padding: 0;
