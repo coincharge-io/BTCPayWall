@@ -98,6 +98,8 @@ https://btcpaywall.com/faq-support-center/
 
 - Fix delete function for Tipping form table
 
+- Fix information about payment place
+
 == Upgrade Notice ==
 
 = 1.0.1 =

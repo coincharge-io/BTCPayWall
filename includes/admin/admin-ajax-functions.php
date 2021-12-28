@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Digital Download
  *
@@ -19,7 +20,7 @@ function ajax_btcpaywall_check_greenfield_api_work()
 
     $auth_key_view = sanitize_text_field($_POST['auth_key_view']);
     $auth_key_create = sanitize_text_field($_POST['auth_key_create']);
-    $server_url = sanitize_text_field($_POST['server_url']);
+    $server_url = trim(sanitize_text_field($_POST['server_url']), '/');
 
     $args_view = array(
         'headers' => array(
@@ -43,7 +44,7 @@ function ajax_btcpaywall_check_greenfield_api_work()
     $response_create = wp_remote_request($url, $args_create);
 
     if (is_wp_error($response_view) || is_wp_error($response_create)) {
-        wp_send_json_error(['message' => 'Something went wrong. Please check your credentials. If your server url is correct, make sure it doesn\'t contain trailing slash.']);
+        wp_send_json_error(['message' => 'Something went wrong. Please check your url and credentials.']);
     }
 
     $view_permission = json_decode($response_view['body'])->permissions[0];
