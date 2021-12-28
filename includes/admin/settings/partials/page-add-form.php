@@ -5,14 +5,10 @@ if (!defined('ABSPATH')) exit;
 $designs = array('Box' => 'Box', 'High Banner' => 'High-Banner', 'Wide Banner' => 'Wide-Banner', 'Page' => 'Page');
 $selected = sanitize_text_field($_POST['design']) ?? null;
 ?>
-<h1>Add new form</h1>
 <?php if (empty($selected)) : ?>
     <?php include(__DIR__ . '/notices/add-form-notice.php'); ?>
 <?php endif; ?>
 <div id="btcpw_form_preview">
-
-
-
     <div class="btcpw_add_form_preview">
         <?php if (empty($selected)) : ?>
             <div>

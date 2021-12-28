@@ -94,6 +94,8 @@ https://btcpaywall.com/faq-support-center/
 
 - Improve: OpenNode payment modal
 
+- Improve: Payment page
+
 - Fix: Redirect button
 
 - Fix: Delete function for Tipping form table
@@ -101,6 +103,9 @@ https://btcpaywall.com/faq-support-center/
 - Fix: Information about payment place
 
 - Fix: Add icon to Elementor
+
+- Fix: Create shortcode for Tipping page
+
 
 == Upgrade Notice ==
 

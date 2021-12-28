@@ -7,8 +7,6 @@ $table = new Tipping_Forms_Table();
 
 ?>
 <div class="wrap">
-    <h2>All forms</h2>
-
     <div>
         <div>
             <div>

@@ -82,38 +82,6 @@ $show_icon = $result['show_icon'] ?? true;
 $shortcode = !empty($result) ? btcpaywall_output_shortcode_attributes($result['name'], $result['id']) : '';
 $id = $result['id'] ?? null;
 ?>
-
-<style>
-    .btcpw_tipping_page_collect_name_mandatory,
-    label[for="btcpw_tipping_page_collect[name][mandatory]"] {
-        visibility: <?php echo ($collect['name']['collect']) == true ? '' : 'hidden';
-                    ?>;
-    }
-
-    .btcpw_tipping_page_collect_email_mandatory,
-    label[for="btcpw_tipping_page_collect[email][mandatory]"] {
-        visibility: <?php echo ($collect['email']['collect']) ? '' : 'hidden';
-                    ?>;
-    }
-
-    .btcpw_tipping_page_collect_address_mandatory,
-    label[for="btcpw_tipping_page_collect[address][mandatory]"] {
-        visibility: <?php echo ($collect['address']['collect']) == true  ? '' : 'hidden';
-                    ?>;
-    }
-
-    .btcpw_tipping_page_collect_phone_mandatory,
-    label[for="btcpw_tipping_page_collect[phone][mandatory]"] {
-        visibility: <?php echo ($collect['phone']['collect']) == true ? '' : 'hidden';
-                    ?>;
-    }
-
-    .btcpw_tipping_page_collect_message_mandatory,
-    label[for="btcpw_tipping_page_collect[message][mandatory]"] {
-        visibility: <?php echo ($collect['message']['collect']) == true ? '' : 'hidden';
-                    ?>;
-    }
-</style>
 <div class="tipping_page_settings">
     <?php include(__DIR__ . '/notices/form-notice.php'); ?>
 

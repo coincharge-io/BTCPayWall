@@ -239,7 +239,9 @@ class BTCPayWall_Tipping_Form
         $columns        = $this->db->get_columns();
         $default_values = $this->db->get_column_defaults();
         $booleans = ['collect_name', 'collect_email', 'collect_phone', 'collect_address', 'collect_message', 'mandatory_name', 'mandatory_email', 'mandatory_phone', 'mandatory_address', 'mandatory_message', 'free_input', 'show_icon', 'value1_enabled', 'value2_enabled', 'value3_enabled'];
-
+        if (!in_array('dimension', $data)) {
+            $data['dimension'] = '0x0';
+        }
         foreach ($columns as $key => $type) {
 
             if (!array_key_exists($key, $data)) {
@@ -249,7 +251,6 @@ class BTCPayWall_Tipping_Form
             switch ($type) {
 
                 case '%s':
-
                     if (substr($data[$key], 0, 1) === '#') {
                         $data[$key] = sanitize_hex_color_no_hash($data[$key]);
                     } elseif ($key === 'dimension') {
@@ -264,11 +265,13 @@ class BTCPayWall_Tipping_Form
                     break;
 
                 case '%d':
-                    if (in_array($data[$key], $booleans)) {
-                        $data[$key] = rest_sanitize_boolean($data[$key]);
+
+                    if (in_array($key, $booleans)) {
+                        $data[$key] = (bool)$data[$key];
                     } else {
                         $data[$key] = absint($data[$key]);
                     }
+
                     break;
 
                 case '%f':

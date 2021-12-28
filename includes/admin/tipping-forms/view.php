@@ -19,7 +19,7 @@ function btcpaywall_render_tipping_list()
 
 ?>
     <div class="wrap">
-        <h2>All forms</h2>
+        <h2>All shortcode forms</h2>
 
         <div>
             <div>
