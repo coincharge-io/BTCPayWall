@@ -46,7 +46,6 @@ function ajax_btcpaywall_get_invoice_id()
     } else {
         $invoice_id = btcpaywall_generate_opennode_invoice_id($post_id, $order_id, $customer_data);
     }
-
     if (is_wp_error($invoice_id)) {
         wp_send_json_error([
             'message' => 'Invoice could not be generated.',
@@ -273,14 +272,15 @@ function ajax_btcpaywall_tipping()
     $currency = sanitize_text_field($_POST['currency']);
     $amount = sanitize_text_field($_POST['amount']);
     $gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer');
-
+    $get_url     = wp_get_referer();
+    $post_id = url_to_postid($get_url);
     if (!empty($_POST['predefined_amount'])) {
         $extract = explode(' ', sanitize_text_field($_POST['predefined_amount']));
         $amount = $extract[0];
         $currency = $extract[1];
     }
     $storeId = get_option('btcpw_btcpay_store_id');
-    $blogname = get_post(get_the_ID())->post_title;
+    $blogname = get_post($post_id)->post_title;
     $siteurl = get_option('siteurl');
     $date = date('Y-m-d H:i:s', current_time('timestamp', 0));
 
@@ -529,8 +529,9 @@ function btcpaywall_generate_opennode_invoice_id($post_id, $order_id, $customer_
 
     $url = 'https://api.opennode.com/v1/charges';
     $currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ? get_post_meta($post_id, 'btcpw_currency', true) : get_option('btcpw_default_currency', 'SATS');
-
-    $blogname = get_post($post_id)->post_title;
+    $get_url     = wp_get_referer();
+    $get_post_id = $post_id ? $post_id : url_to_postid($get_url);
+    $blogname = get_post($get_post_id)->post_title;
 
     $currency = $currency_scope === 'SATS' ? 'BTC' : $currency_scope;
 
