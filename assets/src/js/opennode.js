@@ -544,7 +544,7 @@
     })
   }
   function btcpwShowOpenNodeInvoice (invoice_id, form_container, redirect) {
-    var toRedirect = redirect == '/'
+    var toRedirect = redirect == '/' || redirect == ''
     setInterval(() => {
       btcpaywall_monitor_invoice(invoice_id).done(function (response) {
         if (response.data.status === 'paid') {
