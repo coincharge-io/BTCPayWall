@@ -107,9 +107,5 @@ https://btcpaywall.com/faq-support-center/
 - Fix: Create shortcode for Tipping page
 
 
-== Upgrade Notice ==
-
-= 1.0.1 =
-
 
 == Screenshots ==

@@ -543,8 +543,11 @@
       }
     })
   }
-  function btcpwShowOpenNodeInvoice (invoice_id, form_container, redirect) {
-    var toRedirect = redirect == '/' || redirect == ''
+  function btcpwShowOpenNodeInvoice (
+    invoice_id,
+    form_container,
+    redirectTo = null
+  ) {
     setInterval(() => {
       btcpaywall_monitor_invoice(invoice_id).done(function (response) {
         if (response.data.status === 'paid') {
@@ -559,11 +562,16 @@
               if (response.success) {
                 notifyAdmin(
                   response.data.notify + 'Url:' + window.location.href
-                )(
-                  toRedirect
-                    ? location.reload(true)
-                    : location.replace(redirect)
                 )
+                if (
+                  /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(
+                    redirectTo
+                  )
+                ) {
+                  location.replace(redirectTo)
+                } else {
+                  location.reload(true)
+                }
               }
             },
             error: function (error) {
