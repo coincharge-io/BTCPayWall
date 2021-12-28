@@ -37,7 +37,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 	 */
 	public function get_icon()
 	{
-		return 'fa fa-btc';
+		return 'fab fa-btc';
 	}
 
 	/**

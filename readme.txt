@@ -92,13 +92,15 @@ https://btcpaywall.com/faq-support-center/
 
 = 1.0.1 =
 
-- Improve OpenNode payment modal
+- Improve: OpenNode payment modal
 
-- Fix redirect button
+- Fix: Redirect button
 
-- Fix delete function for Tipping form table
+- Fix: Delete function for Tipping form table
 
-- Fix information about payment place
+- Fix: Information about payment place
+
+- Fix: Add icon to Elementor
 
 == Upgrade Notice ==
 
