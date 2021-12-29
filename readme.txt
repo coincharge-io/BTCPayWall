@@ -86,10 +86,6 @@ https://btcpaywall.com/faq-support-center/
 
  == Changelog ==
 
- = 1.0.0 =
-
- - First release.
-
 = 1.0.1 =
 
 - Improve: OpenNode payment modal
@@ -106,6 +102,8 @@ https://btcpaywall.com/faq-support-center/
 
 - Fix: Create shortcode for Tipping page
 
+= 1.0.0 =
 
+ - First release.
 
 == Screenshots ==
