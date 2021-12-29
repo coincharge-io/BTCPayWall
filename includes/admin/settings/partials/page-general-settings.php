@@ -17,6 +17,9 @@ $tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : $default_tab;
             <li>
                 <a href="?page=btcpw_general_settings&tab=modules" class="nav-tab <?php if ($tab === 'modules') : ?>nav-tab-active<?php endif; ?>">Modules</a>
             </li>
+            <li>
+                <a href="?page=btcpw_general_settings&tab=misc" class="nav-tab <?php if ($tab === 'misc') : ?>nav-tab-active<?php endif; ?>">Misc</a>
+            </li>
         </ul>
     </nav>
 
@@ -27,6 +30,9 @@ $tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : $default_tab;
                 break;
             case 'modules':
                 require('page-modules.php');
+                break;
+            case 'misc':
+                require('page-misc.php');
                 break;
             default:
                 require('page-gateways.php');

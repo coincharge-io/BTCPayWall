@@ -85,6 +85,10 @@ Further information can be found here: https://btcpaywall.com
 https://btcpaywall.com/faq-support-center/
 
  == Changelog ==
+ 
+= 1.1.0 =
+
+- Add: Uninstall function
 
 = 1.0.1 =
 

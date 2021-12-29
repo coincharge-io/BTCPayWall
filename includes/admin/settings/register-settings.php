@@ -102,6 +102,8 @@ function btcpaywall_register_settings()
 
 
     register_setting('btcpw_general_pay_per_file_options', 'btcpw_default_pay_per_file_currency', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
+
+    register_setting('btcpw_misc_options', 'btcpw_remove_data_on_uninstall', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'btcpaywall_sanitize_boolean'));
 }
 
 

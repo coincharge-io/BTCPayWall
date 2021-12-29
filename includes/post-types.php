@@ -32,7 +32,7 @@ function btcpaywall_register_post_types()
         'supports' => ['title', 'custom-fields'],
         'taxonomies' => [],
         'has_archive' => false,
-        'rewrite' => array('slug' => 'digital_download', 'with_front' => false),
+        'rewrite' => true,
         'query_var' => true,
     ]);
     $labels = array(

@@ -207,7 +207,8 @@ td.Settled {
 #btcpw_general_pay_per_post_options_paywall,
 #btcpw_general_pay_per_view_options_paywall,
 #btcpw_pay_per_file_paywall,
-#btcpw_general_payment_gateway_options {
+#btcpw_general_payment_gateway_options,
+#btcpw_misc_options {
   border: 1px solid #1e1e1e;
   background: #fff;
   padding: 0;
@@ -306,7 +307,12 @@ div.btcpw_help_link a:hover {
 #btcpw_general_pay_per_view_options_paywall > div {
   flex: 1;
 }
-
+.btcpw_pay_preview.pay_per_post,
+.btcpw_pay_preview.pay_per_view {
+  position: sticky;
+  position: -webkit-sticky; /* Safari */
+  top: 0;
+}
 /*Paywall preview*/
 .btcpw_pay_preview {
   background-color: #ecf0f1;
