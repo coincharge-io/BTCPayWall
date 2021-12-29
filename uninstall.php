@@ -36,7 +36,7 @@ if (get_option('btcpw_remove_data_on_uninstall')) {
 	$deletable = array(
 		'btcpw_currency', 'btcpw_btc_format', 'btcpw_price', 'btcpw_duration', 'btcpw_duration_type',
 		'btcpw_digital_product_id', 'btcpw_digital_product_file', 'btcpw_digital_product_filename',
-		'btcpw_product_sales', 'btcpw_product_limit', 'btcpw_product_image_id', 'btcpw_product_description'
+		'btcpw_product_sales', 'btcpw_product_limit', 'btcpw_product_image_id', 'btcpw_product_description', 'btcpw_status', 'btcpw_post_id', 'btcpw_from_ip', 'btcpw_secret'
 	);
 	foreach ($deleteable as $to_delete) {
 		delete_metadata('post', 0, $to_delete, false, true);

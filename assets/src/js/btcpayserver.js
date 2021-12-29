@@ -490,8 +490,8 @@
           },
           success: function (response) {
             if (response.success) {
-              location.reload(true)
               notifyAdmin(response.data.notify + 'Url:' + window.location.href)
+              location.reload(true)
             }
           },
           error: function (error) {

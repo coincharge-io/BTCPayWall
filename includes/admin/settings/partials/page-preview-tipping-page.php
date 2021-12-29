@@ -53,7 +53,7 @@
             <div class="preview_btcpw_page_header_container">
 
                 <div id="preview_btcpw_page_logo_wrap">
-                    <img alt="Tipping page logo" src="https://btcpaywall.com/wp-content/uploads/2021/07/BTCPayWall-logo_square.jpg" />
+                    <img alt="Tipping page logo" src=<?php echo esc_url(BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png'); ?> />
                 </div>
                 <div>
                     <h6>Support my work</h6>

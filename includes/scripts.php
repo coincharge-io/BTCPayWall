@@ -39,6 +39,7 @@ function btcpaywall_enqueue_scripts()
 
     wp_enqueue_script('btcpaywall_gateway', $script, array('jquery'), null, true);
 
+
     wp_localize_script(
         'btcpaywall_gateway',
         'payment',
