@@ -144,10 +144,10 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                 <?php endif; ?>
                 <div>
                     <?php if (!empty($atts['title'])) : ?>
-                        <h6><?php echo esc_html($atts['title']); ?></h6>
+                        <h6><?php echo esc_html__($atts['title'], 'btcpaywall'); ?></h6>
                     <?php endif; ?>
                     <?php if (!empty($atts['description'])) : ?>
-                        <p><?php echo esc_html($atts['description']); ?></p>
+                        <p><?php echo esc_html__($atts['description'], 'btcpaywall'); ?></p>
                     <?php endif; ?>
                 </div>
             </div>
@@ -208,7 +208,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
 
                             <?php else : ?>
                                 <div>
-                                    <button type="submit" id="btcpw_skyscraper_tipping_wide_button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
+                                    <button type="submit" id="btcpw_skyscraper_tipping_wide_button"><?php echo (!empty($atts['button_text']) ? esc_html__($atts['button_text'], 'btcpaywall') : 'Tip'); ?></button>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -224,7 +224,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                                         ?>
                                         <div class="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wrap wide"); ?>">
 
-                                            <input type="text" placeholder="<?php echo $label; ?>" id="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" name="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                            <input type="text" placeholder="<?php echo esc_attr__($label, 'btcpaywall'); ?>" id="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" name="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                         </div>
                                     <?php endif; ?>
@@ -235,7 +235,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                                     <input type="button" name="previous" class="skyscraper-previous-form wide" value="<?php echo esc_html__('< Previous', 'btcpaywall'); ?>" />
                                 </div>
                                 <div>
-                                    <button type="submit" id="btcpw_skyscraper_tipping_wide_button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
+                                    <button type="submit" id="btcpw_skyscraper_tipping_wide_button"><?php echo (!empty($atts['button_text']) ? esc_html__($atts['button_text'], 'btcpaywall') : 'Tip'); ?></button>
                                 </div>
                             </div>
                         </fieldset>
@@ -379,10 +379,10 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                 <?php endif; ?>
                 <div>
                     <?php if (!empty($atts['title'])) : ?>
-                        <h6><?php echo esc_html($atts['title']); ?></h6>
+                        <h6><?php echo esc_html__($atts['title'], 'btcpaywall'); ?></h6>
                     <?php endif; ?>
                     <?php if (!empty($atts['description'])) : ?>
-                        <p><?php echo esc_html($atts['description']); ?></p>
+                        <p><?php echo esc_html__($atts['description'], 'btcpaywall'); ?></p>
                     <?php endif; ?>
                 </div>
             </div>
@@ -443,7 +443,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
 
                             <?php else : ?>
                                 <div>
-                                    <button type="submit" id="<?php echo "btcpw_skyscraper_tipping_high_button"; ?>"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
+                                    <button type="submit" id="<?php echo "btcpw_skyscraper_tipping_high_button"; ?>"><?php echo (!empty($atts['button_text']) ? esc_html__($atts['button_text'], 'btcpaywall') : 'Tip'); ?></button>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -459,7 +459,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                                         ?>
                                         <div class="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wrap high"); ?>">
 
-                                            <input type="text" placeholder="<?php echo esc_attr($label); ?>" id="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_high"); ?>" name="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_high"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                            <input type="text" placeholder="<?php echo esc_attr__($label, 'btcpaywall'); ?>" id="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_high"); ?>" name="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_high"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                         </div>
                                     <?php endif; ?>
@@ -470,7 +470,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                                     <input type="button" name="previous" class="skyscraper-previous-form high" value="<?php echo esc_html__('< Previous', 'btcpaywall'); ?>" />
                                 </div>
                                 <div>
-                                    <button type="submit" id="btcpw_skyscraper_tipping_high_button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
+                                    <button type="submit" id="btcpw_skyscraper_tipping_high_button"><?php echo (!empty($atts['button_text']) ? esc_html__($atts['button_text'], 'btcpaywall') : 'Tip'); ?></button>
                                 </div>
                             </div>
                         </fieldset>
@@ -638,20 +638,20 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                     <?php endif; ?>
                     <?php if (!empty($atts['title'])) : ?>
                         <div>
-                            <h6><?php echo esc_html($atts['title']); ?></h6>
+                            <h6><?php echo esc_html__($atts['title'], 'btcpaywall'); ?></h6>
                         </div>
                     <?php endif; ?>
                 </div>
                 <?php if ($collect_data == 'true') : ?>
                     <div class='btcpw_page_bar_container'>
                         <div class='btcpw_page_bar_container bar-1 active'>
-                            <?php echo (!empty($atts['step1']) ? esc_html($atts['step1']) : '1.Pledge'); ?></div>
+                            <?php echo (!empty($atts['step1']) ? esc_html__($atts['step1'], 'btcpaywall') : '1.Pledge'); ?></div>
                         <div class='btcpw_page_bar_container bar-2'>
-                            <?php echo (!empty($atts['step2']) ? esc_html($atts['step2']) : '2.Info'); ?></div>
+                            <?php echo (!empty($atts['step2']) ? esc_html__($atts['step2'], 'btcpaywall') : '2.Info'); ?></div>
                     </div>
                 <?php endif; ?>
                 <fieldset>
-                    <h6><?php echo (!empty($atts['tipping_text']) ? esc_html($atts['tipping_text']) : ''); ?>
+                    <h6><?php echo (!empty($atts['tipping_text']) ? esc_html__($atts['tipping_text'], 'btcpaywall') : ''); ?>
                     </h6>
                     <div class="btcpw_page_amount">
                         <?php foreach ($fixed_amount as $key => $value) : ?>
@@ -718,7 +718,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                         <?php if ($collect_data === true) : ?>
                             <input type="button" name="next" class="page-next-form" value="<?php echo esc_html__('continue', 'btcpaywall'); ?>" />
                         <?php else : ?>
-                            <button type="submit" id="btcpw_page_tipping__button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
+                            <button type="submit" id="btcpw_page_tipping__button"><?php echo (!empty($atts['button_text']) ? esc_html__($atts['button_text'], 'btcpaywall') : 'Tip'); ?></button>
                         <?php endif; ?>
                     </div>
 
@@ -733,7 +733,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                                     ?>
                                     <div class="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}_wrap"); ?>">
 
-                                        <input type="text" placeholder="<?php echo esc_attr($label); ?>" id="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}"); ?>" name="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                        <input type="text" placeholder="<?php echo esc_attr__($label, 'btcpaywall'); ?>" id="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}"); ?>" name="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
                                     </div>
                                 <?php endif; ?>
                             <?php endforeach; ?>
@@ -743,7 +743,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                                 <input type="button" name="previous" class="page-previous-form" value="<?php echo esc_html__('< previous', 'btcpaywall'); ?>" />
                             </div>
                             <div>
-                                <button type="submit" id="btcpw_page_tipping__button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
+                                <button type="submit" id="btcpw_page_tipping__button"><?php echo (!empty($atts['button_text']) ? esc_html__($atts['button_text'], 'btcpaywall') : 'Tip'); ?></button>
                             </div>
                         </div>
                     </fieldset>
@@ -869,15 +869,15 @@ function btcpaywall_render_shortcode_box_tipping($atts)
 
                         <div>
                             <?php if (!empty($atts['title'])) : ?>
-                                <h6><?php echo esc_html($atts['title']); ?></h6>
+                                <h6><?php echo esc_html__($atts['title'], 'btcpaywall'); ?></h6>
                             <?php endif; ?>
                             <?php if (!empty($atts['description'])) : ?>
-                                <p><?php echo esc_html($atts['description']); ?></p>
+                                <p><?php echo esc_html__($atts['description'], 'btcpaywall'); ?></p>
                             <?php endif; ?>
                         </div>
 
                     </div>
-                    <h6><?php echo (!empty($atts['tipping_text']) ? esc_html($atts['tipping_text']) : ''); ?></h6>
+                    <h6><?php echo (!empty($atts['tipping_text']) ? esc_html__($atts['tipping_text'], 'btcpaywall') : ''); ?></h6>
                     <div class="btcpw_tipping_box_amount">
 
                         <div class=<?php echo esc_attr("btcpw_tipping_free_input $is_widget"); ?>">
@@ -903,7 +903,7 @@ function btcpaywall_render_shortcode_box_tipping($atts)
                     <input type="hidden" id="btcpw_redirect_link" name="btcpw_redirect_link" value=<?php echo esc_attr($atts['redirect']); ?> />
                     <div id="button">
 
-                        <button type="submit" id="btcpw_tipping__button"><?php echo (!empty($atts['button_text']) ? esc_html($atts['button_text']) : 'Tip'); ?></button>
+                        <button type="submit" id="btcpw_tipping__button"><?php echo (!empty($atts['button_text']) ? esc_html__($atts['button_text'], 'btcpaywall') : 'Tip'); ?></button>
                     </div>
                 </fieldset>
 
@@ -918,7 +918,7 @@ function btcpaywall_render_shortcode_box_tipping($atts)
     return ob_get_clean();
 }
 add_shortcode('btcpw_tipping_box', 'btcpaywall_render_shortcode_box_tipping');
-function btcpaywall_render_shortcode_btcpw_pay_file_block($atts)
+/* function btcpaywall_render_shortcode_btcpw_pay_file_block($atts)
 {
     if (btcpaywall_is_paid_content()) {
         return '';
@@ -944,13 +944,13 @@ function btcpaywall_render_shortcode_btcpw_pay_file_block($atts)
 
     return ob_get_clean();
 }
-add_shortcode('btcpw_pay_file_block', 'btcpaywall_render_shortcode_btcpw_pay_file_block');
+add_shortcode('btcpw_pay_file_block', 'btcpaywall_render_shortcode_btcpw_pay_file_block'); */
 /**
  * @param $atts
  *
  * @return string
  */
-function btcpaywall_render_shortcode_btcpw_pay_view_block($atts)
+/* function btcpaywall_render_shortcode_btcpw_pay_view_block($atts)
 {
     if (btcpaywall_is_paid_content()) {
         return '';
@@ -994,7 +994,7 @@ function btcpaywall_render_shortcode_btcpw_pay_view_block($atts)
 
     return ob_get_clean();
 }
-add_shortcode('btcpw_pay_video_block', 'btcpaywall_render_shortcode_btcpw_pay_view_block');
+add_shortcode('btcpw_pay_video_block', 'btcpaywall_render_shortcode_btcpw_pay_view_block'); */
 /**
  * @param array $atts
  *
@@ -1192,11 +1192,11 @@ function btcpaywall_render_checkout()
                     <tr class="btcpaywall_cart_item" id="btcpaywall_cart_item_<?php echo esc_attr($key) . '_' . esc_attr($item['id']); ?>" data-download-id="<?php echo esc_attr($item['id']); ?>">
 
                         <td class="btcpaywall_cart_item_name">
-                            <span class="btcpaywall_checkout_cart_item_title"><?php echo esc_html(btcpaywall_get_cart_item_name($item)); ?></span>
+                            <span class="btcpaywall_checkout_cart_item_title"><?php echo esc_html__(btcpaywall_get_cart_item_name($item), 'btcpaywall'); ?></span>
                         </td>
                         <td class="btcpaywall_cart_item_price">
                             <span><?php
-                                    echo esc_html(btcpaywall_cart_item_price($item['id'])); ?></span>
+                                    echo esc_html__(btcpaywall_cart_item_price($item['id']), 'btcpaywall'); ?></span>
 
                         </td>
                         <td class="btcpaywall_cart_actions">
@@ -1285,7 +1285,7 @@ function btcpaywall_render_receipt()
 
             <tr>
                 <td class="btcpaywall_receipt_payment_status"><strong><?php echo esc_html__('Payment Status', 'btcpaywall'); ?>:</strong></td>
-                <td class="btcpaywall_receipt_payment_status <?php echo esc_attr($payment->status); ?>"><?php echo esc_html($payment->status); ?></td>
+                <td class="btcpaywall_receipt_payment_status <?php echo esc_attr($payment->status); ?>"><?php echo esc_html__($payment->status, 'btcpaywall'); ?></td>
             </tr>
             <tr>
                 <td><strong><?php echo esc_html__('Payment ID', 'btcpaywall'); ?>:</strong></td>
@@ -1321,7 +1321,6 @@ function btcpaywall_render_receipt()
                         <tr>
                             <?php
                             $download       = new BTCPayWall_Digital_Download($item);
-                            //$link = btcpaywall_get_download_url($payment->invoice_id, $download->get_file_url(), $item, '');
                             $key = sanitize_text_field($key);
                             $link = $download_links[$key];
                             ?>
@@ -1329,7 +1328,7 @@ function btcpaywall_render_receipt()
 
 
                                 <div class="btcpaywall_purchase_receipt_product_name">
-                                    <a href="<?php echo esc_url($link); ?>" class="btcpaywall_download_file_link"><?php echo esc_html($download->get_name()); ?></a>
+                                    <a href="<?php echo esc_url($link); ?>" class="btcpaywall_download_file_link"><?php echo esc_html__($download->get_name(), 'btcpaywall'); ?></a>
                                 </div>
 
                             </td>

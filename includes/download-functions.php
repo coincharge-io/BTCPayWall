@@ -95,8 +95,6 @@ function btcpaywall_process_download()
         $payment = new BTCPayWall_Payment($args['payment_id']);
         $download = new BTCPayWall_Digital_Download($args['download_id']);
         if ($download->get_download_is_allowed($payment->invoice_id) == false) {
-            unset($_COOKIE['btcpw_' . $payment->invoice_id . $download->ID]);
-            setcookie('btcpw_' . $payment->invoice_id . $download->ID, null, -1, '/');
 
             wp_die(__('You have reached download limit for this payment.', 'btcpaywall'), '', array(
                 'response' => 403,
@@ -126,10 +124,10 @@ function btcpaywall_process_download()
 
         $file['extension'] = btcpaywall_get_file_extension($download_args['btcpw_file']);
 
-        $file['is_local'] = (int) btcpaywall_is_file_local($file_path); // 1 | 0
+        $file['is_local'] = (int) btcpaywall_is_file_local($file_path);
 
         $file['content_type'] = btcpaywall_get_file_content_type($file['extension']);
-        setcookie("btcpw_{$payment->invoice_id}{$download->ID}", isset($_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"]) ? ++$_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"] : 0, strtotime("14 Jan 2038"), '/');
+        setcookie("btcpw_{$payment->invoice_id}{$download->ID}", isset($_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"]) ? ++$_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"] : 1, strtotime("14 Jan 2038"), '/');
         $headers = btcpaywall_get_all_headers();
 
         if (in_array($file['extension'], array('php', 'js'))) {
@@ -143,7 +141,6 @@ function btcpaywall_process_download()
             btcpaywall_prepare_system_before_download_file();
             $file_read_is_success = btcpaywall_file_resume_download($file, $headers);
         } else {
-            //$file['url'] = str_replace(" ", "%", $file['url']);
 
             btcpaywall_prepare_system_before_download_file();
 

@@ -1370,3 +1370,67 @@ button.btcpaywall_add_to_cart {
   color: #ffff;
   cursor: pointer;
 }
+.btcpw_container > * {
+  flex: 1;
+}
+
+.btcpw_tabset {
+  margin-top: 60px;
+}
+
+.btcpw_tabset > input[type='radio'] {
+  position: absolute;
+  left: -200vw;
+}
+
+.btcpw_tabset .btcpw_tab-panel {
+  display: none;
+}
+
+.btcpw_tabset
+  > input:first-child:checked
+  ~ .btcpw_tab-panels
+  > .btcpw_tab-panel:first-child,
+.btcpw_tabset
+  > input:nth-child(3):checked
+  ~ .btcpw_tab-panels
+  > .btcpw_tab-panel:nth-child(2) {
+  display: block;
+}
+
+.btcpw_tabset > label {
+  position: relative;
+  display: inline-block;
+  padding: 15px 15px 25px;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btcpw_tabset > label:hover,
+.btcpw_tabset > input:focus + label {
+  color: #06c;
+}
+
+.btcpw_tabset > label:hover::after,
+.btcpw_tabset > input:focus + label::after,
+.btcpw_tabset > input:checked + label::after {
+  background: #06c;
+}
+
+.btcpw_tabset > input:checked + label {
+  border-color: #ccc;
+  margin-bottom: -1px;
+}
+
+.btcpw_tab-panel {
+  padding: 30px 0;
+  border-top: 1px solid #ccc;
+}
+
+.btcpw_product_description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

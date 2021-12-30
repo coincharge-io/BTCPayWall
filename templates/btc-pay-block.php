@@ -68,12 +68,12 @@ $collect_data = btcpaywall_display_is_enabled($collect);
     <form method="POST" action="" id="post_revenue_type">
         <fieldset>
             <div class="btcpw_pay__content paywall_header">
-                <h2><?php echo esc_html(btcpaywall_get_payblock_header_string()); ?></h2>
+                <h2><?php echo esc_html__(btcpaywall_get_payblock_header_string(), 'btcpaywall'); ?></h2>
 
             </div>
             <div class="btcpw_pay__content paywall_info">
                 <p>
-                    <?php echo esc_html(btcpaywall_get_post_info_string()); ?>
+                    <?php echo esc_html__(btcpaywall_get_post_info_string(), 'btcpaywall'); ?>
                 </p>
             </div>
             <div class="btcpw_revenue_post_button" id="btcpw_revenue_post_button">
@@ -93,12 +93,12 @@ $collect_data = btcpaywall_display_is_enabled($collect);
                 <div class="btcpw_help_links">
                     <?php if ($help === true) : ?>
                         <div class="btcpw_help">
-                            <a class="btcpw_help__link" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
+                            <a class="btcpw_help__link" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html__($help_text, 'btcpaywall'); ?></a>
                         </div>
                     <?php endif; ?>
                     <?php if ($additional_help === true) : ?>
                         <div class="btcpw_additional_help">
-                            <a class="btcpw_additional_help__link" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
+                            <a class="btcpw_additional_help__link" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html__($additional_help_text, 'btcpaywall'); ?></a>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -115,7 +115,7 @@ $collect_data = btcpaywall_display_is_enabled($collect);
                             $label = $collect[$key]['label']; ?>
                             <div class="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}_wrap"); ?>">
 
-                                <input type="text" placeholder="<?php echo esc_attr($label); ?>" id="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>" name="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                <input type="text" placeholder="<?php echo esc_attr__($label, 'btcpaywall'); ?>" id="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>" name="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                             </div>
                         <?php endif; ?>

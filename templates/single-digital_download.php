@@ -21,16 +21,7 @@ $description = get_post_meta($post->ID, 'btcpw_product_description', true);
         display: <?php echo isset($logo_id) ? 'flex' : '' ?>;
         flex-direction: <?php echo isset($logo_id) ? 'row-reverse' : 'column' ?>;
         justify-content: <?php echo isset($logo_id) ? 'space-evenly' : 'center' ?>;
-
-
-    }
-
-    .btcpw_container>* {
-        flex: 1;
-    }
-
-    .btcpw_product_description {
-        margin: 20px 0;
+        min-height: 700px;
     }
 
     .btcpw_product_image {
@@ -40,61 +31,7 @@ $description = get_post_meta($post->ID, 'btcpw_product_description', true);
         background-image: url(<?php echo esc_url($logo[0]); ?>);
     }
 
-    .btcpw_tabset {
-        margin-top: 60px;
-    }
 
-    .btcpw_tabset>input[type="radio"] {
-        position: absolute;
-        left: -200vw;
-    }
-
-    .btcpw_tabset .btcpw_tab-panel {
-        display: none;
-    }
-
-    .btcpw_tabset>input:first-child:checked~.btcpw_tab-panels>.btcpw_tab-panel:first-child,
-    .btcpw_tabset>input:nth-child(3):checked~.btcpw_tab-panels>.btcpw_tab-panel:nth-child(2) {
-        display: block;
-    }
-
-
-
-    .btcpw_tabset>label {
-        position: relative;
-        display: inline-block;
-        padding: 15px 15px 25px;
-        border: 1px solid transparent;
-        border-bottom: 0;
-        cursor: pointer;
-        font-weight: 600;
-    }
-
-
-    .btcpw_tabset>label:hover,
-    .btcpw_tabset>input:focus+label {
-        color: #06c;
-    }
-
-    .btcpw_tabset>label:hover::after,
-    .btcpw_tabset>input:focus+label::after,
-    .btcpw_tabset>input:checked+label::after {
-        background: #06c;
-    }
-
-    .btcpw_tabset>input:checked+label {
-        border-color: #ccc;
-        margin-bottom: -1px;
-    }
-
-    .btcpw_tab-panel {
-        padding: 30px 0;
-        border-top: 1px solid #ccc;
-    }
-
-    .btcpw_product_description {
-        padding: 0 30px;
-    }
 
     #content {
         display: block !important;
@@ -106,10 +43,10 @@ $description = get_post_meta($post->ID, 'btcpw_product_description', true);
     <section id="main">
         <div class="btcpw_container">
             <div class="btcpw_product_description">
-                <h2><?php the_title(); ?></h2>
+                <h1><?php the_title(); ?></h1>
                 <p><span class="btcpw_product_price"><em><?php echo esc_html($price); ?> incl. VAT</em></span></p>
                 <div class="btcpw_product_description">
-                    <?php echo esc_html($description); ?>
+                    <?php echo esc_html__($description, 'btcpaywall'); ?>
                 </div>
                 <form id="btcpaywall_download_form" action="" method="POST">
 

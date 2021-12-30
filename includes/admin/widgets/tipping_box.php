@@ -96,17 +96,17 @@ class Tipping_Box extends WP_Widget
                             <?php endif; ?>
                             <div>
                                 <?php if (!empty($instance['title'])) : ?>
-                                    <h6><?php echo esc_html($instance['title']); ?></h6>
+                                    <h6><?php echo esc_html__($instance['title'], 'btcpaywall'); ?></h6>
                                 <?php endif; ?>
                                 <?php if (!empty($instance['description'])) : ?>
-                                    <p><?php echo esc_html($instance['description']); ?></p>
+                                    <p><?php echo esc_html__($instance['description'], 'btcpaywall'); ?></p>
                                 <?php endif; ?>
                             </div>
                         </div>
                         <div class="btcpw_tipping_box_info_container">
 
                         </div>
-                        <h6><?php echo (!empty($instance['tipping_text']) ? esc_html($instance['tipping_text']) : ''); ?></h6>
+                        <h6><?php echo (!empty($instance['tipping_text']) ? esc_html__($instance['tipping_text'], 'btcpaywall') : ''); ?></h6>
                         <div class="btcpw_tipping_box_amount">
 
                             <div class="btcpw_tipping_free_input btcpw_widget">
@@ -132,7 +132,7 @@ class Tipping_Box extends WP_Widget
                         <input type="hidden" id="btcpw_redirect_link_btcpw_widget" name="btcpw_redirect_link" value=<?php echo esc_attr($instance['redirect']); ?> />
                         <div id="button">
 
-                            <button type="submit" id="btcpw_tipping__button_btcpw_widget"><?php echo (!empty($instance['button_text']) ? esc_html($instance['button_text']) : 'Tip'); ?></button>
+                            <button type="submit" id="btcpw_tipping__button_btcpw_widget"><?php echo (!empty($instance['button_text']) ? esc_html__($instance['button_text'], 'btcpaywall') : 'Tip'); ?></button>
                         </div>
                     </fieldset>
 

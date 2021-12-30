@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Digital Download
  *
@@ -113,17 +114,17 @@ class Tipping_Banner_Wide extends WP_Widget
                     <?php endif; ?>
                     <div>
                         <?php if (!empty($instance['title'])) : ?>
-                            <h6><?php echo esc_html($instance['title']); ?></h6>
+                            <h6><?php echo esc_html__($instance['title'], 'btcpaywall'); ?></h6>
                         <?php endif; ?>
                         <?php if (!empty($instance['description'])) : ?>
-                            <p><?php echo esc_html($instance['description']); ?></p>
+                            <p><?php echo esc_html__($instance['description'], 'btcpaywall'); ?></p>
                         <?php endif; ?>
                     </div>
                 </div>
                 <div class="btcpw_widget btcpw_skyscraper_tipping_container wide">
                     <form method="POST" action="" id="btcpw_widget_skyscraper_tipping_form_wide">
                         <fieldset>
-                            <h6><?php echo (!empty($instance['tipping_text']) ? esc_html($instance['tipping_text']) : ''); ?>
+                            <h6><?php echo (!empty($instance['tipping_text']) ? esc_html__($instance['tipping_text'], 'btcpaywall') : ''); ?>
                             </h6>
                             <div class="btcpw_widget btcpw_skyscraper_amount wide">
                                 <?php foreach ($fixed_amount as $key => $value) : ?>
@@ -172,7 +173,7 @@ class Tipping_Banner_Wide extends WP_Widget
                                     </div>
                                 <?php else : ?>
                                     <div>
-                                        <button type="submit" id="btcpw_widget_btcpw_skyscraper_tipping__button_wide"><?php echo (!empty($instance['button_text']) ? esc_html($instance['button_text']) : 'Tip'); ?></button>
+                                        <button type="submit" id="btcpw_widget_btcpw_skyscraper_tipping__button_wide"><?php echo (!empty($instance['button_text']) ? esc_html__($instance['button_text'], 'btcpaywall') : 'Tip'); ?></button>
                                     </div>
                                 <?php endif; ?>
                             </div>
@@ -187,7 +188,7 @@ class Tipping_Banner_Wide extends WP_Widget
                                             $id = $collect[$key]['id']; ?>
                                             <div class="<?php echo esc_attr("btcpw_widget btcpw_skyscraper_tipping_donor_{$label}_wrap wide"); ?>">
 
-                                                <input type="text" placeholder="<?php echo esc_attr($label); ?>" id="<?php echo esc_attr("btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" name="<?php echo esc_attr("btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                                <input type="text" placeholder="<?php echo esc_attr__($label, 'btcpaywall'); ?>" id="<?php echo esc_attr("btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" name="<?php echo esc_attr("btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                             </div>
                                         <?php endif; ?>
@@ -198,7 +199,7 @@ class Tipping_Banner_Wide extends WP_Widget
                                         <input type="button" name="previous" class="btcpw_widget_ skyscraper-previous-form wide" value="<?php echo esc_html__('< Previous', 'btcpaywall'); ?>" />
                                     </div>
                                     <div>
-                                        <button type="submit" id="btcpw_widget_btcpw_skyscraper_tipping__button_wide"><?php echo (!empty($instance['button_text']) ? esc_html($instance['button_text']) : 'Tip'); ?></button>
+                                        <button type="submit" id="btcpw_widget_btcpw_skyscraper_tipping__button_wide"><?php echo (!empty($instance['button_text']) ? esc_html__($instance['button_text'], 'btcpaywall') : 'Tip'); ?></button>
                                     </div>
                                 </div>
                             </fieldset>
