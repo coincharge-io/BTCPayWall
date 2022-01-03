@@ -721,7 +721,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z"></path>
             <p>Link to Thank You Page</p>
             <URLInputButton
               label='Redirect link'
-              value={redirect}
+              url={redirect}
               onChange={value => setAttributes({ redirect: value })}
             />
 

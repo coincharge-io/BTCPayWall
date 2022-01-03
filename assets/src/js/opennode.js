@@ -501,9 +501,9 @@
             },
             success: function (response) {
               if (response.success) {
-                notifyAdmin(
+                /* notifyAdmin(
                   response.data.notify + 'Url:' + window.location.href
-                )
+                ) */
                 location.replace(payment.success_url)
               }
             },
@@ -533,7 +533,7 @@
       }
     })
   }
-  function notifyAdmin (donor_info) {
+  /* function notifyAdmin (donor_info) {
     $.ajax({
       url: '/wp-admin/admin-ajax.php',
       method: 'POST',
@@ -542,7 +542,7 @@
         donor_info: donor_info
       }
     })
-  }
+  } */
   function btcpwShowOpenNodeInvoice (
     invoice_id,
     form_container,
@@ -560,9 +560,9 @@
             },
             success: function (response) {
               if (response.success) {
-                notifyAdmin(
+                /* notifyAdmin(
                   response.data.notify + 'Url:' + window.location.href
-                )
+                ) */
 
                 if (
                   /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(

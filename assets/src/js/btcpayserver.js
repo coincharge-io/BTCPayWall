@@ -515,7 +515,7 @@
           },
           success: function (response) {
             if (response.success) {
-              notifyAdmin(response.data.notify + 'Url:' + window.location.href)
+              /* notifyAdmin(response.data.notify + 'Url:' + window.location.href) */
               location.replace(payment.success_url)
             }
           },
@@ -540,7 +540,7 @@
           },
           success: function (response) {
             if (response.success) {
-              notifyAdmin(donor)
+              /* notifyAdmin(donor) */
               !redirect ? location.reload(true) : location.replace(redirect)
             }
           },
@@ -566,7 +566,7 @@
           },
           success: function (response) {
             if (response.success) {
-              notifyAdmin(donor)
+              /* notifyAdmin(donor) */
               !redirect ? location.reload(true) : location.replace(redirect)
             }
           },
@@ -578,7 +578,7 @@
     })
     btcpay.showInvoice(invoice_id)
   }
-  function notifyAdmin (donor_info) {
+  /* function notifyAdmin (donor_info) {
     $.ajax({
       url: '/wp-admin/admin-ajax.php',
       method: 'POST',
@@ -587,5 +587,5 @@
         donor_info: donor_info
       }
     })
-  }
+  } */
 })(jQuery)

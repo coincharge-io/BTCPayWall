@@ -886,9 +886,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z'
             <TextareaControl
               label='Tipping text'
               help='Enter tipping text'
-              onChange={content => {
-                setAttributes({ tipping_text: content })
-              }}
+              onChange={content => setAttributes({ tipping_text: content })}
               value={tipping_text}
             />
             <p>Tipping text color</p>
@@ -902,7 +900,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z'
             <p>Link to Thank You Page</p>
             <URLInputButton
               label='Link to Thank You Page'
-              value={redirect}
+              url={redirect}
               onChange={value => setAttributes({ redirect: value })}
             />
             <CheckboxControl

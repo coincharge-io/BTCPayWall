@@ -44,7 +44,7 @@ $description = get_post_meta($post->ID, 'btcpw_product_description', true);
         <div class="btcpw_container">
             <div class="btcpw_product_description">
                 <h1><?php the_title(); ?></h1>
-                <p><span class="btcpw_product_price"><em><?php echo esc_html($price); ?> incl. VAT</em></span></p>
+                <p class="btcpw_product_price"><span class="btcpw_product_price"><em><?php echo esc_html($price); ?> incl. VAT</em></span></p>
                 <div class="btcpw_product_description">
                     <?php echo esc_html__($description, 'btcpaywall'); ?>
                 </div>

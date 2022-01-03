@@ -1429,8 +1429,7 @@ button.btcpaywall_add_to_cart {
   border-top: 1px solid #ccc;
 }
 
-.btcpw_product_description {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.btcpw_product_description,
+.btcpw_product_price {
+  margin-bottom: 20px;
 }
