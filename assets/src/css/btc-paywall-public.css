@@ -605,13 +605,24 @@ a.btcpw_pay__download {
   display: flex;
   flex-wrap: wrap;
 }
-
-.btcpw_skyscraper_donor_information.wide {
+/* .btcpw_skyscraper_donor_information.wide div {
+  width: 80%;
+} */
+/* .btcpw_skyscraper_donor_information.wide {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   gap: 1px;
   align-items: center;
+} */
+.btcpw_skyscraper_donor_information.wide {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  margin-top: 10px;
+}
+.btcpw_skyscraper_tipping_donor_message_wrap.wide {
+  grid-column: 1 / span 2;
 }
 
 .btcpw_skyscraper_donor_information.high {
@@ -639,6 +650,7 @@ a.btcpw_pay__download {
 .btcpw_skyscraper_donor_information textarea {
   padding: 0 !important;
   margin: 0 !important;
+  height: 30px;
 }
 
 .btcpw_skyscraper_amount > .btcpw_skyscraper_tipping_free_input {
@@ -1016,7 +1028,7 @@ a.btcpw_pay__download {
 .btcpw_page_donor_information > div {
   display: flex;
   margin: 0 5px;
-  width: 100%;
+  width: 90%;
 }
 
 .btcpw_page_donor_information input[type='text'],
@@ -1039,6 +1051,7 @@ a.btcpw_pay__download {
   padding: 12.5px 8px;
   flex: 1;
   margin: 1px;
+  line-height: 16px;
 }
 
 .btcpw_page_header_container {
@@ -1053,9 +1066,9 @@ a.btcpw_pay__download {
   margin: 0 5px;
 }
 
-#page_tipping_form > fieldset > h6 {
+#page_tipping_form h6 {
   text-align: center;
-  margin: 1em 0 1em 5px;
+  margin: 8px;
 }
 .btcpw_page_tipping_converted_values {
   flex-direction: row;
