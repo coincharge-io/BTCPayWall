@@ -689,7 +689,7 @@ class BTCPayWall_Digital_Download
             if (get_post_meta($this->ID, 'btcpw_product_limit', true)) {
                 $this->download_limit = get_post_meta($this->ID, 'btcpw_product_limit', true);
             } else {
-                $this->download_limit = 0;
+                $this->download_limit = get_option('btcpw_default_pay_per_file_download_limit');
             }
         }
 

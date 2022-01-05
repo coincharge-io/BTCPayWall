@@ -6,7 +6,19 @@ $supported_currencies = BTCPayWall::CURRENCIES;
 $button_color = get_option('btcpw_pay_per_file_button_color');
 $button_text_color = get_option('btcpw_pay_per_file_button_text_color');
 $default_button = get_option('btcpw_pay_per_file_button');
+$download_limit = get_option('btcpw_default_pay_per_file_download_limit');
+$collect_name = get_option('btcpw_default_pay_per_file_display_name', false);
+$collect_email = get_option('btcpw_default_pay_per_file_display_email', false);
+$collect_address = get_option('btcpw_default_pay_per_file_display_address', false);
+$collect_phone = get_option('btcpw_default_pay_per_file_display_phone', false);
+$collect_message = get_option('btcpw_default_pay_per_file_display_message', false);
 
+
+$mandatory_name = get_option('btcpw_default_pay_per_file_mandatory_name', false);
+$mandatory_email = get_option('btcpw_default_pay_per_file_mandatory_email', false);
+$mandatory_address = get_option('btcpw_default_pay_per_file_mandatory_address', false);
+$mandatory_phone = get_option('btcpw_default_pay_per_file_mandatory_phone', false);
+$mandatory_message = get_option('btcpw_default_pay_per_file_mandatory_message', false);
 ?>
 <style>
     #btcpw_pay__button_preview {
@@ -36,6 +48,16 @@ $default_button = get_option('btcpw_pay_per_file_button');
 
                 </div>
             </div>
+            <h3>Download limit</h3>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_default_pay_per_file_download_limit">Download limit</label>
+                </div>
+                <div class="col-80">
+
+                    <input required type="number" min=0 placeholder="Download limit" step=1 name="btcpw_default_pay_per_file_download_limit" id="btcpw_default_pay_per_file_download_limit" value="<?php echo esc_attr($download_limit); ?>"> <span class="btcpw_download_limit_helper" title="Set 0 for unlimited number of downloads."></span>
+                </div>
+            </div>
             <h3>Button</h3>
             <div class="row">
                 <div class="col-20">
@@ -59,6 +81,75 @@ $default_button = get_option('btcpw_pay_per_file_button');
                 </div>
                 <div class="col-80">
                     <input id="btcpw_pay_per_file_button_text_color" class="btcpw_pay_per_file_button_text_color" name="btcpw_pay_per_file_button_text_color" type="text" value="<?php echo esc_attr($button_text_color); ?>" />
+                </div>
+            </div>
+            <h3>User information</h3>
+            <div class="row">
+                <div class="col-50">
+                    <p>Full name</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_pay_per_file_display_name">Display</label>
+
+                    <input type="checkbox" class="btcpw_default__name" name="btcpw_default_pay_per_file_display_name" <?php checked($collect_name); ?> value="true" />
+
+                    <label for="btcpw_default_pay_per_file_mandatory_name">Mandatory</label>
+                    <input type="checkbox" class="btcpw_default__name_mandatory" name="btcpw_default_pay_per_file_mandatory_name" <?php checked($mandatory_name); ?> value="true" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p>Email</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_pay_per_file_display_email">Display</label>
+
+                    <input type="checkbox" class="btcpw_default__email" name="btcpw_default_pay_per_file_display_email" <?php checked($collect_email); ?> value="true" />
+
+                    <label for="btcpw_default_pay_per_file_mandatory_email">Mandatory</label>
+                    <input type="checkbox" class="btcpw_default__email_mandatory" name="btcpw_default_pay_per_file_mandatory_email" <?php checked($mandatory_email); ?> value="true" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p>Address</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_pay_per_file_display_address">Display</label>
+
+                    <input type="checkbox" class="btcpw_default__address" name="btcpw_default_pay_per_file_display_address" <?php checked($collect_address); ?> value="true" />
+
+                    <label for="btcpw_default_pay_per_file_mandatory_address">Mandatory</label>
+                    <input type="checkbox" class="btcpw_default__address_mandatory" name="btcpw_default_pay_per_file_mandatory_address" <?php checked($mandatory_address); ?> value="true" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p>Phone number</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_pay_per_file_display_phone">Display</label>
+
+                    <input type="checkbox" class="btcpw_default__phone" name="btcpw_default_pay_per_file_display_phone" <?php checked($collect_phone); ?> value="true" />
+
+                    <label for="btcpw_default_pay_per_file_mandatory_phone">Mandatory</label>
+                    <input type="checkbox" class="btcpw_default__phone_mandatory" name="btcpw_default_pay_per_file_mandatory_phone" <?php checked($mandatory_phone); ?> value="true" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p>Message</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_pay_per_file_display_message">Display</label>
+                    <input type="checkbox" class="btcpw_default__message" name="btcpw_default_pay_per_file_display_message" <?php checked($collect_message); ?> value="true" />
+
+                    <label for="btcpw_default_pay_per_file_mandatory_message">Mandatory</label>
+                    <input type="checkbox" class="btcpw_default__message_mandatory" name="btcpw_default_pay_per_file_mandatory_message" <?php checked($mandatory_message); ?> value="true" />
+
                 </div>
             </div>
 

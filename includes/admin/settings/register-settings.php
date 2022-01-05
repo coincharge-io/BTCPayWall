@@ -105,6 +105,18 @@ function btcpaywall_register_settings()
     register_setting('btcpw_general_pay_per_file_options', 'btcpw_pay_per_file_button', array('type' => 'string', 'default' => 'Pay', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
     register_setting('btcpw_general_pay_per_file_options', 'btcpw_pay_per_file_button_color', array('type' => 'string', 'default' => '#f6b330', 'sanitize_callback' => 'btcpaywall_sanitize_color'));
     register_setting('btcpw_general_pay_per_file_options', 'btcpw_pay_per_file_button_text_color', array('type' => 'string', 'default' => '#FFFFFF', 'sanitize_callback' => 'btcpaywall_sanitize_color'));
+    register_setting('btcpw_general_pay_per_file_options', 'btcpw_default_pay_per_file_download_limit', array('type' => 'number', 'sanitize_callback' => 'btcpaywall_sanitize_number'));
+
+    register_setting('btcpw_general_pay_per_file_options', 'btcpw_default_pay_per_file_display_name', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'btcpaywall_sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_file_options', 'btcpw_default_pay_per_file_display_email', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'btcpaywall_sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_file_options', 'btcpw_default_pay_per_file_display_address', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'btcpaywall_sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_file_options', 'btcpw_default_pay_per_file_display_phone', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'btcpaywall_sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_file_options', 'btcpw_default_pay_per_file_display_message', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'btcpaywall_sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_file_options', 'btcpw_default_pay_per_file_mandatory_name', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'btcpaywall_sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_file_options', 'btcpw_default_pay_per_file_mandatory_email', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'btcpaywall_sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_file_options', 'btcpw_default_pay_per_file_mandatory_address', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'btcpaywall_sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_file_options', 'btcpw_default_pay_per_file_mandatory_phone', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'btcpaywall_sanitize_boolean'));
+    register_setting('btcpw_general_pay_per_file_options', 'btcpw_default_pay_per_file_mandatory_message', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'btcpaywall_sanitize_boolean'));
 
     register_setting('btcpw_misc_options', 'btcpw_remove_data_on_uninstall', array('type' => 'boolean', 'default' => false, 'sanitize_callback' => 'btcpaywall_sanitize_boolean'));
 }

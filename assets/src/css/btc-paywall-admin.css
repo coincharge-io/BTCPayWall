@@ -545,3 +545,7 @@ Settings Tabs
   text-align: center;
   margin-right: 10px;
 }
+
+.btcpw_download_limit_helper:after {
+  content: '\003F';
+}

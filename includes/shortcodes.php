@@ -1178,6 +1178,22 @@ function btcpaywall_render_checkout()
 {
     $products = BTCPayWall()->cart->get_contents();
     $total = btcpaywall_get_total() . ' ' . get_option('btcpw_default_pay_per_file_currency');
+
+    $collect_atts = array(
+        'display_name' =>  get_option('btcpw_default_pay_per_file_display_name', false),
+        'display_email' =>  get_option('btcpw_default_pay_per_file_display_email', false),
+        'display_phone' =>  get_option('btcpw_default_pay_per_file_display_phone', false),
+        'display_address' =>  get_option('btcpw_default_pay_per_file_display_address', false),
+        'display_message' =>  get_option('btcpw_default_pay_per_file_display_message', false),
+        'mandatory_name' =>  get_option('btcpw_default_pay_per_file_mandatory_name', false),
+        'mandatory_email' =>  get_option('btcpw_default_pay_per_file_mandatory_email', false),
+        'mandatory_address' =>  get_option('btcpw_default_pay_per_file_mandatory_address', false),
+        'mandatory_phone' =>  get_option('btcpw_default_pay_per_file_mandatory_phone', false),
+        'mandatory_message' =>  get_option('btcpw_default_pay_per_file_mandatory_message', false)
+    );
+    $collect = btcpaywall_get_collect($collect_atts);
+
+    $collect_data = btcpaywall_display_is_enabled($collect);
 ?>
     <table id="btcpaywall_checkout_cart">
         <thead>
@@ -1222,43 +1238,31 @@ function btcpaywall_render_checkout()
     <div id="btcpw_digital_download_customer_info">
         <h2>Personal Info</h2>
         <form method="POST" action="" id="btcpw_digital_download_form">
-            <fieldset>
-                <div class="btcpw_digital_download_customer_information">
+            <?php if ($collect_data == true) : ?>
+                <fieldset>
+                    <div class="btcpw_digital_download_customer_information">
+                        <?php foreach ($collect as $key => $value) : ?>
+                            <?php if ($collect[$key]['display'] === true) : ?>
+                                <?php $id = $collect[$key]['id'];
+                                $label = $collect[$key]['label'];
+                                $type = $collect[$key]['type'];
+                                ?>
+                                <div class="<?php echo esc_attr("btcpw_digital_download_customer_{$id}_wrap"); ?>">
+                                    <label for="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
+                                    <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>" name="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
-                    <div class="btcpw_digital_download_customer_name_wrap ">
-                        <label for="btcpw_digital_download_customer_name">Full name</label>
-                        <input type="text" id="btcpw_digital_download_customer_name" name="btcpw_digital_download_customer_name" />
+                                </div>
 
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                     </div>
-                    <div class="btcpw_digital_download_customer_email_wrap ">
-                        <label for="btcpw_digital_download_customer_email">Email<span style="color:red">*</span></label>
-                        <input type="email" id="btcpw_digital_download_customer_email" name="btcpw_digital_download_customer_email" required />
-
+                    <div class="btcpw_digital_download_button" id="btcpw_digital_download_button">
+                        <div>
+                            <button type="submit" data-post_id="<?php echo esc_attr(get_the_ID()); ?>" class="btcpw_digital_download"><?php echo esc_html__('Pay', 'btcpaywall'); ?></button>
+                        </div>
                     </div>
-                    <div class="btcpw_digital_download_customer_phone_wrap ">
-                        <label for="btcpw_digital_download_customer_phone">Phone</label>
-                        <input type="number" id="btcpw_digital_download_customer_phone" name="btcpw_digital_download_customer_phone" />
-
-                    </div>
-
-                    <div class="btcpw_digital_download_customer_address_wrap ">
-                        <label for="btcpw_digital_download_customer_address">Address</label>
-                        <input type="text" id="btcpw_digital_download_customer_address" name="btcpw_digital_download_customer_address" />
-
-                    </div>
-
-                    <div class="btcpw_digital_download_customer_message_wrap ">
-                        <label for="btcpw_digital_download_customer_message">Message</label>
-                        <textarea id="btcpw_digital_download_customer_message" name="btcpw_digital_download_customer_message"></textarea>
-
-                    </div>
-                </div>
-                <div class="btcpw_digital_download_button" id="btcpw_digital_download_button">
-                    <div>
-                        <button type="submit" data-post_id="<?php echo esc_attr(get_the_ID()); ?>" class="btcpw_digital_download"><?php echo esc_html__('Pay', 'btcpaywall'); ?></button>
-                    </div>
-                </div>
-            </fieldset>
+                </fieldset>
+            <?php endif; ?>
         </form>
     </div>
 <?php

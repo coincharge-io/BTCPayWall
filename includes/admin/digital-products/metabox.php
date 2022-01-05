@@ -50,7 +50,17 @@ function btcpw_meta_fields()
             'btcpw_product_sales',
             'btcpw_product_limit',
             'btcpw_product_image_id',
-            'btcpw_product_description'
+            'btcpw_product_description',
+            'btcpw_collect_customer_name',
+            'btcpw_mandatory_customer_name',
+            'btcpw_collect_customer_email',
+            'btcpw_mandatory_customer_email',
+            'btcpw_collect_customer_address',
+            'btcpw_mandatory_customer_address',
+            'btcpw_collect_customer_phone',
+            'btcpw_mandatory_customer_phone',
+            'btcpw_collect_customer_message',
+            'btcpw_mandatory_customer_message'
         ];
     return $fields;
 }
@@ -165,8 +175,6 @@ function render_btcpw_product_stats($post)
 <?php
 }
 
-
-
 function btcpaywall_meta_save($post_id)
 {
 
@@ -182,6 +190,7 @@ function btcpaywall_meta_save($post_id)
     }
 
     $fields = btcpw_meta_fields();
+
 
     foreach ($fields as $field) {
         if (('btcpw_product_limit' === $field) || ('btcpw_price' === $field)  || ('btcpw_product_sales' === $field)) {
