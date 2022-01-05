@@ -15,6 +15,9 @@ $logo_id = get_post_meta($post->ID, 'btcpw_product_image_id', true);
 $logo = wp_get_attachment_image_src($logo_id);
 $price = get_post_meta($post->ID, 'btcpw_price', true) . ' ' . get_option('btcpw_default_pay_per_file_currency', 'SATS');
 $description = get_post_meta($post->ID, 'btcpw_product_description', true);
+$button_color = get_option('btcpw_pay_per_file_button_color');
+$button_text_color = get_option('btcpw_pay_per_file_button_text_color');
+$default_button = get_option('btcpw_pay_per_file_button');
 ?>
 <style>
     .btcpw_container {
@@ -31,7 +34,10 @@ $description = get_post_meta($post->ID, 'btcpw_product_description', true);
         background-image: url(<?php echo esc_url($logo[0]); ?>);
     }
 
-
+    .btcpaywall_add_to_cart {
+        background-color: <?php echo esc_html($button_color) . ' !important'; ?>;
+        color: <?php echo esc_html($button_text_color) . ' !important'; ?>;
+    }
 
     #content {
         display: block !important;
@@ -52,7 +58,7 @@ $description = get_post_meta($post->ID, 'btcpw_product_description', true);
 
 
                     <input type="hidden" id="btcpw_download_id" data-post_title="<?php echo esc_attr($post->post_title); ?>" data-post_id="<?php echo esc_attr($download->ID); ?>">
-                    <button type="submit" class="btcpaywall_add_to_cart"><?php echo esc_html__('Buy now', 'btcpaywall'); ?></button>
+                    <button type="submit" class="btcpaywall_add_to_cart"><?php echo esc_html__($default_button, 'btcpaywall'); ?></button>
                 </form>
             </div>
             <?php if (!empty($logo_id)) : ?>

@@ -303,6 +303,9 @@
 
       palettes: true
     })
+    $('#btcpw_pay_per_file_button').on('input', function () {
+      $('.btcpw_pay_preview.content_store button').text($(this).val())
+    })
     /*  $('#btcpw_pay_per_file_width').on('input, change', function () {
       $('.btcpw_pay_preview.pay_per_file').css('width', $(this).val() + 'px')
     })
@@ -315,12 +318,6 @@
     $('#btcpw_pay_per_file_info').on('change input', function () {
       $('.btcpw_pay__content_preview.pay_per_file p').text($(this).val())
     }) */
-    $('#btcpw_pay_per_file_button_text').on('input', function () {
-      $('#btcpw_pay__button_preview_pay_per_file').text($(this).val())
-    })
-    $('#btcpw_pay_per_file_button_success').on('input', function () {
-      $('#btcpw_pay__button_preview_pay_per_file_success').text($(this).val())
-    })
     /* $('#btcpw_pay_per_file_show_help_link').change(function () {
       $('.btcpw_help_preview.pay_per_file').toggle()
     })
@@ -363,7 +360,7 @@
       defaultColor: true,
 
       change: function (event, ui) {
-        $('#btcpw_pay__button_preview_pay_per_file').css(
+        $('.btcpw_pay_preview.content_store button').css(
           'backgroundColor',
           $(this).val()
         )
@@ -429,7 +426,7 @@
       defaultColor: true,
 
       change: function (event, ui) {
-        $('#btcpw_pay__button_preview_pay_per_file').css('color', $(this).val())
+        $('.btcpw_pay_preview.content_store button').css('color', $(this).val())
       },
 
       clear: function () {},

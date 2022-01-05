@@ -3,9 +3,18 @@
 if (!defined('ABSPATH')) exit;
 $used_currency = get_option('btcpw_default_pay_per_file_currency');
 $supported_currencies = BTCPayWall::CURRENCIES;
+$button_color = get_option('btcpw_pay_per_file_button_color');
+$button_text_color = get_option('btcpw_pay_per_file_button_text_color');
+$default_button = get_option('btcpw_pay_per_file_button');
 
 ?>
-<div id="btcpw_general_payment_gateway_options">
+<style>
+    #btcpw_pay__button_preview {
+        background-color: <?php echo esc_html($button_color); ?>;
+        color: <?php echo esc_html($button_text_color); ?>;
+    }
+</style>
+<div id="btcpw_general_content_store_options">
     <div>
         <form method="POST" action="options.php">
             <?php settings_fields('btcpw_general_pay_per_file_options'); ?>
@@ -26,11 +35,44 @@ $supported_currencies = BTCPayWall::CURRENCIES;
 
                 </div>
             </div>
-    </div>
+            <h3>Button</h3>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_file_button">Button text</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_file_button" name="btcpw_pay_per_file_button" value="<?php echo esc_attr($default_button); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_file_button_color">Button color</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_file_button_color" class="btcpw_pay_per_file_button_color" name="btcpw_pay_per_file_button_color" type="text" value="<?php echo esc_attr($button_color); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_file_button_text_color">Button text color</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_file_button_text_color" class="btcpw_pay_per_file_button_text_color" name="btcpw_pay_per_file_button_text_color" type="text" value="<?php echo esc_attr($button_text_color); ?>" />
+                </div>
+            </div>
 
-    <div class="btcpw__paywall_submit_button" style="display: inline-block;">
-        <button class="button button-primary btcpw_button" type="submit">Save</button>
+            <div class="btcpw__paywall_submit_button" style="display: inline-block;">
+                <button class="button button-primary btcpw_button" type="submit">Save</button>
+            </div>
+        </form>
+
     </div>
-    </form>
-</div>
+    <div id="btcpw_content_store_button_preview">
+        <div class="btcpw_pay_preview content_store">
+
+            <div>
+                <button disabled type="button" id="btcpw_pay__button_preview"><?php echo esc_html($default_button); ?></button>
+            </div>
+        </div>
+    </div>
 </div>

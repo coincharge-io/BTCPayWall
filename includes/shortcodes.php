@@ -217,6 +217,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                     </fieldset>
                     <?php if ($collect_data === true) : ?>
                         <fieldset>
+
                             <div class="btcpw_skyscraper_donor_information wide">
                                 <?php foreach ($collect as $key => $value) : ?>
                                     <?php if ($collect[$key]['display'] === true) : ?>
@@ -231,6 +232,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             </div>
+
                             <div class="<?php echo "btcpw_skyscraper_button wide"; ?>" id="btcpw_skyscraper_wide_button">
                                 <div>
                                     <input type="button" name="previous" class="skyscraper-previous-form wide" value="<?php echo esc_html__('< Previous', 'btcpaywall'); ?>" />

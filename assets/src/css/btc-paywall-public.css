@@ -1378,9 +1378,7 @@ button.btcpaywall_add_to_cart {
   font-weight: normal;
   text-align: center;
   padding: 10px;
-  border-radius: 1 px;
-  background-color: #008cba;
-  color: #ffff;
+  border-radius: 1px;
   cursor: pointer;
 }
 .btcpw_container > * {
