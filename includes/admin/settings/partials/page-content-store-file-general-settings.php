@@ -18,6 +18,7 @@ $default_button = get_option('btcpw_pay_per_file_button');
     <div>
         <form method="POST" action="options.php">
             <?php settings_fields('btcpw_general_pay_per_file_options'); ?>
+            <h3>Currency</h3>
             <div class="row">
                 <div class="col-20">
                     <p for="btcpw_general_settings_price">Select Currency</p>

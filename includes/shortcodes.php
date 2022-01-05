@@ -217,7 +217,6 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                     </fieldset>
                     <?php if ($collect_data === true) : ?>
                         <fieldset>
-
                             <div class="btcpw_skyscraper_donor_information wide">
                                 <?php foreach ($collect as $key => $value) : ?>
                                     <?php if ($collect[$key]['display'] === true) : ?>
@@ -1315,6 +1314,7 @@ function btcpaywall_render_receipt()
         <table id="btcpaywall_purchase_receipt_products" class="btcpaywall-table">
             <thead>
                 <th><?php _e('Name', 'btcpaywall'); ?></th>
+                <th><?php _e('Download link', 'btcpaywall'); ?></th>
                 <th><?php _e('Price', 'btcpaywall'); ?></th>
             </thead>
 
@@ -1329,10 +1329,14 @@ function btcpaywall_render_receipt()
                             $link = $download_links[$key];
                             ?>
                             <td>
-
-
                                 <div class="btcpaywall_purchase_receipt_product_name">
-                                    <a href="<?php echo esc_url($link); ?>" class="btcpaywall_download_file_link"><?php echo esc_html__($download->get_name(), 'btcpaywall'); ?></a>
+                                    <p class="btcpaywall_download_file_name"><?php echo esc_html__($download->get_name(), 'btcpaywall'); ?></p>
+                                </div>
+
+                            </td>
+                            <td>
+                                <div class="btcpaywall_purchase_receipt_product_name">
+                                    <a href="<?php echo esc_url($link); ?>" class="btcpaywall_download_file_link"><?php echo esc_html__('Link', 'btcpaywall'); ?></a>
                                 </div>
 
                             </td>
