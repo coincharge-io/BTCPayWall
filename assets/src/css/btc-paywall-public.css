@@ -537,8 +537,8 @@ a.btcpw_pay__download {
   border-radius: 2em;
   -moz-border-radius: 2em;
   -webkit-border-radius: 2em;
-  font-size: 1em;
-  padding: 8px !important;
+  font-size: 12px;
+  padding: 6px !important;
   text-transform: uppercase;
   width: 100%;
 }
@@ -1044,7 +1044,12 @@ a.btcpw_pay__download {
   margin: 0 5px;
   width: 90%;
 }
-
+.btcpw_page_donor_information label {
+  font-size: 15px;
+}
+.btcpw_page_donor_information fieldset {
+  padding: 0 15px;
+}
 .btcpw_page_donor_information input[type='text'],
 .btcpw_page_donor_information input[type='email'],
 .btcpw_page_donor_information input[type='url'],
@@ -1052,9 +1057,7 @@ a.btcpw_pay__download {
 .btcpw_page_donor_information input[type='tel'],
 .btcpw_page_donor_information textarea {
   font-size: 14px;
-  padding: 6px;
-  flex: 1;
-  margin: 1px;
+  margin: 0;
   line-height: 16px;
   min-height: 30px;
   height: 30px;
