@@ -549,3 +549,12 @@ Settings Tabs
 .btcpw_download_limit_helper:after {
   content: '\003F';
 }
+
+.btcpw_pay_preview {
+  overflow: hidden;
+  border: 0.5px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -khtml-border-radius: 15px;
+}

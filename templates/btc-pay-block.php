@@ -107,15 +107,16 @@ $collect_data = btcpaywall_display_is_enabled($collect);
         </fieldset>
         <?php if ($collect_data === true) : ?>
             <fieldset>
-                <h2>Personal Info</h2>
+                <h2><?php echo esc_html__('Personal Information', 'btcpaywall'); ?></h2>
                 <div class="btcpw_revenue_post_customer_information">
                     <?php foreach ($collect as $key => $value) : ?>
                         <?php if ($collect[$key]['display'] === true) : ?>
                             <?php $id = $collect[$key]['id'];
-                            $label = $collect[$key]['label']; ?>
+                            $label = $collect[$key]['label'];
+                            $type = $collect[$key]['type']; ?>
                             <div class="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}_wrap"); ?>">
-
-                                <input type="text" placeholder="<?php echo esc_attr__($label, 'btcpaywall'); ?>" id="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>" name="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                <label for="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
+                                <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>" name="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                             </div>
                         <?php endif; ?>

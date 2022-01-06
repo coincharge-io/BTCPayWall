@@ -222,10 +222,11 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                                     <?php if ($collect[$key]['display'] === true) : ?>
                                         <?php $id = $collect[$key]['id'];
                                         $label = $collect[$key]['label'];
+                                        $type = $collect[$key]['type'];
                                         ?>
                                         <div class="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wrap wide"); ?>">
-
-                                            <input type="text" placeholder="<?php echo esc_attr__($label, 'btcpaywall'); ?>" id="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" name="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                            <label for="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
+                                            <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" name="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                         </div>
                                     <?php endif; ?>
@@ -458,10 +459,11 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                                     <?php if ($collect[$key]['display'] === true) : ?>
                                         <?php $id = $collect[$key]['id'];
                                         $label = $collect[$key]['label'];
+                                        $type = $collect[$key]['type'];
                                         ?>
                                         <div class="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wrap high"); ?>">
-
-                                            <input type="text" placeholder="<?php echo esc_attr__($label, 'btcpaywall'); ?>" id="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_high"); ?>" name="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_high"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                            <label for="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_high"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
+                                            <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_high"); ?>" name="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_high"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                         </div>
                                     <?php endif; ?>
@@ -733,9 +735,11 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                                 <?php if ($collect[$key]['display'] === true) : ?>
                                     <?php $id = $collect[$key]['id'];
                                     $label = $collect[$key]['label'];
+                                    $type = $collect[$key]['type'];
                                     ?>
                                     <div class="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}_wrap"); ?>">
-                                        <input type="text" placeholder="<?php echo esc_attr__($label, 'btcpaywall'); ?>" id="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}"); ?>" name="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                        <label for="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
+                                        <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}"); ?>" name="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
                                     </div>
                                 <?php endif; ?>
                             <?php endforeach; ?>

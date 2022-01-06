@@ -619,40 +619,52 @@ a.btcpw_pay__download {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5px;
-  margin-top: 10px;
+  margin-top: 2px;
+}
+.btcpw_skyscraper_donor_information.wide > div {
+  display: flex;
+  flex-direction: column;
 }
 .btcpw_skyscraper_tipping_donor_message_wrap.wide {
   grid-column: 1 / span 2;
 }
-
+.btcpw_skyscraper_donor_information.wide label {
+  font-size: 14px;
+  margin-bottom: 0;
+}
 .btcpw_skyscraper_donor_information.high {
   display: flex;
   margin: 1em 0;
   flex-direction: column;
   align-items: center;
-  gap: 2em;
+  gap: 10px;
+}
+.btcpw_skyscraper_donor_information.high > div {
+  width: 80%;
 }
 .btcpw_skyscraper_donor_information input[type='text'],
 .btcpw_skyscraper_donor_information input[type='email'],
 .btcpw_skyscraper_donor_information input[type='url'],
 .btcpw_skyscraper_donor_information input[type='password'],
-.btcpw_skyscraper_donor_information input[type='search'],
 .btcpw_skyscraper_donor_information input[type='number'],
 .btcpw_skyscraper_donor_information input[type='tel'],
-.btcpw_skyscraper_donor_information input[type='range'],
-.btcpw_skyscraper_donor_information input[type='date'],
-.btcpw_skyscraper_donor_information input[type='month'],
-.btcpw_skyscraper_donor_information input[type='week'],
-.btcpw_skyscraper_donor_information input[type='time'],
-.btcpw_skyscraper_donor_information input[type='datetime'],
-.btcpw_skyscraper_donor_information input[type='datetime-local'],
-.btcpw_skyscraper_donor_information input[type='color'],
 .btcpw_skyscraper_donor_information textarea {
   padding: 0 !important;
   margin: 0 !important;
   height: 30px;
 }
-
+.btcpw_skyscraper_donor_information.wide input[type='text'],
+.btcpw_skyscraper_donor_information.wide input[type='email'],
+.btcpw_skyscraper_donor_information.wide input[type='url'],
+.btcpw_skyscraper_donor_information.wide input[type='password'],
+.btcpw_skyscraper_donor_information.wide input[type='number'],
+.btcpw_skyscraper_donor_information.wide input[type='tel'],
+.btcpw_skyscraper_donor_information.wide textarea {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 20px;
+  height: 20px;
+}
 .btcpw_skyscraper_amount > .btcpw_skyscraper_tipping_free_input {
   display: flex;
   flex-direction: row;
@@ -1024,9 +1036,11 @@ a.btcpw_pay__download {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 2px;
 }
 .btcpw_page_donor_information > div {
   display: flex;
+  flex-direction: column;
   margin: 0 5px;
   width: 90%;
 }
@@ -1034,24 +1048,16 @@ a.btcpw_pay__download {
 .btcpw_page_donor_information input[type='text'],
 .btcpw_page_donor_information input[type='email'],
 .btcpw_page_donor_information input[type='url'],
-.btcpw_page_donor_information input[type='password'],
-.btcpw_page_donor_information input[type='search'],
 .btcpw_page_donor_information input[type='number'],
 .btcpw_page_donor_information input[type='tel'],
-.btcpw_page_donor_information input[type='range'],
-.btcpw_page_donor_information input[type='date'],
-.btcpw_page_donor_information input[type='month'],
-.btcpw_page_donor_information input[type='week'],
-.btcpw_page_donor_information input[type='time'],
-.btcpw_page_donor_information input[type='datetime'],
-.btcpw_page_donor_information input[type='datetime-local'],
-.btcpw_page_donor_information input[type='color'],
 .btcpw_page_donor_information textarea {
   font-size: 14px;
-  padding: 12.5px 8px;
+  padding: 6px;
   flex: 1;
   margin: 1px;
   line-height: 16px;
+  min-height: 35px;
+  height: 35px;
 }
 
 .btcpw_page_header_container {
@@ -1180,7 +1186,7 @@ div.btcpw_page_header_container > div:nth-child(2) {
 
 #btcpw_page h6 {
   font-family: sans-serif;
-  margin-bottom: 0.3rem;
+  margin-bottom: 10px;
 }
 
 /*
@@ -1206,7 +1212,7 @@ Revenue types
 #post_revenue_type fieldset:not(:first-of-type) h2,
 #view_revenue_type fieldset:not(:first-of-type) h2 {
   text-align: center;
-  margin-bottom: 1em;
+  margin-bottom: 15px;
 }
 .btcpw_revenue_post_container form,
 .btcpw_revenue_view_container form,
@@ -1240,7 +1246,16 @@ Revenue types
   margin: 1em 0;
   flex-direction: column;
   align-items: center;
-  gap: 2em;
+  gap: 10px;
+}
+.btcpw_revenue_post_customer_information label,
+.btcpw_revenue_view_customer_information label {
+  font-size: 16px;
+}
+.btcpw_revenue_post_customer_information div,
+.btcpw_revenue_view_customer_information div {
+  display: flex;
+  flex-direction: column;
 }
 /* .btcpw_revenue_post_customer_name_wrap,
 .btcpw_revenue_post_customer_email_wrap,
@@ -1447,7 +1462,10 @@ button.btcpaywall_add_to_cart {
 
 .btcpw_page_tipping_container,
 .btcpw_skyscraper_banner,
-.btcpw_tipping_box_container {
+.btcpw_tipping_box_container,
+.btcpw_revenue_post_container,
+.btcpw_revenue_view_container,
+#btcpw_digital_download_customer_info {
   overflow: hidden;
   border: 0.5px;
   border-radius: 15px;
