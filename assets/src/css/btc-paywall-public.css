@@ -1056,8 +1056,8 @@ a.btcpw_pay__download {
   flex: 1;
   margin: 1px;
   line-height: 16px;
-  min-height: 35px;
-  height: 35px;
+  min-height: 30px;
+  height: 30px;
 }
 
 .btcpw_page_header_container {
@@ -1247,6 +1247,10 @@ Revenue types
   flex-direction: column;
   align-items: center;
   gap: 10px;
+}
+.btcpw_revenue_post_customer_information > div,
+.btcpw_revenue_view_customer_information > div {
+  width: 80%;
 }
 .btcpw_revenue_post_customer_information label,
 .btcpw_revenue_view_customer_information label {
