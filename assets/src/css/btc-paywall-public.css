@@ -605,29 +605,18 @@ a.btcpw_pay__download {
   display: flex;
   flex-wrap: wrap;
 }
-/* .btcpw_skyscraper_donor_information.wide div {
-  width: 80%;
-} */
-/* .btcpw_skyscraper_donor_information.wide {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  gap: 1px;
-  align-items: center;
-} */
+
 .btcpw_skyscraper_donor_information.wide {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 5px;
+  gap: 4px;
   margin-top: 2px;
 }
 .btcpw_skyscraper_donor_information.wide > div {
   display: flex;
   flex-direction: column;
 }
-.btcpw_skyscraper_tipping_donor_message_wrap.wide {
-  grid-column: 1 / span 2;
-}
+
 .btcpw_skyscraper_donor_information.wide label {
   font-size: 14px;
   margin-bottom: 0;
@@ -637,7 +626,7 @@ a.btcpw_pay__download {
   margin: 1em 0;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 .btcpw_skyscraper_donor_information.high > div {
   width: 80%;
@@ -662,8 +651,8 @@ a.btcpw_pay__download {
 .btcpw_skyscraper_donor_information.wide textarea {
   padding: 0 !important;
   margin: 0 !important;
-  min-height: 20px;
-  height: 20px;
+  min-height: 21px;
+  height: 21px;
 }
 .btcpw_skyscraper_amount > .btcpw_skyscraper_tipping_free_input {
   display: flex;
@@ -1032,17 +1021,16 @@ a.btcpw_pay__download {
   height: 100% !important;
 }
 .btcpw_page_donor_information {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+  margin-bottom: 5px;
 }
+
 .btcpw_page_donor_information > div {
   display: flex;
   flex-direction: column;
   margin: 0 5px;
-  width: 90%;
 }
 .btcpw_page_donor_information label {
   font-size: 15px;
@@ -1056,11 +1044,8 @@ a.btcpw_pay__download {
 .btcpw_page_donor_information input[type='number'],
 .btcpw_page_donor_information input[type='tel'],
 .btcpw_page_donor_information textarea {
-  font-size: 14px;
   margin: 0;
   line-height: 16px;
-  min-height: 30px;
-  height: 30px;
 }
 
 .btcpw_page_header_container {
@@ -1071,13 +1056,9 @@ a.btcpw_pay__download {
   height: 210px !important;
 }
 
-.btcpw_page_header_container h6 {
-  margin: 0 5px;
-}
-
 #page_tipping_form h6 {
   text-align: center;
-  margin: 8px;
+  margin: 10px;
 }
 .btcpw_page_tipping_converted_values {
   flex-direction: row;
@@ -1189,7 +1170,6 @@ div.btcpw_page_header_container > div:nth-child(2) {
 
 #btcpw_page h6 {
   font-family: sans-serif;
-  margin-bottom: 10px;
 }
 
 /*
