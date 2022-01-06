@@ -372,56 +372,7 @@
 
       palettes: true
     })
-    /* $('.btcpw_pay_per_file_background').iris({
-      defaultColor: true,
-
-      change: function (event, ui) {
-        $('.btcpw_pay_preview.pay_per_file').css(
-          'backgroundColor',
-          $(this).val()
-        )
-      },
-
-      clear: function () {},
-
-      hide: true,
-
-      palettes: true
-    }) */
-
-    /* $('.btcpw_pay_per_file_header_color').iris({
-      defaultColor: true,
-
-      change: function (event, ui) {
-        $('.btcpw_pay__content_preview.pay_per_file h2').css(
-          'color',
-          $(this).val()
-        )
-      },
-
-      clear: function () {},
-
-      hide: true,
-
-      palettes: true
-    })
-    $('.btcpw_pay_per_file_info_color').iris({
-      defaultColor: true,
-
-      change: function (event, ui) {
-        $('.btcpw_pay__content_preview.pay_per_file p').css(
-          'color',
-          $(this).val()
-        )
-      },
-
-      clear: function () {},
-
-      hide: true,
-
-      palettes: true
-    })
- */
+    
     $('.btcpw_pay_per_file_button_text_color').iris({
       defaultColor: true,
 
@@ -435,37 +386,6 @@
 
       palettes: true
     })
-    /* $('.btcpw_pay_per_file_preview_title_color').iris({
-      defaultColor: true,
-
-      change: function (event, ui) {
-        $('.btcpw_pay__preview_preview.pay_per_file h2').css(
-          'color',
-          $(this).val()
-        )
-      },
-
-      clear: function () {},
-
-      hide: true,
-
-      palettes: true
-    })
-    $('.btcpw_pay_per_file_preview_description_color').iris({
-      defaultColor: true,
-
-      change: function (event, ui) {
-        $('.btcpw_pay__preview_preview.pay_per_file p').css(
-          'color',
-          $(this).val()
-        )
-      },
-
-      clear: function () {},
-
-      hide: true,
-
-      palettes: true
-    }) */
+    
   })
 })(jQuery)

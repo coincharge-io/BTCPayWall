@@ -50,17 +50,7 @@ function btcpw_meta_fields()
             'btcpw_product_sales',
             'btcpw_product_limit',
             'btcpw_product_image_id',
-            'btcpw_product_description',
-            'btcpw_collect_customer_name',
-            'btcpw_mandatory_customer_name',
-            'btcpw_collect_customer_email',
-            'btcpw_mandatory_customer_email',
-            'btcpw_collect_customer_address',
-            'btcpw_mandatory_customer_address',
-            'btcpw_collect_customer_phone',
-            'btcpw_mandatory_customer_phone',
-            'btcpw_collect_customer_message',
-            'btcpw_mandatory_customer_message'
+            'btcpw_product_description'
         ];
     return $fields;
 }
@@ -72,7 +62,9 @@ function render_btcpw_product_description($post)
         'tinymce' => false,
         'quicktags' => true,
     );
-    wp_editor($description, 'btcpw_product_description', $args);
+
+
+    wp_editor(html_entity_decode($description), 'btcpw_product_description', $args);
 }
 function render_btcpw_product_settings($post)
 {

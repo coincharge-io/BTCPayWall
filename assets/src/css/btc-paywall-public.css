@@ -1445,3 +1445,13 @@ button.btcpaywall_add_to_cart {
   margin-bottom: 20px;
 }
 
+.btcpw_page_tipping_container,
+.btcpw_skyscraper_banner,
+.btcpw_tipping_box_container {
+  overflow: hidden;
+  border: 0.5px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -khtml-border-radius: 15px;
+}

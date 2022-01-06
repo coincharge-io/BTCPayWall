@@ -735,7 +735,6 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                                     $label = $collect[$key]['label'];
                                     ?>
                                     <div class="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}_wrap"); ?>">
-
                                         <input type="text" placeholder="<?php echo esc_attr__($label, 'btcpaywall'); ?>" id="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}"); ?>" name="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
                                     </div>
                                 <?php endif; ?>

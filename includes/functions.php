@@ -366,35 +366,35 @@ function btcpaywall_get_collect($atts)
     return array(
         array(
             'id' => 'name',
-            'label' => 'Full name' .  (filter_var($atts['mandatory_name'], FILTER_VALIDATE_BOOLEAN) ? '*' : ''),
+            'label' => 'Full name' .  (filter_var($atts['mandatory_name'], FILTER_VALIDATE_BOOLEAN) ? '' : ' (optional)'),
             'display' => filter_var($atts['display_name'], FILTER_VALIDATE_BOOLEAN),
             'mandatory' => filter_var($atts['mandatory_name'], FILTER_VALIDATE_BOOLEAN),
             'type'  => 'text'
         ),
         array(
             'id' => 'email',
-            'label' => 'Email' .  (filter_var($atts['mandatory_email'], FILTER_VALIDATE_BOOLEAN) ? '*' : ''),
+            'label' => 'Email' .  (filter_var($atts['mandatory_email'], FILTER_VALIDATE_BOOLEAN) ? '' : ' (optional)'),
             'display' => filter_var($atts['display_email'], FILTER_VALIDATE_BOOLEAN),
             'mandatory' => filter_var($atts['mandatory_email'], FILTER_VALIDATE_BOOLEAN),
             'type' => 'email'
         ),
         array(
             'id' => 'address',
-            'label' => 'Address' .  (filter_var($atts['mandatory_address'], FILTER_VALIDATE_BOOLEAN) ? '*' : ''),
+            'label' => 'Address' .  (filter_var($atts['mandatory_address'], FILTER_VALIDATE_BOOLEAN) ? '' : ' (optional)'),
             'display' => filter_var($atts['display_address'], FILTER_VALIDATE_BOOLEAN),
             'mandatory' => filter_var($atts['mandatory_address'], FILTER_VALIDATE_BOOLEAN),
             'type' => 'text'
         ),
         array(
             'id' => 'phone',
-            'label' => 'Phone' .  (filter_var($atts['mandatory_phone'], FILTER_VALIDATE_BOOLEAN) ? '*' : ''),
+            'label' => 'Phone' .  (filter_var($atts['mandatory_phone'], FILTER_VALIDATE_BOOLEAN) ? '' : ' (optional)'),
             'display' => filter_var($atts['display_phone'], FILTER_VALIDATE_BOOLEAN),
             'mandatory' => filter_var($atts['mandatory_phone'], FILTER_VALIDATE_BOOLEAN),
             'type' => 'tel'
         ),
         array(
             'id' => 'message',
-            'label' => 'Message' .  (filter_var($atts['mandatory_message'], FILTER_VALIDATE_BOOLEAN) ? '*' : ''),
+            'label' => 'Message' .  (filter_var($atts['mandatory_message'], FILTER_VALIDATE_BOOLEAN) ? '' : ' (optional)'),
             'display' => filter_var($atts['display_message'], FILTER_VALIDATE_BOOLEAN),
             'mandatory' => filter_var($atts['mandatory_message'], FILTER_VALIDATE_BOOLEAN),
             'type' => 'text'
