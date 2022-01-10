@@ -541,7 +541,16 @@
           success: function (response) {
             if (response.success) {
               /* notifyAdmin(donor) */
-              !redirect ? location.reload(true) : location.replace(redirect)
+              //!redirect ? location.reload(true) : location.replace(redirect)
+              if (
+                /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(
+                  redirect
+                )
+              ) {
+                location.replace(redirect)
+              } else {
+                location.reload(true)
+              }
             }
           },
           error: function (error) {
@@ -567,7 +576,16 @@
           success: function (response) {
             if (response.success) {
               /* notifyAdmin(donor) */
-              !redirect ? location.reload(true) : location.replace(redirect)
+              //!redirect ? location.reload(true) : location.replace(redirect)
+              if (
+                /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(
+                  redirect
+                )
+              ) {
+                location.replace(redirect)
+              } else {
+                location.reload(true)
+              }
             }
           },
           error: function (error) {

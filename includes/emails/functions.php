@@ -31,15 +31,22 @@ function btcpaywall_get_notify_administrator_body($amount, $collect_data = null,
     $storeId = get_option('btcpw_btcpay_store_id');
     $siteurl = get_option('siteurl');
     $date = date('Y-m-d H:i:s', current_time('timestamp', 0));
-    $email_body = "Website url: {$siteurl} \n";
-    $email_body .= "Date: {$date} \n";
-    $email_body .= "Amount: {$amount} \n";
+    /* $storeId = get_option('btcpw_btcpay_store_id');
+    $siteurl = get_option('siteurl');
+    $date = date('Y-m-d H:i:s', current_time('timestamp', 0));
+    $email_body = '<html><body>';
+    $email_body .= '<h2>Payment</h2>';
+    $email_body .= '<table rules="all" style="border-color: #666;" cellpadding="10">';
+    $email_body .= "<tr><td>Website url:</td><td>" . strip_tags($siteurl) . "</td></tr>";
+    $email_body .= "<tr><td>Date:</td><td>" . strip_tags($date) . "</td></tr>";
+    $email_body .= "<tr><td>Amount:</td><td>" . strip_tags($amount) . "</td></tr>";
     if (!empty($storeId)) {
-        $email_body .= "Credit on Store ID: {$storeId} \n";
+        $email_body .= "<tr><td>Credit on Store ID:</td><td>" . strip_tags($storeId) . "</td></tr>";
     }
-    $email_body .= "Type: {$type} \n\n";
+    $email_body .= "<tr><td>Type:</td><td>" . strip_tags($type) . "</td></tr></table>";
     if ($collect_data) {
-        $email_body .= strtolower($type)[0] == 't' ? "Donor Information: \n\n" : "Customer Information: \n";
+        $email_body .= strtolower($type)[0] == 't' ? "<h2>Donor Information</h2>" : "<h2>Customer Information</h2>";
+        $email_body .= "<table>";
         foreach ($collect_data as $key => $value) {
             if ($key == 'id') {
                 continue;
@@ -48,12 +55,17 @@ function btcpaywall_get_notify_administrator_body($amount, $collect_data = null,
                 if ($key == 'full_name') {
                     $key = 'name';
                 }
-                $email_body .= ucfirst($key) . ': ' . $value . "\n";
+                $email_body .= "<tr><td>" . ucfirst(strip_tags($key)) . ":</td><td>" . strip_tags($value) . "</td></tr>";;
             }
         }
+        $email_body .= "</table>";
     }
-    $email_body .= "\n\nThank you for using BTCPayWall";
-    return $email_body;
+    $email_body .= "<h3>Thank you for using BTCPayWall</h3>";
+    $email_body .= "</body></html>";
+    return $email_body; */
+    ob_start();
+    include(BTCPAYWALL_PLUGIN_DIR . 'templates/emails/email-notify-admin.php');
+    return ob_get_clean();
 }
 /**
  * Send purchased links 
@@ -68,8 +80,8 @@ function btcpaywall_get_notify_administrator_body($amount, $collect_data = null,
 function btcpaywall_get_send_purchased_links_body($links, $name)
 {
     $customer = !empty($name) ? $name : 'customer';
-    $email_body = "Dear ${customer},\n\n";
-    $email_body .= "Thank you for your purchase. Please click on the link(s) below to download your files.\n\n";
+    $email_body = "<p>Dear " . strip_tags($customer) . ",</p>";
+    $email_body .= "<p>Thank you for your purchase. Please click on the link(s) below to download your files.</p>";
     foreach ($links as $link) {
         $email_body .= "{$link}";
     }
@@ -86,10 +98,13 @@ function btcpaywall_get_send_purchased_links_body($links, $name)
  */
 function btcpaywall_notify_administrator($email_body, $type = 'Pay')
 {
-
-
     //$admin = get_bloginfo('admin_email');
-    $admin = 'oguzdiyxawvqvnekum@kvhrw.com';
+    $admin = 'boheqili@musiccode.me';
+    /* $headers = "From: " . strip_tags($admin) . "\r\n";
+    $headers .= "Reply-To: " . strip_tags($admin) . "\r\n";
+    $headers .= "MIME-Version: 1.0\r\n"; */
+    $headers = array('Content-Type: text/html; charset=UTF-8');
+
     $subject = $type === 'Pay' ? 'You have received a payment via BTCPayWall' : 'You have received a donation via BTCPayWall';
     wp_mail($admin, $subject, $email_body);
 }

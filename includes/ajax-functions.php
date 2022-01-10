@@ -820,9 +820,7 @@ function ajax_btcpaywall_paid_tipping_opennode_invoice()
 
     $payment->update(array('status' => $body['data']['status'], 'payment_method' => 'BTC'));
     $tipping->update(array('status' => $body['data']['status'], 'payment_method' => 'BTC'));
-    //var_dump(strtolower($body['data']['metadata']['type'])[0]);
     btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($amount, $body['data']['metadata']['donor'], $body['data']['metadata']['type']), 'Tipping');
-    //btcpaywall_notify_administrator($message);
     wp_send_json_success(array(
         'status' => $body['data']['status'],
         'expires' => $body['data']['expires_at'],
@@ -1034,11 +1032,11 @@ function ajax_btcpaywall_paid_content_file_invoice()
     ));
     $_SESSION['btcpaywall_purchase'] = $payment->invoice_id;
     $email_body = btcpaywall_get_send_purchased_links_body($links, $body['metadata']['customer_data']['name']);
+
     wp_mail($body['metadata']['customer_data']['email'], 'BTCPayWall Digital Download Link', $email_body);
 
     BTCPayWall()->cart->empty_cart();
-    btcpaywall_notify_administrator($message);
-
+    btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($amount, $body['metadata']['customer_data'], 'Pay-per-file'), 'Pay');
     wp_send_json_success();
 }
 
