@@ -133,7 +133,7 @@
               response.data.donor
             btcpw_invoice_id = response.data.invoice_id
             form_container = $('.btcpw_tipping_box_container')
-            btcpwShowOpenNodeInvoice(
+            btcpwShowTippingOpenNodeInvoice(
               btcpw_invoice_id,
               form_container,
               $('#btcpw_redirect_link').val()
@@ -170,7 +170,7 @@
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id
             form_container = $('.btcpw_widget.btcpw_tipping_box_container')
-            btcpwShowOpenNodeInvoice(
+            btcpwShowTippingOpenNodeInvoice(
               btcpw_invoice_id,
               form_container,
               $('#btcpw_redirect_link_btcpw_widget').val()
@@ -223,7 +223,7 @@
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id
             form_container = $('.btcpw_page_tipping_container')
-            btcpwShowOpenNodeInvoice(
+            btcpwShowTippingOpenNodeInvoice(
               btcpw_invoice_id,
               form_container,
               $('#btcpw_page_redirect_link').val()
@@ -276,7 +276,7 @@
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id
             form_container = $('.btcpw_skyscraper_banner.high')
-            btcpwShowOpenNodeInvoice(
+            btcpwShowTippingOpenNodeInvoice(
               btcpw_invoice_id,
               form_container,
               $('#btcpw_skyscraper_redirect_link_high').val()
@@ -341,7 +341,7 @@
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id
             form_container = $('.btcpw_widget.btcpw_skyscraper_banner.high')
-            btcpwShowOpenNodeInvoice(
+            btcpwShowTippingOpenNodeInvoice(
               btcpw_invoice_id,
               form_container,
               $('#btcpw_widget_btcpw_skyscraper_redirect_link_high').val()
@@ -394,7 +394,7 @@
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id
             form_container = $('.btcpw_skyscraper_banner.wide')
-            btcpwShowOpenNodeInvoice(
+            btcpwShowTippingOpenNodeInvoice(
               btcpw_invoice_id,
               form_container,
               $('#btcpw_skyscraper_redirect_link_wide').val()
@@ -458,7 +458,7 @@
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id
             form_container = $('.btcpw_widget.btcpw_skyscraper_banner.wide')
-            btcpwShowOpenNodeInvoice(
+            btcpwShowTippingOpenNodeInvoice(
               btcpw_invoice_id,
               form_container,
               $('#btcpw_widget_btcpw_skyscraper_redirect_link_wide').val()
@@ -555,7 +555,65 @@
             url: '/wp-admin/admin-ajax.php',
             method: 'POST',
             data: {
-              action: 'btcpw_paid_opennode_invoice',
+              action: 'opennode_paid_invoice',
+              id: invoice_id
+            },
+            success: function (response) {
+              if (response.success) {
+                /* notifyAdmin(
+                  response.data.notify + 'Url:' + window.location.href
+                ) */
+
+                if (
+                  /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(
+                    redirectTo
+                  )
+                ) {
+                  location.replace(redirectTo)
+                } else {
+                  location.reload(true)
+                }
+              }
+            },
+            error: function (error) {
+              console.error(error)
+            }
+          })
+        }
+      })
+    }, 10000)
+
+    var redirect = 'https://checkout.opennode.com/' + invoice_id
+
+    form_container.append(
+      `<div id=opennode_modal><iframe title=OpenNode height=700px width=400px src=${redirect}> </iframe></div>`
+    )
+    $('#opennode_modal').dialog({
+      autoOpen: true,
+      modal: true,
+      resizable: false,
+      width: 'auto',
+      height: 700,
+      buttons: {
+        Close: function () {
+          $('#opennode_modal').remove()
+        }
+      }
+    })
+  }
+  function btcpwShowTippingOpenNodeInvoice (
+    invoice_id,
+    form_container,
+    redirectTo = null
+  ) {
+    setInterval(() => {
+      btcpaywall_monitor_invoice(invoice_id).done(function (response) {
+        if (response.data.status === 'paid') {
+          $.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            method: 'POST',
+            data: {
+              action: 'opennode_tipping_paid_invoice',
               id: invoice_id
             },
             success: function (response) {

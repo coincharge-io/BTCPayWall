@@ -37,10 +37,20 @@ function btcpaywall_get_notify_administrator_body($amount, $collect_data = null,
     if (!empty($storeId)) {
         $email_body .= "Credit on Store ID: {$storeId} \n";
     }
-    $email_body .= "Type: {$type} \n";
+    $email_body .= "Type: {$type} \n\n";
     if ($collect_data) {
-        $email_body .= "Donor Information: \n";
-        $email_body .= $collect_data;
+        $email_body .= strtolower($type)[0] == 't' ? "Donor Information: \n\n" : "Customer Information: \n";
+        foreach ($collect_data as $key => $value) {
+            if ($key == 'id') {
+                continue;
+            }
+            if (!empty($value)) {
+                if ($key == 'full_name') {
+                    $key = 'name';
+                }
+                $email_body .= ucfirst($key) . ': ' . $value . "\n";
+            }
+        }
     }
     $email_body .= "\n\nThank you for using BTCPayWall";
     return $email_body;
@@ -74,11 +84,12 @@ function btcpaywall_get_send_purchased_links_body($links, $name)
  * 
  * @return void
  */
-function btcpaywall_notify_administrator($email_body)
+function btcpaywall_notify_administrator($email_body, $type = 'Pay')
 {
 
 
-    $admin = get_bloginfo('admin_email');
-
-    wp_mail($admin, 'You have received a payment via BTCPayWall', $email_body);
+    //$admin = get_bloginfo('admin_email');
+    $admin = 'oguzdiyxawvqvnekum@kvhrw.com';
+    $subject = $type === 'Pay' ? 'You have received a payment via BTCPayWall' : 'You have received a donation via BTCPayWall';
+    wp_mail($admin, $subject, $email_body);
 }
