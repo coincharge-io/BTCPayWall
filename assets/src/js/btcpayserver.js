@@ -490,7 +490,7 @@
           },
           success: function (response) {
             if (response.success) {
-              notifyAdmin(response.data.notify + 'Url:' + window.location.href)
+              //notifyAdmin(response.data.notify + 'Url:' + window.location.href)
               location.reload(true)
             }
           },
