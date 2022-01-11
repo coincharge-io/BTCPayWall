@@ -37,6 +37,7 @@ function ajax_btcpaywall_get_invoice_id()
         'phone' => sanitize_text_field($_POST['phone']),
         'message' => sanitize_text_field($_POST['message']),
     );
+
     $post_id = sanitize_text_field($_POST['post_id']);
     $order_id = btcpaywall_generate_order_id($post_id);
     $gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer');

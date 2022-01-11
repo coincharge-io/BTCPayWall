@@ -99,12 +99,9 @@ function btcpaywall_get_send_purchased_links_body($links, $name)
 function btcpaywall_notify_administrator($email_body, $type = 'Pay')
 {
     //$admin = get_bloginfo('admin_email');
-    $admin = 'boheqili@musiccode.me';
-    /* $headers = "From: " . strip_tags($admin) . "\r\n";
-    $headers .= "Reply-To: " . strip_tags($admin) . "\r\n";
-    $headers .= "MIME-Version: 1.0\r\n"; */
+    $admin = 'leinert@onlineshop24.com';
+    $subject = $type === 'Pay' ? 'You have received a payment via BTCPayWall' : 'You have received a donation via BTCPayWall';
     $headers = array('Content-Type: text/html; charset=UTF-8');
 
-    $subject = $type === 'Pay' ? 'You have received a payment via BTCPayWall' : 'You have received a donation via BTCPayWall';
-    wp_mail($admin, $subject, $email_body);
+    wp_mail($admin, $subject, $email_body, $headers);
 }
