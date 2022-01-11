@@ -46,7 +46,7 @@
             font-size: 14px;
             vertical-align: top;
             border: 1px solid #999;
-            padding: 0.5rem;"><?php echo esc_html($payment_details->amount . ' ' . $payment_details->currency); ?></td>
+            padding: 0.5rem;"><?php echo esc_html(btcpaywall_round_amount($payment_details->currency, $payment_details->amount) . ' ' . $payment_details->currency); ?></td>
                                 </tr>
                                 <tr>
                                     <td style="font-family: sans-serif;
@@ -60,7 +60,7 @@
             border: 1px solid #999;
             padding: 0.5rem;"><?php echo esc_html($payment_details->revenue_type); ?></td>
                                 </tr>
-                                <?php if ($payment_details->revenue_type !== 'Pay-per-file') : ?>
+                                <?php if ($payment_details->revenue_type == 'Pay-per-post' || $payment_details->revenue_type == 'Pay-per-view') : ?>
                                     <tr>
                                         <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Page title</td>
                                         <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->page_title); ?></td>
