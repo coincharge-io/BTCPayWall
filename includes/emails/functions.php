@@ -72,20 +72,24 @@ function btcpaywall_get_notify_administrator_body($amount, $collect_data = null,
  * 
  * @param array|null $links
  * @param string $name Customer name
+ * @param string $invoice_id 
  * 
- * @since 1.0.0
+ * @since 1.1.0
  * 
  * @return void
  */
-function btcpaywall_get_send_purchased_links_body($links, $name)
+function btcpaywall_get_notify_customers_body($links, $name, $invoice_id)
 {
-    $customer = !empty($name) ? $name : 'customer';
+    /* $customer = !empty($name) ? $name : 'customer';
     $email_body = "<p>Dear " . strip_tags($customer) . ",</p>";
     $email_body .= "<p>Thank you for your purchase. Please click on the link(s) below to download your files.</p>";
     foreach ($links as $link) {
         $email_body .= "{$link}";
     }
-    return $email_body;
+    return $email_body; */
+    ob_start();
+    include(BTCPAYWALL_PLUGIN_DIR . 'templates/emails/email-customer.php');
+    return ob_get_clean();
 }
 /**
  * Notify site admin upon payment 
@@ -98,10 +102,31 @@ function btcpaywall_get_send_purchased_links_body($links, $name)
  */
 function btcpaywall_notify_administrator($email_body, $type = 'Pay')
 {
-    //$admin = get_bloginfo('admin_email');
-    $admin = 'leinert@onlineshop24.com';
+    $admin = get_bloginfo('admin_email');
     $subject = $type === 'Pay' ? 'You have received a payment via BTCPayWall' : 'You have received a donation via BTCPayWall';
     $headers = array('Content-Type: text/html; charset=UTF-8');
 
     wp_mail($admin, $subject, $email_body, $headers);
+}
+
+
+/**
+ * Notify customer upon payment 
+ * 
+ * @param string $email_address.
+ * @param string $email_body. 
+ * @param string $type.
+ * @since 1.1.0
+ * 
+ * @return void
+ */
+function btcpaywall_notify_customer($email_address, $email_body, $type = 'Pay')
+{
+    if (empty($email_address)) {
+        return false;
+    }
+    $subject = $type === 'Pay' ? 'You have completed payment via BTCPayWall' : 'You have completed tipping via BTCPayWall';
+    $headers = array('Content-Type: text/html; charset=UTF-8');
+
+    wp_mail($email_address, $subject, $email_body, $headers);
 }
