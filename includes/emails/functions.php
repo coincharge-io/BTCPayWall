@@ -68,17 +68,17 @@ function btcpaywall_get_notify_administrator_body($amount, $collect_data = null,
     return ob_get_clean();
 }
 /**
- * Send purchased links 
+ * Send Payment Notification
  * 
- * @param array|null $links
  * @param string $name Customer name
  * @param string $invoice_id 
+ * @param array $collect_data Whether or not customer information are collected
  * 
  * @since 1.1.0
  * 
  * @return void
  */
-function btcpaywall_get_notify_customers_body($links, $name, $invoice_id)
+function btcpaywall_get_notify_customers_body($name, $invoice_id, $collect_data)
 {
     /* $customer = !empty($name) ? $name : 'customer';
     $email_body = "<p>Dear " . strip_tags($customer) . ",</p>";

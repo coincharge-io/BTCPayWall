@@ -641,6 +641,7 @@ a.btcpw_pay__download {
   padding: 0 !important;
   margin: 0 !important;
   height: 30px;
+  border-radius: 8px;
 }
 .btcpw_skyscraper_donor_information.wide input[type='text'],
 .btcpw_skyscraper_donor_information.wide input[type='email'],
@@ -653,6 +654,7 @@ a.btcpw_pay__download {
   margin: 0 !important;
   min-height: 21px;
   height: 21px;
+  border-radius: 8px;
 }
 .btcpw_skyscraper_amount > .btcpw_skyscraper_tipping_free_input {
   display: flex;
@@ -1046,6 +1048,7 @@ a.btcpw_pay__download {
 .btcpw_page_donor_information textarea {
   margin: 0;
   line-height: 16px;
+  border-radius: 8px;
 }
 
 .btcpw_page_header_container {
@@ -1459,4 +1462,19 @@ button.btcpaywall_add_to_cart {
   -moz-border-radius: 15px;
   -webkit-border-radius: 15px;
   -khtml-border-radius: 15px;
+}
+
+.btcpw_revenue_post_customer_information input[type='text'],
+.btcpw_revenue_post_customer_information input[type='email'],
+.btcpw_revenue_post_customer_information input[type='url'],
+.btcpw_revenue_post_customer_information input[type='number'],
+.btcpw_revenue_post_customer_information input[type='tel'],
+.btcpw_revenue_post_customer_information textarea,
+.btcpw_revenue_view_customer_information input[type='text'],
+.btcpw_revenue_view_customer_information input[type='email'],
+.btcpw_revenue_view_customer_information input[type='url'],
+.btcpw_revenue_view_customer_information input[type='number'],
+.btcpw_revenue_view_customer_information input[type='tel'],
+.btcpw_revenue_view_customer_information textarea {
+  border-radius: 8px;
 }

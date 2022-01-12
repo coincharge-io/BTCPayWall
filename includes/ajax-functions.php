@@ -447,7 +447,7 @@ function ajax_btcpaywall_paid_invoice()
 
     update_post_meta($order_id, 'btcpw_status', 'success');
     btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($amount, $body['metadata']['customer_data'], $body['metadata']['type']), 'Pay');
-    btcpaywall_notify_customer($body['metadata']['customer_data']['email'], btcpaywall_get_notify_customers_body('', $body['metadata']['customer_data']['full_name'], $invoice_id), 'Pay');
+    btcpaywall_notify_customer($body['metadata']['customer_data']['email'], btcpaywall_get_notify_customers_body($body['metadata']['customer_data']['full_name'], $invoice_id, $body['metadata']['customer_data']), 'Pay');
     wp_send_json_success();
 }
 
@@ -495,7 +495,7 @@ function ajax_btcpaywall_paid_tipping()
     $payment->update(array('status' => $body['status'], 'payment_method' => $payment_method));
     //btcpaywall_notify_administrator($body['metadata']['donor']);
     btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($body['amount'], $body['metadata']['donor'], $body['metadata']['type']), 'Tipping');
-    btcpaywall_notify_customer($body['metadata']['donor']['email'], btcpaywall_get_notify_customers_body('', $body['metadata']['donor']['full_name'], $invoice_id), 'Tipping');
+    btcpaywall_notify_customer($body['metadata']['donor']['email'], btcpaywall_get_notify_customers_body($body['metadata']['donor']['full_name'], $invoice_id, $body['metadata']['donor']), 'Tipping');
     wp_send_json_success();
 }
 add_action('wp_ajax_btcpw_paid_tipping',  'ajax_btcpaywall_paid_tipping');
@@ -758,7 +758,7 @@ function ajax_btcpaywall_paid_opennode_invoice()
 
     update_post_meta($order_id, 'btcpw_status', 'success');
     btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($amount, $body['data']['metadata']['customer_data'], $body['data']['metadata']['type']), 'Pay');
-    btcpaywall_notify_customer($body['data']['metadata']['customer_data']['email'], btcpaywall_get_notify_customers_body('', $body['data']['metadata']['customer_data']['full_name'], $invoice_id), 'Pay');
+    btcpaywall_notify_customer($body['data']['metadata']['customer_data']['email'], btcpaywall_get_notify_customers_body($body['data']['metadata']['customer_data']['full_name'], $invoice_id, $body['data']['metadata']['customer_data']), 'Pay');
 
     wp_send_json_success(array(
         'status' => $body['data']['status'],
@@ -824,7 +824,7 @@ function ajax_btcpaywall_paid_tipping_opennode_invoice()
     $payment->update(array('status' => $body['data']['status'], 'payment_method' => 'BTC'));
     $tipping->update(array('status' => $body['data']['status'], 'payment_method' => 'BTC'));
     btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($amount, $body['data']['metadata']['donor'], $body['data']['metadata']['type']), 'Tipping');
-    btcpaywall_notify_customer($body['data']['metadata']['donor']['email'], btcpaywall_get_notify_customers_body('', $body['data']['metadata']['donor']['full_name'], $id), 'Tipping');
+    btcpaywall_notify_customer($body['data']['metadata']['donor']['email'], btcpaywall_get_notify_customers_body($body['data']['metadata']['donor']['full_name'], $id, $body['data']['metadata']['donor']), 'Tipping');
     wp_send_json_success(array(
         'status' => $body['data']['status'],
         'expires' => $body['data']['expires_at'],
@@ -1038,7 +1038,7 @@ function ajax_btcpaywall_paid_content_file_invoice()
     /* $email_body = btcpaywall_get_send_purchased_links_body($links, $body['metadata']['customer_data']['name']);
 
     wp_mail($body['metadata']['customer_data']['email'], 'BTCPayWall Digital Download Link', $email_body); */
-    btcpaywall_notify_customer($body['metadata']['customer_data']['email'], btcpaywall_get_notify_customers_body($links, $body['metadata']['customer_data']['full_name'], $invoice_id), 'Pay');
+    btcpaywall_notify_customer($body['metadata']['customer_data']['email'], btcpaywall_get_notify_customers_body($body['metadata']['customer_data']['full_name'], $invoice_id, $body['metadata']['customer_data']), 'Pay');
 
     BTCPayWall()->cart->empty_cart();
     btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($amount, $body['metadata']['customer_data'], 'Pay-per-file'), 'Pay');

@@ -208,7 +208,8 @@ td.Settled {
 #btcpw_general_pay_per_view_options_paywall,
 #btcpw_pay_per_file_paywall,
 #btcpw_general_content_store_options,
-#btcpw_misc_options {
+#btcpw_misc_options,
+#btcpw_general_payment_gateway_options {
   border: 1px solid #1e1e1e;
   background: #fff;
   padding: 0;

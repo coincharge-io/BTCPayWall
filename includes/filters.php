@@ -23,8 +23,6 @@ if (!defined('ABSPATH')) exit;
  */
 function btcpaywall_filter_the_content($content)
 {
-
-
     if (btcpaywall_is_paid_content()) {
         return $content;
     }

@@ -27,6 +27,7 @@ class BTCPayWall_Tipping
     public $status;
     public $gateway;
     public $payment_method;
+    public $date_created;
 
     protected $db;
 
@@ -55,7 +56,7 @@ class BTCPayWall_Tipping
         if (!is_object($tipping)) {
             return false;
         }
-        $valid_keys = ['id', 'invoice_id', 'tipper_id', 'amount', 'page_title', 'revenue_type', 'currency', 'status', 'gateway', 'payment_method'];
+        $valid_keys = ['id', 'invoice_id', 'tipper_id', 'amount', 'page_title', 'revenue_type', 'currency', 'status', 'gateway', 'payment_method', 'date_created'];
 
         foreach ($tipping as $key => $value) {
             if (in_array($key, $valid_keys)) {
