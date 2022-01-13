@@ -179,25 +179,24 @@ function btcpaywall_calculate_price_for_invoice($post_id)
 
 /**
  * Check if protected content is paid
- * 
- * @params int $post_id Post id. 
+ * @param string $cookie
+ * @param int $post_id Post id. 
  * 
  * @since 1.0
  * 
  * @return bool Whether or not content is paid
  */
-function btcpaywall_is_paid_content($post_id = null)
+function btcpaywall_is_paid_content($cookie_value = null, $post_id = null)
 {
 
     if (empty($post_id)) {
         $post_id = get_the_ID();
     }
+    $cookie = empty($_COOKIE['btcpw_' . $post_id]) ? sanitize_text_field($cookie_value) : sanitize_text_field($_COOKIE['btcpw_' . $post_id]);
 
-
-    if (empty($_COOKIE['btcpw_' . $post_id])) {
+    if (empty($cookie)) {
         return false;
     }
-
     $meta_query = [
         'relation' => 'AND',
         [
@@ -207,7 +206,7 @@ function btcpaywall_is_paid_content($post_id = null)
         ],
         [
             'key' => 'btcpw_secret',
-            'value' => sanitize_text_field($_COOKIE['btcpw_' . $post_id]),
+            'value' => $cookie,
         ]
     ];
 
@@ -217,8 +216,6 @@ function btcpaywall_is_paid_content($post_id = null)
         'no_found_rows' => true,
         'meta_query' => $meta_query,
     ]);
-
-
     if (empty($order)) {
         return false;
     }

@@ -18,12 +18,13 @@ if (!defined('ABSPATH')) exit;
 /**
  *
  * @param string $content
- *
+ * @param string $cookie_val
+ * 
  * @return string
  */
-function btcpaywall_filter_the_content($content)
+function btcpaywall_filter_the_content($content, $cookie_val = null)
 {
-    if (btcpaywall_is_paid_content()) {
+    if (btcpaywall_is_paid_content($cookie_val)) {
         return $content;
     }
 
@@ -38,7 +39,6 @@ function btcpaywall_filter_the_content($content)
     } else {
         $content_end = substr($content, $end_pos + 26);
     }
-
 
     return $content_start . $content_end;
 }

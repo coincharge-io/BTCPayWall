@@ -1092,3 +1092,46 @@ function ajax_btcpaywall_opennode_monitor_invoice_status()
 
 add_action('wp_ajax_btcpw_opennode_monitor_invoice_status',  'ajax_btcpaywall_opennode_monitor_invoice_status');
 add_action('wp_ajax_nopriv_btcpw_opennode_monitor_invoice_status',  'ajax_btcpaywall_opennode_monitor_invoice_status');
+
+
+function ajax_btcpaywall_is_paid_content()
+{
+    $cookie = sanitize_text_field($_POST['cookie']);
+    if (empty($cookie)) {
+        wp_send_json_error(['message' => 'Cookie is missing.']);
+    }
+
+    $post_id = !empty($_POST['post_id']) ? sanitize_text_field($_POST['post_id']) : get_the_ID();
+    $post = get_post($post_id)->post_content;
+    $body = apply_filters('the_content', $post, $cookie);
+    $replace_paid = str_replace("#btcpw_revenue_container {
+        display: '';
+    }", "#btcpw_revenue_container {
+        display:none;
+    }", $body);
+
+
+
+    if (btcpaywall_is_paid_content($cookie, $post_id)) {
+        wp_send_json_success(['body' => $replace_paid]);
+        //wp_send_json_success();
+    }
+    /* if (($start_pos = strpos($post, '<!-- btcpw:start_content -->')) === false) {
+        return $post;
+    }
+
+    $content_start = substr($post, 0, $start_pos);
+
+    if (($end_pos = strpos($post, '<!-- /btcpw:end_content -->')) === false) {
+        $content_end = '';
+    } else {
+        $content_end = substr($post, $end_pos + 26);
+    }
+ */
+    //var_dump(btcpaywall_is_paid_content($cookie, $post_id));
+    //var_dump($body);
+    wp_send_json_success(['body' => $body]);
+}
+
+add_action('wp_ajax_btcpw_paid_content',  'ajax_btcpaywall_is_paid_content');
+add_action('wp_ajax_nopriv_btcpw_paid_content',  'ajax_btcpaywall_is_paid_content');

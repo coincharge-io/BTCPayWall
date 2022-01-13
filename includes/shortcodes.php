@@ -1008,9 +1008,9 @@ add_shortcode('btcpw_pay_video_block', 'btcpaywall_render_shortcode_btcpw_pay_vi
  */
 function btcpaywall_render_shortcode_btcpw_start_content($atts)
 {
-    if (btcpaywall_is_paid_content()) {
+     if (btcpaywall_is_paid_content()) {
         return '';
-    }
+    } 
 
     $atts = shortcode_atts(array(
         'pay_block' => 'false',
@@ -1142,6 +1142,7 @@ function btcpaywall_render_shortcode_btcpw_pay_block($atts)
     if (btcpaywall_is_paid_content()) {
         return '';
     }
+
     $atts = shortcode_atts(array(
         'background_color' => '#ECF0F1',
         'header_color' => '#000000',

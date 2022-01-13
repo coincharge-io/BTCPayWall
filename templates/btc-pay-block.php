@@ -63,76 +63,82 @@ $collect_data = btcpaywall_display_is_enabled($collect);
         justify-content: space-between;
         gap: 1em;
     }
+
+    #btcpw_revenue_container {
+        display: '';
+    }
 </style>
-<div class="btcpw_revenue_post_container">
-    <form method="POST" action="" id="post_revenue_type">
-        <fieldset>
-            <div class="btcpw_pay__content paywall_header">
-                <h2><?php echo esc_html__(btcpaywall_get_payblock_header_string(), 'btcpaywall'); ?></h2>
+<div id="btcpw_revenue_container">
+    <div class="btcpw_revenue_post_container">
+        <form method="POST" action="" id="post_revenue_type">
+            <fieldset>
+                <div class="btcpw_pay__content paywall_header">
+                    <h2><?php echo esc_html__(btcpaywall_get_payblock_header_string(), 'btcpaywall'); ?></h2>
 
-            </div>
-            <div class="btcpw_pay__content paywall_info">
-                <p>
-                    <?php echo esc_html__(btcpaywall_get_post_info_string(), 'btcpaywall'); ?>
-                </p>
-            </div>
-            <div class="btcpw_revenue_post_button" id="btcpw_revenue_post_button">
-                <?php if (true === $collect_data) : ?>
+                </div>
+                <div class="btcpw_pay__content paywall_info">
+                    <p>
+                        <?php echo esc_html__(btcpaywall_get_post_info_string(), 'btcpaywall'); ?>
+                    </p>
+                </div>
+                <div class="btcpw_revenue_post_button" id="btcpw_revenue_post_button">
+                    <?php if (true === $collect_data) : ?>
 
-                    <div>
-                        <input type="button" name="next" class="revenue-post-next-form" value="<?php echo esc_html__('Continue', 'btcpaywall'); ?>">
-                    </div>
-                <?php else : ?>
-
-                    <div>
-                        <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html(btcpaywall_get_payblock_button_string()) ?></button>
-                    </div>
-                <?php endif; ?>
-            </div>
-            <?php if ($help === true || $additional_help === true) : ?>
-                <div class="btcpw_help_links">
-                    <?php if ($help === true) : ?>
-                        <div class="btcpw_help">
-                            <a class="btcpw_help__link" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html__($help_text, 'btcpaywall'); ?></a>
+                        <div>
+                            <input type="button" name="next" class="revenue-post-next-form" value="<?php echo esc_html__('Continue', 'btcpaywall'); ?>">
                         </div>
-                    <?php endif; ?>
-                    <?php if ($additional_help === true) : ?>
-                        <div class="btcpw_additional_help">
-                            <a class="btcpw_additional_help__link" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html__($additional_help_text, 'btcpaywall'); ?></a>
+                    <?php else : ?>
+
+                        <div>
+                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html(btcpaywall_get_payblock_button_string()) ?></button>
                         </div>
                     <?php endif; ?>
                 </div>
-            <?php endif; ?>
-
-        </fieldset>
-        <?php if ($collect_data === true) : ?>
-            <fieldset>
-                <h2><?php echo esc_html__('Personal Information', 'btcpaywall'); ?></h2>
-                <div class="btcpw_revenue_post_customer_information">
-                    <?php foreach ($collect as $key => $value) : ?>
-                        <?php if ($collect[$key]['display'] === true) : ?>
-                            <?php $id = $collect[$key]['id'];
-                            $label = $collect[$key]['label'];
-                            $type = $collect[$key]['type']; ?>
-                            <div class="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}_wrap"); ?>">
-                                <label for="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
-                                <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>" name="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
-
+                <?php if ($help === true || $additional_help === true) : ?>
+                    <div class="btcpw_help_links">
+                        <?php if ($help === true) : ?>
+                            <div class="btcpw_help">
+                                <a class="btcpw_help__link" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html__($help_text, 'btcpaywall'); ?></a>
                             </div>
                         <?php endif; ?>
-                    <?php endforeach; ?>
-                </div>
-                <div class="btcpw_revenue_post_button" id="btcpw_revenue_post_button_second_step">
-                    <div>
-                        <input type="button" name="previous" class="revenue-post-previous-form" value="<?php echo esc_html__('< Previous', 'btcpaywall'); ?>" />
+                        <?php if ($additional_help === true) : ?>
+                            <div class="btcpw_additional_help">
+                                <a class="btcpw_additional_help__link" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html__($additional_help_text, 'btcpaywall'); ?></a>
+                            </div>
+                        <?php endif; ?>
                     </div>
+                <?php endif; ?>
 
-                    <div>
-                        <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html(btcpaywall_get_payblock_button_string()); ?></button>
-                    </div>
-                </div>
             </fieldset>
-        <?php endif; ?>
-    </form>
+            <?php if ($collect_data === true) : ?>
+                <fieldset>
+                    <h2><?php echo esc_html__('Personal Information', 'btcpaywall'); ?></h2>
+                    <div class="btcpw_revenue_post_customer_information">
+                        <?php foreach ($collect as $key => $value) : ?>
+                            <?php if ($collect[$key]['display'] === true) : ?>
+                                <?php $id = $collect[$key]['id'];
+                                $label = $collect[$key]['label'];
+                                $type = $collect[$key]['type']; ?>
+                                <div class="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}_wrap"); ?>">
+                                    <label for="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
+                                    <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>" name="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="btcpw_revenue_post_button" id="btcpw_revenue_post_button_second_step">
+                        <div>
+                            <input type="button" name="previous" class="revenue-post-previous-form" value="<?php echo esc_html__('< Previous', 'btcpaywall'); ?>" />
+                        </div>
+
+                        <div>
+                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html(btcpaywall_get_payblock_button_string()); ?></button>
+                        </div>
+                    </div>
+                </fieldset>
+            <?php endif; ?>
+        </form>
+    </div>
 </div>
 <?php

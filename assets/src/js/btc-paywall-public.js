@@ -1,7 +1,34 @@
 ;(function ($) {
   'use strict'
-  
+
   $(document).ready(function () {
+    var cookie = null
+    var post_id = $('#btcpw_pay__button').data('post_id')
+    var match = document.cookie.match(
+      new RegExp('(^| )' + 'btcpw_' + post_id + '=([^;]+)')
+    )
+    if (match) {
+      cookie = match[2]
+    }
+    if (cookie) {
+      $.ajax({
+        url: '/wp-admin/admin-ajax.php',
+        type: 'POST',
+        data: {
+          action: 'btcpw_paid_content',
+          cookie: cookie,
+          post_id: post_id
+        },
+        success: function (response) {
+          $('.entry-content, .entry-body, .single-content').html(
+            response.data.body
+          )
+          /* $(
+            '.btcpw_revenue_post_container,.btcpw_revenue_view_container'
+          ).hide() */
+        }
+      })
+    }
     $('.btcpaywall_cart_remove_item_btn').click(function (e) {
       e.preventDefault()
       var item = $(this).data('cart-key')
@@ -40,7 +67,7 @@
       })
     })
   })
-  
+
   function notifyAdmin (donor_info) {
     $.ajax({
       url: '/wp-admin/admin-ajax.php',
@@ -968,7 +995,6 @@
     })
   })
 
-  
   $(document).ready(function () {
     var form_count = 1,
       previous_form,
