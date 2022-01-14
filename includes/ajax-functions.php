@@ -277,6 +277,15 @@ function ajax_btcpaywall_tipping()
         'address' => sanitize_text_field($_POST['address']),
         'message' => sanitize_text_field($_POST['message']),
     ]);
+    $customer = new BTCPayWall_Customer();
+
+    $customer->create([
+        'full_name' => sanitize_text_field($_POST['name']),
+        'email' => sanitize_email($_POST['email']),
+        'phone' => (int)$_POST['phone'],
+        'address' => sanitize_text_field($_POST['address']),
+        'message' => sanitize_text_field($_POST['message']),
+    ]);
     $currency = sanitize_text_field($_POST['currency']);
     $amount = sanitize_text_field($_POST['amount']);
     $gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer');
@@ -287,26 +296,13 @@ function ajax_btcpaywall_tipping()
         $amount = $extract[0];
         $currency = $extract[1];
     }
-    $storeId = get_option('btcpw_btcpay_store_id');
-    /* $blogname = get_post($post_id)->post_title;
-    $siteurl = get_option('siteurl');
-    $date = date('Y-m-d H:i:s', current_time('timestamp', 0));
 
-    $collects = "\nWeblog title: {$blogname} \n";
-    $collects .= "Website url: {$siteurl} \n";
-    $collects .= "Date: {$date} \n";
-    $collects .= "Amount: {$amount} {$currency} \n";
-    $collects .= "Credit on Store ID: {$storeId} \n";
-    $collects .= $collect;
-    $collects .= "Thank you for using BTCPayWall."; */
     $type = sanitize_text_field($_POST['type']);
-    /* $itemDesc = "\nType: {$type}\n";
-    $itemDesc .= "Weblog title: {$blogname} \n"; */
 
 
-    $url = btcpaywall_tipping_invoice_args($amount, $currency, $type, $tipper)['url'];
+    $url = btcpaywall_tipping_invoice_args($amount, $currency, $type, $customer)['url'];
 
-    $args = btcpaywall_tipping_invoice_args($amount, $currency, $type, $tipper)['args'];
+    $args = btcpaywall_tipping_invoice_args($amount, $currency, $type, $customer)['args'];
 
     $response = wp_remote_request($url, $args);
 
@@ -342,7 +338,7 @@ function ajax_btcpaywall_tipping()
 
     $payment->create([
         'invoice_id' => $body['id'],
-        'customer_id' => 0,
+        'customer_id' => $customer->id,
         'amount' => $body['amount'],
         'page_title' => $body['metadata']['blog'],
         'revenue_type' => $body['metadata']['type'],
@@ -365,32 +361,12 @@ function ajax_btcpaywall_paid_invoice()
     if (empty($_POST['order_id'])) {
         wp_send_json_error();
     }
-    /* $collect = "Donor Information: \n";
-    if (!empty($_POST['name'])) {
-        $name = sanitize_text_field($_POST['name']);
-        $collect .= "Name: {$name} \n";
-    }
-    if (!empty($_POST['email'])) {
-        $email = sanitize_email($_POST['email']);
-        $collect .= "Email: {$email} \n";
-    }
-    if (!empty($_POST['address'])) {
-        $address = sanitize_text_field($_POST['address']);
-        $collect .= "Address: {$address} \n";
-    }
-    if (!empty($_POST['phone'])) {
-        $phone = sanitize_text_field($_POST['phone']);
-        $collect .= "Phone: {$phone} \n";
-    }
-    if (!empty($_POST['message'])) {
-        $message = sanitize_text_field($_POST['message']);
-        $collect .= "Message: {$message} \n";
-    } */
+
     $order_id = sanitize_text_field($_POST['order_id']);
     $post_id = get_post_meta($order_id, 'btcpw_post_id', true);
     $invoice_id = get_post_meta($order_id, 'btcpw_invoice_id', true);
     $secret = get_post_meta($order_id, 'btcpw_secret', true);
-    $content_title = get_post_meta($post_id, 'btcpw_invoice_content', true)['title'];
+
 
 
     if (empty($post_id) || empty($invoice_id)) {
@@ -424,8 +400,6 @@ function ajax_btcpaywall_paid_invoice()
         return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
     }
     $amount = sanitize_text_field($_POST['amount']);
-
-    /* $message = btcpaywall_get_notify_administrator_body($amount, $collect, 'Pay-per-' . get_post_meta($post_id, 'btcpw_invoice_content', true)['project']); */
 
     if ($body['status'] !== 'Settled') {
         wp_send_json_error(['message' => 'Invoice is not paid.']);
@@ -500,20 +474,6 @@ function ajax_btcpaywall_paid_tipping()
 }
 add_action('wp_ajax_btcpw_paid_tipping',  'ajax_btcpaywall_paid_tipping');
 add_action('wp_ajax_nopriv_btcpw_paid_tipping',  'ajax_btcpaywall_paid_tipping');
-/* function ajax_btcpaywall_notify_administrator()
-{
-
-
-    $admin = get_bloginfo('admin_email');
-    $body = sanitize_text_field($_POST['donor_info']);
-
-    wp_mail($admin, 'You have received a payment via BTCPayWall', $body);
-}
-add_action('wp_ajax_btcpw_notify_admin',  'ajax_btcpaywall_notify_administrator');
-add_action('wp_ajax_nopriv_btcpw_notify_admin',  'ajax_btcpaywall_notify_administrator'); */
-
-
-
 
 
 /**
@@ -723,32 +683,6 @@ function ajax_btcpaywall_paid_opennode_invoice()
     }
     $cookie_path = parse_url(get_permalink($post_id), PHP_URL_PATH);
     $amount = "{$body['data']['amount']} {$body['data']['currency']}";
-    /* $blogname = get_post(get_the_ID())->post_title;
-    $siteurl = get_option('siteurl');
-    $date = date('Y-m-d H:i:s', current_time('timestamp', 0));
-    $message = "\nWeblog title: {$blogname} \n";
-    $message .= "Website url: {$siteurl} \n";
-    $message .= "Date: {$date} \n";
-    $message .= "Amount: {$amount} \n";
-    $message .= "Type: $content_title \n";
-    $message .= "Thank you for using BTCPayWall."; */
-
-
-
-    //$tipping = new BTCPayWall_Tipping($id);
-    /* if (empty($invoice_id)) {
-        $payment = new BTCPayWall_Payment($id);
-
-        $payment->update(array('status' => $body['data']['status'], 'payment_method' => 'BTC'));
-        $tipping->update(array('status' => $body['data']['status'], 'payment_method' => 'BTC'));
-        btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($amount, $body['data']['metadata']['donor'], $body['data']['metadata']['type']), 'Tipping');
-        //btcpaywall_notify_administrator($message);
-        wp_send_json_success(array(
-            'status' => $body['data']['status'],
-            'expires' => $body['data']['expires_at'],
-        ));
-    } */
-
     $payment = new BTCPayWall_Payment($invoice_id);
 
     $payment->update(array('status' => $body['data']['status'], 'payment_method' => 'BTC'));
@@ -1035,9 +969,7 @@ function ajax_btcpaywall_paid_content_file_invoice()
         'status' => $body['status'], 'payment_method' => $payment_method, 'download_links' => $db_links
     ));
     $_SESSION['btcpaywall_purchase'] = $payment->invoice_id;
-    /* $email_body = btcpaywall_get_send_purchased_links_body($links, $body['metadata']['customer_data']['name']);
 
-    wp_mail($body['metadata']['customer_data']['email'], 'BTCPayWall Digital Download Link', $email_body); */
     btcpaywall_notify_customer($body['metadata']['customer_data']['email'], btcpaywall_get_notify_customers_body($body['metadata']['customer_data']['full_name'], $invoice_id, $body['metadata']['customer_data']), 'Pay');
 
     BTCPayWall()->cart->empty_cart();
@@ -1102,35 +1034,12 @@ function ajax_btcpaywall_is_paid_content()
     }
 
     $post_id = !empty($_POST['post_id']) ? sanitize_text_field($_POST['post_id']) : get_the_ID();
-    $post = get_post($post_id)->post_content;
-    $body = apply_filters('the_content', $post, $cookie);
-    $replace_paid = str_replace("#btcpw_revenue_container {
-        display: '';
-    }", "#btcpw_revenue_container {
-        display:none;
-    }", $body);
-
-
 
     if (btcpaywall_is_paid_content($cookie, $post_id)) {
-        wp_send_json_success(['body' => $replace_paid]);
-        //wp_send_json_success();
-    }
-    /* if (($start_pos = strpos($post, '<!-- btcpw:start_content -->')) === false) {
-        return $post;
+        wp_send_json_success();
     }
 
-    $content_start = substr($post, 0, $start_pos);
-
-    if (($end_pos = strpos($post, '<!-- /btcpw:end_content -->')) === false) {
-        $content_end = '';
-    } else {
-        $content_end = substr($post, $end_pos + 26);
-    }
- */
-    //var_dump(btcpaywall_is_paid_content($cookie, $post_id));
-    //var_dump($body);
-    wp_send_json_error(['body' => $body]);
+    wp_send_json_error();
 }
 
 add_action('wp_ajax_btcpw_paid_content',  'ajax_btcpaywall_is_paid_content');

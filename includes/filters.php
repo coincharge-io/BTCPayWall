@@ -42,7 +42,7 @@ function btcpaywall_filter_the_content($content, $cookie_val = null)
 
     return $content_start . $content_end;
 }
-//add_filter('the_content',  'btcpaywall_filter_the_content', 50);
+add_filter('the_content',  'btcpaywall_filter_the_content', 50);
 
 
 

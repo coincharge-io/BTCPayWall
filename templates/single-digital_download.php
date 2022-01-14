@@ -25,14 +25,66 @@ $default_button = get_option('btcpw_pay_per_file_button');
         flex-direction: <?php echo isset($logo_id) ? 'row-reverse' : 'column' ?>;
         justify-content: <?php echo isset($logo_id) ? 'space-evenly' : 'center' ?>;
         min-height: 700px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 15px;
     }
 
-    .btcpw_product_image {
+    /* .btcpw_product_image {
         overflow: hidden;
         background-size: cover;
         background-position: center;
         background-image: url(<?php echo esc_url($logo[0]); ?>);
+    } */
+    .btcpw_product_image {
+        width: 65%;
+        position: relative;
     }
+
+    .btcpw_product_image img {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: all 0.3s ease;
+    }
+
+    .btcpw_product_description {
+        border-bottom: 1px solid #E1E8EE;
+        margin-bottom: 20px;
+        padding-left: 20px;
+    }
+
+    .btcpw_additonal_product_description {
+        margin-bottom: 20px;
+    }
+
+    .btcpw_product_description span {
+        font-size: 12px;
+        color: #358ED7;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    .btcpw_product_description h1 {
+        font-weight: 300;
+        font-size: 52px;
+        color: #43484D;
+        letter-spacing: -2px;
+    }
+
+    .btcpw_product_description p {
+        font-size: 16px;
+        font-weight: 300;
+        color: #86939E;
+        line-height: 24px;
+    }
+
+    /* .btcpw_product_description {
+        width: 35%;
+        margin-top: 60px;
+    } */
 
     .btcpaywall_add_to_cart {
         background-color: <?php echo esc_html($button_color) . ' !important'; ?>;
@@ -51,7 +103,7 @@ $default_button = get_option('btcpw_pay_per_file_button');
             <div class="btcpw_product_description">
                 <h1><?php the_title(); ?></h1>
                 <p class="btcpw_product_price"><span class="btcpw_product_price"><em><?php echo esc_html($price); ?> incl. VAT</em></span></p>
-                <div class="btcpw_product_description">
+                <div class="btcpw_additonal_product_description">
                     <?php echo esc_html__($description, 'btcpaywall'); ?>
                 </div>
                 <form id="btcpaywall_download_form" action="" method="POST">
@@ -63,6 +115,7 @@ $default_button = get_option('btcpw_pay_per_file_button');
             </div>
             <?php if (!empty($logo_id)) : ?>
                 <div class="btcpw_product_image">
+                    <img src="<?php echo esc_url($logo[0]); ?>">
                 </div>
             <?php endif; ?>
         </div>
