@@ -82,10 +82,6 @@ $preview_url = $image ? $image[0] : $atts['preview'];
         justify-content: space-between;
         gap: 1em;
     }
-
-    #btcpw_revenue_container {
-        display: '';
-    }
 </style>
 <div id="btcpw_revenue_container">
     <div class="btcpw_revenue_view_container">

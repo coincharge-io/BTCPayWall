@@ -63,10 +63,6 @@ $collect_data = btcpaywall_display_is_enabled($collect);
         justify-content: space-between;
         gap: 1em;
     }
-
-    #btcpw_revenue_container {
-        display: '';
-    }
 </style>
 <div id="btcpw_revenue_container">
     <div class="btcpw_revenue_post_container">

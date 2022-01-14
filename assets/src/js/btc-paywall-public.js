@@ -20,12 +20,9 @@
           post_id: post_id
         },
         success: function (response) {
-          $('.entry-content, .entry-body, .single-content').html(
-            response.data.body
-          )
-          /* $(
-            '.btcpw_revenue_post_container,.btcpw_revenue_view_container'
-          ).hide() */
+          if (response.success) {
+            $('#btcpw_revenue_container').hide()
+          }
         }
       })
     }

@@ -1130,7 +1130,7 @@ function ajax_btcpaywall_is_paid_content()
  */
     //var_dump(btcpaywall_is_paid_content($cookie, $post_id));
     //var_dump($body);
-    wp_send_json_success(['body' => $body]);
+    wp_send_json_error(['body' => $body]);
 }
 
 add_action('wp_ajax_btcpw_paid_content',  'ajax_btcpaywall_is_paid_content');
