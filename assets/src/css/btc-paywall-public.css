@@ -1364,11 +1364,9 @@ button.btcpaywall_add_to_cart {
   font-weight: normal;
   text-align: center;
   padding: 10px;
-  border-radius: 1px;
+  border-radius: 8px;
   cursor: pointer;
-}
-.btcpw_container > * {
-  flex: 1;
+  text-transform: capitalize;
 }
 
 .btcpw_tabset {

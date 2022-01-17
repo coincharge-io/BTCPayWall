@@ -1026,7 +1026,7 @@ add_action('wp_ajax_btcpw_opennode_monitor_invoice_status',  'ajax_btcpaywall_op
 add_action('wp_ajax_nopriv_btcpw_opennode_monitor_invoice_status',  'ajax_btcpaywall_opennode_monitor_invoice_status');
 
 
-function ajax_btcpaywall_is_paid_content()
+/* function ajax_btcpaywall_is_paid_content()
 {
     $cookie = sanitize_text_field($_POST['cookie']);
     if (empty($cookie)) {
@@ -1043,4 +1043,4 @@ function ajax_btcpaywall_is_paid_content()
 }
 
 add_action('wp_ajax_btcpw_paid_content',  'ajax_btcpaywall_is_paid_content');
-add_action('wp_ajax_nopriv_btcpw_paid_content',  'ajax_btcpaywall_is_paid_content');
+add_action('wp_ajax_nopriv_btcpw_paid_content',  'ajax_btcpaywall_is_paid_content'); */

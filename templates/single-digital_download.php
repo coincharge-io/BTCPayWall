@@ -28,6 +28,7 @@ $default_button = get_option('btcpw_pay_per_file_button');
         max-width: 1200px;
         margin: 0 auto;
         padding: 15px;
+        position: relative;
     }
 
     /* .btcpw_product_image {
@@ -37,22 +38,27 @@ $default_button = get_option('btcpw_pay_per_file_button');
         background-image: url(<?php echo esc_url($logo[0]); ?>);
     } */
     .btcpw_product_image {
-        width: 65%;
+        width: 40%;
         position: relative;
+        height: 500px;
     }
 
     .btcpw_product_image img {
         width: 100%;
+        height: 100%;
         position: absolute;
         left: 0;
         top: 0;
-        transition: all 0.3s ease;
+        object-fit: contain;
+        user-select: none;
+
     }
 
     .btcpw_product_description {
+        width: 60%;
         border-bottom: 1px solid #E1E8EE;
         margin-bottom: 20px;
-        padding-left: 20px;
+        padding: 20px;
     }
 
     .btcpw_additonal_product_description {
@@ -93,6 +99,37 @@ $default_button = get_option('btcpw_pay_per_file_button');
 
     #content {
         display: block !important;
+    }
+
+    @media (max-width: 1100px) {
+
+        .btcpw_container {
+            flex-direction: column-reverse;
+            width: 90%;
+            margin: 5vh 0;
+        }
+
+        .btcpw_product_image {
+            width: 100%;
+            height: 300px;
+        }
+
+        .btcpw_product_description {
+            width: 100%;
+            min-height: auto;
+            margin: 10px 0;
+
+        }
+
+        .btcpw_product_description h1 {
+            font-size: 30px;
+            letter-spacing: -2px;
+        }
+
+        .btcpw_product_description p {
+            font-size: 12px;
+            line-height: 16px;
+        }
     }
 </style>
 <?php get_header(); ?>

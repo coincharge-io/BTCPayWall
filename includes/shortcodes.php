@@ -1008,9 +1008,9 @@ add_shortcode('btcpw_pay_video_block', 'btcpaywall_render_shortcode_btcpw_pay_vi
  */
 function btcpaywall_render_shortcode_btcpw_start_content($atts)
 {
-    /* if (btcpaywall_is_paid_content()) {
+    if (btcpaywall_is_paid_content()) {
         return '';
-    } */
+    }
 
     $atts = shortcode_atts(array(
         'pay_block' => 'false',
@@ -1064,9 +1064,9 @@ add_shortcode('btcpw_start_content', 'btcpaywall_render_shortcode_btcpw_start_co
 
 function btcpaywall_render_shortcode_btcpw_start_video($atts)
 {
-    /* if (btcpaywall_is_paid_content()) {
+    if (btcpaywall_is_paid_content()) {
         return '';
-    } */
+    }
     $img_preview = plugin_dir_url(__FILE__) . 'img/preview.png';
 
     $atts = shortcode_atts(array(
@@ -1139,9 +1139,9 @@ add_shortcode('btcpw_end_video', 'btcpaywall_render_shortcode_btcpw_end_content'
  */
 function btcpaywall_render_shortcode_btcpw_pay_block($atts)
 {
-    /* if (btcpaywall_is_paid_content()) {
+    if (btcpaywall_is_paid_content()) {
         return '';
-    } */
+    }
 
     $atts = shortcode_atts(array(
         'background_color' => '#ECF0F1',

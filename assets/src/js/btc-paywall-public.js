@@ -2,7 +2,7 @@
   'use strict'
 
   $(document).ready(function () {
-    var cookie = null
+    /* var cookie = null
     var post_id = $('#btcpw_pay__button').data('post_id')
     var match = document.cookie.match(
       new RegExp('(^| )' + 'btcpw_' + post_id + '=([^;]+)')
@@ -25,7 +25,7 @@
           }
         }
       })
-    }
+    } */
     $('.btcpaywall_cart_remove_item_btn').click(function (e) {
       e.preventDefault()
       var item = $(this).data('cart-key')
