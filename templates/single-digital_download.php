@@ -14,7 +14,7 @@ $download = new BTCPayWall_Digital_Download($post->ID);
 $logo_id = get_post_meta($post->ID, 'btcpw_product_image_id', true);
 $logo = wp_get_attachment_image_src($logo_id);
 $price = get_post_meta($post->ID, 'btcpw_price', true) . ' ' . get_option('btcpw_default_pay_per_file_currency', 'SATS');
-$description = get_post_meta($post->ID, 'btcpw_product_description', true);
+$description = get_post_meta($post->ID, '_btcpw_product_description', true);
 $button_color = get_option('btcpw_pay_per_file_button_color');
 $button_text_color = get_option('btcpw_pay_per_file_button_text_color');
 $default_button = get_option('btcpw_pay_per_file_button');
@@ -24,23 +24,21 @@ $default_button = get_option('btcpw_pay_per_file_button');
         display: <?php echo isset($logo_id) ? 'flex' : '' ?>;
         flex-direction: <?php echo isset($logo_id) ? 'row-reverse' : 'column' ?>;
         justify-content: <?php echo isset($logo_id) ? 'space-evenly' : 'center' ?>;
-        min-height: 700px;
         max-width: 1200px;
         margin: 0 auto;
         padding: 15px;
         position: relative;
     }
 
-    /* .btcpw_product_image {
-        overflow: hidden;
-        background-size: cover;
-        background-position: center;
-        background-image: url(<?php echo esc_url($logo[0]); ?>);
-    } */
     .btcpw_product_image {
         width: 40%;
-        position: relative;
-        height: 500px;
+        position: -webkit-sticky;
+        position: -moz-sticky;
+        position: -ms-sticky;
+        position: -o-sticky;
+        position: sticky;
+        top: 0;
+        max-height: 800px;
     }
 
     .btcpw_product_image img {
@@ -66,7 +64,7 @@ $default_button = get_option('btcpw_pay_per_file_button');
     }
 
     .btcpw_product_description span {
-        font-size: 12px;
+        font-size: 14px;
         color: #358ED7;
         letter-spacing: 1px;
         text-transform: uppercase;
@@ -74,10 +72,11 @@ $default_button = get_option('btcpw_pay_per_file_button');
     }
 
     .btcpw_product_description h1 {
-        font-weight: 300;
-        font-size: 52px;
+        font-weight: 700;
+        font-size: 30px;
         color: #43484D;
         letter-spacing: -2px;
+        margin: 0;
     }
 
     .btcpw_product_description p {
@@ -87,10 +86,6 @@ $default_button = get_option('btcpw_pay_per_file_button');
         line-height: 24px;
     }
 
-    /* .btcpw_product_description {
-        width: 35%;
-        margin-top: 60px;
-    } */
 
     .btcpaywall_add_to_cart {
         background-color: <?php echo esc_html($button_color) . ' !important'; ?>;
@@ -141,7 +136,7 @@ $default_button = get_option('btcpw_pay_per_file_button');
                 <h1><?php the_title(); ?></h1>
                 <p class="btcpw_product_price"><span class="btcpw_product_price"><em><?php echo esc_html($price); ?> incl. VAT</em></span></p>
                 <div class="btcpw_additonal_product_description">
-                    <?php echo esc_html__($description, 'btcpaywall'); ?>
+                    <?php echo wp_kses($description, wp_kses_allowed_html('post')); ?>
                 </div>
                 <form id="btcpaywall_download_form" action="" method="POST">
 
@@ -159,9 +154,8 @@ $default_button = get_option('btcpw_pay_per_file_button');
 
     </section>
     <div class="btcpw_tabset">
-        <!-- Tab 1 -->
         <input type="radio" name="tabset" id="tab1" aria-controls="btcpw_product_description" checked>
-        <label for="tab1">Description</label>
+        <label for="tab1"><?php echo esc_html__('Description', 'btcpaywall'); ?></label>
         <div class="btcpw_tab-panels">
             <section id="btcpw_product_description" class="btcpw_tab-panel">
                 <div><?php the_content(); ?></div>

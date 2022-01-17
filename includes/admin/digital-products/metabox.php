@@ -33,7 +33,7 @@ function btcpaywall_add_product_meta_boxes()
 
     add_meta_box('btcpw_product_image', __('BTCPayWall Product Image', 'btcpaywall'), 'render_btcpw_product_image', 'digital_download', 'side');
 
-    add_meta_box('btcpw_product_description',  __('BTCPayWall Product Description', 'btcpaywall'), 'render_btcpw_product_description', 'digital_download');
+    add_meta_box('_btcpw_product_description',  __('BTCPayWall Product Description', 'btcpaywall'), 'render_btcpw_product_description', 'digital_download');
 }
 
 add_action('add_meta_boxes', 'btcpaywall_add_product_meta_boxes');
@@ -57,14 +57,13 @@ function btcpw_meta_fields()
 function render_btcpw_product_description($post)
 {
     $btcpw_stored_meta = get_post_meta($post->ID);
-    $description = $btcpw_stored_meta['btcpw_product_description'][0] ?? '';
+    $description = $btcpw_stored_meta['_btcpw_product_description'][0] ?? '';
     $args = array(
         'tinymce' => false,
         'quicktags' => true,
     );
-
-
-    wp_editor(html_entity_decode($description), 'btcpw_product_description', $args);
+    //wp_editor(htmlspecialchars_decode($description), 'description');
+    wp_editor(htmlspecialchars_decode($description), 'btcpw_product_description');
 }
 function render_btcpw_product_settings($post)
 {
@@ -183,13 +182,19 @@ function btcpaywall_meta_save($post_id)
 
     $fields = btcpw_meta_fields();
 
-
     foreach ($fields as $field) {
         if (('btcpw_product_limit' === $field) || ('btcpw_price' === $field)  || ('btcpw_product_sales' === $field)) {
             if (!empty($_POST[$field])) {
                 update_post_meta($post_id, $field, intval($_POST[$field]));
             } else {
                 delete_post_meta($post_id, $field);
+            }
+        } elseif ($field === 'btcpw_product_description') {
+            if (!empty($_POST[$field])) {
+                $new_value = wp_kses_post($_POST[$field]);
+                update_post_meta($post_id, '_' . $field, $new_value);
+            } else {
+                delete_post_meta($post_id, '_' . $field);
             }
         } else {
             if (!empty($_POST[$field])) {

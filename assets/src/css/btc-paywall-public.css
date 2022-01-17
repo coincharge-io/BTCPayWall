@@ -1354,6 +1354,7 @@ Pay-per-file
 }
 a.btcpaywall_checkout,
 button.btcpaywall_add_to_cart {
+  font-family: Sans-serif;
   overflow: hidden;
   width: auto;
   position: relative;
@@ -1363,15 +1364,36 @@ button.btcpaywall_add_to_cart {
   line-height: 1;
   font-weight: normal;
   text-align: center;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 20px;
+  border-radius: 2px;
   cursor: pointer;
   text-transform: capitalize;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  box-shadow: 0 10px 48px -6px rgba(0, 0, 0, 0.2);
 }
 
-.btcpw_tabset {
-  margin-top: 60px;
+button.btcpaywall_add_to_cart:active {
+  -moz-transform: scale3d(0.9, 0.9, 0.9);
+  -ms-transform: scale3d(0.9, 0.9, 0.9);
+  -webkit-transform: scale3d(0.9, 0.9, 0.9);
+  transform: scale3d(0.9, 0.9, 0.9);
 }
+button.btcpaywall_add_to_cart:hover {
+  background-color: transparent;
+  opacity: 0.6;
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  transform: scale(1.05);
+}
+/* .btcpw_tabset {
+  margin-top: 60px;
+} */
 
 .btcpw_tabset > input[type='radio'] {
   position: absolute;
@@ -1460,4 +1482,7 @@ button.btcpaywall_add_to_cart {
 
 #btcpw_digital_download_customer_info h2 {
   text-align: center;
+}
+.btcpw_container > div {
+  flex: 1;
 }
