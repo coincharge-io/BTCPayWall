@@ -789,8 +789,7 @@ add_action('wp_ajax_nopriv_btcpw_add_to_cart',  'ajax_btcpaywall_add_to_cart');
 
 function ajax_btcpaywall_remove_from_cart()
 {
-
-    if (empty($_POST['cart_item'])) {
+    if (!is_numeric($_POST['cart_item'])) {
         wp_send_json_error();
     }
     $cart_item = absint($_POST['cart_item']);
