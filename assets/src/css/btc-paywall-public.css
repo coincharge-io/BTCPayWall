@@ -1319,7 +1319,7 @@ Pay-per-file
   flex-direction: column;
   flex-wrap: wrap;
 }
-#btcpw_digital_download_form fieldset {
+#btcpw_digital_download_form {
   position: relative;
 }
 .btcpw_digital_download_customer_information {

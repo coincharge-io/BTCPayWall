@@ -1239,10 +1239,10 @@ function btcpaywall_render_checkout()
             </tr>
         </tfoot>
     </table>
-    <div id="btcpw_digital_download_customer_info">
-        <h2>Personal Info</h2>
-        <form method="POST" action="" id="btcpw_digital_download_form">
-            <?php if ($collect_data == true) : ?>
+    <?php if ($collect_data == true) : ?>
+        <div id="btcpw_digital_download_customer_info">
+            <h2>Personal Info</h2>
+            <form method="POST" action="" id="btcpw_digital_download_form">
                 <fieldset>
                     <div class="btcpw_digital_download_customer_information">
                         <?php foreach ($collect as $key => $value) : ?>
@@ -1266,9 +1266,22 @@ function btcpaywall_render_checkout()
                         </div>
                     </div>
                 </fieldset>
-            <?php endif; ?>
-        </form>
-    </div>
+
+
+            </form>
+        </div>
+    <?php else : ?>
+        <div>
+            <form method="POST" action="" id="btcpw_digital_download_form">
+                <div class="btcpw_digital_download_button" id="btcpw_digital_download_button">
+                    <div>
+                        <button type="submit" data-post_id="<?php echo esc_attr(get_the_ID()); ?>" class="btcpw_digital_download"><?php echo esc_html__('Pay', 'btcpaywall'); ?></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    <?php endif; ?>
+
 <?php
 }
 

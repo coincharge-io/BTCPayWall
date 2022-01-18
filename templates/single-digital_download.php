@@ -12,12 +12,13 @@ $download = new BTCPayWall_Digital_Download($post->ID);
 
 
 $logo_id = get_post_meta($post->ID, 'btcpw_product_image_id', true);
-$logo = wp_get_attachment_image_src($logo_id);
+$logo = wp_get_attachment_image_src($logo_id, 'full');
 $price = get_post_meta($post->ID, 'btcpw_price', true) . ' ' . get_option('btcpw_default_pay_per_file_currency', 'SATS');
 $description = get_post_meta($post->ID, '_btcpw_product_description', true);
-$button_color = get_option('btcpw_pay_per_file_button_color');
-$button_text_color = get_option('btcpw_pay_per_file_button_text_color');
-$default_button = get_option('btcpw_pay_per_file_button');
+$button_color = get_option('btcpw_pay_per_file_button_color', '#f6b330');
+$button_text_color = get_option('btcpw_pay_per_file_button_text_color', '#FFFFFF');
+$default_button = get_option('btcpw_pay_per_file_button', 'Pay');
+$allowed_tags = wp_kses_allowed_html('post');
 ?>
 <style>
     .btcpw_container {
@@ -136,7 +137,7 @@ $default_button = get_option('btcpw_pay_per_file_button');
                 <h1><?php the_title(); ?></h1>
                 <p class="btcpw_product_price"><span class="btcpw_product_price"><em><?php echo esc_html($price); ?> incl. VAT</em></span></p>
                 <div class="btcpw_additonal_product_description">
-                    <?php echo wp_kses($description, wp_kses_allowed_html('post')); ?>
+                    <?php echo wp_kses($description, $allowed_tags); ?>
                 </div>
                 <form id="btcpaywall_download_form" action="" method="POST">
 
