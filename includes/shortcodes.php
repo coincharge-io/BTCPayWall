@@ -1182,7 +1182,6 @@ function btcpaywall_render_checkout()
 {
     $products = BTCPayWall()->cart->get_contents();
     $total = btcpaywall_get_total() . ' ' . get_option('btcpw_default_pay_per_file_currency');
-
     $collect_atts = array(
         'display_name' =>  get_option('btcpw_default_pay_per_file_display_name', false),
         'display_email' =>  get_option('btcpw_default_pay_per_file_display_email', false),

@@ -769,7 +769,7 @@ add_action('wp_ajax_nopriv_opennode_tipping_paid_invoice',  'ajax_btcpaywall_pai
 
 function ajax_btcpaywall_add_to_cart()
 {
-    if (empty($_POST['id'])) {
+    if (!is_numeric($_POST['id'])) {
         wp_send_json_error();
     }
     $download_id = absint($_POST['id']);

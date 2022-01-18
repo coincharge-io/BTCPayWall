@@ -50,7 +50,7 @@ function btcpaywall_digital_download_template($single_template)
 {
     global $post;
 
-    if ($post->post_type == 'digital_download') {
+    if ($post->post_type == 'digital_product') {
         $single_template = BTCPAYWALL_PLUGIN_DIR . 'templates/single-digital_download.php';
     }
     return $single_template;

@@ -498,7 +498,7 @@ class BTCPayWall_Digital_Download
 
     private function setup_download($download)
     {
-        if ('digital_download' !== $download->post_type || !($download instanceof WP_Post)) {
+        if ('digital_product' !== $download->post_type || !($download instanceof WP_Post)) {
             return false;
         }
 

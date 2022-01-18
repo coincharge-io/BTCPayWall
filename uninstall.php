@@ -21,7 +21,7 @@ include_once('btcpaywall.php');
 global $wpdb;
 
 if (get_option('btcpw_remove_data_on_uninstall')) {
-	$btcpaywall_post_types = array('btcpw_order', 'digital_download');
+	$btcpaywall_post_types = array('btcpw_order', 'digital_product', 'digital_download');
 	foreach ($btcpaywall_post_types as $post_type) {
 
 		$posts = get_posts(array('post_type' => $btcpaywall_post_types, 'post_status' => 'any', 'numberposts' => -1, 'fields' => 'ids'));
@@ -36,7 +36,7 @@ if (get_option('btcpw_remove_data_on_uninstall')) {
 	$deletable = array(
 		'btcpw_currency', 'btcpw_btc_format', 'btcpw_price', 'btcpw_duration', 'btcpw_duration_type',
 		'btcpw_digital_product_id', 'btcpw_digital_product_file', 'btcpw_digital_product_filename',
-		'btcpw_product_sales', 'btcpw_product_limit', 'btcpw_product_image_id', 'btcpw_product_description', 'btcpw_status', 'btcpw_post_id', 'btcpw_from_ip', 'btcpw_secret'
+		'btcpw_product_sales', 'btcpw_product_limit', 'btcpw_product_image_id', 'btcpw_product_description', 'btcpw_status', 'btcpw_post_id', 'btcpw_from_ip', 'btcpw_secret', 'btcpw_btcpay_store_id'
 	);
 	foreach ($deleteable as $to_delete) {
 		delete_metadata('post', 0, $to_delete, false, true);

@@ -1,7 +1,7 @@
 <?php
 /*
 *Template Name: Add to Cart
-*Template Post Type: digital_download
+*Template Post Type: digital_product
 */
 
 // Exit if accessed directly.

@@ -35,7 +35,7 @@ function btcpaywall_register_post_types()
         'rewrite' => true,
         'query_var' => true,
     ]);
-    $labels = array(
+    /* $labels = array(
         'name'               => _x('BP Digital Download', 'BP Digital Download', 'btcpaywall'),
         'singular_name'      => _x('BP Digital Download', 'BP Digital Download', 'btcpaywall'),
         'add_new'            => __('Add New', 'btcpaywall'),
@@ -65,6 +65,38 @@ function btcpaywall_register_post_types()
         'has_archive' => false,
         'rewrite'     => array('slug' => 'digital-download'),
         'query_var' => true,
-    ]);
+    ]); */
+    
+    $labels = array(
+        'name'               => _x('Digital Product', 'Digital Product', 'btcpaywall'),
+        'singular_name'      => _x('Digital Product', 'Digital Product', 'btcpaywall'),
+        'add_new'            => __('Add New', 'btcpaywall'),
+        'add_new_item'       => __('Add New Digital Product', 'btcpaywall'),
+        'edit_item'          => __('Edit Digital Product', 'btcpaywall'),
+        'new_item'           => __('New Digital Product', 'btcpaywall'),
+        'all_items'          => __('All Digital Products', 'btcpaywall'),
+        'view_item'          => __('View Digital Product', 'btcpaywall'),
+        'search_items'       => __('Search Digital Product', 'btcpaywall'),
+        'not_found'          => __('No Digital Product found', 'btcpaywall'),
+        'not_found_in_trash' => __('No Digital Product found in Trash', 'btcpaywall'),
+        'parent_item_colon'  => '',
+        'menu_name'          => __('Digital Product', 'btcpaywall')
+    );
+
+    register_post_type('digital_product', [
+        'labels' => $labels,
+        'public' => true,
+        'show_ui'         => true,
+        'show_in_menu'    => false,
+        'rest_base' => null,
+        'menu_position' => null,
+        'menu_icon' => null,
+        'hierarchical' => false,
+        'supports'           => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments'),
+        'taxonomies' => [],
+        'has_archive' => false,
+        'rewrite'     => array('slug' => 'digital-product'),
+        'query_var' => true,
+    ]); 
 }
 add_action('init', 'btcpaywall_register_post_types');
