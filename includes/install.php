@@ -55,7 +55,7 @@ function btcpaywall_upgrade_function($upgrader_object, $options)
 {
 
     global $wpdb;
-    $current_plugin_path_name = BTCPAYWALL_PLUGIN_FILE;
+    $current_plugin_path_name = BTCPAYWALL_PLUGIN_BASE;
 
     if ($options['action'] == 'update' && $options['type'] == 'plugin') {
         foreach ($options['plugins'] as $each_plugin) {

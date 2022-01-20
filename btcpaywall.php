@@ -119,6 +119,10 @@ if (!class_exists('BTCPayWall')) :
             if (!defined('BTCPAYWALL_PLUGIN_FILE')) {
                 define('BTCPAYWALL_PLUGIN_FILE', __FILE__);
             }
+            // Plugin Base.
+            if (!defined('BTCPAYWALL_PLUGIN_BASE')) {
+                define('BTCPAYWALL_PLUGIN_BASE', plugin_basename(__FILE__));
+            }
         }
 
         /**
