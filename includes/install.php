@@ -53,15 +53,13 @@ function create_pages()
 
 function btcpaywall_upgrade_function($upgrader_object, $options)
 {
-    if (BTCPAYWALL_VERSION !== (int)'1.1.0') {
-        return false;
-    }
+
     global $wpdb;
     $current_plugin_path_name = BTCPAYWALL_PLUGIN_FILE;
 
     if ($options['action'] == 'update' && $options['type'] == 'plugin') {
         foreach ($options['plugins'] as $each_plugin) {
-            if ($each_plugin == $current_plugin_path_name) {
+            if ($each_plugin == $current_plugin_path_name && BTCPAYWALL_VERSION == (int)'1.1.0') {
                 $old_post_types = array('digital_download' => 'digital_product');
                 foreach ($old_post_types as $old_type => $type) {
                     $wpdb->query($wpdb->prepare("UPDATE {$wpdb->posts} SET post_type = REPLACE(post_type, %s, %s) 
