@@ -10,6 +10,8 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: btcpaywall
  * Domain Path: languages
+ * GitHub Plugin URI: coincharge-io/BTCPayWall
+ * GitHub Plugin URI: https://github.com/coincharge-io/BTCPayWall
  */
 
 
