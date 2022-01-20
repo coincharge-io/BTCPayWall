@@ -21,7 +21,7 @@ include_once('btcpaywall.php');
 global $wpdb;
 
 if (get_option('btcpw_remove_data_on_uninstall')) {
-	$btcpaywall_post_types = array('btcpw_order', 'digital_product', 'digital_download');
+	$btcpaywall_post_types = array('btcpw_order', 'digital_download');
 	foreach ($btcpaywall_post_types as $post_type) {
 
 		$posts = get_posts(array('post_type' => $btcpaywall_post_types, 'post_status' => 'any', 'numberposts' => -1, 'fields' => 'ids'));
