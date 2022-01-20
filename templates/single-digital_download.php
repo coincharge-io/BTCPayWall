@@ -34,7 +34,7 @@ $allowed_tags = wp_kses_allowed_html('post');
     .btcpw_product_image {
         position: relative;
         width: 40%;
-        height: 500px;
+        height: 400px;
     }
 
     .btcpw_product_image img {

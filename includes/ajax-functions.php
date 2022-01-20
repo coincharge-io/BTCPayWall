@@ -774,7 +774,7 @@ function ajax_btcpaywall_add_to_cart()
     }
     $download_id = absint($_POST['id']);
     BTCPayWall()->cart->add($download_id, array('title' => sanitize_text_field($_POST['title'])));
-
+    
     $checkout_page = get_permalink(get_option('btcpw_checkout_page'));
 
 
