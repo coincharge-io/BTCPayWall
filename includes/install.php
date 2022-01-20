@@ -60,7 +60,6 @@ function btcpaywall_upgrade_function($upgrader_object, $options)
     if ($options['action'] == 'update' && $options['type'] == 'plugin') {
         foreach ($options['plugins'] as $each_plugin) {
             if ($each_plugin == $current_plugin_path_name && BTCPAYWALL_VERSION == (int)'1.1.0') {
-                var_dump('passed');
                 $old_post_types = array('digital_download' => 'digital_product');
                 foreach ($old_post_types as $old_type => $type) {
                     $wpdb->query($wpdb->prepare("UPDATE {$wpdb->posts} SET post_type = REPLACE(post_type, %s, %s) 
