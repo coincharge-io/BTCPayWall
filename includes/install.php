@@ -56,22 +56,28 @@ function btcpaywall_upgrade_function($upgrader_object, $options)
 
     global $wpdb;
     $current_plugin_path_name = BTCPAYWALL_PLUGIN_BASE;
-
+    $btcpaywall_updated = false;
     if ($options['action'] == 'update' && $options['type'] == 'plugin') {
         foreach ($options['plugins'] as $each_plugin) {
             if ($each_plugin == $current_plugin_path_name) {
+                $btcpaywall_updated = true;
+                break;
                 //&& BTCPAYWALL_VERSION == (int)'1.1.0'
-                $old_post_types = array('digital_download' => 'digital_product');
-                foreach ($old_post_types as $old_type => $type) {
-                    $wpdb->query($wpdb->prepare("UPDATE {$wpdb->posts} SET post_type = REPLACE(post_type, %s, %s) 
-                                     WHERE post_type LIKE %s", $old_type, $type, $old_type));
-                    $wpdb->query($wpdb->prepare("UPDATE {$wpdb->posts} SET guid = REPLACE(guid, %s, %s) 
-                                     WHERE guid LIKE %s", "post_type={$old_type}", "post_type={$type}", "%post_type={$old_type}%"));
-                    $wpdb->query($wpdb->prepare("UPDATE {$wpdb->posts} SET guid = REPLACE(guid, %s, %s) 
-                                     WHERE guid LIKE %s", "/{$old_type}/", "/{$type}/", "%/{$old_type}/%"));
-                }
+
             }
         }
+    }
+    if (!$btcpaywall_updated) {
+        return false;
+    }
+    $old_post_types = array('digital_download' => 'digital_product');
+    foreach ($old_post_types as $old_type => $type) {
+        $wpdb->query($wpdb->prepare("UPDATE {$wpdb->posts} SET post_type = REPLACE(post_type, %s, %s) 
+                             WHERE post_type LIKE %s", $old_type, $type, $old_type));
+        $wpdb->query($wpdb->prepare("UPDATE {$wpdb->posts} SET guid = REPLACE(guid, %s, %s) 
+                             WHERE guid LIKE %s", "post_type={$old_type}", "post_type={$type}", "%post_type={$old_type}%"));
+        $wpdb->query($wpdb->prepare("UPDATE {$wpdb->posts} SET guid = REPLACE(guid, %s, %s) 
+                             WHERE guid LIKE %s", "/{$old_type}/", "/{$type}/", "%/{$old_type}/%"));
     }
 }
 add_action('upgrader_process_complete', 'btcpaywall_upgrade_function', 10, 2);
