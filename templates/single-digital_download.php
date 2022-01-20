@@ -32,14 +32,9 @@ $allowed_tags = wp_kses_allowed_html('post');
     }
 
     .btcpw_product_image {
+        position: relative;
         width: 40%;
-        position: -webkit-sticky;
-        position: -moz-sticky;
-        position: -ms-sticky;
-        position: -o-sticky;
-        position: sticky;
-        top: 0;
-        max-height: 800px;
+        height: 500px;
     }
 
     .btcpw_product_image img {
