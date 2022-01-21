@@ -10,10 +10,10 @@
         <?php //$customer = empty($name) ? 'customer' : $name;
         $payment_details = new BTCPayWall_Payment($invoice_id);
         $customer_data = new BTCPayWall_Customer($payment_details->customer_id);
-        $customer = empty($customer_data->name) ? 'customer' : $customer_data->name;
+        $customer = empty($customer_data->full_name) ? ',' :  " {$customer_data->full_name},";
         $is_tipping = strtolower($payment_details->revenue_type)[0] == 't' ? true : false;
         $message = strtolower($payment_details->revenue_type)[0] == 't' ? 'Thank you for your tipping. You can see tipping details in the table below.' : 'Thank you for your purchase. You can see payment details in the table below.'; ?>
-        <p>Dear <?php echo esc_html($customer); ?>,</p>
+        <p>Hello<?php echo esc_html($customer); ?></p>
         <p><?php echo esc_html__($message, 'btcpaywall'); ?></p>
         <table style="border-collapse: separate; width: 100%;
             table-layout: auto;" role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">

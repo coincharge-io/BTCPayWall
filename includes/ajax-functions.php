@@ -683,7 +683,7 @@ add_action('wp_ajax_opennode_paid_invoice',  'ajax_btcpaywall_paid_opennode_invo
 add_action('wp_ajax_nopriv_opennode_paid_invoice',  'ajax_btcpaywall_paid_opennode_invoice');
 
 /**
- * @since 1.1.0
+ * @since 1.0.2
  */
 function ajax_btcpaywall_paid_tipping_opennode_invoice()
 {

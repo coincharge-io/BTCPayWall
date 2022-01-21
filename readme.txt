@@ -1,7 +1,7 @@
 === BTCPayWall ===
 Contributors: coincharge
 Donate link: https://btcpaywall.com/support/
-Tags: btcpaywall, Bitcoin, Lightning, paywall, BTCPay, pay-per-post, pay-per-view, pay-per-content,content-store, tipping, coincharge, publisher, payment
+Tags: btcpaywall, Bitcoin, Lightning, paywall, BTCPay, pay-per-post, pay-per-view, pay-per-content, digital-store, tipping, coincharge, publisher, payment
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 5.8
@@ -28,11 +28,11 @@ With BTCPayWall you can offer a Bitcoin Paywall for a single blog post (pay-per-
 
 **Pay per video (pay-per-view)**
 
-Sell digital content that is played directly. With the Content Store View module, you can offer videos or audio files to your visitors for a fee and have them played directly on your own website.
+Sell digital content that is played directly. With the View module, you can offer videos or audio files to your visitors for a fee and have them played directly on your own website.
 
-**Content Store**
+**Digital Store**
 
-With the Content Store you can sell your digital files and the customer can download this file to his computer.
+With the Digital Store you can sell your digital files and the customer can download this file to his computer.
 
 **Receive tips & donations**
 
@@ -86,9 +86,22 @@ https://btcpaywall.com/faq-support-center/
 
  == Changelog ==
  
-= 1.1.0 =
+= 1.0.2 =
 
 - Add: Uninstall function
+
+- Add: Customization for digital store 
+
+- Add: Customer notification - if collect email is enabled
+
+- Improve: Form design
+
+- Improve: Email format
+
+- Improve: Product page
+
+- Fix: Gutenberg unresponsive fields
+
 
 = 1.0.1 =
 

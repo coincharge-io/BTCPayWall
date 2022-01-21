@@ -178,7 +178,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                             <?php endforeach; ?>
                             <?php if (true == $atts['free_input']) : ?>
                                 <div class="btcpw_skyscraper_tipping_free_input wide">
-                                    <input type="number" id="btcpw_skyscraper_tipping_wide_amount" name="btcpw_skyscraper_tipping_amount_wide" placeholder="0.00" required />
+                                    <input type="number" id="btcpw_skyscraper_tipping_wide_amount" min="0" name="btcpw_skyscraper_tipping_amount_wide" placeholder="0.00" required />
 
 
                                     <select required name="btcpw_skyscraper_tipping_currency_wide" id="btcpw_skyscraper_tipping_wide_currency">
@@ -415,7 +415,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                             <?php endforeach; ?>
                             <?php if (true == $atts['free_input']) : ?>
                                 <div class="btcpw_skyscraper_tipping_free_input high">
-                                    <input type="number" id="<?php echo esc_attr("btcpw_skyscraper_tipping_high_amount"); ?>" name="btcpw_skyscraper_tipping_amount_high" placeholder="0.00" required />
+                                    <input type="number" min="0" id="<?php echo esc_attr("btcpw_skyscraper_tipping_high_amount"); ?>" name="btcpw_skyscraper_tipping_amount_high" placeholder="0.00" required />
 
 
                                     <select required name="btcpw_skyscraper_tipping_currency_high" id="btcpw_skyscraper_tipping_high_currency">
@@ -679,7 +679,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                         <?php endforeach; ?>
                         <?php if (true == $atts['free_input']) : ?>
                             <div class="btcpw_page_tipping_free_input">
-                                <input type="number" id="btcpw_page_tipping_amount" name="btcpw_page_tipping_amount" placeholder="0.00" required />
+                                <input type="number" min="0" id="btcpw_page_tipping_amount" name="btcpw_page_tipping_amount" placeholder="0.00" required />
 
 
                                 <select required name="btcpw_page_tipping_currency" id="btcpw_page_tipping_currency">
