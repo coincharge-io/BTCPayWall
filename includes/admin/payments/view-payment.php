@@ -167,7 +167,7 @@ $download_ids = explode(',', $payment->download_ids);
                             <div class="meta-box-sortables" style="min-height: 0">
                                 <div id="btcpaywall_payment_container" class="btcpaywall_payment_container ">
                                     <div class="btcpaywall_payment_container inside_wrap">
-                                        <p>Transaction id: <?php echo esc_html($payment->id); ?></p>
+                                        <p>Payment id: <?php echo esc_html($payment->id); ?></p>
                                     </div>
                                     <div class="btcpaywall_payment_container inside_wrap">
                                         <p>Payment method: <?php echo esc_html($payment->payment_method); ?></p>
