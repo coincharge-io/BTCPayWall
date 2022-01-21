@@ -76,7 +76,7 @@ function btcpaywall_register_settings()
     register_setting('btcpw_general_pay_per_post_options', 'btcpw_pay_per_post_info', array('type' => 'string', 'default' => 'For [price] [currency] you will have access to the post for [duration] [dtype]', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
     register_setting('btcpw_general_pay_per_post_options', 'btcpw_pay_per_post_button', array('type' => 'string', 'default' => 'Pay', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
     register_setting('btcpw_general_pay_per_post_options', 'btcpw_pay_per_post_width', array('type' => 'string', 'default' => '400', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
-    register_setting('btcpw_general_pay_per_post_options', 'btcpw_pay_per_post_height', array('type' => 'string', 'default' => '600', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_pay_per_post_height', array('type' => 'string', 'default' => '650', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
 
 
 
