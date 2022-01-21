@@ -96,7 +96,7 @@
                                 <p>
                                     You can download file/s by clicking on the button/s bellow.
                                 </p>
-                                <?php foreach ($payment_details->download_links as $link) : ?>
+                                <?php foreach ((array)$payment_details->download_links as $link) : ?>
                                     <div> <a href=<?php echo esc_url($link); ?> target="_blank">Download link</a> </div>
                                 <?php endforeach; ?>
                             </div>
