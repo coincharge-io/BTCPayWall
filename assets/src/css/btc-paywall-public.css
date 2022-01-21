@@ -1483,6 +1483,6 @@ button.btcpaywall_add_to_cart:hover {
 #btcpw_digital_download_customer_info h2 {
   text-align: center;
 }
-/* .btcpw_container > div {
-  flex: 1;
-} */
+.btcpw_digital_download_customer_information input {
+  width: 100%;
+}

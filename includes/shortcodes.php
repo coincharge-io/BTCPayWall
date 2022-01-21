@@ -1181,7 +1181,7 @@ add_shortcode('btcpw_pay_block', 'btcpaywall_render_shortcode_btcpw_pay_block');
 function btcpaywall_render_checkout()
 {
     $products = BTCPayWall()->cart->get_contents();
-    $total = btcpaywall_get_total() . ' ' . get_option('btcpw_default_pay_per_file_currency');
+    $total = btcpaywall_get_total() . ' ' . get_option('btcpw_default_pay_per_file_currency', 'SATS');
 
     $collect_atts = array(
         'display_name' =>  get_option('btcpw_default_pay_per_file_display_name', false),
@@ -1252,9 +1252,13 @@ function btcpaywall_render_checkout()
                                 $type = $collect[$key]['type'];
                                 ?>
                                 <div class="<?php echo esc_attr("btcpw_digital_download_customer_{$id}_wrap"); ?>">
-                                    <label for="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
-                                    <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>" name="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
-
+                                    <?php if ($id !== 'message') : ?>
+                                        <label for="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
+                                        <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>" name="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                    <?php else : ?>
+                                        <label for="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
+                                        <textarea type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>" name="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> /></textarea>
+                                    <?php endif; ?>
                                 </div>
 
                             <?php endif; ?>
