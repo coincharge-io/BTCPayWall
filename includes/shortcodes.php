@@ -1200,7 +1200,6 @@ function btcpaywall_render_checkout()
     $collect_data = btcpaywall_display_is_enabled($collect);
     $button_color = get_option('btcpw_pay_per_file_button_color', '#f6b330');
     $button_text_color = get_option('btcpw_pay_per_file_button_text_color', '#FFFFFF');
-    $default_button = get_option('btcpw_pay_per_file_button', 'Pay');
 ?>
     <table id="btcpaywall_checkout_cart">
         <thead>
@@ -1269,7 +1268,7 @@ function btcpaywall_render_checkout()
                     </div>
                     <div class="btcpw_digital_download_button" id="btcpw_digital_download_button">
                         <div>
-                            <button type="submit" style="<?php echo esc_attr("background-color: " . $button_color . ';' . "color: " . $button_text_color . ';'); ?>" data-post_id="<?php echo esc_attr(get_the_ID()); ?>" class="btcpw_digital_download"><?php echo esc_html__($default_button, 'btcpaywall'); ?></button>
+                            <button type="submit" style="<?php echo esc_attr("background-color: " . $button_color . ';' . "color: " . $button_text_color . ';'); ?>" data-post_id="<?php echo esc_attr(get_the_ID()); ?>" class="btcpw_digital_download"><?php echo esc_html__('Pay', 'btcpaywall'); ?></button>
                         </div>
                     </div>
                 </fieldset>
@@ -1282,7 +1281,7 @@ function btcpaywall_render_checkout()
             <form method="POST" action="" id="btcpw_digital_download_form">
                 <div class="btcpw_digital_download_button" id="btcpw_digital_download_button">
                     <div>
-                        <button type="submit" style="<?php echo esc_attr("background-color: " . $button_color . ';' . "color: " . $button_text_color . ';'); ?>" data-post_id="<?php echo esc_attr(get_the_ID()); ?>" class="btcpw_digital_download"><?php echo esc_html__($default_button, 'btcpaywall'); ?></button>
+                        <button type="submit" style="<?php echo esc_attr("background-color: " . $button_color . ';' . "color: " . $button_text_color . ';'); ?>" data-post_id="<?php echo esc_attr(get_the_ID()); ?>" class="btcpw_digital_download"><?php echo esc_html__('Pay', 'btcpaywall'); ?></button>
                     </div>
                 </div>
             </form>
