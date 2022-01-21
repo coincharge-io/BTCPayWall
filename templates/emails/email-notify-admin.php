@@ -11,7 +11,8 @@
     <div clas="container" style="display: block; margin: 0 auto !important; max-width: 580px; padding: 10px; width: 580px; background: #ffffff; border-radius: 3px;">
         <table style="border-collapse: separate; width: 100%;
             table-layout: auto; margin-top:30px;" role="presentation" border="0" cellpadding="0" cellspacing="0">
-            <?php $header1 = strtolower($type)[0] == 't' ? "Tipping Information" : "Payment Information"; ?>
+            <?php $payment_details = new BTCPayWall_Payment($invoice_id);
+            $header1 = strtolower($type)[0] == 't' ? "Tipping Information" : "Payment Information"; ?>
             <thead>
                 <tr>
                     <th style="color: #000000; font-family: sans-serif; font-weight: 400; line-height: 1.4; font-size: 20px;  border: 1px solid #000000;" colspan="2"><?php echo esc_html__($header1, 'btcpaywall'); ?></th>
@@ -23,7 +24,7 @@
                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html__($siteurl, 'btcpaywall'); ?></td>
                 </tr>
 
-                <?php if ($storeId) : ?>
+                <?php if ($gateway == 'BTCPayServer') : ?>
                     <tr>
                         <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Credit on Store ID</td>
                         <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html__($storeId, 'btcpaywall'); ?></td>
@@ -31,15 +32,15 @@
                 <?php endif; ?>
                 <tr>
                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Type</td>
-                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html__($type, 'btcpaywall'); ?></td>
+                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html__($payment_details->revenue_type, 'btcpaywall'); ?></td>
                 </tr>
                 <tr>
                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Date</td>
-                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html__($date, 'btcpaywall'); ?></td>
+                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html__($payment_details->date_created, 'btcpaywall'); ?></td>
                 </tr>
                 <tr>
                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Total</td>
-                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html__($amount, 'btcpaywall'); ?></td>
+                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html(btcpaywall_round_amount($payment_details->currency, $payment_details->amount) . ' ' . $payment_details->currency); ?></td>
                 </tr>
             </tbody>
         </table>

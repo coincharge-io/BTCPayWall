@@ -7,8 +7,11 @@
 
 <body style="background-color: #f6f6f6; font-family: sans-serif; -webkit-font-smoothing: antialiased; font-size: 14px; line-height: 1.4; margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
     <div style="display: block; margin: 0 auto !important; max-width: 580px; padding: 10px; width: 580px; background: #ffffff; border-radius: 3px;">
-        <?php $customer = empty($name) ? 'customer' : $name;
+        <?php //$customer = empty($name) ? 'customer' : $name;
         $payment_details = new BTCPayWall_Payment($invoice_id);
+        $customer_data = new BTCPayWall_Customer($payment_details->customer_id);
+        $customer = empty($customer_data->name) ? 'customer' : $customer_data->name;
+        $is_tipping = strtolower($payment_details->revenue_type)[0] == 't' ? true : false;
         $message = strtolower($payment_details->revenue_type)[0] == 't' ? 'Thank you for your tipping. You can see tipping details in the table below.' : 'Thank you for your purchase. You can see payment details in the table below.'; ?>
         <p>Dear <?php echo esc_html($customer); ?>,</p>
         <p><?php echo esc_html__($message, 'btcpaywall'); ?></p>
@@ -25,10 +28,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Invoice id</td>
-                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->invoice_id); ?></td>
-                                </tr>
+                                <?php if (!$is_tipping) : ?>
+                                    <tr>
+                                        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Invoice id</td>
+                                        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->invoice_id); ?></td>
+                                    </tr>
+                                <?php endif; ?>
 
                                 <tr>
                                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Type</td>
@@ -40,10 +45,13 @@
                                         <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->page_title); ?></td>
                                     </tr>
                                 <?php endif; ?>
-                                <tr>
-                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Payment method</td>
-                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->payment_method); ?></td>
-                                </tr>
+                                <?php if (!$is_tipping) : ?>
+
+                                    <tr>
+                                        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Payment method</td>
+                                        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->payment_method); ?></td>
+                                    </tr>
+                                <?php endif; ?>
                                 <tr>
                                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Date</td>
                                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->date_created); ?></td>

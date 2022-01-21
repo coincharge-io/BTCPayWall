@@ -132,7 +132,7 @@ $allowed_tags = wp_kses_allowed_html('post');
                 <h1><?php the_title(); ?></h1>
                 <p class="btcpw_product_price"><span class="btcpw_product_price"><em><?php echo esc_html($price); ?> incl. VAT</em></span></p>
                 <div class="btcpw_additonal_product_description">
-                    <?php echo wp_kses($description, $allowed_tags); ?>
+                    <?php echo wp_kses(nl2br($description), $allowed_tags); ?>
                 </div>
                 <form id="btcpaywall_download_form" action="" method="POST">
 

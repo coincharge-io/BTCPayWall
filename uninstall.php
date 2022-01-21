@@ -7,7 +7,7 @@
  * @subpackage  Uninstall
  * @copyright   Copyright (c) 2021, Coincharge
  * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
- * @since       1.1.0
+ * @since       1.0.2
  */
 
 // If uninstall not called from WordPress, then exit.
