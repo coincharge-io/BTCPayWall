@@ -17,11 +17,11 @@ if (!isset($_GET['id'])) {
 }
 $id = sanitize_text_field($_GET['id']);
 $payment = new BTCPayWall_Payment($id);
-$is_tipping = substr($payment->revenue_type, 0, 1) === "T";
+$is_tipping = substr($payment->revenue_type, 0, 1) === "T";/* 
 $tipping = new BTCPayWall_Tipping($payment->invoice_id);
-$tipper = new BTCPayWall_Tipper($tipping->tipper_id);
+$tipper = new BTCPayWall_Tipper($tipping->tipper_id); */
 $customer = new BTCPayWall_Customer($payment->customer_id);
-$customer_or_tipper = $is_tipping ? $tipper : $customer;
+//$customer_or_tipper = $is_tipping ? $tipper : $customer;
 $download_ids = explode(',', $payment->download_ids);
 ?>
 <div class="wrap">
@@ -85,16 +85,16 @@ $download_ids = explode(',', $payment->download_ids);
                             <div class="meta-box-sortables" style="min-height: 0">
                                 <div id="btcpaywall_payment_container_customer_details" class="btcpaywall_payment_container_customer_details">
                                     <div class="btcpaywall_payment_container_customer_name">
-                                        <p>Full name: <?php echo esc_html($customer_or_tipper->full_name); ?></p>
+                                        <p>Full name: <?php echo esc_html($customer->full_name); ?></p>
                                     </div>
                                     <div class="btcpaywall_payment_container_customer_email">
-                                        <p>Email: <?php echo esc_html($customer_or_tipper->email); ?></p>
+                                        <p>Email: <?php echo esc_html($customer->email); ?></p>
                                     </div>
                                     <div class="btcpaywall_payment_container_customer_address">
-                                        <p>Address: <?php echo esc_html($customer_or_tipper->address); ?></p>
+                                        <p>Address: <?php echo esc_html($customer->address); ?></p>
                                     </div>
                                     <div class="btcpaywall_payment_container_customer_phone">
-                                        <p>Phone: <?php echo esc_html($customer_or_tipper->phone); ?></p>
+                                        <p>Phone: <?php echo esc_html($customer->phone); ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -111,7 +111,7 @@ $download_ids = explode(',', $payment->download_ids);
                             <div class="meta-box-sortables" style="min-height: 0">
                                 <div id="btcpaywall_payment_container_customer_message" class="btcpaywall_payment_container_customer_message postbox">
 
-                                    <textarea disabled><?php echo esc_html($customer_or_tipper->message); ?></textarea>
+                                    <textarea disabled><?php echo esc_html($customer->message); ?></textarea>
 
 
                                 </div>
