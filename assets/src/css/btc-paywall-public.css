@@ -643,6 +643,9 @@ a.btcpw_pay__download {
   height: 30px;
   border-radius: 8px;
 }
+.btcpw_skyscraper_donor_information.high label {
+  font-size: 14px;
+}
 .btcpw_skyscraper_donor_information.wide input[type='text'],
 .btcpw_skyscraper_donor_information.wide input[type='email'],
 .btcpw_skyscraper_donor_information.wide input[type='url'],
