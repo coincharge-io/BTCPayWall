@@ -82,11 +82,9 @@ function btcpaywall_protect_upload_dir()
     foreach ($files as $file) {
 
         if ((wp_mkdir_p($file['base']))
-            && (!file_exists(trailingslashit($file['base']) . $file['file']))   
+            && (!file_exists(trailingslashit($file['base']) . $file['file']))
         ) {
-
             if ($file_handle = @fopen(trailingslashit($file['base']) . $file['file'], 'w')) {
-
                 fwrite($file_handle, $file['content']);
                 fclose($file_handle);
             }

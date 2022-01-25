@@ -11,6 +11,7 @@
         $payment_details = new BTCPayWall_Payment($invoice_id);
         $customer_data = new BTCPayWall_Customer($payment_details->customer_id);
         $customer = empty($customer_data->full_name) ? ',' :  " {$customer_data->full_name},";
+        $download_links = explode(',', $payment_details->download_links);
         $is_tipping = strtolower($payment_details->revenue_type)[0] == 't' ? true : false;
         $message = strtolower($payment_details->revenue_type)[0] == 't' ? 'Thank you for your tipping. You can see tipping details in the table below.' : 'Thank you for your purchase. You can see payment details in the table below.'; ?>
         <p>Hello<?php echo esc_html($customer); ?></p>
@@ -89,8 +90,8 @@
                                 <p>
                                     You can download file/s by clicking on the button/s bellow.
                                 </p>
-                                <?php foreach ((array)$payment_details->download_links as $link) : ?>
-                                    <div> <a href=<?php echo esc_url($link); ?> target="_blank">Download link</a> </div>
+                                <?php foreach ($download_links as $link) : ?>
+                                    <div> <a href="<?php echo esc_url($link); ?> " target="_blank">Download link</a> </div>
                                 <?php endforeach; ?>
                             </div>
                         <?php endif; ?>
