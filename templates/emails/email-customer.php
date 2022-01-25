@@ -85,7 +85,7 @@
                                 </tbody>
                             </table>
                         <?php endif; ?>
-                        <?php if ($payment_details->download_links) : ?>
+                        <?php if ($download_links) : ?>
                             <div>
                                 <p>
                                     You can download file/s by clicking on the button/s bellow.

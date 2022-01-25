@@ -47,16 +47,18 @@ $download_links = explode(',', $payment->download_links);
                                 <div class="meta-box-sortables" style="min-height: 0">
 
                                     <div id="btcpaywall_payment_container_type" class="btcpaywall_payment_container_type ">
-                                        <?php foreach ($download_ids as $key => $id) : ?>
-                                            <?php $download = new BTCPayWall_Digital_Download($id); ?>
-                                            <div class="btcpaywall_payment_container inside_wrap">
-                                                <table>
-                                                    <thead>
-                                                        <th>File name</th>
-                                                        <th>Price</th>
-                                                        <th>Link</th>
-                                                    </thead>
-                                                    <tbody>
+                                        <table>
+                                            <thead>
+                                                <th>File name</th>
+                                                <th>Price</th>
+                                                <th>Link</th>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($download_ids as $key => $id) : ?>
+                                                    <?php $download = new BTCPayWall_Digital_Download($id); ?>
+                                                    <div class="btcpaywall_payment_container inside_wrap">
+
+
                                                         <tr>
                                                             <td><?php echo esc_html($download->get_name()); ?></td>
                                                             <td><?php echo esc_html($download->get_price()); ?></td>
@@ -65,11 +67,11 @@ $download_links = explode(',', $payment->download_links);
                                                             <?php echo esc_url($download_links[$key]); ?>"><?php echo esc_html($download->get_name()); ?></a>
                                                             </td>
                                                         </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        <?php endforeach; ?>
 
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
                                     </div>
 
                                 </div>

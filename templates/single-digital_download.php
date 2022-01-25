@@ -10,7 +10,6 @@ if (!defined('ABSPATH')) exit;
 global $post;
 $download = new BTCPayWall_Digital_Download($post->ID);
 
-
 $logo_id = get_post_meta($post->ID, 'btcpw_product_image_id', true);
 $logo = wp_get_attachment_image_src($logo_id, 'full');
 $price = get_post_meta($post->ID, 'btcpw_price', true) . ' ' . get_option('btcpw_default_pay_per_file_currency', 'SATS');
