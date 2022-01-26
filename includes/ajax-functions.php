@@ -918,11 +918,11 @@ function ajax_btcpaywall_paid_content_file_invoice()
     $storeId = get_option('btcpw_btcpay_store_id');
     $siteurl = get_option('siteurl');
     $date = date('Y-m-d H:i:s', current_time('timestamp', 0));
-    $message = "Website url: {$siteurl} \n";
+    /* $message = "Website url: {$siteurl} \n";
     $message .= "Date: {$date} \n";
     $message .= "Amount: {$amount} \n";
     $message .= "Credit on Store ID: {$storeId} \n";
-    $message .= "Type: Pay-per-file \n";
+    $message .= "Type: Pay-per-file \n"; */
 
     if ($body['status'] !== 'Settled' && $body['status'] !== 'paid') {
         wp_send_json_error(['message' => 'Invoice is not paid.']);
@@ -934,14 +934,12 @@ function ajax_btcpaywall_paid_content_file_invoice()
     $payment_method = btcpaywall_get_payment_method($body['id']) ? btcpaywall_get_payment_method($body['id']) : 'BTC';
 
 
-    $links = array();
     $db_links = array();
     $download_ids = explode(',', $payment->download_ids);
     foreach ($download_ids as $link_id) {
         $download = new BTCPayWall_Digital_Download($link_id);
         $download->increase_sales();
         $link = btcpaywall_get_download_url($payment->invoice_id, $download->get_file_url(), $download->ID, $body['metadata']['customer_data']['email']);
-        $links[] = $link;
         $db_links[] = esc_url_raw(rawurldecode($link));
     }
     $payment->update(array(

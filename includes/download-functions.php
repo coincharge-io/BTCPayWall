@@ -40,8 +40,8 @@ function btcpaywall_get_download_url($payment_id, $file_url, $download_id, $emai
     $date = strtotime("14 Jan 2038");
 
     $params = array(
-        'payment_id'     => rawurlencode($payment_id),
-        'digital_file'          => rawurlencode($file_url),
+        'payment_id'    => rawurlencode($payment_id),
+        'digital_file'  => rawurlencode($file_url),
         'download_id'   => (int)$download_id,
         'expire'        => rawurlencode($date),
         'email'         => rawurlencode($email)
@@ -59,10 +59,10 @@ function btcpaywall_get_download_url($payment_id, $file_url, $download_id, $emai
 
 
         $args = array(
-            'btcpw_file' => $params['digital_file'],
-            'payment_id'    => $params['payment_id'],
-            'download_id'   => $params['download_id'],
-            'email'   => $params['email'],
+            'btcpw_file'  => $params['digital_file'],
+            'payment_id'  => $params['payment_id'],
+            'download_id' => $params['download_id'],
+            'email'       => $params['email'],
         );
 
 
@@ -1137,13 +1137,13 @@ function btcpaywall_process_download_url($args)
 
     $providedToken = sanitize_text_field($_GET['token']);
 
+
     $verificationToken = btcpaywall_generate_url_token($secret_key, [
-        'ttl' => rawurlencode(sanitize_text_field($query_args['ttl'])),
-        'btcpw_file' => rawurlencode(sanitize_text_field($query_args['btcpw_file'])),
-        'payment_id' => rawurlencode(sanitize_text_field($query_args['payment_id'])),
+        'ttl' => rawurlencode($query_args['ttl']),
+        'btcpw_file' => rawurlencode($query_args['btcpw_file']),
+        'payment_id' => rawurlencode($query_args['payment_id']),
         'download_id' => (int)$query_args['download_id'],
-        'email' => rawurlencode(sanitize_email($query_args['email'])),
-        'ip' => $_SERVER['REMOTE_ADDR'],
+        'email' => rawurlencode($query_args['email']),
     ]);
 
     if (!hash_equals($verificationToken, $providedToken)) {
@@ -1169,6 +1169,7 @@ function btcpaywall_generate_url_token($secret_key, $args)
         'email' => sanitize_email($args['email']),
         'ip' => $_SERVER['REMOTE_ADDR'],
     ];
+
 
     $serialized = json_encode($tokenData);
 

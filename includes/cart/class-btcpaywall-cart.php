@@ -91,7 +91,9 @@ class BTCPayWall_Cart
     public function register_my_session()
     {
         if (!session_id()) {
-            session_start();
+            session_start([
+                'read_and_close' => true,
+            ]);
         }
     }
     public function get_session_contents()

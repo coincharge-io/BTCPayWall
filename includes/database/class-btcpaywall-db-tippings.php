@@ -109,7 +109,7 @@ class BTCPayWall_DB_Tippings extends BTCPayWall_DB
             return $this->insert($data, 'tipping');
         }
     }
-    public function get_tipping_by($field = 'id', $value)
+    public function get_tipping_by($field = 'id', $value=null)
     {
         global $wpdb;
         $row = $wpdb->get_row(

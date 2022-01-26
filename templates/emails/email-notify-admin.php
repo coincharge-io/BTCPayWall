@@ -24,9 +24,22 @@
                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->id); ?></td>
                 </tr>
                 <tr>
-                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Website url</td>
-                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html__($siteurl, 'btcpaywall'); ?></td>
+                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Invoice id</td>
+                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->invoice_id); ?></td>
                 </tr>
+                <?php if ($payment_details->revenue_type != 'Pay-per-file') : ?>
+                    <tr>
+                        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Page title</td>
+                        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->page_title); ?></td>
+                    </tr>
+                <?php else : ?>
+                    <?php $download_ids = explode(',', $payment_details->download_ids); ?>
+                    <tr>
+                        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Products</td>
+                        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php foreach ($download_ids as $id) : ?>
+                                <?php $download = new BTCPayWall_Digital_Download($id); ?><p><?php echo esc_html($download->get_name()); ?></p><?php endforeach; ?></td>
+                    </tr>
+                <?php endif; ?>
 
                 <?php if ($gateway == 'BTCPayServer') : ?>
                     <tr>

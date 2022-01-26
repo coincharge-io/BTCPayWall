@@ -98,7 +98,7 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
             return $this->insert($data, 'customer');
         }
     }
-    public function get_customer_by($field = 'id', $value)
+    public function get_customer_by($field = 'id', $value = null)
     {
         global $wpdb;
         $row = $wpdb->get_row(

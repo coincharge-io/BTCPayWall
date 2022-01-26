@@ -521,15 +521,7 @@ a.btcpw_pay__download {
 #btcpw_widget_btcpw_skyscraper_button_high > div:nth-child(1) > input {
   color: white;
 }
-/* #btcpw_skyscraper_button button,
-#btcpw_skyscraper_button input[type="button"] {
-  border-radius: 2em;
-  -moz-border-radius: 2em;
-  -webkit-border-radius: 2em;
-  font-size: 1.1em;
-  padding: 0.5em !important;
-  text-transform: uppercase;
-} */
+
 #btcpw_skyscraper_high_button button,
 #btcpw_skyscraper_high_button input[type='button'],
 #btcpw_widget_btcpw_skyscraper_button_high button,
@@ -1326,10 +1318,19 @@ Pay-per-file
   position: relative;
 }
 .btcpw_digital_download_customer_information {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 5px;
+}
+.btcpw_digital_download_customer_information fieldset {
+  padding: 20px 30px;
+  border: 2px solid #fff;
+}
+.btcpw_digital_download_customer_information div {
   display: flex;
   flex-direction: column;
 }
-
 .btcpw_digital_download {
   position: absolute;
   bottom: 0;
@@ -1341,13 +1342,12 @@ Pay-per-file
 .btcpw_digital_download_customer_information input[type='text'],
 .btcpw_digital_download_customer_information input[type='email'],
 .btcpw_digital_download_customer_information input[type='number'],
+.btcpw_digital_download_customer_information input[type='tel'],
 .btcpw_digital_download_customer_information textarea {
   width: 100%;
   border-radius: 15px;
   padding: 5px;
   margin: 5px 0;
-  border: 0;
-  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.062);
 }
 
 #btcpw_revenue_container {

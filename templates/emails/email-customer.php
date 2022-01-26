@@ -34,14 +34,26 @@
                                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->id); ?></td>
                                 </tr>
                                 <tr>
+                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Invoice id</td>
+                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->invoice_id); ?></td>
+                                </tr>
+                                <tr>
                                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Type</td>
                                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->revenue_type); ?></td>
                                 </tr>
-                                <tr>
-                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Page title</td>
-                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->page_title); ?></td>
-                                </tr>
-
+                                <?php if ($payment_details->revenue_type != 'Pay-per-file') : ?>
+                                    <tr>
+                                        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Page title</td>
+                                        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->page_title); ?></td>
+                                    </tr>
+                                <?php else : ?>
+                                    <?php $download_ids = explode(',', $payment_details->download_ids); ?>
+                                    <tr>
+                                        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Products</td>
+                                        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php foreach ($download_ids as $id) : ?>
+                                                <?php $download = new BTCPayWall_Digital_Download($id); ?><p><?php echo esc_html($download->get_name()); ?></p><?php endforeach; ?></td>
+                                    </tr>
+                                <?php endif; ?>
                                 <tr>
                                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Payment method</td>
                                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->payment_method); ?></td>
@@ -91,7 +103,7 @@
                                     You can download file/s by clicking on the button/s bellow.
                                 </p>
                                 <?php foreach ($download_links as $link) : ?>
-                                    <div> <a href="<?php echo esc_url($link); ?> " target="_blank">Download link</a> </div>
+                                    <div> <a href="<?php echo esc_url($link); ?>" target="_blank">Download link</a> </div>
                                 <?php endforeach; ?>
                             </div>
                         <?php endif; ?>

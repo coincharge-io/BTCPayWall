@@ -144,7 +144,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
             return $this->insert($data, 'payment');
         }
     }
-    public function get_payment_by($field = 'id', $value)
+    public function get_payment_by($field = 'id', $value=null)
     {
         global $wpdb;
         $row = $wpdb->get_row(
