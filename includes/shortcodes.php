@@ -1304,6 +1304,8 @@ function btcpaywall_render_receipt()
     $customer = new BTCPayWall_Customer($payment->customer_id);
 
 ?>
+    <p>Hello<?php echo esc_html($customer->full_name ? ' ' . $customer->full_name : ''); ?>,</p>
+    <p><?php echo esc_html__('Thank you for your purchase. You can see payment details in the table below.', 'btcpaywall'); ?></p>
     <table id="btcpaywall_purchase_receipt" class="btcpaywall-table">
         <thead>
             <tr>
@@ -1353,12 +1355,12 @@ function btcpaywall_render_receipt()
         </tbody>
     </table>
     <?php if (!empty($customer)) : ?>
-        <table style="border-collapse: separate; width: 100%; table-layout: fixed; margin-top:30px;" role="presentation" border="0" cellpadding="0" cellspacing="0">
+        <table class="btcpaywall-table">
 
 
             <thead>
                 <tr>
-                    <th colspan="2"><?php echo esc_html__("Your Data", 'btcpaywall'); ?></th>
+                    <th colspan="2"><strong><?php echo esc_html__("Your Data", 'btcpaywall'); ?></strong></th>
                 </tr>
             </thead>
             <tbody>
@@ -1384,11 +1386,13 @@ function btcpaywall_render_receipt()
                 <p>
                     You can download file/s by clicking on the button/s bellow.
                 </p>
-                <?php foreach ($download_links as $key => $link) : ?>
-                    <?php $product = new BTCPayWall_Digital_Download($download_ids[$key]);
-                    $name = $product->get_name(); ?>
-                    <div> <a href="<?php echo esc_url($link); ?>" target="_blank"><?php echo esc_html__($name, 'btcpaywall'); ?></a> </div>
-                <?php endforeach; ?>
+                <ul>
+                    <?php foreach ($download_links as $key => $link) : ?>
+                        <?php $product = new BTCPayWall_Digital_Download($download_ids[$key]);
+                        $name = $product->get_name(); ?>
+                        <li> <a href="<?php echo esc_url($link); ?>" target="_blank"><?php echo esc_html__($name, 'btcpaywall'); ?></a> </li>
+                    <?php endforeach; ?>
+                </ul>
             </div>
         <?php endif; ?>
     <?php endif; ?>
