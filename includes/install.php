@@ -35,7 +35,7 @@ function create_pages()
         $success = wp_insert_post(
             array(
                 'post_title'     => __('Purchase Confirmation', 'btcpaywall'),
-                'post_content'   => __('Thank you for your purchase! [btcpaywall_receipt]', 'btcpaywall'),
+                'post_content'   => __('[btcpaywall_receipt]', 'btcpaywall'),
                 'post_status'    => 'publish',
                 'post_author'    => 1,
                 'post_parent'    => $checkout,

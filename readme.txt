@@ -89,6 +89,8 @@ https://btcpaywall.com/faq-support-center/
 = 1.0.3 =
 
 - Fix: Display all download links in email
+
+- Improve: Confirmation page
  
 = 1.0.2 =
 

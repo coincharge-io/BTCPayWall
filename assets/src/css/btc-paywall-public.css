@@ -1323,9 +1323,10 @@ Pay-per-file
   gap: 10px;
   margin-bottom: 5px;
 }
-.btcpw_digital_download_customer_information fieldset {
+#btcpw_digital_download_customer_info fieldset {
   padding: 20px 30px;
   border: 2px solid #fff;
+  background-color: whitesmoke;
 }
 .btcpw_digital_download_customer_information div {
   display: flex;
@@ -1394,9 +1395,6 @@ button.btcpaywall_add_to_cart:hover {
   -o-transform: scale(1.05);
   transform: scale(1.05);
 }
-/* .btcpw_tabset {
-  margin-top: 60px;
-} */
 
 .btcpw_tabset > input[type='radio'] {
   position: absolute;

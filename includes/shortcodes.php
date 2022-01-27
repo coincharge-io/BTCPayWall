@@ -1356,8 +1356,6 @@ function btcpaywall_render_receipt()
     </table>
     <?php if (!empty($customer)) : ?>
         <table class="btcpaywall-table">
-
-
             <thead>
                 <tr>
                     <th colspan="2"><strong><?php echo esc_html__("Your Data", 'btcpaywall'); ?></strong></th>
