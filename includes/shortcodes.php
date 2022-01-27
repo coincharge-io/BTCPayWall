@@ -1301,13 +1301,13 @@ function btcpaywall_render_receipt()
     $currency = get_option('btcpw_default_pay_per_file_currency', 'SATS');
     $download_ids = explode(',', $payment->download_ids);
     $download_links = explode(',', $payment->download_links);
+    $customer = new BTCPayWall_Customer($payment->customer_id);
 
 ?>
     <table id="btcpaywall_purchase_receipt" class="btcpaywall-table">
         <thead>
             <tr>
-                <th><strong><?php echo esc_html__('Payment', 'btcpaywall'); ?>:</strong></th>
-                <th><?php echo esc_html($payment->id); ?></th>
+                <th colspan="2"><strong><?php echo esc_html__('Payment Information', 'btcpaywall'); ?></strong></th>
             </tr>
         </thead>
 
@@ -1322,10 +1322,29 @@ function btcpaywall_render_receipt()
                 <td><?php echo esc_html($payment->id); ?></td>
             </tr>
             <tr>
+                <td><strong><?php echo esc_html__('Invoice ID', 'btcpaywall'); ?>:</strong></td>
+                <td><?php echo esc_html($payment->invoice_id); ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo esc_html__('Type', 'btcpaywall'); ?>:</strong></td>
+                <td><?php echo esc_html($payment->revenue_type); ?></td>
+            </tr>
+            <?php $download_ids = explode(',', $payment->download_ids); ?>
+            <tr>
+                <td><strong>Products</strong></td>
+                <td>
+                    <ul><?php foreach ($download_ids as $id) : ?>
+                            <?php $download = new BTCPayWall_Digital_Download($id); ?><li><?php echo esc_html($download->get_name()); ?></li><?php endforeach; ?></ul>
+                </td>
+            </tr>
+            <tr>
                 <td><strong><?php echo esc_html__('Payment Method', 'btcpaywall'); ?>:</strong></td>
                 <td><?php echo esc_html($payment->payment_method ? $payment->payment_method : 'BTC'); ?></td>
             </tr>
-
+            <tr>
+                <td><strong><?php echo esc_html__('Date', 'btcpaywall'); ?>:</strong></td>
+                <td><?php echo esc_html($payment->date_created); ?></td>
+            </tr>
             <tr>
                 <td><strong><?php echo esc_html__('Total Price', 'btcpaywall'); ?>:</strong></td>
                 <td><?php echo esc_html(btcpaywall_round_amount($currency, $payment->amount) . ' ' . $currency); ?></td>
@@ -1333,53 +1352,46 @@ function btcpaywall_render_receipt()
 
         </tbody>
     </table>
+    <?php if (!empty($customer)) : ?>
+        <table style="border-collapse: separate; width: 100%; table-layout: fixed; margin-top:30px;" role="presentation" border="0" cellpadding="0" cellspacing="0">
 
-    <?php if (!empty($download_ids)) : ?>
 
-        <h3><?php echo __('Products', 'btcpaywall'); ?></h3>
-
-        <table id="btcpaywall_purchase_receipt_products" class="btcpaywall-table">
             <thead>
-                <th><?php _e('Name', 'btcpaywall'); ?></th>
-                <th><?php _e('Download link', 'btcpaywall'); ?></th>
-                <th><?php _e('Price', 'btcpaywall'); ?></th>
+                <tr>
+                    <th colspan="2"><?php echo esc_html__("Your Data", 'btcpaywall'); ?></th>
+                </tr>
             </thead>
-
             <tbody>
-                <?php if ($download_ids) : ?>
-                    <?php foreach ($download_ids as $key => $item) : ?>
+                <?php foreach ($customer as $key => $value) : ?>
+                    <?php if ($key != 'id') : ?>
+                        <?php if (!empty($value)) : ?>
+                            <?php if ($key == 'full_name') : ?>
+                                <?php $key = 'name'; ?>
+                            <?php endif; ?>
+                            <tr>
+                                <td><strong><?php echo esc_html__(ucfirst($key), 'btcpaywall'); ?></strong></td>
+                                <td><?php echo (esc_html__($value, 'btcpaywall')); ?></td>
+                            </tr>
 
-                        <tr>
-                            <?php
-                            $download       = new BTCPayWall_Digital_Download($item);
-                            $key = sanitize_text_field($key);
-                            $link = $download_links[$key];
-                            ?>
-                            <td>
-                                <div class="btcpaywall_purchase_receipt_product_name">
-                                    <p class="btcpaywall_download_file_name"><?php echo esc_html__($download->get_name(), 'btcpaywall'); ?></p>
-                                </div>
-
-                            </td>
-                            <td>
-                                <div class="btcpaywall_purchase_receipt_product_name">
-                                    <a href="<?php echo esc_url($link); ?>" class="btcpaywall_download_file_link"><?php echo esc_html__('Link', 'btcpaywall'); ?></a>
-                                </div>
-
-                            </td>
-                            <td class="btcpaywall_purchase_receipt_product_price">
-                                <?php echo esc_html($download->get_price()); ?>
-                            </td>
-
-                        </tr>
-                    <?php endforeach; ?>
-                <?php endif; ?>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
 
             </tbody>
-
         </table>
+        <?php if ($download_links) : ?>
+            <div>
+                <p>
+                    You can download file/s by clicking on the button/s bellow.
+                </p>
+                <?php foreach ($download_links as $key => $link) : ?>
+                    <?php $product = new BTCPayWall_Digital_Download($download_ids[$key]);
+                    $name = $product->get_name(); ?>
+                    <div> <a href="<?php echo esc_url($link); ?>" target="_blank"><?php echo esc_html__($name, 'btcpaywall'); ?></a> </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
     <?php endif; ?>
-
 <?php
 }
 

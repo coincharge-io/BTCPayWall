@@ -50,8 +50,10 @@
                                     <?php $download_ids = explode(',', $payment_details->download_ids); ?>
                                     <tr>
                                         <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">Products</td>
-                                        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php foreach ($download_ids as $id) : ?>
-                                                <?php $download = new BTCPayWall_Digital_Download($id); ?><p><?php echo esc_html($download->get_name()); ?></p><?php endforeach; ?></td>
+                                        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">
+                                            <ul><?php foreach ($download_ids as $id) : ?>
+                                                    <?php $download = new BTCPayWall_Digital_Download($id); ?><li><?php echo esc_html($download->get_name()); ?></li><?php endforeach; ?></ul>
+                                        </td>
                                     </tr>
                                 <?php endif; ?>
                                 <tr>
@@ -102,8 +104,10 @@
                                 <p>
                                     You can download file/s by clicking on the button/s bellow.
                                 </p>
-                                <?php foreach ($download_links as $link) : ?>
-                                    <div> <a href="<?php echo esc_url($link); ?>" target="_blank">Download link</a> </div>
+                                <?php foreach ($download_links as $key => $link) : ?>
+                                    <?php $product = new BTCPayWall_Digital_Download($download_ids[$key]);
+                                    $name = $product->get_name(); ?>
+                                    <div> <a href="<?php echo esc_url($link); ?>" target="_blank"><?php echo esc_html__($name, 'btcpaywall'); ?></a> </div>
                                 <?php endforeach; ?>
                             </div>
                         <?php endif; ?>

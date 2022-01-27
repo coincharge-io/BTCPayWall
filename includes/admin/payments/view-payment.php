@@ -49,9 +49,9 @@ $download_links = explode(',', $payment->download_links);
                                     <div id="btcpaywall_payment_container_type" class="btcpaywall_payment_container_type ">
                                         <table>
                                             <thead>
-                                                <th>File name</th>
+                                                <th>Name</th>
+                                                <th>Download Link</th>
                                                 <th>Price</th>
-                                                <th>Link</th>
                                             </thead>
                                             <tbody>
                                                 <?php foreach ($download_ids as $key => $id) : ?>
@@ -61,11 +61,13 @@ $download_links = explode(',', $payment->download_links);
 
                                                         <tr>
                                                             <td><?php echo esc_html($download->get_name()); ?></td>
-                                                            <td><?php echo esc_html($download->get_price()); ?></td>
+
                                                             <td>
-                                                                <a href="
-                                                            <?php echo esc_url($download_links[$key]); ?>"><?php echo esc_html($download->get_name()); ?></a>
+                                                                <span>
+                                                                    <input value="<?php echo esc_url($download_links[$key]); ?>" />
+                                                                </span>
                                                             </td>
+                                                            <td><?php echo esc_html($download->get_price()); ?></td>
                                                         </tr>
 
                                                     </div>
@@ -211,3 +213,5 @@ $download_links = explode(',', $payment->download_links);
             <!-- #poststuff -->
 
         </div> <!-- .wrap -->
+    </div>
+</div>
