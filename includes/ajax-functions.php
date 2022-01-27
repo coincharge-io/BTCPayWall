@@ -930,16 +930,15 @@ function ajax_btcpaywall_paid_content_file_invoice()
 
     $payment = new BTCPayWall_Payment($invoice_id);
 
-
+    $customer = new BTCPayWall_Customer($payment->customer_id);
     $payment_method = btcpaywall_get_payment_method($body['id']) ? btcpaywall_get_payment_method($body['id']) : 'BTC';
-
 
     $db_links = array();
     $download_ids = explode(',', $payment->download_ids);
     foreach ($download_ids as $link_id) {
         $download = new BTCPayWall_Digital_Download($link_id);
         $download->increase_sales();
-        $link = btcpaywall_get_download_url($payment->invoice_id, $download->get_file_url(), $download->ID, $body['metadata']['customer_data']['email']);
+        $link = btcpaywall_get_download_url($payment->invoice_id, $download->get_file_url(), $link_id, $customer->email);
         $db_links[] = esc_url_raw(rawurldecode($link));
     }
     $payment->update(array(

@@ -33,7 +33,7 @@ if (!defined('ABSPATH')) exit;
 
 function btcpaywall_get_download_url($payment_id, $file_url, $download_id, $email)
 {
-    if (!get_option('btcpaywall_secret_key')) {
+    if (!get_option('btcpw_secret_key')) {
         update_option('btcpw_secret_key', bin2hex(random_bytes(14)));
     }
     $secret_key = get_option('btcpw_secret_key');
@@ -1137,7 +1137,6 @@ function btcpaywall_process_download_url($args)
 
     $providedToken = sanitize_text_field($_GET['token']);
 
-
     $verificationToken = btcpaywall_generate_url_token($secret_key, [
         'ttl' => rawurlencode($query_args['ttl']),
         'btcpw_file' => rawurlencode($query_args['btcpw_file']),
@@ -1146,7 +1145,7 @@ function btcpaywall_process_download_url($args)
         'email' => rawurlencode($query_args['email']),
     ]);
 
-    if (!hash_equals($verificationToken, $providedToken)) {
+    if (!hash_equals($providedToken, $verificationToken)) {
         $args['valid_token']    = false;
     }
 
