@@ -121,7 +121,7 @@ function render_btcpw_amount($post)
 ?>
 
     <div class='btcpw_price_meta'>
-        <input type="number" name="btcpw_price" id="btcpw_price" min="0" step="any" value="<?php echo esc_attr($price); ?>" />
+        <input type="number" name="btcpw_price" id="btcpw_price" min="0.1" step="any" value="<?php echo esc_attr($price); ?>" />
         <input type="text" name="btcpw_currency" id="btcpw_currency" value="<?php echo esc_attr($currency); ?>" disabled />
 
 
