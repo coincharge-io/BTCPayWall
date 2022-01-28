@@ -90,6 +90,8 @@ https://btcpaywall.com/faq-support-center/
 
 - Fix: Display all download links in email
 
+- Fix: All links can be downloaded
+
 - Improve: Confirmation page
  
 = 1.0.2 =
