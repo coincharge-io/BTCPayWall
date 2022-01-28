@@ -42,7 +42,10 @@
                         </td>
                     </tr>
                 <?php endif; ?>
-
+                <tr>
+                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><strong>Payment method</strong></td>
+                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->payment_method); ?></td>
+                </tr>
                 <?php if ($gateway == 'BTCPayServer') : ?>
                     <tr>
                         <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><strong>Credit on Store ID</strong></td>

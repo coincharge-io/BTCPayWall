@@ -91,14 +91,11 @@ class BTCPayWall_Cart
     public function register_my_session()
     {
         if (!session_id()) {
-            session_start([
-                'read_and_close' => true,
-            ]);
+            session_start();
         }
     }
     public function get_session_contents()
     {
-        //$cart = $_SESSION['btcpaywall_cart'];
         $cart = $this->sanitize_session();
         $this->content = $cart;
     }
