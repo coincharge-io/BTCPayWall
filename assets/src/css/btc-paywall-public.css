@@ -1326,7 +1326,6 @@ Pay-per-file
 #btcpw_digital_download_customer_info fieldset {
   padding: 20px 30px;
   border: 2px solid #fff;
-  background-color: whitesmoke;
 }
 .btcpw_digital_download_customer_information div {
   display: flex;
@@ -1350,7 +1349,9 @@ Pay-per-file
   padding: 5px;
   margin: 5px 0;
 }
-
+.btcpw_digital_download_customer_information textarea {
+  max-height: 60px;
+}
 #btcpw_revenue_container {
   display: flex;
   align-items: center;

@@ -1302,7 +1302,6 @@ function btcpaywall_render_receipt()
     $download_ids = explode(',', $payment->download_ids);
     $download_links = explode(',', $payment->download_links);
     $customer = new BTCPayWall_Customer($payment->customer_id);
-
 ?>
     <p>Hello<?php echo esc_html($customer->full_name ? ' ' . $customer->full_name : ''); ?>,</p>
     <p><?php echo esc_html__('Thank you for your purchase. You can see payment details in the table below.', 'btcpaywall'); ?></p>

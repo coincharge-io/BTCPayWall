@@ -114,7 +114,7 @@ class Payments_Table extends WP_List_Table
             case 'payment_method':
                 return esc_html($item['payment_method']);
             case 'amount':
-                return esc_html($item['amount']);
+                return esc_html(btcpaywall_round_amount($item['currency'], $item['amount']));
             case 'currency':
                 return esc_html($item['currency']);
             case 'invoice_id':

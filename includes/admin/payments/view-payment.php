@@ -41,7 +41,7 @@ $download_links = explode(',', $payment->download_links);
                     <?php if ($payment->revenue_type === 'Pay-per-file') : ?>
                         <div class="postbox btcpaywall_payment">
 
-                            <h2><span><?php esc_attr_e('Files', 'posts-in-page'); ?></span></h2>
+                            <h2><span><?php esc_attr_e('Products', 'posts-in-page'); ?></span></h2>
 
                             <div class="inside">
                                 <div class="meta-box-sortables" style="min-height: 0">
@@ -104,18 +104,26 @@ $download_links = explode(',', $payment->download_links);
                         <div class="inside">
                             <div class="meta-box-sortables" style="min-height: 0">
                                 <div id="btcpaywall_payment_container_customer_details" class="btcpaywall_payment_container_customer_details">
-                                    <div class="btcpaywall_payment_container_customer_name">
-                                        <p>Full name: <?php echo esc_html($customer->full_name); ?></p>
-                                    </div>
-                                    <div class="btcpaywall_payment_container_customer_email">
-                                        <p>Email: <?php echo esc_html($customer->email); ?></p>
-                                    </div>
-                                    <div class="btcpaywall_payment_container_customer_address">
-                                        <p>Address: <?php echo esc_html($customer->address); ?></p>
-                                    </div>
-                                    <div class="btcpaywall_payment_container_customer_phone">
-                                        <p>Phone: <?php echo esc_html($customer->phone); ?></p>
-                                    </div>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>Full name: </td>
+                                                <td> <?php echo esc_html($customer->full_name); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email: </td>
+                                                <td><?php echo esc_html($customer->email); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Address: </td>
+                                                <td><?php echo esc_html($customer->address); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Phone: </td>
+                                                <td><?php echo esc_html($customer->phone); ?></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -162,15 +170,15 @@ $download_links = explode(',', $payment->download_links);
                                 <div id="btcpaywall_payment_container" class="btcpaywall_payment_container ">
                                     <div class="btcpaywall_payment_amount inside_wrap">
                                         <label>Amount:</label>
-                                        <input type="number" value="<?php echo esc_attr($payment->amount); ?>" />
+                                        <input type="text" disabled value="<?php echo esc_attr(btcpaywall_round_amount($payment->currency, $payment->amount)); ?>" />
                                     </div>
                                     <div class="btcpaywall_payment_currency inside_wrap">
                                         <label>Currency:</label>
-                                        <input type="text" value="<?php echo esc_attr($payment->currency); ?>" />
+                                        <input type="text" disabled value="<?php echo esc_attr($payment->currency); ?>" />
                                     </div>
                                     <div class="btcpaywall_payment_status inside_wrap">
                                         <label>Status:</label>
-                                        <input type="text" value="<?php echo esc_attr($payment->status); ?>" />
+                                        <input type="text" disabled value="<?php echo esc_attr($payment->status); ?>" />
                                     </div>
 
                                 </div>
@@ -187,13 +195,16 @@ $download_links = explode(',', $payment->download_links);
                             <div class="meta-box-sortables" style="min-height: 0">
                                 <div id="btcpaywall_payment_container" class="btcpaywall_payment_container ">
                                     <div class="btcpaywall_payment_container inside_wrap">
-                                        <p>Payment id: <?php echo esc_html($payment->id); ?></p>
+                                        <label>Payment id:</label>
+                                        <input disabled type="text" value="<?php echo esc_attr($payment->id); ?>" />
                                     </div>
                                     <div class="btcpaywall_payment_container inside_wrap">
-                                        <p>Payment method: <?php echo esc_html($payment->payment_method); ?></p>
+                                        <label>Payment method: </label>
+                                        <input disabled type="text" value="<?php echo esc_attr($payment->payment_method); ?>" />
                                     </div>
                                     <div class="btcpaywall_payment_container inside_wrap">
-                                        <p>Gateway: <?php echo esc_html($payment->gateway); ?></p>
+                                        <label>Gateway: </label>
+                                        <input type="text" disabled value="<?php echo esc_html($payment->gateway); ?>" />
                                     </div>
                                 </div>
                             </div>

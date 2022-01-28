@@ -133,7 +133,7 @@
       }
 
       if (isValidUrl(url)) {
-        url = url + '/Manage/APIKeys'
+        url = url + '/account/apikeys'
         redirectLink
           .attr('href', url)
           .html(url)
