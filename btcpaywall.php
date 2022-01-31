@@ -102,7 +102,7 @@ if (!class_exists('BTCPayWall')) :
 
             // Plugin version.
             if (!defined('BTCPAYWALL_VERSION')) {
-                define('BTCPAYWALL_VERSION', '1.0.3');
+                define('BTCPAYWALL_VERSION', '1.0.4');
             }
 
             // Plugin Folder Path.
