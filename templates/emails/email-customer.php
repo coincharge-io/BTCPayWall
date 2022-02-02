@@ -70,7 +70,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <?php if ($collect_data) : ?>
+                        <?php if (true == $collect_data) : ?>
                             <table style="border-collapse: separate; width: 100%; table-layout: fixed; margin-top:30px;" role="presentation" border="0" cellpadding="0" cellspacing="0">
 
 
@@ -99,7 +99,7 @@
                                 </tbody>
                             </table>
                         <?php endif; ?>
-                        <?php if ($download_links) : ?>
+                        <?php if (!empty($download_links)) : ?>
                             <div>
                                 <p>
                                     You can download file/s by clicking on the button/s bellow.

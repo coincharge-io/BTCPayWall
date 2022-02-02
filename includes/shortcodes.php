@@ -1297,7 +1297,8 @@ add_shortcode('btcpaywall_checkout', 'btcpaywall_render_checkout');
 function btcpaywall_render_receipt()
 {
 
-    $payment = new BTCPayWall_Payment(sanitize_text_field($_SESSION['btcpaywall_purchase']));
+    //$payment = new BTCPayWall_Payment(sanitize_text_field($_SESSION['btcpaywall_purchase']));
+    $payment = new BTCPayWall_Payment(sanitize_text_field($_COOKIE['btcpaywall_purchase']));
     $currency = get_option('btcpw_default_pay_per_file_currency', 'SATS');
     $download_ids = explode(',', $payment->download_ids);
     $download_links = explode(',', $payment->download_links);

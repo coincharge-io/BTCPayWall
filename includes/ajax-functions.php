@@ -756,9 +756,6 @@ function ajax_btcpaywall_add_to_cart()
     BTCPayWall()->cart->add($download_id, array('title' => sanitize_text_field($_POST['title'])));
 
     $checkout_page = get_permalink(get_option('btcpw_checkout_page'));
-
-
-
     wp_send_json_success(['data' => $checkout_page]);
 }
 add_action('wp_ajax_btcpw_add_to_cart',  'ajax_btcpaywall_add_to_cart');
@@ -944,8 +941,8 @@ function ajax_btcpaywall_paid_content_file_invoice()
     $payment->update(array(
         'status' => $body['status'], 'payment_method' => $payment_method, 'download_links' => $db_links
     ));
-    $_SESSION['btcpaywall_purchase'] = $payment->invoice_id;
-
+    //$_SESSION['btcpaywall_purchase'] = $payment->invoice_id;
+    setcookie('btcpaywall_purchase', $payment->invoice_id, time() + 60 * 60 * 24 * 30, '/');
     btcpaywall_notify_customer($body['metadata']['customer_data']['email'], btcpaywall_get_notify_customers_body($invoice_id, $body['metadata']['customer_data']), 'Pay');
 
     BTCPayWall()->cart->empty_cart();

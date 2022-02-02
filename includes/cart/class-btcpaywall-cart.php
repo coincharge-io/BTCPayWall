@@ -84,141 +84,175 @@ class BTCPayWall_Cart
      */
     public function setup_cart()
     {
-        $this->register_my_session();
-        $this->get_session_contents();
+        $this->get_cart_contents();
         $this->get_contents();
     }
-    public function register_my_session()
+    /**
+     * Get cart content
+     * 
+     * @since 1.0.0
+     */
+    public function get_cart_contents()
     {
-        if (!session_id()) {
-            session_start();
-        }
-    }
-    public function get_session_contents()
-    {
-        $cart = $this->sanitize_session();
+        $cart = $this->sanitize_cart();
         $this->content = $cart;
     }
-    public function sanitize_session()
+    /**
+     * Sanitize cart content
+     * 
+     * @since 1.0.0
+     */
+    public function sanitize_cart()
     {
         $sanitized = array();
-        $session = $_SESSION['btcpaywall_cart'] ?? null;
-        if (empty($session)) {
+        $stripped_cookie = stripslashes($_COOKIE['btcpaywall_product_cart']);
+        $cookie = json_decode($stripped_cookie, true);
+        if (empty($cookie)) {
             return false;
         }
-        foreach ($session as $sess) {
+        foreach ($cookie as $cook) {
             $sanitized[] = [
-                'id' => (int)$sess['id'],
-                'title' => sanitize_text_field($sess['title'])
+                'id' => (int)$cook['id'],
+                'title' => sanitize_text_field($cook['title'])
             ];
         }
         return $sanitized;
     }
+    /**
+     * Get cart content
+     * 
+     * @since 1.0.0
+     */
     public function get_contents()
     {
-        $this->get_session_contents();
-        $cart = is_array($this->content) && !empty($this->content) ? array_values($this->content) : array();
+        $this->get_cart_contents();
+        $cart = is_array($this->content) && !empty($this->content) ? $this->content : array();
         $cart_count = count($cart);
         foreach ($cart as $key => $item) {
             $download = new BTCPayWall_Digital_Download($item['id']);
-
             if (empty($download->ID)) {
                 unset($cart[$key]);
             }
         }
-
         if (count($cart) < $cart_count) {
             $this->content = $cart;
             $this->update_cart();
         }
-
         $this->content = $cart;
-
         return (array) $this->content;
     }
-
+    /**
+     * Update cart content
+     * 
+     * @since 1.0.0
+     */
     public function update_cart()
     {
-
-        $_SESSION['btcpaywall_cart'] = $this->content;
+        setcookie("btcpaywall_product_cart", json_encode(array_filter($this->content)), strtotime('+1 day'), '/');
     }
+    /**
+     * Add to cart 
+     * 
+     * @since 1.0.0
+     */
     public function add($download_id, $options = array())
     {
         $download = new BTCPayWall_Digital_Download($download_id);
-
 
         if (empty($download->ID)) {
             return;
         }
 
-        $items[] = array(
+        $item = array(
             'id'       => $download_id,
             'title'     => $options['title']
         );
 
-        foreach ($items as $item) {
+        // foreach ($items as $item) {
 
-            if (!is_array($item)) {
-                return;
-            }
-
-            if (!isset($item['id']) || empty($item['id'])) {
-                return;
-            }
-
-            if ($this->is_item_in_cart($item['id'])) {
-                return false;
-            }
-
-            $this->content[] = $item;
+        if (!is_array($item)) {
+            return;
         }
-        unset($item);
-        $this->update_cart();
 
+        if (!isset($item['id']) || empty($item['id'])) {
+            return;
+        }
+
+        if ($this->is_item_in_cart($item['id'])) {
+            return false;
+        }
+
+        $this->content[] = $item;
+
+        //unset($item);
+        //}
+        $this->update_cart();
         return count($this->content);
     }
+    /**
+     * Check if item already in cart
+     * 
+     * @since 1.0.0
+     */
     public function is_item_in_cart($download_id = 0)
     {
         $cart = $this->get_contents();
-        $ret = false;
+        //$cart = $this->content;
         if (is_array($cart)) {
             foreach ($cart as $item) {
                 if ($item['id'] == $download_id) {
-                    $ret = true;
-                    return $ret;
+                    return true;
                 }
             }
         }
 
-        return (bool)$ret;
+        return false;
     }
+    /**
+     * Remove item from cart
+     * 
+     * @since 1.0.0
+     */
     public function remove($key)
     {
         $cart = $this->get_contents();
-
         if (!is_array($cart)) {
             return true;
         } else {
             unset($cart[$key]);
         }
-
         $this->content = $cart;
         $this->update_cart();
-
         return $this->content;
     }
+    /**
+     * Get cart item price
+     * 
+     * @since 1.0.0
+     */
     public function get_item_price($download_id = 0)
     {
         $item = new BTCPayWall_Digital_Download($download_id);
 
         return $item->get_price();
     }
+    /**
+     * Clear cart
+     * 
+     * @since 1.0.0
+     */
     public function empty_cart()
     {
-        unset($_SESSION['btcpaywall_cart']);
+        unset($_COOKIE["btcpaywall_product_cart"]);
+        setcookie("btcpaywall_product_cart", "", time() - 3600);
 
         $this->content = array();
     }
+    /**
+     * Get cart item name
+     * 
+     * @since 1.0.0
+     */
     public function get_item_name($item = array())
     {
         $item_title = get_the_title($item['id']) ? get_the_title($item['id']) : $item['title'];
@@ -229,7 +263,11 @@ class BTCPayWall_Cart
 
         return  $item_title;
     }
-
+    /**
+     * Remove cart item url
+     * 
+     * @since 1.0.0
+     */
     public function remove_item_url($cart_key)
     {
         $current_page = the_permalink(get_option('btcpw_checkout_page'));
@@ -241,7 +279,11 @@ class BTCPayWall_Cart
 
         return $url;
     }
-
+    /**
+     * Get cart total
+     * 
+     * @since 1.0.0
+     */
     public function get_total()
     {
         $cart = $this->get_contents();
