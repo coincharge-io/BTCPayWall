@@ -85,6 +85,10 @@ Further information can be found here: https://btcpaywall.com
 https://btcpaywall.com/faq-support-center/
 
  == Changelog ==
+ 
+= 1.0.4 =
+
+- Improve: Use cookies for cart
 
 = 1.0.3 =
 

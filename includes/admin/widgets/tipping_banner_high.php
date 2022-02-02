@@ -65,7 +65,7 @@ class Tipping_Banner_High extends WP_Widget
                                     ?>;
             }
 
-            .btcpw_widget.btcpw_skyscraper_header_container.high h6 {
+            .btcpw_widget.btcpw_skyscraper_header_container.high h3 {
                 color: <?php echo esc_html($instance['title_text_color']);
                         ?>
             }
@@ -89,9 +89,9 @@ class Tipping_Banner_High extends WP_Widget
                         ?>
             }
 
-            .btcpw_widget.btcpw_skyscraper_tipping_info.high fieldset h6,
-            .btcpw_widget.btcpw_skyscraper_tipping_info.high h6,
-            #btcpw_widget_skyscraper_tipping_form_high>fieldset:nth-child(1)>h6 {
+            .btcpw_widget.btcpw_skyscraper_tipping_info.high fieldset h4,
+            .btcpw_widget.btcpw_skyscraper_tipping_info.high h3,
+            #btcpw_widget_skyscraper_tipping_form_high>fieldset:nth-child(1)>h4 {
                 color: <?php echo esc_html($instance['tipping_text_color']);
                         ?>
             }
@@ -114,7 +114,7 @@ class Tipping_Banner_High extends WP_Widget
                     <?php endif; ?>
                     <div>
                         <?php if (!empty($instance['title'])) : ?>
-                            <h6><?php echo esc_html($instance['title']); ?></h6>
+                            <h3><?php echo esc_html($instance['title']); ?></h3>
                         <?php endif; ?>
                         <?php if (!empty($instance['description'])) : ?>
                             <p><?php echo esc_html(($instance['description'])); ?></p>
@@ -124,8 +124,8 @@ class Tipping_Banner_High extends WP_Widget
                 <div class="btcpw_widget btcpw_skyscraper_tipping_container high">
                     <form method="POST" action="" id="btcpw_widget_skyscraper_tipping_form_high">
                         <fieldset>
-                            <h6><?php echo (!empty($instance['tipping_text']) ? esc_html__($instance['tipping_text'], 'btcpaywall') : ''); ?>
-                            </h6>
+                            <h4><?php echo (!empty($instance['tipping_text']) ? esc_html__($instance['tipping_text'], 'btcpaywall') : ''); ?>
+                            </h4>
                             <div class="btcpw_widget btcpw_skyscraper_amount high">
                                 <?php foreach ($fixed_amount as $key => $value) : ?>
                                     <?php if ($fixed_amount[$key]['enabled'] === true) : ?>
@@ -188,7 +188,7 @@ class Tipping_Banner_High extends WP_Widget
                                             $id = $collect[$key]['id'];
                                             $type = $collect[$key]['type']; ?>
                                             <div class="<?php echo esc_attr("btcpw_widget btcpw_skyscraper_tipping_donor_{$id}_wrap high"); ?>">
-                                            <label for="<?php echo esc_attr("btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_high"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
+                                                <label for="<?php echo esc_attr("btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_high"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
                                                 <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_high"); ?>" name="<?php echo esc_attr("btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_high"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                             </div>

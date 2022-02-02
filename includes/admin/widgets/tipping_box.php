@@ -55,7 +55,7 @@ class Tipping_Box extends WP_Widget
                             ?>;
             }
 
-            #tipping_form_box_widget fieldset div.btcpw_tipping_box_header_container h6 {
+            #tipping_form_box_widget fieldset div.btcpw_tipping_box_header_container h4 {
                 color: <?php echo esc_html($instance['title_text_color']);
                         ?>
             }
@@ -73,7 +73,7 @@ class Tipping_Box extends WP_Widget
                                     ?>;
             }
 
-            #tipping_form_box_widget fieldset h6 {
+            #tipping_form_box_widget fieldset h5 {
                 color: <?php echo esc_html($instance['tipping_text_color']);
                         ?>;
             }
@@ -96,7 +96,7 @@ class Tipping_Box extends WP_Widget
                             <?php endif; ?>
                             <div>
                                 <?php if (!empty($instance['title'])) : ?>
-                                    <h6><?php echo esc_html__($instance['title'], 'btcpaywall'); ?></h6>
+                                    <h4><?php echo esc_html__($instance['title'], 'btcpaywall'); ?></h4>
                                 <?php endif; ?>
                                 <?php if (!empty($instance['description'])) : ?>
                                     <p><?php echo esc_html__($instance['description'], 'btcpaywall'); ?></p>
@@ -106,7 +106,7 @@ class Tipping_Box extends WP_Widget
                         <div class="btcpw_tipping_box_info_container">
 
                         </div>
-                        <h6><?php echo (!empty($instance['tipping_text']) ? esc_html__($instance['tipping_text'], 'btcpaywall') : ''); ?></h6>
+                        <h5><?php echo (!empty($instance['tipping_text']) ? esc_html__($instance['tipping_text'], 'btcpaywall') : ''); ?></h5>
                         <div class="btcpw_tipping_box_amount">
 
                             <div class="btcpw_tipping_free_input btcpw_widget">

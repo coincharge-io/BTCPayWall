@@ -65,7 +65,7 @@ class Tipping_Banner_Wide extends WP_Widget
                                     ?>;
             }
 
-            .btcpw_widget.btcpw_skyscraper_header_container.wide h6 {
+            .btcpw_widget.btcpw_skyscraper_header_container.wide h3 {
                 color: <?php echo esc_html($instance['title_text_color']);
                         ?>
             }
@@ -89,9 +89,9 @@ class Tipping_Banner_Wide extends WP_Widget
                         ?>
             }
 
-            .btcpw_widget.btcpw_skyscraper_tipping_info.wide fieldset h6,
-            .btcpw_widget.btcpw_skyscraper_tipping_info.wide h6,
-            #btcpw_widget_skyscraper_tipping_form_wide>fieldset:nth-child(1)>h6 {
+            .btcpw_widget.btcpw_skyscraper_tipping_info.wide fieldset h4,
+            .btcpw_widget.btcpw_skyscraper_tipping_info.wide h3,
+            #btcpw_widget_skyscraper_tipping_form_wide>fieldset:nth-child(1)>h3 {
                 color: <?php echo esc_html($instance['tipping_text_color']);
                         ?>
             }
@@ -114,7 +114,7 @@ class Tipping_Banner_Wide extends WP_Widget
                     <?php endif; ?>
                     <div>
                         <?php if (!empty($instance['title'])) : ?>
-                            <h6><?php echo esc_html__($instance['title'], 'btcpaywall'); ?></h6>
+                            <h3><?php echo esc_html__($instance['title'], 'btcpaywall'); ?></h3>
                         <?php endif; ?>
                         <?php if (!empty($instance['description'])) : ?>
                             <p><?php echo esc_html__($instance['description'], 'btcpaywall'); ?></p>
@@ -124,8 +124,8 @@ class Tipping_Banner_Wide extends WP_Widget
                 <div class="btcpw_widget btcpw_skyscraper_tipping_container wide">
                     <form method="POST" action="" id="btcpw_widget_skyscraper_tipping_form_wide">
                         <fieldset>
-                            <h6><?php echo (!empty($instance['tipping_text']) ? esc_html__($instance['tipping_text'], 'btcpaywall') : ''); ?>
-                            </h6>
+                            <h4><?php echo (!empty($instance['tipping_text']) ? esc_html__($instance['tipping_text'], 'btcpaywall') : ''); ?>
+                            </h4>
                             <div class="btcpw_widget btcpw_skyscraper_amount wide">
                                 <?php foreach ($fixed_amount as $key => $value) : ?>
                                     <?php if ($fixed_amount[$key]['enabled'] === true) : ?>

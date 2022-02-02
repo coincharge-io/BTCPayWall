@@ -111,7 +111,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                         ?>;
         }
 
-        .btcpw_skyscraper_header_container.wide h6 {
+        .btcpw_skyscraper_header_container.wide h3 {
             color: <?php echo esc_html($atts['title_text_color']);
                     ?>
         }
@@ -121,7 +121,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                     ?>
         }
 
-        #skyscraper_tipping_wide_form>fieldset h6 {
+        #skyscraper_tipping_wide_form>fieldset h4 {
             color: <?php echo esc_html($atts['tipping_text_color']);
                     ?>
         }
@@ -145,7 +145,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                 <?php endif; ?>
                 <div>
                     <?php if (!empty($atts['title'])) : ?>
-                        <h6><?php echo esc_html__($atts['title'], 'btcpaywall'); ?></h6>
+                        <h3><?php echo esc_html__($atts['title'], 'btcpaywall'); ?></h3>
                     <?php endif; ?>
                     <?php if (!empty($atts['description'])) : ?>
                         <p><?php echo esc_html__($atts['description'], 'btcpaywall'); ?></p>
@@ -155,8 +155,8 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
             <div class="btcpw_skyscraper_tipping_container wide">
                 <form method="POST" action="" id="<?php echo esc_attr("skyscraper_tipping_wide_form"); ?>">
                     <fieldset>
-                        <h6><?php echo (!empty($atts['tipping_text']) ? esc_html($atts['tipping_text']) : ''); ?>
-                        </h6>
+                        <h4><?php echo (!empty($atts['tipping_text']) ? esc_html($atts['tipping_text']) : ''); ?>
+                        </h4>
                         <div class="btcpw_skyscraper_amount wide">
                             <?php foreach ($fixed_amount as $key => $value) : ?>
 
@@ -356,7 +356,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                         ?>;
         }
 
-        .btcpw_skyscraper_header_container.high h6 {
+        .btcpw_skyscraper_header_container.high h3 {
             color: <?php echo esc_html($atts['title_text_color']);
                     ?>
         }
@@ -367,7 +367,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                     ?>
         }
 
-        #skyscraper_tipping_high_form>fieldset h6 {
+        #skyscraper_tipping_high_form>fieldset h4 {
             color: <?php echo esc_html($atts['tipping_text_color']);
                     ?>
         }
@@ -382,7 +382,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                 <?php endif; ?>
                 <div>
                     <?php if (!empty($atts['title'])) : ?>
-                        <h6><?php echo esc_html__($atts['title'], 'btcpaywall'); ?></h6>
+                        <h3><?php echo esc_html__($atts['title'], 'btcpaywall'); ?></h3>
                     <?php endif; ?>
                     <?php if (!empty($atts['description'])) : ?>
                         <p><?php echo esc_html__($atts['description'], 'btcpaywall'); ?></p>
@@ -392,8 +392,8 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
             <div class="btcpw_skyscraper_tipping_container high">
                 <form method="POST" action="" id="skyscraper_tipping_high_form">
                     <fieldset>
-                        <h6><?php echo (!empty($atts['tipping_text']) ? esc_html($atts['tipping_text']) : ''); ?>
-                        </h6>
+                        <h4><?php echo (!empty($atts['tipping_text']) ? esc_html($atts['tipping_text']) : ''); ?>
+                        </h4>
                         <div class="btcpw_skyscraper_amount high">
                             <?php foreach ($fixed_amount as $key => $value) : ?>
 
@@ -589,13 +589,13 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                                 ?>;
         }
 
-        .btcpw_page_header_container h6 {
+        .btcpw_page_header_container h3 {
             color: <?php echo esc_html($atts['title_text_color']);
                     ?>
         }
 
 
-        #page_tipping_form>fieldset>h6 {
+        #page_tipping_form>fieldset>h4 {
             color: <?php echo esc_html($atts['tipping_text_color']);
                     ?>
         }
@@ -641,11 +641,14 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                             <img alt="Tipping page logo" src=<?php echo esc_url($logo); ?> />
                         </div>
                     <?php endif; ?>
-                    <?php if (!empty($atts['title'])) : ?>
-                        <div>
-                            <h6><?php echo esc_html__($atts['title'], 'btcpaywall'); ?></h6>
-                        </div>
-                    <?php endif; ?>
+                    <div>
+                        <?php if (!empty($atts['title'])) : ?>
+                            <h3><?php echo esc_html__($atts['title'], 'btcpaywall'); ?></h3>
+                        <?php endif; ?>
+                        <?php if (!empty($atts['description'])) : ?>
+                            <p><?php echo esc_html__($atts['description'], 'btcpaywall'); ?></p>
+                        <?php endif; ?>
+                    </div>
                 </div>
                 <?php if ($collect_data == 'true') : ?>
                     <div class='btcpw_page_bar_container'>
@@ -656,8 +659,8 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                     </div>
                 <?php endif; ?>
                 <fieldset>
-                    <h6><?php echo (!empty($atts['tipping_text']) ? esc_html__($atts['tipping_text'], 'btcpaywall') : ''); ?>
-                    </h6>
+                    <h4><?php echo (!empty($atts['tipping_text']) ? esc_html__($atts['tipping_text'], 'btcpaywall') : ''); ?>
+                    </h4>
                     <div class="btcpw_page_amount">
                         <?php foreach ($fixed_amount as $key => $value) : ?>
 
@@ -832,7 +835,7 @@ function btcpaywall_render_shortcode_box_tipping($atts)
                         ?>;
         }
 
-        #tipping_form_box fieldset div.btcpw_tipping_box_header_container div h6 {
+        #tipping_form_box fieldset div.btcpw_tipping_box_header_container div h4 {
             color: <?php echo esc_html($atts['title_text_color']);
                     ?>
         }
@@ -850,7 +853,7 @@ function btcpaywall_render_shortcode_box_tipping($atts)
                     ?>
         }
 
-        #tipping_form_box fieldset h6 {
+        #tipping_form_box fieldset h4 {
             color: <?php echo esc_html($atts['tipping_text_color']);
                     ?>
         }
@@ -875,7 +878,7 @@ function btcpaywall_render_shortcode_box_tipping($atts)
 
                         <div>
                             <?php if (!empty($atts['title'])) : ?>
-                                <h6><?php echo esc_html__($atts['title'], 'btcpaywall'); ?></h6>
+                                <h4><?php echo esc_html__($atts['title'], 'btcpaywall'); ?></h4>
                             <?php endif; ?>
                             <?php if (!empty($atts['description'])) : ?>
                                 <p><?php echo esc_html__($atts['description'], 'btcpaywall'); ?></p>
@@ -883,7 +886,7 @@ function btcpaywall_render_shortcode_box_tipping($atts)
                         </div>
 
                     </div>
-                    <h6><?php echo (!empty($atts['tipping_text']) ? esc_html__($atts['tipping_text'], 'btcpaywall') : ''); ?></h6>
+                    <h5><?php echo (!empty($atts['tipping_text']) ? esc_html__($atts['tipping_text'], 'btcpaywall') : ''); ?></h5>
                     <div class="btcpw_tipping_box_amount">
 
                         <div class=<?php echo esc_attr("btcpw_tipping_free_input $is_widget"); ?>">
