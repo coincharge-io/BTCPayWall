@@ -218,7 +218,7 @@ function btcpaywall_load_gutenberg()
             'render_callback' => 'btcpaywall_render_shortcodes_gutenberg',
         ]
     );
-    
+
 
     register_block_type(
         'btcpaywall/gutenberg-tipping-box',
@@ -283,11 +283,11 @@ function btcpaywall_load_gutenberg()
                     'default' => '#FE642E'
                 ),
                 'logo_id' => array(
-                    'type' => 'string',
+                    'type' => 'number',
                     'default' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
                 ),
                 'background_id' => array(
-                    'type' => 'string',
+                    'type' => 'number',
                     'default' => ''
                 ),
                 'input_background' => array(
@@ -365,11 +365,11 @@ function btcpaywall_load_gutenberg()
                     'default' => '#FE642E'
                 ),
                 'logo_id' => array(
-                    'type' => 'string',
+                    'type' => 'number',
                     'default' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
                 ),
                 'background_id' => array(
-                    'type' => 'string',
+                    'type' => 'number',
                     'default' => ''
                 ),
                 'input_background' => array(
@@ -543,11 +543,11 @@ function btcpaywall_load_gutenberg()
                     'default' => '#FE642E'
                 ),
                 'logo_id' => array(
-                    'type' => 'string',
+                    'type' => 'number',
                     'default' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
                 ),
                 'background_id' => array(
-                    'type' => 'string',
+                    'type' => 'number',
                     'default' => ''
                 ),
                 'input_background' => array(
@@ -721,11 +721,11 @@ function btcpaywall_load_gutenberg()
                     'default' => '#FE642E'
                 ),
                 'logo_id' => array(
-                    'type' => 'string',
+                    'type' => 'number',
                     'default' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
                 ),
                 'background_id' => array(
-                    'type' => 'string',
+                    'type' => 'number',
                     'default' => ''
                 ),
                 'input_background' => array(

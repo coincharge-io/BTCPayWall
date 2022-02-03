@@ -630,7 +630,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z"
       type: "string",
     },
     logo_id: {
-      type: "string",
+      type: "number",
     },
     background: {
       type: "string",
@@ -639,7 +639,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z"
       type: "string",
     },
     background_id: {
-      type: "string",
+      type: "number",
     },
     value1_enabled: {
       type: "boolean",
@@ -821,7 +821,6 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z"
       },
       [logo_id]
     );
-    console.log(background_id);
     const inspectorControls = (
       <InspectorControls>
         <Panel>
@@ -840,7 +839,9 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z"
             <div className="editor-post-featured-image">
               <MediaUploadCheck>
                 <MediaUpload
-                  onSelect={(el) => setAttributes({ background_id: el.id })}
+                  onSelect={(el) => {
+                    setAttributes({ background_id: el.id });
+                  }}
                   value={background_id}
                   allowedTypes={["image"]}
                   render={({ open }) => (
@@ -870,10 +871,12 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z"
                   <MediaUpload
                     title="Replace background image"
                     value={background_id}
-                    onSelect={(el) => setAttributes({ background_id: el.id })}
+                    onSelect={(el) => {
+                      setAttributes({ background_id: el.id });
+                    }}
                     allowedTypes={["image"]}
                     render={({ open }) => (
-                      <Button onClick={open} isDefault isLarge>
+                      <Button onClick={open} isLarge>
                         {"Replace background image"}
                       </Button>
                     )}
@@ -883,7 +886,9 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z"
               {!!background_id && (
                 <MediaUploadCheck>
                   <Button
-                    onClick={(el) => setAttributes({ background_id: "" })}
+                    onClick={(el) => {
+                      setAttributes({ background_id: 0 });
+                    }}
                     isLink
                     isDestructive
                   >
@@ -915,7 +920,9 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z"
             <div className="editor-post-featured-image">
               <MediaUploadCheck>
                 <MediaUpload
-                  onSelect={(el) => setAttributes({ logo_id: el.id })}
+                  onSelect={(el) => {
+                    setAttributes({ logo_id: el.id });
+                  }}
                   value={logo_id}
                   allowedTypes={["image"]}
                   render={({ open }) => (
@@ -945,10 +952,12 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z"
                   <MediaUpload
                     title="Replace logo"
                     value={logo_id}
-                    onSelect={(el) => setAttributes({ logo_id: el.id })}
+                    onSelect={(el) => {
+                      setAttributes({ logo_id: el.id });
+                    }}
                     allowedTypes={["image"]}
                     render={({ open }) => (
-                      <Button onClick={open} isDefault isLarge>
+                      <Button onClick={open} isLarge>
                         {"Replace logo"}
                       </Button>
                     )}
@@ -958,7 +967,9 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z"
               {!!logo_id && (
                 <MediaUploadCheck>
                   <Button
-                    onClick={(el) => setAttributes({ logo_id: "" })}
+                    onClick={(el) => {
+                      setAttributes({ logo_id: 0 });
+                    }}
                     isLink
                     isDestructive
                   >
