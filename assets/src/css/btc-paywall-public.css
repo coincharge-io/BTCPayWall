@@ -31,16 +31,6 @@
   flex-direction: column;
   text-align: center;
 }
-/* .btcpw_pay__footer button {
-  min-width: 75px;
-  min-height: 60px;
-  letter-spacing: 1px;
-  border: 3px solid #9289fa;
-  border-radius: 60px;
-  cursor: pointer;
-  overflow: hidden;
-  transition: all 0.35s;
-} */
 
 #btcpw_pay__button {
   min-width: 75px;
@@ -72,7 +62,7 @@
   height: 50px;
 }
 .btcpw_pay__loading p.loading.spinner:before {
-  content: '';
+  content: "";
   display: block;
   width: 44px;
   height: 44px;
@@ -233,7 +223,7 @@ a.btcpw_pay__download {
 #btcpw_converted_currency_btcpw_widget {
   text-align: left;
 }
-.predefined_container input[type='radio'] {
+.predefined_container input[type="radio"] {
   position: absolute;
   width: 10%;
   height: 5%;
@@ -268,7 +258,7 @@ a.btcpw_pay__download {
 .btcpw_tipping_converted_values {
   margin-bottom: 2em;
 }
-.btcpw_tipping_box_container fieldset input:not([type='submit']) {
+.btcpw_tipping_box_container fieldset input:not([type="submit"]) {
   margin-bottom: 0;
 }
 
@@ -337,7 +327,7 @@ a.btcpw_pay__download {
 #btcpw_tipping_currency_btcpw_widget option {
   padding-right: 21px;
 }
-#button > button[type='submit'] {
+#button > button[type="submit"] {
   width: 50%;
   margin: 5px auto;
 }
@@ -348,7 +338,7 @@ a.btcpw_pay__download {
   -webkit-border-radius: 2em;
 }
 #button button,
-#button input[type='button'] {
+#button input[type="button"] {
   font-size: 14px;
   padding: 8px !important;
   text-transform: uppercase;
@@ -475,13 +465,13 @@ a.btcpw_pay__download {
 }
 
 #btcpw_skyscraper_high_button button,
-#btcpw_skyscraper_high_button input[type='button'],
+#btcpw_skyscraper_high_button input[type="button"],
 #btcpw_skyscraper_wide_button button,
-#btcpw_skyscraper_wide_button input[type='button'],
+#btcpw_skyscraper_wide_button input[type="button"],
 #btcpw_widget_btcpw_skyscraper_button_high button,
-#btcpw_widget_btcpw_skyscraper_button_high input[type='button'],
+#btcpw_widget_btcpw_skyscraper_button_high input[type="button"],
 #btcpw_widget_btcpw_skyscraper_button_wide button,
-#btcpw_widget_btcpw_skyscraper_button_wide input[type='button'] {
+#btcpw_widget_btcpw_skyscraper_button_wide input[type="button"] {
   padding: 0;
   line-height: 20px;
   height: 40px;
@@ -498,14 +488,14 @@ a.btcpw_pay__download {
   margin: 5px 0 !important;
 }
 
-#btcpw_skyscraper_high_button > button[type='submit'],
+#btcpw_skyscraper_high_button > button[type="submit"],
 #btcpw_skyscraper_high_button > input.skyscraper-next-form,
-#btcpw_skyscraper_wide_button > button[type='submit'],
+#btcpw_skyscraper_wide_button > button[type="submit"],
 #btcpw_skyscraper_wide_button > input.skyscraper-next-form,
-#btcpw_widget_btcpw_skyscraper_button_high > button[type='submit'],
+#btcpw_widget_btcpw_skyscraper_button_high > button[type="submit"],
 #btcpw_widget_btcpw_skyscraper_button_high
   > input.btcpw_widget.skyscraper-next-form.high,
-#btcpw_widget_btcpw_skyscraper_button_wide > button[type='submit'],
+#btcpw_widget_btcpw_skyscraper_button_wide > button[type="submit"],
 #btcpw_widget_btcpw_skyscraper_button_wide
   > input.btcpw_widget.skyscraper-next-form.wide {
   width: 50%;
@@ -522,21 +512,20 @@ a.btcpw_pay__download {
 }
 
 #btcpw_skyscraper_high_button button,
-#btcpw_skyscraper_high_button input[type='button'],
+#btcpw_skyscraper_high_button input[type="button"],
 #btcpw_widget_btcpw_skyscraper_button_high button,
-#btcpw_widget_btcpw_skyscraper_button_high input[type='button'] {
+#btcpw_widget_btcpw_skyscraper_button_high input[type="button"] {
   border-radius: 2em;
   -moz-border-radius: 2em;
   -webkit-border-radius: 2em;
   font-size: 12px;
-  padding: 6px !important;
   text-transform: uppercase;
   width: 100%;
 }
 #btcpw_skyscraper_wide_button button,
-#btcpw_skyscraper_wide_button input[type='button'],
+#btcpw_skyscraper_wide_button input[type="button"],
 #btcpw_widget_btcpw_skyscraper_button_wide button,
-#btcpw_widget_btcpw_skyscraper_button_wide input[type='button'] {
+#btcpw_widget_btcpw_skyscraper_button_wide input[type="button"] {
   border-radius: 2em;
   -moz-border-radius: 2em;
   -webkit-border-radius: 2em;
@@ -616,12 +605,12 @@ a.btcpw_pay__download {
 .btcpw_skyscraper_donor_information.high > div {
   width: 80%;
 }
-.btcpw_skyscraper_donor_information input[type='text'],
-.btcpw_skyscraper_donor_information input[type='email'],
-.btcpw_skyscraper_donor_information input[type='url'],
-.btcpw_skyscraper_donor_information input[type='password'],
-.btcpw_skyscraper_donor_information input[type='number'],
-.btcpw_skyscraper_donor_information input[type='tel'],
+.btcpw_skyscraper_donor_information input[type="text"],
+.btcpw_skyscraper_donor_information input[type="email"],
+.btcpw_skyscraper_donor_information input[type="url"],
+.btcpw_skyscraper_donor_information input[type="password"],
+.btcpw_skyscraper_donor_information input[type="number"],
+.btcpw_skyscraper_donor_information input[type="tel"],
 .btcpw_skyscraper_donor_information textarea {
   padding: 0 !important;
   margin: 0 !important;
@@ -631,12 +620,12 @@ a.btcpw_pay__download {
 .btcpw_skyscraper_donor_information.high label {
   font-size: 14px;
 }
-.btcpw_skyscraper_donor_information.wide input[type='text'],
-.btcpw_skyscraper_donor_information.wide input[type='email'],
-.btcpw_skyscraper_donor_information.wide input[type='url'],
-.btcpw_skyscraper_donor_information.wide input[type='password'],
-.btcpw_skyscraper_donor_information.wide input[type='number'],
-.btcpw_skyscraper_donor_information.wide input[type='tel'],
+.btcpw_skyscraper_donor_information.wide input[type="text"],
+.btcpw_skyscraper_donor_information.wide input[type="email"],
+.btcpw_skyscraper_donor_information.wide input[type="url"],
+.btcpw_skyscraper_donor_information.wide input[type="password"],
+.btcpw_skyscraper_donor_information.wide input[type="number"],
+.btcpw_skyscraper_donor_information.wide input[type="tel"],
 .btcpw_skyscraper_donor_information.wide textarea {
   padding: 0 !important;
   margin: 0 !important;
@@ -785,9 +774,9 @@ a.btcpw_pay__download {
 .btcpw_widget.btcpw_skyscraper_amount_value_3.high.selected {
   background-color: hsl(354, 78%, 7%) !important;
 }
-.btcpw_skyscraper_amount_value_1 input[type='radio'],
-.btcpw_skyscraper_amount_value_2 input[type='radio'],
-.btcpw_skyscraper_amount_value_3 input[type='radio'] {
+.btcpw_skyscraper_amount_value_1 input[type="radio"],
+.btcpw_skyscraper_amount_value_2 input[type="radio"],
+.btcpw_skyscraper_amount_value_3 input[type="radio"] {
   display: none;
 }
 .btcpw_skyscraper_amount.high {
@@ -931,7 +920,7 @@ a.btcpw_pay__download {
   color: white;
 }
 
-#btcpw_page_button > button[type='submit'],
+#btcpw_page_button > button[type="submit"],
 #btcpw_page_button > input.page-next-form {
   width: 50%;
   margin: 10px auto !important;
@@ -946,8 +935,8 @@ a.btcpw_pay__download {
   -webkit-border-radius: 2em;
 }
 #btcpw_page_button button,
-#btcpw_page_button input[type='button'],
-#btcpw_page_button input[type='submit'] {
+#btcpw_page_button input[type="button"],
+#btcpw_page_button input[type="submit"] {
   padding: 10.5px 14px;
   font-size: 1.5em;
   text-transform: uppercase;
@@ -1024,15 +1013,16 @@ a.btcpw_pay__download {
 .btcpw_page_donor_information fieldset {
   padding: 0 15px;
 }
-.btcpw_page_donor_information input[type='text'],
-.btcpw_page_donor_information input[type='email'],
-.btcpw_page_donor_information input[type='url'],
-.btcpw_page_donor_information input[type='number'],
-.btcpw_page_donor_information input[type='tel'],
+.btcpw_page_donor_information input[type="text"],
+.btcpw_page_donor_information input[type="email"],
+.btcpw_page_donor_information input[type="url"],
+.btcpw_page_donor_information input[type="number"],
+.btcpw_page_donor_information input[type="tel"],
 .btcpw_page_donor_information textarea {
   margin: 0;
   line-height: 16px;
   border-radius: 8px;
+  padding: 15px 0;
 }
 
 .btcpw_page_header_container {
@@ -1065,9 +1055,9 @@ a.btcpw_pay__download {
   -webkit-border-radius: 2em;
 }
 
-.btcpw_page_amount_value_1 input[type='radio'],
-.btcpw_page_amount_value_2 input[type='radio'],
-.btcpw_page_amount_value_3 input[type='radio'] {
+.btcpw_page_amount_value_1 input[type="radio"],
+.btcpw_page_amount_value_2 input[type="radio"],
+.btcpw_page_amount_value_3 input[type="radio"] {
   display: none;
 }
 
@@ -1133,7 +1123,11 @@ a.btcpw_pay__download {
   padding: 0.1em 0 0.1em 0.1em;
 }
 div.btcpw_page_header_container > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
   margin-left: 2em;
+  width: 250px;
+  align-items: center;
 }
 /**
     Tipping button spinner
@@ -1141,7 +1135,7 @@ div.btcpw_page_header_container > div:nth-child(2) {
     */
 
 .tipping-border {
-  content: '';
+  content: "";
   display: inline-block;
   width: 2rem;
   height: 2rem;
@@ -1164,8 +1158,8 @@ Revenue types
 */
 .btcpw_revenue_post_container,
 .btcpw_revenue_view_container {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: #ecf0f1;
   display: flex;
   flex-direction: column;
@@ -1266,13 +1260,13 @@ Revenue types
   margin: 0 auto !important;
 }
 
-#btcpw_revenue_post_button_second_step > button[type='submit'],
+#btcpw_revenue_post_button_second_step > button[type="submit"],
 #btcpw_revenue_post_button_second_step > input.revenue-post-next-form,
-#btcpw_revenue_post_button > button[type='submit'],
+#btcpw_revenue_post_button > button[type="submit"],
 #btcpw_revenue_post_button > input.revenue-post-next-form,
-#btcpw_revenue_view_button > button[type='submit'],
+#btcpw_revenue_view_button > button[type="submit"],
 #btcpw_revenue_view_button > input.revenue-view-next-form,
-#btcpw_revenue_view_button_second_step > button[type='submit'],
+#btcpw_revenue_view_button_second_step > button[type="submit"],
 #btcpw_revenue_view_button_second_step > input.revenue-view-next-form {
   margin: 0 auto !important;
   border-radius: 2em;
@@ -1280,17 +1274,17 @@ Revenue types
   -webkit-border-radius: 2em;
 }
 #btcpw_revenue_post_button_second_step button,
-#btcpw_revenue_post_button_second_step input[type='button'],
-#btcpw_revenue_post_button_second_step input[type='submit'],
+#btcpw_revenue_post_button_second_step input[type="button"],
+#btcpw_revenue_post_button_second_step input[type="submit"],
 #btcpw_revenue_post_button button,
-#btcpw_revenue_post_button input[type='button'],
-#btcpw_revenue_post_button input[type='submit'],
+#btcpw_revenue_post_button input[type="button"],
+#btcpw_revenue_post_button input[type="submit"],
 #btcpw_revenue_view_button button,
-#btcpw_revenue_view_button input[type='button'],
-#btcpw_revenue_view_button input[type='submit'],
+#btcpw_revenue_view_button input[type="button"],
+#btcpw_revenue_view_button input[type="submit"],
 #btcpw_revenue_file_button button,
-#btcpw_revenue_file_button input[type='button'],
-#btcpw_revenue_file_button input[type='submit'] {
+#btcpw_revenue_file_button input[type="button"],
+#btcpw_revenue_file_button input[type="submit"] {
   padding: 10px;
   text-transform: uppercase;
 }
@@ -1328,10 +1322,10 @@ Pay-per-file
 .btcpw_digital_download_button {
   margin: 4em;
 }
-.btcpw_digital_download_customer_information input[type='text'],
-.btcpw_digital_download_customer_information input[type='email'],
-.btcpw_digital_download_customer_information input[type='number'],
-.btcpw_digital_download_customer_information input[type='tel'],
+.btcpw_digital_download_customer_information input[type="text"],
+.btcpw_digital_download_customer_information input[type="email"],
+.btcpw_digital_download_customer_information input[type="number"],
+.btcpw_digital_download_customer_information input[type="tel"],
 .btcpw_digital_download_customer_information textarea {
   width: 100%;
   border-radius: 15px;
@@ -1386,7 +1380,7 @@ button.btcpaywall_add_to_cart:hover {
   transform: scale(1.05);
 }
 
-.btcpw_tabset > input[type='radio'] {
+.btcpw_tabset > input[type="radio"] {
   position: absolute;
   left: -200vw;
 }
@@ -1456,17 +1450,17 @@ button.btcpaywall_add_to_cart:hover {
   -khtml-border-radius: 15px;
 }
 
-.btcpw_revenue_post_customer_information input[type='text'],
-.btcpw_revenue_post_customer_information input[type='email'],
-.btcpw_revenue_post_customer_information input[type='url'],
-.btcpw_revenue_post_customer_information input[type='number'],
-.btcpw_revenue_post_customer_information input[type='tel'],
+.btcpw_revenue_post_customer_information input[type="text"],
+.btcpw_revenue_post_customer_information input[type="email"],
+.btcpw_revenue_post_customer_information input[type="url"],
+.btcpw_revenue_post_customer_information input[type="number"],
+.btcpw_revenue_post_customer_information input[type="tel"],
 .btcpw_revenue_post_customer_information textarea,
-.btcpw_revenue_view_customer_information input[type='text'],
-.btcpw_revenue_view_customer_information input[type='email'],
-.btcpw_revenue_view_customer_information input[type='url'],
-.btcpw_revenue_view_customer_information input[type='number'],
-.btcpw_revenue_view_customer_information input[type='tel'],
+.btcpw_revenue_view_customer_information input[type="text"],
+.btcpw_revenue_view_customer_information input[type="email"],
+.btcpw_revenue_view_customer_information input[type="url"],
+.btcpw_revenue_view_customer_information input[type="number"],
+.btcpw_revenue_view_customer_information input[type="tel"],
 .btcpw_revenue_view_customer_information textarea {
   border-radius: 8px;
 }
@@ -1483,7 +1477,8 @@ button.btcpaywall_add_to_cart:hover {
 }
 /*Common icons*/
 .btcpw_skyscraper_amount svg,
-.btcpw_page_amount svg{
+.btcpw_page_amount svg,
+.btcpw_tipping_free_input svg {
   font-size: 1em;
-  margin:0;
+  margin: 0;
 }

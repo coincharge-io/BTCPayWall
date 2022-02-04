@@ -99,7 +99,7 @@
                                 </tbody>
                             </table>
                         <?php endif; ?>
-                        <?php if (!empty($download_links)) : ?>
+                        <?php if (!empty(array_filter($download_links))) : ?>
                             <div>
                                 <p>
                                     You can download file/s by clicking on the button/s bellow.

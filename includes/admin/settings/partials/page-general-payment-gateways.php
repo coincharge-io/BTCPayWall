@@ -27,11 +27,10 @@ $supported_gateways = array(
 
                 </div>
             </div>
-    </div>
 
-    <div class="btcpw__paywall_submit_button" style="display: inline-block;">
-        <button class="button button-primary btcpw_button" type="submit">Save</button>
+            <div class="btcpw__paywall_submit_button" style="display: inline-block;">
+                <button class="button button-primary btcpw_button" type="submit">Save</button>
+            </div>
+        </form>
     </div>
-    </form>
-</div>
 </div>
