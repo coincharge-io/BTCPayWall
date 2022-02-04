@@ -90,6 +90,10 @@ https://btcpaywall.com/faq-support-center/
 
 - Improve: Use cookies for cart
 
+- Improve: Tipping forms 
+
+- Fix: Uploading images in Gutenberg
+
 = 1.0.3 =
 
 - Fix: Display all download links in email
