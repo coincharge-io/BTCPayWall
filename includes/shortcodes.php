@@ -83,56 +83,44 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
 ?>
     <style>
         .btcpw_skyscraper_tipping_container.wide {
-            background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : '');
-                                ?>;
-            background-image: url(<?php echo ($background ? esc_url($background) : '');
-                                    ?>);
+            background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : ''); ?>;
+            background-image: url(<?php echo ($background ? esc_url($background) : ''); ?>);
         }
 
         .btcpw_skyscraper_banner.wide {
-            background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : '');
-                                ?>;
-            background-image: url(<?php echo ($background ? esc_url($background) : '');
-                                    ?>);
+            background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : ''); ?>;
+            background-image: url(<?php echo ($background ? esc_url($background) : ''); ?>);
         }
 
         .btcpw_skyscraper_header_container.wide,
         #btcpw_skyscraper_wide_button,
         #btcpw_skyscraper_wide_button>div:nth-child(1)>input {
-            background-color: <?php echo esc_html($atts['background']);
-                                ?>;
+            background-color: <?php echo esc_html($atts['background']); ?>;
         }
 
         #btcpw_skyscraper_tipping_wide_button,
         #btcpw_skyscraper_wide_button>div>input.skyscraper-next-form {
-            color: <?php echo esc_html($atts['button_text_color']);
-                    ?>;
-            background: <?php echo esc_html($atts['button_color']);
-                        ?>;
+            color: <?php echo esc_html($atts['button_text_color']); ?>;
+            background: <?php echo esc_html($atts['button_color']); ?>;
         }
 
         .btcpw_skyscraper_header_container.wide h3 {
-            color: <?php echo esc_html($atts['title_text_color']);
-                    ?>
+            color: <?php echo esc_html($atts['title_text_color']); ?>
         }
 
         div.btcpw_skyscraper_banner.wide>div.btcpw_skyscraper_header_container.wide p {
-            color: <?php echo esc_html($atts['description_color']);
-                    ?>
+            color: <?php echo esc_html($atts['description_color']); ?>
         }
 
         #skyscraper_tipping_wide_form>fieldset h4 {
-            color: <?php echo esc_html($atts['tipping_text_color']);
-                    ?>
+            color: <?php echo esc_html($atts['tipping_text_color']); ?>
         }
 
         .btcpw_skyscraper_amount_value_1.wide,
         .btcpw_skyscraper_amount_value_2.wide,
         .btcpw_skyscraper_amount_value_3.wide,
         .btcpw_skyscraper_tipping_free_input.wide {
-            background: <?php echo esc_html($atts['input_background']);
-                        ?>;
-
+            background: <?php echo esc_html($atts['input_background']); ?>;
         }
     </style>
     <div id="btcpw_page">
@@ -326,50 +314,39 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
 ?>
     <style>
         .btcpw_skyscraper_tipping_container.high {
-            background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : '');
-                                ?>;
-            background-image: url(<?php echo ($background ? esc_url($background) : '');
-                                    ?>);
+            background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : ''); ?>;
+            background-image: url(<?php echo ($background ? esc_url($background) : ''); ?>);
         }
-
 
         .btcpw_skyscraper_amount_value_1.high,
         .btcpw_skyscraper_amount_value_2.high,
         .btcpw_skyscraper_amount_value_3.high,
         .btcpw_skyscraper_tipping_free_input.high {
-            background-color: <?php echo esc_html($atts['input_background']);
-                                ?>;
+            background-color: <?php echo esc_html($atts['input_background']); ?>;
         }
 
         .btcpw_skyscraper_header_container.high,
         #btcpw_skyscraper_high_button,
         #btcpw_skyscraper_high_button>div:nth-child(1)>input {
-            background-color: <?php echo esc_html($atts['background']);
-                                ?>;
+            background-color: <?php echo esc_html($atts['background']); ?>;
         }
 
         #btcpw_skyscraper_tipping_high_button,
         #btcpw_skyscraper_high_button>div>input.skyscraper-next-form {
-            color: <?php echo esc_html($atts['button_text_color']);
-                    ?>;
-            background: <?php echo esc_html($atts['button_color']);
-                        ?>;
+            color: <?php echo esc_html($atts['button_text_color']); ?>;
+            background: <?php echo esc_html($atts['button_color']); ?>;
         }
 
         .btcpw_skyscraper_header_container.high h3 {
-            color: <?php echo esc_html($atts['title_text_color']);
-                    ?>
+            color: <?php echo esc_html($atts['title_text_color']); ?>
         }
 
-
         div.btcpw_skyscraper_banner.high>div.btcpw_skyscraper_header_container.high p {
-            color: <?php echo esc_html($atts['description_color']);
-                    ?>
+            color: <?php echo esc_html($atts['description_color']); ?>
         }
 
         #skyscraper_tipping_high_form>fieldset h4 {
-            color: <?php echo esc_html($atts['tipping_text_color']);
-                    ?>
+            color: <?php echo esc_html($atts['tipping_text_color']); ?>
         }
     </style>
     <div id="btcpw_page">
@@ -567,68 +544,53 @@ function btcpaywall_render_shortcode_page_tipping($atts)
 ?>
     <style>
         .btcpw_page_tipping_container {
-            background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : '');
-                                ?>;
-            background-image: url(<?php echo ($background ? esc_url($background) : '');
-                                    ?>);
-            width: <?php echo esc_html($dimension[0]) . 'px !important';
-                    ?>;
-            height: <?php echo esc_html($dimension[1]) . 'px !important';
-                    ?>;
+            background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : ''); ?>;
+            background-image: url(<?php echo ($background ? esc_url($background) : ''); ?>);
+            width: <?php echo esc_html($dimension[0]) . 'px !important'; ?>;
+            height: <?php echo esc_html($dimension[1]) . 'px !important'; ?>;
         }
 
         #btcpw_page_tipping__button,
         #btcpw_page_button>input.page-next-form,
         #btcpw_page_button>input.page-previous-form {
-            color: <?php echo esc_html($atts['button_text_color']);
-                    ?>;
+            color: <?php echo esc_html($atts['button_text_color']); ?>;
         }
 
         #btcpw_page_button {
-            background-color: <?php echo esc_html($atts['background']);
-                                ?>;
+            background-color: <?php echo esc_html($atts['background']); ?>;
         }
 
         .btcpw_page_header_container h3 {
-            color: <?php echo esc_html($atts['title_text_color']);
-                    ?>
+            color: <?php echo esc_html($atts['title_text_color']); ?>
         }
 
-
         #page_tipping_form>fieldset>h4 {
-            color: <?php echo esc_html($atts['tipping_text_color']);
-                    ?>
+            color: <?php echo esc_html($atts['tipping_text_color']); ?>
         }
 
         .btcpw_page_amount_value_1,
         .btcpw_page_amount_value_2,
         .btcpw_page_amount_value_3,
         .btcpw_page_tipping_free_input {
-            background-color: <?php echo esc_html($atts['input_background']);
-                                ?>;
-
+            background-color: <?php echo esc_html($atts['input_background']); ?>;
         }
 
         .btcpw_page_header_container,
         #btcpw_page_button>div:nth-child(1)>input {
-            background-color: <?php echo esc_html($atts['background']);
-                                ?>;
+            background-color: <?php echo esc_html($atts['background']); ?>;
         }
 
         .btcpw_page_bar_container.active {
-            background-color: <?php echo esc_html($atts['active_color']);
-                                ?>;
+            background-color: <?php echo esc_html($atts['active_color']); ?>;
         }
 
         #btcpw_page_tipping__button,
         #btcpw_page_button>input.page-next-form {
-            background-color: <?php echo esc_html($atts['button_color']);
-                                ?>;
+            background-color: <?php echo esc_html($atts['button_color']); ?>;
         }
 
         .btcpw_page_bar_container div {
-            background-color: <?php echo esc_html($atts['inactive_color']);
-                                ?>;
+            background-color: <?php echo esc_html($atts['inactive_color']); ?>;
         }
     </style>
 
@@ -816,51 +778,36 @@ function btcpaywall_render_shortcode_box_tipping($atts)
 
     <style>
         .btcpw_tipping_box_container {
-            background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : '');
-                                ?>;
-            width: <?php echo esc_html($dimension[0]) . 'px !important';
-                    ?>;
-            height: <?php echo esc_html($dimension[1]) . 'px !important';
-                    ?>;
-            background-image: url(<?php echo ($background ? esc_url($background) : '');
-                                    ?>);
-
+            background-color: <?php echo ($atts['background_color'] ? esc_html($atts['background_color']) : ''); ?>;
+            width: <?php echo esc_html($dimension[0]) . 'px !important'; ?>;
+            height: <?php echo esc_html($dimension[1]) . 'px !important'; ?>;
+            background-image: url(<?php echo ($background ? esc_url($background) : ''); ?>);
         }
 
-
         #btcpw_tipping__button {
-            color: <?php echo esc_html($atts['button_text_color']);
-                    ?>;
-            background: <?php echo esc_html($atts['button_color']);
-                        ?>;
+            color: <?php echo esc_html($atts['button_text_color']); ?>;
+            background: <?php echo esc_html($atts['button_color']); ?>;
         }
 
         #tipping_form_box fieldset div.btcpw_tipping_box_header_container div h4 {
-            color: <?php echo esc_html($atts['title_text_color']);
-                    ?>
+            color: <?php echo esc_html($atts['title_text_color']); ?>
         }
-
-
 
         .btcpw_tipping_box_header_container,
         #button {
-            background-color: <?php echo esc_html($atts['background']);
-                                ?>;
+            background-color: <?php echo esc_html($atts['background']); ?>;
         }
 
         #tipping_form_box fieldset div p {
-            color: <?php echo esc_html($atts['description_color']);
-                    ?>
+            color: <?php echo esc_html($atts['description_color']); ?>
         }
 
         #tipping_form_box fieldset h4 {
-            color: <?php echo esc_html($atts['tipping_text_color']);
-                    ?>
+            color: <?php echo esc_html($atts['tipping_text_color']); ?>
         }
 
         .btcpw_tipping_free_input {
-            background-color: <?php echo esc_html($atts['input_background']);
-                                ?>;
+            background-color: <?php echo esc_html($atts['input_background']); ?>;
         }
     </style>
 

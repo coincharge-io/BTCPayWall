@@ -70,14 +70,6 @@ class Tipping_Banner_Wide extends WP_Widget
                         ?>
             }
 
-            .btcpw_skyscraper_amount_value_1.wide,
-            .btcpw_skyscraper_amount_value_2.wide,
-            .btcpw_skyscraper_amount_value_3.wide,
-            .btcpw_skyscraper_tipping_free_input.wide {
-                background-color: <?php echo esc_html($instance['fixed_background']);
-                                    ?>;
-            }
-
             .btcpw_widget.btcpw_skyscraper_tipping_container.info_container.wide {
                 display: <?php echo (empty($instance['description'])) ? 'none' : 'block';
                             ?>

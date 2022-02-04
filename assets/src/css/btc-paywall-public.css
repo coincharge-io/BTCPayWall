@@ -317,6 +317,7 @@ a.btcpw_pay__download {
 }
 #btcpw_tipping_currency + i.fas,
 #btcpw_tipping_currency_btcpw_widget + i.fas {
+  font-size: 1em;
   float: right;
   pointer-events: none;
   background-color: transparent;
@@ -378,10 +379,11 @@ a.btcpw_pay__download {
 }
 
 .btcpw_skyscraper_header_container.high h3 {
-  margin: 0.4em;
   text-align: center;
 }
-
+.btcpw_skyscraper_header_container.wide h3 {
+  margin: 0;
+}
 .btcpw_skyscraper_amount {
   display: flex;
 }
@@ -671,9 +673,6 @@ a.btcpw_pay__download {
   font-size: 0.8em;
 }
 
-/* .btcpw_skyscraper_banner {
-  line-height: 1em;
-} */
 .btcpw_skyscraper_banner.high {
   width: 200px !important;
 }
@@ -703,6 +702,7 @@ a.btcpw_pay__download {
 .btcpw_skyscraper_amount_value_1.high i,
 .btcpw_skyscraper_amount_value_2.high i,
 .btcpw_skyscraper_amount_value_3.high i {
+  font-size: 1em;
   margin-right: 10px;
 }
 
@@ -747,6 +747,7 @@ a.btcpw_pay__download {
 #btcpw_skyscraper_tipping_wide_currency + i.fas,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_wide + i.fas,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_high + i.fas {
+  font-size: 1em;
   float: right;
   pointer-events: none;
   background-color: transparent;
@@ -957,6 +958,7 @@ a.btcpw_pay__download {
   display: none;
 }
 #btcpw_page_tipping_currency + i.fas {
+  font-size: 1em;
   float: right;
   pointer-events: none;
   background-color: transparent;
@@ -1167,7 +1169,6 @@ Revenue types
   align-items: center;
   margin: 0 auto;
 }
-
 #post_revenue_type fieldset:not(:first-of-type),
 #view_revenue_type fieldset:not(:first-of-type) {
   display: none;
