@@ -90,7 +90,7 @@ class Tipping_Banner_High extends WP_Widget
 
             .btcpw_widget.btcpw_skyscraper_amount_value_1.high,
             .btcpw_widget.btcpw_skyscraper_amount_value_2.high,
-            .btcpw_widget.btcpw_skyscraper_amount_value_3.high {
+            .btcpw_widget.btcpw_skyscraper_amount_value_3.high,.btcpw_widget.btcpw_skyscraper_tipping_free_input.high {
                 background: <?php echo esc_html($instance['fixed_background']);
                             ?>;
 
