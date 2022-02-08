@@ -610,6 +610,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                         <?php if (!empty($atts['description'])) : ?>
                             <p><?php echo esc_html__($atts['description'], 'btcpaywall'); ?></p>
                         <?php endif; ?>
+
                     </div>
                 </div>
                 <?php if ($collect_data == 'true') : ?>
@@ -868,6 +869,7 @@ function btcpaywall_render_shortcode_box_tipping($atts)
         <div id="powered_by_box">
             <p>Powered by <a href='https://btcpaywall.com/' target='_blank'>BTCPayWall</a></p>
         </div>
+    </div>
     </div>
 <?php
 

@@ -131,8 +131,8 @@ a.btcpw_pay__download {
 #tipping_form_box fieldset .btcpw_tipping_box_header_container h4,
 #tipping_form_box_widget fieldset .btcpw_tipping_box_header_container h4 {
   margin-bottom: 0.3rem;
+  font-size: clamp(12px, 16px, 20px);
 }
-
 .btcpw_tipping_box_header_container > div:nth-child(2) {
   display: flex;
   flex-direction: column;
@@ -141,7 +141,7 @@ a.btcpw_pay__download {
 }
 .btcpw_tipping_box_container p,
 .btcpw_widget.btcpw_tipping_box_container p {
-  font-size: 0.4rem;
+  font-size: clamp(5px, 7px, 9px);
   line-height: 1.5;
   text-align: center;
   margin-top: 0;
@@ -196,11 +196,9 @@ a.btcpw_pay__download {
 #tipping_form_box_widget fieldset > h5 {
   text-align: center;
   margin: 10px 0;
+  font-size: clamp(9px, 13px, 17px);
 }
-/* .btcpw_tipping_box_container h6 {
-  font-weight: bold;
-  font-size: 16px;
-} */
+
 .btcpw_tipping_box_container fieldset > h5 {
   margin-left: 1px;
 }
@@ -380,9 +378,12 @@ a.btcpw_pay__download {
 
 .btcpw_skyscraper_header_container.high h3 {
   text-align: center;
+  font-size: clamp(14px, 18px, 22px);
 }
+
 .btcpw_skyscraper_header_container.wide h3 {
   margin: 0;
+  font-size: clamp(14px, 18px, 22px);
 }
 .btcpw_skyscraper_amount {
   display: flex;
@@ -569,6 +570,7 @@ a.btcpw_pay__download {
 #btcpw_widget_skyscraper_tipping_form_wide > fieldset h4 {
   text-align: center;
   margin: 10px;
+  font-size: clamp(10px, 14px, 18px);
 }
 #skyscraper_tipping_high_form fieldset:not(:first-of-type),
 #skyscraper_tipping_wide_form fieldset:not(:first-of-type),
@@ -825,7 +827,7 @@ a.btcpw_pay__download {
 .btcpw_skyscraper_header_container p,
 .btcpw_widget.btcpw_skyscraper_header_container p {
   word-break: break-all;
-  font-size: 0.5rem;
+  font-size: clamp(8px, 10px, 12px);
   text-align: center;
   line-height: 1.5;
   margin-top: 0;
@@ -837,6 +839,11 @@ a.btcpw_pay__download {
   align-items: center;
   justify-content: space-around;
 }
+.btcpw_skyscraper_header_container.wide > div:nth-child(2),
+.btcpw_widget.btcpw_skyscraper_header_container.wide > div:nth-child(2) {
+  max-width: 500px;
+}
+
 /**
     Tipping page
     
@@ -984,7 +991,12 @@ a.btcpw_pay__download {
   flex-direction: column;
   text-align: center;
 }
-
+.btcpw_page_header_container h3 {
+  font-size: clamp(16px, 20px, 25px);
+}
+.btcpw_page_header_container p {
+  font-size: clamp(10px, 14px, 18px);
+}
 #page_tipping_form fieldset:not(:first-of-type) {
   display: none;
 }
@@ -1037,7 +1049,8 @@ a.btcpw_pay__download {
 
 #page_tipping_form fieldset h4 {
   text-align: center;
-  margin: 15px 0;
+  margin: 10px 0;
+  font-size: clamp(12px, 16px, 20px);
 }
 .btcpw_page_tipping_converted_values {
   flex-direction: row;
