@@ -85,7 +85,7 @@ $default_info = get_option('btcpw_pay_per_view_info');
     <div>
         <form method="POST" action="options.php">
             <?php settings_fields('btcpw_general_pay_per_view_options'); ?>
-            <h2>General Settings</h2>
+            <h2>Default Options</h2>
             <div class="row">
 
                 <div class="col-20">

@@ -30,7 +30,6 @@ $store_id = get_option('btcpw_btcpay_store_id');
         <form method="POST" action="options.php">
             <?php settings_fields('btcpw_btcpay_server_settings'); ?>
             <div>
-                <h2>Store</h2>
                 <div class="row">
                     <div class="col-20">
                         <label for="btcpw_btcpay_store_id">Store id</label>
@@ -40,10 +39,7 @@ $store_id = get_option('btcpw_btcpay_store_id');
                     </div>
                 </div>
             </div>
-
             <div>
-                <h2>BTCPay Server</h2>
-
                 <div class="row">
                     <div class="col-20">
                         <label>BTCPay Server Url</label>

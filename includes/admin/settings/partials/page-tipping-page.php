@@ -14,7 +14,7 @@ $text = array(
     'info' => $result['tipping_text'] ?? 'Enter Tipping Amount',
     'button' => $result['button_text'] ?? 'Tipping now',
     'step1' => $result['step1'] ?? 'Pledge',
-    'step2' => $result['step1'] ?? 'Info',
+    'step2' => $result['step2'] ?? 'Info',
 );
 $form_name = $result['form_name'] ?? $text['title'];
 $collect = array(

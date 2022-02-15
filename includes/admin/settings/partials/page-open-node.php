@@ -9,7 +9,6 @@ $btcpw_opennode_auth_key = get_option('btcpw_opennode_auth_key');
         <form method="POST" action="options.php">
             <?php settings_fields('btcpw_opennode_settings'); ?>
             <div>
-                <h2>OpenNode</h2>
                 <div class="row">
                     <div class="col-20">
                         <label for="btcpw_btcpay_auth_key_view">OpenNode API Key</label>

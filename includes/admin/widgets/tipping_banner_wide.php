@@ -301,10 +301,10 @@ class Tipping_Banner_Wide extends WP_Widget
                 flex-direction: column;
             }
 
-            .tipping_banner textarea {
+            .tipping_banner.wide textarea {
                 width: auto;
                 vertical-align: middle;
-                width: 250px;
+                width: 150px;
                 height: 100px;
                 padding: 6px;
                 border: 1px solid #ccc;
@@ -315,10 +315,15 @@ class Tipping_Banner_Wide extends WP_Widget
 
             .container_predefined_amount input:not([type='checkbox']),
             .container_predefined_amount select {
-                width: 100px !important;
+                width: 70px !important;
+            }
+
+            .tipping_banner.wide label {
+                display: inline-block;
+                width: 80px;
             }
         </style>
-        <div class="tipping_banner">
+        <div class="tipping_banner wide">
             <h1>Tipping</h1>
             <div class="row">
                 <p>600x280</p>

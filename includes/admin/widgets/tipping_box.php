@@ -212,13 +212,18 @@ work', 'btcpaywall');
             .tipping_box textarea {
                 width: auto;
                 vertical-align: middle;
-                width: 250px;
+                width: 150px;
                 height: 100px;
                 padding: 6px;
                 border: 1px solid #ccc;
                 border-radius: 4px;
                 box-sizing: border-box;
                 resize: vertical;
+            }
+
+            .tipping_box label {
+                display: inline-block;
+                width: 80px;
             }
         </style>
         <div class="tipping_box">
@@ -379,12 +384,10 @@ work', 'btcpaywall');
                 </div>
                 <div class="col-80">
                     <input id="<?php echo esc_attr($this->get_field_id('button_color')); ?>" class="widget-tipping-basic-button_color" name="<?php echo esc_attr($this->get_field_name('button_color')); ?>" type="text" value="<?php echo esc_attr($button_color); ?>" />
-
                 </div>
-
-
             </div>
-    <?php
+        </div>
+<?php
     }
 
     public function update($new_instance, $old_instance)
@@ -423,4 +426,4 @@ work', 'btcpaywall');
 $my_widget = new Tipping_Box();
 
 
-    ?>
+?>

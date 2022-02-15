@@ -347,24 +347,30 @@ class Tipping_Banner_High extends WP_Widget
                 flex-direction: column;
             }
 
-            .tipping_banner textarea {
+            .tipping_banner.high textarea {
                 width: auto;
-                vertical-align: middle;
-                width: 250px;
+                width: 150px;
                 height: 100px;
                 padding: 6px;
                 border: 1px solid #ccc;
                 border-radius: 4px;
                 box-sizing: border-box;
                 resize: vertical;
+                vertical-align: middle;
+
             }
 
             .container_predefined_amount input:not([type='checkbox']),
             .container_predefined_amount select {
-                width: 100px !important;
+                width: 70px !important;
+            }
+
+            .tipping_banner.high label {
+                display: inline-block;
+                width: 80px;
             }
         </style>
-        <div class="tipping_banner">
+        <div class="tipping_banner high">
             <h1>Tipping</h1>
             <div class="row">
 
@@ -454,7 +460,7 @@ class Tipping_Banner_High extends WP_Widget
             </div>
             <div class="row">
                 <div class="col-20">
-                    <label for="<?php echo esc_attr($this->get_field_id('redirect')); ?>"><?php esc_html__('Link to Thank you page', 'btcpaywall'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('redirect')); ?>"><?php echo esc_html__('Link to Thank you page', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-80">
                     <input id=" <?php echo esc_attr($this->get_field_id('redirect')); ?>" name="<?php echo esc_attr($this->get_field_name('redirect')); ?>" class="widget-tipping-basic_redirect" type="text" value="<?php echo esc_attr($redirect); ?>" />

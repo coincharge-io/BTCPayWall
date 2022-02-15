@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Digital Download
+ * BTCPayWall Tipping
  *
  * @package     BTCPayWall
  * @subpackage  Classes/BTCPayWall_Tipping
@@ -140,6 +140,7 @@ class BTCPayWall_Tipping
         $columns        = $this->db->get_columns();
         $default_values = $this->db->get_column_defaults();
 
+
         foreach ($columns as $key => $type) {
 
             if (!array_key_exists($key, $data)) {
@@ -179,7 +180,6 @@ class BTCPayWall_Tipping
                     break;
             }
         }
-
         return $data;
     }
 }

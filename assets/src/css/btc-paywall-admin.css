@@ -161,16 +161,7 @@ td.Settled {
   width: auto;
   height: 100px;
 }
-/* .tipping_box textarea,
-.tipping_banner textarea {
-  width: auto;
-  height: 80px;
-}
-.tipping_box label,
-.tipping_banner label {
-  display: inline-block;
-  vertical-align: middle;
-} */
+
 .tipping_box input.widget-tipping-basic_redirect,
 .tipping_banner input.widget-tipping-basic_redirect {
   width: 100%;
@@ -198,7 +189,7 @@ td.Settled {
 .btcpw_expanded_notice p {
   font-size: 10px;
 }
-.btcpw_general_settings,
+/* .btcpw_general_settings,
 .tipping_box_settings,
 .tipping_banner_high_settings,
 .tipping_banner_wide_settings,
@@ -216,7 +207,7 @@ td.Settled {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   padding: 0 5px;
-}
+} */
 .button.button-primary.btcpw_button {
   background: #0066a2;
   color: #fff;
