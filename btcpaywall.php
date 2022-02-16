@@ -173,7 +173,7 @@ if (!class_exists('BTCPayWall')) :
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-scripts.php';
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/payments/view.php';
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/tipping-forms/view.php';
-
+                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/tipping-forms/class-tipping-metabox.php';
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-pages.php';
 
 

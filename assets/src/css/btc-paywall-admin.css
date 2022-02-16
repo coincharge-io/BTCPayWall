@@ -208,6 +208,22 @@ td.Settled {
   -webkit-border-radius: 10px;
   padding: 0 5px;
 } */
+.btcpw_general_settings,
+.tipping_box_settings,
+.tipping_banner_high_settings,
+.tipping_banner_wide_settings,
+.tipping_page_settings,
+#btcpw_general_pay_per_post_options_paywall,
+#btcpw_general_pay_per_view_options_paywall,
+#btcpw_pay_per_file_paywall,
+#btcpw_general_content_store_options,
+#btcpw_misc_options,
+#btcpw_general_payment_gateway_options {
+  padding: 0;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
 .button.button-primary.btcpw_button {
   background: #0066a2;
   color: #fff;

@@ -35,7 +35,7 @@ function btcpaywall_register_post_types()
         'rewrite' => true,
         'query_var' => true,
     ]);
-    $labels = apply_filters('btcpaywall_change_product_labels', array(
+    $$download_labels = apply_filters('btcpaywall_change_product_labels', array(
         'name'               => _x('BP Digital Download', 'BP Digital Download', 'btcpaywall'),
         'singular_name'      => _x('BP Digital Download', 'BP Digital Download', 'btcpaywall'),
         'add_new'            => __('Add New', 'btcpaywall'),
@@ -52,7 +52,7 @@ function btcpaywall_register_post_types()
     ));
 
     register_post_type('digital_download', [
-        'labels' => $labels,
+        'labels' => $download_labels,
         'public' => true,
         'show_ui'         => true,
         'show_in_menu'    => false,
@@ -64,6 +64,41 @@ function btcpaywall_register_post_types()
         'taxonomies' => [],
         'has_archive' => false,
         'rewrite'     => array('slug' => 'digital-download'),
+        'query_var' => true,
+    ]);
+
+    $labels = apply_filters('btcpaywall_change_tipping_labels', array(
+        'name'               => _x('Tipping Form', 'Tipping Form', 'btcpaywall'),
+        'singular_name'      => _x('Tipping Form', 'Tipping Form', 'btcpaywall'),
+        'add_new'            => __('Add New', 'btcpaywall'),
+        'add_new_item'       => __('Add New Tipping Form', 'btcpaywall'),
+        'edit_item'          => __('Edit Tipping Form', 'btcpaywall'),
+        'new_item'           => __('New Tipping Form', 'btcpaywall'),
+        'all_items'          => __('All Tipping Form', 'btcpaywall'),
+        'view_item'          => __('View Tipping Form', 'btcpaywall'),
+        'search_items'       => __('Search Tipping Form', 'btcpaywall'),
+        'not_found'          => __('No Tipping Form found', 'btcpaywall'),
+        'not_found_in_trash' => __('No Tipping Form found in Trash', 'btcpaywall'),
+        'parent_item_colon'  => '',
+        'menu_name'          => __('Tipping Forms', 'btcpaywall')
+    ));
+
+    register_post_type('tipping', [
+        'labels' => $labels,
+        'public' => true,
+        'show_ui'         => true,
+        'show_in_menu'    => false,
+        'rest_base' => null,
+        'menu_position' => null,
+        'menu_icon' => null,
+        'hierarchical' => false,
+        'supports'           => array(
+            'title', 'author', 'thumbnail',
+            'revisions', 'excerpt'
+        ),
+        'taxonomies' => [],
+        'has_archive' => false,
+        'rewrite'     => array('slug' => 'tipping'),
         'query_var' => true,
     ]);
 }

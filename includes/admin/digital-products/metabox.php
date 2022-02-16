@@ -58,11 +58,6 @@ function render_btcpw_product_description($post)
 {
     $btcpw_stored_meta = get_post_meta($post->ID);
     $description = $btcpw_stored_meta['_btcpw_product_description'][0] ?? '';
-    $args = array(
-        'tinymce' => false,
-        'quicktags' => true,
-    );
-    //wp_editor(htmlspecialchars_decode($description), 'description');
     wp_editor(htmlspecialchars_decode($description), 'btcpw_product_description');
 }
 function render_btcpw_product_settings($post)
@@ -198,7 +193,7 @@ function btcpaywall_meta_save($post_id)
             }
         } else {
             if (!empty($_POST[$field])) {
-                $new_value = filter_var($_POST[$field], FILTER_SANITIZE_STRING);
+                $new_value = sanitize_text_field($_POST[$field]);
                 update_post_meta($post_id, $field, $new_value);
             } else {
                 delete_post_meta($post_id, $field);

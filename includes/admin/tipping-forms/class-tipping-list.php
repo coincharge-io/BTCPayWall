@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Digital Download
+ * Tipping form
  *
  * @package     BTCPayWall
  * @subpackage  Admin/Tipping_Forms_Table
