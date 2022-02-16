@@ -17,7 +17,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 - Pay-per-post for the sale of individual blog posts and newspaper articles
 - Pay-per-view for the sale of videos that are played directly
-- Content store for selling digital files that are downloaded
+- Download store for selling digital files that are downloaded
 - Tipping for receiving donations and tips
 
 **Sell individual blog articles, digital content and products like videos, eBooks or PDF files and receive tips and donations through your website.**

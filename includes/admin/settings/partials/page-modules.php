@@ -18,7 +18,7 @@ $section = isset($_GET['section']) ? sanitize_text_field($_GET['section']) : $de
                 <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-view" class="btcpw-nav-tab nav-tab <?php if ($section === 'pay-per-view') : ?>nav-tab-active<?php endif; ?>">Pay-per-View</a>
             </li>
             <li>
-                <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-file" class="btcpw-nav-tab nav-tab <?php if ($section === 'pay-per-file') : ?>nav-tab-active<?php endif; ?>">Digital Store</a>
+                <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-file" class="btcpw-nav-tab nav-tab <?php if ($section === 'pay-per-file') : ?>nav-tab-active<?php endif; ?>">Download Store</a>
             </li>
             <li>
                 <a href="?page=btcpw_general_settings&tab=modules&section=tipping" class="btcpw-nav-tab nav-tab <?php if ($section === 'tipping') : ?>nav-tab-active<?php endif; ?>">Tipping</a>

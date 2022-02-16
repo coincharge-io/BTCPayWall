@@ -1,8 +1,8 @@
 ![Image of BTCPaywall](https://btcpaywall.com/wp-content/uploads/2021/12/btcpaywall_logo669x182.png)
 
-# BTCPayWall - The Bitcoin Paywall to sell content and digital products on WordPress
+# BTCPayWall - The Bitcoin Paywall to sell content and digital goods on WordPress
 
-**BTCPayWall supports four different modules to distribute its digital products and content:**
+**BTCPayWall supports four different modules to distribute its digital goods and content:**
 
 - Pay-per-post for the sale of individual blog posts and newspaper articles
 - Pay-per-view for the sale of videos that are played directly
@@ -19,9 +19,9 @@ With BTCPayWall you can offer a Bitcoin Paywall for a single blog post (pay-per-
 
 Sell digital content that is played directly. With the Content Store View module, you can offer videos or audio files to your visitors for a fee and have them played directly on your own website.
 
-**Digital Store**
+**Download Store**
 
-With the Digital Store you can sell your digital files and the customer can download this file to his computer.
+With the Download Store you can sell your digital files and the customer can download files to their computer.
 
 **Receive tips & donations**
 
