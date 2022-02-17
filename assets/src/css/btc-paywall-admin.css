@@ -594,3 +594,35 @@ Settings Tabs
   width: 100%;
   min-height: 100px;
 }
+
+/*Tipping metabox*/
+
+.btcpaywall_metabox_wrap_metabox_tabs {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+.btcpaywall_metabox_wrap_metabox_tabs li {
+  background: none;
+  color: #222;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.btcpaywall_metabox_wrap_metabox_tabs
+  .btcpaywall_metabox_wrap_metabox_tabs
+  li.current {
+  background: #ededed;
+  color: #222;
+}
+
+.btcpaywall_tabset {
+  display: none;
+  background: #ededed;
+  padding: 15px;
+}
+
+.btcpaywall_tabset.current {
+  display: inherit;
+}

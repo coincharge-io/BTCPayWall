@@ -697,5 +697,15 @@
       $("#btcpw_product_file"),
       $("#btcpw_product_filename", $("#btcpw_product_file_id"))
     );
+    //Tipping Metabox
+    $(".btcpaywall_metabox_wrap_metabox_tabs li").click(function () {
+      var tab_id = $(this).attr("data-tab");
+
+      $("btcpaywall_metabox_wrap_metabox_tabs li").removeClass("current");
+      $(".btcpaywall_tabset").removeClass("current");
+
+      $(this).addClass("current");
+      $("#" + tab_id).addClass("current");
+    });
   });
 })(jQuery);
