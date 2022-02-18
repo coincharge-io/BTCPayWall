@@ -626,3 +626,13 @@ Settings Tabs
 .btcpaywall_tabset.current {
   display: inherit;
 }
+
+.btcpaywall_tipping_templates img {
+  height: 300px;
+  width: 300px;
+}
+
+.btcpaywall_field_wrap {
+  border-bottom: 1px solid #eee;
+  margin: 0;
+}
