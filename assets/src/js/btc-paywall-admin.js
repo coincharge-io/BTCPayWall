@@ -44,11 +44,11 @@
       "#btcpw_default_page_currency1, #btcpw_default_page_currency2, #btcpw_default_page_currency3, #btcpw_banner_wide_default_currency1, #btcpw_banner_wide_default_currency2, #btcpw_banner_wide_default_currency3, #btcpw_banner_high_default_currency1, #btcpw_banner_high_default_currency2, #btcpw_banner_high_default_currency3"
     ).change(function () {
       var stepValue =
-        $(this).val() === "BTC"
-          ? "0.00000001"
-          : $(this).val() === "SATS"
-          ? "1"
-          : "0.50";
+        $(this).val() === "BTC" ?
+        "0.00000001" :
+        $(this).val() === "SATS" ?
+        "1" :
+        "0.50";
 
       $(this)
         .prev("input")
@@ -100,6 +100,7 @@
       }
     });
   });
+
   function isValidUrl(url) {
     if (
       typeof url === "string" &&
@@ -134,6 +135,7 @@
       }
     });
   });
+
   function convertDate(d) {
     var year = d.getFullYear();
     var month = pad(d.getMonth() + 1);
@@ -154,9 +156,9 @@
 
   $(document).ready(function () {
     $(".btcpw_fixed_amount_enable").change(function () {
-      $(this).is(":checked")
-        ? $(this).next().prop("required", true)
-        : $(this).next().prop("required", false);
+      $(this).is(":checked") ?
+        $(this).next().prop("required", true) :
+        $(this).next().prop("required", false);
     });
   });
 
@@ -425,6 +427,7 @@
       )
     );
   });
+
   function imagePreview(click_elem, target) {
     var custom_uploader, click_elem, target;
 
@@ -459,6 +462,7 @@
       custom_uploader.open();
     });
   }
+
   function imageRemove(remove) {
     $(remove).click(function (e) {
       e.preventDefault();
@@ -468,6 +472,7 @@
       button.hide().prev().html("Upload");
     });
   }
+
   function showMore(click_elem, target) {
     $(click_elem).click(function () {
       if (!$(this).is(":checked")) {
@@ -707,5 +712,10 @@
       $(this).addClass("current");
       $("#" + tab_id).addClass("current");
     });
+    $(".btcpaywall_container_header").click(function () {
+      var header_id = $(this).data("id");
+      $(".btcpaywall_container_body." + header_id + "-body").toggle();
+      console.log((".btcpaywall_container_body." + header_id + "-body"))
+    })
   });
 })(jQuery);
