@@ -35,7 +35,7 @@ function btcpaywall_register_post_types()
         'rewrite' => true,
         'query_var' => true,
     ]);
-    $$download_labels = apply_filters('btcpaywall_change_product_labels', array(
+    $download_labels = apply_filters('btcpaywall_change_product_labels', array(
         'name'               => _x('BP Digital Download', 'BP Digital Download', 'btcpaywall'),
         'singular_name'      => _x('BP Digital Download', 'BP Digital Download', 'btcpaywall'),
         'add_new'            => __('Add New', 'btcpaywall'),

@@ -677,7 +677,6 @@ Settings Tabs
 
 .btcpaywall_tabset {
   display: none;
-  background: #ededed;
   padding: 15px;
 }
 
@@ -712,4 +711,11 @@ Settings Tabs
 
 .btcpaywall_container_body {
   display: none;
+}
+
+.btcpaywall_container_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #c3c4c7;
 }

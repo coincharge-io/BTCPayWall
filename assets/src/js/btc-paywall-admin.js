@@ -715,7 +715,6 @@
     $(".btcpaywall_container_header").click(function () {
       var header_id = $(this).data("id");
       $(".btcpaywall_container_body." + header_id + "-body").toggle();
-      console.log((".btcpaywall_container_body." + header_id + "-body"))
     })
   });
 })(jQuery);

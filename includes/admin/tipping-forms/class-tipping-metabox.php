@@ -126,16 +126,13 @@ class Tipping_Forms_Metabox
                         </fieldset>
                         <fieldset class="btcpaywall_field_wrap"><label>Description</label>
                             <input value="bla" />
-                            <span>Set description</span>
+                            <span>Add short description</span>
                         </fieldset>
                         <fieldset class="btcpaywall_field_wrap"><label>Description text color</label>
                             <input value="bla" />
                             <span>Set description text color</span>
                         </fieldset>
-
-
                         <fieldset class="btcpaywall_field_wrap"><label>Step 1</label>
-
                             <textarea id="btcpw_tipping_page_step1" name="btcpw_tipping_page_text[step1]">Step 1</textarea>
                             <span>Set text for first step in progress bar</span>
                         </fieldset>
@@ -162,7 +159,7 @@ class Tipping_Forms_Metabox
                             <fieldset class="btcpaywall_field_wrap">
                                 <label>Tipping text</label>
                                 <input value="bla" />
-                                <span>Set text which will be display in the main section, above input fields</span>
+                                <span>Set text which will be displayed in the main section, above input fields</span>
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap">
                                 <label>Tipping text color</label>
@@ -184,12 +181,10 @@ class Tipping_Forms_Metabox
                             <fieldset class="btcpaywall_field_wrap"><label>Button text</label>
                                 <input value="bla" />
                                 <span>Set button text</span>
-
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap"><label>Button text color</label>
                                 <input value="bla" />
                                 <span>Set button text color</span>
-
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap"><label>Button color</label>
                                 <input value="bla" />
@@ -271,49 +266,54 @@ class Tipping_Forms_Metabox
                     <input value="bla" />
                     <span>Set color which will be used for header and footer background</span>
                 </fieldset>
-                <fieldset class="btcpaywall_field_wrap"><label>Show icons</label>
-                    <input type="checkbox" id="btcpw_tipping_page_show_icon" class="btcpw_tipping_page_show_icon" name="btcpw_tipping_page_show_icon" value="true" />
-                    <span>Do you want do display Font Awesome icons next to the fixed amount fields?</span>
-                </fieldset>
-                <fieldset class="btcpaywall_field_wrap"><label>Default price1</label>
-                    <input type="checkbox" id="btcpw_page_value_1_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_page_fixed_amount[value1][enabled]" value="true" />
-                    <input type="number" min=0 placeholder="Default Price1" step=1 name="btcpw_tipping_page_fixed_amount[value1][amount]" id="btcpw_default_page_price1">
-                    <select required name="btcpw_tipping_page_fixed_amount[value1][currency]" id="btcpw_default_page_currency1">
-                        <option disabled value="">Select currency</option>
-                        <?php foreach (['SATS', "USD"] as $currency) : ?>
-                            <option value="<?php echo esc_attr($currency); ?>">
-                                <?php echo esc_html($currency); ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                    <input type="text" id="btcpw_tipping_page_icon1" class="btcpw_tipping_page_icon1" name="btcpw_tipping_page_fixed_amount[value1][icon]" placeholder="Font Awesome Icon" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
-                </fieldset>
-                <fieldset class="btcpaywall_field_wrap"><label>Default price2</label>
-                    <input type="checkbox" id="btcpw_page_value_2_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_page_fixed_amount[value2][enabled]" value="true" />
-                    <input type="number" min=0 placeholder="Default Price2" step=1 name="btcpw_tipping_page_fixed_amount[value2][amount]" id="btcpw_default_page_price2">
-                    <select required name="btcpw_tipping_page_fixed_amount[value2][currency]" id="btcpw_default_page_currency2">
-                        <option disabled value="">Select currency</option>
-                        <?php foreach (['SATS', 'USD'] as $currency) : ?>
-                            <option value="<?php echo esc_attr($currency); ?>">
-                                <?php echo esc_html($currency); ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                    <input type="text" id="btcpw_tipping_page_icon2" class="btcpw_tipping_page_icon2" name="btcpw_tipping_page_fixed_amount[value2][icon]" placeholder="Font Awesome Icon" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
-                </fieldset>
-                <fieldset class="btcpaywall_field_wrap"><label>Default price3</label>
-                    <input type="checkbox" id="btcpw_page_value_3_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_page_fixed_amount[value3][enabled]" value="true" />
-                    <input type="number" min=0 placeholder="Default Price3" step=1 name="btcpw_tipping_page_fixed_amount[value3][amount]" id="btcpw_default_page_price3">
-                    <select required name="btcpw_tipping_page_fixed_amount[value3][currency]" id="btcpw_default_page_currency3">
-                        <option disabled value="">Select currency</option>
-                        <?php foreach (['SATS', 'USD'] as $currency) : ?>
-                            <option value="<?php echo esc_attr($currency); ?>">
-                                <?php echo esc_html($currency); ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                    <input type="text" id="btcpw_tipping_page_icon3" class="btcpw_tipping_page_icon3" name="btcpw_tipping_page_fixed_amount[value3][icon]" placeholder="Font Awesome Icon" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
-                </fieldset>
+                <div data-id="fixed-amount" class="btcpaywall_container_header">
+                    <h2>Fixed amount</h2>
+                </div>
+                <div class="btcpaywall_container_body fixed-amount-body">
+                    <fieldset class="btcpaywall_field_wrap"><label>Show icons</label>
+                        <input type="checkbox" id="btcpw_tipping_page_show_icon" class="btcpw_tipping_page_show_icon" name="btcpw_tipping_page_show_icon" value="true" />
+                        <span>Do you want do display Font Awesome icons next to the fixed amount fields?</span>
+                    </fieldset>
+                    <fieldset class="btcpaywall_field_wrap"><label>Default price1</label>
+                        <input type="checkbox" id="btcpw_page_value_1_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_page_fixed_amount[value1][enabled]" value="true" />
+                        <input type="number" min=0 placeholder="Default Price1" step=1 name="btcpw_tipping_page_fixed_amount[value1][amount]" id="btcpw_default_page_price1">
+                        <select required name="btcpw_tipping_page_fixed_amount[value1][currency]" id="btcpw_default_page_currency1">
+                            <option disabled value="">Select currency</option>
+                            <?php foreach (['SATS', "USD"] as $currency) : ?>
+                                <option value="<?php echo esc_attr($currency); ?>">
+                                    <?php echo esc_html($currency); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <input type="text" id="btcpw_tipping_page_icon1" class="btcpw_tipping_page_icon1" name="btcpw_tipping_page_fixed_amount[value1][icon]" placeholder="Font Awesome Icon" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
+                    </fieldset>
+                    <fieldset class="btcpaywall_field_wrap"><label>Default price2</label>
+                        <input type="checkbox" id="btcpw_page_value_2_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_page_fixed_amount[value2][enabled]" value="true" />
+                        <input type="number" min=0 placeholder="Default Price2" step=1 name="btcpw_tipping_page_fixed_amount[value2][amount]" id="btcpw_default_page_price2">
+                        <select required name="btcpw_tipping_page_fixed_amount[value2][currency]" id="btcpw_default_page_currency2">
+                            <option disabled value="">Select currency</option>
+                            <?php foreach (['SATS', 'USD'] as $currency) : ?>
+                                <option value="<?php echo esc_attr($currency); ?>">
+                                    <?php echo esc_html($currency); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <input type="text" id="btcpw_tipping_page_icon2" class="btcpw_tipping_page_icon2" name="btcpw_tipping_page_fixed_amount[value2][icon]" placeholder="Font Awesome Icon" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
+                    </fieldset>
+                    <fieldset class="btcpaywall_field_wrap"><label>Default price3</label>
+                        <input type="checkbox" id="btcpw_page_value_3_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_page_fixed_amount[value3][enabled]" value="true" />
+                        <input type="number" min=0 placeholder="Default Price3" step=1 name="btcpw_tipping_page_fixed_amount[value3][amount]" id="btcpw_default_page_price3">
+                        <select required name="btcpw_tipping_page_fixed_amount[value3][currency]" id="btcpw_default_page_currency3">
+                            <option disabled value="">Select currency</option>
+                            <?php foreach (['SATS', 'USD'] as $currency) : ?>
+                                <option value="<?php echo esc_attr($currency); ?>">
+                                    <?php echo esc_html($currency); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <input type="text" id="btcpw_tipping_page_icon3" class="btcpw_tipping_page_icon3" name="btcpw_tipping_page_fixed_amount[value3][icon]" placeholder="Font Awesome Icon" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
+                    </fieldset>
+                </div>
             </div>
         </div>
 <?php
