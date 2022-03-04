@@ -657,22 +657,26 @@ Settings Tabs
 /*Tipping metabox*/
 
 .btcpaywall_metabox_wrap_metabox_tabs {
+  background-color: #1d59a2;
   margin: 0px;
   padding: 0px;
   list-style: none;
 }
 
 .btcpaywall_metabox_wrap_metabox_tabs li {
-  background: none;
-  color: #222;
+  color: #fff;
   display: inline-block;
   padding: 10px 15px;
   cursor: pointer;
+  margin: 0;
 }
 
-.btcpaywall_metabox_wrap_metabox_tabs .btcpaywall_metabox_wrap_metabox_tabs li.current {
-  background: #ededed;
-  color: #222;
+.btcpaywall_metabox_wrap_metabox_tabs li:hover {
+  background: rgb(80, 80, 33);
+}
+
+.btcpaywall_metabox_wrap_metabox_tabs li.current {
+  background: #f0ecec;
 }
 
 .btcpaywall_tabset {
@@ -721,16 +725,7 @@ Settings Tabs
   border-bottom: 1px solid #c3c4c7;
 }
 
-/*Helper incons*/
-
-
-/* .btcpaywall_container_body .btcpaywall_helper_tip {
-  padding: 0;
-  margin: -4px 0 0 5px;
-  vertical-align: middle;
-  cursor: help;
-  line-height: 1;
-} */
+/*Helper icon*/
 
 .btcpaywall_helper_tip::before {
   font-family: "Font Awesome 5 Free";

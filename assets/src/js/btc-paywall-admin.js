@@ -706,7 +706,7 @@
     $(".btcpaywall_metabox_wrap_metabox_tabs li").click(function () {
       var tab_id = $(this).attr("data-tab");
 
-      $("btcpaywall_metabox_wrap_metabox_tabs li").removeClass("current");
+      $(".btcpaywall_metabox_wrap_metabox_tabs li").removeClass("current");
       $(".btcpaywall_tabset").removeClass("current");
 
       $(this).addClass("current");
