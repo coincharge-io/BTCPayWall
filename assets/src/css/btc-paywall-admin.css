@@ -672,11 +672,12 @@ Settings Tabs
 }
 
 .btcpaywall_metabox_wrap_metabox_tabs li:hover {
-  background: rgb(80, 80, 33);
+  background: #c0dff3;
 }
 
 .btcpaywall_metabox_wrap_metabox_tabs li.current {
-  background: #f0ecec;
+  background: #fcfafa;
+  color: #000000
 }
 
 .btcpaywall_tabset {
@@ -738,4 +739,11 @@ Settings Tabs
   margin: 5px;
   text-indent: 0;
   text-align: center;
+}
+
+/*Templates*/
+.btcpaywall_tipping_templates {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }

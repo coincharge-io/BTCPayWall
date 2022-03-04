@@ -76,31 +76,43 @@ class Tipping_Forms_Metabox
             </ul>
             <div id="tab-1" class="btcpaywall_options_wrap btcpaywall_tabset current">
                 <div class="btcpaywall_tipping_templates">
-                    <div class="row">
-                        <div class="btcpaywall_template_tipping_box">
+                    <div class="btcpaywall_template_tipping_box">
+                        <div>
+                            <h4>Tipping Box</h4>
+                            <p>Dimension 250x300/300x300</p>
                             <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-box.png'; ?>">
                             <div>
-                                <label>Tipping Box(250x300/300x300)</label><button>Activate</button>
-                            </div>
-                        </div>
-                        <div class="btcpaywall_template_tipping_banner_high">
-                            <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-high.png'; ?>">
-                            <div>
-                                <label>Tipping Banner High</label><button>Activate</button>
+                                <button>Activate</button>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="btcpaywall_template_tipping_banner_wide">
-                            <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-wide.png'; ?>">
+                    <div class="btcpaywall_template_tipping_banner_high">
+                        <div>
+                            <h4>Tipping Banner High</h4>
+                            <p>Dimension 200x710</p>
+                            <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-high.png'; ?>">
                             <div>
-                                <label>Tipping Banner Wide</label><button>Activate</button>
+                                <button>Activate</button>
                             </div>
                         </div>
-                        <div class="btcpaywall_template_tipping_page">
+                    </div>
+                    <div class="btcpaywall_template_tipping_banner_wide">
+                        <div>
+                            <h4>Tipping Banner Wide</h4>
+                            <p>Dimension 600x200</p>
+                            <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-wide.png'; ?>">
+                            <div>
+                                <button>Activate</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btcpaywall_template_tipping_page">
+                        <div>
+                            <h4>Tipping Page</h4>
+                            <p>Dimension 520x600</p>
                             <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-page.png'; ?>">
                             <div>
-                                <label>Tipping Page</label><button>Activate</button>
+                                <button>Activate</button>
                             </div>
                         </div>
                     </div>
