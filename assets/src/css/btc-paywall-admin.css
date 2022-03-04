@@ -656,6 +656,10 @@ Settings Tabs
 
 /*Tipping metabox*/
 
+/* .btcpaywall_metabox_wrap {
+  background-color: #f4f0ec;
+} */
+
 .btcpaywall_metabox_wrap_metabox_tabs {
   background-color: #1d59a2;
   margin: 0px;
@@ -672,7 +676,7 @@ Settings Tabs
 }
 
 .btcpaywall_metabox_wrap_metabox_tabs li:hover {
-  background: #c0dff3;
+  background: #fc852e;
 }
 
 .btcpaywall_metabox_wrap_metabox_tabs li.current {
@@ -691,14 +695,19 @@ Settings Tabs
 
 .btcpaywall_tipping_templates img {
   height: 150px;
-  width: 150px;
+  width: 100%;
 }
 
 .btcpaywall_field_wrap {
   display: flex;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #000;
   margin: 0;
   padding: 20px;
+}
+
+.btcpaywall_field_wrap div:nth-child(1),
+.btcpaywall_field_wrap div:nth-child(2) {
+  width: 49%;
 }
 
 .btcpaywall_field_wrap input[type="text"],
@@ -724,6 +733,11 @@ Settings Tabs
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #c3c4c7;
+  background-color: #fc852e;
+}
+
+.btcpaywall_container_header h2 {
+  color: #fff;
 }
 
 /*Helper icon*/
@@ -736,7 +750,7 @@ Settings Tabs
   text-transform: none;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
-  margin: 5px;
+  margin-left: -30px;
   text-indent: 0;
   text-align: center;
 }
@@ -746,4 +760,15 @@ Settings Tabs
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  gap: 5px;
+}
+
+.btcpaywall_tipping_templates>div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 40%;
+  border: solid 1px #ccc;
+  background-color: rgb(252, 249, 249);
 }
