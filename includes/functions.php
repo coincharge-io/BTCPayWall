@@ -192,7 +192,7 @@ function btcpaywall_is_paid_content($post_id = null)
     if (empty($post_id)) {
         $post_id = get_the_ID();
     }
-    $cookie = sanitize_text_field($_COOKIE['btcpw_' . $post_id]);
+    $cookie = !empty($_COOKIE['btcpw_' . $post_id]) ? sanitize_text_field($_COOKIE['btcpw_' . $post_id]) : null;
 
     if (empty($cookie)) {
         return false;

@@ -71,7 +71,8 @@ class Tipping_Forms_Metabox
         <div class="btcpaywall_metabox_wrap">
             <ul class="btcpaywall_metabox_wrap_metabox_tabs">
                 <li class="current" data-tab="tab-1">Template</li>
-                <li data-tab="tab-2">Fields</li>
+                <li data-tab="tab-2">Appearance</li>
+                <li data-tab="tab-3">Fields</li>
             </ul>
             <div id="tab-1" class="btcpaywall_options_wrap btcpaywall_tabset current">
                 <div class="btcpaywall_tipping_templates">
@@ -104,15 +105,20 @@ class Tipping_Forms_Metabox
                         </div>
                     </div>
                 </div>
+            </div>
+            <div id="tab-2" class="btcpaywall_options_wrap btcpaywall_tabset">
                 <div class="btcpaywall_template_appearance">
                     <div data-id="header" class="btcpaywall_container_header">
                         <h2>Header</h2>
                     </div>
                     <div class="btcpaywall_container_body header-body">
                         <fieldset class="btcpaywall_field_wrap">
-                            <label>Logo</label>
-                            <input value="bla" />
-                            <span>Set logo</span>
+                            <div>
+                                <label>Logo<span class="btcpaywall_helper_tip"></span></label>
+                            </div>
+                            <div>
+                                <input value="bla" />
+                            </div>
                         </fieldset>
                         <fieldset class="btcpaywall_field_wrap">
                             <label>Title</label>
@@ -158,7 +164,7 @@ class Tipping_Forms_Metabox
                         <div class="btcpaywall_template_main">
                             <fieldset class="btcpaywall_field_wrap">
                                 <label>Tipping text</label>
-                                <input value="bla" />
+                                <input value=" bla" />
                                 <span>Set text which will be displayed in the main section, above input fields</span>
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap">
@@ -249,7 +255,7 @@ class Tipping_Forms_Metabox
                     </div>
                 </div>
             </div>
-            <div id="tab-2" class="btcpaywall_options_wrap btcpaywall_tabset">
+            <div id="tab-3" class="btcpaywall_options_wrap btcpaywall_tabset">
                 <fieldset class="btcpaywall_field_wrap"><label>Currency</label>
                     <input value="bla" />
                     <span>Set currency</span>
