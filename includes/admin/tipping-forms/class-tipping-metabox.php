@@ -113,48 +113,48 @@ class Tipping_Forms_Metabox
                     </div>
                     <div class="btcpaywall_container_body header-body">
                         <fieldset class="btcpaywall_field_wrap">
-                            <div>
-                                <label>Logo<span class="btcpaywall_helper_tip"></span></label>
-                            </div>
-                            <div>
-                                <input value="bla" />
-                            </div>
+                            <label>Logo</label>
+                            <input value="bla" />
                         </fieldset>
                         <fieldset class="btcpaywall_field_wrap">
                             <label>Title</label>
                             <input value="bla" />
-                            <span>Set title</span>
                         </fieldset>
-
                         <fieldset class="btcpaywall_field_wrap"><label>Title text color</label>
                             <input value="bla" />
-                            <span>Set title color</span>
                         </fieldset>
                         <fieldset class="btcpaywall_field_wrap"><label>Description</label>
                             <input value="bla" />
-                            <span>Add short description</span>
                         </fieldset>
                         <fieldset class="btcpaywall_field_wrap"><label>Description text color</label>
                             <input value="bla" />
-                            <span>Set description text color</span>
                         </fieldset>
-                        <fieldset class="btcpaywall_field_wrap"><label>Step 1</label>
-                            <textarea id="btcpw_tipping_page_step1" name="btcpw_tipping_page_text[step1]">Step 1</textarea>
-                            <span>Set text for first step in progress bar</span>
+                        <fieldset class="btcpaywall_field_wrap">
+                            <div>
+                                <label for="btcpw_tipping_page_step1">Step 1</label>
+                                <span title="Text for first step in progress bar. The progress bar is positioned underneath the header." class="btcpaywall_helper_tip"></span>
+                            </div>
+                            <div>
+                                <textarea id="btcpw_tipping_page_step1" name="btcpw_tipping_page_text[step1]">Step 1</textarea>
+                            </div>
                         </fieldset>
                         <fieldset class="btcpaywall_field_wrap">
                             <label>Step 1 color</label>
                             <input id="btcpw_tipping_page_tipping_color_active" class="btcpw_tipping_page_tipping_color_active" name="btcpw_tipping_page_color[active]" type="text" />
-                            <span>Set text color for first step in progress bar</span>
                         </fieldset>
                         <fieldset class="btcpaywall_field_wrap">
-                            <label>Step 2</label>
-                            <textarea id="btcpw_tipping_page_step2" name="btcpw_tipping_page_text[step2]">Step2</textarea>
-                            <span>Set text for second step in progress bar</span>
+                            <div>
+                                <label>Step 2</label>
+                                <span title="Text for second step in progress bar." class="btcpaywall_helper_tip"></span>
+
+                            </div>
+                            <div>
+                                <textarea id="btcpw_tipping_page_step2" name="btcpw_tipping_page_text[step2]">Step2</textarea>
+                            </div>
                         </fieldset>
-                        <fieldset class="btcpaywall_field_wrap"><label>Step 2 color</label>
+                        <fieldset class="btcpaywall_field_wrap">
+                            <label>Step 2 color</label>
                             <input id="btcpw_tipping_page_tipping_color_inactive" class="btcpw_tipping_page_tipping_color_inactive" name="btcpw_tipping_page_color[inactive]" type="text" />
-                            <span>Set text color for second step in progress bar</span>
                         </fieldset>
                     </div>
                     <div data-id="main" class="btcpaywall_container_header">
@@ -163,19 +163,26 @@ class Tipping_Forms_Metabox
                     <div class="btcpaywall_container_body main-body">
                         <div class="btcpaywall_template_main">
                             <fieldset class="btcpaywall_field_wrap">
-                                <label>Tipping text</label>
-                                <input value=" bla" />
-                                <span>Set text which will be displayed in the main section, above input fields</span>
+                                <div>
+                                    <label>Tipping text</label>
+                                    <span title="This text will be displayed in the main area, above input fields." class="btcpaywall_helper_tip"></span>
+                                </div>
+                                <div>
+                                    <input value=" bla" />
+                                </div>
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap">
                                 <label>Tipping text color</label>
                                 <input value="bla" />
-                                <span>Set tipping text color</span>
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap">
-                                <label>Input background color</label>
-                                <input value="bla" />
-                                <span>Set background color for input fields</span>
+                                <div>
+                                    <label>Input background color</label>
+                                    <span title="This color will be used as background for all price fields." class="btcpaywall_helper_tip"></span>
+                                </div>
+                                <div>
+                                    <input value="bla" />
+                                </div>
                             </fieldset>
                         </div>
                     </div>
@@ -186,99 +193,62 @@ class Tipping_Forms_Metabox
                         <div class="btcpaywall_template_footer">
                             <fieldset class="btcpaywall_field_wrap"><label>Button text</label>
                                 <input value="bla" />
-                                <span>Set button text</span>
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap"><label>Button text color</label>
                                 <input value="bla" />
-                                <span>Set button text color</span>
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap"><label>Button color</label>
                                 <input value="bla" />
-                                <span>Set button color</span>
-                            </fieldset>
-                        </div>
-                    </div>
-                    <div data-id="donor" class="btcpaywall_container_header">
-                        <h2>Donor information</h2>
-                    </div>
-                    <div class="btcpaywall_container_body donor-body">
-                        <div class="btcpaywall_template_donor_information">
-                            <fieldset class="btcpaywall_field_wrap"><label>Full name</label>
-
-                                <label for="btcpw_tipping_page_collect[name][collect]">Display</label>
-
-                                <input type="checkbox" class="btcpw_tipping_page_collect_name" name="btcpw_tipping_page_collect[name][collect]" value="true" />
-
-                                <label for="btcpw_tipping_page_collect[name][mandatory]">Mandatory</label>
-                                <input type="checkbox" class="btcpw_tipping_page_collect_name_mandatory" name="btcpw_tipping_page_collect[name][mandatory]" value="true" />
-
-
-                            </fieldset>
-                            <fieldset class="btcpaywall_field_wrap"><label>Email</label>
-                                <label for="btcpw_tipping_page_collect[email][collect]">Display</label>
-
-                                <input type="checkbox" class="btcpw_tipping_page_collect_email" name="btcpw_tipping_page_collect[email][collect]" value="true" />
-
-                                <label for="btcpw_tipping_page_collect[email][mandatory]">Mandatory</label>
-                                <input type="checkbox" class="btcpw_tipping_page_collect_email_mandatory" name="btcpw_tipping_page_collect[email][mandatory]" value="true" />
-
-                            </fieldset>
-                            <fieldset class="btcpaywall_field_wrap"><label>Address</label>
-                                <label for="btcpw_tipping_page_collect[address][collect]">Display</label>
-
-                                <input type="checkbox" class="btcpw_tipping_page_collect_address" name="btcpw_tipping_page_collect[address][collect]" value="true" />
-
-                                <label for="btcpw_tipping_page_collect[address][mandatory]">Mandatory</label>
-                                <input type="checkbox" class="btcpw_tipping_page_collect_address_mandatory" name="btcpw_tipping_page_collect[address][mandatory]" value="true" />
-
-                            </fieldset>
-                            <fieldset class="btcpaywall_field_wrap"><label>Phone number</label>
-
-                                <label for="btcpw_tipping_page_collect[phone][collect]">Display</label>
-
-                                <input type="checkbox" class="btcpw_tipping_page_collect_phone" name="btcpw_tipping_page_collect[phone][collect]" value="true" />
-
-                                <label for="btcpw_tipping_page_collect[phone][mandatory]">Mandatory</label>
-                                <input type="checkbox" class="btcpw_tipping_page_collect_phone_mandatory" name="btcpw_tipping_page_collect[phone][mandatory]" value="true" />
-
-                            </fieldset>
-                            <fieldset class="btcpaywall_field_wrap"><label>Message</label>
-
-                                <label for="btcpw_tipping_page_collect[message][collect]">Display</label>
-                                <input type="checkbox" class="btcpw_tipping_page_collect_message" name="btcpw_tipping_page_collect[message][collect]" value="true" />
-
-                                <label for="btcpw_tipping_page_collect[message][mandatory]">Mandatory</label>
-                                <input type="checkbox" class="btcpw_tipping_page_collect_message_mandatory" name="btcpw_tipping_page_collect[message][mandatory]" value="true" />
-
                             </fieldset>
                         </div>
                     </div>
                 </div>
             </div>
             <div id="tab-3" class="btcpaywall_options_wrap btcpaywall_tabset">
-                <fieldset class="btcpaywall_field_wrap"><label>Currency</label>
-                    <input value="bla" />
-                    <span>Set currency</span>
+                <fieldset class="btcpaywall_field_wrap">
+                    <div>
+                        <label>Currency</label>
+                        <span title="Currency value is used as starting value for conversion rate. Donors can change it and see conversion rate based on that." class="btcpaywall_helper_tip"></span>
+                    </div>
+                    <div>
+                        <input value="bla" />
+                    </div>
                 </fieldset>
-                <fieldset class="btcpaywall_field_wrap"><label>Free input of amount</label>
-                    <input type="checkbox" id="btcpw_tipping_page_enter_amount" class="btcpw_tipping_page_enter_amount" name="btcpw_tipping_page_enter_amount" value="true" />
-                    <span>Do you want to allow donors to donate custom amount?</span>
+                <fieldset class="btcpaywall_field_wrap">
+                    <div>
+                        <label>Free input of amount</label>
+                        <span title="Do you want to allow donors to enter custom amount for donation?" class="btcpaywall_helper_tip"></span>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="btcpw_tipping_page_enter_amount" class="btcpw_tipping_page_enter_amount" name="btcpw_tipping_page_enter_amount" value="true" />
+                    </div>
                 </fieldset>
-                <fieldset class="btcpaywall_field_wrap"><label>Link to Thank you page</label>
+                <fieldset class="btcpaywall_field_wrap">
+                    <label>Link to Thank you page</label>
                     <input value="bla" />
-                    <span>Add url to the Thank you page</span>
                 </fieldset>
-                <fieldset class="btcpaywall_field_wrap"><label>Background color for header and footer</label>
-                    <input value="bla" />
-                    <span>Set color which will be used for header and footer background</span>
+                <fieldset class="btcpaywall_field_wrap">
+                    <div>
+                        <label>Background color for header and footer</label>
+                        <span title="This color will be used as background for header and footer section." class="btcpaywall_helper_tip"></span>
+                    </div>
+                    <div>
+                        <input value="bla" />
+                    </div>
                 </fieldset>
                 <div data-id="fixed-amount" class="btcpaywall_container_header">
                     <h2>Fixed amount</h2>
                 </div>
                 <div class="btcpaywall_container_body fixed-amount-body">
-                    <fieldset class="btcpaywall_field_wrap"><label>Show icons</label>
-                        <input type="checkbox" id="btcpw_tipping_page_show_icon" class="btcpw_tipping_page_show_icon" name="btcpw_tipping_page_show_icon" value="true" />
-                        <span>Do you want do display Font Awesome icons next to the fixed amount fields?</span>
+
+                    <fieldset class="btcpaywall_field_wrap">
+                        <div>
+                            <label>Show icons</label>
+                            <span title="Do you want do display Font Awesome icons next to the fixed amount fields?" class="btcpaywall_helper_tip"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="btcpw_tipping_page_show_icon" class="btcpw_tipping_page_show_icon" name="btcpw_tipping_page_show_icon" value="true" />
+                        </div>
                     </fieldset>
                     <fieldset class="btcpaywall_field_wrap"><label>Default price1</label>
                         <input type="checkbox" id="btcpw_page_value_1_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_page_fixed_amount[value1][enabled]" value="true" />
@@ -319,6 +289,61 @@ class Tipping_Forms_Metabox
                         </select>
                         <input type="text" id="btcpw_tipping_page_icon3" class="btcpw_tipping_page_icon3" name="btcpw_tipping_page_fixed_amount[value3][icon]" placeholder="Font Awesome Icon" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
                     </fieldset>
+                </div>
+                <div data-id="donor" class="btcpaywall_container_header">
+                    <h2>Donor information</h2>
+                </div>
+                <div class="btcpaywall_container_body donor-body">
+                    <div class="btcpaywall_template_donor_information">
+                        <fieldset class="btcpaywall_field_wrap"><label>Full name</label>
+
+                            <label for="btcpw_tipping_page_collect[name][collect]">Display</label>
+
+                            <input type="checkbox" class="btcpw_tipping_page_collect_name" name="btcpw_tipping_page_collect[name][collect]" value="true" />
+
+                            <label for="btcpw_tipping_page_collect[name][mandatory]">Mandatory</label>
+                            <input type="checkbox" class="btcpw_tipping_page_collect_name_mandatory" name="btcpw_tipping_page_collect[name][mandatory]" value="true" />
+
+
+                        </fieldset>
+                        <fieldset class="btcpaywall_field_wrap"><label>Email</label>
+                            <label for="btcpw_tipping_page_collect[email][collect]">Display</label>
+
+                            <input type="checkbox" class="btcpw_tipping_page_collect_email" name="btcpw_tipping_page_collect[email][collect]" value="true" />
+
+                            <label for="btcpw_tipping_page_collect[email][mandatory]">Mandatory</label>
+                            <input type="checkbox" class="btcpw_tipping_page_collect_email_mandatory" name="btcpw_tipping_page_collect[email][mandatory]" value="true" />
+
+                        </fieldset>
+                        <fieldset class="btcpaywall_field_wrap"><label>Address</label>
+                            <label for="btcpw_tipping_page_collect[address][collect]">Display</label>
+
+                            <input type="checkbox" class="btcpw_tipping_page_collect_address" name="btcpw_tipping_page_collect[address][collect]" value="true" />
+
+                            <label for="btcpw_tipping_page_collect[address][mandatory]">Mandatory</label>
+                            <input type="checkbox" class="btcpw_tipping_page_collect_address_mandatory" name="btcpw_tipping_page_collect[address][mandatory]" value="true" />
+
+                        </fieldset>
+                        <fieldset class="btcpaywall_field_wrap"><label>Phone number</label>
+
+                            <label for="btcpw_tipping_page_collect[phone][collect]">Display</label>
+
+                            <input type="checkbox" class="btcpw_tipping_page_collect_phone" name="btcpw_tipping_page_collect[phone][collect]" value="true" />
+
+                            <label for="btcpw_tipping_page_collect[phone][mandatory]">Mandatory</label>
+                            <input type="checkbox" class="btcpw_tipping_page_collect_phone_mandatory" name="btcpw_tipping_page_collect[phone][mandatory]" value="true" />
+
+                        </fieldset>
+                        <fieldset class="btcpaywall_field_wrap"><label>Message</label>
+
+                            <label for="btcpw_tipping_page_collect[message][collect]">Display</label>
+                            <input type="checkbox" class="btcpw_tipping_page_collect_message" name="btcpw_tipping_page_collect[message][collect]" value="true" />
+
+                            <label for="btcpw_tipping_page_collect[message][mandatory]">Mandatory</label>
+                            <input type="checkbox" class="btcpw_tipping_page_collect_message_mandatory" name="btcpw_tipping_page_collect[message][mandatory]" value="true" />
+
+                        </fieldset>
+                    </div>
                 </div>
             </div>
         </div>
