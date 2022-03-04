@@ -36,6 +36,8 @@ class Tipping_Forms_Metabox
             __('Tipping Form', 'btcpaywall'),
             [$this, 'html'],
             'tipping',
+            'normal',
+            'high'
         );
     }
 
@@ -315,7 +317,7 @@ class Tipping_Forms_Metabox
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <input type="text" id="btcpw_tipping_page_icon1" class="btcpw_tipping_page_icon1" name="btcpw_tipping_page_fixed_amount[value1][icon]" placeholder="Font Awesome Icon" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
+                        <input type="text" id="btcpw_tipping_page_icon1" class="btcpw_tipping_page_icon1" name="btcpw_tipping_page_fixed_amount[value1][icon]" placeholder="Font Awesome Icon 5" title="Enter Font Awesome 5 Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
                     </fieldset>
                     <fieldset class="btcpaywall_field_wrap"><label>Default price2</label>
                         <input type="checkbox" id="btcpw_page_value_2_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_page_fixed_amount[value2][enabled]" value="true" />
@@ -328,7 +330,7 @@ class Tipping_Forms_Metabox
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <input type="text" id="btcpw_tipping_page_icon2" class="btcpw_tipping_page_icon2" name="btcpw_tipping_page_fixed_amount[value2][icon]" placeholder="Font Awesome Icon" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
+                        <input type="text" id="btcpw_tipping_page_icon2" class="btcpw_tipping_page_icon2" name="btcpw_tipping_page_fixed_amount[value2][icon]" placeholder="Font Awesome 5 Icon 5" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
                     </fieldset>
                     <fieldset class="btcpaywall_field_wrap"><label>Default price3</label>
                         <input type="checkbox" id="btcpw_page_value_3_enabled" class="btcpw_fixed_amount_enable" name="btcpw_tipping_page_fixed_amount[value3][enabled]" value="true" />
@@ -341,7 +343,7 @@ class Tipping_Forms_Metabox
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <input type="text" id="btcpw_tipping_page_icon3" class="btcpw_tipping_page_icon3" name="btcpw_tipping_page_fixed_amount[value3][icon]" placeholder="Font Awesome Icon" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
+                        <input type="text" id="btcpw_tipping_page_icon3" class="btcpw_tipping_page_icon3" name="btcpw_tipping_page_fixed_amount[value3][icon]" placeholder="Font Awesome 5 Icon 5" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
                     </fieldset>
                 </div>
                 <div data-id="donor" class="btcpaywall_container_header">
