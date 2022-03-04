@@ -55,7 +55,7 @@ $mandatory_message = get_option('btcpw_default_pay_per_file_mandatory_message', 
                 </div>
                 <div class="col-80">
 
-                    <input required type="number" min=0 placeholder="Download limit" step=1 name="btcpw_default_pay_per_file_download_limit" id="btcpw_default_pay_per_file_download_limit" value="<?php echo esc_attr($download_limit); ?>"> <span class="btcpw_download_limit_helper" title="Set 0 for unlimited number of downloads."></span>
+                    <input required type="number" min=0 placeholder="Download limit" step=1 name="btcpw_default_pay_per_file_download_limit" id="btcpw_default_pay_per_file_download_limit" value="<?php echo esc_attr($download_limit); ?>"> <span class="btcpaywall_helper_tip" title="Set 0 for unlimited number of downloads."></span>
                 </div>
             </div>
             <h3>Button</h3>

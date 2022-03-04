@@ -68,7 +68,7 @@ function render_btcpw_product_settings($post)
 ?>
     <div class='btcpw_product_limit'>
         <div>
-            <label for="btcpw_product_download_limit">Download limit <span class="btcpw_digital_download_limit_help" title="Set 0 for unlimited number of downloads."></span></label>
+            <label for="btcpw_product_download_limit">Download limit <span class="btcpaywall_helper_tip" title="Set 0 for unlimited number of downloads."></span></label>
 
             <input type="number" name="btcpw_product_limit" id="btcpw_product_download_limit" min="0" value="<?php echo esc_attr($limit); ?>" />
         </div>
