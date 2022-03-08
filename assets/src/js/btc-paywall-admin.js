@@ -716,5 +716,15 @@
       var header_id = $(this).data("id");
       $(".btcpaywall_container_body." + header_id + "-body").toggle();
     })
+
+    $(".btcpaywall_tipping_templates button").click(function (e) {
+      e.preventDefault();
+      var template_id = $(this).data('id');
+      $("#btcpaywall_tipping_template_name").val(template_id);
+      if (template_id !== 'btcpaywall_tipping_box') {
+        $('.btcpaywall_container_header[data-id=fixed-amount],.btcpaywall_container_header[data-id=donor]').show();
+
+      }
+    })
   });
 })(jQuery);

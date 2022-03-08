@@ -703,6 +703,10 @@ Settings Tabs
   padding: 20px;
 }
 
+.btcpaywall_field_wrap:not(.common) {
+  display: none;
+}
+
 .btcpaywall_field_wrap div:nth-child(1),
 .btcpaywall_field_wrap div:nth-child(2) {
   display: flex;
