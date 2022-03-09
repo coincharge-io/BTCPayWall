@@ -256,7 +256,7 @@
     });
   });
   $(document).ready(function () {
-    $("#btcpaywall_tipping_color_background, #btcpaywall_tipping_color_header_footer_background, #btcpw_tipping_color_title, #btcpaywall_tipping_color_description, #btcpaywall_tipping_color_progress_bar_step1,#btcpaywall_tipping_color_progress_bar_step2,#btcpaywall_tipping_color_main,#btcpaywall_tipping_color_amounts,#btcpaywall_tipping_color_button_text,#btcpaywall_tipping_color_button").iris({
+    $("#btcpaywall_tipping_color_background, #btcpaywall_tipping_color_header_footer_background, #btcpaywall_tipping_color_title, #btcpaywall_tipping_color_description, #btcpaywall_tipping_color_progress_bar_step1,#btcpaywall_tipping_color_progress_bar_step2,#btcpaywall_tipping_color_main,#btcpaywall_tipping_color_amounts,#btcpaywall_tipping_color_button_text,#btcpaywall_tipping_color_button").iris({
       defaultColor: true,
 
       change: function (event, ui) {},
@@ -284,7 +284,7 @@
     });
   }); */
   $(document).ready(function ($) {
-    imagePreview(
+    /* imagePreview(
       $("#btcpw_tipping_banner_high_button_image"),
       $("#btcpw_tipping_banner_high_image")
     );
@@ -330,7 +330,7 @@
       $("#btcpw_tipping_page_button_image_background"),
       $("#btcpw_tipping_page_image_background")
     );
-    imageRemove($(".btcpw_tipping_page_button_remove_background"));
+    imageRemove($(".btcpw_tipping_page_button_remove_background")); */
 
     imagePreview(
       $("#btcpw_product_image_button"),
