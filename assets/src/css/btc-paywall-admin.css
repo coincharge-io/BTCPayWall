@@ -749,6 +749,10 @@ Settings Tabs
   color: #fff;
 }
 
+.btcpaywall_chosen_template {
+  background: black;
+}
+
 /*Helper icon*/
 
 .btcpaywall_helper_tip::before {
