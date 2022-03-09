@@ -255,8 +255,20 @@
       }
     });
   });
-
   $(document).ready(function () {
+    $("#btcpaywall_tipping_color_background, #btcpaywall_tipping_color_header_footer_background, #btcpw_tipping_color_title, #btcpaywall_tipping_color_description, #btcpaywall_tipping_color_progress_bar_step1,#btcpaywall_tipping_color_progress_bar_step2,#btcpaywall_tipping_color_main,#btcpaywall_tipping_color_amounts,#btcpaywall_tipping_color_button_text,#btcpaywall_tipping_color_button").iris({
+      defaultColor: true,
+
+      change: function (event, ui) {},
+
+      clear: function () {},
+
+      hide: true,
+
+      palettes: true,
+    });
+  });
+  /* $(document).ready(function () {
     $(
       ".btcpw_tipping_box_title_color,.btcpw_tipping_box_description_color,.btcpw_tipping_box_tipping_box_color,.btcpw_tipping_box_hf_background,.btcpw_tipping_box_button_text_color,.btcpw_tipping_box_button_color,.btcpw_tipping_box_background,.btcpw_tipping_banner_high_hf_background,.btcpw_tipping_banner_high_title_color,.btcpw_tipping_banner_high_description_color,.btcpw_tipping_banner_high_tipping_box_color,.btcpw_tipping_banner_high_button_text_color,.btcpw_tipping_banner_high_button_color,.btcpw_tipping_banner_high_background,.btcpw_tipping_banner_high_tipping_color,.btcpw_tipping_banner_high_input_background,.btcpw_tipping_banner_wide_hf_background,.btcpw_tipping_banner_wide_title_color,.btcpw_tipping_banner_wide_description_color,.btcpw_tipping_banner_wide_tipping_box_color,.btcpw_tipping_banner_wide_button_text_color,.btcpw_tipping_banner_wide_button_color,.btcpw_tipping_banner_wide_background,.btcpw_tipping_banner_wide_tipping_color,.btcpw_tipping_banner_wide_input_background,.btcpw_tipping_box_input_background,.btcpw_tipping_page_title_color,.btcpw_tipping_page_tipping_box_color,.btcpw_tipping_page_button_text_color,.btcpw_tipping_page_button_color,.btcpw_tipping_page_background,.btcpw_tipping_page_tipping_color,.btcpw_tipping_page_input_background,.btcpw_tipping_page_tipping_color_active,.btcpw_tipping_page_tipping_color_inactive,.btcpw_tipping_hf_background"
     ).iris({
@@ -270,7 +282,7 @@
 
       palettes: true,
     });
-  });
+  }); */
   $(document).ready(function ($) {
     imagePreview(
       $("#btcpw_tipping_banner_high_button_image"),
@@ -325,6 +337,19 @@
       $("#btcpw_product_image_id")
     );
     imageRemove($(".btcpw_remove_product_image"));
+
+
+    imagePreview(
+      $("#btcpaywall_tipping_text_button_background"),
+      $("#btcpaywall_tipping_background")
+    );
+    imageRemove($(".btcpaywall_tipping_button_remove_background"));
+
+    imagePreview(
+      $("#btcpaywall_tipping_text_button_logo"),
+      $("#btcpaywall_tipping_logo")
+    );
+    imageRemove($(".btcpaywall_tipping_button_remove_logo"));
   });
   $(document).ready(function () {
     showMore(
@@ -706,10 +731,8 @@
     //Tipping Metabox
     $(".btcpaywall_metabox_wrap_metabox_tabs li").click(function () {
       var tab_id = $(this).attr("data-tab");
-
       $(".btcpaywall_metabox_wrap_metabox_tabs li").removeClass("current");
       $(".btcpaywall_tabset").removeClass("current");
-
       $(this).addClass("current");
       $("#" + tab_id).addClass("current");
     });
@@ -720,8 +743,6 @@
 
     $(".btcpaywall_tipping_templates button").click(function (e) {
       e.preventDefault();
-      //$('.btcpaywall_field_wrap').hide()
-      //$('.btcpaywall_field_wrap.common').css("display", "flex")
       template_id = $(this).data('id');
       if ($(this).hasClass('activated')) {
         $('.btcpaywall_tipping_templates>div').show()
@@ -735,9 +756,11 @@
         $('.btcpaywall_tipping_templates>div').not('.btcpaywall_chosen_template').hide()
         $("#btcpaywall_tipping_template_name").val(template_id);
       }
+
       if (template_id == 'btcpaywall_tipping_page') {
         $('.btcpaywall_tipping_page').addClass("common")
         $('.banner_and_page').removeClass("common")
+        $('.banner_and_page').addClass("common")
         $('.btcpaywall_tipping_box').removeClass('common')
         $('.btcpaywall_container_header[data-id=fixed-amount],.btcpaywall_container_header[data-id=donor]').css("display", "block")
       } else if (template_id == 'btcpaywall_tipping_banner_high' || template_id == 'btcpaywall_tipping_banner_wide') {

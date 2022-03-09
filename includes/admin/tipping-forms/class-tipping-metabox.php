@@ -69,39 +69,52 @@ class Tipping_Forms_Metabox
     public static function get_fiels()
     {
         $fields = [
-            'name',
-            'btcpaywall_tipping_dimension',
-            'btcpaywall_tipping_thankyou',
-            'btcpaywall_tipping_text_title',
-            'btcpaywall_tipping_text_description',
-            'btcpaywall_tipping_text_button',
-            'btcpaywall_tipping_text_main',
-            'btcpaywall_tipping_color_title',
-            'btcpaywall_tipping_color_description',
-            'btcpaywall_tipping_color_button_text',
-            'btcpaywall_tipping_color_button',
-            'btcpaywall_tipping_color_main',
-            'btcpaywall_tipping_color_background',
-            'btcpaywall_tipping_color_inputs',
-            'btcpaywall_tipping_color_header_footer_background',
-            'btcpaywall_tipping_text_progress_bar_step1',
-            'btcpaywall_tipping_color_progress_bar_step1',
-            'btcpaywall_tipping_text_progress_bar_step2',
-            'btcpaywall_tipping_color_progress_bar_step2',
-            'btcpaywall_tipping_logo',
-            'btcpaywall_tipping_background',
-            'btcpaywall_tipping_display_name',
-            'btcpaywall_tipping_mandatory_name',
-            'btcpaywall_tipping_display_email',
-            'btcpaywall_tipping_mandatory_email',
-            'btcpaywall_tipping_display_address',
-            'btcpaywall_tipping_mandatory_address',
-            'btcpaywall_tipping_display_phone',
-            'btcpaywall_tipping_mandatory_phone',
-            'btcpaywall_tipping_display_message',
-            'btcpaywall_tipping_mandatory_message',
-            'btcpaywall_tipping_show_icon',
-            'btcpaywall_tipping_currency'
+            "btcpaywall_tipping_template_name",
+            "btcpaywall_tipping_text_dimension",
+            "btcpaywall_tipping_text_button_background",
+            "btcpaywall_tipping_color_background",
+            "btcpaywall_tipping_color_header_footer_background",
+            "btcpaywall_tipping_text_button_logo",
+            "btcpaywall_tipping_text_title",
+            "btcpaywall_tipping_color_title",
+            "btcpaywall_tipping_text_description",
+            "btcpaywall_tipping_color_description",
+            "btcpaywall_tipping_text_progress_bar_step1",
+            "btcpaywall_tipping_text_progress_bar_step2",
+            "btcpaywall_tipping_color_progress_bar_step1",
+            "btcpaywall_tipping_color_progress_bar_step2",
+            "btcpaywall_tipping_text_main",
+            "btcpaywall_tipping_color_main",
+            "btcpaywall_tipping_color_amounts",
+            "btcpaywall_tipping_text_button",
+            "btcpaywall_tipping_color_button_text",
+            "btcpaywall_tipping_color_button",
+            "btcpaywall_tipping_text_currency",
+            "btcpaywall_tipping_bool_free_input",
+            "btcpaywall_tipping_text_thankyou",
+            "btcpaywall_tipping_bool_show_icons",
+            "btcpaywall_tipping_bool_show_default_amount_1",
+            "btcpaywall_tipping_number_default_amount_1",
+            "btcpaywall_tipping_text_default_currency_1",
+            "btcpaywall_tipping_text_default_icon_1",
+            "btcpaywall_tipping_bool_show_default_amount_2",
+            "btcpaywall_tipping_number_default_amount_2",
+            "btcpaywall_tipping_text_default_currency_2",
+            "btcpaywall_tipping_text_default_icon_2",
+            "btcpaywall_tipping_bool_show_default_amount_3",
+            "btcpaywall_tipping_number_default_amount_3",
+            "btcpaywall_tipping_text_default_currency_3",
+            "btcpaywall_tipping_text_default_icon_3",
+            "btcpaywall_tipping_bool_display_name",
+            "btcpaywall_tipping_bool_mandatory_name",
+            "btcpaywall_tipping_bool_display_email",
+            "btcpaywall_tipping_bool_mandatory_email",
+            "btcpaywall_tipping_bool_display_address",
+            "btcpaywall_tipping_bool_mandatory_address",
+            "btcpaywall_tipping_bool_display_phone",
+            "btcpaywall_tipping_bool_mandatory_phone",
+            "btcpaywall_tipping_bool_display_message",
+            "btcpaywall_tipping_bool_mandatory_message"
         ];
         return $fields;
     }
@@ -124,7 +137,7 @@ class Tipping_Forms_Metabox
             </ul>
             <div id="tab-1" class="btcpaywall_options_wrap btcpaywall_tabset current">
                 <div class="btcpaywall_tipping_templates">
-                    <input type="hidden" id="btcpaywall_tipping_template_name">
+                    <input type="hidden" name="btcpaywall_tipping_template_name" id="btcpaywall_tipping_template_name">
                     <div class="btcpaywall_template_tipping_box">
                         <h4>Tipping Box - 250x300/300x300</h4>
                         <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-box.png'; ?>">
@@ -171,15 +184,15 @@ class Tipping_Forms_Metabox
                         </fieldset>
                         <fieldset class="btcpaywall_field_wrap common">
                             <div>
-                                <label for="btcpaywall_tipping_button_background"><?php echo __('Background image', 'btcpaywall'); ?></label>
+                                <label for="btcpaywall_tipping_text_button_background"><?php echo __('Background image', 'btcpaywall'); ?></label>
                             </div>
                             <div>
                                 <?php if ('') : ?>
-                                    <button id="btcpaywall_tipping_button_background" class="btcpaywall_tipping_button_background" name="btcpaywall_tipping_button_background"><img src="<?php echo esc_url([][0]); ?>" height=100px width=100px /></a></button>
+                                    <button id="btcpaywall_tipping_text_button_background" class="btcpaywall_tipping_text_button_background" name="btcpaywall_tipping_button_background"><img src="<?php echo esc_url([][0]); ?>" height=100px width=100px /></a></button>
                                     <button class="btcpaywall_tipping_button_remove_background"><?php echo __('Remove background', 'btcpaywall'); ?></button>
                                     <input type="hidden" id="btcpaywall_tipping_background" class="btcpaywall_tipping_background" name="btcpaywall_tipping_image_background" value=<?php echo esc_attr([]['logo']); ?> />
                                 <?php else : ?>
-                                    <button id="btcpaywall_tipping_button_background" class="btcpaywall_tipping_button_background" name="btcpaywall_tipping_button_background">Upload</button>
+                                    <button id="btcpaywall_tipping_text_button_background" class="btcpaywall_tipping_text_button_background" name="btcpaywall_tipping_button_background">Upload</button>
                                     <button class="btcpaywall_tipping_button_remove_background" style="display:none"><?php echo __('Remove background', 'btcpaywall'); ?></button>
                                     <input type="hidden" id="btcpaywall_tipping_background" class="btcpaywall_tipping_background" name="btcpaywall_tipping_image_background" value=<?php echo esc_attr([]['logo']); ?> />
                                 <?php endif; ?>
@@ -210,15 +223,15 @@ class Tipping_Forms_Metabox
                     <div class="btcpaywall_container_body header-body">
                         <fieldset class="btcpaywall_field_wrap common">
                             <div>
-                                <label for="btcpaywall_tipping_button_logo"><?php echo __('Logo', 'btcpaywall'); ?></label>
+                                <label for="btcpaywall_tipping_text_button_logo"><?php echo __('Logo', 'btcpaywall'); ?></label>
                             </div>
                             <div>
                                 <?php if ('') : ?>
-                                    <button id="btcpaywall_tipping_button_logo" class="btcpaywall_tipping_button_logo" name="btcpaywall_tipping_button_logo"><img src="<?php echo esc_url([][0]); ?>" height=100px width=100px /></a></button>
+                                    <button id="btcpaywall_tipping_text_button_logo" class="btcpaywall_tipping_text_button_logo" name="btcpaywall_tipping_text_button_logo"><img src="<?php echo esc_url([][0]); ?>" height=100px width=100px /></a></button>
                                     <button class="btcpaywall_tipping_button_remove_logo"><?php echo __('Remove logo', 'btcpaywall'); ?></button>
                                     <input type="hidden" id="btcpaywall_tipping_logo" class="btcpaywall_tipping_logo" name="btcpaywall_tipping_image_logo" value=<?php echo esc_attr([]['logo']); ?> />
                                 <?php else : ?>
-                                    <button id="btcpaywall_tipping_button_logo" class="btcpaywall_tipping_button_logo" name="btcpaywall_tipping_button_logo">Upload</button>
+                                    <button id="btcpaywall_tipping_text_button_logo" class="btcpaywall_tipping_text_button_logo" name="btcpaywall_tipping_text_button_logo">Upload</button>
                                     <button class="btcpaywall_tipping_button_remove_logo" style="display:none"><?php echo __('Remove logo', 'btcpaywall'); ?></button>
                                     <input type="hidden" id="btcpaywall_tipping_logo" class="btcpaywall_tipping_logo" name="btcpaywall_tipping_image_logo" value=<?php echo esc_attr([]['logo']); ?> />
                                 <?php endif; ?>
@@ -226,7 +239,7 @@ class Tipping_Forms_Metabox
                         </fieldset>
                         <fieldset class="btcpaywall_field_wrap common">
                             <div>
-                                <label for="btcpaywall_tipping_title"><?php echo __('Title', 'btcpaywall'); ?></label>
+                                <label for="btcpaywall_tipping_text_title"><?php echo __('Title', 'btcpaywall'); ?></label>
                             </div>
                             <div>
                                 <textarea id="btcpaywall_tipping_text_title" name="btcpw_tipping_text_title"></textarea>
