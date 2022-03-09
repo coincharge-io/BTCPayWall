@@ -390,7 +390,7 @@ class Tipping_Forms_Metabox
                 </div>
                 <div class="btcpaywall_container_body fixed-amount-body">
 
-                    <fieldset class="btcpaywall_field_wrap">
+                    <fieldset class="btcpaywall_field_wrap banner_and_page">
                         <div>
                             <label for="btcpaywall_tipping_bool_show_icons"><?php echo __('Show icons', 'btcpaywall'); ?></label>
                             <span title="Do you want do display Font Awesome icons next to the fixed amount fields?" class="btcpaywall_helper_tip"></span>
@@ -399,7 +399,7 @@ class Tipping_Forms_Metabox
                             <input type="checkbox" id="btcpaywall_tipping_bool_show_icons" name="btcpaywall_tipping_bool_show_icons" value="true" />
                         </div>
                     </fieldset>
-                    <fieldset class="btcpaywall_field_wrap">
+                    <fieldset class="btcpaywall_field_wrap banner_and_page">
                         <label><?php echo __('Default amount 1', 'btcpaywall'); ?></label>
                         <input type="checkbox" id="btcpaywall_tipping_bool_show_default_amount_1" name="btcpaywall_tipping_bool_show_default_amount_1" value="true" />
                         <input type="number" min=0 placeholder="Default Amount 1" step=1 name="btcpaywall_tipping_number_default_amount_1" id="btcpaywall_tipping_number_default_amount_1">
@@ -413,7 +413,7 @@ class Tipping_Forms_Metabox
                         </select>
                         <input type="text" id="btcpaywall_tipping_text_default_icon_1" name="btcpaywall_tipping_text_default_icon_1" placeholder="Font Awesome 5 Icon" title="Enter Font Awesome 5 Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
                     </fieldset>
-                    <fieldset class="btcpaywall_field_wrap">
+                    <fieldset class="btcpaywall_field_wrap banner_and_page">
                         <label><?php echo __('Default amount 2', 'btcpaywall'); ?></label>
                         <input type="checkbox" id="btcpaywall_tipping_bool_show_default_amount_2" name="btcpaywall_tipping_bool_show_default_amount_2" value="true" />
                         <input type="number" min=0 placeholder="Default Amount 2" step=1 name="btcpaywall_tipping_number_default_amount_2" id="btcpaywall_tipping_number_default_amount_2">
@@ -427,7 +427,7 @@ class Tipping_Forms_Metabox
                         </select>
                         <input type="text" id="btcpaywall_tipping_text_default_icon_2" name="btcpaywall_tipping_text_default_icon_2" placeholder="Font Awesome 5 Icon" title="Enter Font Awesome 5 Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
                     </fieldset>
-                    <fieldset class="btcpaywall_field_wrap">
+                    <fieldset class="btcpaywall_field_wrap banner_and_page">
                         <label><?php echo __('Default amount 3', 'btcpaywall'); ?></label>
                         <input type="checkbox" id="btcpaywall_tipping_bool_show_default_amount_3" name="btcpaywall_tipping_bool_show_default_amount_3" value="true" />
                         <input type="number" min=0 placeholder="Default Amount 3" step=1 name="btcpaywall_tipping_number_default_amount_3" id="btcpaywall_tipping_number_default_amount_3">
@@ -447,7 +447,7 @@ class Tipping_Forms_Metabox
                 </div>
                 <div class="btcpaywall_container_body donor-body">
                     <div class="btcpaywall_template_donor_information">
-                        <fieldset class="btcpaywall_field_wrap">
+                        <fieldset class="btcpaywall_field_wrap banner_and_page">
                             <div>
                                 <p><?php echo __('Full name', 'btcpaywall'); ?></p>
                             </div>
@@ -461,7 +461,7 @@ class Tipping_Forms_Metabox
                             </div>
 
                         </fieldset>
-                        <fieldset class="btcpaywall_field_wrap">
+                        <fieldset class="btcpaywall_field_wrap banner_and_page">
                             <div>
                                 <p><?php echo __('Email', 'btcpaywall'); ?></p>
                             </div>
@@ -474,7 +474,7 @@ class Tipping_Forms_Metabox
                                 <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_email" value="true" />
                             </div>
                         </fieldset>
-                        <fieldset class="btcpaywall_field_wrap">
+                        <fieldset class="btcpaywall_field_wrap banner_and_page">
                             <div>
                                 <p><?php echo __('Address', 'btcpaywall'); ?></p>
                             </div>
@@ -487,7 +487,7 @@ class Tipping_Forms_Metabox
                                 <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_email" value="true" />
                             </div>
                         </fieldset>
-                        <fieldset class="btcpaywall_field_wrap">
+                        <fieldset class="btcpaywall_field_wrap banner_and_page">
                             <div>
                                 <p><?php echo __('Phone number', 'btcpaywall'); ?></p>
                             </div>
@@ -500,7 +500,7 @@ class Tipping_Forms_Metabox
                                 <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_phone" value="true" />
                             </div>
                         </fieldset>
-                        <fieldset class="btcpaywall_field_wrap">
+                        <fieldset class="btcpaywall_field_wrap banner_and_page">
                             <div>
                                 <p><?php echo __('Message', 'btcpaywall'); ?></p>
                             </div>

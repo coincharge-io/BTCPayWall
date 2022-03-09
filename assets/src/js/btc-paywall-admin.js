@@ -697,6 +697,7 @@
     });
   }
   $(document).ready(function () {
+    var template_id;
     uploadFile(
       $("#btcpw_digital_download_upload_button"),
       $("#btcpw_product_file"),
@@ -719,12 +720,28 @@
 
     $(".btcpaywall_tipping_templates button").click(function (e) {
       e.preventDefault();
-      var template_id = $(this).data('id');
+      //$('.btcpaywall_field_wrap').hide()
+      //$('.btcpaywall_field_wrap.common').css("display", "flex")
+      template_id = $(this).data('id');
       $("#btcpaywall_tipping_template_name").val(template_id);
-      if (template_id !== 'btcpaywall_tipping_box') {
-        $('.btcpaywall_container_header[data-id=fixed-amount],.btcpaywall_container_header[data-id=donor]').show();
-
+      if (template_id == 'btcpaywall_tipping_page') {
+        $('.btcpaywall_tipping_page').addClass("common")
+        $('.banner_and_page').removeClass("common")
+        $('.btcpaywall_tipping_box').removeClass('common')
+        $('.btcpaywall_container_header[data-id=fixed-amount],.btcpaywall_container_header[data-id=donor]').css("display", "block")
+      } else if (template_id == 'btcpaywall_tipping_banner_high' || template_id == 'btcpaywall_tipping_banner_wide') {
+        $('.banner_and_page').addClass("common")
+        $('.btcpaywall_tipping_page').removeClass("common")
+        $('.btcpaywall_tipping_box').removeClass('common')
+        $('.btcpaywall_container_header[data-id=fixed-amount],.btcpaywall_container_header[data-id=donor]').css("display", "block")
+      } else if (template_id == 'btcpaywall_tipping_box') {
+        $('.btcpaywall_tipping_box').addClass('common')
+        $('.banner_and_page').removeClass("common")
+        $('.btcpaywall_tipping_page').removeClass('common')
+        $('.btcpaywall_container_header[data-id=fixed-amount],.btcpaywall_container_header[data-id=donor]').css("display", "none")
       }
+
     })
+
   });
 })(jQuery);

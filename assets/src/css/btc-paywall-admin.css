@@ -697,13 +697,18 @@ Settings Tabs
 }
 
 .btcpaywall_field_wrap {
-  display: flex;
+  display: none;
   border-bottom: 1px solid #000;
   margin: 0;
   padding: 20px;
 }
 
-.btcpaywall_field_wrap:not(.common) {
+.btcpaywall_field_wrap.common {
+  display: flex;
+}
+
+.btcpaywall_container_header[data-id=fixed-amount],
+.btcpaywall_container_header[data-id=donor] {
   display: none;
 }
 
