@@ -46,7 +46,7 @@ function btcpaywall_output_shortcode_attributes($name, $id)
 {
     switch ($name) {
 
-        case 'Tipping Box':
+            /* case 'Tipping Box':
             return "[btcpw_tipping_box id={$id}]";
         case 'Tipping Banner High':
             return "[btcpw_tipping_banner_high id={$id}]";
@@ -54,6 +54,16 @@ function btcpaywall_output_shortcode_attributes($name, $id)
             return "[btcpw_tipping_banner_wide id={$id}]";
         case 'Tipping Page':
             return "[btcpw_tipping_page id={$id}]";
+        default:
+            return null; */
+        case 'btcpaywall_tipping_box':
+            return "[btcpw_tipping_box type=new id={$id}]";
+        case 'btcpaywall_tipping_banner_high':
+            return "[btcpw_tipping_banner_high type=new id={$id}]";
+        case 'btcpaywall_tipping_banner_Wide':
+            return "[btcpw_tipping_banner_wide type=new id={$id}]";
+        case 'btcpaywall_tipping_page':
+            return "[btcpw_tipping_page type=new id={$id}]";
         default:
             return null;
     }

@@ -746,7 +746,7 @@
       template_id = $(this).data('id');
       if ($(this).hasClass('activated')) {
         $('.btcpaywall_tipping_templates>div').show()
-        $("#btcpaywall_tipping_template_name").val('');
+        // $("#btcpaywall_tipping_template_name").val('');
       } else {
         $('.btcpaywall_tipping_templates button').removeClass('activated')
         $('.btcpaywall_tipping_templates > div').removeClass("btcpaywall_chosen_template");
@@ -754,23 +754,22 @@
         $(this).parent().parent().addClass("btcpaywall_chosen_template");
         $(this).addClass('activated')
         $('.btcpaywall_tipping_templates>div').not('.btcpaywall_chosen_template').hide()
-        $("#btcpaywall_tipping_template_name").val(template_id);
       }
-
+      $("#btcpaywall_tipping_template_name").val(template_id);
       if (template_id == 'btcpaywall_tipping_page') {
         $('.btcpaywall_tipping_page').addClass("common")
-        $('.banner_and_page').removeClass("common")
-        $('.banner_and_page').addClass("common")
+        $('.btcpaywall_tipping_banner_and_page').removeClass("common")
+        $('.btcpaywall_tipping_banner_and_page').addClass("common")
         $('.btcpaywall_tipping_box').removeClass('common')
         $('.btcpaywall_container_header[data-id=fixed-amount],.btcpaywall_container_header[data-id=donor]').css("display", "block")
       } else if (template_id == 'btcpaywall_tipping_banner_high' || template_id == 'btcpaywall_tipping_banner_wide') {
-        $('.banner_and_page').addClass("common")
+        $('.btcpaywall_tipping_banner_and_page').addClass("common")
         $('.btcpaywall_tipping_page').removeClass("common")
         $('.btcpaywall_tipping_box').removeClass('common')
         $('.btcpaywall_container_header[data-id=fixed-amount],.btcpaywall_container_header[data-id=donor]').css("display", "block")
       } else if (template_id == 'btcpaywall_tipping_box') {
         $('.btcpaywall_tipping_box').addClass('common')
-        $('.banner_and_page').removeClass("common")
+        $('.btcpaywall_tipping_banner_and_page').removeClass("common")
         $('.btcpaywall_tipping_page').removeClass('common')
         $('.btcpaywall_container_header[data-id=fixed-amount],.btcpaywall_container_header[data-id=donor]').css("display", "none")
       }

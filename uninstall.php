@@ -44,7 +44,7 @@ if (get_option('btcpw_remove_data_on_uninstall')) {
 
 	foreach (wp_load_alloptions() as $option => $value) {
 
-		if (strpos($option, 'btcpw_') !== false) {
+		if (strpos($option, 'btcp') !== false) {
 
 			delete_option($option);
 		}

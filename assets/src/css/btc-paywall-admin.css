@@ -754,8 +754,8 @@ Settings Tabs
   color: #fff;
 }
 
-.btcpaywall_chosen_template {
-  background: black;
+.btcpaywall_container_body.global-body {
+  display: block;
 }
 
 /*Helper icon*/
