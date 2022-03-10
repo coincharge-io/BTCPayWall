@@ -36,7 +36,7 @@ class Tipping_Forms_Metabox
             'btcpaywall_tipping_form',
             __('Tipping Form', 'btcpaywall'),
             [$this, 'html'],
-            'tipping',
+            'btcpw_donation',
             'normal',
             'high'
         );
@@ -145,12 +145,12 @@ class Tipping_Forms_Metabox
     public function add_shortcode_to_publish_metabox()
     {
 
-        if ('tipping' !== get_post_type()) {
+        if ('btcpw_donation' !== get_post_type()) {
             return false;
         }
         global $post;
 
-        if ('tipping' === $post->post_type) {
+        if ('btcpw_donation' === $post->post_type) {
             $template = get_post_meta($post->ID, 'btcpaywall_tipping_text_template_name', true);
 
             $shortcode = btcpaywall_output_shortcode_attributes($template, $post->ID);
@@ -233,7 +233,7 @@ class Tipping_Forms_Metabox
                         </div>
                     </div>
                     <div class="<?php echo "btcpaywall_template_tipping_page " . (($template === 'btcpaywall_tipping_page') ? 'btcpaywall_chosen_template' : ''); ?>">
-                        <h4>Tipping Page - 520x600</h4>
+                        <h4>Donation Page - 520x600</h4>
                         <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-page.png'; ?>">
                         <div>
                             <button data-id="btcpaywall_tipping_page" type="button" class="<?php echo $template === 'btcpaywall_tipping_page' ? 'activated' : ''; ?>"><?php echo $template === 'btcpaywall_tipping_page' ? esc_html('Deactivate') : esc_html('Activate'); ?></button>

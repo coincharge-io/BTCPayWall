@@ -67,23 +67,23 @@ function btcpaywall_register_post_types()
         'query_var' => true,
     ]);
 
-    $labels = apply_filters('btcpaywall_change_tipping_labels', array(
-        'name'               => _x('Tipping Form', 'Tipping Form', 'btcpaywall'),
-        'singular_name'      => _x('Tipping Form', 'Tipping Form', 'btcpaywall'),
+    $labels = apply_filters('btcpaywall_change_donation_labels', array(
+        'name'               => _x('Donation Form', 'Donation Form', 'btcpaywall'),
+        'singular_name'      => _x('Donation Form', 'Donation Form', 'btcpaywall'),
         'add_new'            => __('Add New', 'btcpaywall'),
-        'add_new_item'       => __('Add New Tipping Form', 'btcpaywall'),
-        'edit_item'          => __('Edit Tipping Form', 'btcpaywall'),
-        'new_item'           => __('New Tipping Form', 'btcpaywall'),
-        'all_items'          => __('All Tipping Form', 'btcpaywall'),
-        'view_item'          => __('View Tipping Form', 'btcpaywall'),
-        'search_items'       => __('Search Tipping Form', 'btcpaywall'),
-        'not_found'          => __('No Tipping Form found', 'btcpaywall'),
-        'not_found_in_trash' => __('No Tipping Form found in Trash', 'btcpaywall'),
+        'add_new_item'       => __('Add New Donation Form', 'btcpaywall'),
+        'edit_item'          => __('Edit Donation Form', 'btcpaywall'),
+        'new_item'           => __('New Donation Form', 'btcpaywall'),
+        'all_items'          => __('All Donation Form', 'btcpaywall'),
+        'view_item'          => __('View Donation Form', 'btcpaywall'),
+        'search_items'       => __('Search Donation Form', 'btcpaywall'),
+        'not_found'          => __('No Donation Form found', 'btcpaywall'),
+        'not_found_in_trash' => __('No Donation Form found in Trash', 'btcpaywall'),
         'parent_item_colon'  => '',
-        'menu_name'          => __('Tipping Forms', 'btcpaywall')
+        'menu_name'          => __('Donation Forms', 'btcpaywall')
     ));
 
-    register_post_type('tipping', [
+    register_post_type('btcpw_donation', [
         'labels' => $labels,
         'public' => true,
         'show_ui'         => true,
@@ -98,7 +98,7 @@ function btcpaywall_register_post_types()
         ),
         'taxonomies' => [],
         'has_archive' => false,
-        'rewrite'     => array('slug' => 'tipping'),
+        'rewrite'     => array('slug' => 'donation'),
         'query_var' => true,
     ]);
 }

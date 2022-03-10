@@ -1,7 +1,7 @@
 <?php
 /*
-*Template Name: Form
-*Template Post Type: tipping
+*Template Name: Donation Form
+*Template Post Type: btcpw_donation
 */
 
 // Exit if accessed directly.

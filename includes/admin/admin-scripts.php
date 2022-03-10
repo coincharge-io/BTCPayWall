@@ -48,7 +48,7 @@ function btcpaywall_enqueue_scripts_admin()
     );
     $current_screen = get_current_screen();
 
-    if ($current_screen->post_type === 'tipping' || $current_screen->post_type === 'digital_download') {
+    if ($current_screen->post_type === 'btcpw_donation' || $current_screen->post_type === 'digital_download') {
         wp_enqueue_script('btcpaywall_unsaved', BTCPAYWALL_PLUGIN_URL . 'assets/src/js/btc-paywall-warn-unsaved.js', array('jquery'), BTCPAYWALL_VERSION, false);
     }
     if (isset($_GET['page']) && sanitize_text_field($_GET['page']) == 'btcpw_general_settings') {
