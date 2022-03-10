@@ -57,8 +57,19 @@ function btcpaywall_digital_download_template($single_template)
 }
 add_filter('single_template', 'btcpaywall_digital_download_template', 99, 1);
 
+/**
+ * @since 1.0.5
+ */
+function btcpaywall_tipping_template($single_template)
+{
+    global $post;
 
-
+    if ($post->post_type == 'tipping') {
+        $single_template = BTCPAYWALL_PLUGIN_DIR . 'templates/single-tipping.php';
+    }
+    return $single_template;
+}
+add_filter('single_template', 'btcpaywall_tipping_template', 99, 1);
 
 
 /**

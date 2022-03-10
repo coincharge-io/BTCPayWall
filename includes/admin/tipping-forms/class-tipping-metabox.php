@@ -62,13 +62,13 @@ class Tipping_Forms_Metabox
         }
         $fields = Tipping_Forms_Metabox::get_fiels();
         foreach ($fields as $field) {
-            if (strpos($field, 'btcpaywall_tipping_number')) {
+            if (strpos($field, 'btcpaywall_tipping_number') !== false) {
                 if (!empty($_POST[$field])) {
                     update_post_meta($post_id, $field, intval($_POST[$field]));
                 } else {
                     delete_post_meta($post_id, $field);
                 }
-            } elseif (strpos($field, 'btcpaywall_tipping_bool')) {
+            } elseif (strpos($field, 'btcpaywall_tipping_bool') !== false) {
                 if (!empty($_POST[$field])) {
                     $new_value = filter_var($_POST[$field], FILTER_VALIDATE_BOOLEAN);
                     update_post_meta($post_id, $field, $new_value);
@@ -150,10 +150,7 @@ class Tipping_Forms_Metabox
         }
         global $post;
 
-        //var_dump($post, 'btcpaywall_tipping_text_template_name', true);
-
         if ('tipping' === $post->post_type) {
-            $shortcode = sprintf('[give_form id="%s"]', absint($post->ID));
             $template = get_post_meta($post->ID, 'btcpaywall_tipping_text_template_name', true);
 
             $shortcode = btcpaywall_output_shortcode_attributes($template, $post->ID);
@@ -204,6 +201,7 @@ class Tipping_Forms_Metabox
                 display: <?php echo ($template !== 'btcpaywall_tipping_box' || !empty($template)) ? 'block' : 'none' ?>;
             }
         </style>
+
         <div class="btcpaywall_metabox_wrap">
             <ul class="btcpaywall_metabox_wrap_metabox_tabs">
                 <li class="current" data-tab="tab-1">Template</li>
@@ -212,7 +210,7 @@ class Tipping_Forms_Metabox
             </ul>
             <div id="tab-1" class="btcpaywall_options_wrap btcpaywall_tabset current">
                 <div class="btcpaywall_tipping_templates">
-                    <input type="hidden" name="btcpaywall_tipping_text_template_name" id="btcpaywall_tipping_template_name" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_template_name'][0]); ?>">
+                    <input type="hidden" name="btcpaywall_tipping_text_template_name" id="btcpaywall_tipping_template_name" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_template_name'][0]); ?>">
                     <div class="<?php echo "btcpaywall_template_tipping_box " . (($template === 'btcpaywall_tipping_box') ? 'btcpaywall_chosen_template' : ''); ?>">
                         <h4>Tipping Box - 250x300/300x300</h4>
                         <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-box.png'; ?>">
@@ -470,7 +468,7 @@ class Tipping_Forms_Metabox
                         </select>
                     </div>
                 </fieldset>
-                <fieldset class="btcpaywall_field_wrap">
+                <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
                     <div>
                         <label for="btcpaywall_tipping_bool_free_input"><?php echo __('Free input of amount', 'btcpaywall'); ?></label>
                         <span title="Do you want to allow donors to enter custom amount for donation?" class="btcpaywall_helper_tip"></span>

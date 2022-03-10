@@ -729,6 +729,16 @@
       $("#btcpw_product_filename", $("#btcpw_product_file_id"))
     );
     //Tipping Metabox
+    $('.js-btcpaywall-shortcode-button').click(function () {
+
+      var shortcode = $(this).data('btcpaywall-shortcode');
+      var $temp = $("<input>");
+      $("body").append($temp);
+      $temp.val(shortcode).select()
+      document.execCommand("copy");
+      $(this).text('Copied to clipboard');
+      $temp.remove();
+    })
     $(".btcpaywall_metabox_wrap_metabox_tabs li").click(function () {
       var tab_id = $(this).attr("data-tab");
       $(".btcpaywall_metabox_wrap_metabox_tabs li").removeClass("current");
@@ -744,6 +754,7 @@
     $(".btcpaywall_tipping_templates button").click(function (e) {
       e.preventDefault();
       template_id = $(this).data('id');
+      $("#btcpaywall_tipping_template_name").val(template_id);
       if ($(this).hasClass('activated')) {
         $('.btcpaywall_tipping_templates>div').show()
         // $("#btcpaywall_tipping_template_name").val('');
@@ -755,7 +766,7 @@
         $(this).addClass('activated')
         $('.btcpaywall_tipping_templates>div').not('.btcpaywall_chosen_template').hide()
       }
-      $("#btcpaywall_tipping_template_name").val(template_id);
+
       if (template_id == 'btcpaywall_tipping_page') {
         $('.btcpaywall_tipping_page').addClass("common")
         $('.btcpaywall_tipping_banner_and_page').removeClass("common")

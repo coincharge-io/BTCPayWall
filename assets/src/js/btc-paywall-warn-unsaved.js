@@ -25,14 +25,18 @@
             modified_inputs.delete(target);
         }
     });
-
-    addEventListener(
+    ['saved', 'submit'].forEach(function (e) {
+        addEventListener(e, function (e) {
+            modified_inputs.clear()
+        });
+    });
+    /* addEventListener(
         'saved',
         function (e) {
             modified_inputs.clear()
         },
         false
-    );
+    ); */
 
     addEventListener('beforeunload', evt => {
         if (modified_inputs.size) {
