@@ -783,10 +783,15 @@ Settings Tabs
 .btcpaywall_tipping_templates>div {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
   gap: 5px;
   width: 40%;
   border: solid 1px #ccc;
   background-color: rgb(252, 249, 249);
+}
+
+.btcpaywall_tipping_templates button.activated {
+  background-color: rebeccapurple;
 }

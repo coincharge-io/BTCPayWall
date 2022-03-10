@@ -756,7 +756,10 @@
       template_id = $(this).data('id');
       $("#btcpaywall_tipping_template_name").val(template_id);
       if ($(this).hasClass('activated')) {
-        $('.btcpaywall_tipping_templates>div').show()
+        $('.btcpaywall_tipping_templates button').removeClass('activated')
+        $("#btcpaywall_tipping_template_name").val('');
+        $(this).text('Activate')
+        //$('.btcpaywall_tipping_templates>div').show()
         // $("#btcpaywall_tipping_template_name").val('');
       } else {
         $('.btcpaywall_tipping_templates button').removeClass('activated')
@@ -764,7 +767,8 @@
 
         $(this).parent().parent().addClass("btcpaywall_chosen_template");
         $(this).addClass('activated')
-        $('.btcpaywall_tipping_templates>div').not('.btcpaywall_chosen_template').hide()
+        $(this).text('Deactivate')
+        //$('.btcpaywall_tipping_templates>div').not('.btcpaywall_chosen_template').hide()
       }
 
       if (template_id == 'btcpaywall_tipping_page') {

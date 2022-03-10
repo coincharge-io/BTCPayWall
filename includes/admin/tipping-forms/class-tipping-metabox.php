@@ -215,28 +215,28 @@ class Tipping_Forms_Metabox
                         <h4>Tipping Box - 250x300/300x300</h4>
                         <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-box.png'; ?>">
                         <div>
-                            <button data-id="btcpaywall_tipping_box" type="button" class="<?php echo $template === 'btcpaywall_tipping_box' ? 'activated' : ''; ?>">Activate</button>
+                            <button data-id="btcpaywall_tipping_box" type="button" class="<?php echo $template === 'btcpaywall_tipping_box' ? 'activated' : ''; ?>"><?php echo $template === 'btcpaywall_tipping_box' ? esc_html('Deactivate') : esc_html('Activate'); ?></button>
                         </div>
                     </div>
                     <div class="<?php echo "btcpaywall_template_tipping_banner_high " . (($template === 'btcpaywall_tipping_banner_high') ? 'btcpaywall_chosen_template' : ''); ?>">
                         <h4>Tipping Banner High - 200x710</h4>
                         <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-high.png'; ?>">
                         <div>
-                            <button data-id="btcpaywall_tipping_banner_high" type="button" class="<?php echo ($template === 'btcpaywall_tipping_banner_high') ? 'activated' : ''; ?>">Activate</button>
+                            <button data-id="btcpaywall_tipping_banner_high" type="button" class="<?php echo ($template === 'btcpaywall_tipping_banner_high') ? 'activated' : ''; ?>"><?php echo $template === 'btcpaywall_tipping_banner_high' ? esc_html('Deactivate') : esc_html('Activate'); ?></button>
                         </div>
                     </div>
                     <div class="<?php echo "btcpaywall_template_tipping_banner_wide " . (($template === 'btcpaywall_tipping_banner_wide') ? 'btcpaywall_chosen_template' : ''); ?>">
                         <h4>Tipping Banner Wide - 600x200</h4>
                         <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-wide.png'; ?>">
                         <div>
-                            <button data-id="btcpaywall_tipping_banner_wide" type="button" class="<?php echo $template === 'btcpaywall_tipping_banner_wide' ? 'activated' : ''; ?>">Activate</button>
+                            <button data-id="btcpaywall_tipping_banner_wide" type="button" class="<?php echo $template === 'btcpaywall_tipping_banner_wide' ? 'activated' : ''; ?>"><?php echo $template === 'btcpaywall_tipping_banner_wide' ? esc_html('Deactivate') : esc_html('Activate'); ?></button>
                         </div>
                     </div>
                     <div class="<?php echo "btcpaywall_template_tipping_page " . (($template === 'btcpaywall_tipping_page') ? 'btcpaywall_chosen_template' : ''); ?>">
                         <h4>Tipping Page - 520x600</h4>
                         <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-page.png'; ?>">
                         <div>
-                            <button data-id="btcpaywall_tipping_page" type="button" class="<?php echo $template === 'btcpaywall_tipping_page' ? 'activated' : ''; ?>">Activate</button>
+                            <button data-id="btcpaywall_tipping_page" type="button" class="<?php echo $template === 'btcpaywall_tipping_page' ? 'activated' : ''; ?>"><?php echo $template === 'btcpaywall_tipping_page' ? esc_html('Deactivate') : esc_html('Activate'); ?></button>
                         </div>
                     </div>
                 </div>
