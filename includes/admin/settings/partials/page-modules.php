@@ -20,9 +20,7 @@ $section = isset($_GET['section']) ? sanitize_text_field($_GET['section']) : $de
             <li>
                 <a href="?page=btcpw_general_settings&tab=modules&section=pay-per-file" class="btcpw-nav-tab nav-tab <?php if ($section === 'pay-per-file') : ?>nav-tab-active<?php endif; ?>">Download Store</a>
             </li>
-            <li>
-                <a href="?page=btcpw_general_settings&tab=modules&section=tipping" class="btcpw-nav-tab nav-tab <?php if ($section === 'tipping') : ?>nav-tab-active<?php endif; ?>">Tipping</a>
-            </li>
+
         </ul>
     </nav>
 
@@ -35,10 +33,7 @@ $section = isset($_GET['section']) ? sanitize_text_field($_GET['section']) : $de
                 require('page-pay-per-view.php');
                 break;
             case 'pay-per-file':
-                require('page-pay-per-file.php');
-                break;
-            case 'tipping':
-                require('page-tipping.php');
+                require('page-content-store-file-general-settings.php');
                 break;
             default:
                 require('page-pay-per-post.php');

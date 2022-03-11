@@ -298,9 +298,6 @@ class Donation_Forms_Metabox
     {
         wp_nonce_field(basename(__FILE__), 'btcpaywall_tipping_nonce');
         $stored_data = get_post_meta($post->ID);
-        //var_dump($this->args['btcpaywall_tipping_text_currency'][0]);
-        // var_dump(get_post_meta($post->ID));
-        //$stored_data = $this->args;
         $template = $stored_data['btcpaywall_tipping_text_template_name'][0];
         $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
         $dimensions = ['250x300', '300x300'];
@@ -320,6 +317,10 @@ class Donation_Forms_Metabox
 
             .btcpaywall_tipping_banner_and_page {
                 display: <?php echo ($template !== 'btcpaywall_tipping_box' && !empty($template)) ? 'flex' : 'none' ?>;
+            }
+
+            .btcpaywall_tipping_banner_and_box {
+                display: <?php echo ($template !== 'btcpaywall_tipping_page' && !empty($template)) ? 'flex' : 'none' ?>;
             }
 
             .btcpaywall_tipping_page {
@@ -506,7 +507,7 @@ class Donation_Forms_Metabox
                                 <input type="text" id="btcpaywall_tipping_color_title" name="btcpaywall_tipping_color_title" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_title'][0]); ?>" />
                             </div>
                         </fieldset>
-                        <fieldset class="btcpaywall_field_wrap common">
+                        <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_box">
                             <div>
                                 <label for="btcpaywall_tipping_text_description"><?php echo __('Description', 'btcpaywall'); ?></label>
                             </div>
@@ -514,7 +515,7 @@ class Donation_Forms_Metabox
                                 <input type="text" id="btcpaywall_tipping_text_description" name="btcpaywall_tipping_text_description" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_description'][0]); ?>" />
                             </div>
                         </fieldset>
-                        <fieldset class="btcpaywall_field_wrap common">
+                        <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_box">
                             <div>
                                 <label for="btcpaywall_tipping_color_description"><?php echo __('Description color', 'btcpaywall'); ?></label>
                             </div>

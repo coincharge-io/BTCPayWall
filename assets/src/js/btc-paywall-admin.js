@@ -777,14 +777,17 @@
         $('.btcpaywall_tipping_banner_and_page').removeClass("common")
         $('.btcpaywall_tipping_banner_and_page').addClass("common")
         $('.btcpaywall_tipping_box').removeClass('common')
+        $('.btcpaywall_tipping_banner_and_box').removeClass("common")
         $('.btcpaywall_container_header[data-id=fixed-amount],.btcpaywall_container_header[data-id=donor]').css("display", "block")
       } else if (template_id == 'btcpaywall_tipping_banner_high' || template_id == 'btcpaywall_tipping_banner_wide') {
         $('.btcpaywall_tipping_banner_and_page').addClass("common")
+        $('.btcpaywall_tipping_banner_and_box').addClass("common")
         $('.btcpaywall_tipping_page').removeClass("common")
         $('.btcpaywall_tipping_box').removeClass('common')
         $('.btcpaywall_container_header[data-id=fixed-amount],.btcpaywall_container_header[data-id=donor]').css("display", "block")
       } else if (template_id == 'btcpaywall_tipping_box') {
         $('.btcpaywall_tipping_box').addClass('common')
+        $('.btcpaywall_tipping_banner_and_box').addClass("common")
         $('.btcpaywall_tipping_banner_and_page').removeClass("common")
         $('.btcpaywall_tipping_page').removeClass('common')
         $('.btcpaywall_container_header[data-id=fixed-amount],.btcpaywall_container_header[data-id=donor]').css("display", "none")

@@ -87,7 +87,7 @@ https://btcpaywall.com/faq-support-center/
  == Changelog ==
 = 1.0.5 =
 
--
+- Improve: Donation form creation process
 
 = 1.0.4.2 =
 

@@ -804,6 +804,7 @@ Settings Tabs
   border-radius: 5px;
   text-align: center;
   line-height: 1.1;
+  border: none;
 }
 
 .btcpaywall_tipping_image_wrap {
