@@ -334,37 +334,47 @@ class Donation_Forms_Metabox
 
         <div class="btcpaywall_metabox_wrap">
             <ul class="btcpaywall_metabox_wrap_metabox_tabs">
-                <li class="current" data-tab="tab-1">Template</li>
-                <li data-tab="tab-2">Appearance</li>
-                <li data-tab="tab-3">Fields</li>
+                <li class="current" data-tab="tab-1"><?php echo esc_html__('Template', 'btcpaywall'); ?></li>
+                <li data-tab="tab-2"><?php echo esc_html__('Appearance', 'btcpaywall'); ?></li>
             </ul>
             <div id="tab-1" class="btcpaywall_options_wrap btcpaywall_tabset current">
                 <div class="btcpaywall_tipping_templates">
                     <input type="hidden" name="btcpaywall_tipping_text_template_name" id="btcpaywall_tipping_template_name" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_template_name'][0]); ?>">
                     <div class="<?php echo "btcpaywall_template_tipping_box " . (($template === 'btcpaywall_tipping_box') ? 'btcpaywall_chosen_template' : ''); ?>">
                         <h4>Tipping Box - 250x300/300x300</h4>
-                        <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-box.png'; ?>">
+                        <div class="btcpaywall_tipping_image_wrap">
+
+                            <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-box.png'; ?>">
+                        </div>
                         <div>
                             <button data-id="btcpaywall_tipping_box" type="button" class="<?php echo $template === 'btcpaywall_tipping_box' ? 'activated' : ''; ?>"><?php echo $template === 'btcpaywall_tipping_box' ? esc_html('Deactivate') : esc_html('Activate'); ?></button>
                         </div>
                     </div>
                     <div class="<?php echo "btcpaywall_template_tipping_banner_high " . (($template === 'btcpaywall_tipping_banner_high') ? 'btcpaywall_chosen_template' : ''); ?>">
                         <h4>Tipping Banner High - 200x710</h4>
-                        <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-high.png'; ?>">
+                        <div class="btcpaywall_tipping_image_wrap">
+
+                            <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-high.png'; ?>">
+                        </div>
                         <div>
                             <button data-id="btcpaywall_tipping_banner_high" type="button" class="<?php echo ($template === 'btcpaywall_tipping_banner_high') ? 'activated' : ''; ?>"><?php echo $template === 'btcpaywall_tipping_banner_high' ? esc_html('Deactivate') : esc_html('Activate'); ?></button>
                         </div>
                     </div>
                     <div class="<?php echo "btcpaywall_template_tipping_banner_wide " . (($template === 'btcpaywall_tipping_banner_wide') ? 'btcpaywall_chosen_template' : ''); ?>">
                         <h4>Tipping Banner Wide - 600x200</h4>
-                        <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-wide.png'; ?>">
+                        <div class="btcpaywall_tipping_image_wrap">
+
+                            <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-wide.png'; ?>">
+                        </div>
                         <div>
                             <button data-id="btcpaywall_tipping_banner_wide" type="button" class="<?php echo $template === 'btcpaywall_tipping_banner_wide' ? 'activated' : ''; ?>"><?php echo $template === 'btcpaywall_tipping_banner_wide' ? esc_html('Deactivate') : esc_html('Activate'); ?></button>
                         </div>
                     </div>
                     <div class="<?php echo "btcpaywall_template_tipping_page " . (($template === 'btcpaywall_tipping_page') ? 'btcpaywall_chosen_template' : ''); ?>">
                         <h4>Donation Page - 520x600</h4>
-                        <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-page.png'; ?>">
+                        <div class="btcpaywall_tipping_image_wrap">
+                            <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-page.png'; ?>">
+                        </div>
                         <div>
                             <button data-id="btcpaywall_tipping_page" type="button" class="<?php echo $template === 'btcpaywall_tipping_page' ? 'activated' : ''; ?>"><?php echo $template === 'btcpaywall_tipping_page' ? esc_html('Deactivate') : esc_html('Activate'); ?></button>
                         </div>
@@ -373,6 +383,39 @@ class Donation_Forms_Metabox
             </div>
             <div id="tab-2" class="btcpaywall_options_wrap btcpaywall_tabset">
                 <div class="btcpaywall_template_appearance">
+                    <fieldset class="btcpaywall_field_wrap common">
+                        <div>
+                            <label for="btcpaywall_tipping_text_currency"><?php echo __('Currency', 'btcpaywall'); ?></label>
+                            <span title="Currency value is used as starting value for conversion rate. Donors can change it and see conversion rate based on that." class="btcpaywall_helper_tip"></span>
+                        </div>
+                        <div>
+                            <select required name="btcpaywall_tipping_text_currency" id="btcpaywall_tipping_text_currency">
+                                <option disabled value=""><?php echo __('Select currency', 'btcpaywall'); ?></option>
+                                <?php foreach ($supported_currencies as $currency) : ?>
+                                    <option <?php echo $used_currency === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
+                                        <?php echo esc_html($currency); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </fieldset>
+                    <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
+                        <div>
+                            <label for="btcpaywall_tipping_bool_free_input"><?php echo __('Free input of amount', 'btcpaywall'); ?></label>
+                            <span title="Do you want to allow donors to enter custom amount for donation?" class="btcpaywall_helper_tip"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="btcpaywall_tipping_bool_free_input" <?php checked($stored_data['btcpaywall_tipping_bool_free_input'][0]); ?>name="btcpaywall_tipping_bool_free_input" value="true" />
+                        </div>
+                    </fieldset>
+                    <fieldset class="btcpaywall_field_wrap common">
+                        <div>
+                            <label for="btcpaywall_tipping_text_thankyou"><?php echo __('Link to Thank you page', 'btcpaywall'); ?></label>
+                        </div>
+                        <div>
+                            <input type="text" id="btcpaywall_tipping_text_thankyou" name="btcpaywall_tipping_text_thankyou" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_thankyou'][0]); ?>" />
+                        </div>
+                    </fieldset>
                     <div data-id="global" class="btcpaywall_container_header">
                         <h2><?php echo __('Global', 'btcpaywall'); ?></h2>
                     </div>
@@ -580,41 +623,6 @@ class Donation_Forms_Metabox
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="tab-3" class="btcpaywall_options_wrap btcpaywall_tabset">
-                <fieldset class="btcpaywall_field_wrap common">
-                    <div>
-                        <label for="btcpaywall_tipping_text_currency"><?php echo __('Currency', 'btcpaywall'); ?></label>
-                        <span title="Currency value is used as starting value for conversion rate. Donors can change it and see conversion rate based on that." class="btcpaywall_helper_tip"></span>
-                    </div>
-                    <div>
-                        <select required name="btcpaywall_tipping_text_currency" id="btcpaywall_tipping_text_currency">
-                            <option disabled value=""><?php echo __('Select currency', 'btcpaywall'); ?></option>
-                            <?php foreach ($supported_currencies as $currency) : ?>
-                                <option <?php echo $used_currency === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
-                                    <?php echo esc_html($currency); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                </fieldset>
-                <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
-                    <div>
-                        <label for="btcpaywall_tipping_bool_free_input"><?php echo __('Free input of amount', 'btcpaywall'); ?></label>
-                        <span title="Do you want to allow donors to enter custom amount for donation?" class="btcpaywall_helper_tip"></span>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="btcpaywall_tipping_bool_free_input" <?php checked($stored_data['btcpaywall_tipping_bool_free_input'][0]); ?>name="btcpaywall_tipping_bool_free_input" value="true" />
-                    </div>
-                </fieldset>
-                <fieldset class="btcpaywall_field_wrap common">
-                    <div>
-                        <label for="btcpaywall_tipping_text_thankyou"><?php echo __('Link to Thank you page', 'btcpaywall'); ?></label>
-                    </div>
-                    <div>
-                        <input type="text" id="btcpaywall_tipping_text_thankyou" name="btcpaywall_tipping_text_thankyou" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_thankyou'][0]); ?>" />
-                    </div>
-                </fieldset>
                 <div data-id="fixed-amount" class="btcpaywall_container_header">
                     <h2><?php echo __('Fixed amount', 'btcpaywall'); ?></h2>
                 </div>
@@ -745,6 +753,10 @@ class Donation_Forms_Metabox
                         </fieldset>
                     </div>
                 </div>
+            </div>
+            <div id="tab-3" class="btcpaywall_options_wrap btcpaywall_tabset">
+
+
             </div>
         </div>
 <?php

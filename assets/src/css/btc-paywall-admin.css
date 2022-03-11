@@ -692,8 +692,9 @@ Settings Tabs
 }
 
 .btcpaywall_tipping_templates img {
-  height: 150px;
-  width: 80%;
+  width: 100%;
+  object-fit: contain;
+  height: 200px;
 }
 
 .btcpaywall_field_wrap {
@@ -754,9 +755,6 @@ Settings Tabs
   color: #fff;
 }
 
-.btcpaywall_container_body.global-body {
-  display: block;
-}
 
 /*Helper icon*/
 
@@ -806,4 +804,9 @@ Settings Tabs
   border-radius: 5px;
   text-align: center;
   line-height: 1.1;
+}
+
+.btcpaywall_tipping_image_wrap {
+  max-width: 300px;
+  overflow: hidden;
 }
