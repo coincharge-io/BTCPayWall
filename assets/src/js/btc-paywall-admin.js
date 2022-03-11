@@ -767,6 +767,7 @@
 
         $(this).parent().parent().addClass("btcpaywall_chosen_template");
         $(this).addClass('activated')
+        $('.btcpaywall_tipping_templates button').text('Activate')
         $(this).text('Deactivate')
         //$('.btcpaywall_tipping_templates>div').not('.btcpaywall_chosen_template').hide()
       }

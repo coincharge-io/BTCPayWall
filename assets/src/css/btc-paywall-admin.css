@@ -693,7 +693,7 @@ Settings Tabs
 
 .btcpaywall_tipping_templates img {
   height: 150px;
-  width: 100%;
+  width: 80%;
 }
 
 .btcpaywall_field_wrap {
@@ -788,10 +788,22 @@ Settings Tabs
   text-align: center;
   gap: 5px;
   width: 40%;
-  border: solid 1px #ccc;
+  border: solid 3px #ccc;
   background-color: rgb(252, 249, 249);
 }
 
 .btcpaywall_tipping_templates button.activated {
-  background-color: red;
+  color: #E11900;
+  border: #E11900 solid 1px;
+  font-weight: bold;
+  background-color: #fff;
+}
+
+.btcpaywall_tipping_templates button {
+  color: #fff;
+  background-color: #51b13e;
+  padding: 10px 12px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 1.1;
 }

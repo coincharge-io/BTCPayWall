@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Tipping form metabox
+ * Donation form metabox
  *
  * @package     BTCPayWall
- * @subpackage  Admin/Tipping_Forms_Metabox
+ * @subpackage  Admin/Donation_Forms_Metabox
  * @copyright   Copyright (c) 2021, Coincharge
  * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
  * @since       1.0.5
@@ -14,18 +14,19 @@ if (!defined('ABSPATH')) exit;
 
 
 /**
- * Tipping_Forms_Metabox class.
+ * Donation_Forms_Metabox class.
  *
  * @since 1.0.5
  *
  */
-class Tipping_Forms_Metabox
+class Donation_Forms_Metabox
 {
     public function __construct()
     {
         add_action('add_meta_boxes', [$this, 'add_meta_box'], 10);
         add_action('save_post', [$this, 'save']);
         add_action('post_submitbox_misc_actions', [$this, 'add_shortcode_to_publish_metabox']);
+        add_action('add_meta_boxes', [$this, 'set_default_values'], 10);
     }
     /**
      * Set up and add the meta box.
@@ -33,8 +34,8 @@ class Tipping_Forms_Metabox
     public function add_meta_box()
     {
         add_meta_box(
-            'btcpaywall_tipping_form',
-            __('Tipping Form', 'btcpaywall'),
+            'btcpaywall_donation_form',
+            __('Donation Form', 'btcpaywall'),
             [$this, 'html'],
             'btcpw_donation',
             'normal',
@@ -48,7 +49,7 @@ class Tipping_Forms_Metabox
      *
      * @param int $post_id  The post ID.
      */
-    public static function save(int $post_id)
+    public function save(int $post_id)
     {
         if (empty($post_id)) {
             return;
@@ -60,27 +61,27 @@ class Tipping_Forms_Metabox
         if (!isset($_POST['btcpaywall_tipping_nonce']) || !wp_verify_nonce(sanitize_text_field($_POST['btcpaywall_tipping_nonce']), basename(__FILE__))) {
             return;
         }
-        $fields = Tipping_Forms_Metabox::get_fiels();
+        $fields = Donation_Forms_Metabox::get_fields();
         foreach ($fields as $field) {
-            if (strpos($field, 'btcpaywall_tipping_number') !== false) {
-                if (!empty($_POST[$field])) {
-                    update_post_meta($post_id, $field, intval($_POST[$field]));
+            if (strpos($field['name'], 'btcpaywall_tipping_number') !== false) {
+                if (!empty($_POST[$field['name']])) {
+                    update_post_meta($post_id, $field['name'], intval($_POST[$field['name']]));
                 } else {
-                    delete_post_meta($post_id, $field);
+                    delete_post_meta($post_id, $field['name']);
                 }
-            } elseif (strpos($field, 'btcpaywall_tipping_bool') !== false) {
-                if (!empty($_POST[$field])) {
-                    $new_value = filter_var($_POST[$field], FILTER_VALIDATE_BOOLEAN);
-                    update_post_meta($post_id, $field, $new_value);
+            } elseif (strpos($field['name'], 'btcpaywall_tipping_bool') !== false) {
+                if (!empty($_POST[$field['name']])) {
+                    $new_value = filter_var($_POST[$field['name']], FILTER_VALIDATE_BOOLEAN);
+                    update_post_meta($post_id, $field['name'], $new_value);
                 } else {
-                    delete_post_meta($post_id, $field);
+                    delete_post_meta($post_id, $field['name']);
                 }
             } else {
-                if (!empty($_POST[$field])) {
-                    $new_value = sanitize_text_field($_POST[$field]);
-                    update_post_meta($post_id, $field, $new_value);
+                if (!empty($_POST[$field['name']])) {
+                    $new_value = sanitize_text_field($_POST[$field['name']]);
+                    update_post_meta($post_id, $field['name'], $new_value);
                 } else {
-                    delete_post_meta($post_id, $field);
+                    delete_post_meta($post_id, $field['name']);
                 }
             }
         }
@@ -90,58 +91,183 @@ class Tipping_Forms_Metabox
      * @since 1.0.5
      */
 
-    public static function get_fiels()
+    public static function get_fields()
     {
+
         $fields = [
-            "btcpaywall_tipping_text_template_name",
-            "btcpaywall_tipping_text_dimension",
-            "btcpaywall_tipping_text_background",
-            "btcpaywall_tipping_color_background",
-            "btcpaywall_tipping_color_header_footer_background",
-            "btcpaywall_tipping_text_logo",
-            "btcpaywall_tipping_text_title",
-            "btcpaywall_tipping_color_title",
-            "btcpaywall_tipping_text_description",
-            "btcpaywall_tipping_color_description",
-            "btcpaywall_tipping_text_progress_bar_step1",
-            "btcpaywall_tipping_text_progress_bar_step2",
-            "btcpaywall_tipping_color_progress_bar_step1",
-            "btcpaywall_tipping_color_progress_bar_step2",
-            "btcpaywall_tipping_text_main",
-            "btcpaywall_tipping_color_main",
-            "btcpaywall_tipping_color_amounts",
-            "btcpaywall_tipping_text_button",
-            "btcpaywall_tipping_color_button_text",
-            "btcpaywall_tipping_color_button",
-            "btcpaywall_tipping_text_currency",
-            "btcpaywall_tipping_bool_free_input",
-            "btcpaywall_tipping_text_thankyou",
-            "btcpaywall_tipping_bool_show_icons",
-            "btcpaywall_tipping_bool_show_default_amount_1",
-            "btcpaywall_tipping_number_default_amount_1",
-            "btcpaywall_tipping_text_default_currency_1",
-            "btcpaywall_tipping_text_default_icon_1",
-            "btcpaywall_tipping_bool_show_default_amount_2",
-            "btcpaywall_tipping_number_default_amount_2",
-            "btcpaywall_tipping_text_default_currency_2",
-            "btcpaywall_tipping_text_default_icon_2",
-            "btcpaywall_tipping_bool_show_default_amount_3",
-            "btcpaywall_tipping_number_default_amount_3",
-            "btcpaywall_tipping_text_default_currency_3",
-            "btcpaywall_tipping_text_default_icon_3",
-            "btcpaywall_tipping_bool_display_name",
-            "btcpaywall_tipping_bool_mandatory_name",
-            "btcpaywall_tipping_bool_display_email",
-            "btcpaywall_tipping_bool_mandatory_email",
-            "btcpaywall_tipping_bool_display_address",
-            "btcpaywall_tipping_bool_mandatory_address",
-            "btcpaywall_tipping_bool_display_phone",
-            "btcpaywall_tipping_bool_mandatory_phone",
-            "btcpaywall_tipping_bool_display_message",
-            "btcpaywall_tipping_bool_mandatory_message"
+            ["name" => "btcpaywall_tipping_text_template_name"],
+            [
+                "name" => "btcpaywall_tipping_text_dimension",
+                "std" => "250x300"
+            ],
+            ["name" => "btcpaywall_tipping_text_background"],
+            [
+                "name" => "btcpaywall_tipping_color_background",
+                "std" => "#E6E6E6"
+            ],
+            [
+                "name" => "btcpaywall_tipping_color_header_footer_background",
+                "std" => "#1d5aa3"
+            ],
+            ["name" => "btcpaywall_tipping_text_logo"],
+            [
+                "name" => "btcpaywall_tipping_text_title",
+                "std" => "Support my work"
+            ],
+            [
+                "name" => "btcpaywall_tipping_color_title",
+                "std" => "#ffffff"
+            ],
+            ["name" => "btcpaywall_tipping_text_description"],
+            [
+                "name" => "btcpaywall_tipping_color_description",
+                "std" => "#000000"
+            ],
+            [
+                "name" => "btcpaywall_tipping_text_progress_bar_step1",
+                "std" => "Pledge"
+            ],
+            [
+                "name" => "btcpaywall_tipping_text_progress_bar_step2",
+                "std" => "Info"
+            ],
+            [
+                "name" => "btcpaywall_tipping_color_progress_bar_step1",
+                "std" => "#808080"
+            ],
+            [
+                "name" => "btcpaywall_tipping_color_progress_bar_step2",
+                "std" => "#D3D3D3"
+            ],
+            [
+                "name" => "btcpaywall_tipping_text_main",
+                "std" => "Enter Tipping Amount"
+            ],
+            [
+                "name" => "btcpaywall_tipping_color_main",
+                "std" => "#000000"
+            ],
+            [
+                "name" => "btcpaywall_tipping_color_amounts",
+                "std" => "#ffa500"
+            ],
+            [
+                "name" => "btcpaywall_tipping_text_button",
+                "std" => "Tipping now"
+            ],
+            [
+                "name" => "btcpaywall_tipping_color_button_text",
+                "std" => "#FFFFFF"
+            ],
+            [
+                "name" => "btcpaywall_tipping_color_button",
+                "std" => "#FE642E"
+            ],
+            [
+                "name" => "btcpaywall_tipping_text_currency",
+                "std" => "SATS"
+            ],
+            [
+                "name" => "btcpaywall_tipping_bool_free_input",
+                "std" => true
+            ],
+            ["name" => "btcpaywall_tipping_text_thankyou"],
+            [
+                "name" => "btcpaywall_tipping_bool_show_icons",
+                "std" => true
+            ],
+            [
+                "name" => "btcpaywall_tipping_bool_show_default_amount_1",
+                "std" => true
+            ],
+            [
+                "name" => "btcpaywall_tipping_number_default_amount_1",
+                "std" => 1000
+            ],
+            [
+                "name" => "btcpaywall_tipping_text_default_currency_1",
+                "std" => "SATS"
+            ],
+            [
+                "name" => "btcpaywall_tipping_text_default_icon_1",
+                "std" => "fas fa-coffee"
+            ],
+            [
+                "name" => "btcpaywall_tipping_bool_show_default_amount_2",
+                "std" => true
+            ],
+            [
+                "name" => "btcpaywall_tipping_number_default_amount_2",
+                "std" => 2000
+            ],
+            [
+                "name" => "btcpaywall_tipping_text_default_currency_2",
+                "std" => "SATS"
+            ],
+            [
+                "name" => "btcpaywall_tipping_text_default_icon_2",
+                "std" => "fas fa-beer"
+            ],
+            [
+                "name" => "btcpaywall_tipping_bool_show_default_amount_3",
+                "std" => true
+            ],
+            [
+                "name" => "btcpaywall_tipping_number_default_amount_3",
+                "std" => 3000
+            ],
+            [
+                "name" => "btcpaywall_tipping_text_default_currency_3",
+                "std" => "SATS"
+            ],
+            [
+                "name" => "btcpaywall_tipping_text_default_icon_3",
+                "std" => "fas fa-cocktail"
+            ],
+            [
+                "name" => "btcpaywall_tipping_bool_display_name",
+                "std" => true
+            ],
+            [
+                "name" => "btcpaywall_tipping_bool_mandatory_name",
+                "std" => false
+            ],
+            [
+                "name" => "btcpaywall_tipping_bool_display_email",
+                "std" => true
+            ],
+            [
+                "name" => "btcpaywall_tipping_bool_mandatory_email",
+                "std" => false
+            ],
+            [
+                "name" => "btcpaywall_tipping_bool_display_address",
+                "std" => true
+            ],
+            [
+                "name" => "btcpaywall_tipping_bool_mandatory_address",
+                "std" => false
+            ],
+            [
+                "name" => "btcpaywall_tipping_bool_display_phone",
+                "std" => true
+            ],
+            [
+                "name" => "btcpaywall_tipping_bool_mandatory_phone",
+                "std" => false
+            ],
+            [
+                "name" => "btcpaywall_tipping_bool_display_message",
+                "std" => true
+            ],
+            [
+                "name" => "btcpaywall_tipping_bool_mandatory_message",
+                "std" => false
+            ]
         ];
         return $fields;
     }
+
     public function add_shortcode_to_publish_metabox()
     {
 
@@ -172,8 +298,10 @@ class Tipping_Forms_Metabox
     {
         wp_nonce_field(basename(__FILE__), 'btcpaywall_tipping_nonce');
         $stored_data = get_post_meta($post->ID);
+        //var_dump($this->args['btcpaywall_tipping_text_currency'][0]);
+        // var_dump(get_post_meta($post->ID));
+        //$stored_data = $this->args;
         $template = $stored_data['btcpaywall_tipping_text_template_name'][0];
-
         $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
         $dimensions = ['250x300', '300x300'];
         $used_currency = $stored_data['btcpaywall_tipping_text_currency'][0];
@@ -182,6 +310,8 @@ class Tipping_Forms_Metabox
         $amount_3_currency = $stored_data['btcpaywall_tipping_text_default_currency_3'][0];
         $logo = wp_get_attachment_image_src($stored_data['btcpaywall_tipping_text_logo'][0]);
         $background = wp_get_attachment_image_src($stored_data['btcpaywall_tipping_text_background'][0]);
+
+
 ?>
         <style>
             .btcpaywall_tipping_box {
@@ -189,7 +319,7 @@ class Tipping_Forms_Metabox
             }
 
             .btcpaywall_tipping_banner_and_page {
-                display: <?php echo ($template !== 'btcpaywall_tipping_box' || !empty($template)) ? 'flex' : 'none' ?>;
+                display: <?php echo ($template !== 'btcpaywall_tipping_box' && !empty($template)) ? 'flex' : 'none' ?>;
             }
 
             .btcpaywall_tipping_page {
@@ -198,7 +328,7 @@ class Tipping_Forms_Metabox
 
             .btcpaywall_container_header[data-id=fixed-amount],
             .btcpaywall_container_header[data-id=donor] {
-                display: <?php echo ($template !== 'btcpaywall_tipping_box' || !empty($template)) ? 'block' : 'none' ?>;
+                display: <?php echo ($template !== 'btcpaywall_tipping_box' && !empty($template)) ? 'block' : 'none' ?>;
             }
         </style>
 
@@ -619,5 +749,17 @@ class Tipping_Forms_Metabox
         </div>
 <?php
     }
+    public function set_default_values()
+    {
+        if (get_post_meta(get_the_ID(), 'btcpaywall_default_values_set_once', true) == true) {
+            return;
+        }
+        $fields = Donation_Forms_Metabox::get_fields();
+        foreach ($fields as $field) {
+            $value = $field['std'] ?? '';
+            update_post_meta(get_the_ID(), $field['name'], $value);
+        }
+        update_post_meta(get_the_ID(), 'btcpaywall_default_values_set_once', true);
+    }
 }
-new Tipping_Forms_Metabox();
+new Donation_Forms_Metabox();

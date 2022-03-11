@@ -85,7 +85,18 @@ Further information can be found here: https://btcpaywall.com
 https://btcpaywall.com/faq-support-center/
 
  == Changelog ==
- 
+= 1.0.5 =
+
+-
+
+= 1.0.4.2 =
+
+- Fix: Creating Tipping shortcode
+
+= 1.0.4.1 =
+
+- Fix: Missing background color for free input
+
 = 1.0.4 =
 
 - Improve: Use cookies for cart
