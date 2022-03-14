@@ -83,15 +83,20 @@ function btcpaywall_sanitize_boolean($value)
 }
 function btcpaywall_render_general_settings_page()
 {
-    include 'partials/page-general-settings.php';
+    include 'pages/page-general-settings.php';
 }
 function btcpaywall_render_edit_page()
 {
-    include 'partials/page-tipping-edit.php';
+    include 'pages/page-tipping-edit.php';
 }
 
 
 function btcpaywall_render_new_form()
 {
-    include 'partials/page-add-form.php';
+    include 'pages/page-add-form.php';
+}
+
+function btcpaywall_render_donations_page()
+{
+    include 'pages/page-donation-submenu.php';
 }

@@ -39,4 +39,3 @@ $tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : $default_tab;
         endswitch; ?>
     </div>
 </div>
-<?php
