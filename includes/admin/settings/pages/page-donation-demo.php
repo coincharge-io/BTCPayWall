@@ -2,4 +2,4 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 ?>
-<h2>Hello</h2>
+<h2>Demo</h2>

@@ -12,16 +12,13 @@ $tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : $default_tab;
     <nav class="btcpw nav-tab-wrapper">
         <ul class="btcpw subsub modules_sub_nav">
             <li>
-                <a href="?page=btcpw_download_store&tab=demo" class="nav-tab <?php if ($tab === 'demo') : ?>nav-tab-active<?php endif; ?>">Demo</a>
+                <a href="?page=btcpw_download_store&tab=general" class="nav-tab <?php if ($tab === null || $tab === 'general') : ?>nav-tab-active<?php endif; ?>"><?php echo esc_html__('General Settings', 'btcpaywall'); ?></a>
             </li>
             <li>
-                <a href="?page=btcpw_download_store&tab=general" class="nav-tab <?php if ($tab === 'general') : ?>nav-tab-active<?php endif; ?>">General Settings</a>
+                <a href="edit.php?post_type=digital_download" class="nav-tab"><?php echo esc_html__('All Digital Products', 'btcpaywall'); ?></a>
             </li>
             <li>
-                <a href="edit.php?post_type=digital_download" class="nav-tab">All Digital Products</a>
-            </li>
-            <li>
-                <a href="post-new.php?post_type=digital_download" class="nav-tab">Add Digital Product</a>
+                <a href="post-new.php?post_type=digital_download" class="nav-tab"><?php echo esc_html__('Add Digital Product', 'btcpaywall'); ?></a>
             </li>
         </ul>
     </nav>
@@ -32,7 +29,7 @@ $tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : $default_tab;
                 require("page-download-store-settings.php");
                 break;
             default:
-                require('page-donation-demo.php');
+                require("page-download-store-settings.php");
                 break;
         endswitch; ?>
     </div>

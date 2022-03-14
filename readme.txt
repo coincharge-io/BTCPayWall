@@ -30,9 +30,9 @@ With BTCPayWall you can offer a Bitcoin Paywall for a single blog post (pay-per-
 
 Sell digital content that is played directly. With the View module, you can offer videos or audio files to your visitors for a fee and have them played directly on your own website.
 
-**Digital Store**
+**Download Store**
 
-With the Digital Store you can sell your digital files and the customer can download this file to his computer.
+With the Download Store you can sell your digital files and the customer can download this file to his computer.
 
 **Receive tips & donations**
 
