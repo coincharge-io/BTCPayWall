@@ -85,18 +85,33 @@ function btcpaywall_render_general_settings_page()
 {
     include 'pages/page-general-settings.php';
 }
-function btcpaywall_render_edit_page()
-{
-    include 'pages/page-tipping-edit.php';
-}
 
-
-function btcpaywall_render_new_form()
-{
-    include 'pages/page-add-form.php';
-}
-
+/**
+ * @since 1.0.6
+ */
 function btcpaywall_render_donations_page()
 {
     include 'pages/page-donation-submenu.php';
+}
+/**
+ * @since 1.0.6
+ */
+function btcpaywall_render_download_store_page()
+{
+    include 'pages/page-download-store-submenu.php';
+}
+/**
+ * @since 1.0.6
+ */
+function btcpaywall_render_pay_per_post()
+{
+    include 'pages/page-pay-per-post-submenu.php';
+}
+
+/**
+ * @since 1.0.6
+ */
+function btcpaywall_render_pay_per_view()
+{
+    include 'pages/page-pay-per-view-submenu.php';
 }
