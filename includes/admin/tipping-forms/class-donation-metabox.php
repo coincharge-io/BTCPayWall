@@ -764,7 +764,8 @@ class Donation_Forms_Metabox
     }
     public function set_default_values()
     {
-        if (get_post_meta(get_the_ID(), 'btcpaywall_default_values_set_once', true) == true) {
+        $post_type = get_post_type(get_the_ID());
+        if (get_post_meta(get_the_ID(), 'btcpaywall_default_values_set_once', true) == true || $post_type !== 'btcpw_donation') {
             return;
         }
         $fields = Donation_Forms_Metabox::get_fields();
