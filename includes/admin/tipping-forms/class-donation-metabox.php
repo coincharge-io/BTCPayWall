@@ -354,50 +354,50 @@ class Donation_Forms_Metabox
         <div class="btcpaywall_metabox_wrap">
 
             <div id="tab-1" class="btcpaywall_options_wrap btcpaywall_tabset current">
-                <div class="btcpaywall_tipping_selected_template">
-                    <div><?php echo esc_html($template_name); ?></div>
-                    <button type="button"><?php echo esc_html__('Deactivate', 'btcpaywall'); ?></button>
-                </div>
                 <div class="btcpaywall_tipping_templates">
                     <input type="hidden" name="btcpaywall_tipping_text_template_name" id="btcpaywall_tipping_template_name" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_template_name'][0]); ?>">
 
                     <div class="btcpaywall_template_tipping_box">
-                        <h4>Tipping Box - 250x300/300x300</h4>
                         <div class="btcpaywall_tipping_image_wrap">
 
                             <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-box.png'; ?>">
                         </div>
+                        <h4>Tipping Box - 250x300/300x300</h4>
+
                         <div>
-                            <button data-id="btcpaywall_tipping_box" type="button"><?php echo esc_html('Activate', 'btcpaywall'); ?></button>
+                            <button data-id="btcpaywall_tipping_box" type="button"><?php echo esc_html('Select', 'btcpaywall'); ?></button>
                         </div>
                     </div>
                     <div class="btcpaywall_template_tipping_banner_high">
-                        <h4>Tipping Banner High - 200x710</h4>
                         <div class="btcpaywall_tipping_image_wrap">
 
                             <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-high.png'; ?>">
                         </div>
+                        <h4>Tipping Banner High - 200x710</h4>
+
                         <div>
-                            <button data-id="btcpaywall_tipping_banner_high" type="button"><?php echo esc_html('Activate', 'btcpaywall'); ?></button>
+                            <button data-id="btcpaywall_tipping_banner_high" type="button"><?php echo esc_html('Select', 'btcpaywall'); ?></button>
                         </div>
                     </div>
                     <div class="btcpaywall_template_tipping_banner_wide">
-                        <h4>Tipping Banner Wide - 600x200</h4>
                         <div class="btcpaywall_tipping_image_wrap">
 
                             <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-wide.png'; ?>">
                         </div>
+                        <h4>Tipping Banner Wide - 600x200</h4>
+
                         <div>
-                            <button data-id="btcpaywall_tipping_banner_wide" type="button"><?php echo esc_html('Activate', 'btcpaywall'); ?></button>
+                            <button data-id="btcpaywall_tipping_banner_wide" type="button"><?php echo esc_html('Select', 'btcpaywall'); ?></button>
                         </div>
                     </div>
                     <div class="btcpaywall_template_tipping_page">
-                        <h4>Donation Page - 520x600</h4>
                         <div class="btcpaywall_tipping_image_wrap">
                             <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-page.png'; ?>">
                         </div>
+                        <h4>Donation Page - 520x600</h4>
+
                         <div>
-                            <button data-id="btcpaywall_tipping_page" type="button"><?php echo esc_html('Activate', 'btcpaywall'); ?></button>
+                            <button data-id="btcpaywall_tipping_page" type="button"><?php echo esc_html('Select', 'btcpaywall'); ?></button>
                         </div>
                     </div>
                 </div>

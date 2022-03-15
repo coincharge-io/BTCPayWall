@@ -739,13 +739,13 @@
       $(this).text('Copied to clipboard');
       $temp.remove();
     })
-    $(".btcpaywall_metabox_wrap_metabox_tabs li").click(function () {
+    /* $(".btcpaywall_metabox_wrap_metabox_tabs li").click(function () {
       var tab_id = $(this).attr("data-tab");
       $(".btcpaywall_metabox_wrap_metabox_tabs li").removeClass("current");
       $(".btcpaywall_tabset").removeClass("current");
       $(this).addClass("current");
       $("#" + tab_id).addClass("current");
-    });
+    }); */
     $(".btcpaywall_container_header").click(function () {
       var header_id = $(this).data("id");
       $(".btcpaywall_container_body." + header_id + "-body").toggle();
