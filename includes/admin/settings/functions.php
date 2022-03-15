@@ -86,19 +86,13 @@ function btcpaywall_render_general_settings_page()
     include 'pages/page-general-settings.php';
 }
 
-/**
- * @since 1.0.6
- */
-function btcpaywall_render_donations_page()
-{
-    include 'pages/page-donation-submenu.php';
-}
+
 /**
  * @since 1.0.6
  */
 function btcpaywall_render_download_store_page()
 {
-    include 'pages/page-download-store-submenu.php';
+    include 'pages/page-download-store-settings.php';
 }
 /**
  * @since 1.0.6

@@ -750,29 +750,37 @@
       var header_id = $(this).data("id");
       $(".btcpaywall_container_body." + header_id + "-body").toggle();
     })
-
+    $(".btcpaywall_tipping_selected_template button").click(function () {
+      $(".btcpaywall_tipping_selected_template").css("display", "none");
+      $(".btcpaywall_tipping_templates").css("display", "flex");
+      $("#btcpaywall_template_appearance-wrap").toggle();
+      //$('.btcpaywall_tipping_templates button').removeClass('activated')
+      $("#btcpaywall_tipping_template_name").val('');
+    })
     $(".btcpaywall_tipping_templates button").click(function (e) {
       e.preventDefault();
       template_id = $(this).data('id');
       $("#btcpaywall_tipping_template_name").val(template_id);
-      if ($(this).hasClass('activated')) {
+      /* if ($(this).hasClass('activated')) {
         $('.btcpaywall_tipping_templates button').removeClass('activated')
         $("#btcpaywall_tipping_template_name").val('');
-        $(this).text('Activate')
-        //$('.btcpaywall_tipping_templates>div').show()
-        // $("#btcpaywall_tipping_template_name").val('');
-      } else {
-        $('.btcpaywall_tipping_templates button').removeClass('activated')
-        $('.btcpaywall_tipping_templates > div').removeClass("btcpaywall_chosen_template");
+        $(this).text('Activate');
+      } else { */
+      $(".btcpaywall_tipping_selected_template").css("display", "flex");
+      $(".btcpaywall_tipping_templates").css("display", "none");
+      $("#btcpaywall_template_appearance-wrap").toggle();
+      /* 
+            $('.btcpaywall_tipping_templates button').removeClass('activated')
+            $('.btcpaywall_tipping_templates > div').removeClass("btcpaywall_chosen_template"); */
 
-        $(this).parent().parent().addClass("btcpaywall_chosen_template");
+      /*   $(this).parent().parent().addClass("btcpaywall_chosen_template"); 
         $(this).addClass('activated')
-        $('.btcpaywall_tipping_templates button').text('Activate')
-        $(this).text('Deactivate')
-        //$('.btcpaywall_tipping_templates>div').not('.btcpaywall_chosen_template').hide()
-      }
+        $('.btcpaywall_tipping_templates button').text('Activate')*/
+      //$(this).text('Deactivate')
+      //}
 
       if (template_id == 'btcpaywall_tipping_page') {
+        $(".btcpaywall_tipping_selected_template div").text('Donation Page')
         $('.btcpaywall_tipping_page').addClass("common")
         $('.btcpaywall_tipping_banner_and_page').removeClass("common")
         $('.btcpaywall_tipping_banner_and_page').addClass("common")
@@ -780,12 +788,17 @@
         $('.btcpaywall_tipping_banner_and_box').removeClass("common")
         $('.btcpaywall_container_header[data-id=fixed-amount],.btcpaywall_container_header[data-id=donor]').css("display", "block")
       } else if (template_id == 'btcpaywall_tipping_banner_high' || template_id == 'btcpaywall_tipping_banner_wide') {
+        var text = template_id == 'btcpaywall_tipping_banner_high' ? 'Tipping Banner High' : 'Tipping Banner Wide';
+        $(".btcpaywall_tipping_selected_template div").text(text)
+
         $('.btcpaywall_tipping_banner_and_page').addClass("common")
         $('.btcpaywall_tipping_banner_and_box').addClass("common")
         $('.btcpaywall_tipping_page').removeClass("common")
         $('.btcpaywall_tipping_box').removeClass('common')
         $('.btcpaywall_container_header[data-id=fixed-amount],.btcpaywall_container_header[data-id=donor]').css("display", "block")
       } else if (template_id == 'btcpaywall_tipping_box') {
+        $(".btcpaywall_tipping_selected_template div").text('Tipping Box')
+
         $('.btcpaywall_tipping_box').addClass('common')
         $('.btcpaywall_tipping_banner_and_box').addClass("common")
         $('.btcpaywall_tipping_banner_and_page').removeClass("common")
