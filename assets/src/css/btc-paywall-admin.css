@@ -790,6 +790,11 @@ Settings Tabs
   gap: 5px;
 }
 
+.btcpaywall_tipping_templates h2 {
+  font-size: 2em;
+  text-align: center;
+}
+
 .btcpaywall_tipping_templates>div {
   display: flex;
   justify-content: space-around;
@@ -811,7 +816,7 @@ Settings Tabs
 .btcpaywall_tipping_templates button {
   color: #fff;
   background-color: #51b13e;
-  padding: 10px 12px;
+  padding: 20px 22px;
   border-radius: 5px;
   text-align: center;
   line-height: 1.1;
