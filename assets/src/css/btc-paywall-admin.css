@@ -697,7 +697,7 @@ Settings Tabs
 .btcpaywall_tipping_templates img {
   width: 200px;
   object-fit: contain;
-  height: 200px;
+  height: 150px;
 }
 
 .btcpaywall_field_wrap {
@@ -742,21 +742,29 @@ Settings Tabs
   width: 100px;
 }
 
-/* .btcpaywall_container_body {
-  display: none;
-} */
-
-.btcpaywall_container_header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #c3c4c7;
-  background-color: #fc852e;
-}
-
 .btcpaywall_container_header h2 {
+  display: flex;
+  justify-content: space-between;
   color: #fff;
 }
+
+.btcpaywall_container_header h2::after {
+  font-family: "Font Awesome 5 Free";
+  content: "\f062";
+  vertical-align: middle;
+  font-weight: 900;
+}
+
+.btcpaywall_container_header.inactive h2::after {
+  content: "\f063";
+}
+
+.btcpaywall_container_header {
+  border-bottom: 1px solid #c3c4c7;
+  background-color: #fc852e;
+  cursor: pointer;
+}
+
 
 .btcpaywall_tipping_selected_template {
   justify-content: space-evenly;
@@ -790,55 +798,96 @@ Settings Tabs
   gap: 5px;
 }
 
-.btcpaywall_tipping_templates h2 {
-  font-size: 2em;
+.btcpaywall_tipping_templates h2,
+.btcpaywall_tipping_selected_template div {
+  font-size: 20px !important;
   text-align: center;
 }
 
-.btcpaywall_tipping_templates>div {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  border: solid 3px #ccc;
-  background-color: rgb(252, 249, 249);
-}
 
-.btcpaywall_tipping_templates button.activated {
-  color: #E11900;
-  border: #E11900 solid 1px;
-  font-weight: bold;
-  background-color: #fff;
-}
 
 /*Inactive buttons*/
 .btcpaywall_tipping_templates button {
   color: #fff;
-  background-color: #51b13e;
+  background-color: #2271b1;
   padding: 20px 22px;
   border-radius: 5px;
   text-align: center;
   line-height: 1.1;
-  border: none;
+  border-color: #2271b1;
 }
+
+.btcpaywall_tipping_templates button:hover,
+.btcpaywall_tipping_selected_template button:hover {
+  cursor: pointer;
+}
+
+
 
 /*Active button*/
 .btcpaywall_tipping_selected_template button {
   color: #2271b1;
   border-color: #2271b1;
-  background: #f6f7f7;
-  padding: 10px 12px;
+  padding: 20px 22px;
   border-radius: 5px;
   text-align: center;
   line-height: 1.1;
   border: none;
+  font-size: 15px;
 }
 
 .btcpaywall_tipping_image_wrap {
   max-width: 300px;
   overflow: hidden;
 }
+
+/*Donation Metabox Table*/
+.btcpaywall_metabox_wrap table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #c3c4c7;
+}
+
+.btcpaywall_metabox_wrap thead th:nth-child(1) {
+  width: 30%;
+}
+
+.btcpaywall_metabox_wrap thead th:nth-child(2) {
+  width: 20%;
+}
+
+.btcpaywall_metabox_wrap thead th:nth-child(3) {
+  width: 15%;
+}
+
+.btcpaywall_metabox_wrap thead th:nth-child(4) {
+  width: 35%;
+}
+
+.btcpaywall_metabox_wrap th,
+.btcpaywall_metabox_wrap td {
+  padding: 5px;
+}
+
+.btcpaywall_metabox_wrap th {
+  letter-spacing: 2px;
+}
+
+.btcpaywall_metabox_wrap td {
+  letter-spacing: 1px;
+}
+
+.btcpaywall_metabox_wrap tbody td {
+  text-align: center;
+}
+
+.btcpaywall_metabox_wrap tr:nth-child(odd) td {
+  background: #f9f9f9;
+}
+
+
 
 /*Demo Page*/
 

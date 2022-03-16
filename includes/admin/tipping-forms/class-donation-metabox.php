@@ -314,7 +314,6 @@ class Donation_Forms_Metabox
         $amount_3_currency = $stored_data['btcpaywall_tipping_text_default_currency_3'][0];
         $logo = wp_get_attachment_image_src($stored_data['btcpaywall_tipping_text_logo'][0]);
         $background = wp_get_attachment_image_src($stored_data['btcpaywall_tipping_text_background'][0]);
-
 ?>
         <style>
             .btcpaywall_tipping_box {
@@ -354,52 +353,83 @@ class Donation_Forms_Metabox
         <div class="btcpaywall_metabox_wrap">
 
             <div id="tab-1" class="btcpaywall_options_wrap btcpaywall_tabset current">
+
+                <div class="btcpaywall_tipping_selected_template">
+
+                    <div><?php echo esc_html($template_name); ?>
+                    </div>
+
+                    <?php if ($post->post_status !== 'publish') : ?>
+                        <button type="button"><?php echo esc_html__('Change template', 'btcpaywall'); ?></button>
+                    <?php endif; ?>
+                </div>
+
                 <div class="btcpaywall_tipping_templates">
                     <input type="hidden" name="btcpaywall_tipping_text_template_name" id="btcpaywall_tipping_template_name" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_template_name'][0]); ?>">
-                    <h2><?php echo esc_html__('Choose template', 'btcpaywall'); ?></h2>
-                    <div class="btcpaywall_template_tipping_box">
-                        <div class="btcpaywall_tipping_image_wrap">
+                    <h2><?php echo esc_html__('Select a template', 'btcpaywall'); ?></h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><?php echo esc_html__('Template', 'btcpaywall'); ?></th>
+                                <th><?php echo esc_html__('Description', 'btcpaywall'); ?></th>
+                                <th><?php echo esc_html__('Select', 'btcpaywall'); ?></th>
 
-                            <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-box.png'; ?>">
-                        </div>
-                        <h4>Tipping Box - 250x300/300x300</h4>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="btcpaywall_template_tipping_box">
+                                <td class="btcpaywall_tipping_image_wrap">
 
-                        <div>
-                            <button data-id="btcpaywall_tipping_box" type="button"> <i class="fas fa-chevron-right"></i></button>
-                        </div>
-                    </div>
-                    <div class="btcpaywall_template_tipping_banner_high">
-                        <div class="btcpaywall_tipping_image_wrap">
+                                    <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-box.png'; ?>">
+                                </td>
+                                <td>
+                                    <p>Tipping Box - 250x300/300x300</p>
+                                </td>
 
-                            <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-high.png'; ?>">
-                        </div>
-                        <h4>Tipping Banner High - 200x710</h4>
+                                <td>
+                                    <button data-id="btcpaywall_tipping_box" type="button"> <i class="fas fa-chevron-right"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="btcpaywall_template_tipping_banner_high">
+                                <td class="btcpaywall_tipping_image_wrap">
 
-                        <div>
-                            <button data-id="btcpaywall_tipping_banner_high" type="button"> <i class="fas fa-chevron-right"></i></button>
-                        </div>
-                    </div>
-                    <div class="btcpaywall_template_tipping_banner_wide">
-                        <div class="btcpaywall_tipping_image_wrap">
+                                    <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-high.png'; ?>">
+                                </td>
+                                <td>
+                                    <p>Tipping Banner High - 200x710</p>
+                                </td>
 
-                            <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-wide.png'; ?>">
-                        </div>
-                        <h4>Tipping Banner Wide - 600x200</h4>
+                                <td>
+                                    <button data-id="btcpaywall_tipping_banner_high" type="button"> <i class="fas fa-chevron-right"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="btcpaywall_template_tipping_banner_wide">
+                                <td class="btcpaywall_tipping_image_wrap">
 
-                        <div>
-                            <button data-id="btcpaywall_tipping_banner_wide" type="button"> <i class="fas fa-chevron-right"></i></button>
-                        </div>
-                    </div>
-                    <div class="btcpaywall_template_tipping_page">
-                        <div class="btcpaywall_tipping_image_wrap">
-                            <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-page.png'; ?>">
-                        </div>
-                        <h4>Donation Page - 520x600</h4>
+                                    <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-wide.png'; ?>">
+                                </td>
+                                <td>
+                                    <p>Tipping Banner Wide - 600x200</p>
+                                </td>
 
-                        <div>
-                            <button data-id="btcpaywall_tipping_page" type="button"> <i class="fas fa-chevron-right"></i></button>
-                        </div>
-                    </div>
+                                <td>
+                                    <button data-id="btcpaywall_tipping_banner_wide" type="button"> <i class="fas fa-chevron-right"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="btcpaywall_template_tipping_page">
+                                <td class="btcpaywall_tipping_image_wrap">
+                                    <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-page.png'; ?>">
+                                </td>
+                                <td>
+                                    <p>Donation Page - 520x600</p>
+                                </td>
+
+                                <td>
+                                    <button data-id="btcpaywall_tipping_page" type="button"> <i class="fas fa-chevron-right"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div id="btcpaywall_template_appearance-wrap" class="btcpaywall_options_wrap btcpaywall_tabset">
                     <div class="btcpaywall_template_appearance">
@@ -642,141 +672,140 @@ class Donation_Forms_Metabox
                                 </fieldset>
                             </div>
                         </div>
-                    </div>
-                    <div data-id="fixed-amount" class="btcpaywall_container_header">
-                        <h2><?php echo __('Fixed amount', 'btcpaywall'); ?></h2>
-                    </div>
-                    <div class="btcpaywall_container_body fixed-amount-body">
+                        <div data-id="fixed-amount" class="btcpaywall_container_header">
+                            <h2><?php echo __('Fixed amount', 'btcpaywall'); ?></h2>
+                        </div>
+                        <div class="btcpaywall_container_body fixed-amount-body">
 
-                        <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
-                            <div>
-                                <label for="btcpaywall_tipping_bool_show_icons"><?php echo __('Show icons', 'btcpaywall'); ?></label>
-                                <span title="Do you want do display Font Awesome icons next to the fixed amount fields?" class="btcpaywall_helper_tip"></span>
+                            <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
+                                <div>
+                                    <label for="btcpaywall_tipping_bool_show_icons"><?php echo __('Show icons', 'btcpaywall'); ?></label>
+                                    <span title="Do you want do display Font Awesome icons next to the fixed amount fields?" class="btcpaywall_helper_tip"></span>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="btcpaywall_tipping_bool_show_icons" <?php checked($stored_data['btcpaywall_tipping_bool_show_icons'][0]); ?> name="btcpaywall_tipping_bool_show_icons" value="true" />
+                                </div>
+                            </fieldset>
+                            <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
+                                <label><?php echo __('Default amount 1', 'btcpaywall'); ?></label>
+                                <input type="checkbox" id="btcpaywall_tipping_bool_show_default_amount_1" name="btcpaywall_tipping_bool_show_default_amount_1" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_show_default_amount_1'][0]); ?> />
+                                <input type="number" min=0 placeholder="Default Amount 1" step=1 name="btcpaywall_tipping_number_default_amount_1" id="btcpaywall_tipping_number_default_amount_1" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_number_default_amount_1'][0]); ?>">
+                                <select required name="btcpaywall_tipping_text_default_currency_1" id="btcpaywall_tipping_text_default_currency_1">
+                                    <option disabled value=""><?php echo __('Select currency', 'btcpaywall'); ?></option>
+                                    <?php foreach ($supported_currencies as $currency) : ?>
+                                        <option <?php echo $amount_1_currency === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
+                                            <?php echo esc_html($currency); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+
+                                <input type="text" id="btcpaywall_tipping_text_default_icon_1" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_default_icon_1'][0]); ?>" name="btcpaywall_tipping_text_default_icon_1" placeholder="Font Awesome 5 Icon" title="Enter Font Awesome 5 Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
+                            </fieldset>
+                            <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
+                                <label><?php echo __('Default amount 2', 'btcpaywall'); ?></label>
+                                <input type="checkbox" id="btcpaywall_tipping_bool_show_default_amount_2" name="btcpaywall_tipping_bool_show_default_amount_2" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_show_default_amount_2'][0]); ?> />
+                                <input type="number" min=0 placeholder="Default Amount 2" step=1 name="btcpaywall_tipping_number_default_amount_2" id="btcpaywall_tipping_number_default_amount_2" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_number_default_amount_2'][0]); ?>">
+                                <select required name="btcpaywall_tipping_text_default_currency_2" id="btcpaywall_tipping_text_default_currency_2">
+                                    <option disabled value=""><?php echo __('Select currency', 'btcpaywall'); ?></option>
+                                    <?php foreach ($supported_currencies as $currency) : ?>
+                                        <option <?php echo $amount_2_currency === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
+                                            <?php echo esc_html($currency); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <input type="text" id="btcpaywall_tipping_text_default_icon_2" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_default_icon_2'][0]); ?>" name="btcpaywall_tipping_text_default_icon_2" placeholder="Font Awesome 5 Icon" title="Enter Font Awesome 5 Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
+                            </fieldset>
+                            <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
+                                <label><?php echo __('Default amount 3', 'btcpaywall'); ?></label>
+                                <input type="checkbox" id="btcpaywall_tipping_bool_show_default_amount_3" name="btcpaywall_tipping_bool_show_default_amount_3" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_show_default_amount_3'][0]); ?> />
+                                <input type="number" min=0 placeholder="Default Amount 3" step=1 name="btcpaywall_tipping_number_default_amount_3" id="btcpaywall_tipping_number_default_amount_3" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_number_default_amount_3'][0]); ?>">
+                                <select required name="btcpaywall_tipping_text_default_currency_3" id="btcpaywall_tipping_text_default_currency_3">
+                                    <option disabled value=""><?php echo __('Select currency', 'btcpaywall'); ?></option>
+                                    <?php foreach ($supported_currencies as $currency) : ?>
+                                        <option <?php echo $amount_3_currency === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
+                                            <?php echo esc_html($currency); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <input type="text" id="btcpaywall_tipping_text_default_icon_3" name="btcpaywall_tipping_text_default_icon_3" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_default_icon_3'][0]); ?>" placeholder="Font Awesome 5 Icon" title="Enter Font Awesome 5 Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
+                            </fieldset>
+                        </div>
+                        <div data-id="donor" class="btcpaywall_container_header">
+                            <h2><?php echo __('Donor information', 'btcpaywall'); ?></h2>
+                        </div>
+                        <div class="btcpaywall_container_body donor-body">
+                            <div class="btcpaywall_template_donor_information">
+                                <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
+                                    <div>
+                                        <p><?php echo __('Full name', 'btcpaywall'); ?></p>
+                                    </div>
+                                    <div>
+                                        <label for="btcpaywall_tipping_bool_display_name"><?php echo __('Display', 'btcpaywall'); ?></label>
+
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_display_name" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_name'][0]); ?> />
+
+                                        <label for="btcpaywall_tipping_bool_mandatory_name"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_name" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_name'][0]); ?> />
+                                    </div>
+
+                                </fieldset>
+                                <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
+                                    <div>
+                                        <p><?php echo __('Email', 'btcpaywall'); ?></p>
+                                    </div>
+                                    <div>
+                                        <label for="btcpaywall_tipping_bool_display_email"><?php echo __('Display', 'btcpaywall'); ?></label>
+
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_display_email" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_email'][0]); ?> />
+
+                                        <label for="btcpaywall_tipping_bool_mandatory_email"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_email" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_email'][0]); ?> />
+                                    </div>
+                                </fieldset>
+                                <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
+                                    <div>
+                                        <p><?php echo __('Address', 'btcpaywall'); ?></p>
+                                    </div>
+                                    <div>
+                                        <label for="btcpaywall_tipping_bool_display_address"><?php echo __('Display', 'btcpaywall'); ?></label>
+
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_display_address" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_address'][0]); ?> />
+
+                                        <label for="btcpaywall_tipping_bool_mandatory_email"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_email" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_address'][0]); ?> />
+                                    </div>
+                                </fieldset>
+                                <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
+                                    <div>
+                                        <p><?php echo __('Phone number', 'btcpaywall'); ?></p>
+                                    </div>
+                                    <div>
+                                        <label for="btcpaywall_tipping_bool_display_phone"><?php echo __('Display', 'btcpaywall'); ?></label>
+
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_display_phone" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_phone'][0]); ?> />
+
+                                        <label for="btcpaywall_tipping_bool_mandatory_phone"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_phone" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_phone'][0]); ?> />
+                                    </div>
+                                </fieldset>
+                                <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
+                                    <div>
+                                        <p><?php echo __('Message', 'btcpaywall'); ?></p>
+                                    </div>
+                                    <div>
+                                        <label for="btcpaywall_tipping_bool_display_message"><?php echo __('Display', 'btcpaywall'); ?></label>
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_display_message" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_message'][0]); ?> />
+
+                                        <label for="btcpaywall_tipping_bool_mandatory_message"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_message" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_message'][0]); ?> />
+                                    </div>
+                                </fieldset>
                             </div>
-                            <div>
-                                <input type="checkbox" id="btcpaywall_tipping_bool_show_icons" <?php checked($stored_data['btcpaywall_tipping_bool_show_icons'][0]); ?> name="btcpaywall_tipping_bool_show_icons" value="true" />
-                            </div>
-                        </fieldset>
-                        <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
-                            <label><?php echo __('Default amount 1', 'btcpaywall'); ?></label>
-                            <input type="checkbox" id="btcpaywall_tipping_bool_show_default_amount_1" name="btcpaywall_tipping_bool_show_default_amount_1" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_show_default_amount_1'][0]); ?> />
-                            <input type="number" min=0 placeholder="Default Amount 1" step=1 name="btcpaywall_tipping_number_default_amount_1" id="btcpaywall_tipping_number_default_amount_1" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_number_default_amount_1'][0]); ?>">
-                            <select required name="btcpaywall_tipping_text_default_currency_1" id="btcpaywall_tipping_text_default_currency_1">
-                                <option disabled value=""><?php echo __('Select currency', 'btcpaywall'); ?></option>
-                                <?php foreach ($supported_currencies as $currency) : ?>
-                                    <option <?php echo $amount_1_currency === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
-                                        <?php echo esc_html($currency); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-
-                            <input type="text" id="btcpaywall_tipping_text_default_icon_1" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_default_icon_1'][0]); ?>" name="btcpaywall_tipping_text_default_icon_1" placeholder="Font Awesome 5 Icon" title="Enter Font Awesome 5 Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
-                        </fieldset>
-                        <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
-                            <label><?php echo __('Default amount 2', 'btcpaywall'); ?></label>
-                            <input type="checkbox" id="btcpaywall_tipping_bool_show_default_amount_2" name="btcpaywall_tipping_bool_show_default_amount_2" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_show_default_amount_2'][0]); ?> />
-                            <input type="number" min=0 placeholder="Default Amount 2" step=1 name="btcpaywall_tipping_number_default_amount_2" id="btcpaywall_tipping_number_default_amount_2" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_number_default_amount_2'][0]); ?>">
-                            <select required name="btcpaywall_tipping_text_default_currency_2" id="btcpaywall_tipping_text_default_currency_2">
-                                <option disabled value=""><?php echo __('Select currency', 'btcpaywall'); ?></option>
-                                <?php foreach ($supported_currencies as $currency) : ?>
-                                    <option <?php echo $amount_2_currency === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
-                                        <?php echo esc_html($currency); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                            <input type="text" id="btcpaywall_tipping_text_default_icon_2" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_default_icon_2'][0]); ?>" name="btcpaywall_tipping_text_default_icon_2" placeholder="Font Awesome 5 Icon" title="Enter Font Awesome 5 Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
-                        </fieldset>
-                        <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
-                            <label><?php echo __('Default amount 3', 'btcpaywall'); ?></label>
-                            <input type="checkbox" id="btcpaywall_tipping_bool_show_default_amount_3" name="btcpaywall_tipping_bool_show_default_amount_3" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_show_default_amount_3'][0]); ?> />
-                            <input type="number" min=0 placeholder="Default Amount 3" step=1 name="btcpaywall_tipping_number_default_amount_3" id="btcpaywall_tipping_number_default_amount_3" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_number_default_amount_3'][0]); ?>">
-                            <select required name="btcpaywall_tipping_text_default_currency_3" id="btcpaywall_tipping_text_default_currency_3">
-                                <option disabled value=""><?php echo __('Select currency', 'btcpaywall'); ?></option>
-                                <?php foreach ($supported_currencies as $currency) : ?>
-                                    <option <?php echo $amount_3_currency === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
-                                        <?php echo esc_html($currency); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                            <input type="text" id="btcpaywall_tipping_text_default_icon_3" name="btcpaywall_tipping_text_default_icon_3" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_default_icon_3'][0]); ?>" placeholder="Font Awesome 5 Icon" title="Enter Font Awesome 5 Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
-                        </fieldset>
-                    </div>
-                    <div data-id="donor" class="btcpaywall_container_header">
-                        <h2><?php echo __('Donor information', 'btcpaywall'); ?></h2>
-                    </div>
-                    <div class="btcpaywall_container_body donor-body">
-                        <div class="btcpaywall_template_donor_information">
-                            <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
-                                <div>
-                                    <p><?php echo __('Full name', 'btcpaywall'); ?></p>
-                                </div>
-                                <div>
-                                    <label for="btcpaywall_tipping_bool_display_name"><?php echo __('Display', 'btcpaywall'); ?></label>
-
-                                    <input type="checkbox" name="btcpaywall_tipping_bool_display_name" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_name'][0]); ?> />
-
-                                    <label for="btcpaywall_tipping_bool_mandatory_name"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
-                                    <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_name" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_name'][0]); ?> />
-                                </div>
-
-                            </fieldset>
-                            <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
-                                <div>
-                                    <p><?php echo __('Email', 'btcpaywall'); ?></p>
-                                </div>
-                                <div>
-                                    <label for="btcpaywall_tipping_bool_display_email"><?php echo __('Display', 'btcpaywall'); ?></label>
-
-                                    <input type="checkbox" name="btcpaywall_tipping_bool_display_email" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_email'][0]); ?> />
-
-                                    <label for="btcpaywall_tipping_bool_mandatory_email"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
-                                    <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_email" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_email'][0]); ?> />
-                                </div>
-                            </fieldset>
-                            <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
-                                <div>
-                                    <p><?php echo __('Address', 'btcpaywall'); ?></p>
-                                </div>
-                                <div>
-                                    <label for="btcpaywall_tipping_bool_display_address"><?php echo __('Display', 'btcpaywall'); ?></label>
-
-                                    <input type="checkbox" name="btcpaywall_tipping_bool_display_address" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_address'][0]); ?> />
-
-                                    <label for="btcpaywall_tipping_bool_mandatory_email"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
-                                    <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_email" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_address'][0]); ?> />
-                                </div>
-                            </fieldset>
-                            <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
-                                <div>
-                                    <p><?php echo __('Phone number', 'btcpaywall'); ?></p>
-                                </div>
-                                <div>
-                                    <label for="btcpaywall_tipping_bool_display_phone"><?php echo __('Display', 'btcpaywall'); ?></label>
-
-                                    <input type="checkbox" name="btcpaywall_tipping_bool_display_phone" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_phone'][0]); ?> />
-
-                                    <label for="btcpaywall_tipping_bool_mandatory_phone"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
-                                    <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_phone" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_phone'][0]); ?> />
-                                </div>
-                            </fieldset>
-                            <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
-                                <div>
-                                    <p><?php echo __('Message', 'btcpaywall'); ?></p>
-                                </div>
-                                <div>
-                                    <label for="btcpaywall_tipping_bool_display_message"><?php echo __('Display', 'btcpaywall'); ?></label>
-                                    <input type="checkbox" name="btcpaywall_tipping_bool_display_message" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_message'][0]); ?> />
-
-                                    <label for="btcpaywall_tipping_bool_mandatory_message"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
-                                    <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_message" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_message'][0]); ?> />
-                                </div>
-                            </fieldset>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-<?php
+    <?php
     }
     public function set_default_values()
     {

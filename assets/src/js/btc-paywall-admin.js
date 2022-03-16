@@ -749,6 +749,7 @@
     $(".btcpaywall_container_header").click(function () {
       var header_id = $(this).data("id");
       $(".btcpaywall_container_body." + header_id + "-body").toggle();
+      $(this).toggleClass("inactive")
     })
     $(".btcpaywall_tipping_selected_template button").click(function () {
       $(".btcpaywall_tipping_selected_template").css("display", "none");
