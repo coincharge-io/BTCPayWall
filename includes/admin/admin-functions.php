@@ -49,7 +49,7 @@ function btcpaywall_output_shortcode_attributes($name, $id)
             return "[btcpw_tipping_box type=new id={$id}]";
         case 'btcpaywall_tipping_banner_high':
             return "[btcpw_tipping_banner_high type=new id={$id}]";
-        case 'btcpaywall_tipping_banner_Wide':
+        case 'btcpaywall_tipping_banner_wide':
             return "[btcpw_tipping_banner_wide type=new id={$id}]";
         case 'btcpaywall_tipping_page':
             return "[btcpw_tipping_page type=new id={$id}]";

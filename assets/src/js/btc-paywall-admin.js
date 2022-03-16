@@ -762,23 +762,9 @@
       e.preventDefault();
       template_id = $(this).data('id');
       $("#btcpaywall_tipping_template_name").val(template_id);
-      /* if ($(this).hasClass('activated')) {
-        $('.btcpaywall_tipping_templates button').removeClass('activated')
-        $("#btcpaywall_tipping_template_name").val('');
-        $(this).text('Activate');
-      } else { */
       $(".btcpaywall_tipping_selected_template").css("display", "flex");
       $(".btcpaywall_tipping_templates").css("display", "none");
       $("#btcpaywall_template_appearance-wrap").toggle();
-      /* 
-            $('.btcpaywall_tipping_templates button').removeClass('activated')
-            $('.btcpaywall_tipping_templates > div').removeClass("btcpaywall_chosen_template"); */
-
-      /*   $(this).parent().parent().addClass("btcpaywall_chosen_template"); 
-        $(this).addClass('activated')
-        $('.btcpaywall_tipping_templates button').text('Activate')*/
-      //$(this).text('Deactivate')
-      //}
 
       if (template_id == 'btcpaywall_tipping_page') {
         $(".btcpaywall_tipping_selected_template div").text('Donation Page')
@@ -789,7 +775,7 @@
         $('.btcpaywall_tipping_banner_and_box').removeClass("common")
         $('.btcpaywall_container_header[data-id=fixed-amount],.btcpaywall_container_header[data-id=donor]').css("display", "block")
       } else if (template_id == 'btcpaywall_tipping_banner_high' || template_id == 'btcpaywall_tipping_banner_wide') {
-        var text = template_id == 'btcpaywall_tipping_banner_high' ? 'Tipping Banner High' : 'Tipping Banner Wide';
+        var text = (template_id == 'btcpaywall_tipping_banner_high') ? 'Tipping Banner High' : 'Tipping Banner Wide';
         $(".btcpaywall_tipping_selected_template div").text(text)
 
         $('.btcpaywall_tipping_banner_and_page').addClass("common")

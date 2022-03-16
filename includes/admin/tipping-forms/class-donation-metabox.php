@@ -278,7 +278,6 @@ class Donation_Forms_Metabox
 
         if ('btcpw_donation' === $post->post_type) {
             $template = get_post_meta($post->ID, 'btcpaywall_tipping_text_template_name', true);
-
             $shortcode = btcpaywall_output_shortcode_attributes($template, $post->ID);
             printf(
                 '<div class="misc-pub-section"><button type="button" class="button hint-tooltip hint--top js-btcpaywall-shortcode-button" aria-label="%1$s" data-btcpaywall-shortcode="%2$s"><span class="dashicons dashicons-admin-page"></span> %3$s</button></div>',
@@ -301,8 +300,8 @@ class Donation_Forms_Metabox
         $template = $stored_data['btcpaywall_tipping_text_template_name'][0];
         $templates = array(
             'btcpaywall_tipping_box' => 'Tipping Box',
-            'btcpaywall_tipping_banner_high' => 'Tipping Banner High',
             'btcpaywall_tipping_banner_wide' => 'Tipping Banner Wide',
+            'btcpaywall_tipping_banner_high' => 'Tipping Banner High',
             'btcpaywall_tipping_page' => 'Donation Page'
         );
         $template_name = isset($templates[$template]) ? $templates[$template] : null;
