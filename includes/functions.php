@@ -19,12 +19,13 @@ if (!defined('ABSPATH')) exit;
  * Get price information for protected post/video/file 
  * 
  * @param int $post_id  Post id
+ * @param string $type Module name
  * 
  * @since 1.0
  * 
  * @return string Display information about price inside paywall
  */
-function btcpaywall_get_post_info_string($post_id = null)
+function btcpaywall_get_post_info_string($post_id = null, $type = 'post')
 {
     $project = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] ? get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] : 'post';
 
@@ -85,11 +86,11 @@ function btcpaywall_get_post_info_string($post_id = null)
 
     $duration_type = ($duration > 1 && !$non_number) ? "{$duration_type}s" : $duration_type;
 
-    $unlimited = "For {$price} {$currency} you will have unlimited access to the post.";
+    $unlimited = "For {$price} {$currency} you will have unlimited access to the {$type}.";
 
-    $onetime = "For {$price} {$currency} you will have access to the post only once.";
+    $onetime = "For {$price} {$currency} you will have access to the {$type} only once.";
 
-    $other = "For {$price} {$currency} you will have access to the post for {$duration} {$duration_type}.";
+    $other = "For {$price} {$currency} you will have access to the {$type} for {$duration} {$duration_type}.";
 
     return $duration_type === 'unlimited' ? $unlimited : ($duration_type === 'onetime' ? $onetime : $other);
 }
@@ -103,7 +104,7 @@ function btcpaywall_get_post_info_string($post_id = null)
 function btcpaywall_get_payblock_header_string()
 {
 
-    return btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['title'] ?: 'For access to ' . get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] . ' first pay';
+    return btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['title'] ? btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['title'] : 'For access to ' . get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] . ' first pay';
 }
 /**
  * Get paywall button text

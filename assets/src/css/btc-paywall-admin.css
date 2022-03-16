@@ -816,12 +816,12 @@ Settings Tabs
   line-height: 1.1;
   border-color: #2271b1;
 } */
-.btcpaywall_tipping_templates button {
+.btcpaywall_tipping_templates button,
+.btcpaywall_tipping_selected_template button {
   padding: 15px 17px;
   color: #2271b1;
   border-color: #2271b1;
   background: #f6f7f7;
-  vertical-align: top;
   line-height: 1.1;
   border-radius: 5px;
 }
@@ -835,16 +835,14 @@ Settings Tabs
 
 
 /*Active button*/
-.btcpaywall_tipping_selected_template button {
+/* .btcpaywall_tipping_selected_template button {
   color: #2271b1;
   border-color: #2271b1;
-  padding: 20px 22px;
+  padding: 15px 17px;
   border-radius: 5px;
   text-align: center;
   line-height: 1.1;
-  border: none;
-  font-size: 15px;
-}
+} */
 
 .btcpaywall_tipping_image_wrap {
   max-width: 300px;

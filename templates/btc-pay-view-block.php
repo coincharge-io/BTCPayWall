@@ -46,7 +46,6 @@ $help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
 $image = wp_get_attachment_image_src($atts['preview']);
 
 $preview_url = $image ? $image[0] : $atts['preview'];
-
 ?>
 <style>
     .btcpw_revenue_view_container {
@@ -103,7 +102,7 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                 </div>
                 <div class="btcpw_pay__content">
                     <p>
-                        <?php echo esc_html__(btcpaywall_get_post_info_string(), 'btcpaywall'); ?>
+                        <?php echo esc_html__(btcpaywall_get_post_info_string(null, 'video'), 'btcpaywall'); ?>
                     </p>
                 </div>
 

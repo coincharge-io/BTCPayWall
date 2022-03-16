@@ -27,7 +27,7 @@ $tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : $default_tab;
                 require("page-pay-per-post.php");
                 break;
             case "demo":
-                require('page-donation-demo.php');
+                require('page-pay-per-post-demo.php');
                 break;
             default:
                 require("page-pay-per-post.php");
