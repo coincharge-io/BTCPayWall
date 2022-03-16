@@ -807,7 +807,7 @@ Settings Tabs
 
 
 /*Inactive buttons*/
-.btcpaywall_tipping_templates button {
+/* .btcpaywall_tipping_templates button {
   color: #fff;
   background-color: #2271b1;
   padding: 20px 22px;
@@ -815,11 +815,21 @@ Settings Tabs
   text-align: center;
   line-height: 1.1;
   border-color: #2271b1;
+} */
+.btcpaywall_tipping_templates button {
+  padding: 15px 17px;
+  color: #2271b1;
+  border-color: #2271b1;
+  background: #f6f7f7;
+  vertical-align: top;
+  line-height: 1.1;
+  border-radius: 5px;
 }
 
 .btcpaywall_tipping_templates button:hover,
 .btcpaywall_tipping_selected_template button:hover {
   cursor: pointer;
+  border: solid 3px;
 }
 
 

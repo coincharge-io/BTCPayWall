@@ -302,7 +302,7 @@ class Donation_Forms_Metabox
         $templates = array(
             'btcpaywall_tipping_box' => 'Tipping Box',
             'btcpaywall_tipping_banner_high' => 'Tipping Banner High',
-            'btpaywall_tipping_banner_wide' => 'Tipping Banner Wide',
+            'btcpaywall_tipping_banner_wide' => 'Tipping Banner Wide',
             'btcpaywall_tipping_page' => 'Donation Page'
         );
         $template_name = isset($templates[$template]) ? $templates[$template] : null;
@@ -356,7 +356,8 @@ class Donation_Forms_Metabox
 
                 <div class="btcpaywall_tipping_selected_template">
 
-                    <div><?php echo esc_html($template_name); ?>
+                    <div>
+                        <?php echo esc_html($template_name); ?>
                     </div>
 
                     <?php if ($post->post_status !== 'publish') : ?>
@@ -372,7 +373,7 @@ class Donation_Forms_Metabox
                             <tr>
                                 <th><?php echo esc_html__('Template', 'btcpaywall'); ?></th>
                                 <th><?php echo esc_html__('Description', 'btcpaywall'); ?></th>
-                                <th><?php echo esc_html__('Select', 'btcpaywall'); ?></th>
+                                <th></th>
 
                             </tr>
                         </thead>
@@ -387,7 +388,7 @@ class Donation_Forms_Metabox
                                 </td>
 
                                 <td>
-                                    <button data-id="btcpaywall_tipping_box" type="button"> <i class="fas fa-chevron-right"></i></button>
+                                    <button data-id="btcpaywall_tipping_box" type="button"><?php echo esc_html__('Set up', 'btcpaywall'); ?></button>
                                 </td>
                             </tr>
                             <tr class="btcpaywall_template_tipping_banner_high">
@@ -400,7 +401,7 @@ class Donation_Forms_Metabox
                                 </td>
 
                                 <td>
-                                    <button data-id="btcpaywall_tipping_banner_high" type="button"> <i class="fas fa-chevron-right"></i></button>
+                                    <button data-id="btcpaywall_tipping_banner_high" type="button"><?php echo esc_html__('Set up', 'btcpaywall'); ?></button>
                                 </td>
                             </tr>
                             <tr class="btcpaywall_template_tipping_banner_wide">
@@ -413,7 +414,7 @@ class Donation_Forms_Metabox
                                 </td>
 
                                 <td>
-                                    <button data-id="btcpaywall_tipping_banner_wide" type="button"> <i class="fas fa-chevron-right"></i></button>
+                                    <button data-id="btcpaywall_tipping_banner_wide" type="button"><?php echo esc_html__('Set up', 'btcpaywall'); ?></button>
                                 </td>
                             </tr>
                             <tr class="btcpaywall_template_tipping_page">
@@ -425,7 +426,7 @@ class Donation_Forms_Metabox
                                 </td>
 
                                 <td>
-                                    <button data-id="btcpaywall_tipping_page" type="button"> <i class="fas fa-chevron-right"></i></button>
+                                    <button data-id="btcpaywall_tipping_page" type="button"><?php echo esc_html__('Set up', 'btcpaywall'); ?></button>
                                 </td>
                             </tr>
                         </tbody>
