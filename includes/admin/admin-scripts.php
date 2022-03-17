@@ -29,7 +29,6 @@ function btcpaywall_enqueue_scripts_admin()
 {
 
     wp_enqueue_script('btcpaywall', BTCPAYWALL_PLUGIN_URL . 'assets/src/js/btc-paywall-admin.js', array('jquery'), BTCPAYWALL_VERSION, false);
-    wp_enqueue_script('btcpaywall_toast', BTCPAYWALL_PLUGIN_URL . 'assets/src/js/btc-paywall-toast.js', array('jquery'), BTCPAYWALL_VERSION, false);
 
     wp_enqueue_script('iris', admin_url('js/iris.min.js'), array('jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch'), false, 1);
 

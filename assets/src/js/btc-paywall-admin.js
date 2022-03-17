@@ -761,6 +761,7 @@
     $(".btcpaywall_tipping_templates button").click(function (e) {
       e.preventDefault();
       template_id = $(this).data('id');
+      $(document).scrollTop(0);
       $("#btcpaywall_tipping_template_name").val(template_id);
       $(".btcpaywall_tipping_selected_template").css("display", "flex");
       $(".btcpaywall_tipping_templates").css("display", "none");

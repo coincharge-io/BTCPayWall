@@ -354,7 +354,6 @@ class Donation_Forms_Metabox
             <div id="tab-1" class="btcpaywall_options_wrap btcpaywall_tabset current">
 
                 <div class="btcpaywall_tipping_selected_template">
-
                     <div>
                         <?php echo esc_html($template_name); ?>
                     </div>
@@ -363,7 +362,7 @@ class Donation_Forms_Metabox
                         <button type="button"><?php echo esc_html__('Change template', 'btcpaywall'); ?></button>
                     <?php endif; ?>
                 </div>
-                <div id="btcpaywall_tipping_toast"></div>
+
 
                 <div class="btcpaywall_tipping_templates">
                     <input type="hidden" name="btcpaywall_tipping_text_template_name" id="btcpaywall_tipping_template_name" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_template_name'][0]); ?>">
@@ -434,6 +433,13 @@ class Donation_Forms_Metabox
                 </div>
                 <div id="btcpaywall_template_appearance-wrap" class="btcpaywall_options_wrap btcpaywall_tabset">
                     <div class="btcpaywall_template_appearance">
+                        <div class="btcpaywall_template_helper">
+                            <p><?php echo wp_kses('Customize the form and go to the Publish section in the right sidebar to preview, publish, update or copy the shortcode for this form. Shortcode will be produced after publishing. For further information visit <a href=https://btcpaywall.com/tipping-module/ target=_blank>https://btcpaywall.com/tipping-module</a>', array('a'      => [
+                                    'href'  => [],
+                                    'title' => [],
+                                    'target' => [],
+                                ]));; ?></p>
+                        </div>
                         <fieldset class="btcpaywall_field_wrap common">
                             <div>
                                 <label for="btcpaywall_tipping_text_currency"><?php echo __('Currency', 'btcpaywall'); ?></label>

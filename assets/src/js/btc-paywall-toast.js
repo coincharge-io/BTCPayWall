@@ -80,7 +80,7 @@
     $(document).ready(function () {
         $('.btcpaywall_tipping_templates button').click(function () {
             $(document).scrollTop(0);
-            $.toast('The publish section below this paragraph is where you can publish and preview the form you\'ve chosen. By clicking the preview button, you can see how the form looks. Click the publish button if you\'re happy with how the form looks after customization. After you publish the form, a shortcode will be produced. This shortcode can be used to embed a form on different pages.');
+            $.toast('The publish section below this paragraph is where you can publish and preview the form you\'ve chosen. You can see how the form looks by clicking the preview button. Click the publish button if you\'re happy with how the form looks after customization. After you publish the form, a shortcode will be produced. This shortcode can be used to embed a form on different pages.');
 
         });
     })

@@ -661,6 +661,13 @@ Settings Tabs
   display: none;
 }
 
+.btcpaywall_template_helper p {
+  font-size: 16px;
+  padding: 10px;
+  background-color: #17a2b8;
+  color: #fff;
+}
+
 .btcpaywall_metabox_wrap_metabox_tabs {
   background-color: #1d59a2;
   margin: 0px;
@@ -805,17 +812,6 @@ Settings Tabs
 }
 
 
-
-/*Inactive buttons*/
-/* .btcpaywall_tipping_templates button {
-  color: #fff;
-  background-color: #2271b1;
-  padding: 20px 22px;
-  border-radius: 5px;
-  text-align: center;
-  line-height: 1.1;
-  border-color: #2271b1;
-} */
 .btcpaywall_tipping_templates button,
 .btcpaywall_tipping_selected_template button {
   padding: 15px 17px;
@@ -831,18 +827,6 @@ Settings Tabs
   cursor: pointer;
   border: solid 3px;
 }
-
-
-
-/*Active button*/
-/* .btcpaywall_tipping_selected_template button {
-  color: #2271b1;
-  border-color: #2271b1;
-  padding: 15px 17px;
-  border-radius: 5px;
-  text-align: center;
-  line-height: 1.1;
-} */
 
 .btcpaywall_tipping_image_wrap {
   max-width: 300px;
@@ -895,83 +879,7 @@ Settings Tabs
   background: #f9f9f9;
 }
 
-/*Toast*/
-#btcpaywall_tipping_toast {
-  min-height: 0;
-  position: fixed;
-  right: 20px;
-  top: 20px;
-  width: 400px;
-}
 
-.btcpaywall_tipping_toast {
-  background: #d6d8d9;
-  border-radius: 3px;
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, .1);
-  color: rgba(0, 0, 0, .6);
-  cursor: default;
-  margin-bottom: 20px;
-  opacity: 0;
-  position: relative;
-  padding: 10px;
-  transform: translateY(15%);
-  transition: opacity .5s ease-in-out, transform .5s ease-in-out;
-  width: 100%;
-  will-change: opacity, transform;
-  z-index: 1100;
-}
-
-/* #toasts .toast.success {
-  background: #26d68a;
-}
-
-#toasts .toast.warning {
-  background: #ffa533;
-}
-
-#toasts .toast.info {
-  background: #2cbcff;
-}
-
-#toasts .toast.error {
-  background: #f44336;
-} */
-.btcpaywall_tipping_toast {
-  display: flex;
-  align-items: center;
-}
-
-.btcpaywall_tipping_toast p {
-  font-size: 13px;
-  color: #fff;
-}
-
-.btcpaywall_tipping_toast.show {
-  background: #17a2b8;
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity .5s ease-in-out, transform .5s ease-in-out;
-}
-
-.btcpaywall_tipping_toast.hide {
-  height: 0;
-  margin: 0;
-  opacity: 0;
-  overflow: hidden;
-  padding: 0 30px;
-  transition: all .5s ease-in-out;
-}
-
-.btcpaywall_tipping_toast .close {
-  cursor: pointer;
-  font-size: 24px;
-  height: 16px;
-  margin-top: -10px;
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  width: 16px;
-}
 
 /*Demo Page*/
 
