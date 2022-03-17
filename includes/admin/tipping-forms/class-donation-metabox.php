@@ -363,6 +363,7 @@ class Donation_Forms_Metabox
                         <button type="button"><?php echo esc_html__('Change template', 'btcpaywall'); ?></button>
                     <?php endif; ?>
                 </div>
+                <div id="btcpaywall_tipping_toast"></div>
 
                 <div class="btcpaywall_tipping_templates">
                     <input type="hidden" name="btcpaywall_tipping_text_template_name" id="btcpaywall_tipping_template_name" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_template_name'][0]); ?>">
@@ -800,12 +801,12 @@ class Donation_Forms_Metabox
                                         <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_message" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_message'][0]); ?> />
                                     </div>
                                 </fieldset>
+
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-    <?php
+        <?php
     }
     public function set_default_values()
     {
