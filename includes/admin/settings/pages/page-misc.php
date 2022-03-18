@@ -10,7 +10,7 @@ $remove_data = get_option('btcpw_remove_data_on_uninstall');
             <?php settings_fields('btcpw_misc_options'); ?>
             <div class="row">
                 <div class="col-50">
-                    <p>Clear data on uninstall</p>
+                    <p><?php echo esc_html__('Clear data on uninstall', 'btcpaywall'); ?> <span class="btcpaywall_helper_tip" title="Enable if you want to delete all plugin data upon uninstallation."></span></p>
                 </div>
                 <div class="col-50">
 

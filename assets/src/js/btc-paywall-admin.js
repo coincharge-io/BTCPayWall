@@ -725,7 +725,7 @@
 
     $('.btcpaywall-demo-shortcode-attributes').click(function () {
       $('.btcpaywall-demo-shortcode-attributes').toggleClass("inactive")
-      $('.btcpaywall-demo-explanation ul').toggle();
+      $('.btcpaywall-demo-shortcode-usage').toggle();
     })
     var template_id;
     uploadFile(

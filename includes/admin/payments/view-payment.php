@@ -17,11 +17,8 @@ if (!isset($_GET['id'])) {
 }
 $id = sanitize_text_field($_GET['id']);
 $payment = new BTCPayWall_Payment($id);
-$is_tipping = substr($payment->revenue_type, 0, 1) === "T";/* 
-$tipping = new BTCPayWall_Tipping($payment->invoice_id);
-$tipper = new BTCPayWall_Tipper($tipping->tipper_id); */
+$is_tipping = substr($payment->revenue_type, 0, 1) === "T";
 $customer = new BTCPayWall_Customer($payment->customer_id);
-//$customer_or_tipper = $is_tipping ? $tipper : $customer;
 $download_ids = explode(',', $payment->download_ids);
 $download_links = explode(',', $payment->download_links);
 ?>

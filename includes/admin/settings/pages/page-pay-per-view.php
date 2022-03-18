@@ -130,17 +130,17 @@ $default_info = get_option('btcpw_pay_per_view_info');
                     </select>
                 </div>
             </div>
-            <h3>User information</h3>
+            <h3><?php echo esc_html__('Customer information', 'btcpaywall'); ?> <span class="btcpaywall_helper_tip" title="Select which information about customers you want to collect by clicking on the checkboxes. Check the display if you want to make the field optional, or check both checkboxes if you want to make it mandatory."></span></h3>
             <div class="row">
                 <div class="col-50">
                     <p>Full name</p>
                 </div>
                 <div class="col-50">
-                    <label for="btcpw_default_pay_per_view_display_name">Display</label>
+                    <label for="btcpw_default_pay_per_view_display_name"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
 
                     <input type="checkbox" class="btcpw_default__name" name="btcpw_default_pay_per_view_display_name" <?php checked($collect_name); ?> value="true" />
 
-                    <label for="btcpw_default_pay_per_view_mandatory_name">Mandatory</label>
+                    <label for="btcpw_default_pay_per_view_mandatory_name"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
                     <input type="checkbox" class="btcpw_default__name_mandatory" name="btcpw_default_pay_per_view_mandatory_name" <?php checked($mandatory_name); ?> value="true" />
 
                 </div>
@@ -150,11 +150,11 @@ $default_info = get_option('btcpw_pay_per_view_info');
                     <p>Email</p>
                 </div>
                 <div class="col-50">
-                    <label for="btcpw_default_pay_per_view_display_email">Display</label>
+                    <label for="btcpw_default_pay_per_view_display_email"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
 
                     <input type="checkbox" class="btcpw_default__email" name="btcpw_default_pay_per_view_display_email" <?php checked($collect_email); ?> value="true" />
 
-                    <label for="btcpw_default_pay_per_view_mandatory_email">Mandatory</label>
+                    <label for="btcpw_default_pay_per_view_mandatory_email"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
                     <input type="checkbox" class="btcpw_default__email_mandatory" name="btcpw_default_pay_per_view_mandatory_email" <?php checked($mandatory_email); ?> value="true" />
 
                 </div>
@@ -164,11 +164,11 @@ $default_info = get_option('btcpw_pay_per_view_info');
                     <p>Address</p>
                 </div>
                 <div class="col-50">
-                    <label for="btcpw_default_pay_per_view_display_address">Display</label>
+                    <label for="btcpw_default_pay_per_view_display_address"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
 
                     <input type="checkbox" class="btcpw_default__address" name="btcpw_default_pay_per_view_display_address" <?php checked($collect_address); ?> value="true" />
 
-                    <label for="btcpw_default_pay_per_view_mandatory_address">Mandatory</label>
+                    <label for="btcpw_default_pay_per_view_mandatory_address"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
                     <input type="checkbox" class="btcpw_default__address_mandatory" name="btcpw_default_pay_per_view_mandatory_address" <?php checked($mandatory_address); ?> value="true" />
                 </div>
             </div>
@@ -177,11 +177,11 @@ $default_info = get_option('btcpw_pay_per_view_info');
                     <p>Phone number</p>
                 </div>
                 <div class="col-50">
-                    <label for="btcpw_default_pay_per_view_display_phone">Display</label>
+                    <label for="btcpw_default_pay_per_view_display_phone"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
 
                     <input type="checkbox" class="btcpw_default__phone" name="btcpw_default_pay_per_view_display_phone" <?php checked($collect_phone); ?> value="true" />
 
-                    <label for="btcpw_default_pay_per_view_mandatory_phone">Mandatory</label>
+                    <label for="btcpw_default_pay_per_view_mandatory_phone"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
                     <input type="checkbox" class="btcpw_default__phone_mandatory" name="btcpw_default_pay_per_view_mandatory_phone" <?php checked($mandatory_phone); ?> value="true" />
 
                 </div>
@@ -191,10 +191,10 @@ $default_info = get_option('btcpw_pay_per_view_info');
                     <p>Message</p>
                 </div>
                 <div class="col-50">
-                    <label for="btcpw_default_pay_per_view_display_message">Display</label>
+                    <label for="btcpw_default_pay_per_view_display_message"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
                     <input type="checkbox" class="btcpw_default__message" name="btcpw_default_pay_per_view_display_message" <?php checked($collect_message); ?> value="true" />
 
-                    <label for="btcpw_default_pay_per_view_mandatory_message">Mandatory</label>
+                    <label for="btcpw_default_pay_per_view_mandatory_message"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
                     <input type="checkbox" class="btcpw_default__message_mandatory" name="btcpw_default_pay_per_view_mandatory_message" <?php checked($mandatory_message); ?> value="true" />
 
                 </div>
@@ -262,7 +262,7 @@ $default_info = get_option('btcpw_pay_per_view_info');
             </div>
             <div class="row">
                 <div class="col-20">
-                    <label for="btcpw_pay_per_view_info">Price information</label>
+                    <label for="btcpw_pay_per_view_info">Price information <span class="btcpaywall_helper_tip" title="Placeholders will be replaced with actual values in the paywall."></span></label>
                 </div>
                 <div class="col-80">
                     <textarea id="btcpw_pay_per_view_info" name="btcpw_pay_per_view_info"><?php echo esc_html($default_info); ?></textarea>

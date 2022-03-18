@@ -13,7 +13,7 @@ $supported_gateways = array(
             <?php settings_fields('btcpw_general_payment_gateway_options'); ?>
             <div class="row">
                 <div class="col-20">
-                    <p for="btcpw_general_settings_price">Select Payment Gateway</p>
+                    <p for="btcpw_general_settings_price"><?php echo esc_html__('Select Payment Gateway', 'btcpaywall'); ?></p>
                 </div>
                 <div class="col-80">
 

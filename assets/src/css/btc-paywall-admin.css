@@ -907,16 +907,23 @@ Settings Tabs
 }
 
 .btcpaywall-demo-explanation ul {
-  display: none;
   columns: 2;
   -webkit-columns: 2;
   -moz-columns: 2;
 }
 
-.btcpaywall-demo-explanation p {
-  font-size: 16px;
+.btcpaywall-demo-shortcode-usage {
+  display: none;
 }
 
+.btcpaywall-demo-explanation>p {
+  font-size: 18px;
+}
+
+.btcpaywall-demo-shortcode-attributes {
+  font-size: 15px;
+  font-weight: 500;
+}
 
 .btcpaywall-demo-shortcode-attributes::after {
   font-family: "Font Awesome 5 Free";

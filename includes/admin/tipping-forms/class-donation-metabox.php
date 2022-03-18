@@ -680,7 +680,7 @@ class Donation_Forms_Metabox
                             </div>
                         </div>
                         <div data-id="fixed-amount" class="btcpaywall_container_header">
-                            <h2><?php echo __('Fixed amount', 'btcpaywall'); ?></h2>
+                            <h2><?php echo __('Fixed amount', 'btcpaywall'); ?> <span class="btcpaywall_helper_tip" title="Define whether to display fields with a fixed amount in the form."></span></h2>
                         </div>
                         <div class="btcpaywall_container_body fixed-amount-body">
 
@@ -738,7 +738,7 @@ class Donation_Forms_Metabox
                             </fieldset>
                         </div>
                         <div data-id="donor" class="btcpaywall_container_header">
-                            <h2><?php echo __('Donor information', 'btcpaywall'); ?></h2>
+                            <h2><?php echo __('Donor information', 'btcpaywall'); ?><span class="btcpaywall_helper_tip" title="Select which information about donors you want to collect by clicking on the checkboxes. Check the display if you want to make the field optional, or check both checkboxes if you want to make it mandatory."></span></h2>
                         </div>
                         <div class="btcpaywall_container_body donor-body">
                             <div class="btcpaywall_template_donor_information">

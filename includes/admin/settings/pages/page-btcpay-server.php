@@ -32,7 +32,7 @@ $store_id = get_option('btcpw_btcpay_store_id');
             <div>
                 <div class="row">
                     <div class="col-20">
-                        <label for="btcpw_btcpay_store_id">Store id</label>
+                        <label for="btcpw_btcpay_store_id"><?php echo esc_html__('Store ID', 'btcpaywall'); ?></label>
                     </div>
                     <div class="col-80">
                         <input type='text' id="btcpw_btcpay_store_id" name="btcpw_btcpay_store_id" value='<?php echo $store_id ? esc_attr($store_id) : 'Not connected to the store'; ?>' disabled />
@@ -42,16 +42,16 @@ $store_id = get_option('btcpw_btcpay_store_id');
             <div>
                 <div class="row">
                     <div class="col-20">
-                        <label>BTCPay Server Url</label>
+                        <label><?php echo esc_html__('BTCPay Server Url', 'btcpaywall'); ?></label>
                     </div>
                     <div class="col-80">
                         <input type="url" placeholder="BTCPay Server Url" name="btcpw_btcpay_server_url" id="btcpw_btcpay_server_url" value="<?php echo esc_attr($btcpay_server_url); ?>" style="min-width: 335px;">
-                        <div class="btcpw_generate_api">Generate API keys:<a href="" class="btcpw_auth_key" target="_blank"></a></div>
+                        <div class="btcpw_generate_api"><?php echo esc_html__('Generate API keys:', 'btcpaywall'); ?><a href="" class="btcpw_auth_key" target="_blank"></a></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-20">
-                        <label for="btcpw_btcpay_auth_key_view">BTCPay Server API Key View</label>
+                        <label for="btcpw_btcpay_auth_key_view"><?php echo esc_html__('BTCPay Server API Key View', 'btcpaywall'); ?></label>
                     </div>
                     <div class="col-80">
                         <input required type="text" placeholder="Auth Key View" name="btcpw_btcpay_auth_key_view" id="btcpw_btcpay_auth_key_view" value="<?php echo esc_attr($btcpay_auth_key_view); ?>" style="min-width: 500px;">
@@ -59,7 +59,7 @@ $store_id = get_option('btcpw_btcpay_store_id');
                 </div>
                 <div class="row">
                     <div class="col-20">
-                        <label for="btcpw_btcpay_auth_key_create">BTCPay Server API Key Create</label>
+                        <label for="btcpw_btcpay_auth_key_create"><?php echo esc_html__('BTCPay Server API Key Create', 'btcpaywall'); ?></label>
                     </div>
                     <div class="col-80">
                         <input required type="text" placeholder="Auth Key Create" name="btcpw_btcpay_auth_key_create" id="btcpw_btcpay_auth_key_create" value="<?php echo esc_attr($btcpay_auth_key_create); ?>" style="min-width: 500px;">
@@ -68,16 +68,16 @@ $store_id = get_option('btcpw_btcpay_store_id');
             </div>
 
             <div class="btcpw_help_link" style="margin-top: 20px;">
-                <a href="<?php echo esc_url("https://btcpaywall.com/"); ?>" target="_blank">Help</a>
+                <a href="<?php echo esc_url("https://btcpaywall.com/"); ?>" target="_blank"><?php echo esc_html__('Help', 'btcpaywall'); ?></a>
             </div>
             <p id="btcpw_btcpay_status_success" class="btcpw_btcpay_status" style="color: green;">
-                BTCPAY SERVER CONNECTED
+                <?php echo esc_html__('BTCPAY SERVER CONNECTED', 'btcpaywall'); ?>
             </p>
             <p id="btcpw_btcpay_status_error" class="btcpw_btcpay_status" style="color: red;"></p>
             <div class="btcpw_general_settings_buttons" style="display: inline-block;">
                 <button class="button button-primary btcpw_button" type="submit">Save</button>
-                <button id="btcpw_btcpay_check_status" class="button button-secondary btcpw_button" type="button">Check BTCPay Server
-                    Status</button>
+                <button id="btcpw_btcpay_check_status" class="button button-secondary btcpw_button" type="button"><?php echo esc_html__('Check BTCPay Server
+                    Status', 'btcpaywall'); ?></button>
             </div>
         </form>
 
