@@ -1,4 +1,5 @@
-;(function ($) {
+;
+(function ($) {
   'use strict'
 
   $(document).ready(function () {
@@ -306,56 +307,7 @@
     $('#btcpw_pay_per_file_button').on('input', function () {
       $('.btcpw_pay_preview.content_store button').text($(this).val())
     })
-    /*  $('#btcpw_pay_per_file_width').on('input, change', function () {
-      $('.btcpw_pay_preview.pay_per_file').css('width', $(this).val() + 'px')
-    })
-    $('#btcpw_pay_per_file_height').on('input, change', function () {
-      $('.btcpw_pay_preview.pay_per_file').css('height', $(this).val() + 'px')
-    })
-    $('#btcpw_pay_per_file_title').on('input', function () {
-      $('.btcpw_pay__content_preview.pay_per_file h2').text($(this).val())
-    })
-    $('#btcpw_pay_per_file_info').on('change input', function () {
-      $('.btcpw_pay__content_preview.pay_per_file p').text($(this).val())
-    }) */
-    /* $('#btcpw_pay_per_file_show_help_link').change(function () {
-      $('.btcpw_help_preview.pay_per_file').toggle()
-    })
-    $('#btcpw_pay_per_file_help_link_text').on('input', function () {
-      $('.btcpw_help_preview.pay_per_file a').text($(this).val())
-    })
-    $('#btcpw_pay_per_file_help_link').on('input', function () {
-      $('.btcpw_help__link_preview.pay_per_file').attr('href', $(this).val())
-    })
-    $('#btcpw_pay_per_file_show_additional_help_link').change(function () {
-      $('.btcpw_additional_help_preview.pay_per_file').toggle()
-    })
-    $('#btcpw_pay_per_file_additional_help_link_text').on('input', function () {
-      $('.btcpw_additional_help_preview.pay_per_file a').text($(this).val())
-    })
-    $('#btcpw_pay_per_file_additional_help_link').on('input', function () {
-      $('.btcpw_additional_help__link_preview.pay_per_file').attr(
-        'href',
-        $(this).val()
-      )
-    })
-    $('#btcpw_pay_per_file_duration_type').change(function () {
-      if ($(this).val() === 'unlimited' || $(this).val() === 'onetime') {
-        $('#btcpw_pay_per_file_duration').prop('disabled', true)
-      } else {
-        $('#btcpw_pay_per_file_duration').prop('disabled', false)
-      }
-    }) */
-    /* $(
-      '.btcpw_pay_per_file_price_placeholder, .btcpw_pay_per_file_currency_placeholder, .btcpw_pay_per_file_duration_placeholder, .btcpw_pay_per_file_duration_type_placeholder'
-    ).click(function () {
-      var buttonValue = $(this).val()
-      $('#btcpw_pay_per_file_info').val(function () {
-        $(this).focus()
-        return $(this).prop('value') + ' ' + buttonValue
-      })
-      $('#btcpw_pay_per_file_info').trigger('change')
-    }) */
+
     $('.btcpw_pay_per_file_button_color').iris({
       defaultColor: true,
 
@@ -372,7 +324,7 @@
 
       palettes: true
     })
-    
+
     $('.btcpw_pay_per_file_button_text_color').iris({
       defaultColor: true,
 
@@ -386,6 +338,6 @@
 
       palettes: true
     })
-    
+
   })
 })(jQuery)

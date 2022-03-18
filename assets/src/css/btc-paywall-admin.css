@@ -897,10 +897,35 @@ Settings Tabs
   flex-direction: column;
   align-items: center;
   border: 1px solid rgba(0, 0, 0, 0.397);
+  flex-grow: 1;
 }
 
 .btcpaywall-demo-container>div div {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.btcpaywall-demo-explanation ul {
+  display: none;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+}
+
+.btcpaywall-demo-explanation p {
+  font-size: 16px;
+}
+
+
+.btcpaywall-demo-shortcode-attributes::after {
+  font-family: "Font Awesome 5 Free";
+  content: "\f063";
+  vertical-align: middle;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.btcpaywall-demo-shortcode-attributes.inactive::after {
+  content: "\f062";
 }
