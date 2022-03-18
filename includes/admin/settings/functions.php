@@ -99,7 +99,7 @@ function btcpaywall_render_download_store_page()
  */
 function btcpaywall_render_pay_per_post()
 {
-    include 'pages/page-pay-per-post-submenu.php';
+    include 'pages/page-pay-per-post.php';
 }
 
 /**
@@ -107,5 +107,5 @@ function btcpaywall_render_pay_per_post()
  */
 function btcpaywall_render_pay_per_view()
 {
-    include 'pages/page-pay-per-view-submenu.php';
+    include 'pages/page-pay-per-view.php';
 }
