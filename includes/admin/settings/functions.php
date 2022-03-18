@@ -83,7 +83,7 @@ function btcpaywall_sanitize_boolean($value)
 }
 function btcpaywall_render_general_settings_page()
 {
-    include 'pages/page-general-settings.php';
+    include 'partials/page-general-settings.php';
 }
 
 
@@ -92,14 +92,14 @@ function btcpaywall_render_general_settings_page()
  */
 function btcpaywall_render_download_store_page()
 {
-    include 'pages/page-download-store-settings.php';
+    include 'partials/page-download-store-settings.php';
 }
 /**
  * @since 1.0.6
  */
 function btcpaywall_render_pay_per_post()
 {
-    include 'pages/page-pay-per-post.php';
+    include 'partials/page-pay-per-post.php';
 }
 
 /**
@@ -107,5 +107,5 @@ function btcpaywall_render_pay_per_post()
  */
 function btcpaywall_render_pay_per_view()
 {
-    include 'pages/page-pay-per-view.php';
+    include 'partials/page-pay-per-view.php';
 }
