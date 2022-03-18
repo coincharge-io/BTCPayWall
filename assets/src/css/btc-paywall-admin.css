@@ -885,5 +885,22 @@ Settings Tabs
 
 .btcpaywall-demo-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
+}
+
+/* .btcpaywall-demo-explanation {
+  background-color: #cbcfca;
+} */
+
+.btcpaywall-demo-container>div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.397);
+}
+
+.btcpaywall-demo-container>div div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

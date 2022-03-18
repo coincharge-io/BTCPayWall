@@ -55,9 +55,6 @@ function btcpaywall_enqueue_scripts_admin()
         wp_enqueue_script('btcpaywall' . '_design_preview', BTCPAYWALL_PLUGIN_URL . 'assets/src/js/btc-paywall-design-preview-admin.js', array('jquery'), BTCPAYWALL_VERSION, false);
         wp_enqueue_script('btcpaywall_unsaved', BTCPAYWALL_PLUGIN_URL . 'assets/src/js/btc-paywall-warn-unsaved.js', array('jquery'), BTCPAYWALL_VERSION, false);
     }
-    if (isset($_GET['page']) && sanitize_text_field($_GET['page']) == 'btcpw_form' && isset($_GET['tab']) && sanitize_text_field($_GET['tab']) == 'modules') {
-        wp_enqueue_script('btcpaywall' . '_preview', BTCPAYWALL_PLUGIN_URL . 'assets/src/js/btc-paywall-preview-admin.js', array('jquery'), BTCPAYWALL_VERSION, false);
-    }
 
     if (!did_action('wp_enqueue_media')) {
         wp_enqueue_media();

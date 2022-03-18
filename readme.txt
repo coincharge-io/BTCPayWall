@@ -85,6 +85,13 @@ Further information can be found here: https://btcpaywall.com
 https://btcpaywall.com/faq-support-center/
 
  == Changelog ==
+
+= 1.0.6 =
+
+- Improve: Admin menu navigation
+
+- Improve: Donation form creation process
+
 = 1.0.5 =
 
 - Improve: Donation form creation process
