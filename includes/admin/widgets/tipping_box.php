@@ -228,6 +228,33 @@ work', 'btcpaywall');
         </style>
         <div class="tipping_box">
             <h1>Tipping</h1>
+
+
+            <div class="row">
+                <div class="col-20">
+                    <label for="<?php echo esc_attr($this->get_field_id('currency')); ?>"><?php echo esc_html__('Currency', 'btcpaywall'); ?></label>
+                </div>
+                <div class="col-80">
+                    <select required id="<?php echo esc_attr($this->get_field_id('currency')); ?>" name="<?php echo esc_attr($this->get_field_name('currency')); ?>" value="<?php echo esc_attr($title); ?>">>
+                        <option disabled value="">
+                            <?php echo esc_html__('Select currency', 'btcpaywall'); ?></option>
+                        <?php foreach ($supported_currencies as $curr) : ?>
+                            <option <?php echo $currency === $curr ? 'selected' : ''; ?> value="<?php echo esc_attr($curr); ?>">
+                                <?php echo esc_html($curr); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <label for="<?php echo esc_attr($this->get_field_id('redirect')); ?>"><?php echo esc_html__('Link to Thank you page', 'btcpaywall'); ?></label>
+                </div>
+                <div>
+                    <input id="<?php echo esc_attr($this->get_field_id('redirect')); ?>" name="<?php echo esc_attr($this->get_field_name('redirect')); ?>" class="widget-tipping-basic_redirect" type="text" value="<?php echo esc_attr($redirect); ?>" />
+                </div>
+            </div>
+            <h3><?php echo esc_html__('Global', 'btcpaywall'); ?></h3>
             <div class="row">
                 <div class="col-20">
                     <label for="<?php echo esc_attr($this->get_field_id('dimension')); ?>"><?php echo esc_html__('Dimension', 'btcpaywall'); ?></label>
@@ -277,8 +304,7 @@ work', 'btcpaywall');
                     <input id="<?php echo esc_attr($this->get_field_id('hf_color')); ?>" class="widget-tipping-basic-box-hf_color" name="<?php echo esc_attr($this->get_field_name('hf_color')); ?>" type="text" value="<?php echo esc_attr($hf_color); ?>" />
                 </div>
             </div>
-            <h3><?php echo esc_html__('Description', 'btcpaywall'); ?></h3>
-
+            <h3><?php echo esc_html__('Header', 'btcpaywall'); ?></h3>
             <div class="row">
                 <div class="col-20">
                     <label for="<?php echo esc_attr($this->get_field_id('logo')); ?>"><?php echo esc_html__('Tipping logo', 'btcpaywall'); ?></label>
@@ -315,6 +341,7 @@ work', 'btcpaywall');
                     <input id="<?php echo esc_attr($this->get_field_id('description_color')); ?>" name="<?php echo esc_attr($this->get_field_name('description_color')); ?>" class="widget-tipping-basic-description-color" type="text" value="<?php echo esc_attr($description_color); ?>" />
                 </div>
             </div>
+            <h3><?php echo esc_html__('Main', 'btcpaywall'); ?></h3>
             <div class="row">
                 <div class="col-50">
                     <label for="<?php echo esc_attr($this->get_field_id('tipping_text')); ?>"><?php echo esc_html__('Tipping text', 'btcpaywall'); ?></label>
@@ -325,31 +352,7 @@ work', 'btcpaywall');
                     <input id="<?php echo esc_attr($this->get_field_id('tipping_text_color')); ?>" name="<?php echo esc_attr($this->get_field_name('tipping_text_color')); ?>" type="text" class="widget-tipping-basic-tipping-color" value="<?php echo esc_attr($tipping_text_color); ?>" />
                 </div>
             </div>
-            <div class="row">
-                <div class="col-20">
-                    <label for="<?php echo esc_attr($this->get_field_id('redirect')); ?>"><?php echo esc_html__('Link to Thank you page', 'btcpaywall'); ?></label>
-                </div>
-                <div class="col-80">
-                    <input id="<?php echo esc_attr($this->get_field_id('redirect')); ?>" name="<?php echo esc_attr($this->get_field_name('redirect')); ?>" class="widget-tipping-basic_redirect" type="text" value="<?php echo esc_attr($redirect); ?>" />
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-20">
-                    <label for="<?php echo esc_attr($this->get_field_id('currency')); ?>"><?php echo esc_html__('Currency', 'btcpaywall'); ?></label>
-                </div>
-                <div class="col-80">
-                    <select required id="<?php echo esc_attr($this->get_field_id('currency')); ?>" name="<?php echo esc_attr($this->get_field_name('currency')); ?>" value="<?php echo esc_attr($title); ?>">>
-                        <option disabled value="">
-                            <?php echo esc_html__('Select currency', 'btcpaywall'); ?></option>
-                        <?php foreach ($supported_currencies as $curr) : ?>
-                            <option <?php echo $currency === $curr ? 'selected' : ''; ?> value="<?php echo esc_attr($curr); ?>">
-                                <?php echo esc_html($curr); ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-20">
                     <label for="<?php echo esc_attr($this->get_field_id('input_background')); ?>"><?php echo esc_html__('Background color for free amount', 'btcpaywall'); ?></label>
@@ -358,7 +361,7 @@ work', 'btcpaywall');
                     <input id="<?php echo esc_attr($this->get_field_id('input_background')); ?>" name="<?php echo esc_attr($this->get_field_name('input_background')); ?>" type="text" class="widget-tipping-basic-input_background" value="<?php echo esc_attr($input_background); ?>" />
                 </div>
             </div>
-            <h3><?php echo esc_html__('Button', 'btcpaywall'); ?></h3>
+            <h3><?php echo esc_html__('Footer', 'btcpaywall'); ?></h3>
             <div class="row">
                 <div class="col-20">
                     <label for="<?php echo esc_attr($this->get_field_id('button_text')); ?>"><?php echo esc_html__('Button text', 'btcpaywall'); ?></label>

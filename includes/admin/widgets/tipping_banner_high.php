@@ -106,7 +106,13 @@ class Tipping_Banner_High extends WP_Widget
             .btcpw_widget.btcpw_skyscraper_tipping_free_input.high {
                 background: <?php echo esc_html($instance['fixed_background']);
                             ?>;
+            }
 
+            .btcpw_widget.btcpw_skyscraper_amount_value_1.high.selected,
+            .btcpw_widget.btcpw_skyscraper_amount_value_2.high.selected,
+            .btcpw_widget.btcpw_skyscraper_amount_value_3.high.selected {
+                background-color: <?php echo !empty($instance['selected_amount_background']) ? esc_html($instance['selected_amount_background']) : '#000';
+                                    ?>;
             }
         </style>
         <div id="btcpw_page">
@@ -137,7 +143,7 @@ class Tipping_Banner_High extends WP_Widget
                                         <div class="<?php echo esc_attr("btcpw_widget btcpw_skyscraper_amount_{$key} high"); ?>">
                                             <div>
                                                 <input type="radio" class="btcpw_widget btcpw_skyscraper_tipping_default_amount high" id="<?php echo esc_attr("btcpw_widget_{$key}_high"); ?>" name="btcpw_widget_btcpw_skyscraper_tipping_default_amount_high" <?php echo $key == $index ? 'required' : ''; ?> value="<?php echo esc_attr($fixed_amount[$key]['amount']) . ' ' . esc_attr($fixed_amount[$key]['currency']); ?>">
-                                                <?php if (!empty($fixed_amount[$key]['amount'])) : ?>
+                                                <?php if (!empty($fixed_amount[$key]['icon'])) : ?>
                                                     <i class="<?php echo esc_attr($fixed_amount[$key]['icon']); ?>"></i>
                                                 <?php endif; ?>
                                             </div>
@@ -309,20 +315,17 @@ class Tipping_Banner_High extends WP_Widget
 
         $value1_enabled = !empty($instance['value1_enabled']) ? $instance['value1_enabled'] : esc_html__('true', 'btcpaywall');
         $value1_amount = !empty($instance['value1_amount']) ? $instance['value1_amount'] : esc_html__('1000', 'btcpaywall');
-        $value1_icon = !empty($instance['value1_icon']) ? $instance['value1_icon'] : esc_html__('fas fa-coffee', 'btcpaywall');
+        $value1_icon = !empty($instance['value1_icon']) ? $instance['value1_icon'] : 'fas fa-coffee';
         $value1_currency = !empty($instance['value1_currency']) ? $instance['value1_currency'] : esc_html__('', 'btcpaywall');
 
         $value2_enabled = !empty($instance['value2_enabled']) ? $instance['value2_enabled'] : esc_html__('true', 'btcpaywall');
         $value2_amount = !empty($instance['value2_amount']) ? $instance['value2_amount'] : esc_html__('2000', 'btcpaywall');
-        $value2_icon = !empty($instance['value2_icon']) ? $instance['value2_icon'] : esc_html__('fas fa-beer', 'btcpaywall');
+        $value2_icon = !empty($instance['value2_icon']) ? $instance['value2_icon'] : 'fas fa-beer';
         $value2_currency = !empty($instance['value2_currency']) ? $instance['value2_currency'] : esc_html__('', 'btcpaywall');
 
         $value3_enabled = !empty($instance['value3_enabled']) ? $instance['value3_enabled'] : esc_html__('true', 'btcpaywall');
         $value3_amount = !empty($instance['value3_amount']) ? $instance['value3_amount'] : esc_html__('3000', 'btcpaywall');
-        $value3_icon = !empty($instance['value3_icon']) ? $instance['value3_icon'] : esc_html__(
-            'fas fa-cocktail',
-            'btcpaywall'
-        );
+        $value3_icon = !empty($instance['value3_icon']) ? $instance['value3_icon'] : 'fas fa-cocktail';
         $value3_currency = !empty($instance['value3_currency']) ? $instance['value3_currency'] : esc_html__('', 'btcpaywall');
 
         $free_input = !empty($instance['free_input']) ? $instance['free_input'] : esc_html__('true', 'btcpaywall');
@@ -331,6 +334,8 @@ class Tipping_Banner_High extends WP_Widget
             '#ffa500',
             'btcpaywall'
         );
+        $selected_amount_background = !empty($instance['selected_amount_background']) ? $instance['selected_amount_background'] : "#000";
+
         $hf_color = !empty($instance['hf_color']) ? $instance['hf_color'] : esc_html__('#1d5aa3', 'btcpaywall');
 
         $continue_button_text = !empty($instance['continue_button_text']) ? $instance['continue_button_text'] : esc_html__('Continue', 'btcpaywall');
@@ -370,8 +375,7 @@ class Tipping_Banner_High extends WP_Widget
 
             .tipping_banner.high textarea {
                 width: auto;
-                width: 150px;
-                height: 100px;
+                height: 80px;
                 padding: 6px;
                 border: 1px solid #ccc;
                 border-radius: 4px;
@@ -398,6 +402,31 @@ class Tipping_Banner_High extends WP_Widget
                 <p>200x710</p>
 
             </div>
+            <div class="row">
+                <label for="<?php echo esc_attr($this->get_field_id('currency')); ?>"><?php echo esc_html__('Currency', 'btcpaywall'); ?></label>
+                <select required id="<?php echo esc_attr($this->get_field_id('currency')); ?>" name="<?php echo esc_attr($this->get_field_name('currency')); ?>">
+                    <option disabled value=""><?php echo esc_html__('Select currency', 'btcpaywall'); ?></option>
+                    <?php foreach ($supported_currencies as $curr) : ?>
+                        <option <?php echo $currency === $curr ? 'selected' : ''; ?> value="<?php echo esc_attr($curr); ?>">
+                            <?php echo esc_html($curr); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="row">
+                <label for="<?php echo esc_attr($this->get_field_id('free_input')); ?>">Free input of amount</label>
+                <input id="<?php echo esc_attr($this->get_field_id('free_input')); ?>" name="<?php echo esc_attr($this->get_field_name('free_input')); ?>" type="checkbox" <?php echo $free_input === 'true' ? 'checked' : ''; ?> value="true" />
+            </div>
+            <div class="row">
+                <div>
+                    <label for="<?php echo esc_attr($this->get_field_id('redirect')); ?>"><?php echo esc_html__('Link to Thank you page', 'btcpaywall'); ?></label>
+                </div>
+                <div>
+                    <input id=" <?php echo esc_attr($this->get_field_id('redirect')); ?>" name="<?php echo esc_attr($this->get_field_name('redirect')); ?>" class="widget-tipping-basic_redirect" type="text" value="<?php echo esc_attr($redirect); ?>" />
+                </div>
+            </div>
+            <h3><?php echo esc_html__('Global', 'btcpaywall'); ?></h3>
+
             <div class="row">
                 <div class="col-20">
                     <label for="<?php echo esc_attr($this->get_field_id('background_image')); ?>"><?php echo esc_html__('Background image', 'btcpaywall'); ?></label>
@@ -431,7 +460,7 @@ class Tipping_Banner_High extends WP_Widget
                     <input id="<?php echo esc_attr($this->get_field_id('hf_color')); ?>" class="widget-tipping-basic-hf_color_high" name="<?php echo esc_attr($this->get_field_name('hf_color')); ?>" type="text" value="<?php echo esc_attr($hf_color); ?>" />
                 </div>
             </div>
-            <h3><?php echo esc_html__('Description', 'btcpaywall'); ?></h3>
+            <h3><?php echo esc_html__('Header', 'btcpaywall'); ?></h3>
 
             <div class="row">
                 <div class="col-20">
@@ -469,6 +498,8 @@ class Tipping_Banner_High extends WP_Widget
                     <input id="<?php echo esc_attr($this->get_field_id('description_color')); ?>" name="<?php echo esc_attr($this->get_field_name('description_color')); ?>" class="widget-tipping-basic-description-color_high" type="text" value="<?php echo esc_attr($description_color); ?>" />
                 </div>
             </div>
+            <h3><?php echo esc_html__('Main', 'btcpaywall'); ?></h3>
+
             <div class="row">
                 <div class="col-50">
                     <label for="<?php echo esc_attr($this->get_field_id('tipping_text')); ?>"><?php echo esc_html__('Tipping text', 'btcpaywall'); ?></label>
@@ -479,31 +510,8 @@ class Tipping_Banner_High extends WP_Widget
                     <input id="<?php echo esc_attr($this->get_field_id('tipping_text_color')); ?>" name="<?php echo esc_attr($this->get_field_name('tipping_text_color')); ?>" type="text" class="widget-tipping-basic-tipping-color_high" value="<?php echo esc_attr($tipping_text_color); ?>" />
                 </div>
             </div>
-            <div class="row">
-                <div class="col-20">
-                    <label for="<?php echo esc_attr($this->get_field_id('redirect')); ?>"><?php echo esc_html__('Link to Thank you page', 'btcpaywall'); ?></label>
-                </div>
-                <div class="col-80">
-                    <input id=" <?php echo esc_attr($this->get_field_id('redirect')); ?>" name="<?php echo esc_attr($this->get_field_name('redirect')); ?>" class="widget-tipping-basic_redirect" type="text" value="<?php echo esc_attr($redirect); ?>" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('free_input')); ?>">Free input of amount</label>
-                    <input id="<?php echo esc_attr($this->get_field_id('free_input')); ?>" name="<?php echo esc_attr($this->get_field_name('free_input')); ?>" type="checkbox" <?php echo $free_input === 'true' ? 'checked' : ''; ?> value="true" />
-                </div>
-                <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('currency')); ?>"><?php echo esc_html__('Currency', 'btcpaywall'); ?></label>
-                    <select required id="<?php echo esc_attr($this->get_field_id('currency')); ?>" name="<?php echo esc_attr($this->get_field_name('currency')); ?>">
-                        <option disabled value=""><?php echo esc_html__('Select currency', 'btcpaywall'); ?></option>
-                        <?php foreach ($supported_currencies as $curr) : ?>
-                            <option <?php echo $currency === $curr ? 'selected' : ''; ?> value="<?php echo esc_attr($curr); ?>">
-                                <?php echo esc_html($curr); ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-            </div>
+
+
             <div class="row">
                 <div class="col-20">
                     <label for="<?php echo esc_attr($this->get_field_id('fixed_background')); ?>"><?php echo esc_html__('Background color for fixed amount', 'btcpaywall'); ?></label>
@@ -512,69 +520,15 @@ class Tipping_Banner_High extends WP_Widget
                     <input id="<?php echo esc_attr($this->get_field_id('fixed_background')); ?>" name="<?php echo esc_attr($this->get_field_name('fixed_background')); ?>" type="text" class="widget-tipping-basic-fixed_background_high" value="<?php echo esc_attr($fixed_background); ?>" />
                 </div>
             </div>
-            <div class="container_predefined_amount">
-                <div class="row">
-                    <div class="col-50">
-                        <p>Default price1</p>
-                    </div>
-                    <div class="col-50">
-                        <input id="<?php echo esc_attr($this->get_field_id('value1_enabled')); ?>" name="<?php echo esc_attr($this->get_field_name('value1_enabled')); ?>" <?php echo $value1_enabled === 'true' ? 'checked' : ''; ?> type="checkbox" value="true" />
-                        <input type="number" min=0 placeholder="Default Price1" step=1 id="<?php echo esc_attr($this->get_field_id('value1_amount')); ?>" name="<?php echo esc_attr($this->get_field_name('value1_amount')); ?>" value="<?php echo esc_attr($value1_amount); ?>">
-
-                        <select required id="<?php echo esc_attr($this->get_field_id('value1_currency')); ?>" name="<?php echo esc_attr($this->get_field_name('value1_currency')); ?>">
-                            <option disabled value="">Select currency</option>
-                            <?php foreach ($supported_currencies as $curr1) : ?>
-                                <option <?php echo $value1_currency === $curr1 ? 'selected' : ''; ?> value="<?php echo esc_attr($curr1); ?>">
-                                    <?php echo esc_html($curr1); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-
-                        <input id="<?php echo esc_attr($this->get_field_id('value1_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value1_icon')); ?>" type="text" value="<?php echo esc_attr($value1_icon); ?>" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
-                    </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="<?php echo esc_attr($this->get_field_id('selected_amount_background')); ?>"><?php echo esc_html__('Background color for selected amount', 'btcpaywall'); ?></label>
                 </div>
-                <div class="row">
-                    <div class="col-50">
-                        <p>Default price2</p>
-                    </div>
-                    <div class="col-50">
-                        <input id="<?php echo esc_attr($this->get_field_id('value2_enabled')); ?>" name="<?php echo esc_attr($this->get_field_name('value2_enabled')); ?>" <?php echo $value2_enabled === 'true' ? 'checked' : ''; ?> type="checkbox" value="true" />
-                        <input type="number" min=0 placeholder="Default Price2" step=1 id="<?php echo esc_attr($this->get_field_id('value2_amount')); ?>" name="<?php echo esc_attr($this->get_field_name('value2_amount')); ?>" value="<?php echo esc_attr($value2_amount); ?>">
-
-                        <select required id="<?php echo esc_attr($this->get_field_id('value2_currency')); ?>" name="<?php echo esc_attr($this->get_field_name('value2_currency')); ?>">
-                            <option disabled value="">Select currency</option>
-                            <?php foreach ($supported_currencies as $curr2) : ?>
-                                <option <?php echo $value2_currency === $curr2 ? 'selected' : ''; ?> value="<?php echo esc_attr($curr2); ?>">
-                                    <?php echo esc_html($curr2); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-
-                        <input id="<?php echo esc_attr($this->get_field_id('value2_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value2_icon')); ?>" type="text" value="<?php echo esc_attr($value2_icon); ?>" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-50">
-                        <p>Default price3</p>
-                    </div>
-                    <div class="col-50">
-                        <input id="<?php echo esc_attr($this->get_field_id('value3_enabled')); ?>" name="<?php echo esc_attr($this->get_field_name('value3_enabled')); ?>" <?php echo $value3_enabled === 'true' ? 'checked' : ''; ?> type="checkbox" value="true" />
-                        <input type="number" min=0 placeholder="Default Price3" step=1 id="<?php echo esc_attr($this->get_field_id('value3_amount')); ?>" name="<?php echo esc_attr($this->get_field_name('value3_amount')); ?>" value="<?php echo esc_attr($value3_amount); ?>" />
-
-                        <select required id="<?php echo esc_attr($this->get_field_id('value3_currency')); ?>" name="<?php echo esc_attr($this->get_field_name('value3_currency')); ?>">
-                            <option disabled value="">Select currency</option>
-                            <?php foreach ($supported_currencies as $curr3) : ?>
-                                <option <?php echo $value3_currency === $curr3 ? 'selected' : ''; ?> value="<?php echo esc_attr($curr3); ?>">
-                                    <?php echo esc_html($curr3); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-
-                        <input id="<?php echo esc_attr($this->get_field_id('value3_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value3_icon')); ?>" type="text" value="<?php echo esc_attr($value3_icon); ?>" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
-                    </div>
+                <div class="col-80">
+                    <input id="<?php echo esc_attr($this->get_field_id('selected_amount_background')); ?>" name="<?php echo esc_attr($this->get_field_name('selected_amount_background')); ?>" type="text" class="widget-tipping-basic-selected_amount_background_high" value="<?php echo esc_attr($selected_amount_background); ?>" />
                 </div>
             </div>
-            <h3><?php echo esc_html__('Button', 'btcpaywall'); ?></h3>
+            <h3><?php echo esc_html__('Footer', 'btcpaywall'); ?></h3>
             <div class="row">
                 <div class="col-20">
                     <label for="<?php echo esc_attr($this->get_field_id('button_text')); ?>"><?php echo esc_html__('Button text', 'btcpaywall'); ?></label>
@@ -654,7 +608,70 @@ class Tipping_Banner_High extends WP_Widget
                     <input id="<?php echo esc_attr($this->get_field_id('previous_button_color')); ?>" class="widget-tipping-basic-previous_button_color_high" name="<?php echo esc_attr($this->get_field_name('previous_button_color')); ?>" type="text" value="<?php echo esc_attr($previous_button_color); ?>" />
                 </div>
             </div>
-            <h4><?php echo esc_html__('Collect further information', 'btcpaywall'); ?></h4>
+            <h3><?php echo esc_html__('Fixed amount'); ?></h3>
+            <div class="container_predefined_amount">
+                <div class="row">
+                    <div class="col-50">
+                        <p>Default price1</p>
+                    </div>
+                    <div class="col-50">
+                        <input id="<?php echo esc_attr($this->get_field_id('value1_enabled')); ?>" name="<?php echo esc_attr($this->get_field_name('value1_enabled')); ?>" <?php echo $value1_enabled === 'true' ? 'checked' : ''; ?> type="checkbox" value="true" />
+                        <input type="number" min=0 placeholder="Default Price1" step=1 id="<?php echo esc_attr($this->get_field_id('value1_amount')); ?>" name="<?php echo esc_attr($this->get_field_name('value1_amount')); ?>" value="<?php echo esc_attr($value1_amount); ?>">
+
+                        <select required id="<?php echo esc_attr($this->get_field_id('value1_currency')); ?>" name="<?php echo esc_attr($this->get_field_name('value1_currency')); ?>">
+                            <option disabled value="">Select currency</option>
+                            <?php foreach ($supported_currencies as $curr1) : ?>
+                                <option <?php echo $value1_currency === $curr1 ? 'selected' : ''; ?> value="<?php echo esc_attr($curr1); ?>">
+                                    <?php echo esc_html($curr1); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+
+                        <input id="<?php echo esc_attr($this->get_field_id('value1_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value1_icon')); ?>" type="text" value="<?php echo esc_attr($value1_icon); ?>" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-50">
+                        <p>Default price2</p>
+                    </div>
+                    <div class="col-50">
+                        <input id="<?php echo esc_attr($this->get_field_id('value2_enabled')); ?>" name="<?php echo esc_attr($this->get_field_name('value2_enabled')); ?>" <?php echo $value2_enabled === 'true' ? 'checked' : ''; ?> type="checkbox" value="true" />
+                        <input type="number" min=0 placeholder="Default Price2" step=1 id="<?php echo esc_attr($this->get_field_id('value2_amount')); ?>" name="<?php echo esc_attr($this->get_field_name('value2_amount')); ?>" value="<?php echo esc_attr($value2_amount); ?>">
+
+                        <select required id="<?php echo esc_attr($this->get_field_id('value2_currency')); ?>" name="<?php echo esc_attr($this->get_field_name('value2_currency')); ?>">
+                            <option disabled value="">Select currency</option>
+                            <?php foreach ($supported_currencies as $curr2) : ?>
+                                <option <?php echo $value2_currency === $curr2 ? 'selected' : ''; ?> value="<?php echo esc_attr($curr2); ?>">
+                                    <?php echo esc_html($curr2); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+
+                        <input id="<?php echo esc_attr($this->get_field_id('value2_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value2_icon')); ?>" type="text" value="<?php echo esc_attr($value2_icon); ?>" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-50">
+                        <p>Default price3</p>
+                    </div>
+                    <div class="col-50">
+                        <input id="<?php echo esc_attr($this->get_field_id('value3_enabled')); ?>" name="<?php echo esc_attr($this->get_field_name('value3_enabled')); ?>" <?php echo $value3_enabled === 'true' ? 'checked' : ''; ?> type="checkbox" value="true" />
+                        <input type="number" min=0 placeholder="Default Price3" step=1 id="<?php echo esc_attr($this->get_field_id('value3_amount')); ?>" name="<?php echo esc_attr($this->get_field_name('value3_amount')); ?>" value="<?php echo esc_attr($value3_amount); ?>" />
+
+                        <select required id="<?php echo esc_attr($this->get_field_id('value3_currency')); ?>" name="<?php echo esc_attr($this->get_field_name('value3_currency')); ?>">
+                            <option disabled value="">Select currency</option>
+                            <?php foreach ($supported_currencies as $curr3) : ?>
+                                <option <?php echo $value3_currency === $curr3 ? 'selected' : ''; ?> value="<?php echo esc_attr($curr3); ?>">
+                                    <?php echo esc_html($curr3); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+
+                        <input id="<?php echo esc_attr($this->get_field_id('value3_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value3_icon')); ?>" type="text" value="<?php echo esc_attr($value3_icon); ?>" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
+                    </div>
+                </div>
+            </div>
+            <h4><?php echo esc_html__('Donor information', 'btcpaywall'); ?></h4>
             <div class="row">
                 <div class="col-20">
                     <p><?php echo esc_html__('Full name', 'btcpaywall'); ?></p>
@@ -808,6 +825,7 @@ class Tipping_Banner_High extends WP_Widget
         $instance['previous_button_text_color'] = !empty($new_instance['previous_button_text_color']) ? wp_strip_all_tags($new_instance['previous_button_text_color']) : '';
 
         $instance['previous_button_color'] = !empty($new_instance['previous_button_color']) ? wp_strip_all_tags($new_instance['previous_button_color']) : '';
+        $instance['selected_amount_background'] = !empty($new_instance['selected_amount_background']) ? wp_strip_all_tags($new_instance['selected_amount_background']) : '';
 
 
         return $instance;
