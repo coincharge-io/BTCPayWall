@@ -3,25 +3,30 @@
 .btcpw_revenue_file_container h2 {
   font-size: 40px;
 }
+
 .btcpw_pay__preview {
   display: flex;
   justify-content: space-evenly;
   text-align: center;
 }
+
 .btcpw_pay__preview.preview_img {
   width: 100px;
   height: 100px;
 }
+
 .btcpw_pay__preview.preview_description {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
 }
+
 .btcpw_pay__preview.preview_img img {
   width: 100%;
   height: 100%;
 }
+
 .btcpw_pay__content {
   text-align: center;
 }
@@ -44,6 +49,7 @@
   padding: 0.5rem 0.5rem;
   margin: 0.25rem;
 }
+
 #btcpw_pay__button:hover {
   background: #8c82fc;
   color: #fff;
@@ -61,6 +67,7 @@
   width: 50px;
   height: 50px;
 }
+
 .btcpw_pay__loading p.loading.spinner:before {
   content: "";
   display: block;
@@ -73,7 +80,7 @@
   animation: spinner 1s linear infinite;
 }
 
-.btcpw_help > a.btcpw_help__link {
+.btcpw_help>a.btcpw_help__link {
   margin-top: 5px;
   color: #2980b9;
   text-decoration: underline;
@@ -87,6 +94,7 @@
   font-size: 30px;
   line-height: 1.6;
 }
+
 .btcpw_pay__footer div.btcpw_help {
   margin-top: 3em;
 }
@@ -94,11 +102,13 @@
 .btcpw_store {
   display: flex;
 }
+
 .btcpw_store_video {
   margin: 0 5px;
   display: flex;
   flex-direction: column;
 }
+
 .btcpw_store_video_preview {
   height: auto;
   max-width: 50%;
@@ -128,17 +138,20 @@ a.btcpw_pay__download {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 #tipping_form_box fieldset .btcpw_tipping_box_header_container h4,
 #tipping_form_box_widget fieldset .btcpw_tipping_box_header_container h4 {
   margin-bottom: 0.3rem;
   font-size: clamp(12px, 16px, 20px);
 }
-.btcpw_tipping_box_header_container > div:nth-child(2) {
+
+.btcpw_tipping_box_header_container>div:nth-child(2) {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 160px !important;
 }
+
 .btcpw_tipping_box_container p,
 .btcpw_widget.btcpw_tipping_box_container p {
   font-size: clamp(5px, 7px, 9px);
@@ -146,6 +159,7 @@ a.btcpw_pay__download {
   text-align: center;
   margin-top: 0;
 }
+
 .btcpw_tipping_box_container div,
 .btcpw_tipping_box_container img,
 .btcpw_tipping_box_container pre,
@@ -159,6 +173,7 @@ a.btcpw_pay__download {
   display: flex;
   justify-content: center;
 }
+
 .btcpw_tipping_box_container fieldset {
   border: 0;
   padding: 0;
@@ -171,6 +186,7 @@ a.btcpw_pay__download {
   align-items: center;
   padding: 0.5em;
 }
+
 .btcpw_tipping_box_header_container h4 {
   margin-left: 5px;
 }
@@ -183,6 +199,7 @@ a.btcpw_pay__download {
   width: 50%;
   font-size: 15px;
 }
+
 #btcpw_tipping_currency,
 #btcpw_converted_currency,
 #btcpw_tipping_currency_btcpw_widget,
@@ -192,17 +209,19 @@ a.btcpw_pay__download {
   font-size: 15px;
   color: white !important;
 }
-#tipping_form_box fieldset > h5,
-#tipping_form_box_widget fieldset > h5 {
+
+#tipping_form_box fieldset>h5,
+#tipping_form_box_widget fieldset>h5 {
   text-align: center;
   margin: 10px 0;
   font-size: clamp(9px, 13px, 17px);
 }
 
-.btcpw_tipping_box_container fieldset > h5 {
+.btcpw_tipping_box_container fieldset>h5 {
   margin-left: 1px;
 }
-.btcpw_tipping_box_info_container > p {
+
+.btcpw_tipping_box_info_container>p {
   margin: 0.5em 0;
   font-size: 14px;
 }
@@ -210,35 +229,42 @@ a.btcpw_pay__download {
 .btcpw_tipping_box_amount {
   margin-top: 1em;
 }
+
 .btcpw_tipping_box_container select {
   line-height: 1;
 }
+
 #btcpw_converted_amount,
 #btcpw_converted_amount_btcpw_widget {
   text-align: right;
 }
+
 #btcpw_converted_currency,
 #btcpw_converted_currency_btcpw_widget {
   text-align: left;
 }
+
 .predefined_container input[type="radio"] {
   position: absolute;
   width: 10%;
   height: 5%;
   opacity: 0;
 }
+
 .btcpw_tipping_box_amount {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .btcpw_tipping_free_input,
 .btcpw_tipping_converted_values {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .btcpw_tipping_free_input {
   border-radius: 2em;
   -moz-border-radius: 2em;
@@ -253,9 +279,11 @@ a.btcpw_pay__download {
   border-bottom-left-radius: 2em;
   background-color: white !important;
 }
+
 .btcpw_tipping_converted_values {
   margin-bottom: 2em;
 }
+
 .btcpw_tipping_box_container fieldset input:not([type="submit"]) {
   margin-bottom: 0;
 }
@@ -265,14 +293,17 @@ a.btcpw_pay__download {
   width: 70px !important;
   height: 70px !important;
 }
+
 #btcpw_box_logo_wrap img,
 #btcpw_box_widget_logo_wrap img {
   height: 100% !important;
   width: 100% !important;
 }
+
 .btcpw_tipping_box_container {
   position: relative;
 }
+
 .btcpw_tipping_box_header_container {
   height: 80px !important;
 }
@@ -285,11 +316,13 @@ a.btcpw_pay__download {
   left: 0;
   height: 50px;
 }
+
 #btcpw_tipping_amount,
 #btcpw_tipping_amount_btcpw_widget {
   background-color: white;
   padding: 0;
 }
+
 #btcpw_tipping_currency,
 #btcpw_tipping_currency_btcpw_widget,
 #btcpw_converted_amount,
@@ -313,8 +346,9 @@ a.btcpw_pay__download {
 #btcpw_tipping_currency_btcpw_widget::-ms-expand {
   display: none;
 }
-#btcpw_tipping_currency + i.fas,
-#btcpw_tipping_currency_btcpw_widget + i.fas {
+
+#btcpw_tipping_currency+i.fas,
+#btcpw_tipping_currency_btcpw_widget+i.fas {
   font-size: 1em;
   float: right;
   pointer-events: none;
@@ -322,26 +356,31 @@ a.btcpw_pay__download {
   color: white !important;
   padding-right: 10px;
 }
+
 #btcpw_tipping_currency option,
 #btcpw_tipping_currency_btcpw_widget option {
   padding-right: 21px;
 }
-#button > button[type="submit"] {
+
+#button>button[type="submit"] {
   width: 50%;
   margin: 5px auto;
 }
+
 #btcpw_tipping__button,
 #btcpw_tipping__button_btcpw_widget {
   border-radius: 2em;
   -moz-border-radius: 2em;
   -webkit-border-radius: 2em;
 }
+
 #button button,
 #button input[type="button"] {
   font-size: 14px;
   padding: 8px !important;
   text-transform: uppercase;
 }
+
 /*
     Tipping skyscraper
     */
@@ -354,6 +393,7 @@ a.btcpw_pay__download {
   background-repeat: no-repeat;
   position: relative;
 }
+
 .btcpw_skyscraper_header_container.wide,
 .btcpw_widget.btcpw_skyscraper_header_container.wide {
   flex-direction: row;
@@ -364,10 +404,12 @@ a.btcpw_pay__download {
 #btcpw_skyscraper_logo_wrap_high {
   padding: 0.1em 0.1em 0 0.1em;
 }
+
 .btcpw_widget.btcpw_skyscraper_tipping_container.wide {
   width: 600px !important;
   height: 200px !important;
 }
+
 .btcpw_skyscraper_tipping_container fieldset {
   display: flex;
   flex-direction: column;
@@ -385,6 +427,7 @@ a.btcpw_pay__download {
   margin: 0;
   font-size: clamp(14px, 18px, 22px);
 }
+
 .btcpw_skyscraper_amount {
   display: flex;
 }
@@ -396,6 +439,7 @@ a.btcpw_pay__download {
   text-align: right;
   font-size: 15px;
 }
+
 #btcpw_skyscraper_high_converted_currency,
 #btcpw_skyscraper_wide_converted_currency,
 #btcpw_widget_btcpw_skyscraper_converted_currency_wide,
@@ -412,6 +456,7 @@ a.btcpw_pay__download {
   width: 50%;
   margin: 0;
 }
+
 #btcpw_skyscraper_tipping_high_currency,
 #btcpw_skyscraper_tipping_wide_currency,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_wide,
@@ -420,6 +465,7 @@ a.btcpw_pay__download {
   width: 50%;
   font-size: 15px;
 }
+
 #btcpw_skyscraper_tipping_high_currency,
 #btcpw_skyscraper_tipping_wide_currency,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_wide,
@@ -427,6 +473,7 @@ a.btcpw_pay__download {
   color: white;
   font-weight: bold;
 }
+
 #btcpw_skyscraper_tipping_high_amount,
 #btcpw_skyscraper_tipping_high_currency,
 #btcpw_skyscraper_tipping_wide_amount,
@@ -453,14 +500,17 @@ a.btcpw_pay__download {
   left: 0;
   justify-content: center;
 }
+
 #btcpw_skyscraper_logo_wrap_high {
   width: 180px !important;
   height: 180px !important;
 }
+
 #btcpw_skyscraper_logo_wrap_wide {
   width: 70px !important;
   height: 70px !important;
 }
+
 #btcpw_skyscraper_logo_wrap_high img,
 #btcpw_skyscraper_logo_wrap_wide img {
   width: 100%;
@@ -480,10 +530,10 @@ a.btcpw_pay__download {
   height: 40px;
 }
 
-#btcpw_skyscraper_high_button > div,
-#btcpw_skyscraper_wide_button > div,
-#btcpw_widget_btcpw_skyscraper_button_high > div,
-#btcpw_widget_btcpw_skyscraper_button_wide > div {
+#btcpw_skyscraper_high_button>div,
+#btcpw_skyscraper_wide_button>div,
+#btcpw_widget_btcpw_skyscraper_button_high>div,
+#btcpw_widget_btcpw_skyscraper_button_wide>div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -491,28 +541,26 @@ a.btcpw_pay__download {
   margin: 5px 0 !important;
 }
 
-#btcpw_skyscraper_high_button > button[type="submit"],
-#btcpw_skyscraper_high_button > input.skyscraper-next-form,
-#btcpw_skyscraper_wide_button > button[type="submit"],
-#btcpw_skyscraper_wide_button > input.skyscraper-next-form,
-#btcpw_widget_btcpw_skyscraper_button_high > button[type="submit"],
-#btcpw_widget_btcpw_skyscraper_button_high
-  > input.btcpw_widget.skyscraper-next-form.high,
-#btcpw_widget_btcpw_skyscraper_button_wide > button[type="submit"],
-#btcpw_widget_btcpw_skyscraper_button_wide
-  > input.btcpw_widget.skyscraper-next-form.wide {
+#btcpw_skyscraper_high_button>button[type="submit"],
+#btcpw_skyscraper_high_button>input.skyscraper-next-form,
+#btcpw_skyscraper_wide_button>button[type="submit"],
+#btcpw_skyscraper_wide_button>input.skyscraper-next-form,
+#btcpw_widget_btcpw_skyscraper_button_high>button[type="submit"],
+#btcpw_widget_btcpw_skyscraper_button_high>input.btcpw_widget.skyscraper-next-form.high,
+#btcpw_widget_btcpw_skyscraper_button_wide>button[type="submit"],
+#btcpw_widget_btcpw_skyscraper_button_wide>input.btcpw_widget.skyscraper-next-form.wide {
   width: 50%;
   margin: 0 auto;
   color: white;
   padding: 0;
 }
 
-#btcpw_skyscraper_high_button > div:nth-child(1) > input,
-#btcpw_skyscraper_wide_button > div:nth-child(1) > input,
-#btcpw_widget_btcpw_skyscraper_button_wide > div:nth-child(1) > input,
-#btcpw_widget_btcpw_skyscraper_button_high > div:nth-child(1) > input {
+/* #btcpw_skyscraper_high_button>div:nth-child(1)>input,
+#btcpw_skyscraper_wide_button>div:nth-child(1)>input,
+#btcpw_widget_btcpw_skyscraper_button_wide>div:nth-child(1)>input,
+#btcpw_widget_btcpw_skyscraper_button_high>div:nth-child(1)>input {
   color: white;
-}
+} */
 
 #btcpw_skyscraper_high_button button,
 #btcpw_skyscraper_high_button input[type="button"],
@@ -525,6 +573,7 @@ a.btcpw_pay__download {
   text-transform: uppercase;
   width: 100%;
 }
+
 #btcpw_skyscraper_wide_button button,
 #btcpw_skyscraper_wide_button input[type="button"],
 #btcpw_widget_btcpw_skyscraper_button_wide button,
@@ -552,9 +601,11 @@ a.btcpw_pay__download {
   border: none;
   background: transparent;
 }
+
 .btcpw_skyscraper_header_container.high h4 {
   margin-top: 20px;
 }
+
 .btcpw_skyscraper_tipping_amount,
 .btcpw_skyscraper_tipping_converted_values,
 .btcpw_skyscraper_info_container p {
@@ -564,14 +615,16 @@ a.btcpw_pay__download {
   flex-direction: column;
   text-align: center;
 }
-#skyscraper_tipping_high_form > fieldset h4,
-#skyscraper_tipping_wide_form > fieldset h4,
-#btcpw_widget_skyscraper_tipping_form_high > fieldset h4,
-#btcpw_widget_skyscraper_tipping_form_wide > fieldset h4 {
+
+#skyscraper_tipping_high_form>fieldset h4,
+#skyscraper_tipping_wide_form>fieldset h4,
+#btcpw_widget_skyscraper_tipping_form_high>fieldset h4,
+#btcpw_widget_skyscraper_tipping_form_wide>fieldset h4 {
   text-align: center;
   margin: 10px;
   font-size: clamp(10px, 14px, 18px);
 }
+
 #skyscraper_tipping_high_form fieldset:not(:first-of-type),
 #skyscraper_tipping_wide_form fieldset:not(:first-of-type),
 #btcpw_widget_skyscraper_tipping_form_high fieldset:not(:first-of-type),
@@ -590,7 +643,8 @@ a.btcpw_pay__download {
   gap: 4px;
   margin-top: 2px;
 }
-.btcpw_skyscraper_donor_information.wide > div {
+
+.btcpw_skyscraper_donor_information.wide>div {
   display: flex;
   flex-direction: column;
 }
@@ -599,6 +653,7 @@ a.btcpw_pay__download {
   font-size: 14px;
   margin-bottom: 0;
 }
+
 .btcpw_skyscraper_donor_information.high {
   display: flex;
   margin: 1em 0;
@@ -606,9 +661,11 @@ a.btcpw_pay__download {
   align-items: center;
   gap: 8px;
 }
-.btcpw_skyscraper_donor_information.high > div {
+
+.btcpw_skyscraper_donor_information.high>div {
   width: 80%;
 }
+
 .btcpw_skyscraper_donor_information input[type="text"],
 .btcpw_skyscraper_donor_information input[type="email"],
 .btcpw_skyscraper_donor_information input[type="url"],
@@ -621,9 +678,11 @@ a.btcpw_pay__download {
   height: 30px;
   border-radius: 8px;
 }
+
 .btcpw_skyscraper_donor_information.high label {
   font-size: 14px;
 }
+
 .btcpw_skyscraper_donor_information.wide input[type="text"],
 .btcpw_skyscraper_donor_information.wide input[type="email"],
 .btcpw_skyscraper_donor_information.wide input[type="url"],
@@ -637,25 +696,30 @@ a.btcpw_pay__download {
   height: 21px;
   border-radius: 8px;
 }
-.btcpw_skyscraper_amount > .btcpw_skyscraper_tipping_free_input {
+
+.btcpw_skyscraper_amount>.btcpw_skyscraper_tipping_free_input {
   display: flex;
   flex-direction: row;
   align-items: center !important;
 }
+
 .btcpw_skyscraper_header_container {
   display: flex;
   align-items: center;
   padding: 0.5em;
 }
+
 .btcpw_skyscraper_header_container.high,
 .btcpw_widget.btcpw_skyscraper_header_container.high {
   padding: 0.5em;
   height: 260px !important;
   flex-direction: column;
 }
+
 .btcpw_skyscraper_info_container {
   text-align: center;
 }
+
 .btcpw_skyscraper_banner div,
 .btcpw_skyscraper_banner img,
 .btcpw_skyscraper_banner pre,
@@ -671,7 +735,8 @@ a.btcpw_pay__download {
 .btcpw_skyscraper_tipping_converted_values {
   flex-direction: row;
 }
-.btcpw_skyscraper_info_container > p {
+
+.btcpw_skyscraper_info_container>p {
   font-size: 0.8em;
 }
 
@@ -679,7 +744,7 @@ a.btcpw_pay__download {
   width: 200px !important;
 }
 
-.btcpw_skyscraper_amount > div {
+.btcpw_skyscraper_amount>div {
   display: flex;
   cursor: pointer;
   align-items: center;
@@ -711,6 +776,7 @@ a.btcpw_pay__download {
 .btcpw_skyscraper_tipping_container.high fieldset {
   padding: 0;
 }
+
 .btcpw_skyscraper_tipping_container fieldset {
   margin: 0;
 }
@@ -723,6 +789,7 @@ a.btcpw_pay__download {
   border-bottom-left-radius: 2em;
   background-color: white !important;
 }
+
 #btcpw_skyscraper_tipping_high_currency,
 #btcpw_skyscraper_tipping_wide_currency,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_wide,
@@ -739,16 +806,18 @@ a.btcpw_pay__download {
   -o-appearance: none;
   appearance: none;
 }
+
 #btcpw_skyscraper_tipping_high_currency::-ms-expand,
 #btcpw_skyscraper_tipping_wide_currency::-ms-expand,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_wide::-ms-expand,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_high::-ms-expand {
   display: none;
 }
-#btcpw_skyscraper_tipping_high_currency + i.fas,
-#btcpw_skyscraper_tipping_wide_currency + i.fas,
-#btcpw_widget_btcpw_skyscraper_tipping_currency_wide + i.fas,
-#btcpw_widget_btcpw_skyscraper_tipping_currency_high + i.fas {
+
+#btcpw_skyscraper_tipping_high_currency+i.fas,
+#btcpw_skyscraper_tipping_wide_currency+i.fas,
+#btcpw_widget_btcpw_skyscraper_tipping_currency_wide+i.fas,
+#btcpw_widget_btcpw_skyscraper_tipping_currency_high+i.fas {
   font-size: 1em;
   float: right;
   pointer-events: none;
@@ -756,6 +825,7 @@ a.btcpw_pay__download {
   color: white !important;
   padding-right: 10px;
 }
+
 #btcpw_skyscraper_tipping_high_currency option,
 #btcpw_skyscraper_tipping_wide_currency option,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_wide option,
@@ -766,7 +836,8 @@ a.btcpw_pay__download {
 .btcpw_skyscraper_tipping_container.wide fieldset {
   padding: 0 1em;
 }
-.btcpw_skyscraper_amount_value_1.selected,
+
+/* .btcpw_skyscraper_amount_value_1.selected,
 .btcpw_skyscraper_amount_value_2.selected,
 .btcpw_skyscraper_amount_value_3.selected,
 .btcpw_widget.btcpw_skyscraper_amount_value_1.wide.selected,
@@ -776,12 +847,14 @@ a.btcpw_pay__download {
 .btcpw_widget.btcpw_skyscraper_amount_value_2.high.selected,
 .btcpw_widget.btcpw_skyscraper_amount_value_3.high.selected {
   background-color: hsl(354, 78%, 7%) !important;
-}
+} */
+
 .btcpw_skyscraper_amount_value_1 input[type="radio"],
 .btcpw_skyscraper_amount_value_2 input[type="radio"],
 .btcpw_skyscraper_amount_value_3 input[type="radio"] {
   display: none;
 }
+
 .btcpw_skyscraper_amount.high {
   flex-direction: column;
 }
@@ -791,7 +864,7 @@ a.btcpw_pay__download {
   justify-content: space-around;
 }
 
-.btcpw_skyscraper_amount.high > div {
+.btcpw_skyscraper_amount.high>div {
   margin: 5px auto;
   width: 80%;
 }
@@ -815,15 +888,18 @@ a.btcpw_pay__download {
   width: 600px !important;
   height: 200px !important;
 }
+
 .btcpw_widget.btcpw_skyscraper_tipping_container.high,
 .btcpw_skyscraper_tipping_container.high {
   width: 200px !important;
   height: 450px !important;
 }
+
 .btcpw_skyscraper_banner.wide,
 .btcpw_widget.btcpw_skyscraper_banner.wide {
   width: 600px !important;
 }
+
 .btcpw_skyscraper_header_container p,
 .btcpw_widget.btcpw_skyscraper_header_container p {
   word-break: break-all;
@@ -832,15 +908,17 @@ a.btcpw_pay__download {
   line-height: 1.5;
   margin-top: 0;
 }
-.btcpw_skyscraper_header_container > div:nth-child(2),
-.btcpw_widget.btcpw_skyscraper_header_container > div:nth-child(2) {
+
+.btcpw_skyscraper_header_container>div:nth-child(2),
+.btcpw_widget.btcpw_skyscraper_header_container>div:nth-child(2) {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
 }
-.btcpw_skyscraper_header_container.wide > div:nth-child(2),
-.btcpw_widget.btcpw_skyscraper_header_container.wide > div:nth-child(2) {
+
+.btcpw_skyscraper_header_container.wide>div:nth-child(2),
+.btcpw_widget.btcpw_skyscraper_header_container.wide>div:nth-child(2) {
   max-width: 500px;
 }
 
@@ -882,18 +960,22 @@ a.btcpw_pay__download {
   text-align: right;
   font-size: 15px;
 }
+
 #btcpw_page_tipping_currency {
   width: 45%;
   font-size: 15px;
 }
+
 #btcpw_page_converted_currency {
   text-align: left;
   font-size: 15px;
 }
+
 #btcpw_page_tipping_amount {
   width: 55%;
   background-color: white;
 }
+
 #btcpw_page_tipping_amount,
 #btcpw_page_tipping_currency {
   height: 80%;
@@ -913,23 +995,24 @@ a.btcpw_pay__download {
   height: 75px;
 }
 
-#btcpw_page_button > input.page-next-form {
+#btcpw_page_button>input.page-next-form {
   width: 50%;
 }
 
-#btcpw_page_button > div {
+#btcpw_page_button>div {
   display: flex;
   justify-content: center;
   width: 50%;
   margin: 10px 0 !important;
 }
 
+/* 
 #btcpw_page_button > div:nth-child(1) > input {
   color: white;
-}
+} */
 
-#btcpw_page_button > button[type="submit"],
-#btcpw_page_button > input.page-next-form {
+#btcpw_page_button>button[type="submit"],
+#btcpw_page_button>input.page-next-form {
   width: 50%;
   margin: 10px auto !important;
   color: white;
@@ -937,11 +1020,13 @@ a.btcpw_pay__download {
   -moz-border-radius: 2em;
   -webkit-border-radius: 2em;
 }
+
 #btcpw_page_tipping__button {
   border-radius: 2em;
   -moz-border-radius: 2em;
   -webkit-border-radius: 2em;
 }
+
 #btcpw_page_button button,
 #btcpw_page_button input[type="button"],
 #btcpw_page_button input[type="submit"] {
@@ -964,7 +1049,8 @@ a.btcpw_pay__download {
 #btcpw_page_tipping_currency::-ms-expand {
   display: none;
 }
-#btcpw_page_tipping_currency + i.fas {
+
+#btcpw_page_tipping_currency+i.fas {
   font-size: 1em;
   float: right;
   pointer-events: none;
@@ -972,9 +1058,11 @@ a.btcpw_pay__download {
   color: white !important;
   padding-right: 10px;
 }
+
 #btcpw_page_tipping_currency option {
   padding-right: 21px;
 }
+
 #btcpw_page_converted_amount,
 #btcpw_page_tipping_currency,
 #btcpw_page_converted_currency {
@@ -991,12 +1079,15 @@ a.btcpw_pay__download {
   flex-direction: column;
   text-align: center;
 }
+
 .btcpw_page_header_container h3 {
   font-size: clamp(16px, 20px, 25px);
 }
+
 .btcpw_page_header_container p {
   font-size: clamp(10px, 14px, 18px);
 }
+
 #page_tipping_form fieldset:not(:first-of-type) {
   display: none;
 }
@@ -1005,10 +1096,12 @@ a.btcpw_pay__download {
   width: 180px;
   height: 180px;
 }
+
 #btcpw_page_logo_wrap img {
   width: 100% !important;
   height: 100% !important;
 }
+
 .btcpw_page_donor_information {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1016,17 +1109,20 @@ a.btcpw_pay__download {
   margin: 10px 0;
 }
 
-.btcpw_page_donor_information > div {
+.btcpw_page_donor_information>div {
   display: flex;
   flex-direction: column;
   margin: 0 5px;
 }
+
 .btcpw_page_donor_information label {
   font-size: 15px;
 }
+
 .btcpw_page_donor_information fieldset {
   padding: 0 15px;
 }
+
 .btcpw_page_donor_information input[type="text"],
 .btcpw_page_donor_information input[type="email"],
 .btcpw_page_donor_information input[type="url"],
@@ -1052,11 +1148,12 @@ a.btcpw_pay__download {
   margin: 10px 0;
   font-size: clamp(12px, 16px, 20px);
 }
+
 .btcpw_page_tipping_converted_values {
   flex-direction: row;
 }
 
-.btcpw_page_amount > div {
+.btcpw_page_amount>div {
   display: flex;
   cursor: pointer;
   align-items: center;
@@ -1092,6 +1189,7 @@ a.btcpw_pay__download {
   flex-direction: row;
   align-items: center !important;
 }
+
 #btcpw_page_tipping_amount {
   border-top-left-radius: 2em;
   border-bottom-left-radius: 2em;
@@ -1100,6 +1198,7 @@ a.btcpw_pay__download {
 .btcpw_page_bar_container {
   display: flex;
 }
+
 .btcpw_page_bar_container div {
   display: flex;
   background-color: lightgray;
@@ -1134,16 +1233,19 @@ a.btcpw_pay__download {
   margin-top: 0.5em;
   font-size: 14px;
 }
+
 #btcpw_page_logo_wrap {
   padding: 0.1em 0 0.1em 0.1em;
 }
-div.btcpw_page_header_container > div:nth-child(2) {
+
+div.btcpw_page_header_container>div:nth-child(2) {
   display: flex;
   flex-direction: column;
   margin-left: 2em;
   width: 250px;
   align-items: center;
 }
+
 /**
     Tipping button spinner
     
@@ -1160,6 +1262,7 @@ div.btcpw_page_header_container > div:nth-child(2) {
   border-color: #ffa500 #1d5aa3 #ffa500 #1d5aa3;
   animation: spinner 1s linear infinite;
 }
+
 .btcpw_gutenberg_sel_num_control {
   height: 50px;
 }
@@ -1182,15 +1285,18 @@ Revenue types
   align-items: center;
   margin: 0 auto;
 }
+
 #post_revenue_type fieldset:not(:first-of-type),
 #view_revenue_type fieldset:not(:first-of-type) {
   display: none;
 }
+
 #post_revenue_type fieldset:not(:first-of-type) h2,
 #view_revenue_type fieldset:not(:first-of-type) h2 {
   text-align: center;
   margin-bottom: 15px;
 }
+
 .btcpw_revenue_post_container form,
 .btcpw_revenue_view_container form {
   height: 100%;
@@ -1208,6 +1314,7 @@ Revenue types
   padding: 15px 0 20px 0;
   height: 95%;
 }
+
 .btcpw_revenue_view_container fieldset {
   justify-content: space-evenly;
 }
@@ -1216,6 +1323,7 @@ Revenue types
 .btcpw_revenue_view_container {
   position: relative;
 }
+
 .btcpw_revenue_post_customer_information,
 .btcpw_revenue_view_customer_information {
   display: flex;
@@ -1224,14 +1332,17 @@ Revenue types
   align-items: center;
   gap: 10px;
 }
-.btcpw_revenue_post_customer_information > div,
-.btcpw_revenue_view_customer_information > div {
+
+.btcpw_revenue_post_customer_information>div,
+.btcpw_revenue_view_customer_information>div {
   width: 80%;
 }
+
 .btcpw_revenue_post_customer_information label,
 .btcpw_revenue_view_customer_information label {
   font-size: 16px;
 }
+
 .btcpw_revenue_post_customer_information div,
 .btcpw_revenue_view_customer_information div {
   display: flex;
@@ -1246,6 +1357,7 @@ Revenue types
   bottom: 0;
   width: 100%;
 }
+
 #btcpw_revenue_post_button,
 #btcpw_revenue_view_button,
 #btcpw_revenue_file_button {
@@ -1254,39 +1366,42 @@ Revenue types
   width: 100%;
 }
 
-#btcpw_revenue_post_button > input.revenue-post-next-form,
-#btcpw_revenue_view_button > input.revenue-view-next-form,
-#btcpw_revenue_file_button > input.revenue-file-next-form {
+#btcpw_revenue_post_button>input.revenue-post-next-form,
+#btcpw_revenue_view_button>input.revenue-view-next-form,
+#btcpw_revenue_file_button>input.revenue-file-next-form {
   width: 50%;
 }
+
 #btcpw_revenue_post_button,
 #btcpw_revenue_view_button {
   height: 65px;
 }
-#btcpw_revenue_post_button_second_step > div,
-#btcpw_revenue_view_button_second_step > div,
-#btcpw_revenue_post_button > div,
-#btcpw_revenue_view_button > div,
-#btcpw_revenue_file_button > div {
+
+#btcpw_revenue_post_button_second_step>div,
+#btcpw_revenue_view_button_second_step>div,
+#btcpw_revenue_post_button>div,
+#btcpw_revenue_view_button>div,
+#btcpw_revenue_file_button>div {
   display: flex;
   justify-content: center;
   width: 50%;
   margin: 0 auto !important;
 }
 
-#btcpw_revenue_post_button_second_step > button[type="submit"],
-#btcpw_revenue_post_button_second_step > input.revenue-post-next-form,
-#btcpw_revenue_post_button > button[type="submit"],
-#btcpw_revenue_post_button > input.revenue-post-next-form,
-#btcpw_revenue_view_button > button[type="submit"],
-#btcpw_revenue_view_button > input.revenue-view-next-form,
-#btcpw_revenue_view_button_second_step > button[type="submit"],
-#btcpw_revenue_view_button_second_step > input.revenue-view-next-form {
+#btcpw_revenue_post_button_second_step>button[type="submit"],
+#btcpw_revenue_post_button_second_step>input.revenue-post-next-form,
+#btcpw_revenue_post_button>button[type="submit"],
+#btcpw_revenue_post_button>input.revenue-post-next-form,
+#btcpw_revenue_view_button>button[type="submit"],
+#btcpw_revenue_view_button>input.revenue-view-next-form,
+#btcpw_revenue_view_button_second_step>button[type="submit"],
+#btcpw_revenue_view_button_second_step>input.revenue-view-next-form {
   margin: 0 auto !important;
   border-radius: 2em;
   -moz-border-radius: 2em;
   -webkit-border-radius: 2em;
 }
+
 #btcpw_revenue_post_button_second_step button,
 #btcpw_revenue_post_button_second_step input[type="button"],
 #btcpw_revenue_post_button_second_step input[type="submit"],
@@ -1311,31 +1426,38 @@ Pay-per-file
   flex-direction: column;
   flex-wrap: wrap;
 }
+
 #btcpw_digital_download_form {
   position: relative;
 }
+
 .btcpw_digital_download_customer_information {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   margin-bottom: 5px;
 }
+
 #btcpw_digital_download_customer_info fieldset {
   padding: 20px 30px;
   border: 2px solid #fff;
 }
+
 .btcpw_digital_download_customer_information div {
   display: flex;
   flex-direction: column;
 }
+
 .btcpw_digital_download {
   position: absolute;
   bottom: 0;
   left: 0;
 }
+
 .btcpw_digital_download_button {
   margin: 4em;
 }
+
 .btcpw_digital_download_customer_information input[type="text"],
 .btcpw_digital_download_customer_information input[type="email"],
 .btcpw_digital_download_customer_information input[type="number"],
@@ -1346,14 +1468,17 @@ Pay-per-file
   padding: 5px;
   margin: 5px 0;
 }
+
 .btcpw_digital_download_customer_information textarea {
   max-height: 60px;
 }
+
 #btcpw_revenue_container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 a.btcpaywall_checkout,
 button.btcpaywall_add_to_cart {
   font-family: Sans-serif;
@@ -1384,6 +1509,7 @@ button.btcpaywall_add_to_cart:active {
   -webkit-transform: scale3d(0.9, 0.9, 0.9);
   transform: scale3d(0.9, 0.9, 0.9);
 }
+
 button.btcpaywall_add_to_cart:hover {
   background-color: transparent;
   opacity: 0.6;
@@ -1394,7 +1520,7 @@ button.btcpaywall_add_to_cart:hover {
   transform: scale(1.05);
 }
 
-.btcpw_tabset > input[type="radio"] {
+.btcpw_tabset>input[type="radio"] {
   position: absolute;
   left: -200vw;
 }
@@ -1403,18 +1529,12 @@ button.btcpaywall_add_to_cart:hover {
   display: none;
 }
 
-.btcpw_tabset
-  > input:first-child:checked
-  ~ .btcpw_tab-panels
-  > .btcpw_tab-panel:first-child,
-.btcpw_tabset
-  > input:nth-child(3):checked
-  ~ .btcpw_tab-panels
-  > .btcpw_tab-panel:nth-child(2) {
+.btcpw_tabset>input:first-child:checked~.btcpw_tab-panels>.btcpw_tab-panel:first-child,
+.btcpw_tabset>input:nth-child(3):checked~.btcpw_tab-panels>.btcpw_tab-panel:nth-child(2) {
   display: block;
 }
 
-.btcpw_tabset > label {
+.btcpw_tabset>label {
   position: relative;
   display: inline-block;
   padding: 15px 15px 25px;
@@ -1424,18 +1544,18 @@ button.btcpaywall_add_to_cart:hover {
   font-weight: 600;
 }
 
-.btcpw_tabset > label:hover,
-.btcpw_tabset > input:focus + label {
+.btcpw_tabset>label:hover,
+.btcpw_tabset>input:focus+label {
   color: #06c;
 }
 
-.btcpw_tabset > label:hover::after,
-.btcpw_tabset > input:focus + label::after,
-.btcpw_tabset > input:checked + label::after {
+.btcpw_tabset>label:hover::after,
+.btcpw_tabset>input:focus+label::after,
+.btcpw_tabset>input:checked+label::after {
   background: #06c;
 }
 
-.btcpw_tabset > input:checked + label {
+.btcpw_tabset>input:checked+label {
   border-color: #ccc;
   margin-bottom: -1px;
 }
@@ -1482,6 +1602,7 @@ button.btcpaywall_add_to_cart:hover {
 #btcpw_digital_download_customer_info h2 {
   text-align: center;
 }
+
 .btcpw_digital_download_customer_information input {
   width: 100%;
 }
@@ -1489,6 +1610,7 @@ button.btcpaywall_add_to_cart:hover {
 .btcpaywall-table th {
   text-align: center;
 }
+
 /*Common icons*/
 .btcpw_skyscraper_amount svg,
 .btcpw_page_amount svg,
@@ -1496,4 +1618,3 @@ button.btcpaywall_add_to_cart:hover {
   font-size: 1em;
   margin: 0;
 }
-

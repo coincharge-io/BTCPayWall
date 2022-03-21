@@ -20,53 +20,60 @@ if (!defined('ABSPATH')) exit;
 function btcpaywall_render_shortcode_banner_wide_tipping($atts)
 {
 
-    $id = (!empty($atts['id']) && $atts['type'] !== 'new') ? intval($atts['id']) : null;
+    $id = (!empty($atts['id']) && isset($atts['type']) && 'new' !== $atts['type']) ? intval($atts['id']) : null;
     $form = new BTCPayWall_Tipping_Form($id);
     $result = json_decode(json_encode($form), true);
 
     $atts = shortcode_atts(array(
-        'dimension' => $id ? $result['dimension'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_dimension', true) : '600x200'),
-        'title' => $id ? $result['title_text'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_title', true) : 'Support my work'),
-        'description' => $id ? $result['description_text'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_description', true) : ''),
-        'currency' => $id ? $result['currency'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_currency', true) : 'SATS'),
-        'background_color' => $id ? ('#' . $result['background_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_background', true) : '#E6E6E6'),
-        'title_text_color' => $id ? ('#' . $result['title_text_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_title', true) : '#ffffff'),
-        'tipping_text' => $id ? $result['tipping_text'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_main', true) : 'Enter Tipping Amount'),
-        'tipping_text_color' => $id ? ('#' . $result['tipping_text_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_main', true) : '#000000'),
-        'redirect' => $id ? $result['redirect'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_thankyou', true) : false),
-        'description_color' => $id ? ('#' . $result['description_text_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_description', true) : '#000000'),
-        'button_text' => $id ? $result['button_text'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_button', true) : 'Tipping now'),
-        'button_text_color' => $id ? ('#' . $result['button_text_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_text', true) : '#FFFFFF'),
-        'button_color' => $id ? ('#' . $result['button_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button', true) : '#FE642E'),
-        'logo_id' => $id ? $result['logo'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png'),
-        'background_id' => $id ? $result['background'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_background', true) : ''),
-        'free_input' => $id ? filter_var($result['free_input'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_free_input', true) : true),
-        'input_background' => $id ? ('#' . $result['input_background']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_amounts', true) : '#ffa500'),
-        'background' => $id ? ('#' . $result['hf_background']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_header_footer_background', true) : '#1d5aa3'),
-        'value1_enabled' => $id ? filter_var($result['value1_enabled'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_1', true) : true),
-        'value1_amount' => $id ? round($result['value1_amount'], 0) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_1', true) :  1000),
-        'value1_currency' => $id ? $result['value1_currency'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_1', true) : 'SATS'),
-        'value1_icon' => $id ? $result['value1_icon'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_1', true) : 'fas fa-coffee'),
-        'value2_enabled' => $id ? filter_var($result['value2_enabled'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_2', true) : true),
-        'value2_amount' => $id ? round($result['value2_amount'], 0) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_2', true) : 2000),
-        'value2_currency' => $id ? $result['value2_currency'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_2', true) : 'SATS'),
-        'value2_icon' => $id ? $result['value2_icon'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_2', true) : 'fas fa-beer'),
-        'value3_enabled' => $id ? filter_var($result['value3_enabled'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_3', true) : true),
-        'value3_amount' => $id ? round($result['value3_amount'], 0) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_3', true) : 3000),
-        'value3_currency' => $id ? $result['value3_currency'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_3', true) : 'SATS'),
-        'value3_icon' => $id ? $result['value3_icon'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_3', true) : 'fas fa-cocktail'),
-        'display_name' => $id ? filter_var($result['collect_name'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_name', true) : false),
-        'mandatory_name' => $id ? filter_var($result['mandatory_name'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_name', true) : false),
-        'display_email' => $id ? filter_var($result['collect_email'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_email', true) : false),
-        'mandatory_email' => $id ? filter_var($result['mandatory_email'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_email', true) : false),
-        'display_phone' => $id ? filter_var($result['collect_phone'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_phone', true) : false),
-        'mandatory_phone' => $id ? filter_var($result['mandatory_phone'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_phone', true) : false),
-        'display_address' => $id ? filter_var($result['collect_address'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_address', true) : false),
-        'mandatory_address' => $id ? filter_var($result['mandatory_address'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_address', true) : false),
-        'display_message' => $id ? filter_var($result['collect_message'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_message', true) : false),
-        'mandatory_message' => $id ? filter_var($result['mandatory_message'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_message', true) : false),
-        'show_icon'    => $id ? filter_var($result['show_icon'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_icons', true) : true),
-        'widget'    => false
+        'dimension' => $id ? $result['dimension'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_dimension', true) : '600x200'),
+        'title' => $id ? $result['title_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_title', true) : 'Support my work'),
+        'description' => $id ? $result['description_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_description', true) : ''),
+        'currency' => $id ? $result['currency'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_currency', true) : 'SATS'),
+        'background_color' => $id ? ('#' . $result['background_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_background', true) : '#E6E6E6'),
+        'title_text_color' => $id ? ('#' . $result['title_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_title', true) : '#ffffff'),
+        'tipping_text' => $id ? $result['tipping_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_main', true) : 'Enter Tipping Amount'),
+        'tipping_text_color' => $id ? ('#' . $result['tipping_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_main', true) : '#000000'),
+        'redirect' => $id ? $result['redirect'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_thankyou', true) : false),
+        'description_color' => $id ? ('#' . $result['description_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_description', true) : '#000000'),
+        'button_text' => $id ? $result['button_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_button', true) : 'Tipping now'),
+        'button_text_color' => $id ? ('#' . $result['button_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_text', true) : '#FFFFFF'),
+        'button_color' => $id ? ('#' . $result['button_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button', true) : '#FE642E'),
+        'logo_id' => $id ? $result['logo'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png'),
+        'background_id' => $id ? $result['background'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_background', true) : ''),
+        'free_input' => $id ? filter_var($result['free_input'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_free_input', true) : true),
+        'input_background' => $id ? ('#' . $result['input_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_amounts', true) : '#ffa500'),
+        'background' => $id ? ('#' . $result['hf_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_header_footer_background', true) : '#1d5aa3'),
+        'value1_enabled' => $id ? filter_var($result['value1_enabled'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_1', true) : true),
+        'value1_amount' => $id ? round($result['value1_amount'], 0) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_1', true) :  1000),
+        'value1_currency' => $id ? $result['value1_currency'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_1', true) : 'SATS'),
+        'value1_icon' => $id ? $result['value1_icon'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_1', true) : 'fas fa-coffee'),
+        'value2_enabled' => $id ? filter_var($result['value2_enabled'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_2', true) : true),
+        'value2_amount' => $id ? round($result['value2_amount'], 0) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_2', true) : 2000),
+        'value2_currency' => $id ? $result['value2_currency'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_2', true) : 'SATS'),
+        'value2_icon' => $id ? $result['value2_icon'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_2', true) : 'fas fa-beer'),
+        'value3_enabled' => $id ? filter_var($result['value3_enabled'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_3', true) : true),
+        'value3_amount' => $id ? round($result['value3_amount'], 0) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_3', true) : 3000),
+        'value3_currency' => $id ? $result['value3_currency'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_3', true) : 'SATS'),
+        'value3_icon' => $id ? $result['value3_icon'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_3', true) : 'fas fa-cocktail'),
+        'display_name' => $id ? filter_var($result['collect_name'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_name', true) : false),
+        'mandatory_name' => $id ? filter_var($result['mandatory_name'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_name', true) : false),
+        'display_email' => $id ? filter_var($result['collect_email'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_email', true) : false),
+        'mandatory_email' => $id ? filter_var($result['mandatory_email'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_email', true) : false),
+        'display_phone' => $id ? filter_var($result['collect_phone'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_phone', true) : false),
+        'mandatory_phone' => $id ? filter_var($result['mandatory_phone'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_phone', true) : false),
+        'display_address' => $id ? filter_var($result['collect_address'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_address', true) : false),
+        'mandatory_address' => $id ? filter_var($result['mandatory_address'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_address', true) : false),
+        'display_message' => $id ? filter_var($result['collect_message'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_message', true) : false),
+        'mandatory_message' => $id ? filter_var($result['mandatory_message'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_message', true) : false),
+        'show_icon'    => $id ? filter_var($result['show_icon'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_icons', true) : true),
+        'widget'    => false,
+        'continue_button_text' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_continue_button', true) : 'Continue'),
+        'continue_button_text_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_continue_button_text', true) : '#FFFFFF'),
+        'continue_button_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_continue_button', true) : '#FE642E'),
+        'previous_button_text' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_previous_button', true) : 'Previous'),
+        'previous_button_text_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_previous_color_button_text', true) : '#FFFFFF'),
+        'previous_button_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_previous_button', true) : '#1d5aa3'),
+        'selected_amount_background' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_selected_amount', true) : '#000'),
     ), $atts);
 
     $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
@@ -93,15 +100,23 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
         }
 
         .btcpw_skyscraper_header_container.wide,
-        #btcpw_skyscraper_wide_button,
-        #btcpw_skyscraper_wide_button>div:nth-child(1)>input {
+        #btcpw_skyscraper_wide_button {
             background-color: <?php echo esc_html($atts['background']); ?>;
         }
 
-        #btcpw_skyscraper_tipping_wide_button,
-        #btcpw_skyscraper_wide_button>div>input.skyscraper-next-form {
+        #btcpw_skyscraper_tipping_wide_button {
             color: <?php echo esc_html($atts['button_text_color']); ?>;
             background: <?php echo esc_html($atts['button_color']); ?>;
+        }
+
+        #btcpw_skyscraper_wide_button input.skyscraper-next-form {
+            color: <?php echo esc_html($atts['continue_button_text_color']); ?>;
+            background: <?php echo esc_html($atts['continue_button_color']); ?>;
+        }
+
+        #btcpw_skyscraper_wide_button input.skyscraper-previous-form {
+            color: <?php echo esc_html($atts['previous_button_text_color']); ?>;
+            background: <?php echo esc_html($atts['previous_button_color']); ?>;
         }
 
         .btcpw_skyscraper_header_container.wide h3 {
@@ -121,6 +136,12 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
         .btcpw_skyscraper_amount_value_3.wide,
         .btcpw_skyscraper_tipping_free_input.wide {
             background: <?php echo esc_html($atts['input_background']); ?>;
+        }
+
+        .btcpw_skyscraper_amount_value_1.wide.selected,
+        .btcpw_skyscraper_amount_value_2.wide.selected,
+        .btcpw_skyscraper_amount_value_3.wide.selected {
+            background-color: <?php echo esc_html($atts['selected_amount_background']); ?>;
         }
     </style>
     <div id="btcpw_page">
@@ -192,7 +213,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                             <?php if (true === $collect_data) : ?>
 
                                 <div>
-                                    <input type="button" name="next" class="skyscraper-next-form wide" value=<?php echo esc_html__('Continue', 'btcpaywall'); ?>>
+                                    <input type="button" name="next" class="skyscraper-next-form wide" value="<?php echo (!empty($atts['continue_button_text']) ? esc_attr__($atts['continue_button_text'], 'btcpaywall') : 'Continue'); ?>">
                                 </div>
 
                             <?php else : ?>
@@ -223,7 +244,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
 
                             <div class="<?php echo "btcpw_skyscraper_button wide"; ?>" id="btcpw_skyscraper_wide_button">
                                 <div>
-                                    <input type="button" name="previous" class="skyscraper-previous-form wide" value="<?php echo esc_html__('< Previous', 'btcpaywall'); ?>" />
+                                    <input type="button" name="previous" class="skyscraper-previous-form wide" value="<?php echo (!empty($atts['previous_button_text']) ? esc_attr__($atts['previous_button_text'], 'btcpaywall') : 'Previous'); ?>" />
                                 </div>
                                 <div>
                                     <button type="submit" id="btcpw_skyscraper_tipping_wide_button"><?php echo (!empty($atts['button_text']) ? esc_html__($atts['button_text'], 'btcpaywall') : 'Tip'); ?></button>
@@ -251,52 +272,59 @@ add_shortcode('btcpw_tipping_banner_wide', 'btcpaywall_render_shortcode_banner_w
 function btcpaywall_render_shortcode_banner_high_tipping($atts)
 {
 
-    $id = (!empty($atts['id']) && $atts['type'] !== 'new') ? intval($atts['id']) : null;
+    $id = (!empty($atts['id']) && isset($atts['type']) && 'new' !== $atts['type']) ? intval($atts['id']) : null;
     $form = new BTCPayWall_Tipping_Form($id);
     $result = json_decode(json_encode($form), true);
     $atts = shortcode_atts(array(
-        'dimension' => $id ? $result['dimension'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_dimension', true) : '200x710'),
-        'title' => $id ? $result['title_text'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_title', true) : 'Support my work'),
-        'description' => $id ? $result['description_text'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_description', true) : ''),
-        'currency' => $id ? $result['currency'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_currency', true) : 'SATS'),
-        'background_color' => $id ? ('#' . $result['background_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_background', true) : '#E6E6E6'),
-        'title_text_color' => $id ? ('#' . $result['title_text_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_title', true) : '#ffffff'),
-        'tipping_text' => $id ? $result['tipping_text'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_main', true) : 'Enter Tipping Amount'),
-        'tipping_text_color' => $id ? ('#' . $result['tipping_text_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_main', true) : '#000000'),
-        'redirect' => $id ? $result['redirect'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_thankyou', true) : false),
-        'description_color' => $id ? ('#' . $result['description_text_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_description', true) : '#000000'),
-        'button_text' => $id ? $result['button_text'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_button', true) : 'Tipping now'),
-        'button_text_color' => $id ? ('#' . $result['button_text_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_text', true) : '#FFFFFF'),
-        'button_color' => $id ? ('#' . $result['button_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button', true) : '#FE642E'),
-        'logo_id' => $id ? $result['logo'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png'),
-        'background_id' => $id ? $result['background'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_background', true) : ''),
-        'free_input' => $id ? filter_var($result['free_input'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_free_input', true) : true),
-        'input_background' => $id ? ('#' . $result['input_background']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_amounts', true) : '#ffa500'),
-        'background' => $id ? ('#' . $result['hf_background']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_header_footer_background', true) : '#1d5aa3'),
-        'value1_enabled' => $id ? filter_var($result['value1_enabled'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_1', true) : true),
-        'value1_amount' => $id ? round($result['value1_amount'], 0) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_1', true) :  1000),
-        'value1_currency' => $id ? $result['value1_currency'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_1', true) : 'SATS'),
-        'value1_icon' => $id ? $result['value1_icon'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_1', true) : 'fas fa-coffee'),
-        'value2_enabled' => $id ? filter_var($result['value2_enabled'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_2', true) : true),
-        'value2_amount' => $id ? round($result['value2_amount'], 0) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_2', true) : 2000),
-        'value2_currency' => $id ? $result['value2_currency'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_2', true) : 'SATS'),
-        'value2_icon' => $id ? $result['value2_icon'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_2', true) : 'fas fa-beer'),
-        'value3_enabled' => $id ? filter_var($result['value3_enabled'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_3', true) : true),
-        'value3_amount' => $id ? round($result['value3_amount'], 0) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_3', true) : 3000),
-        'value3_currency' => $id ? $result['value3_currency'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_3', true) : 'SATS'),
-        'value3_icon' => $id ? $result['value3_icon'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_3', true) : 'fas fa-cocktail'),
-        'display_name' => $id ? filter_var($result['collect_name'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_name', true) : false),
-        'mandatory_name' => $id ? filter_var($result['mandatory_name'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_name', true) : false),
-        'display_email' => $id ? filter_var($result['collect_email'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_email', true) : false),
-        'mandatory_email' => $id ? filter_var($result['mandatory_email'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_email', true) : false),
-        'display_phone' => $id ? filter_var($result['collect_phone'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_phone', true) : false),
-        'mandatory_phone' => $id ? filter_var($result['mandatory_phone'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_phone', true) : false),
-        'display_address' => $id ? filter_var($result['collect_address'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_address', true) : false),
-        'mandatory_address' => $id ? filter_var($result['mandatory_address'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_address', true) : false),
-        'display_message' => $id ? filter_var($result['collect_message'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_message', true) : false),
-        'mandatory_message' => $id ? filter_var($result['mandatory_message'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_message', true) : false),
-        'show_icon'    => $id ? filter_var($result['show_icon'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_icons', true) : true),
-        'widget'    => false
+        'dimension' => $id ? $result['dimension'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_dimension', true) : '200x710'),
+        'title' => $id ? $result['title_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_title', true) : 'Support my work'),
+        'description' => $id ? $result['description_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_description', true) : ''),
+        'currency' => $id ? $result['currency'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_currency', true) : 'SATS'),
+        'background_color' => $id ? ('#' . $result['background_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_background', true) : '#E6E6E6'),
+        'title_text_color' => $id ? ('#' . $result['title_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_title', true) : '#ffffff'),
+        'tipping_text' => $id ? $result['tipping_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_main', true) : 'Enter Tipping Amount'),
+        'tipping_text_color' => $id ? ('#' . $result['tipping_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_main', true) : '#000000'),
+        'redirect' => $id ? $result['redirect'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_thankyou', true) : false),
+        'description_color' => $id ? ('#' . $result['description_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_description', true) : '#000000'),
+        'button_text' => $id ? $result['button_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_button', true) : 'Tipping now'),
+        'button_text_color' => $id ? ('#' . $result['button_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_text', true) : '#FFFFFF'),
+        'button_color' => $id ? ('#' . $result['button_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button', true) : '#FE642E'),
+        'logo_id' => $id ? $result['logo'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png'),
+        'background_id' => $id ? $result['background'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_background', true) : ''),
+        'free_input' => $id ? filter_var($result['free_input'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_free_input', true) : true),
+        'input_background' => $id ? ('#' . $result['input_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_amounts', true) : '#ffa500'),
+        'background' => $id ? ('#' . $result['hf_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_header_footer_background', true) : '#1d5aa3'),
+        'value1_enabled' => $id ? filter_var($result['value1_enabled'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_1', true) : true),
+        'value1_amount' => $id ? round($result['value1_amount'], 0) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_1', true) :  1000),
+        'value1_currency' => $id ? $result['value1_currency'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_1', true) : 'SATS'),
+        'value1_icon' => $id ? $result['value1_icon'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_1', true) : 'fas fa-coffee'),
+        'value2_enabled' => $id ? filter_var($result['value2_enabled'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_2', true) : true),
+        'value2_amount' => $id ? round($result['value2_amount'], 0) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_2', true) : 2000),
+        'value2_currency' => $id ? $result['value2_currency'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_2', true) : 'SATS'),
+        'value2_icon' => $id ? $result['value2_icon'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_2', true) : 'fas fa-beer'),
+        'value3_enabled' => $id ? filter_var($result['value3_enabled'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_3', true) : true),
+        'value3_amount' => $id ? round($result['value3_amount'], 0) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_3', true) : 3000),
+        'value3_currency' => $id ? $result['value3_currency'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_3', true) : 'SATS'),
+        'value3_icon' => $id ? $result['value3_icon'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_3', true) : 'fas fa-cocktail'),
+        'display_name' => $id ? filter_var($result['collect_name'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_name', true) : false),
+        'mandatory_name' => $id ? filter_var($result['mandatory_name'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_name', true) : false),
+        'display_email' => $id ? filter_var($result['collect_email'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_email', true) : false),
+        'mandatory_email' => $id ? filter_var($result['mandatory_email'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_email', true) : false),
+        'display_phone' => $id ? filter_var($result['collect_phone'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_phone', true) : false),
+        'mandatory_phone' => $id ? filter_var($result['mandatory_phone'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_phone', true) : false),
+        'display_address' => $id ? filter_var($result['collect_address'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_address', true) : false),
+        'mandatory_address' => $id ? filter_var($result['mandatory_address'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_address', true) : false),
+        'display_message' => $id ? filter_var($result['collect_message'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_message', true) : false),
+        'mandatory_message' => $id ? filter_var($result['mandatory_message'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_message', true) : false),
+        'show_icon'    => $id ? filter_var($result['show_icon'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_icons', true) : true),
+        'widget'    => false,
+        'continue_button_text' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_continue_button', true) : 'Continue'),
+        'continue_button_text_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_continue_button_text', true) : '#FFFFFF'),
+        'continue_button_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_continue_button', true) : '#FE642E'),
+        'previous_button_text' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_previous_button', true) : 'Previous'),
+        'previous_button_text_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_previous_color_button_text', true) : '#FFFFFF'),
+        'previous_button_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_previous_button', true) : '#1d5aa3'),
+        'selected_amount_background' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_selected_amount', true) : '#000'),
     ), $atts);
 
 
@@ -326,15 +354,23 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
         }
 
         .btcpw_skyscraper_header_container.high,
-        #btcpw_skyscraper_high_button,
-        #btcpw_skyscraper_high_button>div:nth-child(1)>input {
+        #btcpw_skyscraper_high_button {
             background-color: <?php echo esc_html($atts['background']); ?>;
         }
 
-        #btcpw_skyscraper_tipping_high_button,
-        #btcpw_skyscraper_high_button>div>input.skyscraper-next-form {
+        #btcpw_skyscraper_tipping_high_button {
             color: <?php echo esc_html($atts['button_text_color']); ?>;
             background: <?php echo esc_html($atts['button_color']); ?>;
+        }
+
+        #btcpw_skyscraper_high_button input.skyscraper-next-form {
+            color: <?php echo esc_html($atts['continue_button_text_color']); ?>;
+            background: <?php echo esc_html($atts['continue_button_color']); ?>;
+        }
+
+        #btcpw_skyscraper_high_button input.skyscraper-previous-form {
+            color: <?php echo esc_html($atts['previous_button_text_color']); ?>;
+            background: <?php echo esc_html($atts['previous_button_color']); ?>;
         }
 
         .btcpw_skyscraper_header_container.high h3 {
@@ -347,6 +383,12 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
 
         #skyscraper_tipping_high_form>fieldset h4 {
             color: <?php echo esc_html($atts['tipping_text_color']); ?>
+        }
+
+        .btcpw_skyscraper_amount_value_1.high.selected,
+        .btcpw_skyscraper_amount_value_2.high.selected,
+        .btcpw_skyscraper_amount_value_3.high.selected {
+            background-color: <?php echo esc_html($atts['selected_amount_background']); ?>;
         }
     </style>
     <div id="btcpw_page">
@@ -418,7 +460,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                             <?php if (true === $collect_data) : ?>
 
                                 <div>
-                                    <input type="button" name="next" class="skyscraper-next-form high" value="<?php echo esc_html__('Continue', 'btcpaywall'); ?>">
+                                    <input type="button" name="next" class="skyscraper-next-form high" value="<?php echo (!empty($atts['continue_button_text']) ? esc_attr__($atts['continue_button_text'], 'btcpaywall') : 'Continue'); ?>">
                                 </div>
 
                             <?php else : ?>
@@ -448,7 +490,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                             </div>
                             <div class="<?php echo "btcpw_skyscraper_button high"; ?>" id="btcpw_skyscraper_high_button">
                                 <div>
-                                    <input type="button" name="previous" class="skyscraper-previous-form high" value="<?php echo esc_html__('< Previous', 'btcpaywall'); ?>" />
+                                    <input type="button" name="previous" class="skyscraper-previous-form high" value="<?php echo (!empty($atts['previous_button_text']) ? esc_attr__($atts['previous_button_text'], 'btcpaywall') : 'Previous'); ?>" />
                                 </div>
                                 <div>
                                     <button type="submit" id="btcpw_skyscraper_tipping_high_button"><?php echo (!empty($atts['button_text']) ? esc_html__($atts['button_text'], 'btcpaywall') : 'Tip'); ?></button>
@@ -476,56 +518,63 @@ add_shortcode('btcpw_tipping_banner_high', 'btcpaywall_render_shortcode_banner_h
 function btcpaywall_render_shortcode_page_tipping($atts)
 {
 
-    $id = (!empty($atts['id']) && $atts['type'] !== 'new') ? intval($atts['id']) : null;
+    $id = (!empty($atts['id']) && (isset($atts['type']) && 'new' !== $atts['type'])) ? intval($atts['id']) : null;
     $form = new BTCPayWall_Tipping_Form($id);
     $result = json_decode(json_encode($form), true);
 
     $atts = shortcode_atts(array(
-        'dimension' => $id ? $result['dimension'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_dimension', true) : '520x600'),
-        'title' => $id ? $result['title_text'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_title', true) : 'Support my work'),
-        'description' => $id ? $result['description_text'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_description', true) : ''),
-        'currency' => $id ? $result['currency'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_currency', true) : 'SATS'),
-        'background_color' => $id ? ('#' . $result['background_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_background', true) : '#E6E6E6'),
-        'title_text_color' => $id ? ('#' . $result['title_text_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_title', true) : '#ffffff'),
-        'tipping_text' => $id ? $result['tipping_text'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_main', true) : 'Enter Tipping Amount'),
-        'tipping_text_color' => $id ? ('#' . $result['tipping_text_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_main', true) : '#000000'),
-        'redirect' => $id ? $result['redirect'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_thankyou', true) : false),
-        'description_color' => $id ? ('#' . $result['description_text_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_description', true) : '#000000'),
-        'button_text' => $id ? $result['button_text'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_button', true) : 'Tipping now'),
-        'button_text_color' => $id ? ('#' . $result['button_text_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_text', true) : '#FFFFFF'),
-        'button_color' => $id ? ('#' . $result['button_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button', true) : '#FE642E'),
-        'logo_id' => $id ? $result['logo'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png'),
-        'background_id' => $id ? $result['background'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_background', true) : ''),
-        'free_input' => $id ? filter_var($result['free_input'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_free_input', true) : true),
-        'input_background' => $id ? ('#' . $result['input_background']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_amounts', true) : '#ffa500'),
-        'background' => $id ? ('#' . $result['hf_background']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_header_footer_background', true) : '#1d5aa3'),
-        'value1_enabled' => $id ? filter_var($result['value1_enabled'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_1', true) : true),
-        'value1_amount' => $id ? round($result['value1_amount'], 0) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_1', true) :  1000),
-        'value1_currency' => $id ? $result['value1_currency'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_1', true) : 'SATS'),
-        'value1_icon' => $id ? $result['value1_icon'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_1', true) : 'fas fa-coffee'),
-        'value2_enabled' => $id ? filter_var($result['value2_enabled'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_2', true) : true),
-        'value2_amount' => $id ? round($result['value2_amount'], 0) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_2', true) : 2000),
-        'value2_currency' => $id ? $result['value2_currency'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_2', true) : 'SATS'),
-        'value2_icon' => $id ? $result['value2_icon'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_2', true) : 'fas fa-beer'),
-        'value3_enabled' => $id ? filter_var($result['value3_enabled'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_3', true) : true),
-        'value3_amount' => $id ? round($result['value3_amount'], 0) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_3', true) : 3000),
-        'value3_currency' => $id ? $result['value3_currency'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_3', true) : 'SATS'),
-        'value3_icon' => $id ? $result['value3_icon'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_3', true) : 'fas fa-cocktail'),
-        'display_name' => $id ? filter_var($result['collect_name'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_name', true) : false),
-        'mandatory_name' => $id ? filter_var($result['mandatory_name'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_name', true) : false),
-        'display_email' => $id ? filter_var($result['collect_email'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_email', true) : false),
-        'mandatory_email' => $id ? filter_var($result['mandatory_email'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_email', true) : false),
-        'display_phone' => $id ? filter_var($result['collect_phone'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_phone', true) : false),
-        'mandatory_phone' => $id ? filter_var($result['mandatory_phone'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_phone', true) : false),
-        'display_address' => $id ? filter_var($result['collect_address'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_address', true) : false),
-        'mandatory_address' => $id ? filter_var($result['mandatory_address'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_address', true) : false),
-        'display_message' => $id ? filter_var($result['collect_message'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_message', true) : false),
-        'mandatory_message' => $id ? filter_var($result['mandatory_message'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_message', true) : false),
-        'show_icon'    => $id ? filter_var($result['show_icon'], FILTER_VALIDATE_BOOLEAN) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_icons', true) : true),
-        'step1' => $id ? $result['step1'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_progress_bar_step1', true) : 'Pledge'),
-        'active_color' => $id ? ('#' . $result['active_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_progress_bar_step1', true) : '#808080'),
-        'step2' => $id ? $result['step2'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_progress_bar_step2', true) : 'Info'),
-        'inactive_color' => $id ? ('#' . $result['inactive_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_progress_bar_step2', true) : '#D3D3D3')
+        'dimension' => $id ? $result['dimension'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_dimension', true) : '520x600'),
+        'title' => $id ? $result['title_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_title', true) : 'Support my work'),
+        'description' => $id ? $result['description_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_description', true) : ''),
+        'currency' => $id ? $result['currency'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_currency', true) : 'SATS'),
+        'background_color' => $id ? ('#' . $result['background_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_background', true) : '#E6E6E6'),
+        'title_text_color' => $id ? ('#' . $result['title_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_title', true) : '#ffffff'),
+        'tipping_text' => $id ? $result['tipping_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_main', true) : 'Enter Tipping Amount'),
+        'tipping_text_color' => $id ? ('#' . $result['tipping_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_main', true) : '#000000'),
+        'redirect' => $id ? $result['redirect'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_thankyou', true) : false),
+        'description_color' => $id ? ('#' . $result['description_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_description', true) : '#000000'),
+        'button_text' => $id ? $result['button_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_button', true) : 'Tipping now'),
+        'button_text_color' => $id ? ('#' . $result['button_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_text', true) : '#FFFFFF'),
+        'button_color' => $id ? ('#' . $result['button_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button', true) : '#FE642E'),
+        'logo_id' => $id ? $result['logo'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png'),
+        'background_id' => $id ? $result['background'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_background', true) : ''),
+        'free_input' => $id ? filter_var($result['free_input'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_free_input', true) : true),
+        'input_background' => $id ? ('#' . $result['input_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_amounts', true) : '#ffa500'),
+        'background' => $id ? ('#' . $result['hf_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_header_footer_background', true) : '#1d5aa3'),
+        'value1_enabled' => $id ? filter_var($result['value1_enabled'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_1', true) : true),
+        'value1_amount' => $id ? round($result['value1_amount'], 0) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_1', true) :  1000),
+        'value1_currency' => $id ? $result['value1_currency'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_1', true) : 'SATS'),
+        'value1_icon' => $id ? $result['value1_icon'] : (isset($atts['type']) && ($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_1', true) : 'fas fa-coffee'),
+        'value2_enabled' => $id ? filter_var($result['value2_enabled'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_2', true) : true),
+        'value2_amount' => $id ? round($result['value2_amount'], 0) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_2', true) : 2000),
+        'value2_currency' => $id ? $result['value2_currency'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_2', true) : 'SATS'),
+        'value2_icon' => $id ? $result['value2_icon'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_2', true) : 'fas fa-beer'),
+        'value3_enabled' => $id ? filter_var($result['value3_enabled'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_3', true) : true),
+        'value3_amount' => $id ? round($result['value3_amount'], 0) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_3', true) : 3000),
+        'value3_currency' => $id ? $result['value3_currency'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_3', true) : 'SATS'),
+        'value3_icon' => $id ? $result['value3_icon'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_3', true) : 'fas fa-cocktail'),
+        'display_name' => $id ? filter_var($result['collect_name'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_name', true) : false),
+        'mandatory_name' => $id ? filter_var($result['mandatory_name'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_name', true) : false),
+        'display_email' => $id ? filter_var($result['collect_email'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_email', true) : false),
+        'mandatory_email' => $id ? filter_var($result['mandatory_email'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_email', true) : false),
+        'display_phone' => $id ? filter_var($result['collect_phone'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_phone', true) : false),
+        'mandatory_phone' => $id ? filter_var($result['mandatory_phone'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_phone', true) : false),
+        'display_address' => $id ? filter_var($result['collect_address'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_address', true) : false),
+        'mandatory_address' => $id ? filter_var($result['mandatory_address'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_address', true) : false),
+        'display_message' => $id ? filter_var($result['collect_message'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_display_message', true) : false),
+        'mandatory_message' => $id ? filter_var($result['mandatory_message'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_mandatory_message', true) : false),
+        'show_icon'    => $id ? filter_var($result['show_icon'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_icons', true) : true),
+        'step1' => $id ? $result['step1'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_progress_bar_step1', true) : 'Pledge'),
+        'active_color' => $id ? ('#' . $result['active_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_progress_bar_step1', true) : '#808080'),
+        'step2' => $id ? $result['step2'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_progress_bar_step2', true) : 'Info'),
+        'inactive_color' => $id ? ('#' . $result['inactive_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_progress_bar_step2', true) : '#D3D3D3'),
+        'continue_button_text' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_continue_button', true) : 'Continue'),
+        'continue_button_text_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_continue_button_text', true) : '#FFFFFF'),
+        'continue_button_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_continue_button', true) : '#FE642E'),
+        'previous_button_text' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_previous_button', true) : 'Previous'),
+        'previous_button_text_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_previous_color_button_text', true) : '#FFFFFF'),
+        'previous_button_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_previous_button', true) : '#1d5aa3'),
+        'selected_amount_background' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_selected_amount', true) : '#000'),
     ), $atts);
 
     $dimension = explode('x', '520x600');
@@ -550,14 +599,26 @@ function btcpaywall_render_shortcode_page_tipping($atts)
             height: <?php echo esc_html($dimension[1]) . 'px !important'; ?>;
         }
 
-        #btcpw_page_tipping__button,
-        #btcpw_page_button>input.page-next-form,
-        #btcpw_page_button>input.page-previous-form {
+        #btcpw_page_tipping__button {
             color: <?php echo esc_html($atts['button_text_color']); ?>;
+            background-color: <?php echo esc_html($atts['button_color']); ?>;
+        }
+
+        #btcpw_page_button input.page-next-form {
+            color: <?php echo esc_html($atts['continue_button_text_color']); ?>;
+            background-color: <?php echo esc_html($atts['continue_button_color']); ?>;
+
+        }
+
+        #btcpw_page_button input.page-previous-form {
+            color: <?php echo esc_html($atts['previous_button_text_color']); ?>;
+            background-color: <?php echo esc_html($atts['previous_button_color']); ?>;
+
         }
 
         #btcpw_page_button {
             background-color: <?php echo esc_html($atts['background']); ?>;
+
         }
 
         .btcpw_page_header_container h3 {
@@ -575,8 +636,13 @@ function btcpaywall_render_shortcode_page_tipping($atts)
             background-color: <?php echo esc_html($atts['input_background']); ?>;
         }
 
-        .btcpw_page_header_container,
-        #btcpw_page_button>div:nth-child(1)>input {
+        .btcpw_page_amount_value_1.selected,
+        .btcpw_page_amount_value_2.selected,
+        .btcpw_page_amount_value_3.selected {
+            background-color: <?php echo esc_html($atts['selected_amount_background']); ?>;
+        }
+
+        .btcpw_page_header_container {
             background-color: <?php echo esc_html($atts['background']); ?>;
         }
 
@@ -584,10 +650,6 @@ function btcpaywall_render_shortcode_page_tipping($atts)
             background-color: <?php echo esc_html($atts['active_color']); ?>;
         }
 
-        #btcpw_page_tipping__button,
-        #btcpw_page_button>input.page-next-form {
-            background-color: <?php echo esc_html($atts['button_color']); ?>;
-        }
 
         .btcpw_page_bar_container div {
             background-color: <?php echo esc_html($atts['inactive_color']); ?>;
@@ -687,7 +749,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                     <div id="btcpw_page_button">
                         <input type="hidden" id="btcpw_page_redirect_link" name="btcpw_page_redirect_link" value=<?php echo esc_attr($atts['redirect']); ?> />
                         <?php if ($collect_data === true) : ?>
-                            <input type="button" name="next" class="page-next-form" value="<?php echo esc_html__('continue', 'btcpaywall'); ?>" />
+                            <input type="button" name="next" class="page-next-form" value="<?php echo (!empty($atts['continue_button_text']) ? esc_attr__($atts['continue_button_text'], 'btcpaywall') : 'Continue'); ?>" />
                         <?php else : ?>
                             <button type="submit" id="btcpw_page_tipping__button"><?php echo (!empty($atts['button_text']) ? esc_html__($atts['button_text'], 'btcpaywall') : 'Tip'); ?></button>
                         <?php endif; ?>
@@ -712,7 +774,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                         </div>
                         <div id="btcpw_page_button">
                             <div>
-                                <input type="button" name="previous" class="page-previous-form" value="<?php echo esc_html__('< previous', 'btcpaywall'); ?>" />
+                                <input type="button" name="previous" class="page-previous-form" value="<?php echo (!empty($atts['previous_button_text']) ? esc_attr__($atts['previous_button_text'], 'btcpaywall') : 'Previous'); ?>" />
                             </div>
                             <div>
                                 <button type="submit" id="btcpw_page_tipping__button"><?php echo (!empty($atts['button_text']) ? esc_html__($atts['button_text'], 'btcpaywall') : 'Tip'); ?></button>
@@ -741,27 +803,27 @@ add_shortcode('btcpw_tipping_page', 'btcpaywall_render_shortcode_page_tipping');
 function btcpaywall_render_shortcode_box_tipping($atts)
 {
 
-    $id = (!empty($atts['id']) && $atts['type'] !== 'new') ? intval($atts['id']) : null;
+    $id = (!empty($atts['id']) && isset($atts['type']) && 'new' !== $atts['type']) ? intval($atts['id']) : null;
     $form = new BTCPayWall_Tipping_Form($id);
     $result = json_decode(json_encode($form), true);
     $atts = shortcode_atts(array(
-        'dimension' => $id ? $result['dimension'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_dimension', true) : '250x300'),
-        'title' => $id ? $result['title_text'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_title', true) : 'Support my work'),
-        'description' => $id ? $result['description_text'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_description', true) : ''),
-        'currency' => $id ? $result['currency'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_currency', true) : 'SATS'),
-        'background_color' => $id ? ('#' . $result['background_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_background', true) : '#E6E6E6'),
-        'title_text_color' => $id ? ('#' . $result['title_text_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_title', true) : '#ffffff'),
-        'tipping_text' => $id ? $result['tipping_text'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_main', true) : 'Enter Tipping Amount'),
-        'tipping_text_color' => $id ? ('#' . $result['tipping_text_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_main', true) : '#000000'),
-        'redirect' => $id ? $result['redirect'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_thankyou', true) : false),
-        'description_color' => $id ? ('#' . $result['description_text_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_description', true) : '#000000'),
-        'button_text' => $id ? $result['button_text'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_button', true) : 'Tipping now'),
-        'button_text_color' => $id ? ('#' . $result['button_text_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_text', true) : '#FFFFFF'),
-        'button_color' => $id ? ('#' . $result['button_color']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button', true) : '#FE642E'),
-        'logo_id' => $id ? $result['logo'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png'),
-        'background_id' => $id ? $result['background'] : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_background', true) : ''),
-        'input_background' => $id ? ('#' . $result['input_background']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_amounts', true) : '#ffa500'),
-        'background' => $id ? ('#' . $result['hf_background']) : (($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_header_footer_background', true) : '#1d5aa3'),
+        'dimension' => $id ? $result['dimension'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_dimension', true) : '250x300'),
+        'title' => $id ? $result['title_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_title', true) : 'Support my work'),
+        'description' => $id ? $result['description_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_description', true) : ''),
+        'currency' => $id ? $result['currency'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_currency', true) : 'SATS'),
+        'background_color' => $id ? ('#' . $result['background_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_background', true) : '#E6E6E6'),
+        'title_text_color' => $id ? ('#' . $result['title_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_title', true) : '#ffffff'),
+        'tipping_text' => $id ? $result['tipping_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_main', true) : 'Enter Tipping Amount'),
+        'tipping_text_color' => $id ? ('#' . $result['tipping_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_main', true) : '#000000'),
+        'redirect' => $id ? $result['redirect'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_thankyou', true) : false),
+        'description_color' => $id ? ('#' . $result['description_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_description', true) : '#000000'),
+        'button_text' => $id ? $result['button_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_button', true) : 'Tipping now'),
+        'button_text_color' => $id ? ('#' . $result['button_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_text', true) : '#FFFFFF'),
+        'button_color' => $id ? ('#' . $result['button_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button', true) : '#FE642E'),
+        'logo_id' => $id ? $result['logo'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png'),
+        'background_id' => $id ? $result['background'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_background', true) : ''),
+        'input_background' => $id ? ('#' . $result['input_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_amounts', true) : '#ffa500'),
+        'background' => $id ? ('#' . $result['hf_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_header_footer_background', true) : '#1d5aa3'),
         'widget' => 'false',
     ), $atts);
 
