@@ -50,8 +50,7 @@ class Tipping_Banner_Wide extends WP_Widget
                         ?>;
             }
 
-            #btcpw_widget_btcpw_skyscraper_tipping__button_wide,
-            #btcpw_widget_btcpw_skyscraper_button_wide>div>input.btcpw_widget.skyscraper-next-form.wide {
+            #btcpw_widget_btcpw_skyscraper_tipping__button_wide {
                 color: <?php echo esc_html($instance['button_text_color']);
                         ?>;
                 background: <?php echo esc_html($instance['button_color']);
@@ -59,10 +58,23 @@ class Tipping_Banner_Wide extends WP_Widget
             }
 
             .btcpw_widget.btcpw_skyscraper_header_container.wide,
-            #btcpw_widget_btcpw_skyscraper_button_wide,
-            #btcpw_widget_btcpw_skyscraper_button_wide>div:nth-child(1)>input {
+            #btcpw_widget_btcpw_skyscraper_button_wide {
                 background-color: <?php echo esc_html($instance['hf_color']);
                                     ?>;
+            }
+
+            #btcpw_widget_btcpw_skyscraper_button_wide .btcpw_widget.skyscraper-next-form.wide {
+                color: <?php echo esc_html($instance['continue_button_text_color']);
+                        ?>;
+                background: <?php echo esc_html($instance['continue_button_color']);
+                            ?>;
+            }
+
+            #btcpw_widget_btcpw_skyscraper_button_wide .btcpw_widget.skyscraper-previous-form.wide {
+                color: <?php echo esc_html($instance['previous_button_text_color']);
+                        ?>;
+                background: <?php echo esc_html($instance['previous_button_color']);
+                            ?>;
             }
 
             .btcpw_widget.btcpw_skyscraper_header_container.wide h3 {
@@ -162,7 +174,7 @@ class Tipping_Banner_Wide extends WP_Widget
                                 <input type="hidden" id="btcpw_widget_btcpw_skyscraper_redirect_link_wide" name="btcpw_widget_btcpw_skyscraper_redirect_link_wide" value=<?php echo esc_attr($instance['redirect']); ?> />
                                 <?php if ($collect_data === true) : ?>
                                     <div>
-                                        <input type="button" name="next" class="btcpw_widget skyscraper-next-form wide" value="<?php echo esc_html__('Continue', 'btcpaywall'); ?>" />
+                                        <input type="button" name="next" class="btcpw_widget skyscraper-next-form wide" value="<?php echo (!empty($instance['continue_button_text']) ? esc_attr__($instance['continue_button_text'], 'btcpaywall') : 'Continue'); ?>" />
                                     </div>
                                 <?php else : ?>
                                     <div>
@@ -190,7 +202,7 @@ class Tipping_Banner_Wide extends WP_Widget
                                 </div>
                                 <div id="btcpw_widget_btcpw_skyscraper_button_wide">
                                     <div>
-                                        <input type="button" name="previous" class="btcpw_widget_ skyscraper-previous-form wide" value="<?php echo esc_html__('< Previous', 'btcpaywall'); ?>" />
+                                        <input type="button" name="previous" class="btcpw_widget skyscraper-previous-form wide" value="<?php echo (!empty($instance['previous_button_text']) ? esc_attr__($instance['previous_button_text'], 'btcpaywall') : 'Previous'); ?>" />
                                     </div>
                                     <div>
                                         <button type="submit" id="btcpw_widget_btcpw_skyscraper_tipping__button_wide"><?php echo (!empty($instance['button_text']) ? esc_html__($instance['button_text'], 'btcpaywall') : 'Tip'); ?></button>
@@ -274,6 +286,14 @@ class Tipping_Banner_Wide extends WP_Widget
 
         $fixed_background = !empty($instance['fixed_background']) ? $instance['fixed_background'] : esc_html__('#ffa500 ', 'btcpaywall');
         $hf_color = !empty($instance['hf_color']) ? $instance['hf_color'] : esc_html__('#1d5aa3', 'btcpaywall');
+        $continue_button_text = !empty($instance['continue_button_text']) ? $instance['continue_button_text'] : esc_html__('Continue', 'btcpaywall');
+        $continue_button_text_color = !empty($instance['continue_button_text_color']) ? $instance['continue_button_text_color'] : '#FFFFFF';
+
+        $continue_button_color = !empty($instance['continue_button_color']) ? $instance['continue_button_color'] : '#FE642E';
+        $previous_button_text = !empty($instance['previous_button_text']) ? $instance['previous_button_text'] : esc_html__('Previous', 'btcpaywall');
+        $previous_button_text_color = !empty($instance['previous_button_text_color']) ? $instance['previous_button_text_color'] : '#FFFFFF';
+
+        $previous_button_color = !empty($instance['previous_button_color']) ? $instance['previous_button_color'] : '#1d5aa3';
     ?>
         <style>
             .row {
@@ -534,6 +554,58 @@ class Tipping_Banner_Wide extends WP_Widget
 
                 </div>
             </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="<?php echo esc_attr($this->get_field_id('continue_button_text')); ?>"><?php echo esc_html__('Continue button text', 'btcpaywall'); ?></label>
+                </div>
+                <div class="col-80">
+                    <textarea id="<?php echo esc_attr($this->get_field_id('continue_button_text')); ?>" name="<?php echo esc_attr($this->get_field_name('continue_button_text')); ?>" type="text"><?php echo esc_html($continue_button_text); ?></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="<?php echo esc_attr($this->get_field_id('continue_button_text_color')); ?>"><?php echo esc_html__('Continue button text color', 'btcpaywall'); ?></label>
+                </div>
+                <div class="col-80">
+                    <input id="<?php echo esc_attr($this->get_field_id('continue_button_text_color')); ?>" class="widget-tipping-basic-continue_button_text_color_wide" name="<?php echo esc_attr($this->get_field_name('continue_button_text_color')); ?>" type="text" value="<?php echo esc_attr($continue_button_text_color); ?>" />
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-20">
+                    <label for="<?php echo esc_attr($this->get_field_id('continue_button_color')); ?>"><?php echo esc_html__('Continue button color', 'btcpaywall'); ?></label>
+                </div>
+                <div class="col-80">
+                    <input id="<?php echo esc_attr($this->get_field_id('continue_button_color')); ?>" class="widget-tipping-basic-continue_button_color_wide" name="<?php echo esc_attr($this->get_field_name('continue_button_color')); ?>" type="text" value="<?php echo esc_attr($continue_button_color); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="<?php echo esc_attr($this->get_field_id('previous_button_text')); ?>"><?php echo esc_html__('Previous button text', 'btcpaywall'); ?></label>
+                </div>
+                <div class="col-80">
+                    <textarea id="<?php echo esc_attr($this->get_field_id('previous_button_text')); ?>" name="<?php echo esc_attr($this->get_field_name('previous_button_text')); ?>" type="text"><?php echo esc_html($previous_button_text); ?></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="<?php echo esc_attr($this->get_field_id('previous_button_text_color')); ?>"><?php echo esc_html__('Previous button text color', 'btcpaywall'); ?></label>
+                </div>
+                <div class="col-80">
+                    <input id="<?php echo esc_attr($this->get_field_id('previous_button_text_color')); ?>" class="widget-tipping-basic-previous_button_text_color_wide" name="<?php echo esc_attr($this->get_field_name('previous_button_text_color')); ?>" type="text" value="<?php echo esc_attr($previous_button_text_color); ?>" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="<?php echo esc_attr($this->get_field_id('previous_button_color')); ?>"><?php echo esc_html__('Previous button color', 'btcpaywall'); ?></label>
+                </div>
+                <div class="col-80">
+                    <input id="<?php echo esc_attr($this->get_field_id('previous_button_color')); ?>" class="widget-tipping-basic-previous_button_color_wide" name="<?php echo esc_attr($this->get_field_name('previous_button_color')); ?>" type="text" value="<?php echo esc_attr($previous_button_color); ?>" />
+                </div>
+            </div>
             <h4><?php echo esc_html__('Collect further information', 'btcpaywall'); ?></h4>
             <div class="row">
                 <div class="col-20">
@@ -680,6 +752,18 @@ class Tipping_Banner_Wide extends WP_Widget
         $instance['free_input'] = !empty($new_instance['free_input']) ? $new_instance['free_input'] : 'false';
         $instance['fixed_background'] = !empty($new_instance['fixed_background']) ? $new_instance['fixed_background'] : '';
         $instance['hf_color'] = !empty($new_instance['hf_color']) ? wp_strip_all_tags($new_instance['hf_color']) : '';
+        $instance['continue_button_text'] = !empty($new_instance['continue_button_text']) ? wp_strip_all_tags($new_instance['continue_button_text']) : '';
+        $instance['continue_button_text_color'] = !empty($new_instance['continue_button_text_color']) ? wp_strip_all_tags($new_instance['continue_button_text_color']) : '';
+
+        $instance['continue_button_color'] = !empty($new_instance['continue_button_color']) ? wp_strip_all_tags($new_instance['continue_button_color']) : '';
+
+        $instance['previous_button_text'] = !empty($new_instance['previous_button_text']) ? wp_strip_all_tags($new_instance['previous_button_text']) : '';
+        $instance['previous_button_text_color'] = !empty($new_instance['previous_button_text_color']) ? wp_strip_all_tags($new_instance['previous_button_text_color']) : '';
+
+        $instance['previous_button_color'] = !empty($new_instance['previous_button_color']) ? wp_strip_all_tags($new_instance['previous_button_color']) : '';
+
+
+
         return $instance;
     }
 }
