@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Digital Download
  *
@@ -197,6 +198,14 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
             ]
         );
         $this->add_control(
+            'selected_amount_background',
+            [
+                'label' => 'Background color for selected amount',
+                'type'  => \Elementor\Controls_Manager::COLOR,
+                'default' => '#000',
+            ]
+        );
+        $this->add_control(
             'show_icon',
             [
                 'label' => 'Show icons',
@@ -348,6 +357,54 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
             ]
         );
         $this->add_control(
+            'continue_button_text',
+            [
+                'label' => 'Continue button text',
+                'type'  => \Elementor\Controls_Manager::TEXT,
+                'default' => 'Continue',
+            ]
+        );
+        $this->add_control(
+            'continue_button_text_color',
+            [
+                'label' => 'Continue button text color',
+                'type'  => \Elementor\Controls_Manager::COLOR,
+                'default' => '#FFFFFF',
+            ]
+        );
+        $this->add_control(
+            'continue_button_color',
+            [
+                'label' => 'Continue button color',
+                'type'  => \Elementor\Controls_Manager::COLOR,
+                'default' => '#FE642E',
+            ]
+        );
+        $this->add_control(
+            'previous_button_text',
+            [
+                'label' => 'Previous button text',
+                'type'  => \Elementor\Controls_Manager::TEXT,
+                'default' => 'Previous',
+            ]
+        );
+        $this->add_control(
+            'previous_button_text_color',
+            [
+                'label' => 'Previous button text color',
+                'type'  => \Elementor\Controls_Manager::COLOR,
+                'default' => '#FFFFFF',
+            ]
+        );
+        $this->add_control(
+            'previous_button_color',
+            [
+                'label' => 'Previous button color',
+                'type'  => \Elementor\Controls_Manager::COLOR,
+                'default' => '#1d5aa3',
+            ]
+        );
+        $this->add_control(
             'display_name',
             [
                 'label' => 'Display name',
@@ -470,6 +527,13 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
         button_text = '{$settings['button_text']}'
         button_text_color = '{$settings['button_text_color']}'
         button_color = '{$settings['button_color']}'
+        continue_button_text = '{$settings['continue_button_text']}'
+        continue_button_text_color = '{$settings['continue_button_text_color']}'
+        continue_button_color = '{$settings['continue_button_color']}'
+        previous_button_text = '{$settings['previous_button_text']}'
+        previous_button_text_color = '{$settings['previous_button_text_color']}'
+        previous_button_color = '{$settings['previous_button_color']}'
+        selected_amount_background = '{$settings['selected_amount_background']}'
         logo_id = '{$settings['logo_id']['url']}'
         background_id = '{$settings['background_id']['url']}'
         background = '{$settings['background']}'
