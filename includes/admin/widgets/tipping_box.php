@@ -225,7 +225,7 @@ work', 'btcpaywall');
 
             .tipping_box label {
                 display: inline-block;
-                width: 80px;
+                width: 70px;
             }
         </style>
         <div class="tipping_box">

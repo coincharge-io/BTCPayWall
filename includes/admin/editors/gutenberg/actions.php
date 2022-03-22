@@ -476,6 +476,34 @@ function btcpaywall_load_gutenberg()
                     'type' => 'boolean',
                     'default' => true
                 ),
+                'continue_button_text' => array(
+                    'type' => 'string',
+                    'default' => 'Continue'
+                ),
+                'continue_button_text_color' =>  array(
+                    'type' => 'string',
+                    'default' => '#fff'
+                ),
+                'continue_button_color' => array(
+                    'type' => 'string',
+                    'default' => '#FE642E'
+                ),
+                'previous_button_text' => array(
+                    'type' => 'string',
+                    'default' => 'Previous'
+                ),
+                'previous_button_text_color' => array(
+                    'type' => 'string',
+                    'default' => '#FFFFFF'
+                ),
+                'previous_button_color' => array(
+                    'type' => 'string',
+                    'default' => '#1d5aa3'
+                ),
+                'selected_amount_background' => array(
+                    'type' => 'string',
+                    'default' => '#000'
+                ),
             )
         ]
     );
@@ -653,6 +681,34 @@ function btcpaywall_load_gutenberg()
                 'free_input' => array(
                     'type' => 'boolean',
                     'default' => true
+                ),
+                'continue_button_text' => array(
+                    'type' => 'string',
+                    'default' => 'Continue'
+                ),
+                'continue_button_text_color' =>  array(
+                    'type' => 'string',
+                    'default' => '#fff'
+                ),
+                'continue_button_color' => array(
+                    'type' => 'string',
+                    'default' => '#FE642E'
+                ),
+                'previous_button_text' => array(
+                    'type' => 'string',
+                    'default' => 'Previous'
+                ),
+                'previous_button_text_color' => array(
+                    'type' => 'string',
+                    'default' => '#FFFFFF'
+                ),
+                'previous_button_color' => array(
+                    'type' => 'string',
+                    'default' => '#1d5aa3'
+                ),
+                'selected_amount_background' => array(
+                    'type' => 'string',
+                    'default' => '#000'
                 ),
             )
         ]
@@ -847,6 +903,34 @@ function btcpaywall_load_gutenberg()
                 'inactive_color' => array(
                     'type' => 'string',
                     'default' => '#D3D3D3'
+                ),
+                'continue_button_text' => array(
+                    'type' => 'string',
+                    'default' => 'Continue'
+                ),
+                'continue_button_text_color' =>  array(
+                    'type' => 'string',
+                    'default' => 'Continue'
+                ), '#FFFFFF',
+                'continue_button_text_color' =>  array(
+                    'type' => 'string',
+                    'default' => '#fff'
+                ),
+                'continue_button_color' => array(
+                    'type' => 'string',
+                    'default' => '#FE642E'
+                ),
+                'previous_button_text_color' => array(
+                    'type' => 'string',
+                    'default' => '#FFFFFF'
+                ),
+                'previous_button_color' => array(
+                    'type' => 'string',
+                    'default' => '#1d5aa3'
+                ),
+                'selected_amount_background' => array(
+                    'type' => 'string',
+                    'default' => '#000'
                 ),
             )
         ]

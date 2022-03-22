@@ -395,7 +395,7 @@ class Tipping_Banner_High extends WP_Widget
 
             .tipping_banner.high label {
                 display: inline-block;
-                width: 80px;
+                width: 70px;
             }
         </style>
         <div class="tipping_banner high">

@@ -352,7 +352,7 @@ class Tipping_Banner_Wide extends WP_Widget
 
             .tipping_banner.wide label {
                 display: inline-block;
-                width: 80px;
+                width: 70px;
             }
         </style>
         <div class="tipping_banner wide">
