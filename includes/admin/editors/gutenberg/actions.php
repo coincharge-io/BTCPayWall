@@ -910,15 +910,15 @@ function btcpaywall_load_gutenberg()
                 ),
                 'continue_button_text_color' =>  array(
                     'type' => 'string',
-                    'default' => 'Continue'
-                ), '#FFFFFF',
-                'continue_button_text_color' =>  array(
-                    'type' => 'string',
                     'default' => '#fff'
                 ),
                 'continue_button_color' => array(
                     'type' => 'string',
                     'default' => '#FE642E'
+                ),
+                'previous_button_text' => array(
+                    'type' => 'string',
+                    'default' => 'Previous'
                 ),
                 'previous_button_text_color' => array(
                     'type' => 'string',

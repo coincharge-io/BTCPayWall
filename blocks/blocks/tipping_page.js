@@ -905,10 +905,58 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
                 ]}
               />{' '}{' '}
             </div>{' '}
-          </PanelBody>   <PanelBody
-            title="Select background image"
-            initialOpen={true}
-          >
+          </PanelBody>
+          <div className="btcpw_gutenberg_sel_num_control">
+            {' '}<SelectControl
+              label="Currency"
+              value={currency}
+              onChange={selectedItem => {
+                setAttributes ({
+                  currency: selectedItem,
+                });
+              }}
+              options={[
+                {
+                  value: 'SATS',
+                  label: 'SATS',
+                },
+                {
+                  value: 'BTC',
+                  label: 'BTC',
+                },
+                {
+                  value: 'EUR',
+                  label: 'EUR',
+                },
+                {
+                  value: 'USD',
+                  label: 'USD',
+                },
+              ]}
+            />{' '}{' '}
+          </div>
+          <div>
+            <CheckboxControl
+              label="Display free input"
+              help="Do you want to display free input field?"
+              checked={free_input}
+              onChange={newvalue => {
+                setAttributes ({
+                  free_input: newvalue,
+                });
+              }}
+            />
+          </div>
+          <p> Link to Thank You Page </p> <URLInputButton
+            label="Link to Thank You Page"
+            url={redirect}
+            onChange={value =>
+              setAttributes ({
+                redirect: value,
+              })}
+          />
+
+          <PanelBody title="Global" initialOpen={true}>
             <div className="editor-post-featured-image">
               <MediaUploadCheck>
                 <MediaUpload
@@ -978,7 +1026,6 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
                   </Button>{' '}{' '}
                 </MediaUploadCheck>}{' '}{' '}
             </div>{' '}{' '}
-          </PanelBody> <PanelBody>
             {' '}<p> Background color </p> <ColorPicker
               color={background_color}
               onChangeComplete={value =>
@@ -995,7 +1042,8 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
                 })}
               disableAlpha
             />
-          </PanelBody> <PanelBody title="Select logo" initialOpen={true}>
+          </PanelBody>
+          <PanelBody title="Header" initialOpen={true}>
             {' '}<div className="editor-post-featured-image">
               <MediaUploadCheck>
                 <MediaUpload
@@ -1057,7 +1105,6 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
                   </Button>{' '}{' '}
                 </MediaUploadCheck>}{' '}{' '}
             </div>{' '}{' '}
-          </PanelBody> <PanelBody title="Description">
             {' '}<TextareaControl
               label="Title"
               help="Enter title"
@@ -1077,23 +1124,49 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
             />
 
             <TextareaControl
-              label="Description"
-              help="Enter description"
+              label="Step1"
+              help="Enter text for first tab in progress bar"
               onChange={content => {
                 setAttributes ({
-                  description: content,
+                  step1: content,
                 });
               }}
-              value={description}
-            /> <p> Description text color </p> <ColorPicker
-              color={description_color}
+              value={step1}
+            /> <p>
+              {' '}{' '}
+              Background color
+              for active tab in progress bar {' '}{' '}
+            </p> <ColorPicker
+              color={active_color}
               onChangeComplete={value =>
                 setAttributes ({
-                  description_color: value.hex,
+                  active_color: value.hex,
                 })}
               disableAlpha
             />
-
+            <TextareaControl
+              label="Step2"
+              help="Enter text for second step in progress bar"
+              onChange={content => {
+                setAttributes ({
+                  step2: content,
+                });
+              }}
+              value={step2}
+            /> <p>
+              {' '}{' '}
+              Background color
+              for inactive tab in progress bar {' '}{' '}
+            </p> <ColorPicker
+              color={inactive_color}
+              onChangeComplete={value =>
+                setAttributes ({
+                  inactive_color: value.hex,
+                })}
+              disableAlpha
+            />
+          </PanelBody>
+          <PanelBody title="Main" initialOpen={true}>
             <TextareaControl
               label="Tipping text"
               help="Enter tipping text"
@@ -1110,51 +1183,8 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
                 })}
               disableAlpha
             />
-            <p> Link to Thank You Page </p> <URLInputButton
-              label="Link to Thank You Page"
-              url={redirect}
-              onChange={value =>
-                setAttributes ({
-                  redirect: value,
-                })}
-            /> <CheckboxControl
-              label="Display free input"
-              help="Do you want to display free input field?"
-              checked={free_input}
-              onChange={newvalue => {
-                setAttributes ({
-                  free_input: newvalue,
-                });
-              }}
-            /> <div className="btcpw_gutenberg_sel_num_control">
-              {' '}<SelectControl
-                label="Currency"
-                value={currency}
-                onChange={selectedItem => {
-                  setAttributes ({
-                    currency: selectedItem,
-                  });
-                }}
-                options={[
-                  {
-                    value: 'SATS',
-                    label: 'SATS',
-                  },
-                  {
-                    value: 'BTC',
-                    label: 'BTC',
-                  },
-                  {
-                    value: 'EUR',
-                    label: 'EUR',
-                  },
-                  {
-                    value: 'USD',
-                    label: 'USD',
-                  },
-                ]}
-              />{' '}{' '}
-            </div> <p>
+
+            <p>
               {' '}{' '}
               Background color
               for inputs {' '}{' '}
@@ -1178,6 +1208,86 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
                 })}
               disableAlpha
             />
+          </PanelBody>
+          <PanelBody title="Footer">
+            <TextareaControl
+              label="Button"
+              help="Enter button text"
+              onChange={content => {
+                setAttributes ({
+                  button_text: content,
+                });
+              }}
+              value={button_text}
+            /> <p> Button color </p> <ColorPicker
+              color={button_color}
+              onChangeComplete={value =>
+                setAttributes ({
+                  button_color: value.hex,
+                })}
+              disableAlpha
+            />
+            <p> Button text color </p> <ColorPicker
+              color={button_text_color}
+              onChangeComplete={value =>
+                setAttributes ({
+                  button_text_color: value.hex,
+                })}
+              disableAlpha
+            />
+            <TextareaControl
+              label="Continue button"
+              help="Enter continue button text"
+              onChange={content => {
+                setAttributes ({
+                  continue_button_text: content,
+                });
+              }}
+              value={continue_button_text}
+            /> <p> Continue button color </p> <ColorPicker
+              color={continue_button_color}
+              onChangeComplete={value =>
+                setAttributes ({
+                  continue_button_color: value.hex,
+                })}
+              disableAlpha
+            />
+            <p> Continue button text color </p> <ColorPicker
+              color={button_text_color}
+              onChangeComplete={value =>
+                setAttributes ({
+                  continue_button_text_color: value.hex,
+                })}
+              disableAlpha
+            />
+            <TextareaControl
+              label="Previous button"
+              help="Enter button text"
+              onChange={content => {
+                setAttributes ({
+                  previous_button_text: content,
+                });
+              }}
+              value={previous_button_text}
+            /> <p> Previous button color </p> <ColorPicker
+              color={previous_button_color}
+              onChangeComplete={value =>
+                setAttributes ({
+                  previous_button_color: value.hex,
+                })}
+              disableAlpha
+            />
+            <p> Previous button text color </p> <ColorPicker
+              color={previous_button_text_color}
+              onChangeComplete={value =>
+                setAttributes ({
+                  previous_button_text_color: value.hex,
+                })}
+              disableAlpha
+            />
+
+          </PanelBody>
+          <PanelBody title="Fixed amount" initialOpen={true}>
             <CheckboxControl
               label="Display icon"
               help="Do you want to display icons?"
@@ -1188,7 +1298,7 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
                 });
               }}
             />{' '}{' '}
-          </PanelBody> <PanelBody title="Amount">
+
             {' '}<CheckboxControl
               label="Display value 1"
               help="Do you want to display value 1?"
@@ -1357,127 +1467,7 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
             />{' '}{' '}
           </PanelBody>
 
-          <PanelBody title="Button">
-            <TextareaControl
-              label="Button"
-              help="Enter button text"
-              onChange={content => {
-                setAttributes ({
-                  button_text: content,
-                });
-              }}
-              value={button_text}
-            /> <p> Button color </p> <ColorPicker
-              color={button_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  button_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <p> Button text color </p> <ColorPicker
-              color={button_text_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  button_text_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <TextareaControl
-              label="Continue button"
-              help="Enter continue button text"
-              onChange={content => {
-                setAttributes ({
-                  continue_button_text: content,
-                });
-              }}
-              value={continue_button_text}
-            /> <p> Continue button color </p> <ColorPicker
-              color={continue_button_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  continue_button_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <p> Continue button text color </p> <ColorPicker
-              color={button_text_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  continue_button_text_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <TextareaControl
-              label="Previous button"
-              help="Enter button text"
-              onChange={content => {
-                setAttributes ({
-                  previous_button_text: content,
-                });
-              }}
-              value={previous_button_text}
-            /> <p> Previous button color </p> <ColorPicker
-              color={previous_button_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  previous_button_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <p> Previous button text color </p> <ColorPicker
-              color={previous_button_text_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  previous_button_text_color: value.hex,
-                })}
-              disableAlpha
-            />
-
-          </PanelBody> <PanelBody title="Tabs">
-            {' '}<TextareaControl
-              label="Step1"
-              help="Enter text for first tab in progress bar"
-              onChange={content => {
-                setAttributes ({
-                  step1: content,
-                });
-              }}
-              value={step1}
-            /> <p>
-              {' '}{' '}
-              Background color
-              for active tab in progress bar {' '}{' '}
-            </p> <ColorPicker
-              color={active_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  active_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <TextareaControl
-              label="Step2"
-              help="Enter text for second step in progress bar"
-              onChange={content => {
-                setAttributes ({
-                  step2: content,
-                });
-              }}
-              value={step2}
-            /> <p>
-              {' '}{' '}
-              Background color
-              for inactive tab in progress bar {' '}{' '}
-            </p> <ColorPicker
-              color={inactive_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  inactive_color: value.hex,
-                })}
-              disableAlpha
-            />
-          </PanelBody> <PanelBody title="User information">
+          <PanelBody title="Donor information" initialOpen={true}>
             {' '}<PanelRow>
               <CheckboxControl
                 label="Full name"

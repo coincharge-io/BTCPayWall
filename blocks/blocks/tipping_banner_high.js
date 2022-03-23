@@ -698,7 +698,37 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               />
             </div>
           </PanelBody>
-          <PanelBody title="Select background image" initialOpen={true}>
+
+          <div className="btcpw_gutenberg_sel_num_control">
+            <SelectControl
+              label="Currency"
+              value={currency}
+              onChange={selectedItem => {
+                setAttributes ({currency: selectedItem});
+              }}
+              options={[
+                {value: 'SATS', label: 'SATS'},
+                {value: 'BTC', label: 'BTC'},
+                {value: 'EUR', label: 'EUR'},
+                {value: 'USD', label: 'USD'},
+              ]}
+            />
+          </div>
+          <div>
+            <CheckboxControl
+              label="Display free input"
+              help="Do you want to display free input field?"
+              checked={free_input}
+              onChange={newvalue => setAttributes ({free_input: newvalue})}
+            />
+          </div>
+          <p>Link to Thank You Page</p>
+          <URLInputButton
+            label="Redirect link"
+            url={redirect}
+            onChange={value => setAttributes ({redirect: value})}
+          />
+          <PanelBody title="Global" initialOpen={true}>
             <div className="editor-post-featured-image">
               <MediaUploadCheck>
                 <MediaUpload
@@ -759,8 +789,6 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                   </Button>
                 </MediaUploadCheck>}
             </div>
-          </PanelBody>
-          <PanelBody>
             <p>Background color</p>
             <ColorPicker
               color={background_color}
@@ -776,7 +804,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               disableAlpha
             />
           </PanelBody>
-          <PanelBody title="Select logo" initialOpen={true}>
+          <PanelBody title="Header" initialOpen={true}>
             <div className="editor-post-featured-image">
               <MediaUploadCheck>
                 <MediaUpload
@@ -837,8 +865,6 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                   </Button>
                 </MediaUploadCheck>}
             </div>
-          </PanelBody>
-          <PanelBody title="Description">
             <TextareaControl
               label="Title"
               help="Enter title"
@@ -870,7 +896,8 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 setAttributes ({description_color: value.hex})}
               disableAlpha
             />
-
+          </PanelBody>
+          <PanelBody title="Main" initialOpen={true}>
             <TextareaControl
               label="Tipping text"
               help="Enter tipping text"
@@ -886,35 +913,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 setAttributes ({tipping_text_color: value})}
               disableAlpha
             />
-            <p>Link to Thank You Page</p>
-            <URLInputButton
-              label="Redirect link"
-              url={redirect}
-              onChange={value => setAttributes ({redirect: value})}
-            />
 
-            <CheckboxControl
-              label="Display free input"
-              help="Do you want to display free input field?"
-              checked={free_input}
-              onChange={newvalue => setAttributes ({free_input: newvalue})}
-            />
-
-            <div className="btcpw_gutenberg_sel_num_control">
-              <SelectControl
-                label="Currency"
-                value={currency}
-                onChange={selectedItem => {
-                  setAttributes ({currency: selectedItem});
-                }}
-                options={[
-                  {value: 'SATS', label: 'SATS'},
-                  {value: 'BTC', label: 'BTC'},
-                  {value: 'EUR', label: 'EUR'},
-                  {value: 'USD', label: 'USD'},
-                ]}
-              />
-            </div>
             <p>Background color for inputs</p>
             <ColorPicker
               color={input_background}
@@ -934,14 +933,89 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 })}
               disableAlpha
             />
+          </PanelBody>
+          <PanelBody title="Footer">
+            <TextareaControl
+              label="Button"
+              help="Enter button text"
+              onChange={content => {
+                setAttributes ({button_text: content});
+              }}
+              value={button_text}
+            />
+            <p>Button color</p>
+            <ColorPicker
+              color={button_color}
+              onChangeComplete={value =>
+                setAttributes ({button_color: value.hex})}
+              disableAlpha
+            />
+            <p>Button text color</p>
+            <ColorPicker
+              color={button_text_color}
+              onChangeComplete={value =>
+                setAttributes ({button_text_color: value.hex})}
+              disableAlpha
+            />
+            <TextareaControl
+              label="Continue button"
+              help="Enter continue button text"
+              onChange={content => {
+                setAttributes ({
+                  continue_button_text: content,
+                });
+              }}
+              value={continue_button_text}
+            /> <p> Continue button color </p> <ColorPicker
+              color={continue_button_color}
+              onChangeComplete={value =>
+                setAttributes ({
+                  continue_button_color: value.hex,
+                })}
+              disableAlpha
+            />
+            <p> Continue button text color </p> <ColorPicker
+              color={button_text_color}
+              onChangeComplete={value =>
+                setAttributes ({
+                  continue_button_text_color: value.hex,
+                })}
+              disableAlpha
+            />
+            <TextareaControl
+              label="Previous button"
+              help="Enter button text"
+              onChange={content => {
+                setAttributes ({
+                  previous_button_text: content,
+                });
+              }}
+              value={previous_button_text}
+            /> <p> Previous button color </p> <ColorPicker
+              color={previous_button_color}
+              onChangeComplete={value =>
+                setAttributes ({
+                  previous_button_color: value.hex,
+                })}
+              disableAlpha
+            />
+            <p> Previous button text color </p> <ColorPicker
+              color={previous_button_text_color}
+              onChangeComplete={value =>
+                setAttributes ({
+                  previous_button_text_color: value.hex,
+                })}
+              disableAlpha
+            />
+          </PanelBody>
+
+          <PanelBody title="Fixed amount">
             <CheckboxControl
               label="Display icons"
               help="Do you want to display icons?"
               checked={show_icon}
               onChange={newvalue => setAttributes ({show_icon: newvalue})}
             />
-          </PanelBody>
-          <PanelBody title="Amount">
             <CheckboxControl
               label="Display value 1"
               help="Do you want to display value 1?"
@@ -1055,81 +1129,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             />
           </PanelBody>
 
-          <PanelBody title="Button">
-            <TextareaControl
-              label="Button"
-              help="Enter button text"
-              onChange={content => {
-                setAttributes ({button_text: content});
-              }}
-              value={button_text}
-            />
-            <p>Button color</p>
-            <ColorPicker
-              color={button_color}
-              onChangeComplete={value =>
-                setAttributes ({button_color: value.hex})}
-              disableAlpha
-            />
-            <p>Button text color</p>
-            <ColorPicker
-              color={button_text_color}
-              onChangeComplete={value =>
-                setAttributes ({button_text_color: value.hex})}
-              disableAlpha
-            />
-            <TextareaControl
-              label="Continue button"
-              help="Enter continue button text"
-              onChange={content => {
-                setAttributes ({
-                  continue_button_text: content,
-                });
-              }}
-              value={continue_button_text}
-            /> <p> Continue button color </p> <ColorPicker
-              color={continue_button_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  continue_button_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <p> Continue button text color </p> <ColorPicker
-              color={button_text_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  continue_button_text_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <TextareaControl
-              label="Previous button"
-              help="Enter button text"
-              onChange={content => {
-                setAttributes ({
-                  previous_button_text: content,
-                });
-              }}
-              value={previous_button_text}
-            /> <p> Previous button color </p> <ColorPicker
-              color={previous_button_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  previous_button_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <p> Previous button text color </p> <ColorPicker
-              color={previous_button_text_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  previous_button_text_color: value.hex,
-                })}
-              disableAlpha
-            />
-          </PanelBody>
-          <PanelBody title="User information">
+          <PanelBody title="Donor information">
             <PanelRow>
               <CheckboxControl
                 label="Full name"
