@@ -55,9 +55,9 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
     {
 
         $this->start_controls_section(
-            'content_section',
+            'dimension',
             [
-                'label' => __('Content', 'btcpaywall'),
+                'label' => __('Dimension', 'btcpaywall'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -71,6 +71,54 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
                 'options' => [
                     '200x710' => '200x710',
                 ],
+            ]
+        );
+        $this->end_controls_section();
+        $this->start_controls_section(
+            'settings',
+            [
+                'label' => __('Settings', 'btcpaywall'),
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'currency',
+            [
+                'label' => 'Currency',
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'SATS' => 'SATS',
+                    'BTC' => 'BTC',
+                    'EUR' => 'EUR',
+                    'USD' => 'USD',
+                ],
+                'default' => 'SATS',
+            ]
+        );
+        $this->add_control(
+            'free_input',
+            [
+                'label' => 'Free input',
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => 'Show free input field',
+                'default' => 'yes',
+            ]
+        );
+        $this->add_control(
+            'redirect',
+            [
+                'label' => 'Link to Thank you page',
+                'type'  => \Elementor\Controls_Manager::TEXT,
+                'default' => ''
+            ]
+        );
+        $this->end_controls_section();
+        $this->start_controls_section(
+            'global',
+            [
+                'label' => __('Global', 'btcpaywall'),
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
@@ -97,6 +145,14 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
                 'label' => 'Header and footer background color',
                 'type'  => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1d5aa3',
+            ]
+        );
+        $this->end_controls_section();
+        $this->start_controls_section(
+            'header',
+            [
+                'label' => __('Header', 'btcpaywall'),
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
@@ -141,6 +197,14 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
                 'default' => '#000000',
             ]
         );
+        $this->end_controls_section();
+        $this->start_controls_section(
+            'main',
+            [
+                'label' => __('Main', 'btcpaywall'),
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
         $this->add_control(
             'tipping_text',
             [
@@ -158,37 +222,7 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
                 'default' => '#000000',
             ]
         );
-        $this->add_control(
-            'redirect',
-            [
-                'label' => 'Link to Thank you page',
-                'type'  => \Elementor\Controls_Manager::TEXT,
-                'default' => ''
-            ]
-        );
-        $this->add_control(
-            'free_input',
-            [
-                'label' => 'Free input',
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => 'Show free input field',
-                'default' => 'yes',
-            ]
-        );
-        $this->add_control(
-            'currency',
-            [
-                'label' => 'Currency',
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'options' => [
-                    'SATS' => 'SATS',
-                    'BTC' => 'BTC',
-                    'EUR' => 'EUR',
-                    'USD' => 'USD',
-                ],
-                'default' => 'SATS',
-            ]
-        );
+
         $this->add_control(
             'input_background',
             [
@@ -203,6 +237,94 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
                 'label' => 'Background color for selected amount',
                 'type'  => \Elementor\Controls_Manager::COLOR,
                 'default' => '#000',
+            ]
+        );
+        $this->end_controls_section();
+        $this->start_controls_section(
+            'footer',
+            [
+                'label' => __('Footer', 'btcpaywall'),
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        $this->add_control(
+            'button_text',
+            [
+                'label' => 'Button text',
+                'type'  => \Elementor\Controls_Manager::TEXT,
+                'default' => 'Tipping now',
+            ]
+        );
+        $this->add_control(
+            'button_text_color',
+            [
+                'label' => 'Button text color',
+                'type'  => \Elementor\Controls_Manager::COLOR,
+                'default' => '#FFFFFF',
+            ]
+        );
+        $this->add_control(
+            'button_color',
+            [
+                'label' => 'Button color',
+                'type'  => \Elementor\Controls_Manager::COLOR,
+                'default' => '#FE642E',
+            ]
+        );
+        $this->add_control(
+            'continue_button_text',
+            [
+                'label' => 'Continue button text',
+                'type'  => \Elementor\Controls_Manager::TEXT,
+                'default' => 'Continue',
+            ]
+        );
+        $this->add_control(
+            'continue_button_text_color',
+            [
+                'label' => 'Continue button text color',
+                'type'  => \Elementor\Controls_Manager::COLOR,
+                'default' => '#FFFFFF',
+            ]
+        );
+        $this->add_control(
+            'continue_button_color',
+            [
+                'label' => 'Continue button color',
+                'type'  => \Elementor\Controls_Manager::COLOR,
+                'default' => '#FE642E',
+            ]
+        );
+        $this->add_control(
+            'previous_button_text',
+            [
+                'label' => 'Previous button text',
+                'type'  => \Elementor\Controls_Manager::TEXT,
+                'default' => 'Previous',
+            ]
+        );
+        $this->add_control(
+            'previous_button_text_color',
+            [
+                'label' => 'Previous button text color',
+                'type'  => \Elementor\Controls_Manager::COLOR,
+                'default' => '#FFFFFF',
+            ]
+        );
+        $this->add_control(
+            'previous_button_color',
+            [
+                'label' => 'Previous button color',
+                'type'  => \Elementor\Controls_Manager::COLOR,
+                'default' => '#1d5aa3',
+            ]
+        );
+        $this->end_controls_section();
+        $this->start_controls_section(
+            'fixed_amount',
+            [
+                'label' => __('Fixed amount', 'btcpaywall'),
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
@@ -332,76 +454,13 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
                 'default' => 'fas fa-cocktail'
             ]
         );
-        $this->add_control(
-            'button_text',
+
+        $this->end_controls_section();
+        $this->start_controls_section(
+            'donor_information',
             [
-                'label' => 'Button text',
-                'type'  => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Tipping now',
-            ]
-        );
-        $this->add_control(
-            'button_text_color',
-            [
-                'label' => 'Button text color',
-                'type'  => \Elementor\Controls_Manager::COLOR,
-                'default' => '#FFFFFF',
-            ]
-        );
-        $this->add_control(
-            'button_color',
-            [
-                'label' => 'Button color',
-                'type'  => \Elementor\Controls_Manager::COLOR,
-                'default' => '#FE642E',
-            ]
-        );
-        $this->add_control(
-            'continue_button_text',
-            [
-                'label' => 'Continue button text',
-                'type'  => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Continue',
-            ]
-        );
-        $this->add_control(
-            'continue_button_text_color',
-            [
-                'label' => 'Continue button text color',
-                'type'  => \Elementor\Controls_Manager::COLOR,
-                'default' => '#FFFFFF',
-            ]
-        );
-        $this->add_control(
-            'continue_button_color',
-            [
-                'label' => 'Continue button color',
-                'type'  => \Elementor\Controls_Manager::COLOR,
-                'default' => '#FE642E',
-            ]
-        );
-        $this->add_control(
-            'previous_button_text',
-            [
-                'label' => 'Previous button text',
-                'type'  => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Previous',
-            ]
-        );
-        $this->add_control(
-            'previous_button_text_color',
-            [
-                'label' => 'Previous button text color',
-                'type'  => \Elementor\Controls_Manager::COLOR,
-                'default' => '#FFFFFF',
-            ]
-        );
-        $this->add_control(
-            'previous_button_color',
-            [
-                'label' => 'Previous button color',
-                'type'  => \Elementor\Controls_Manager::COLOR,
-                'default' => '#1d5aa3',
+                'label' => __('Donor information', 'btcpaywall'),
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(

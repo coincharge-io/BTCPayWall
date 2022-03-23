@@ -54,9 +54,9 @@ class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
     {
 
         $this->start_controls_section(
-            'content_section',
+            'dimension',
             [
-                'label' => __('Content', 'btcpaywall'),
+                'label' => __('Dimension', 'btcpaywall'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -71,6 +71,44 @@ class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
                     '250x300' => '250x300',
                     '300x300' => '300x300',
                 ],
+            ]
+        );
+        $this->end_controls_section();
+        $this->start_controls_section(
+            'settings',
+            [
+                'label' => __('Settings', 'btcpaywall'),
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        $this->add_control(
+            'currency',
+            [
+                'label' => 'Currency',
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'SATS' => 'SATS',
+                    'BTC' => 'BTC',
+                    'EUR' => 'EUR',
+                    'USD' => 'USD',
+                ],
+                'default' => 'SATS',
+            ]
+        );
+        $this->add_control(
+            'redirect',
+            [
+                'label' => 'Link to Thank you page',
+                'type'  => \Elementor\Controls_Manager::TEXT,
+                'default' => ''
+            ]
+        );
+        $this->end_controls_section();
+        $this->start_controls_section(
+            'global',
+            [
+                'label' => __('Global', 'btcpaywall'),
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
@@ -97,6 +135,14 @@ class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
                 'label' => 'Header and footer background color',
                 'type'  => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1d5aa3',
+            ]
+        );
+        $this->end_controls_section();
+        $this->start_controls_section(
+            'header',
+            [
+                'label' => __('Header', 'btcpaywall'),
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
@@ -141,6 +187,14 @@ class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
                 'default' => '#000000',
             ]
         );
+        $this->end_controls_section();
+        $this->start_controls_section(
+            'main',
+            [
+                'label' => __('Main', 'btcpaywall'),
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
         $this->add_control(
             'tipping_text',
             [
@@ -158,28 +212,7 @@ class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
                 'default' => '#000000',
             ]
         );
-        $this->add_control(
-            'redirect',
-            [
-                'label' => 'Link to Thank you page',
-                'type'  => \Elementor\Controls_Manager::TEXT,
-                'default' => ''
-            ]
-        );
-        $this->add_control(
-            'currency',
-            [
-                'label' => 'Currency',
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'options' => [
-                    'SATS' => 'SATS',
-                    'BTC' => 'BTC',
-                    'EUR' => 'EUR',
-                    'USD' => 'USD',
-                ],
-                'default' => 'SATS',
-            ]
-        );
+
         $this->add_control(
             'input_background',
             [
@@ -188,7 +221,14 @@ class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
                 'default' => '#ffa500',
             ]
         );
-
+        $this->end_controls_section();
+        $this->start_controls_section(
+            'footer',
+            [
+                'label' => __('Footer', 'btcpaywall'),
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
         $this->add_control(
             'button_text',
             [
