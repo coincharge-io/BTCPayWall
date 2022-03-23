@@ -312,7 +312,7 @@ work', 'btcpaywall');
                     <label for="<?php echo esc_attr($this->get_field_id('logo')); ?>"><?php echo esc_html__('Tipping logo', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-80">
-                    <?php if ($logo_id) : ?>
+                    <?php if ($logo) : ?>
                         <button class="widget-tipping-basic-upload_box_logo" name="btcpw_tipping_button_image"><img alt="Tipping box logo" width="100" height="100" src="<?php echo esc_url($logo[0]); ?>" /></a></button>
                         <button type="button" class="widget-tipping-basic-remove_box_image"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-logo_id" id="<?php echo esc_attr($this->get_field_id('logo_id')); ?>" name="<?php echo esc_attr($this->get_field_name('logo_id')); ?>" type="text" value="<?php echo esc_attr($logo_id); ?>" />

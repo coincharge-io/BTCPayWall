@@ -423,6 +423,7 @@ function btcpaywall_load_vc_widgets()
                 'heading' => 'Background',
                 'param_name' => 'background_id',
                 'description' => 'Add background image',
+                'group' => 'Global'
             ),
             array(
                 'type' => 'colorpicker',
@@ -430,6 +431,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'background_color',
                 'value' => '#E6E6E6',
                 'description' => 'Set background color',
+                'group' => 'Global'
             ),
             array(
                 'type' => 'colorpicker',
@@ -437,6 +439,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'background',
                 'value' => '#1d5aa3',
                 'description' => 'Set header and footer background color',
+                'group' => 'Global'
             ),
             array(
                 'type' => 'attach_image',
@@ -444,6 +447,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'logo_id',
                 'value' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
                 'description' => 'Add logo',
+                'group' => 'Header'
             ),
             array(
                 'type' => 'textarea',
@@ -451,6 +455,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'title',
                 'value' => 'Support my work',
                 'description' => 'Set title',
+                'group' => 'Header'
             ),
             array(
                 'type' => 'colorpicker',
@@ -458,6 +463,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'title_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set title text color',
+                'group' => 'Header'
             ),
             array(
                 'type' => 'textarea',
@@ -465,6 +471,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'description',
                 'value' => '',
                 'description' => 'Set description',
+                'group' => 'Header'
             ),
             array(
                 'type' => 'colorpicker',
@@ -472,6 +479,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'description_text_color',
                 'value' => '#000000',
                 'description' => 'Set description text color',
+                'group' => 'Header'
             ),
             array(
                 'type' => 'textarea',
@@ -479,6 +487,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'tipping_text',
                 'value' => 'Enter Tipping Amount',
                 'description' => 'Set tipping text',
+                'group' => 'Main'
             ),
             array(
                 'type' => 'colorpicker',
@@ -486,6 +495,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'tipping_text_color',
                 'value' => '#000000',
                 'description' => 'Set tipping text color',
+                'group' => 'Main'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -493,6 +504,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'input_background',
                 'value' => '#ffa500',
                 'description' => 'Set background color for input fields',
+                'group' => 'Main'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -500,6 +513,89 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'selected_amount_background',
                 'value' => '#000',
                 'description' => 'Set background color for input fields',
+                'group' => 'Main'
+
+            ),
+            array(
+                'type' => 'textarea',
+                'heading' => 'Button text',
+                'param_name' => 'button_text',
+                'value' => 'Tipping now',
+                'description' => 'Set button text',
+                'group' => 'Footer'
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Button text color',
+                'param_name' => 'button_text_color',
+                'value' => '#ffffff',
+                'description' => 'Set button text color',
+                'group' => 'Footer'
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Button color',
+                'param_name' => 'button_color',
+                'value' => '#FE642E',
+                'description' => 'Set button color',
+                'group' => 'Footer'
+
+            ),
+            array(
+                'type' => 'textarea',
+                'heading' => 'Continue button text',
+                'param_name' => 'continue_button_text',
+                'value' => 'Continue',
+                'description' => 'Set continue button text',
+                'group' => 'Footer'
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Continue button text color',
+                'param_name' => 'continue_button_text_color',
+                'value' => '#ffffff',
+                'description' => 'Set continue_button text color',
+                'group' => 'Footer'
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Continue button color',
+                'param_name' => 'continue_button_color',
+                'value' => '#FE642E',
+                'description' => 'Set continue button color',
+                'group' => 'Footer'
+
+            ),
+            array(
+                'type' => 'textarea',
+                'heading' => 'Previous button text',
+                'param_name' => 'previous_button_text',
+                'value' => 'Previous',
+                'description' => 'Set previous button text',
+                'group' => 'Footer'
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Previous button text color',
+                'param_name' => 'previous_button_text_color',
+                'value' => '#ffffff',
+                'description' => 'Set previous button text color',
+                'group' => 'Footer'
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Previous button color',
+                'param_name' => 'previous_button_color',
+                'value' => '#1d5aa3',
+                'description' => 'Set previous button color',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'checkbox',
@@ -508,6 +604,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Display icons',
+                'group' => 'Fixed amount'
+
             ),
             array(
                 'type' => 'checkbox',
@@ -516,6 +614,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Display value 1',
+                'group' => 'Fixed amount'
+
             ),
             array(
                 'type' => 'textfield',
@@ -523,6 +623,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value1_amount',
                 'value' => 1000,
                 'description' => 'Set amount for value 1',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'dropdown',
@@ -537,6 +638,7 @@ function btcpaywall_load_vc_widgets()
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 1 currency',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'textfield',
@@ -544,6 +646,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value1_icon',
                 'value' => 'fas fa-coffee',
                 'description' => 'Set icon for value 1',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'checkbox',
@@ -552,6 +655,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Display value 2',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'textfield',
@@ -559,6 +663,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value2_amount',
                 'value' => 2000,
                 'description' => 'Set amount for value 2',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'dropdown',
@@ -573,6 +678,7 @@ function btcpaywall_load_vc_widgets()
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 2 currency',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'textfield',
@@ -580,6 +686,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value2_icon',
                 'value' => 'fas fa-beer',
                 'description' => 'Set icon for value 2',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'checkbox',
@@ -588,6 +695,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Display value 3',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'textfield',
@@ -595,6 +703,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value3_amount',
                 'value' => 3000,
                 'description' => 'Set amount for value 3',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'dropdown',
@@ -609,6 +718,7 @@ function btcpaywall_load_vc_widgets()
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 3 currency',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'textfield',
@@ -616,69 +726,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value3_icon',
                 'value' => 'fas fa-coffee',
                 'description' => 'Set icon for value 3',
-            ),
-            array(
-                'type' => 'textarea',
-                'heading' => 'Button text',
-                'param_name' => 'button_text',
-                'value' => 'Tipping now',
-                'description' => 'Set button text',
-            ),
-            array(
-                'type' => 'colorpicker',
-                'heading' => 'Button text color',
-                'param_name' => 'button_text_color',
-                'value' => '#ffffff',
-                'description' => 'Set button text color',
-            ),
-            array(
-                'type' => 'colorpicker',
-                'heading' => 'Button color',
-                'param_name' => 'button_color',
-                'value' => '#FE642E',
-                'description' => 'Set button color',
-            ),
-            array(
-                'type' => 'textarea',
-                'heading' => 'Continue button text',
-                'param_name' => 'continue_button_text',
-                'value' => 'Continue',
-                'description' => 'Set continue button text',
-            ),
-            array(
-                'type' => 'colorpicker',
-                'heading' => 'Continue button text color',
-                'param_name' => 'continue_button_text_color',
-                'value' => '#ffffff',
-                'description' => 'Set continue_button text color',
-            ),
-            array(
-                'type' => 'colorpicker',
-                'heading' => 'Continue button color',
-                'param_name' => 'continue_button_color',
-                'value' => '#FE642E',
-                'description' => 'Set continue button color',
-            ),
-            array(
-                'type' => 'textarea',
-                'heading' => 'Previous button text',
-                'param_name' => 'previous_button_text',
-                'value' => 'Previous',
-                'description' => 'Set previous button text',
-            ),
-            array(
-                'type' => 'colorpicker',
-                'heading' => 'Previous button text color',
-                'param_name' => 'previous_button_text_color',
-                'value' => '#ffffff',
-                'description' => 'Set previous button text color',
-            ),
-            array(
-                'type' => 'colorpicker',
-                'heading' => 'Previous button color',
-                'param_name' => 'previous_button_color',
-                'value' => '#1d5aa3',
-                'description' => 'Set previous button color',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'checkbox',
@@ -687,6 +735,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Collect information',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -695,6 +744,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -703,6 +753,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Collect information',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -711,6 +762,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -719,6 +771,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Collect information',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -727,6 +780,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -735,6 +789,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Collect information',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -743,6 +798,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -751,6 +807,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Collect information',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -759,10 +816,10 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Donor information'
             ),
         ),
     ));
-
     vc_map(array(
         'name' => 'BTCPW Tipping Banner High',
         'base' => 'btcpw_tipping_banner_high',
@@ -812,6 +869,7 @@ function btcpaywall_load_vc_widgets()
                 'heading' => 'Background',
                 'param_name' => 'background_id',
                 'description' => 'Add background image',
+                'group' => 'Global'
             ),
             array(
                 'type' => 'colorpicker',
@@ -819,6 +877,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'background_color',
                 'value' => '#E6E6E6',
                 'description' => 'Set background color',
+                'group' => 'Global'
             ),
             array(
                 'type' => 'colorpicker',
@@ -826,6 +885,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'background',
                 'value' => '#1d5aa3',
                 'description' => 'Set header and footer background color',
+                'group' => 'Global'
             ),
             array(
                 'type' => 'attach_image',
@@ -833,6 +893,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'logo_id',
                 'value' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
                 'description' => 'Add logo',
+                'group' => 'Header'
             ),
             array(
                 'type' => 'textarea',
@@ -840,6 +901,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'title',
                 'value' => 'Support my work',
                 'description' => 'Set title',
+                'group' => 'Header'
             ),
             array(
                 'type' => 'colorpicker',
@@ -847,6 +909,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'title_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set title text color',
+                'group' => 'Header'
             ),
             array(
                 'type' => 'textarea',
@@ -854,6 +917,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'description',
                 'value' => '',
                 'description' => 'Set description',
+                'group' => 'Header'
             ),
             array(
                 'type' => 'colorpicker',
@@ -861,6 +925,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'description_text_color',
                 'value' => '#000000',
                 'description' => 'Set description text color',
+                'group' => 'Header'
             ),
             array(
                 'type' => 'textarea',
@@ -868,6 +933,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'tipping_text',
                 'value' => 'Enter Tipping Amount',
                 'description' => 'Set tipping text',
+                'group' => 'Main'
             ),
             array(
                 'type' => 'colorpicker',
@@ -875,6 +941,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'tipping_text_color',
                 'value' => '#000000',
                 'description' => 'Set tipping text color',
+                'group' => 'Main'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -882,6 +950,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'input_background',
                 'value' => '#ffa500',
                 'description' => 'Set background color for input fields',
+                'group' => 'Main'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -889,6 +959,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'selected_amount_background',
                 'value' => '#000',
                 'description' => 'Set background color for input fields',
+                'group' => 'Main'
+
             ),
             array(
                 'type' => 'textarea',
@@ -896,6 +968,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_text',
                 'value' => 'Tipping now',
                 'description' => 'Set button text',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -903,6 +977,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set button text color',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -910,6 +986,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_color',
                 'value' => '#FE642E',
                 'description' => 'Set button color',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'textarea',
@@ -917,6 +995,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_text',
                 'value' => 'Continue',
                 'description' => 'Set continue button text',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -924,6 +1004,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set continue_button text color',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -931,6 +1013,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_color',
                 'value' => '#FE642E',
                 'description' => 'Set continue button color',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'textarea',
@@ -938,6 +1022,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_text',
                 'value' => 'Previous',
                 'description' => 'Set previous button text',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -945,6 +1031,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set previous button text color',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -952,6 +1040,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_color',
                 'value' => '#1d5aa3',
                 'description' => 'Set previous button color',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'checkbox',
@@ -960,6 +1050,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Display icons',
+                'group' => 'Fixed amount'
+
             ),
             array(
                 'type' => 'checkbox',
@@ -968,6 +1060,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Display value 1',
+                'group' => 'Fixed amount'
+
             ),
             array(
                 'type' => 'textfield',
@@ -975,6 +1069,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value1_amount',
                 'value' => 1000,
                 'description' => 'Set amount for value 1',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'dropdown',
@@ -989,6 +1084,7 @@ function btcpaywall_load_vc_widgets()
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 1 currency',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'textfield',
@@ -996,6 +1092,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value1_icon',
                 'value' => 'fas fa-coffee',
                 'description' => 'Set icon for value 1',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'checkbox',
@@ -1004,6 +1101,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Display value 2',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'textfield',
@@ -1011,6 +1109,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value2_amount',
                 'value' => 2000,
                 'description' => 'Set amount for value 2',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'dropdown',
@@ -1025,6 +1124,7 @@ function btcpaywall_load_vc_widgets()
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 2 currency',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'textfield',
@@ -1032,6 +1132,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value2_icon',
                 'value' => 'fas fa-beer',
                 'description' => 'Set icon for value 2',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'checkbox',
@@ -1040,6 +1141,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Display value 3',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'textfield',
@@ -1047,6 +1149,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value3_amount',
                 'value' => 3000,
                 'description' => 'Set amount for value 3',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'dropdown',
@@ -1061,6 +1164,7 @@ function btcpaywall_load_vc_widgets()
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 3 currency',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'textfield',
@@ -1068,6 +1172,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value3_icon',
                 'value' => 'fas fa-coffee',
                 'description' => 'Set icon for value 3',
+                'group' => 'Fixed amount'
             ),
             array(
                 'type' => 'checkbox',
@@ -1076,6 +1181,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Collect information',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -1084,6 +1190,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -1092,6 +1199,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Collect information',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -1100,6 +1208,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -1108,6 +1217,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Collect information',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -1116,6 +1226,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -1124,6 +1235,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Collect information',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -1132,6 +1244,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -1140,6 +1253,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Collect information',
+                'group' => 'Donor information'
             ),
             array(
                 'type' => 'checkbox',
@@ -1148,6 +1262,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Donor information'
             ),
         ),
     ));
@@ -1193,6 +1308,7 @@ function btcpaywall_load_vc_widgets()
                 'heading' => 'Background',
                 'param_name' => 'background_id',
                 'description' => 'Add background image',
+                'group' => 'Global'
             ),
             array(
                 'type' => 'colorpicker',
@@ -1200,6 +1316,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'background_color',
                 'value' => '#E6E6E6',
                 'description' => 'Set background color',
+                'group' => 'Global'
             ),
             array(
                 'type' => 'colorpicker',
@@ -1207,6 +1324,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'background',
                 'value' => '#1d5aa3',
                 'description' => 'Set header and footer background color',
+                'group' => 'Global'
             ),
             array(
                 'type' => 'attach_image',
@@ -1214,6 +1332,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'logo_id',
                 'value' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
                 'description' => 'Add logo',
+                'group' => 'Header'
+
             ),
             array(
                 'type' => 'textarea',
@@ -1221,6 +1341,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'title',
                 'value' => 'Support my work',
                 'description' => 'Set title',
+                'group' => 'Header'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -1228,6 +1350,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'title_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set title text color',
+                'group' => 'Header'
+
             ),
             array(
                 'type' => 'textarea',
@@ -1235,6 +1359,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'description',
                 'value' => '',
                 'description' => 'Set description',
+                'group' => 'Header'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -1242,6 +1368,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'description_text_color',
                 'value' => '#000000',
                 'description' => 'Set description text color',
+                'group' => 'Header'
+
             ),
             array(
                 'type' => 'textarea',
@@ -1249,6 +1377,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'tipping_text',
                 'value' => 'Enter Tipping Amount',
                 'description' => 'Set tipping text',
+                'group' => 'Main'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -1256,6 +1386,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'tipping_text_color',
                 'value' => '#000000',
                 'description' => 'Set tipping text color',
+                'group' => 'Main'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -1263,6 +1395,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'input_background',
                 'value' => '#ffa500',
                 'description' => 'Set background color for input fields',
+                'group' => 'Main'
+
             ),
             array(
                 'type' => 'textarea',
@@ -1270,6 +1404,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_text',
                 'value' => 'Tipping now',
                 'description' => 'Set button text',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -1277,6 +1413,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set button text color',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -1284,6 +1422,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_color',
                 'value' => '#FE642E',
                 'description' => 'Set button color',
+                'group' => 'Footer'
             ),
 
         ),
@@ -1334,6 +1473,7 @@ function btcpaywall_load_vc_widgets()
                 'heading' => 'Background',
                 'param_name' => 'background_id',
                 'description' => 'Add background image',
+                'group' => 'Global'
             ),
             array(
                 'type' => 'colorpicker',
@@ -1341,6 +1481,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'background_color',
                 'value' => '#E6E6E6',
                 'description' => 'Set background color',
+                'group' => 'Global'
             ),
             array(
                 'type' => 'colorpicker',
@@ -1348,6 +1489,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'background',
                 'value' => '#1d5aa3',
                 'description' => 'Set header and footer background color',
+                'group' => 'Global'
             ),
             array(
                 'type' => 'attach_image',
@@ -1355,6 +1497,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'logo_id',
                 'value' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
                 'description' => 'Add logo',
+                'group' => 'Header'
+
             ),
             array(
                 'type' => 'textarea',
@@ -1362,6 +1506,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'title',
                 'value' => 'Support my work',
                 'description' => 'Set title',
+                'group' => 'Header'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -1369,20 +1515,44 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'title_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set title text color',
+                'group' => 'Header'
+
             ),
             array(
-                'type' => 'textarea',
-                'heading' => 'Description',
-                'param_name' => 'description',
-                'value' => '',
-                'description' => 'Set description',
+                'type' => 'textfield',
+                'heading' => 'Step1 text',
+                'param_name' => 'step1',
+                'value' => 'Pledge',
+                'description' => 'Set text for step 2 on progress bar',
+                'group' => 'Header'
+
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => 'Step2 text',
+                'param_name' => 'step2',
+                'value' => 'Info',
+                'description' => 'Set text for step 2 on progress bar',
+                'group' => 'Header'
+
             ),
             array(
                 'type' => 'colorpicker',
-                'heading' => 'Description text color',
-                'param_name' => 'description_text_color',
-                'value' => '#000000',
-                'description' => 'Set description text color',
+                'heading' => 'Color for active step',
+                'param_name' => 'active_color',
+                'value' => '#808080',
+                'description' => 'Set color for active step',
+                'group' => 'Header'
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Color for inactive step',
+                'param_name' => 'inactive_color',
+                'value' => '#D3D3D3',
+                'description' => 'Set color for active step',
+                'group' => 'Header'
+
             ),
             array(
                 'type' => 'textarea',
@@ -1390,6 +1560,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'tipping_text',
                 'value' => 'Enter Tipping Amount',
                 'description' => 'Set tipping text',
+                'group' => 'Main'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -1397,6 +1569,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'tipping_text_color',
                 'value' => '#000000',
                 'description' => 'Set tipping text color',
+                'group' => 'Main'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -1404,6 +1578,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'input_background',
                 'value' => '#ffa500',
                 'description' => 'Set background color for input fields',
+                'group' => 'Main'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -1411,6 +1587,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'selected_amount_background',
                 'value' => '#000',
                 'description' => 'Set background color for input fields',
+                'group' => 'Main'
+
             ),
             array(
                 'type' => 'textarea',
@@ -1418,6 +1596,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_text',
                 'value' => 'Tipping now',
                 'description' => 'Set button text',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -1425,6 +1605,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set button text color',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -1432,6 +1614,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_color',
                 'value' => '#FE642E',
                 'description' => 'Set button color',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'textarea',
@@ -1439,6 +1623,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_text',
                 'value' => 'Continue',
                 'description' => 'Set continue button text',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -1446,6 +1632,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set continue_button text color',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -1453,6 +1641,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_color',
                 'value' => '#FE642E',
                 'description' => 'Set continue button color',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'textarea',
@@ -1460,6 +1650,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_text',
                 'value' => 'Previous',
                 'description' => 'Set previous button text',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -1467,6 +1659,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set previous button text color',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -1474,6 +1668,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_color',
                 'value' => '#1d5aa3',
                 'description' => 'Set previous button color',
+                'group' => 'Footer'
+
             ),
             array(
                 'type' => 'checkbox',
@@ -1482,6 +1678,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Display icons',
+                'group' => 'Fixed amount'
+
             ),
             array(
                 'type' => 'checkbox',
@@ -1490,6 +1688,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Display value 1',
+                'group' => 'Fixed amount'
+
             ),
             array(
                 'type' => 'textfield',
@@ -1497,6 +1697,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value1_amount',
                 'value' => 1000,
                 'description' => 'Set amount for value 1',
+                'group' => 'Fixed amount'
+
             ),
             array(
                 'type' => 'dropdown',
@@ -1511,6 +1713,8 @@ function btcpaywall_load_vc_widgets()
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 1 currency',
+                'group' => 'Fixed amount'
+
             ),
             array(
                 'type' => 'textfield',
@@ -1518,6 +1722,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value1_icon',
                 'value' => 'fas fa-coffee',
                 'description' => 'Set icon for value 1',
+                'group' => 'Fixed amount'
+
             ),
             array(
                 'type' => 'checkbox',
@@ -1526,6 +1732,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Display value 2',
+                'group' => 'Fixed amount'
+
             ),
             array(
                 'type' => 'textfield',
@@ -1533,6 +1741,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value2_amount',
                 'value' => 2000,
                 'description' => 'Set amount for value 2',
+                'group' => 'Fixed amount'
+
             ),
             array(
                 'type' => 'dropdown',
@@ -1547,6 +1757,8 @@ function btcpaywall_load_vc_widgets()
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 2 currency',
+                'group' => 'Fixed amount'
+
             ),
             array(
                 'type' => 'textfield',
@@ -1554,6 +1766,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value2_icon',
                 'value' => 'fas fa-beer',
                 'description' => 'Set icon for value 2',
+                'group' => 'Fixed amount'
+
             ),
             array(
                 'type' => 'checkbox',
@@ -1562,6 +1776,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Display value 3',
+                'group' => 'Fixed amount'
+
             ),
             array(
                 'type' => 'textfield',
@@ -1569,6 +1785,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value3_amount',
                 'value' => 3000,
                 'description' => 'Set amount for value 3',
+                'group' => 'Fixed amount'
+
             ),
             array(
                 'type' => 'dropdown',
@@ -1583,6 +1801,8 @@ function btcpaywall_load_vc_widgets()
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 3 currency',
+                'group' => 'Fixed amount'
+
             ),
             array(
                 'type' => 'textfield',
@@ -1590,6 +1810,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'value3_icon',
                 'value' => 'fas fa-coffee',
                 'description' => 'Set icon for value 3',
+                'group' => 'Fixed amount'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -1597,35 +1819,10 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_color',
                 'value' => '#1d5aa3',
                 'description' => 'Set previous button color',
+                'group' => 'Fixed amount'
+
             ),
-            array(
-                'type' => 'textfield',
-                'heading' => 'Step1 text',
-                'param_name' => 'step1',
-                'value' => 'Pledge',
-                'description' => 'Set text for step 2 on progress bar',
-            ),
-            array(
-                'type' => 'textfield',
-                'heading' => 'Step2 text',
-                'param_name' => 'step2',
-                'value' => 'Info',
-                'description' => 'Set text for step 2 on progress bar',
-            ),
-            array(
-                'type' => 'colorpicker',
-                'heading' => 'Color for active step',
-                'param_name' => 'active_color',
-                'value' => '#808080',
-                'description' => 'Set color for active step',
-            ),
-            array(
-                'type' => 'colorpicker',
-                'heading' => 'Color for inactive step',
-                'param_name' => 'inactive_color',
-                'value' => '#D3D3D3',
-                'description' => 'Set color for active step',
-            ),
+
             array(
                 'type' => 'checkbox',
                 'heading' => 'Display name',
@@ -1633,6 +1830,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Collect information',
+                'group' => 'Donor information'
+
             ),
             array(
                 'type' => 'checkbox',
@@ -1641,6 +1840,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Donor information'
+
             ),
             array(
                 'type' => 'checkbox',
@@ -1649,6 +1850,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Collect information',
+                'group' => 'Donor information'
+
             ),
             array(
                 'type' => 'checkbox',
@@ -1657,6 +1860,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Donor information'
+
             ),
             array(
                 'type' => 'checkbox',
@@ -1665,6 +1870,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Collect information',
+                'group' => 'Donor information'
+
             ),
             array(
                 'type' => 'checkbox',
@@ -1673,6 +1880,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Donor information'
+
             ),
             array(
                 'type' => 'checkbox',
@@ -1681,6 +1890,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Collect information',
+                'group' => 'Donor information'
+
             ),
             array(
                 'type' => 'checkbox',
@@ -1689,6 +1900,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Donor information'
+
             ),
             array(
                 'type' => 'checkbox',
@@ -1697,6 +1910,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Collect information',
+                'group' => 'Donor information'
+
             ),
             array(
                 'type' => 'checkbox',
@@ -1705,6 +1920,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Donor information'
+
             ),
         ),
     ));

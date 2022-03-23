@@ -425,7 +425,7 @@ class Tipping_Banner_Wide extends WP_Widget
                     <label for="<?php echo esc_attr($this->get_field_id('logo')); ?>"><?php echo esc_html__('Tipping logo', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-80">
-                    <?php if ($logo_id) : ?>
+                    <?php if ($logo) : ?>
                         <button id="btcpw_tipping_button_logo_banner_wide" class="widget-tipping-basic-upload_box_logo_wide" name="btcpw_tipping_button_image"><img width="100" height="100" alt="Tipping banner wide logo" src="<?php echo esc_url($logo[0]); ?>" /></a></button>
                         <button type="button" class="widget-tipping-basic-remove_box_image_wide"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-logo_id_wide" id="<?php echo esc_attr($this->get_field_id('logo_id')); ?>" name="<?php echo esc_attr($this->get_field_name('logo_id')); ?>" type="text" value="<?php echo esc_attr($logo_id); ?>" />
@@ -454,7 +454,7 @@ class Tipping_Banner_Wide extends WP_Widget
                     <textarea id="<?php echo esc_attr($this->get_field_id('description')); ?>" name="<?php echo esc_attr($this->get_field_name('description')); ?>" type="text"><?php echo esc_html($description); ?></textarea>
                 </div>
             </div>
-            <div>
+            <div class="row">
                 <div>
                     <label for="<?php echo esc_attr($this->get_field_id('description_color')); ?>"><?php echo esc_html__('Description text color:', 'btcpaywall'); ?></label>
                     <input id="<?php echo esc_attr($this->get_field_id('description_color')); ?>" name="<?php echo esc_attr($this->get_field_name('description_color')); ?>" class="widget-tipping-basic-description-color_wide" type="text" value="<?php echo esc_attr($description_color); ?>" />
@@ -468,7 +468,7 @@ class Tipping_Banner_Wide extends WP_Widget
                     <textarea id="<?php echo esc_attr($this->get_field_id('tipping_text')); ?>" name="<?php echo esc_attr($this->get_field_name('tipping_text')); ?>" type="text"><?php echo esc_html($tipping_text); ?></textarea>
                 </div>
             </div>
-            <div>
+            <div class="row">
                 <div>
                     <label for="<?php echo esc_attr($this->get_field_id('tipping_text_color')); ?>"><?php echo esc_html__('Tipping text color', 'btcpaywall'); ?></label>
                     <input id="<?php echo esc_attr($this->get_field_id('tipping_text_color')); ?>" name="<?php echo esc_attr($this->get_field_name('tipping_text_color')); ?>" type="text" class="widget-tipping-basic-tipping-color_wide" value="<?php echo esc_attr($tipping_text_color); ?>" />

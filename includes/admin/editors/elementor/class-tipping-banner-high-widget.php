@@ -54,14 +54,14 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
     protected function _register_controls()
     {
 
+        
         $this->start_controls_section(
-            'dimension',
+            'settings',
             [
-                'label' => __('Dimension', 'btcpaywall'),
+                'label' => __('General', 'btcpaywall'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
-
         $this->add_control(
             'dimension',
             [
@@ -73,15 +73,6 @@ class Elementor_BTCPW_Tipping_Banner_High_Widget extends \Elementor\Widget_Base
                 ],
             ]
         );
-        $this->end_controls_section();
-        $this->start_controls_section(
-            'settings',
-            [
-                'label' => __('Settings', 'btcpaywall'),
-                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
         $this->add_control(
             'currency',
             [
