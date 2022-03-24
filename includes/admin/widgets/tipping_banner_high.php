@@ -377,6 +377,10 @@ class Tipping_Banner_High extends WP_Widget
                 align-items: center;
             }
 
+            .col-50.fixed-amount>* {
+                margin: 3px 0;
+            }
+
             .col-fixed {
                 display: flex;
                 flex-direction: column;
@@ -634,7 +638,7 @@ class Tipping_Banner_High extends WP_Widget
                         <p>Default price1</p>
                     </div>
                     <div class="col-50 fixed-amount">
-                        <input id="<?php echo esc_attr($this->get_field_id('value1_enabled')); ?>" name="<?php echo esc_attr($this->get_field_name('value1_enabled')); ?>" <?php echo $value1_enabled === 'true' ? 'checked' : ''; ?> type="checkbox" value="true" />
+                        <input id="<?php echo esc_attr($this->get_field_id('value1_enabled')); ?>" name="<?php echo esc_attr($this->get_field_name('value1_enabled')); ?>" <?php echo $value1_enabled === 'true' ? 'checked' : ''; ?> type="checkbox" value="true" /><span><?php echo esc_html__('Do you want to display default price 1?', 'btcpaywall'); ?></span>
                         <input type="number" min=0 placeholder="Default Price1" step=1 id="<?php echo esc_attr($this->get_field_id('value1_amount')); ?>" name="<?php echo esc_attr($this->get_field_name('value1_amount')); ?>" value="<?php echo esc_attr($value1_amount); ?>">
 
                         <select required id="<?php echo esc_attr($this->get_field_id('value1_currency')); ?>" name="<?php echo esc_attr($this->get_field_name('value1_currency')); ?>">
@@ -654,7 +658,7 @@ class Tipping_Banner_High extends WP_Widget
                         <p>Default price2</p>
                     </div>
                     <div class="col-50 fixed-amount">
-                        <input id="<?php echo esc_attr($this->get_field_id('value2_enabled')); ?>" name="<?php echo esc_attr($this->get_field_name('value2_enabled')); ?>" <?php echo $value2_enabled === 'true' ? 'checked' : ''; ?> type="checkbox" value="true" />
+                        <input id="<?php echo esc_attr($this->get_field_id('value2_enabled')); ?>" name="<?php echo esc_attr($this->get_field_name('value2_enabled')); ?>" <?php echo $value2_enabled === 'true' ? 'checked' : ''; ?> type="checkbox" value="true" /><span><?php echo esc_html__('Do you want to display default price 2?', 'btcpaywall'); ?></span>
                         <input type="number" min=0 placeholder="Default Price2" step=1 id="<?php echo esc_attr($this->get_field_id('value2_amount')); ?>" name="<?php echo esc_attr($this->get_field_name('value2_amount')); ?>" value="<?php echo esc_attr($value2_amount); ?>">
 
                         <select required id="<?php echo esc_attr($this->get_field_id('value2_currency')); ?>" name="<?php echo esc_attr($this->get_field_name('value2_currency')); ?>">
@@ -674,7 +678,7 @@ class Tipping_Banner_High extends WP_Widget
                         <p>Default price3</p>
                     </div>
                     <div class="col-50 fixed-amount">
-                        <input id="<?php echo esc_attr($this->get_field_id('value3_enabled')); ?>" name="<?php echo esc_attr($this->get_field_name('value3_enabled')); ?>" <?php echo $value3_enabled === 'true' ? 'checked' : ''; ?> type="checkbox" value="true" />
+                        <input id="<?php echo esc_attr($this->get_field_id('value3_enabled')); ?>" name="<?php echo esc_attr($this->get_field_name('value3_enabled')); ?>" <?php echo $value3_enabled === 'true' ? 'checked' : ''; ?> type="checkbox" value="true" /><span><?php echo esc_html__('Do you want to display default price 3?', 'btcpaywall'); ?></span>
                         <input type="number" min=0 placeholder="Default Price3" step=1 id="<?php echo esc_attr($this->get_field_id('value3_amount')); ?>" name="<?php echo esc_attr($this->get_field_name('value3_amount')); ?>" value="<?php echo esc_attr($value3_amount); ?>" />
 
                         <select required id="<?php echo esc_attr($this->get_field_id('value3_currency')); ?>" name="<?php echo esc_attr($this->get_field_name('value3_currency')); ?>">
