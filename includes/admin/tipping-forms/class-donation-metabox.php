@@ -618,7 +618,7 @@ class Donation_Forms_Metabox
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_page">
                                 <div>
-                                    <label for="btcpaywall_tipping_color_progress_bar_step1"><?php echo __('Step 1 color', 'btcpaywall'); ?></label>
+                                    <label for="btcpaywall_tipping_color_progress_bar_step1"><?php echo __('Background color for active step', 'btcpaywall'); ?></label>
                                 </div>
                                 <div>
                                     <input id="btcpaywall_tipping_color_progress_bar_step1" name="btcpaywall_tipping_color_progress_bar_step1" type="text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_progress_bar_step1'][0]); ?>" />
@@ -636,7 +636,7 @@ class Donation_Forms_Metabox
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_page">
                                 <div>
-                                    <label for="btcpaywall_tipping_color_progress_bar_step2"><?php echo __('Step 2 color', 'btcpaywall'); ?></label>
+                                    <label for="btcpaywall_tipping_color_progress_bar_step2"><?php echo __('Background color for inactive step', 'btcpaywall'); ?></label>
                                 </div>
                                 <div>
                                     <input id="btcpaywall_tipping_color_progress_bar_step2" name="btcpaywall_tipping_color_progress_bar_step2" type="text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_progress_bar_step2'][0]); ?>" />
@@ -667,7 +667,7 @@ class Donation_Forms_Metabox
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common">
                                     <div>
-                                        <label for="btcpaywall_tipping_color_amounts"><?php echo __('Amount fields background color', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_color_amounts"><?php echo __('Background color for amount fields', 'btcpaywall'); ?></label>
                                         <span title="This color will be used as background for all amount fields." class="btcpaywall_helper_tip"></span>
                                     </div>
                                     <div>
@@ -676,7 +676,7 @@ class Donation_Forms_Metabox
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_page">
                                     <div>
-                                        <label for="btcpaywall_tipping_color_selected_amount"><?php echo __('Selected amount background color', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_color_selected_amount"><?php echo __('Background color for selected amount ', 'btcpaywall'); ?></label>
                                         <span title="This color will be used as background for selected amount field." class="btcpaywall_helper_tip"></span>
                                     </div>
                                     <div>

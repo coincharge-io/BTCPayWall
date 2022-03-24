@@ -888,7 +888,7 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
     const inspectorControls = (
       <InspectorControls>
         <Panel>
-          <PanelBody title="Dimension" initialOpen={true}>
+          <PanelBody title="General" initialOpen={true}>
             <div className="btcpw_gutenberg_sel_num_control">
               <SelectControl
                 value={dimension}
@@ -906,7 +906,7 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
               />{' '}{' '}
             </div>{' '}
           </PanelBody>
-          <div className="btcpw_gutenberg_sel_num_control">
+          <div className="btcpaywall_gutenberg_wrap btcpw_gutenberg_sel_num_control">
             {' '}<SelectControl
               label="Currency"
               value={currency}
@@ -935,7 +935,7 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
               ]}
             />{' '}{' '}
           </div>
-          <div>
+          <div className="btcpaywall_gutenberg_wrap">
             <CheckboxControl
               label="Display free input"
               help="Do you want to display free input field?"
@@ -947,15 +947,16 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
               }}
             />
           </div>
-          <p> Link to Thank You Page </p> <URLInputButton
-            label="Link to Thank You Page"
-            url={redirect}
-            onChange={value =>
-              setAttributes ({
-                redirect: value,
-              })}
-          />
-
+          <div className="btcpaywall_gutenberg_wrap">
+            <p> Link to Thank You Page </p> <URLInputButton
+              label="Link to Thank You Page"
+              url={redirect}
+              onChange={value =>
+                setAttributes ({
+                  redirect: value,
+                })}
+            />
+          </div>
           <PanelBody title="Global" initialOpen={true}>
             <div className="editor-post-featured-image">
               <MediaUploadCheck>
@@ -971,8 +972,8 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
                     <Button
                       className={
                         background_id == 0
-                          ? 'editor-post-featured-image__toggle'
-                          : 'editor-post-featured-image__preview'
+                          ? 'btcpaywall editor-post-featured-image__toggle'
+                          : 'btcpaywall editor-post-featured-image__preview'
                       }
                       onClick={open}
                     >
@@ -1006,11 +1007,15 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
                     }}
                     allowedTypes={['image']}
                     render={({open}) => (
-                      <Button onClick={open} isLarge>
-                        {' '}{' '} {'Replace background image'} {' '}{' '}
+                      <Button
+                        className="btcpaywall editor-post-featured-image__remove"
+                        onClick={open}
+                        isLarge
+                      >
+                        {'Replace background image'}
                       </Button>
                     )}
-                  />{' '}{' '}
+                  />
                 </MediaUploadCheck>} {!!background_id &&
                 <MediaUploadCheck>
                   <Button
@@ -1019,6 +1024,7 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
                         background_id: 0,
                       });
                     }}
+                    className="btcpaywall editor-post-featured-image__remove"
                     isLink
                     isDestructive
                   >
@@ -1058,8 +1064,8 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
                     <Button
                       className={
                         logo_id == 0
-                          ? 'editor-post-featured-image__toggle'
-                          : 'editor-post-featured-image__preview'
+                          ? 'btcpaywall editor-post-featured-image__toggle'
+                          : 'btcpaywall editor-post-featured-image__preview'
                       }
                       onClick={open}
                     >
@@ -1087,7 +1093,13 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
                     }}
                     allowedTypes={['image']}
                     render={({open}) => (
-                      <Button onClick={open} isLarge> {'Replace logo'} </Button>
+                      <Button
+                        className="btcpaywall editor-post-featured-image__remove"
+                        onClick={open}
+                        isLarge
+                      >
+                        {' '}{'Replace logo'}{' '}
+                      </Button>
                     )}
                   />{' '}{' '}
                 </MediaUploadCheck>} {!!logo_id &&
@@ -1098,6 +1110,7 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
                         logo_id: 0,
                       });
                     }}
+                    className="btcpaywall editor-post-featured-image__remove"
                     isLink
                     isDestructive
                   >
@@ -1135,7 +1148,7 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
             /> <p>
               {' '}{' '}
               Background color
-              for active tab in progress bar {' '}{' '}
+              for active step in progress bar {' '}{' '}
             </p> <ColorPicker
               color={active_color}
               onChangeComplete={value =>
@@ -1156,7 +1169,7 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
             /> <p>
               {' '}{' '}
               Background color
-              for inactive tab in progress bar {' '}{' '}
+              for inactive step in progress bar {' '}{' '}
             </p> <ColorPicker
               color={inactive_color}
               onChangeComplete={value =>

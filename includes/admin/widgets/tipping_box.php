@@ -227,6 +227,10 @@ work', 'btcpaywall');
                 display: inline-block;
                 width: 70px;
             }
+
+            .tipping_box input {
+                max-width: 120px;
+            }
         </style>
         <div class="tipping_box">
             <h1>Tipping</h1>
@@ -363,7 +367,7 @@ work', 'btcpaywall');
 
             <div class="row">
                 <div class="col-20">
-                    <label for="<?php echo esc_attr($this->get_field_id('input_background')); ?>"><?php echo esc_html__('Background color for free amount', 'btcpaywall'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('input_background')); ?>"><?php echo esc_html__('Background color for free amount field', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-80">
                     <input id="<?php echo esc_attr($this->get_field_id('input_background')); ?>" name="<?php echo esc_attr($this->get_field_name('input_background')); ?>" type="text" class="widget-tipping-basic-input_background" value="<?php echo esc_attr($input_background); ?>" />

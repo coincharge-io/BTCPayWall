@@ -687,7 +687,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
     const inspectorControls = (
       <InspectorControls>
         <Panel>
-          <PanelBody title="Dimension" initialOpen={true}>
+          <PanelBody title="General" initialOpen={true}>
             <div className="btcpw_gutenberg_sel_num_control">
               <SelectControl
                 value={dimension}
@@ -699,7 +699,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             </div>
           </PanelBody>
 
-          <div className="btcpw_gutenberg_sel_num_control">
+          <div className="btcpaywall_gutenberg_wrap btcpw_gutenberg_sel_num_control">
             <SelectControl
               label="Currency"
               value={currency}
@@ -714,7 +714,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               ]}
             />
           </div>
-          <div>
+          <div className='btcpaywall_gutenberg_wrap'>
             <CheckboxControl
               label="Display free input"
               help="Do you want to display free input field?"
@@ -722,12 +722,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               onChange={newvalue => setAttributes ({free_input: newvalue})}
             />
           </div>
+          <div className='btcpaywall_gutenberg_wrap'>
           <p>Link to Thank You Page</p>
           <URLInputButton
             label="Redirect link"
             url={redirect}
             onChange={value => setAttributes ({redirect: value})}
           />
+          </div>
           <PanelBody title="Global" initialOpen={true}>
             <div className="editor-post-featured-image">
               <MediaUploadCheck>
@@ -741,8 +743,8 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                     <Button
                       className={
                         background_id == 0
-                          ? 'editor-post-featured-image__toggle'
-                          : 'editor-post-featured-image__preview'
+                          ? 'btcpaywall editor-post-featured-image__toggle'
+                          : 'btcpaywall editor-post-featured-image__preview'
                       }
                       onClick={open}
                     >
@@ -770,7 +772,11 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                     }}
                     allowedTypes={['image']}
                     render={({open}) => (
-                      <Button onClick={open} isLarge>
+                      <Button
+                        className="btcpaywall editor-post-featured-image__remove"
+                        onClick={open}
+                        isLarge
+                      >
                         {'Replace background image'}
                       </Button>
                     )}
@@ -782,6 +788,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                     onClick={el => {
                       setAttributes ({background_id: 0});
                     }}
+                    className="btcpaywall editor-post-featured-image__remove"
                     isLink
                     isDestructive
                   >
@@ -817,8 +824,8 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                     <Button
                       className={
                         logo_id == 0
-                          ? 'editor-post-featured-image__toggle'
-                          : 'editor-post-featured-image__preview'
+                          ? 'btcpaywall editor-post-featured-image__toggle'
+                          : 'btcpaywall editor-post-featured-image__preview'
                       }
                       onClick={open}
                     >
@@ -846,7 +853,11 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                     }}
                     allowedTypes={['image']}
                     render={({open}) => (
-                      <Button onClick={open} isLarge>
+                      <Button
+                        className="btcpaywall editor-post-featured-image__remove"
+                        onClick={open}
+                        isLarge
+                      >
                         {'Replace logo'}
                       </Button>
                     )}
@@ -858,6 +869,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                     onClick={el => {
                       setAttributes ({logo_id: 0});
                     }}
+                    className="btcpaywall editor-post-featured-image__remove"
                     isLink
                     isDestructive
                   >
