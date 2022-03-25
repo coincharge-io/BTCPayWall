@@ -5,7 +5,7 @@
  * Plugin URI: https://wordpress.org/plugins/btcpaywall
  * Description: The Bitcoin Paywall to sell content and digital goods on WordPress. 
  * Version: 1.0.7
- * Author: BTCPayWall by Coincharge https://btcpaywall.com
+ * Author: Coincharge https://btcpaywall.com
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: btcpaywall

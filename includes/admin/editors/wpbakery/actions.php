@@ -500,19 +500,19 @@ function btcpaywall_load_vc_widgets()
             ),
             array(
                 'type' => 'colorpicker',
-                'heading' => 'Background color for amount fields',
+                'heading' => 'Primary color for amount',
                 'param_name' => 'input_background',
                 'value' => '#ffa500',
-                'description' => 'Set background color for amount fields',
+                'description' => 'This color will be used as background color for all unselected amount fields and as a text and border color for selected amount field',
                 'group' => 'Main'
 
             ),
             array(
                 'type' => 'colorpicker',
-                'heading' => 'Background color for selected amount',
+                'heading' => 'Secondary color for amount',
                 'param_name' => 'selected_amount_background',
                 'value' => '#000',
-                'description' => 'Set background color for selected amount',
+                'description' => 'This color will be used as background color for selected amount field and as a text and border color for all unselected amount fields',
                 'group' => 'Main'
 
             ),
@@ -946,19 +946,19 @@ function btcpaywall_load_vc_widgets()
             ),
             array(
                 'type' => 'colorpicker',
-                'heading' => 'Background color for amount fields',
+                'heading' => 'Primary color for amount',
                 'param_name' => 'input_background',
                 'value' => '#ffa500',
-                'description' => 'Set background color for amount fields',
+                'description' => 'This color will be used as background color for all unselected amount fields and as a text and border color for selected amount field',
                 'group' => 'Main'
 
             ),
             array(
                 'type' => 'colorpicker',
-                'heading' => 'Background color for selected amount',
+                'heading' => 'Secondary color for amount',
                 'param_name' => 'selected_amount_background',
                 'value' => '#000',
-                'description' => 'Set background color for selected amount',
+                'description' => 'This color will be used as background color for selected amount field and as a text and border color for all unselected amount fields',
                 'group' => 'Main'
 
             ),
@@ -1574,19 +1574,19 @@ function btcpaywall_load_vc_widgets()
             ),
             array(
                 'type' => 'colorpicker',
-                'heading' => 'Background color for amount fields',
+                'heading' => 'Primary color for amount',
                 'param_name' => 'input_background',
                 'value' => '#ffa500',
-                'description' => 'Set background color for amount fields',
+                'description' => 'This color will be used as background color for all unselected amount fields and as a text and border color for selected amount field',
                 'group' => 'Main'
 
             ),
             array(
                 'type' => 'colorpicker',
-                'heading' => 'Background color for selected amount',
+                'heading' => 'Secondary color for amount',
                 'param_name' => 'selected_amount_background',
                 'value' => '#000',
-                'description' => 'Set background color for selected amount',
+                'description' => 'This color will be used as background color for selected amount field and as a text and border color for all unselected amount fields',
                 'group' => 'Main'
 
             ),

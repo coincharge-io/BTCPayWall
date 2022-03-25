@@ -667,8 +667,8 @@ class Donation_Forms_Metabox
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common">
                                     <div>
-                                        <label for="btcpaywall_tipping_color_amounts"><?php echo __('Background color for amount fields', 'btcpaywall'); ?></label>
-                                        <span title="This color will be used as background for all amount fields." class="btcpaywall_helper_tip"></span>
+                                        <label for="btcpaywall_tipping_color_amounts"><?php echo __('Primary color for amount', 'btcpaywall'); ?></label>
+                                        <span title="This color will be used as background color for all unselected amount fields and as a text and border color for selected amount field." class="btcpaywall_helper_tip"></span>
                                     </div>
                                     <div>
                                         <input type="text" id="btcpaywall_tipping_color_amounts" name="btcpaywall_tipping_color_amounts" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_amounts'][0]); ?>" />
@@ -676,8 +676,8 @@ class Donation_Forms_Metabox
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_page">
                                     <div>
-                                        <label for="btcpaywall_tipping_color_selected_amount"><?php echo __('Background color for selected amount ', 'btcpaywall'); ?></label>
-                                        <span title="This color will be used as background for selected amount field." class="btcpaywall_helper_tip"></span>
+                                        <label for="btcpaywall_tipping_color_selected_amount"><?php echo __('Secondary color for amount ', 'btcpaywall'); ?></label>
+                                        <span title="This color will be used as background color for selected amount field and as a text and border color for all unselected amount fields." class="btcpaywall_helper_tip"></span>
                                     </div>
                                     <div>
                                         <input type="text" id="btcpaywall_tipping_color_selected_amount" name="btcpaywall_tipping_color_selected_amount" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_selected_amount'][0]); ?>" />

@@ -1199,8 +1199,36 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
 
             <p>
               {' '}{' '}
-              Background color for amount fields {' '}{' '}
-            </p> <ColorPicker
+              Primary color for amount
+              {' '}
+              <span
+                title="This color will be used as background color for all unselected amount fields and as a text and border color for selected amount field."
+                class="btcpaywall_helper_tip"
+              />
+
+            </p>
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+
+            <ColorPicker
               color={input_background}
               onChangeComplete={value =>
                 setAttributes ({
@@ -1210,8 +1238,13 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
             />
             <p>
               {' '}{' '}
-              Background color
-              for selected amount {' '}{' '}
+              Secondary color for amount
+              {' '}
+              <span
+                title="This color will be used as background color for selected amount field and as a text and border color for all unselected amount fields."
+                class="btcpaywall_helper_tip"
+              />
+
             </p> <ColorPicker
               color={selected_amount_background}
               onChangeComplete={value =>

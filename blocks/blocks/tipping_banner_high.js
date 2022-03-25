@@ -926,17 +926,54 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               disableAlpha
             />
 
-            <p>Background color for amount fields</p>
+            <p>
+              {' '}{' '}
+              Primary color for amount
+              {' '}
+              <span
+                title="This color will be used as background color for all unselected amount fields and as a text and border color for selected amount field."
+                class="btcpaywall_helper_tip"
+              />
+
+            </p>
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+            {' '}
+
             <ColorPicker
               color={input_background}
               onChangeComplete={value =>
-                setAttributes ({input_background: value.hex})}
+                setAttributes ({
+                  input_background: value.hex,
+                })}
               disableAlpha
             />
             <p>
               {' '}{' '}
-              Background color
-              for selected amount {' '}{' '}
+              Secondary color for amount
+              {' '}
+              <span
+                title="This color will be used as background color for selected amount field and as a text and border color for all unselected amount fields."
+                class="btcpaywall_helper_tip"
+              />
+
             </p> <ColorPicker
               color={selected_amount_background}
               onChangeComplete={value =>

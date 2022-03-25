@@ -564,7 +564,9 @@ class Tipping_Banner_High extends WP_Widget
 
             <div class="row">
                 <div class="col-20">
-                    <label for="<?php echo esc_attr($this->get_field_id('fixed_background')); ?>"><?php echo esc_html__('Background color for amount fields', 'btcpaywall'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('fixed_background')); ?>"><?php echo esc_html__('Primary color for amount', 'btcpaywall'); ?></label>
+                    <span title="This color will be used as background color for all unselected amount fields and as a text and border color for selected amount field." class="btcpaywall_helper_tip"></span>
+
                 </div>
                 <div class="col-80">
                     <input id="<?php echo esc_attr($this->get_field_id('fixed_background')); ?>" name="<?php echo esc_attr($this->get_field_name('fixed_background')); ?>" type="text" class="widget-tipping-basic-fixed_background_high" value="<?php echo esc_attr($fixed_background); ?>" />
@@ -572,7 +574,9 @@ class Tipping_Banner_High extends WP_Widget
             </div>
             <div class="row">
                 <div class="col-20">
-                    <label for="<?php echo esc_attr($this->get_field_id('selected_amount_background')); ?>"><?php echo esc_html__('Background color for selected amount', 'btcpaywall'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('selected_amount_background')); ?>"><?php echo esc_html__('Secondary color for amount', 'btcpaywall'); ?></label>
+                    <span title="This color will be used as background color for selected amount field and as a text and border color for all unselected amount fields." class="btcpaywall_helper_tip"></span>
+
                 </div>
                 <div class="col-80">
                     <input id="<?php echo esc_attr($this->get_field_id('selected_amount_background')); ?>" name="<?php echo esc_attr($this->get_field_name('selected_amount_background')); ?>" type="text" class="widget-tipping-basic-selected_amount_background_high" value="<?php echo esc_attr($selected_amount_background); ?>" />

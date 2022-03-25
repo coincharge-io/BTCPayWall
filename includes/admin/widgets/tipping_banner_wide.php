@@ -119,28 +119,29 @@ class Tipping_Banner_Wide extends WP_Widget
                 border: <?php echo esc_html('3px solid' . $instance['fixed_background']);
                         ?>;
             }
+
             .btcpw_widget.btcpw_skyscraper_amount_value_1.wide label,
-        .btcpw_widget.btcpw_skyscraper_amount_value_2.wide label,
-       .btcpw_widget.btcpw_skyscraper_amount_value_3.wide label,
-        .btcpw_widget.btcpw_skyscraper_tipping_free_input.wide select,
-        .btcpw_widget.btcpw_widget.btcpw_skyscraper_amount_value_1.wide i,
-        .btcpw_widget.btcpw_skyscraper_amount_value_2.wide i,
-        .btcpw_widget.btcpw_skyscraper_amount_value_3.wide i,
-        .btcpw_widget.btcpw_skyscraper_tipping_free_input.wide i {
-            color: <?php echo esc_html($instance['selected_amount_background']); ?>;
-        }
+            .btcpw_widget.btcpw_skyscraper_amount_value_2.wide label,
+            .btcpw_widget.btcpw_skyscraper_amount_value_3.wide label,
+            .btcpw_widget.btcpw_skyscraper_tipping_free_input.wide select,
+            .btcpw_widget.btcpw_widget.btcpw_skyscraper_amount_value_1.wide i,
+            .btcpw_widget.btcpw_skyscraper_amount_value_2.wide i,
+            .btcpw_widget.btcpw_skyscraper_amount_value_3.wide i,
+            .btcpw_widget.btcpw_skyscraper_tipping_free_input.wide i {
+                color: <?php echo esc_html($instance['selected_amount_background']); ?>;
+            }
 
 
-        .btcpw_widget.btcpw_skyscraper_amount_value_1.wide.selected label,
-        .btcpw_widget.btcpw_skyscraper_amount_value_2.wide.selected label,
-        .btcpw_widget.btcpw_skyscraper_amount_value_3.wide.selected label,
-        .btcpw_widget.btcpw_skyscraper_tipping_free_input.wide.selected select,
-        .btcpw_widget.btcpw_skyscraper_amount_value_1.wide.selected i,
-        .btcpw_widget.btcpw_skyscraper_amount_value_2.wide.selected i,
-        .btcpw_widget.btcpw_skyscraper_amount_value_3.wide.selected i,
-        .btcpw_widget.btcpw_skyscraper_tipping_free_input.wide.selected i {
-            color: <?php echo esc_html($instance['fixed_background']); ?>;
-        }
+            .btcpw_widget.btcpw_skyscraper_amount_value_1.wide.selected label,
+            .btcpw_widget.btcpw_skyscraper_amount_value_2.wide.selected label,
+            .btcpw_widget.btcpw_skyscraper_amount_value_3.wide.selected label,
+            .btcpw_widget.btcpw_skyscraper_tipping_free_input.wide.selected select,
+            .btcpw_widget.btcpw_skyscraper_amount_value_1.wide.selected i,
+            .btcpw_widget.btcpw_skyscraper_amount_value_2.wide.selected i,
+            .btcpw_widget.btcpw_skyscraper_amount_value_3.wide.selected i,
+            .btcpw_widget.btcpw_skyscraper_tipping_free_input.wide.selected i {
+                color: <?php echo esc_html($instance['fixed_background']); ?>;
+            }
         </style>
         <div id="btcpw_page">
             <div class="btcpw_widget btcpw_skyscraper_banner wide">
@@ -518,7 +519,9 @@ class Tipping_Banner_Wide extends WP_Widget
 
             <div class="row">
                 <div class="col-20">
-                    <label for="<?php echo esc_attr($this->get_field_id('fixed_background')); ?>"><?php echo esc_html__('Background color for amount fields', 'btcpaywall'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('fixed_background')); ?>"><?php echo esc_html__('Primary color for amount', 'btcpaywall'); ?></label>
+                    <span title="This color will be used as background color for all unselected amount fields and as a text and border color for selected amount field." class="btcpaywall_helper_tip"></span>
+
                 </div>
                 <div class="col-80">
                     <input id="<?php echo esc_attr($this->get_field_id('fixed_background')); ?>" name="<?php echo esc_attr($this->get_field_name('fixed_background')); ?>" type="text" class="widget-tipping-basic-fixed_background_wide" value="<?php echo esc_attr($fixed_background); ?>" />
@@ -526,7 +529,9 @@ class Tipping_Banner_Wide extends WP_Widget
             </div>
             <div class="row">
                 <div class="col-20">
-                    <label for="<?php echo esc_attr($this->get_field_id('selected_amount_background')); ?>"><?php echo esc_html__('Background color for selected amount', 'btcpaywall'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('selected_amount_background')); ?>"><?php echo esc_html__('Secondary color for amount', 'btcpaywall'); ?></label>
+                    <span title="This color will be used as background color for selected amount field and as a text and border color for all unselected amount fields." class="btcpaywall_helper_tip"></span>
+
                 </div>
                 <div class="col-80">
                     <input id="<?php echo esc_attr($this->get_field_id('selected_amount_background')); ?>" name="<?php echo esc_attr($this->get_field_name('selected_amount_background')); ?>" type="text" class="widget-tipping-basic-selected_amount_background_wide" value="<?php echo esc_attr($selected_amount_background); ?>" />

@@ -217,17 +217,19 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'input_background',
             [
-                'label' => 'Background color for amount fields',
+                'label' => 'Primary color for amount',
                 'type'  => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffa500',
+                'description' => 'This color will be used as background color for all unselected amount fields and as a text and border color for selected amount field.'
             ]
         );
         $this->add_control(
             'selected_amount_background',
             [
-                'label' => 'Background color for selected amount',
+                'label' => 'Secondary color for amount',
                 'type'  => \Elementor\Controls_Manager::COLOR,
                 'default' => '#000',
+                'description'=>'This color will be used as background color for selected amount field and as a text and border color for all unselected amount fields.'
             ]
         );
         $this->end_controls_section();

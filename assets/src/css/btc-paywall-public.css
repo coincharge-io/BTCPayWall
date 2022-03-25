@@ -1625,3 +1625,15 @@ button.btcpaywall_add_to_cart:hover {
   font-size: 1em;
   margin: 0;
 }
+
+.btcpaywall_helper_tip::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f059";
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-indent: 0;
+  text-align: center;
+}
