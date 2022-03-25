@@ -20,6 +20,7 @@ $default_text = get_option('btcpw_pay_per_post_title', 'Pay now to unlock blogpo
 $default_button = get_option('btcpw_pay_per_post_button', 'Pay');
 $default_info = get_option('btcpw_pay_per_post_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]');
 
+
 $collect_atts = array(
     'display_name' =>  $atts['display_name'],
     'display_email' =>  $atts['display_email'],
@@ -63,6 +64,17 @@ $collect_data = btcpaywall_display_is_enabled($collect);
         justify-content: space-between;
         gap: 1em;
     }
+
+    #btcpw_revenue_post_button input.revenue-post-next-form {
+        color: <?php echo esc_html__($atts['continue_button_text_color'], 'btcpaywall'); ?>;
+        background: <?php echo  esc_html($atts['continue_button_color'], 'btcpaywall'); ?>;
+    }
+
+    #btcpw_revenue_post_button_second_step input.revenue-post-previous-form {
+        color: <?php echo  esc_html__($atts['previous_button_text_color'], 'btcpaywall'); ?>;
+        background: <?php echo  esc_html($atts['previous_button_color'], 'btcpaywall'); ?>;
+
+    }
 </style>
 <div id="btcpw_revenue_container">
     <div class="btcpw_revenue_post_container">
@@ -81,7 +93,7 @@ $collect_data = btcpaywall_display_is_enabled($collect);
                     <?php if (true === $collect_data) : ?>
 
                         <div>
-                            <input type="button" name="next" class="revenue-post-next-form" value="<?php echo esc_html__('Continue', 'btcpaywall'); ?>">
+                            <input type="button" name="next" class="revenue-post-next-form" value="<?php echo esc_attr($atts['continue_button_text'], 'btcpaywall'); ?>">
                         </div>
                     <?php else : ?>
 
@@ -125,7 +137,7 @@ $collect_data = btcpaywall_display_is_enabled($collect);
                     </div>
                     <div class="btcpw_revenue_post_button" id="btcpw_revenue_post_button_second_step">
                         <div>
-                            <input type="button" name="previous" class="revenue-post-previous-form" value="<?php echo esc_html__('< Previous', 'btcpaywall'); ?>" />
+                            <input type="button" name="previous" class="revenue-post-previous-form" value="<?php echo esc_attr($atts['previous_button_text'], 'btcpaywall'); ?>" />
                         </div>
 
                         <div>

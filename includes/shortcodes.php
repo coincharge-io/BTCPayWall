@@ -1129,6 +1129,12 @@ function btcpaywall_render_shortcode_btcpw_start_content($atts)
         'mandatory_address' =>  get_option('btcpw_default_pay_per_post_mandatory_address', false),
         'display_message' =>  get_option('btcpw_default_pay_per_post_display_message', false),
         'mandatory_message' =>  get_option('btcpw_default_pay_per_post_mandatory_message', false),
+        'continue_button_text' =>  get_option('btcpw_pay_per_post_continue_button', 'Continue'),
+        'continue_button_text_color' =>  get_option('btcpw_pay_per_post_continue_button_text_color', '#FFF'),
+        'continue_button_color' =>  get_option('btcpw_pay_per_post_continue_button_color', '#FE642E'),
+        'previous_button_text' =>  get_option('btcpw_pay_per_post_previous_button', 'Previous'),
+        'previous_button_text_color' => get_option('btcpw_pay_per_post_previous_button_text_color', '#FFF'),
+        'previous_button_color' =>  get_option('btcpw_pay_per_post_previous_button_color', '#1d5aa3'),
     ), $atts);
 
 
@@ -1189,9 +1195,13 @@ function btcpaywall_render_shortcode_btcpw_start_video($atts)
         'mandatory_address' => get_option('btcpw_default_pay_per_view_mandatory_address', false),
         'display_message' => get_option('btcpw_default_pay_per_view_display_message', false),
         'mandatory_message' => get_option('btcpw_default_pay_per_view_mandatory_message', false),
+        'continue_button_text' =>  get_option('btcpw_pay_per_view_continue_button', 'Continue'),
+        'continue_button_text_color' =>  get_option('btcpw_pay_per_view_continue_button_text_color', '#FFF'),
+        'continue_button_color' =>  get_option('btcpw_pay_per_view_continue_button_color', '#FE642E'),
+        'previous_button_text' =>  get_option('btcpw_pay_per_view_previous_button', 'Previous'),
+        'previous_button_text_color' => get_option('btcpw_pay_per_view_previous_button_text_color', '#FFF'),
+        'previous_button_color' =>  get_option('btcpw_pay_per_view_previous_button_color', '#1d5aa3'),
     ), $atts);
-
-
     btcpaywall_update_meta_settings($atts);
 
     $invoice_content = array('title' => 'Pay-per-view: ' . sanitize_text_field($atts['title']), 'project' => 'video');

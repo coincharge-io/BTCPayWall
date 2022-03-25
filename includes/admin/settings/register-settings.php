@@ -78,6 +78,12 @@ function btcpaywall_register_settings()
     register_setting('btcpw_general_pay_per_post_options', 'btcpw_pay_per_post_width', array('type' => 'string', 'default' => '400', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
     register_setting('btcpw_general_pay_per_post_options', 'btcpw_pay_per_post_height', array('type' => 'string', 'default' => '650', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
 
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_pay_per_post_continue_button_color', array('type' => 'string', 'default' => '#FE642E', 'sanitize_callback' => 'btcpaywall_sanitize_color'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_pay_per_post_continue_button_text_color', array('type' => 'string', 'default' => '#FFFFFF', 'sanitize_callback' => 'btcpaywall_sanitize_color'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_pay_per_post_continue_button', array('type' => 'string', 'default' => 'Continue', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_pay_per_post_previous_button_color', array('type' => 'string', 'default' => '#1d5aa3', 'sanitize_callback' => 'btcpaywall_sanitize_color'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_pay_per_post_previous_button_text_color', array('type' => 'string', 'default' => '#FFFFFF', 'sanitize_callback' => 'btcpaywall_sanitize_color'));
+    register_setting('btcpw_general_pay_per_post_options', 'btcpw_pay_per_post_previous_button', array('type' => 'string', 'default' => 'Previous', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
 
 
     register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_preview_title_color', array('type' => 'string', 'default' => '#000000', 'sanitize_callback' => 'btcpaywall_sanitize_color'));
@@ -98,7 +104,12 @@ function btcpaywall_register_settings()
     register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_additional_help_link_text', array('type' => 'string', 'default' => '', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
     register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_width', array('type' => 'string', 'default' => '450', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
     register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_height', array('type' => 'string', 'default' => '750', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
-
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_continue_button_color', array('type' => 'string', 'default' => '#FE642E', 'sanitize_callback' => 'btcpaywall_sanitize_color'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_continue_button_text_color', array('type' => 'string', 'default' => '#FFFFFF', 'sanitize_callback' => 'btcpaywall_sanitize_color'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_continue_button', array('type' => 'string', 'default' => 'Continue', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_previous_button_color', array('type' => 'string', 'default' => '#1d5aa3', 'sanitize_callback' => 'btcpaywall_sanitize_color'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_previous_button_text_color', array('type' => 'string', 'default' => '#FFFFFF', 'sanitize_callback' => 'btcpaywall_sanitize_color'));
+    register_setting('btcpw_general_pay_per_view_options', 'btcpw_pay_per_view_previous_button', array('type' => 'string', 'default' => 'Previous', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
 
 
     register_setting('btcpw_general_pay_per_file_options', 'btcpw_default_pay_per_file_currency', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'btcpaywall_sanitize_text'));

@@ -86,6 +86,12 @@ https://btcpaywall.com/faq-support-center/
 
  == Changelog ==
 
+= 1.0.7 =
+
+- Add: Background color, text color and border can be modified for fixed amount
+- Add: Continue and previous buttons can be modified
+- Fix: Widget problem with uploading images and not registering changes
+
 = 1.0.6 =
 
 - Improve: Admin menu navigation

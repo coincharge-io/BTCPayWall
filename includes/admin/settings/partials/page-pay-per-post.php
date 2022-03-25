@@ -41,7 +41,13 @@ $default_text = get_option('btcpw_pay_per_post_title');
 $default_button = get_option('btcpw_pay_per_post_button');
 $default_info = get_option('btcpw_pay_per_post_info');
 
+$default_continue_button = get_option('btcpw_pay_per_post_continue_button');
+$continue_button_color = get_option('btcpw_pay_per_post_continue_button_color');
+$continue_button_text_color = get_option('btcpw_pay_per_post_continue_button_text_color');
 
+$default_previous_button = get_option('btcpw_pay_per_post_previous_button');
+$previous_button_color = get_option('btcpw_pay_per_post_previous_button_color');
+$previous_button_text_color = get_option('btcpw_pay_per_post_previous_button_text_color');
 ?>
 <style>
     .btcpw_help_preview.pay_per_post {
@@ -279,6 +285,54 @@ $default_info = get_option('btcpw_pay_per_post_info');
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_post_continue_button">Continue button text</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_post_continue_button" name="btcpw_pay_per_post_continue_button" value="<?php echo esc_attr($default_continue_button); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_post_continue_button_color">Continue button color</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_post_continue_button_color" class="btcpw_pay_per_post_continue_button_color" name="btcpw_pay_per_post_continue_button_color" type="text" value="<?php echo esc_attr($continue_button_color); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_post_continue_button_text_color">Continue button text color</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_post_continue_button_text_color" class="btcpw_pay_per_post_continue_button_text_color" name="btcpw_pay_per_post_continue_button_text_color" type="text" value="<?php echo esc_attr($continue_button_text_color); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_post_previous_button">Previous button text</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_post_previous_button" name="btcpw_pay_per_post_previous_button" value="<?php echo esc_attr($default_previous_button); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_post_previous_button_color">Previous button color</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_post_previous_button_color" class="btcpw_pay_per_post_previous_button_color" name="btcpw_pay_per_post_previous_button_color" type="text" value="<?php echo esc_attr($previous_button_color); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_post_previous_button_text_color">Previous button text color</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_post_previous_button_text_color" class="btcpw_pay_per_post_previous_button_text_color" name="btcpw_pay_per_post_previous_button_text_color" type="text" value="<?php echo esc_attr($previous_button_text_color); ?>" />
+                </div>
+            </div>
             <div id="btcpw_pay_per_post_paywall_help_button">
                 <h3>Help link</h3>
                 <div class="row">
