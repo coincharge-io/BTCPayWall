@@ -53,14 +53,15 @@ class Elementor_BTCPW_Tipping_Page_Widget extends \Elementor\Widget_Base
     protected function _register_controls()
     {
 
-        
+
         $this->start_controls_section(
             'settings',
             [
                 'label' => __('General', 'btcpaywall'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
-        );$this->add_control(
+        );
+        $this->add_control(
             'dimension',
             [
                 'label' => 'Dimension',
@@ -89,7 +90,7 @@ class Elementor_BTCPW_Tipping_Page_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'free_input',
             [
-                'label' => 'Free input',
+                'label' => 'Display free input',
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'label_on' => 'Show free input field',
                 'default' => 'yes',
@@ -98,7 +99,7 @@ class Elementor_BTCPW_Tipping_Page_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'redirect',
             [
-                'label' => 'Link to Thank you page',
+                'label' => 'Link to Thank You Page',
                 'type'  => \Elementor\Controls_Manager::TEXT,
                 'default' => ''
             ]
@@ -214,7 +215,7 @@ class Elementor_BTCPW_Tipping_Page_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'tipping_text',
             [
-                'label' => 'Tipping text',
+                'label' => 'Main text',
                 'type'  => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'Enter Tipping Amount',
             ]
@@ -223,7 +224,7 @@ class Elementor_BTCPW_Tipping_Page_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'tipping_text_color',
             [
-                'label' => 'Tipping text color',
+                'label' => 'Main text color',
                 'type'  => \Elementor\Controls_Manager::COLOR,
                 'default' => '#000000',
             ]
@@ -232,7 +233,7 @@ class Elementor_BTCPW_Tipping_Page_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'input_background',
             [
-                'label' => 'Input background color',
+                'label' => 'Background color for amount fields',
                 'type'  => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffa500',
             ]

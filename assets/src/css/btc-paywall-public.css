@@ -470,7 +470,6 @@ a.btcpw_pay__download {
 #btcpw_skyscraper_tipping_wide_currency,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_wide,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_high {
-  color: white;
   font-weight: bold;
 }
 
@@ -790,12 +789,12 @@ a.btcpw_pay__download {
   background-color: white !important;
 }
 
-#btcpw_skyscraper_tipping_high_currency,
+/* #btcpw_skyscraper_tipping_high_currency,
 #btcpw_skyscraper_tipping_wide_currency,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_wide,
 #btcpw_widget_btcpw_skyscraper_tipping_currency_high {
   color: white !important;
-}
+} */
 
 #btcpw_skyscraper_tipping_high_currency,
 #btcpw_skyscraper_tipping_wide_currency,
@@ -822,7 +821,6 @@ a.btcpw_pay__download {
   float: right;
   pointer-events: none;
   background-color: transparent;
-  color: white !important;
   padding-right: 10px;
 }
 
@@ -1036,7 +1034,6 @@ a.btcpw_pay__download {
 }
 
 #btcpw_page_tipping_currency {
-  color: white;
   font-weight: bold;
   width: 45%;
   font-size: 15px;
@@ -1055,7 +1052,6 @@ a.btcpw_pay__download {
   float: right;
   pointer-events: none;
   background-color: transparent;
-  color: white !important;
   padding-right: 10px;
 }
 
@@ -1213,11 +1209,6 @@ a.btcpw_pay__download {
   background-color: grey;
 }
 
-.btcpw_page_amount_value_1.selected,
-.btcpw_page_amount_value_2.selected,
-.btcpw_page_amount_value_3.selected {
-  background-color: hsl(354, 78%, 7%);
-}
 
 #powered_by,
 #powered_by_skyscraper,

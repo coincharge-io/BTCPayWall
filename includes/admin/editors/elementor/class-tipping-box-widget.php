@@ -53,7 +53,7 @@ class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
     protected function _register_controls()
     {
 
-        
+
         $this->start_controls_section(
             'settings',
             [
@@ -190,7 +190,7 @@ class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'tipping_text',
             [
-                'label' => 'Tipping text',
+                'label' => 'Main text',
                 'type'  => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => 'Enter Tipping Amount',
             ]
@@ -199,7 +199,7 @@ class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'tipping_text_color',
             [
-                'label' => 'Tipping text color',
+                'label' => 'Main text color',
                 'type'  => \Elementor\Controls_Manager::COLOR,
                 'default' => '#000000',
             ]
@@ -208,7 +208,7 @@ class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'input_background',
             [
-                'label' => 'Input background color',
+                'label' => 'Background color for free input field',
                 'type'  => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffa500',
             ]

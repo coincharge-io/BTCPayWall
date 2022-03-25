@@ -568,7 +568,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
           <div className="btcpaywall_gutenberg_wrap">
             <p>Link to Thank You Page</p>
             <URLInputButton
-              label="Redirect link"
+              label="Link to Thank You Page"
               url={redirect}
               onChange={value => setAttributes ({redirect: value})}
             />
@@ -754,14 +754,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
           </PanelBody>
           <PanelBody title="Main" initialOpen={true}>
             <TextareaControl
-              label="Tipping text"
-              help="Enter tipping text"
+              label="Main text"
+              help="Enter main text"
               onChange={content => {
                 setAttributes ({tipping_text: content});
               }}
               value={tipping_text}
             />
-            <p>Tipping text color</p>
+            <p>Main text color</p>
             <ColorPicker
               color={tipping_text_color}
               onChangeComplete={value =>

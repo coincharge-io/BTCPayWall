@@ -1181,14 +1181,14 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
           </PanelBody>
           <PanelBody title="Main" initialOpen={true}>
             <TextareaControl
-              label="Tipping text"
+              label="Main text"
               help="Enter tipping text"
               onChange={content =>
                 setAttributes ({
                   tipping_text: content,
                 })}
               value={tipping_text}
-            /> <p> Tipping text color </p> <ColorPicker
+            /> <p> Main text color </p> <ColorPicker
               color={tipping_text_color}
               onChangeComplete={value =>
                 setAttributes ({
@@ -1199,8 +1199,7 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
 
             <p>
               {' '}{' '}
-              Background color
-              for inputs {' '}{' '}
+              Background color for amount fields {' '}{' '}
             </p> <ColorPicker
               color={input_background}
               onChangeComplete={value =>

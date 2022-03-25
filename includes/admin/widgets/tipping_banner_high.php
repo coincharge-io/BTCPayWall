@@ -104,8 +104,10 @@ class Tipping_Banner_High extends WP_Widget
             .btcpw_widget.btcpw_skyscraper_amount_value_2.high,
             .btcpw_widget.btcpw_skyscraper_amount_value_3.high,
             .btcpw_widget.btcpw_skyscraper_tipping_free_input.high {
-                background: <?php echo esc_html($instance['fixed_background']);
-                            ?>;
+                background-color: <?php echo esc_html($instance['fixed_background']);
+                                    ?>;
+                border: <?php echo !empty($instance['selected_amount_background']) ? esc_html('3px solid ' . $instance['selected_amount_background']) : '#000';
+                        ?>;
             }
 
             .btcpw_widget.btcpw_skyscraper_amount_value_1.high.selected,
@@ -113,6 +115,31 @@ class Tipping_Banner_High extends WP_Widget
             .btcpw_widget.btcpw_skyscraper_amount_value_3.high.selected {
                 background-color: <?php echo !empty($instance['selected_amount_background']) ? esc_html($instance['selected_amount_background']) : '#000';
                                     ?>;
+                border: <?php echo esc_html('3px solid' . $instance['fixed_background']);
+                        ?>;
+            }
+
+            .btcpw_widget.btcpw_skyscraper_amount_value_1.high label,
+            .btcpw_widget.btcpw_skyscraper_amount_value_2.high label,
+            .btcpw_widget.btcpw_skyscraper_amount_value_3.high label,
+            .btcpw_widget.btcpw_skyscraper_tipping_free_input.high select,
+            .btcpw_widget.btcpw_widget.btcpw_skyscraper_amount_value_1.high i,
+            .btcpw_widget.btcpw_skyscraper_amount_value_2.high i,
+            .btcpw_widget.btcpw_skyscraper_amount_value_3.high i,
+            .btcpw_widget.btcpw_skyscraper_tipping_free_input.high i {
+                color: <?php echo esc_html($instance['selected_amount_background']); ?>;
+            }
+
+
+            .btcpw_widget.btcpw_skyscraper_amount_value_1.high.selected label,
+            .btcpw_widget.btcpw_skyscraper_amount_value_2.high.selected label,
+            .btcpw_widget.btcpw_skyscraper_amount_value_3.high.selected label,
+            .btcpw_widget.btcpw_skyscraper_tipping_free_input.high.selected select,
+            .btcpw_widget.btcpw_skyscraper_amount_value_1.high.selected i,
+            .btcpw_widget.btcpw_skyscraper_amount_value_2.high.selected i,
+            .btcpw_widget.btcpw_skyscraper_amount_value_3.high.selected i,
+            .btcpw_widget.btcpw_skyscraper_tipping_free_input.high.selected i {
+                color: <?php echo esc_html($instance['fixed_background']); ?>;
             }
         </style>
         <div id="btcpw_page">
@@ -650,7 +677,7 @@ class Tipping_Banner_High extends WP_Widget
                             <?php endforeach; ?>
                         </select>
 
-                        <input id="<?php echo esc_attr($this->get_field_id('value1_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value1_icon')); ?>" type="text" value="<?php echo esc_attr($value1_icon); ?>" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
+                        <input type="text" id="<?php echo esc_attr($this->get_field_id('value1_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value1_icon')); ?>" value="<?php echo esc_attr($value1_icon); ?>" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
                     </div>
                 </div>
                 <div class="row">
@@ -670,7 +697,7 @@ class Tipping_Banner_High extends WP_Widget
                             <?php endforeach; ?>
                         </select>
 
-                        <input id="<?php echo esc_attr($this->get_field_id('value2_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value2_icon')); ?>" type="text" value="<?php echo esc_attr($value2_icon); ?>" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
+                        <input type="text" id="<?php echo esc_attr($this->get_field_id('value2_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value2_icon')); ?>" value="<?php echo esc_attr($value2_icon); ?>" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
                     </div>
                 </div>
                 <div class="row">
@@ -690,7 +717,7 @@ class Tipping_Banner_High extends WP_Widget
                             <?php endforeach; ?>
                         </select>
 
-                        <input id="<?php echo esc_attr($this->get_field_id('value3_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value3_icon')); ?>" type="text" value="<?php echo esc_attr($value3_icon); ?>" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
+                        <input type="text" id="<?php echo esc_attr($this->get_field_id('value3_icon')); ?>" name="<?php echo esc_attr($this->get_field_name('value3_icon')); ?>" title="Enter Font Awesome Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." value="<?php echo esc_attr($value3_icon); ?>" />
                     </div>
                 </div>
             </div>

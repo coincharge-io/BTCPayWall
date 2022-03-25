@@ -406,7 +406,7 @@ function btcpaywall_load_vc_widgets()
             ),
             array(
                 'type' => 'checkbox',
-                'heading' => 'Free input',
+                'heading' => 'Display free input',
                 'param_name' => 'free_input',
                 'value' => true,
                 'std' => true,
@@ -414,9 +414,9 @@ function btcpaywall_load_vc_widgets()
             ),
             array(
                 'type' => 'textfield',
-                'heading' => 'Redirect',
+                'heading' => 'Link to Thank You Page',
                 'param_name' => 'redirect',
-                'description' => 'Set redirect link',
+                'description' => 'Set Link to Thank You Page',
             ),
             array(
                 'type' => 'attach_image',
@@ -483,27 +483,27 @@ function btcpaywall_load_vc_widgets()
             ),
             array(
                 'type' => 'textarea',
-                'heading' => 'Tipping text',
+                'heading' => 'Main text',
                 'param_name' => 'tipping_text',
                 'value' => 'Enter Tipping Amount',
-                'description' => 'Set tipping text',
+                'description' => 'Set main text',
                 'group' => 'Main'
             ),
             array(
                 'type' => 'colorpicker',
-                'heading' => 'Tipping text color',
+                'heading' => 'Main text color',
                 'param_name' => 'tipping_text_color',
                 'value' => '#000000',
-                'description' => 'Set tipping text color',
+                'description' => 'Set main text color',
                 'group' => 'Main'
 
             ),
             array(
                 'type' => 'colorpicker',
-                'heading' => 'Input color',
+                'heading' => 'Background color for amount fields',
                 'param_name' => 'input_background',
                 'value' => '#ffa500',
-                'description' => 'Set background color for input fields',
+                'description' => 'Set background color for amount fields',
                 'group' => 'Main'
 
             ),
@@ -512,7 +512,7 @@ function btcpaywall_load_vc_widgets()
                 'heading' => 'Background color for selected amount',
                 'param_name' => 'selected_amount_background',
                 'value' => '#000',
-                'description' => 'Set background color for input fields',
+                'description' => 'Set background color for selected amount',
                 'group' => 'Main'
 
             ),
@@ -852,7 +852,7 @@ function btcpaywall_load_vc_widgets()
             ),
             array(
                 'type' => 'checkbox',
-                'heading' => 'Free input',
+                'heading' => 'Display free input',
                 'param_name' => 'free_input',
                 'value' => true,
                 'std' => true,
@@ -860,9 +860,9 @@ function btcpaywall_load_vc_widgets()
             ),
             array(
                 'type' => 'textfield',
-                'heading' => 'Redirect',
+                'heading' => 'Link to Thank You Page',
                 'param_name' => 'redirect',
-                'description' => 'Set redirect link',
+                'description' => 'Set Link to Thank You Page',
             ),
             array(
                 'type' => 'attach_image',
@@ -929,27 +929,27 @@ function btcpaywall_load_vc_widgets()
             ),
             array(
                 'type' => 'textarea',
-                'heading' => 'Tipping text',
+                'heading' => 'Main text',
                 'param_name' => 'tipping_text',
                 'value' => 'Enter Tipping Amount',
-                'description' => 'Set tipping text',
+                'description' => 'Set main text',
                 'group' => 'Main'
             ),
             array(
                 'type' => 'colorpicker',
-                'heading' => 'Tipping text color',
+                'heading' => 'Main text color',
                 'param_name' => 'tipping_text_color',
                 'value' => '#000000',
-                'description' => 'Set tipping text color',
+                'description' => 'Set main text color',
                 'group' => 'Main'
 
             ),
             array(
                 'type' => 'colorpicker',
-                'heading' => 'Input color',
+                'heading' => 'Background color for amount fields',
                 'param_name' => 'input_background',
                 'value' => '#ffa500',
-                'description' => 'Set background color for input fields',
+                'description' => 'Set background color for amount fields',
                 'group' => 'Main'
 
             ),
@@ -958,7 +958,7 @@ function btcpaywall_load_vc_widgets()
                 'heading' => 'Background color for selected amount',
                 'param_name' => 'selected_amount_background',
                 'value' => '#000',
-                'description' => 'Set background color for input fields',
+                'description' => 'Set background color for selected amount',
                 'group' => 'Main'
 
             ),
@@ -1299,9 +1299,9 @@ function btcpaywall_load_vc_widgets()
             ),
             array(
                 'type' => 'textfield',
-                'heading' => 'Redirect',
+                'heading' => 'Link to Thank You Page',
                 'param_name' => 'redirect',
-                'description' => 'Set redirect link',
+                'description' => 'Set Link to Thank You Page',
             ),
             array(
                 'type' => 'attach_image',
@@ -1373,28 +1373,28 @@ function btcpaywall_load_vc_widgets()
             ),
             array(
                 'type' => 'textarea',
-                'heading' => 'Tipping text',
+                'heading' => 'Main text',
                 'param_name' => 'tipping_text',
                 'value' => 'Enter Tipping Amount',
-                'description' => 'Set tipping text',
+                'description' => 'Set main text',
                 'group' => 'Main'
 
             ),
             array(
                 'type' => 'colorpicker',
-                'heading' => 'Tipping text color',
+                'heading' => 'Main text color',
                 'param_name' => 'tipping_text_color',
                 'value' => '#000000',
-                'description' => 'Set tipping text color',
+                'description' => 'Set main text color',
                 'group' => 'Main'
 
             ),
             array(
                 'type' => 'colorpicker',
-                'heading' => 'Input color',
+                'heading' => 'Background color for amount field',
                 'param_name' => 'input_background',
                 'value' => '#ffa500',
-                'description' => 'Set background color for input fields',
+                'description' => 'Set background color for amount field',
                 'group' => 'Main'
 
             ),
@@ -1456,7 +1456,7 @@ function btcpaywall_load_vc_widgets()
             ),
             array(
                 'type' => 'checkbox',
-                'heading' => 'Free input',
+                'heading' => 'Display free input',
                 'param_name' => 'free_input',
                 'value' => true,
                 'std' => true,
@@ -1464,9 +1464,9 @@ function btcpaywall_load_vc_widgets()
             ),
             array(
                 'type' => 'textfield',
-                'heading' => 'Redirect',
+                'heading' => 'Link to Thank You Page',
                 'param_name' => 'redirect',
-                'description' => 'Set redirect link',
+                'description' => 'Set Link to Thank You Page',
             ),
             array(
                 'type' => 'attach_image',
@@ -1520,16 +1520,16 @@ function btcpaywall_load_vc_widgets()
             ),
             array(
                 'type' => 'textfield',
-                'heading' => 'Step1 text',
+                'heading' => 'Step1',
                 'param_name' => 'step1',
                 'value' => 'Pledge',
-                'description' => 'Set text for step 2 on progress bar',
+                'description' => 'Set text for step 1 on progress bar',
                 'group' => 'Header'
 
             ),
             array(
                 'type' => 'textfield',
-                'heading' => 'Step2 text',
+                'heading' => 'Step2',
                 'param_name' => 'step2',
                 'value' => 'Info',
                 'description' => 'Set text for step 2 on progress bar',
@@ -1556,28 +1556,28 @@ function btcpaywall_load_vc_widgets()
             ),
             array(
                 'type' => 'textarea',
-                'heading' => 'Tipping text',
+                'heading' => 'Main text',
                 'param_name' => 'tipping_text',
                 'value' => 'Enter Tipping Amount',
-                'description' => 'Set tipping text',
+                'description' => 'Set main text',
                 'group' => 'Main'
 
             ),
             array(
                 'type' => 'colorpicker',
-                'heading' => 'Tipping text color',
+                'heading' => 'Main text color',
                 'param_name' => 'tipping_text_color',
                 'value' => '#000000',
-                'description' => 'Set tipping text color',
+                'description' => 'Set main text color',
                 'group' => 'Main'
 
             ),
             array(
                 'type' => 'colorpicker',
-                'heading' => 'Input color',
+                'heading' => 'Background color for amount fields',
                 'param_name' => 'input_background',
                 'value' => '#ffa500',
-                'description' => 'Set background color for input fields',
+                'description' => 'Set background color for amount fields',
                 'group' => 'Main'
 
             ),
@@ -1586,7 +1586,7 @@ function btcpaywall_load_vc_widgets()
                 'heading' => 'Background color for selected amount',
                 'param_name' => 'selected_amount_background',
                 'value' => '#000',
-                'description' => 'Set background color for input fields',
+                'description' => 'Set background color for selected amount',
                 'group' => 'Main'
 
             ),

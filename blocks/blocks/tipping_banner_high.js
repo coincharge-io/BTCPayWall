@@ -714,7 +714,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               ]}
             />
           </div>
-          <div className='btcpaywall_gutenberg_wrap'>
+          <div className="btcpaywall_gutenberg_wrap">
             <CheckboxControl
               label="Display free input"
               help="Do you want to display free input field?"
@@ -722,13 +722,13 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               onChange={newvalue => setAttributes ({free_input: newvalue})}
             />
           </div>
-          <div className='btcpaywall_gutenberg_wrap'>
-          <p>Link to Thank You Page</p>
-          <URLInputButton
-            label="Redirect link"
-            url={redirect}
-            onChange={value => setAttributes ({redirect: value})}
-          />
+          <div className="btcpaywall_gutenberg_wrap">
+            <p>Link to Thank You Page</p>
+            <URLInputButton
+              label="Link to Thank You Page"
+              url={redirect}
+              onChange={value => setAttributes ({redirect: value})}
+            />
           </div>
           <PanelBody title="Global" initialOpen={true}>
             <div className="editor-post-featured-image">
@@ -911,14 +911,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
           </PanelBody>
           <PanelBody title="Main" initialOpen={true}>
             <TextareaControl
-              label="Tipping text"
-              help="Enter tipping text"
+              label="Main text"
+              help="Enter main text"
               onChange={content => {
                 setAttributes ({tipping_text: content});
               }}
               value={tipping_text}
             />
-            <p>Tipping text color</p>
+            <p>Main text color</p>
             <ColorPicker
               color={tipping_text_color}
               onChangeComplete={value =>
@@ -926,7 +926,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               disableAlpha
             />
 
-            <p>Background color for inputs</p>
+            <p>Background color for amount fields</p>
             <ColorPicker
               color={input_background}
               onChangeComplete={value =>

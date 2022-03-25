@@ -105,8 +105,10 @@ class Tipping_Banner_Wide extends WP_Widget
             .btcpw_widget.btcpw_skyscraper_amount_value_2.wide,
             .btcpw_widget.btcpw_skyscraper_amount_value_3.wide,
             .btcpw_widget.btcpw_skyscraper_tipping_free_input.wide {
-                background: <?php echo esc_html($instance['fixed_background']);
-                            ?>;
+                background-color: <?php echo esc_html($instance['fixed_background']);
+                                    ?>;
+                border: <?php echo !empty($instance['selected_amount_background']) ? esc_html('3px solid ' . $instance['selected_amount_background']) : '#000';
+                        ?>;
             }
 
             .btcpw_widget.btcpw_skyscraper_amount_value_1.wide.selected,
@@ -114,7 +116,31 @@ class Tipping_Banner_Wide extends WP_Widget
             .btcpw_widget.btcpw_skyscraper_amount_value_3.wide.selected {
                 background-color: <?php echo !empty($instance['selected_amount_background']) ? esc_html($instance['selected_amount_background']) : '#000';
                                     ?>;
+                border: <?php echo esc_html('3px solid' . $instance['fixed_background']);
+                        ?>;
             }
+            .btcpw_widget.btcpw_skyscraper_amount_value_1.wide label,
+        .btcpw_widget.btcpw_skyscraper_amount_value_2.wide label,
+       .btcpw_widget.btcpw_skyscraper_amount_value_3.wide label,
+        .btcpw_widget.btcpw_skyscraper_tipping_free_input.wide select,
+        .btcpw_widget.btcpw_widget.btcpw_skyscraper_amount_value_1.wide i,
+        .btcpw_widget.btcpw_skyscraper_amount_value_2.wide i,
+        .btcpw_widget.btcpw_skyscraper_amount_value_3.wide i,
+        .btcpw_widget.btcpw_skyscraper_tipping_free_input.wide i {
+            color: <?php echo esc_html($instance['selected_amount_background']); ?>;
+        }
+
+
+        .btcpw_widget.btcpw_skyscraper_amount_value_1.wide.selected label,
+        .btcpw_widget.btcpw_skyscraper_amount_value_2.wide.selected label,
+        .btcpw_widget.btcpw_skyscraper_amount_value_3.wide.selected label,
+        .btcpw_widget.btcpw_skyscraper_tipping_free_input.wide.selected select,
+        .btcpw_widget.btcpw_skyscraper_amount_value_1.wide.selected i,
+        .btcpw_widget.btcpw_skyscraper_amount_value_2.wide.selected i,
+        .btcpw_widget.btcpw_skyscraper_amount_value_3.wide.selected i,
+        .btcpw_widget.btcpw_skyscraper_tipping_free_input.wide.selected i {
+            color: <?php echo esc_html($instance['fixed_background']); ?>;
+        }
         </style>
         <div id="btcpw_page">
             <div class="btcpw_widget btcpw_skyscraper_banner wide">
