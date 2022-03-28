@@ -1137,7 +1137,6 @@ function btcpaywall_render_shortcode_btcpw_start_content($atts)
         'previous_button_color' =>  get_option('btcpw_pay_per_post_previous_button_color', '#1d5aa3'),
     ), $atts);
 
-
     btcpaywall_update_meta_settings($atts);
 
     $invoice_content = array('title' => 'Pay-per-post: ' . get_the_title(get_the_ID()), 'project' => 'post');

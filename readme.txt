@@ -86,6 +86,10 @@ https://btcpaywall.com/faq-support-center/
 
  == Changelog ==
 
+= 1.0.8 =
+
+- Fix: Problem with paywall onetime view
+
 = 1.0.7 =
 
 - Add: Background color, text color and border can be modified for fixed amount

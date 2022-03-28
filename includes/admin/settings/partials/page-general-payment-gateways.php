@@ -6,6 +6,7 @@ $supported_gateways = array(
     'BTCPayServer',
     'OpenNode'
 );
+
 ?>
 <div id="btcpw_general_payment_gateway_options">
     <div>

@@ -274,7 +274,7 @@ function btcpaywall_get_cookie_duration($post_id)
         $duration_type = get_option('btcpw_default_pay_per_' . $project . 'duration_type');
     }
 
-    return $duration_type === 'unlimited' ? strtotime("14 Jan 2038") : ($duration_type === 'onetime' ? 0 : strtotime("+{$duration} {$duration_type}"));
+    return $duration_type === 'unlimited' ? strtotime("14 Jan 2038") : ($duration_type === 'onetime' ? time() + 10 : strtotime("+{$duration} {$duration_type}"));
 }
 /**
  * Update post meta values

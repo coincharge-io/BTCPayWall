@@ -36,7 +36,6 @@ $collect_atts = array(
 $collect = btcpaywall_get_collect($collect_atts);
 
 $collect_data = btcpaywall_display_is_enabled($collect);
-
 ?>
 <style>
     .btcpw_revenue_post_container {
