@@ -15,7 +15,7 @@ $supported_gateways = array(
             <thead>
                 <tr>
                     <th><?php echo esc_html__('Payment gateway', 'btcpaywall'); ?></th>
-                    <th><?php echo esc_html__('Enabled', 'btcpaywall'); ?></th>
+                    <th><?php echo esc_html__('Activated', 'btcpaywall'); ?></th>
                     <th><?php echo esc_html__('Description', 'btcpaywall'); ?></th>
                 </tr>
             </thead>

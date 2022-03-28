@@ -44,6 +44,7 @@ function ajax_btcpaywall_check_greenfield_api_work()
     $response_create = wp_remote_request($url, $args_create);
 
     if (is_wp_error($response_view) || is_wp_error($response_create)) {
+        update_option("btcpw_btcpay_store_id", null);
         wp_send_json_error(['message' => 'Something went wrong. Please check your url and credentials.']);
     }
 
@@ -65,6 +66,8 @@ function ajax_btcpaywall_check_greenfield_api_work()
         btcpaywall_check_store_id($view_store_id);
         wp_send_json_success(["store_id" => $view_store_id]);
     } else {
+        update_option("btcpw_btcpay_store_id", null);
+
         wp_send_json_error(['message' => 'Something went wrong. Please check your credentials.']);
     }
 }
