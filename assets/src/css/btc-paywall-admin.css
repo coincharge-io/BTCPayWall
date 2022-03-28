@@ -834,7 +834,8 @@ Settings Tabs
 }
 
 /*Donation Metabox Table*/
-.btcpaywall_metabox_wrap table {
+.btcpaywall_metabox_wrap table,
+#btcpw_general_payment_gateway_options table {
   table-layout: fixed;
   width: 100%;
   border-collapse: collapse;
@@ -842,40 +843,50 @@ Settings Tabs
   border: 1px solid #c3c4c7;
 }
 
-.btcpaywall_metabox_wrap thead th:nth-child(1) {
+.btcpaywall_metabox_wrap thead th:nth-child(1),
+#btcpw_general_payment_gateway_options thead th:nth-child(1) {
   width: 30%;
 }
 
-.btcpaywall_metabox_wrap thead th:nth-child(2) {
+.btcpaywall_metabox_wrap thead th:nth-child(2),
+#btcpw_general_payment_gateway_options th:nth-child(2){
   width: 20%;
 }
 
-.btcpaywall_metabox_wrap thead th:nth-child(3) {
+.btcpaywall_metabox_wrap thead th:nth-child(3),
+#btcpw_general_payment_gateway_options th:nth-child(3){
   width: 15%;
 }
 
-.btcpaywall_metabox_wrap thead th:nth-child(4) {
+.btcpaywall_metabox_wrap thead th:nth-child(4),
+#btcpw_general_payment_gateway_options thead th:nth-child(4){
   width: 35%;
 }
 
 .btcpaywall_metabox_wrap th,
-.btcpaywall_metabox_wrap td {
+.btcpaywall_metabox_wrap td,
+#btcpw_general_payment_gateway_options th,
+#btcpw_general_payment_gateway_options td {
   padding: 5px;
 }
 
-.btcpaywall_metabox_wrap th {
+.btcpaywall_metabox_wrap th,
+#btcpw_general_payment_gateway_options th {
   letter-spacing: 2px;
 }
 
-.btcpaywall_metabox_wrap td {
+.btcpaywall_metabox_wrap td,
+#btcpw_general_payment_gateway_options td {
   letter-spacing: 1px;
 }
 
-.btcpaywall_metabox_wrap tbody td {
+.btcpaywall_metabox_wrap tbody td,
+#btcpw_general_payment_gateway_options tbody td {
   text-align: center;
 }
 
-.btcpaywall_metabox_wrap tr:nth-child(odd) td {
+.btcpaywall_metabox_wrap tr:nth-child(odd) td,
+#btcpw_general_payment_gateway_options tr:nth-child(odd) td{
   background: #f9f9f9;
 }
 
