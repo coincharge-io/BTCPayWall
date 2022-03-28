@@ -6,6 +6,7 @@ $supported_gateways = array(
     'BTCPayServer',
     'OpenNode'
 );
+
 ?>
 <div id="btcpw_general_payment_gateway_options">
     <form method="POST" action="options.php">
@@ -20,18 +21,20 @@ $supported_gateways = array(
             </thead>
             <tbody>
                 <tr>
-                    <td><?php echo esc_html__('BTCPay Server', 'btcpaywall'); ?></td>
+                    <td><?php echo esc_html__('BTCPay Server', 'btcpaywall'); ?> <div><?php echo (file_get_contents(BTCPAYWALL_PLUGIN_DIR . 'assets/src/img/btcpay_logo.svg')); ?></div>
+                    </td>
                     <td><input type="radio" id="btcpayserver" name="btcpw_selected_payment_gateway" value=<?php echo esc_attr__("BTCPayServer", "btcpaywall"); ?> <?php echo $selected_gateway === 'BTCPayServer' ? 'checked' : ''; ?>>
                     </td>
                     <td><?php echo esc_html__('BTCPay Server is a self-hosted, open-source cryptocurrency payment processor. It\'s secure, private, censorship-resistant and free.', 'btcpaywall'); ?></td>
-                    <td><button><?php echo esc_html__('Manage', 'btcpaywall'); ?></button></td>
+                    <td><a href="<?php echo admin_url('admin.php?page=btcpw_general_settings&section=btcpayserver'); ?>" class="page-title-action"><?php echo esc_html__('Manage', 'btcpaywall'); ?></a></td>
                 </tr>
                 <tr>
-                    <td><?php echo esc_html__('OpenNode', 'btcpaywall'); ?></td>
+                    <td><?php echo esc_html__('OpenNode', 'btcpaywall'); ?> <div><?php echo (file_get_contents(BTCPAYWALL_PLUGIN_DIR . 'assets/src/img/opennode_logo.svg')); ?></div>
+                    </td>
                     <td><input type="radio" id="opennode" name="btcpw_selected_payment_gateway" value=<?php echo esc_attr__("OpenNode", "btcpaywall"); ?> <?php echo $selected_gateway === 'OpenNode' ? 'checked' : ''; ?>>
                     </td>
                     <td><?php echo esc_html__('A simple Bitcoin payment processor for any business. Accept Bitcoin payments, receive Bitcoin donations and send Bitcoin payouts all on the OpenNode platform.', 'btcpaywall'); ?></td>
-                    <td><button><?php echo esc_html__('Manage', 'btcpaywall'); ?></button></td>
+                    <td><a href="<?php echo admin_url('admin.php?page=btcpw_general_settings&section=opennode'); ?>" class="page-title-action"><?php echo esc_html__('Manage', 'btcpaywall'); ?></a></td>
 
                 </tr>
             </tbody>

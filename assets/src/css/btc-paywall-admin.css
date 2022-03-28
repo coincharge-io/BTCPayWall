@@ -833,7 +833,7 @@ Settings Tabs
   overflow: hidden;
 }
 
-/*Donation Metabox Table*/
+/*Donation Metabox & Gateway Page Table*/
 .btcpaywall_metabox_wrap table,
 #btcpw_general_payment_gateway_options table {
   table-layout: fixed;
@@ -849,17 +849,17 @@ Settings Tabs
 }
 
 .btcpaywall_metabox_wrap thead th:nth-child(2),
-#btcpw_general_payment_gateway_options th:nth-child(2){
+#btcpw_general_payment_gateway_options th:nth-child(2) {
   width: 20%;
 }
 
 .btcpaywall_metabox_wrap thead th:nth-child(3),
-#btcpw_general_payment_gateway_options th:nth-child(3){
+#btcpw_general_payment_gateway_options th:nth-child(3) {
   width: 15%;
 }
 
 .btcpaywall_metabox_wrap thead th:nth-child(4),
-#btcpw_general_payment_gateway_options thead th:nth-child(4){
+#btcpw_general_payment_gateway_options thead th:nth-child(4) {
   width: 35%;
 }
 
@@ -886,9 +886,29 @@ Settings Tabs
 }
 
 .btcpaywall_metabox_wrap tr:nth-child(odd) td,
-#btcpw_general_payment_gateway_options tr:nth-child(odd) td{
+#btcpw_general_payment_gateway_options tr:nth-child(odd) td {
   background: #f9f9f9;
 }
 
+/*
+Gateway
+*/
 
+#btcpw_general_payment_gateway_options td a {
+  color: #006ba1;
+  box-shadow: inset 0 0 0 1px #006ba1;
+  background: #f6f7f7;
+  vertical-align: top;
+  padding: 10px;
+  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+  -webkit-appearance: none;
+  border-radius: 3px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
 
+#btcpw_general_payment_gateway_options td a:hover {
+  border: solid 2px;
+}
