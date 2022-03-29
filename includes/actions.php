@@ -18,7 +18,7 @@ function btcpaywall_gateway_admin_notice()
 
 
     if (empty($gateway) || true == $configurated_gateway) {
-        printf('<div class="%1$s"><h2>%2$s</h2><p>%3$s</p></div>', esc_attr($class), esc_html(__('BTCPayWall', 'btcpaywall')), esc_html(__('You have to configure a payment gateway in order to use the plugin.', 'btcpaywall')));
+        printf('<div class="%1$s"><h2>%2$s</h2><p>%3$s</p><p>%4$s <a href="%5$s" target=_blank>%5$s</a></p></div>', esc_attr($class), esc_html(__('BTCPayWall', 'btcpaywall')), esc_html(__('You have to configure a payment gateway in order to use the plugin.', 'btcpaywall')), esc_html(__('For further information visit:', 'btcpaywall')), esc_url('https://btcpaywall.com/payment-processing/'));
     }
 }
 add_action('admin_notices', 'btcpaywall_gateway_admin_notice');

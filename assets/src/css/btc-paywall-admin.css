@@ -416,7 +416,7 @@ div.btcpw_help_link a:hover {
 }
 
 .btcpw__paywall_submit_button {
-  margin-top: 50px;
+  margin-top: 25px;
 }
 
 .btcpw_pay_per_placeholders {
@@ -849,19 +849,19 @@ Settings Tabs
 }
 
 .btcpaywall_metabox_wrap thead th:nth-child(2),
-#btcpw_general_payment_gateway_options th:nth-child(2) {
+#btcpw_general_payment_gateway_options thead th:nth-child(2) {
   width: 20%;
 }
 
 .btcpaywall_metabox_wrap thead th:nth-child(3),
-#btcpw_general_payment_gateway_options th:nth-child(3) {
+#btcpw_general_payment_gateway_options thead th:nth-child(3) {
   width: 15%;
 }
 
-.btcpaywall_metabox_wrap thead th:nth-child(4),
-#btcpw_general_payment_gateway_options thead th:nth-child(4) {
+.btcpaywall_metabox_wrap thead th:nth-child(4) {
   width: 35%;
 }
+
 
 .btcpaywall_metabox_wrap th,
 .btcpaywall_metabox_wrap td,
@@ -907,6 +907,7 @@ Gateway
   border-radius: 3px;
   white-space: nowrap;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 #btcpw_general_payment_gateway_options td a:hover {
