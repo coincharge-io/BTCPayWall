@@ -22,3 +22,4 @@ $shortcode = btcpaywall_output_shortcode_attributes($template, $post->ID);
     </section>
 
 </div>
+<?php get_footer(); ?>
