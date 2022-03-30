@@ -711,6 +711,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 {value: 'BTC', label: 'BTC'},
                 {value: 'EUR', label: 'EUR'},
                 {value: 'USD', label: 'USD'},
+                {value: 'GBP', label: 'GBP'},
               ]}
             />
           </div>
@@ -1082,6 +1083,10 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                   {value: 'BTC', label: 'BTC'},
                   {value: 'EUR', label: 'EUR'},
                   {value: 'USD', label: 'USD'},
+                  {
+                    value: 'GBP',
+                    label: 'GBP',
+                  },
                 ]}
               />
             </div>
@@ -1120,6 +1125,10 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                   {value: 'BTC', label: 'BTC'},
                   {value: 'EUR', label: 'EUR'},
                   {value: 'USD', label: 'USD'},
+                  {
+                    value: 'GBP',
+                    label: 'GBP',
+                  },
                 ]}
               />
             </div>
@@ -1158,6 +1167,10 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                   {value: 'BTC', label: 'BTC'},
                   {value: 'EUR', label: 'EUR'},
                   {value: 'USD', label: 'USD'},
+                  {
+                    value: 'GBP',
+                    label: 'GBP',
+                  },
                 ]}
               />
             </div>

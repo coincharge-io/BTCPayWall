@@ -83,6 +83,7 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
                     'BTC' => 'BTC',
                     'EUR' => 'EUR',
                     'USD' => 'USD',
+                    'GBP'=>'GBP'
                 ],
                 'default' => 'SATS',
             ]
@@ -357,6 +358,7 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
                     'BTC' => 'BTC',
                     'EUR' => 'EUR',
                     'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ],
                 'default' => 'SATS',
             ]
@@ -396,6 +398,7 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
                     'BTC' => 'BTC',
                     'EUR' => 'EUR',
                     'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ],
                 'default' => 'SATS',
             ]
@@ -435,6 +438,7 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
                     'BTC' => 'BTC',
                     'EUR' => 'EUR',
                     'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ],
                 'default' => 'SATS',
             ]

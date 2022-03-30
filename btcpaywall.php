@@ -40,6 +40,7 @@ if (!class_exists('BTCPayWall')) :
             'SATS',
             'USD',
             'EUR',
+            'GBP'
         ];
 
         const TIPPING_CURRENCIES = [
@@ -47,6 +48,7 @@ if (!class_exists('BTCPayWall')) :
             'BTC',
             'USD',
             'EUR',
+            'GBP'
         ];
 
         const BTC_FORMAT = [

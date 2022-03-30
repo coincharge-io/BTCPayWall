@@ -692,7 +692,8 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z'
                   { value: '', label: 'Default' },
                   { value: 'SATS', label: 'SATS' },
                   { value: 'EUR', label: 'EUR' },
-                  { value: 'USD', label: 'USD' }
+                  { value: 'USD', label: 'USD' },
+                  {value: 'GBP', label: 'GBP'},
                 ]}
               />
             </PanelRow>

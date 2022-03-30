@@ -109,6 +109,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 					'SATS' => 'SATS',
 					'EUR' => 'EUR',
 					'USD' => 'USD',
+					'GBP'=>'GBP'
 				],
 				'default' => 'Default',
 			]

@@ -83,6 +83,7 @@ class Elementor_BTCPW_Tipping_Page_Widget extends \Elementor\Widget_Base
                     'BTC' => 'BTC',
                     'EUR' => 'EUR',
                     'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ],
                 'default' => 'SATS',
             ]
@@ -245,7 +246,7 @@ class Elementor_BTCPW_Tipping_Page_Widget extends \Elementor\Widget_Base
                 'label' => 'Secondary color for amount',
                 'type'  => \Elementor\Controls_Manager::COLOR,
                 'default' => '#000',
-                'description'=>'This color will be used as background color for selected amount field and as a text and border color for all unselected amount fields.'
+                'description' => 'This color will be used as background color for selected amount field and as a text and border color for all unselected amount fields.'
             ]
         );
         $this->end_controls_section();
@@ -373,6 +374,7 @@ class Elementor_BTCPW_Tipping_Page_Widget extends \Elementor\Widget_Base
                     'BTC' => 'BTC',
                     'EUR' => 'EUR',
                     'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ],
                 'default' => 'SATS',
             ]
@@ -412,6 +414,7 @@ class Elementor_BTCPW_Tipping_Page_Widget extends \Elementor\Widget_Base
                     'BTC' => 'BTC',
                     'EUR' => 'EUR',
                     'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ],
                 'default' => 'SATS',
             ]
@@ -451,6 +454,7 @@ class Elementor_BTCPW_Tipping_Page_Widget extends \Elementor\Widget_Base
                     'BTC' => 'BTC',
                     'EUR' => 'EUR',
                     'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ],
                 'default' => 'SATS',
             ]

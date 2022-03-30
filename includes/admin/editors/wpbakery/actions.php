@@ -36,7 +36,8 @@ function btcpaywall_load_vc_widgets()
                     'Default' => '',
                     'SATS' => 'SATS',
                     'EUR' => 'EUR',
-                    'USD' => 'USD'
+                    'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ),
                 'std' => 'Default',
                 'description' => 'Set currency',
@@ -230,7 +231,8 @@ function btcpaywall_load_vc_widgets()
                     'Default' => '',
                     'SATS' => 'SATS',
                     'EUR' => 'EUR',
-                    'USD' => 'USD'
+                    'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ),
                 'std' => 'Default',
                 'description' => 'Set currency',
@@ -399,7 +401,8 @@ function btcpaywall_load_vc_widgets()
                     'SATS' => 'SATS',
                     'BTC'    => 'BTC',
                     'EUR' => 'EUR',
-                    'USD' => 'USD'
+                    'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ),
                 'std' => 'SATS',
                 'description' => 'Set currency',
@@ -634,7 +637,8 @@ function btcpaywall_load_vc_widgets()
                     'BTC'    => 'BTC',
                     'SATS' => 'SATS',
                     'EUR' => 'EUR',
-                    'USD' => 'USD'
+                    'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 1 currency',
@@ -674,7 +678,8 @@ function btcpaywall_load_vc_widgets()
                     'BTC'    => 'BTC',
                     'SATS' => 'SATS',
                     'EUR' => 'EUR',
-                    'USD' => 'USD'
+                    'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 2 currency',
@@ -714,7 +719,8 @@ function btcpaywall_load_vc_widgets()
                     'BTC'    => 'BTC',
                     'SATS' => 'SATS',
                     'EUR' => 'EUR',
-                    'USD' => 'USD'
+                    'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 3 currency',
@@ -845,7 +851,8 @@ function btcpaywall_load_vc_widgets()
                     'SATS' => 'SATS',
                     'BTC'    => 'BTC',
                     'EUR' => 'EUR',
-                    'USD' => 'USD'
+                    'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ),
                 'std' => 'SATS',
                 'description' => 'Set currency',
@@ -1080,7 +1087,8 @@ function btcpaywall_load_vc_widgets()
                     'BTC'    => 'BTC',
                     'SATS' => 'SATS',
                     'EUR' => 'EUR',
-                    'USD' => 'USD'
+                    'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 1 currency',
@@ -1120,7 +1128,8 @@ function btcpaywall_load_vc_widgets()
                     'BTC'    => 'BTC',
                     'SATS' => 'SATS',
                     'EUR' => 'EUR',
-                    'USD' => 'USD'
+                    'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 2 currency',
@@ -1160,7 +1169,8 @@ function btcpaywall_load_vc_widgets()
                     'BTC'    => 'BTC',
                     'SATS' => 'SATS',
                     'EUR' => 'EUR',
-                    'USD' => 'USD'
+                    'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 3 currency',
@@ -1292,7 +1302,8 @@ function btcpaywall_load_vc_widgets()
                     'SATS' => 'SATS',
                     'BTC'    => 'BTC',
                     'EUR' => 'EUR',
-                    'USD' => 'USD'
+                    'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ),
                 'std' => 'SATS',
                 'description' => 'Set currency',
@@ -1449,7 +1460,8 @@ function btcpaywall_load_vc_widgets()
                     'SATS' => 'SATS',
                     'BTC'    => 'BTC',
                     'EUR' => 'EUR',
-                    'USD' => 'USD'
+                    'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ),
                 'std' => 'SATS',
                 'description' => 'Set currency',
@@ -1709,7 +1721,8 @@ function btcpaywall_load_vc_widgets()
                     'BTC'    => 'BTC',
                     'SATS' => 'SATS',
                     'EUR' => 'EUR',
-                    'USD' => 'USD'
+                    'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 1 currency',
@@ -1753,7 +1766,8 @@ function btcpaywall_load_vc_widgets()
                     'BTC'    => 'BTC',
                     'SATS' => 'SATS',
                     'EUR' => 'EUR',
-                    'USD' => 'USD'
+                    'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 2 currency',
@@ -1797,7 +1811,8 @@ function btcpaywall_load_vc_widgets()
                     'BTC'    => 'BTC',
                     'SATS' => 'SATS',
                     'EUR' => 'EUR',
-                    'USD' => 'USD'
+                    'USD' => 'USD',
+                    'GBP' => 'GBP'
                 ),
                 'std' => 'Default',
                 'description' => 'Set value 3 currency',

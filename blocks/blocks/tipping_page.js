@@ -932,6 +932,9 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
                   value: 'USD',
                   label: 'USD',
                 },
+                {
+                  value: 'GBP', 
+                  label: 'GBP'},
               ]}
             />{' '}{' '}
           </div>
@@ -1377,6 +1380,10 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
                     value: 'USD',
                     label: 'USD',
                   },
+                  {
+                    value: 'GBP', 
+                    label: 'GBP'
+                  },
                 ]}
               />{' '}{' '}
             </div> <div className="btcpw_gutenberg_sel_num_control">
@@ -1433,6 +1440,10 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
                     value: 'USD',
                     label: 'USD',
                   },
+                  {
+                    value: 'GBP', 
+                    label: 'GBP'
+                  },
                 ]}
               />{' '}{' '}
             </div> <div className="btcpw_gutenberg_sel_num_control">
@@ -1488,6 +1499,10 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
                   {
                     value: 'USD',
                     label: 'USD',
+                  },
+                  {
+                    value: 'GBP', 
+                    label: 'GBP'
                   },
                 ]}
               />{' '}{' '}

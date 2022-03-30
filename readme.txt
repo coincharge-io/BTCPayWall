@@ -90,6 +90,10 @@ https://btcpaywall.com/faq-support-center/
 
 - Fix: Problem with paywall onetime view
 
+- Fix: Problem with enqueueing scripts for donations
+
+- Improve: Gateway page design
+
 = 1.0.7 =
 
 - Add: Background color, text color and border can be modified for fixed amount

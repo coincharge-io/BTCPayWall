@@ -83,6 +83,7 @@ class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
                     'BTC' => 'BTC',
                     'EUR' => 'EUR',
                     'USD' => 'USD',
+                    'GBP'=>'GBP'
                 ],
                 'default' => 'SATS',
             ]

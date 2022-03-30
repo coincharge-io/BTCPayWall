@@ -199,26 +199,7 @@
     );
     imageRemove ($ ('.widget-tipping-basic-remove_box_logo_wide'));
   });
-  //$(document).on("widget-added", function () {
-  //$(document).ready(function () {
-  /* $(document).on('widget-updated widget-added', function () {
 
-    $(
-      ".widget-tipping-basic-background_color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-button_text_color,.widget-tipping-basic-button-color,.widget-tipping-basic-description-color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-tipping-color,.widget-tipping-basic-input_background,.widget-tipping-basic-fixed_background,.widget-tipping-basic-background_color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-button_text_color_high,.widget-tipping-basic-button_color_high,.widget-tipping-basic-continue_button_text_color_high,.widget-tipping-basic-continue_button_color_high,.widget-tipping-basic-previous_button_text_color_high,.widget-tipping-basic-previous_button_color_high,.widget-tipping-basic-continue_button_text_color_wide,.widget-tipping-basic-continue_button_color_wide,.widget-tipping-basic-previous_button_text_color_wide,.widget-tipping-basic-previous_button_color_wide,.widget-tipping-basic-description-color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-tipping-color_high,.widget-tipping-basic-fixed_background_high,.widget-tipping-basic-background_color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-button_text_color_wide,.widget-tipping-basic-button_color_wide,.widget-tipping-basic-description-color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-tipping-color_wide,.widget-tipping-basic-fixed_background_wide,.widget-tipping-basic-hf_color,.widget-tipping-basic-hf_color_high,.widget-tipping-basic-hf_color_wide,.widget-tipping-basic-box-hf_color,.widget-tipping-basic-button_color,.widget-tipping-basic-selected_amount_background_wide,.widget-tipping-basic-selected_amount_background_high"
-    ).iris({
-      defaultColor: true,
-
-      change: function (event, ui) {
-        $(this).css("background-color", ui.color.toString())
-      },
-
-      clear: function () {},
-
-      hide: true,
-
-      palettes: true,
-    });
-  }); */
   function initColorPicker (widget) {
     widget
       .find (
@@ -252,38 +233,7 @@
       initColorPicker ($ (this));
     });
   });
-  /* $(document).ready(function () {
-    $(".btcpw_expand_notice").click(function () {
-      $(".btcpw_expanded_notice").toggle();
-      $(".btcpw_expand_notice span i").toggleClass(
-        "fas fa-arrow-down fas fa-arrow-up"
-      );
-    });
-  }); */
-  /* $(document).ready(function () {
-    $("#tipping-form-design").change(function () {
-      var design = $(this).val();
-      $(".toggle-preview").hide();
-      switch (design) {
-        case "Box":
-          $("#tipping-box-preview").show();
-          break;
-        case "High-Banner":
-          $("#tipping-banner-high-preview").show();
-          break;
-        case "Wide-Banner":
-          $("#tipping-banner-wide-preview").show();
-          break;
-        case "Page":
-          $("#tipping-page-preview").show();
-          break;
 
-        default:
-          $("#tipping-box-preview").show();
-          break;
-      }
-    });
-  }); */
   $ (document).ready (function () {
     $ (
       '#btcpaywall_tipping_color_background, #btcpaywall_tipping_color_header_footer_background, #btcpaywall_tipping_color_title, #btcpaywall_tipping_color_description, #btcpaywall_tipping_color_progress_bar_step1,#btcpaywall_tipping_color_progress_bar_step2,#btcpaywall_tipping_color_main,#btcpaywall_tipping_color_amounts,#btcpaywall_tipping_color_button_text,#btcpaywall_tipping_color_button, #btcpaywall_tipping_color_continue_button_text, #btcpaywall_tipping_color_continue_button,#btcpaywall_tipping_color_previous_button_text,#btcpaywall_tipping_color_previous_button, #btcpaywall_tipping_color_selected_amount, #btcpw_pay_per_post_continue_button_color,#btcpw_pay_per_post_continue_button_text_color,  #btcpw_pay_per_post_previous_button_color,#btcpw_pay_per_post_previous_button_text_color, #btcpw_pay_per_view_continue_button_color,#btcpw_pay_per_view_continue_button_text_color,  #btcpw_pay_per_view_previous_button_color,#btcpw_pay_per_view_previous_button_text_color'
@@ -299,70 +249,8 @@
       palettes: true,
     });
   });
-  /* $(document).ready(function () {
-    $(
-      ".btcpw_tipping_box_title_color,.btcpw_tipping_box_description_color,.btcpw_tipping_box_tipping_box_color,.btcpw_tipping_box_hf_background,.btcpw_tipping_box_button_text_color,.btcpw_tipping_box_button_color,.btcpw_tipping_box_background,.btcpw_tipping_banner_high_hf_background,.btcpw_tipping_banner_high_title_color,.btcpw_tipping_banner_high_description_color,.btcpw_tipping_banner_high_tipping_box_color,.btcpw_tipping_banner_high_button_text_color,.btcpw_tipping_banner_high_button_color,.btcpw_tipping_banner_high_background,.btcpw_tipping_banner_high_tipping_color,.btcpw_tipping_banner_high_input_background,.btcpw_tipping_banner_wide_hf_background,.btcpw_tipping_banner_wide_title_color,.btcpw_tipping_banner_wide_description_color,.btcpw_tipping_banner_wide_tipping_box_color,.btcpw_tipping_banner_wide_button_text_color,.btcpw_tipping_banner_wide_button_color,.btcpw_tipping_banner_wide_background,.btcpw_tipping_banner_wide_tipping_color,.btcpw_tipping_banner_wide_input_background,.btcpw_tipping_box_input_background,.btcpw_tipping_page_title_color,.btcpw_tipping_page_tipping_box_color,.btcpw_tipping_page_button_text_color,.btcpw_tipping_page_button_color,.btcpw_tipping_page_background,.btcpw_tipping_page_tipping_color,.btcpw_tipping_page_input_background,.btcpw_tipping_page_tipping_color_active,.btcpw_tipping_page_tipping_color_inactive,.btcpw_tipping_hf_background"
-    ).iris({
-      defaultColor: true,
 
-      change: function (event, ui) {},
-
-      clear: function () {},
-
-      hide: true,
-
-      palettes: true,
-    });
-  }); */
   $ (document).ready (function ($) {
-    /* imagePreview(
-      $("#btcpw_tipping_banner_high_button_image"),
-      $("#btcpw_tipping_banner_high_image")
-    );
-    imageRemove($(".btcpw_tipping_banner_high_button_remove"));
-
-    imagePreview(
-      $("#btcpw_tipping_banner_high_button_image_background"),
-      $("#btcpw_tipping_banner_high_image_background")
-    );
-    imageRemove($(".btcpw_tipping_banner_high_button_remove_background"));
-
-    imagePreview(
-      $("#btcpw_tipping_banner_wide_button_image"),
-      $("#btcpw_tipping_banner_wide_image")
-    );
-    imageRemove($(".btcpw_tipping_banner_wide_button_remove"));
-
-    imagePreview(
-      $("#btcpw_tipping_banner_wide_button_image_background"),
-      $("#btcpw_tipping_banner_wide_image_background")
-    );
-    imageRemove($(".btcpw_tipping_banner_wide_button_remove_background"));
-
-    imagePreview(
-      $("#btcpw_tipping_box_button_image"),
-      $("#btcpw_tipping_box_image")
-    );
-    imageRemove($(".btcpw_tipping_box_button_remove"));
-
-    imagePreview(
-      $("#btcpw_tipping_box_button_image_background"),
-      $("#btcpw_tipping_box_image_background")
-    );
-    imageRemove($(".btcpw_tipping_box_button_remove_background"));
-
-    imagePreview(
-      $("#btcpw_tipping_page_button_image"),
-      $("#btcpw_tipping_page_image")
-    );
-    imageRemove($(".btcpw_tipping_page_button_remove"));
-
-    imagePreview(
-      $("#btcpw_tipping_page_button_image_background"),
-      $("#btcpw_tipping_page_image_background")
-    );
-    imageRemove($(".btcpw_tipping_page_button_remove_background")); */
-
     imagePreview (
       $ ('#btcpw_product_image_button'),
       $ ('#btcpw_product_image_id')
@@ -518,8 +406,6 @@
   }
 
   function imageRemove (remove) {
-    /* $(remove).click(function (e) {
-      e.preventDefault(); */
     $ (remove).on ('click', function (e) {
       e.preventDefault ();
       var button = $ (this);
