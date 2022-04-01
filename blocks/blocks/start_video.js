@@ -1,7 +1,10 @@
-import {registerBlockType} from '@wordpress/blocks';
-import {InspectorControls, MediaUpload} from '@wordpress/block-editor';
+import { registerBlockType } from '@wordpress/blocks';
+import { InspectorControls, MediaUpload } from '@wordpress/block-editor';
 
-import {useState} from '@wordpress/element';
+import { useState } from '@wordpress/element';
+import {
+  URLInputButton,
+} from '@wordpress/block-editor';
 import {
   ToggleControl,
   PanelBody,
@@ -12,10 +15,11 @@ import {
   __experimentalNumberControl as NumberControl,
   SelectControl,
   CheckboxControl,
+  ColorPicker,
 } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
 
-registerBlockType ('btcpaywall/gutenberg-start-video-block', {
+registerBlockType('btcpaywall/gutenberg-start-video-block', {
   title: 'BTCPW Pay-per-View Start',
   icon: (
     <svg
@@ -457,6 +461,75 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
     duration: {
       type: 'number',
     },
+    header_text: {
+      type: 'string',
+      default: 'Pay now to watch the whole video',
+    },
+    header_color: {
+      type: 'string',
+    },
+    info_text: {
+      type: 'string',
+    },
+    info_color: {
+      type: 'string',
+    },
+    button_text: {
+      type: 'string',
+      default: 'Pay',
+    },
+    button_text_color: {
+      type: 'string',
+    },
+    button_color: {
+      type: 'string',
+      default: '#FE642E',
+    },
+    continue_button_text: {
+      type: 'string',
+      default: 'Continue',
+    },
+    continue_button_text_color: {
+      type: 'string',
+      default: '#FFF',
+    },
+    continue_button_color: {
+      type: 'string',
+      default: '#FE642E',
+    },
+    previous_button_text: {
+      type: 'string',
+      default: 'Previous',
+    },
+    previous_button_text_color: {
+      type: 'string',
+      default: '#FFF',
+    },
+    previous_button_color: {
+      type: 'string',
+      default: '#1d5aa3',
+    },
+    link: {
+      type: 'boolean',
+      default: false,
+    },
+help_link: {
+      type: 'string',
+    },
+help_text: {
+      type: 'string',
+      default:'Help'
+    },
+additional_link: {
+      type: 'boolean',
+      default: false,
+    },
+additional_help_link: {
+      type: 'string',
+    },
+additional_help_text: {
+      type: 'string',
+    },
     display_name: {
       type: 'boolean',
       default: true,
@@ -511,6 +584,23 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
         duration_type,
         price,
         duration,
+        link,
+help_link,
+help_text,
+additional_link,
+additional_help_link,
+additional_help_text,
+        header_text,
+        header_color, info_text, info_color,
+        button_color,
+        button_text,
+        button_text_color,
+        continue_button_color,
+        continue_button_text,
+        continue_button_text_color,
+        previous_button_color,
+        previous_button_text,
+        previous_button_text_color,
         display_name,
         display_email,
         display_message,
@@ -525,7 +615,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       },
       setAttributes,
     } = props;
-    const [show, setShow] = useState (currency === 'SATS');
+    const [show, setShow] = useState(currency === 'SATS');
 
     const inspectorControls = (
       <InspectorControls>
@@ -536,7 +626,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 label="Enable payment block"
                 checked={pay_view_block}
                 onChange={checked => {
-                  setAttributes ({pay_view_block: checked});
+                  setAttributes({ pay_view_block: checked });
                 }}
                 value={pay_view_block}
               />
@@ -546,7 +636,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 label="Title"
                 help="Enter video title"
                 onChange={content => {
-                  setAttributes ({title: content});
+                  setAttributes({ title: content });
                 }}
                 value={title}
               />
@@ -556,7 +646,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 label="Description"
                 help="Enter video description"
                 onChange={desc => {
-                  setAttributes ({description: desc});
+                  setAttributes({ description: desc });
                 }}
                 value={description}
               />
@@ -564,9 +654,9 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             <PanelRow>
               <MediaUpload
                 onSelect={pic => {
-                  setAttributes ({preview: pic.sizes.full.url});
+                  setAttributes({ preview: pic.sizes.full.url });
                 }}
-                render={({open}) => (
+                render={({ open }) => (
                   <Button onClick={open}>Video preview</Button>
                 )}
               />
@@ -576,15 +666,15 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 label="Currency"
                 value={currency}
                 onChange={selectedItem => {
-                  selectedItem === 'SATS' ? setShow (true) : setShow (false);
-                  setAttributes ({currency: selectedItem});
+                  selectedItem === 'SATS' ? setShow(true) : setShow(false);
+                  setAttributes({ currency: selectedItem });
                 }}
                 options={[
-                  {value: '', label: 'Default'},
-                  {value: 'SATS', label: 'SATS'},
-                  {value: 'EUR', label: 'EUR'},
-                  {value: 'USD', label: 'USD'},
-                  {value: 'GBP', label: 'GBP'},
+                  { value: '', label: 'Default' },
+                  { value: 'SATS', label: 'SATS' },
+                  { value: 'EUR', label: 'EUR' },
+                  { value: 'USD', label: 'USD' },
+                  { value: 'GBP', label: 'GBP' },
                 ]}
               />
             </PanelRow>
@@ -594,11 +684,11 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                   label="BTC format"
                   value={btc_format}
                   onChange={selectedItem =>
-                    setAttributes ({btc_format: selectedItem})}
+                    setAttributes({ btc_format: selectedItem })}
                   options={[
-                    {value: '', label: 'Default'},
-                    {value: 'SATS', label: 'SATS'},
-                    {value: 'BTC', label: 'BTC'},
+                    { value: '', label: 'Default' },
+                    { value: 'SATS', label: 'SATS' },
+                    { value: 'BTC', label: 'BTC' },
                   ]}
                 />
               </PanelRow>}
@@ -607,7 +697,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 label="Price"
                 value={price}
                 onChange={nextValue =>
-                  setAttributes ({price: Number (nextValue)})}
+                  setAttributes({ price: Number(nextValue) })}
               />
             </PanelRow>
             <PanelRow>
@@ -615,16 +705,16 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 label="Duration type"
                 value={duration_type}
                 onChange={selectedItem =>
-                  setAttributes ({duration_type: selectedItem})}
+                  setAttributes({ duration_type: selectedItem })}
                 options={[
-                  {value: '', label: 'Default'},
-                  {value: 'minute', label: 'Minute'},
-                  {value: 'hour', label: 'Hour'},
-                  {value: 'week', label: 'Week'},
-                  {value: 'month', label: 'Month'},
-                  {value: 'year', label: 'Year'},
-                  {value: 'onetime', label: 'Onetime'},
-                  {value: 'unlimited', label: 'Unlimited'},
+                  { value: '', label: 'Default' },
+                  { value: 'minute', label: 'Minute' },
+                  { value: 'hour', label: 'Hour' },
+                  { value: 'week', label: 'Week' },
+                  { value: 'month', label: 'Month' },
+                  { value: 'year', label: 'Year' },
+                  { value: 'onetime', label: 'Onetime' },
+                  { value: 'unlimited', label: 'Unlimited' },
                 ]}
               />
             </PanelRow>
@@ -633,25 +723,193 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 label="Duration"
                 value={duration}
                 onChange={nextValue =>
-                  setAttributes ({duration: Number (nextValue)})}
+                  setAttributes({ duration: Number(nextValue) })}
               />
             </PanelRow>
           </PanelBody>
-          <PanelBody title="User information">
+          <PanelBody title="Header">
+            <TextareaControl
+              label="Title"
+              help="Enter title text"
+              onChange={content => {
+                setAttributes({ header_text: content });
+              }}
+              value={header_text}
+            />
+            <p>Title color</p>
+            <ColorPicker
+              color={header_color}
+              onChangeComplete={value =>
+                setAttributes({ header_color: value.hex })}
+              disableAlpha
+            />
+
+            <TextareaControl
+              label="Price information"
+              help="Enter price information text"
+              onChange={content => {
+                setAttributes({ info_text: content });
+              }}
+              value={info_text}
+            />
+            <p>Price information color</p>
+            <ColorPicker
+              color={info_color}
+              onChangeComplete={value =>
+                setAttributes({ info_color: value.hex })}
+              disableAlpha
+            />
+          </PanelBody>
+          <PanelBody title="Footer">
+            <TextareaControl
+              label="Button"
+              help="Enter button text"
+              onChange={content => {
+                setAttributes({ button_text: content });
+              }}
+              value={button_text}
+            />
+            <p>Button color</p>
+            <ColorPicker
+              color={button_color}
+              onChangeComplete={value =>
+                setAttributes({ button_color: value.hex })}
+              disableAlpha
+            />
+            <p>Button text color</p>
+            <ColorPicker
+              color={button_text_color}
+              onChangeComplete={value =>
+                setAttributes({ button_text_color: value.hex })}
+              disableAlpha
+            />
+            <TextareaControl
+              label="Continue button"
+              help="Enter continue button text"
+              onChange={content => {
+                setAttributes({
+                  continue_button_text: content,
+                });
+              }}
+              value={continue_button_text}
+            /> <p> Continue button color </p> <ColorPicker
+              color={continue_button_color}
+              onChangeComplete={value =>
+                setAttributes({
+                  continue_button_color: value.hex,
+                })}
+              disableAlpha
+            />
+            <p> Continue button text color </p> <ColorPicker
+              color={button_text_color}
+              onChangeComplete={value =>
+                setAttributes({
+                  continue_button_text_color: value.hex,
+                })}
+              disableAlpha
+            />
+            <TextareaControl
+              label="Previous button"
+              help="Enter button text"
+              onChange={content => {
+                setAttributes({
+                  previous_button_text: content,
+                });
+              }}
+              value={previous_button_text}
+            /> <p> Previous button color </p> <ColorPicker
+              color={previous_button_color}
+              onChangeComplete={value =>
+                setAttributes({
+                  previous_button_color: value.hex,
+                })}
+              disableAlpha
+            />
+            <p> Previous button text color </p> <ColorPicker
+              color={previous_button_text_color}
+              onChangeComplete={value =>
+                setAttributes({
+                  previous_button_text_color: value.hex,
+                })}
+              disableAlpha
+            />
+          </PanelBody>
+          <PanelBody title="Links" initialOpen={true}>
+          <CheckboxControl
+              label="Display help link"
+              help="Do you want to display help link?"
+              checked={link}
+              onChange={value => {
+                setAttributes ({
+                  link: value,
+                });
+              }}
+            />
+
+<p> Help link url </p> <URLInputButton
+              label="Help link url"
+              url={help_link}
+              onChange={value =>
+                setAttributes ({
+                  help_link: value,
+                })}
+            />
+
+<TextareaControl
+              label="Help link text"
+              help="Enter help link text"
+              onChange={content => {
+                setAttributes ({
+                  help_text: content,
+                });
+              }}
+              value={help_text}/>
+
+<CheckboxControl
+              label="Display additional help link"
+              help="Do you want to display additional help link?"
+              checked={additional_link}
+              onChange={value => {
+                setAttributes ({
+                  additional_link: value,
+                });
+              }}
+            />
+
+<p> Additional help link url </p> <URLInputButton
+              label="Additional help link"
+              url={additional_help_link}
+              onChange={value =>
+                setAttributes ({
+                  additional_help_link: value,
+                })}
+            />
+
+<TextareaControl
+              label="Additional help link text"
+              help="Enter additional help link text"
+              onChange={content => {
+                setAttributes ({
+                  additional_help_text: content,
+                });
+              }}
+              value={additional_help_text}/>
+          </PanelBody>
+          <PanelBody title="Customer information">
             <PanelRow>
               <CheckboxControl
                 label="Full name"
                 help="Do you want to collect full name?"
                 checked={display_name}
                 onChange={value => {
-                  setAttributes ({display_name: value});
+                  setAttributes({ display_name: value });
                 }}
               />
               <CheckboxControl
                 help="Do you want make this field mandatory?"
                 checked={mandatory_name}
                 onChange={value => {
-                  setAttributes ({mandatory_name: value});
+                  setAttributes({ mandatory_name: value });
                 }}
               />
             </PanelRow>
@@ -661,14 +919,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 help="Do you want to collect email?"
                 checked={display_email}
                 onChange={value => {
-                  setAttributes ({display_email: value});
+                  setAttributes({ display_email: value });
                 }}
               />
               <CheckboxControl
                 help="Do you want make this field mandatory?"
                 checked={mandatory_email}
                 onChange={value => {
-                  setAttributes ({mandatory_email: value});
+                  setAttributes({ mandatory_email: value });
                 }}
               />
             </PanelRow>
@@ -678,14 +936,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 help="Do you want to collect address?"
                 checked={display_address}
                 onChange={value => {
-                  setAttributes ({display_address: value});
+                  setAttributes({ display_address: value });
                 }}
               />
               <CheckboxControl
                 help="Do you want make this field mandatory?"
                 checked={mandatory_address}
                 onChange={value => {
-                  setAttributes ({mandatory_address: value});
+                  setAttributes({ mandatory_address: value });
                 }}
               />
             </PanelRow>
@@ -694,13 +952,13 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 label="Phone"
                 checked={display_phone}
                 help="Do you want to collect phone?"
-                onChange={value => setAttributes ({display_phone: value})}
+                onChange={value => setAttributes({ display_phone: value })}
               />
               <CheckboxControl
                 help="Do you want make this field mandatory?"
                 checked={mandatory_phone}
                 onChange={value => {
-                  setAttributes ({mandatory_phone: value});
+                  setAttributes({ mandatory_phone: value });
                 }}
               />
             </PanelRow>
@@ -710,14 +968,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 help="Do you want to collect message?"
                 checked={display_message}
                 onChange={value => {
-                  setAttributes ({display_message: value});
+                  setAttributes({ display_message: value });
                 }}
               />
               <CheckboxControl
                 help="Do you want make this field mandatory?"
                 checked={mandatory_message}
                 onChange={value => {
-                  setAttributes ({mandatory_message: value});
+                  setAttributes({ mandatory_message: value });
                 }}
               />
             </PanelRow>
@@ -739,6 +997,23 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             duration_type,
             price,
             duration,
+            link,
+help_link,
+help_text,
+additional_link,
+additional_help_link,
+additional_help_text,
+            header_text,
+            header_color, info_text, info_color,
+            button_color,
+            button_text,
+            button_text_color,
+            continue_button_color,
+            continue_button_text,
+            continue_button_text_color,
+            previous_button_color,
+            previous_button_text,
+            previous_button_text_color,
             display_name,
             display_email,
             display_message,

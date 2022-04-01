@@ -94,6 +94,7 @@ function btcpaywall_get_post_info_string($post_id = null, $type = 'post')
 
     return $duration_type === 'unlimited' ? $unlimited : ($duration_type === 'onetime' ? $onetime : $other);
 }
+
 /**
  * Get paywall title
  * 
@@ -147,16 +148,6 @@ function btcpaywall_get_default_values($name)
                 'price'      => get_option('btcpw_pay_per_view_price', 1000), 'duration'    => get_option('btcpw_pay_per_view_duration'),
                 'duration_type'    => get_option('btcpw_pay_per_view_duration_type', 'unlimited'),
                 'btc_format' => get_option('btcpw_pay_per_view_btc_format', 'SATS')
-            ];
-        case 'file':
-            return [
-                'title' => get_option('btcpw_pay_per_file_title', 'Pay now to download the software'),
-                'info'    => get_option('btcpw_pay_per_file_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]'),
-                'button'    => get_option('btcpw_pay_per_file_button', 'Pay'),
-                'currency' => get_option('btcpw_pay_per_file_currency', 'SATS'),
-                'price'      => get_option('btcpw_pay_per_file_price', 1000), 'duration'    => get_option('btcpw_pay_per_file_duration'),
-                'duration_type'    => get_option('btcpw_pay_per_file_duration_type', 'unlimited'),
-                'btc_format' => get_option('btcpw_pay_per_file_btc_format', 'SATS')
             ];
         default:
             return null;

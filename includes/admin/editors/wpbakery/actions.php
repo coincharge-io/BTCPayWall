@@ -89,6 +89,147 @@ function btcpaywall_load_vc_widgets()
                 'description' => 'Set duration',
             ),
             array(
+                'type' => 'textarea',
+                'heading' => 'Title text',
+                'param_name' => 'header_text',
+                'value' => 'Pay now to unlock blogpost',
+                'description' => 'Set title',
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Title color',
+                'param_name' => 'header_color',
+                'value' => '#ffffff',
+                'description' => 'Set title color',
+            ),
+            array(
+                'type' => 'textarea',
+                'heading' => 'Price information',
+                'param_name' => 'info_text',
+                'value' => '',
+                'description' => 'Add price information text',
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Price information color',
+                'param_name' => 'info_color',
+                'value' => '#ffffff',
+                'description' => 'Set price information color',
+
+            ),
+            array(
+                'type' => 'textarea',
+                'heading' => 'Button text',
+                'param_name' => 'button_text',
+                'value' => 'Pay',
+                'description' => 'Set button text',
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Button text color',
+                'param_name' => 'button_text_color',
+                'value' => '#ffffff',
+                'description' => 'Set button text color',
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Button color',
+                'param_name' => 'button_color',
+                'value' => '#FE642E',
+                'description' => 'Set button color',
+
+            ),
+            array(
+                'type' => 'textarea',
+                'heading' => 'Continue button text',
+                'param_name' => 'continue_button_text',
+                'value' => 'Continue',
+                'description' => 'Set continue button text',
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Continue button text color',
+                'param_name' => 'continue_button_text_color',
+                'value' => '#ffffff',
+                'description' => 'Set continue_button text color',
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Continue button color',
+                'param_name' => 'continue_button_color',
+                'value' => '#FE642E',
+                'description' => 'Set continue button color',
+
+            ),
+            array(
+                'type' => 'textarea',
+                'heading' => 'Previous button text',
+                'param_name' => 'previous_button_text',
+                'value' => 'Previous',
+                'description' => 'Set previous button text',
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Previous button text color',
+                'param_name' => 'previous_button_text_color',
+                'value' => '#ffffff',
+                'description' => 'Set previous button text color',
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Previous button color',
+                'param_name' => 'previous_button_color',
+                'value' => '#1d5aa3',
+                'description' => 'Set previous button color',
+            ),
+            array(
+                'type' => 'checkbox',
+                'heading' => 'Display help link',
+                'param_name' => 'link',
+                'value' => true,
+                'std' => true,
+                'description' => 'Display help link',
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => 'Help link url',
+                'param_name' => 'help_link',
+                'description' => 'Set help link url',
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => 'Help link text',
+                'param_name' => 'help_text',
+                'description' => 'Set help link text',
+            ),
+            array(
+                'type' => 'checkbox',
+                'heading' => 'Display additional help link',
+                'param_name' => 'additional_link',
+                'value' => false,
+                'std' => false,
+                'description' => 'Display additional help link',
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => 'Additional help link url',
+                'param_name' => 'additional_help_link',
+                'description' => 'Set additional help link url',
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => 'Additional help link text',
+                'param_name' => 'additional_help_text',
+                'description' => 'Set additional help link text',
+            ),
+            array(
                 'type' => 'checkbox',
                 'heading' => 'Display name',
                 'param_name' => 'display_name',
@@ -282,6 +423,146 @@ function btcpaywall_load_vc_widgets()
                 'heading' => 'Duration',
                 'param_name' => 'duration',
                 'description' => 'Set duration',
+            ),
+            array(
+                'type' => 'textarea',
+                'heading' => 'Title text',
+                'param_name' => 'header_text',
+                'value' => 'Pay now to watch the whole video',
+                'description' => 'Set title',
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Title color',
+                'param_name' => 'header_color',
+                'value' => '#ffffff',
+                'description' => 'Set title color',
+            ),
+            array(
+                'type' => 'textarea',
+                'heading' => 'Price information',
+                'param_name' => 'info_text',
+                'value' => '',
+                'description' => 'Add price information text',
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Price information color',
+                'param_name' => 'info_color',
+                'value' => '#ffffff',
+                'description' => 'Set price information color',
+
+            ),
+            array(
+                'type' => 'textarea',
+                'heading' => 'Button text',
+                'param_name' => 'button_text',
+                'value' => 'Pay',
+                'description' => 'Set button text',
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Button text color',
+                'param_name' => 'button_text_color',
+                'value' => '#ffffff',
+                'description' => 'Set button text color',
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Button color',
+                'param_name' => 'button_color',
+                'value' => '#FE642E',
+                'description' => 'Set button color',
+
+            ),
+            array(
+                'type' => 'textarea',
+                'heading' => 'Continue button text',
+                'param_name' => 'continue_button_text',
+                'value' => 'Continue',
+                'description' => 'Set continue button text',
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Continue button text color',
+                'param_name' => 'continue_button_text_color',
+                'value' => '#ffffff',
+                'description' => 'Set continue_button text color',
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Continue button color',
+                'param_name' => 'continue_button_color',
+                'value' => '#FE642E',
+                'description' => 'Set continue button color',
+
+            ),
+            array(
+                'type' => 'textarea',
+                'heading' => 'Previous button text',
+                'param_name' => 'previous_button_text',
+                'value' => 'Previous',
+                'description' => 'Set previous button text',
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Previous button text color',
+                'param_name' => 'previous_button_text_color',
+                'value' => '#ffffff',
+                'description' => 'Set previous button text color',
+
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Previous button color',
+                'param_name' => 'previous_button_color',
+                'value' => '#1d5aa3',
+                'description' => 'Set previous button color',
+            ),
+            array(
+                'type' => 'checkbox',
+                'heading' => 'Display help link',
+                'param_name' => 'link',
+                'value' => true,
+                'std' => true,
+                'description' => 'Display help link',
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => 'Help link url',
+                'param_name' => 'help_link',
+                'description' => 'Set help link url',
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => 'Help link text',
+                'param_name' => 'help_text',
+                'description' => 'Set help link text',
+            ),
+            array(
+                'type' => 'checkbox',
+                'heading' => 'Display additional help link',
+                'param_name' => 'additional_link',
+                'value' => false,
+                'std' => false,
+                'description' => 'Display additional help link',
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => 'Additional help link url',
+                'param_name' => 'additional_help_link',
+                'description' => 'Set additional help link url',
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => 'Additional help link text',
+                'param_name' => 'additional_help_text',
+                'description' => 'Set additional help link text',
             ),
             array(
                 'type' => 'checkbox',

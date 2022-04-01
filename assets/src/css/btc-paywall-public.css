@@ -92,7 +92,7 @@
 
 .btcpw_pay__content p {
   font-size: 30px;
-  line-height: 1.6;
+  line-height: 1.25;
 }
 
 .btcpw_pay__footer div.btcpw_help {
@@ -1236,10 +1236,11 @@ div.btcpw_page_header_container>div:nth-child(2) {
   width: 250px;
   align-items: center;
 }
+
 /*Gutenberg Editor*/
 .components-button.btcpaywall.editor-post-featured-image__preview,
-.components-button.btcpaywall.editor-post-featured-image__toggle, 
-.components-button.btcpaywall.editor-post-featured-image__remove{
+.components-button.btcpaywall.editor-post-featured-image__toggle,
+.components-button.btcpaywall.editor-post-featured-image__remove {
   border: 1px solid #000;
   padding: 10px;
   margin: 10px 2px;
@@ -1252,9 +1253,10 @@ div.btcpw_page_header_container>div:nth-child(2) {
   height: 50px;
 } */
 
-.btcpaywall_gutenberg_wrap{
-  margin:20px 10px;
+.btcpaywall_gutenberg_wrap {
+  margin: 20px 10px;
 }
+
 /**
     Tipping button spinner
     
@@ -1298,10 +1300,11 @@ Revenue types
   display: none;
 }
 
-#post_revenue_type fieldset:not(:first-of-type) h2,
-#view_revenue_type fieldset:not(:first-of-type) h2 {
+
+#post_revenue_type fieldset:nth-child(2) h2,
+#view_revenue_type fieldset:nth-child(2) h2 {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .btcpw_revenue_post_container form,
@@ -1318,7 +1321,7 @@ Revenue types
   align-items: center;
   border: 0;
   min-width: 0;
-  padding: 15px 0 20px 0;
+  padding: 25px 0;
   height: 95%;
 }
 
@@ -1337,7 +1340,7 @@ Revenue types
   margin: 1em 0;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .btcpw_revenue_post_customer_information>div,
@@ -1348,6 +1351,7 @@ Revenue types
 .btcpw_revenue_post_customer_information label,
 .btcpw_revenue_view_customer_information label {
   font-size: 16px;
+  margin-bottom: 1.5px;
 }
 
 .btcpw_revenue_post_customer_information div,
@@ -1423,6 +1427,12 @@ Revenue types
 #btcpw_revenue_file_button input[type="submit"] {
   padding: 10px;
   text-transform: uppercase;
+}
+
+#btcpw_revenue_post_button input.revenue-post-next-form,
+#btcpw_revenue_view_button input.revenue-view-next-form {
+  width: 140px;
+  height: 60px;
 }
 
 /**
@@ -1589,6 +1599,14 @@ button.btcpaywall_add_to_cart:hover {
   -moz-border-radius: 15px;
   -webkit-border-radius: 15px;
   -khtml-border-radius: 15px;
+}
+
+.btcpw_revenue_post_container,
+.btcpw_revenue_view_container {
+  box-shadow: 0 0 5px 5px#888;
+  -webkit-box-shadow: 0 0 5px 5px#888;
+  -moz-box-shadow: 0 0 5px 5px#888;
+
 }
 
 .btcpw_revenue_post_customer_information input[type="text"],

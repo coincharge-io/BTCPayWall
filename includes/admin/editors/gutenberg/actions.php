@@ -60,6 +60,46 @@ function btcpaywall_load_gutenberg()
                     'type' => 'string',
                     'default' => 'minute'
                 ),
+                'header_text' => array(
+                    'type' => 'string',
+                    'default' => 'Pay now to unlock blogpost'
+                ),
+                'info_text' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'header_color' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'info_color' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'link' => array(
+                    'type' => 'boolean',
+                    'default' => false
+                ),
+                'help_text' => array(
+                    'type' => 'string',
+                    'default' => 'Help'
+                ),
+                'help_link' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'additional_link' => array(
+                    'type' => 'boolean',
+                    'default' => false
+                ),
+                'additional_help_text' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'additional_help_link' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
                 'display_name' => array(
                     'type' => 'boolean',
                     'default' => true
@@ -99,6 +139,42 @@ function btcpaywall_load_gutenberg()
                 'mandatory_message' => array(
                     'type' => 'boolean',
                     'default' => false
+                ),
+                'button_text' => array(
+                    'type' => 'string',
+                    'default' => 'Pay'
+                ),
+                'button_text_color' => array(
+                    'type' => 'string',
+                    'default' => '#FFFFFF'
+                ),
+                'button_color' => array(
+                    'type' => 'string',
+                    'default' => '#FE642E'
+                ),
+                'continue_button_text' => array(
+                    'type' => 'string',
+                    'default' => 'Continue'
+                ),
+                'continue_button_text_color' =>  array(
+                    'type' => 'string',
+                    'default' => '#fff'
+                ),
+                'continue_button_color' => array(
+                    'type' => 'string',
+                    'default' => '#FE642E'
+                ),
+                'previous_button_text' => array(
+                    'type' => 'string',
+                    'default' => 'Previous'
+                ),
+                'previous_button_text_color' => array(
+                    'type' => 'string',
+                    'default' => '#FFFFFF'
+                ),
+                'previous_button_color' => array(
+                    'type' => 'string',
+                    'default' => '#1d5aa3'
                 ),
             )
         ]
@@ -160,6 +236,46 @@ function btcpaywall_load_gutenberg()
                     'type' => 'string',
                     'default' => 'minute'
                 ),
+                'header_text' => array(
+                    'type' => 'string',
+                    'default' => 'Pay now to watch the whole video'
+                ),
+                'info_text' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'header_color' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'info_color' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'link' => array(
+                    'type' => 'boolean',
+                    'default' => false
+                ),
+                'help_text' => array(
+                    'type' => 'string',
+                    'default' => 'Help'
+                ),
+                'help_link' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'additional_link' => array(
+                    'type' => 'boolean',
+                    'default' => false
+                ),
+                'additional_help_text' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'additional_help_link' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
                 'display_name' => array(
                     'type' => 'boolean',
                     'default' => true
@@ -199,6 +315,42 @@ function btcpaywall_load_gutenberg()
                 'mandatory_message' => array(
                     'type' => 'boolean',
                     'default' => false
+                ),
+                'button_text' => array(
+                    'type' => 'string',
+                    'default' => 'Pay'
+                ),
+                'button_text_color' => array(
+                    'type' => 'string',
+                    'default' => '#FFFFFF'
+                ),
+                'button_color' => array(
+                    'type' => 'string',
+                    'default' => '#FE642E'
+                ),
+                'continue_button_text' => array(
+                    'type' => 'string',
+                    'default' => 'Continue'
+                ),
+                'continue_button_text_color' =>  array(
+                    'type' => 'string',
+                    'default' => '#fff'
+                ),
+                'continue_button_color' => array(
+                    'type' => 'string',
+                    'default' => '#FE642E'
+                ),
+                'previous_button_text' => array(
+                    'type' => 'string',
+                    'default' => 'Previous'
+                ),
+                'previous_button_text_color' => array(
+                    'type' => 'string',
+                    'default' => '#FFFFFF'
+                ),
+                'previous_button_color' => array(
+                    'type' => 'string',
+                    'default' => '#1d5aa3'
                 ),
             )
         ]

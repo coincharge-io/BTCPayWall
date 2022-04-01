@@ -135,14 +135,14 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
         .btcpw_skyscraper_amount_value_2.wide,
         .btcpw_skyscraper_amount_value_3.wide,
         .btcpw_skyscraper_tipping_free_input.wide {
-            background: <?php echo esc_html($atts['input_background']); ?>;
+            background: <?php echo esc_html($atts['input_background'] . ' !important'); ?>;
             border: <?php echo esc_html('3px solid ' . $atts['selected_amount_background']); ?>;
         }
 
         .btcpw_skyscraper_amount_value_1.wide.selected,
         .btcpw_skyscraper_amount_value_2.wide.selected,
         .btcpw_skyscraper_amount_value_3.wide.selected {
-            background-color: <?php echo esc_html($atts['selected_amount_background']); ?>;
+            background-color: <?php echo esc_html($atts['selected_amount_background'] . ' !important'); ?>;
             border: <?php echo esc_html('3px solid ' . $atts['input_background']); ?>;
         }
 
@@ -154,7 +154,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
         .btcpw_skyscraper_amount_value_2.wide i,
         .btcpw_skyscraper_amount_value_3.wide i,
         .btcpw_skyscraper_tipping_free_input.wide i {
-            color: <?php echo esc_html($atts['selected_amount_background']); ?>;
+            color: <?php echo esc_html($atts['selected_amount_background'] . ' !important'); ?>;
         }
 
 
@@ -166,7 +166,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
         .btcpw_skyscraper_amount_value_2.wide.selected i,
         .btcpw_skyscraper_amount_value_3.wide.selected i,
         .btcpw_skyscraper_tipping_free_input.wide.selected i {
-            color: <?php echo esc_html($atts['input_background']); ?>;
+            color: <?php echo esc_html($atts['input_background'] . ' !important'); ?>;
         }
     </style>
     <div id="btcpw_page">
@@ -409,7 +409,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
         .btcpw_skyscraper_amount_value_2.high,
         .btcpw_skyscraper_amount_value_3.high,
         .btcpw_skyscraper_tipping_free_input.high {
-            background: <?php echo esc_html($atts['input_background']); ?>;
+            background: <?php echo esc_html($atts['input_background'] . ' !important'); ?>;
             border: <?php echo esc_html('3px solid ' . $atts['selected_amount_background']); ?>;
         }
 
@@ -421,13 +421,13 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
         .btcpw_skyscraper_amount_value_2.high i,
         .btcpw_skyscraper_amount_value_3.high i,
         .btcpw_skyscraper_tipping_free_input.high i {
-            color: <?php echo esc_html($atts['selected_amount_background']); ?>;
+            color: <?php echo esc_html($atts['selected_amount_background'] . ' !important'); ?>;
         }
 
         .btcpw_skyscraper_amount_value_1.high.selected,
         .btcpw_skyscraper_amount_value_2.high.selected,
         .btcpw_skyscraper_amount_value_3.high.selected {
-            background-color: <?php echo esc_html($atts['selected_amount_background']); ?>;
+            background-color: <?php echo esc_html($atts['selected_amount_background'] . ' !important'); ?>;
             border: <?php echo esc_html('3px solid ' . $atts['input_background']); ?>;
         }
 
@@ -439,7 +439,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
         .btcpw_skyscraper_amount_value_2.high.selected i,
         .btcpw_skyscraper_amount_value_3.high.selected i,
         .btcpw_skyscraper_tipping_free_input.high.selected i {
-            color: <?php echo esc_html($atts['input_background']); ?>;
+            color: <?php echo esc_html($atts['input_background'] . ' !important'); ?>;
         }
     </style>
     <div id="btcpw_page">
@@ -684,7 +684,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
         .btcpw_page_amount_value_2,
         .btcpw_page_amount_value_3,
         .btcpw_page_tipping_free_input {
-            background-color: <?php echo esc_html($atts['input_background']); ?>;
+            background-color: <?php echo esc_html($atts['input_background'] . ' !important'); ?>;
             border: <?php echo esc_html('3px solid ' . $atts['selected_amount_background']); ?>;
         }
 
@@ -706,7 +706,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
         .btcpw_page_amount_value_1.selected,
         .btcpw_page_amount_value_2.selected,
         .btcpw_page_amount_value_3.selected {
-            background-color: <?php echo esc_html($atts['selected_amount_background']); ?>;
+            background-color: <?php echo esc_html($atts['selected_amount_background'] . ' !important'); ?>;
             border: <?php echo esc_html('3px solid ' . $atts['input_background']); ?>;
         }
 
@@ -718,7 +718,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
         .btcpw_page_amount_value_2 i,
         .btcpw_page_amount_value_3 i,
         .btcpw_page_tipping_free_input i {
-            color: <?php echo esc_html($atts['selected_amount_background']); ?>;
+            color: <?php echo esc_html($atts['selected_amount_background'] . ' !important'); ?>;
         }
 
 
@@ -731,7 +731,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
         .btcpw_page_amount_value_2.selected i,
         .btcpw_page_amount_value_3.selected i,
         .btcpw_page_tipping_free_input.selected i {
-            color: <?php echo esc_html($atts['input_background']); ?>;
+            color: <?php echo esc_html($atts['input_background'] . ' !important'); ?>;
         }
     </style>
 
@@ -1113,12 +1113,17 @@ function btcpaywall_render_shortcode_btcpw_start_content($atts)
         'duration_type' => '',
         'background_color' => '',
         'header_color' => '',
+        'header_text' => 'Pay now to unlock blogpost',
+        'info_text' => 'For [price] [currency] you will have access to the post for [duration] [dtype]',
         'info_color' => '',
         'button_color' => '',
         'button_txt' => '',
         'link'    => true,
         'help_link'    => '',
         'help_text'    => 'Help',
+        'additional_link'    => false,
+        'additional_help_link'    => '',
+        'additional_help_text'    => '',
         'display_name' => get_option('btcpw_default_pay_per_post_display_name', false),
         'mandatory_name' =>  get_option('btcpw_default_pay_per_post_mandatory_name', false),
         'display_email' => get_option('btcpw_default_pay_per_post_display_email', false),
@@ -1177,13 +1182,18 @@ function btcpaywall_render_shortcode_btcpw_start_video($atts)
         'duration' => '',
         'duration_type' => '',
         'background_color'    => '',
+        'header_text' => 'Pay now to watch the whole video',
+        'info_text' => 'For [price] [currency] you will have access to the video for [duration] [dtype]',
         'header_color' => '',
         'info_color' => '',
         'button_color' => '',
         'button_txt' => '',
-        'link'    => 'true',
+        'link'    => true,
         'help_link'    => '',
         'help_text'    => 'Help',
+        'additional_link'    => false,
+        'additional_help_link'    => '',
+        'additional_help_text'    => '',
         'display_name' => get_option('btcpw_default_pay_per_view_display_name', false),
         'mandatory_name' => get_option('btcpw_default_pay_per_view_mandatory_name', false),
         'display_email' => get_option('btcpw_default_pay_per_view_display_email', false),

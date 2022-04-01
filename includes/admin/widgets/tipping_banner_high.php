@@ -104,7 +104,7 @@ class Tipping_Banner_High extends WP_Widget
             .btcpw_widget.btcpw_skyscraper_amount_value_2.high,
             .btcpw_widget.btcpw_skyscraper_amount_value_3.high,
             .btcpw_widget.btcpw_skyscraper_tipping_free_input.high {
-                background-color: <?php echo esc_html($instance['fixed_background']);
+                background-color: <?php echo esc_html($instance['fixed_background'] . ' !important');
                                     ?>;
                 border: <?php echo !empty($instance['selected_amount_background']) ? esc_html('3px solid ' . $instance['selected_amount_background']) : '#000';
                         ?>;
@@ -113,7 +113,7 @@ class Tipping_Banner_High extends WP_Widget
             .btcpw_widget.btcpw_skyscraper_amount_value_1.high.selected,
             .btcpw_widget.btcpw_skyscraper_amount_value_2.high.selected,
             .btcpw_widget.btcpw_skyscraper_amount_value_3.high.selected {
-                background-color: <?php echo !empty($instance['selected_amount_background']) ? esc_html($instance['selected_amount_background']) : '#000';
+                background-color: <?php echo !empty($instance['selected_amount_background'] . ' !important') ? esc_html($instance['selected_amount_background']) : '#000';
                                     ?>;
                 border: <?php echo esc_html('3px solid' . $instance['fixed_background']);
                         ?>;
@@ -127,7 +127,7 @@ class Tipping_Banner_High extends WP_Widget
             .btcpw_widget.btcpw_skyscraper_amount_value_2.high i,
             .btcpw_widget.btcpw_skyscraper_amount_value_3.high i,
             .btcpw_widget.btcpw_skyscraper_tipping_free_input.high i {
-                color: <?php echo esc_html($instance['selected_amount_background']); ?>;
+                color: <?php echo esc_html($instance['selected_amount_background'] . ' !important'); ?>;
             }
 
 
@@ -139,7 +139,7 @@ class Tipping_Banner_High extends WP_Widget
             .btcpw_widget.btcpw_skyscraper_amount_value_2.high.selected i,
             .btcpw_widget.btcpw_skyscraper_amount_value_3.high.selected i,
             .btcpw_widget.btcpw_skyscraper_tipping_free_input.high.selected i {
-                color: <?php echo esc_html($instance['fixed_background']); ?>;
+                color: <?php echo esc_html($instance['fixed_background'] . ' !important'); ?>;
             }
         </style>
         <div id="btcpw_page">

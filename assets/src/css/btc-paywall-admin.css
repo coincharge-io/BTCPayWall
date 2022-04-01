@@ -473,7 +473,7 @@ div.btcpw_help_link a:hover {
 
 .btcpw_links_preview {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1em;
 }
 

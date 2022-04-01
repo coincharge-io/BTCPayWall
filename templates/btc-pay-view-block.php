@@ -4,20 +4,20 @@
 if (!defined('ABSPATH')) exit;
 
 
-$help = filter_var(get_option('btcpw_pay_per_view_show_help_link', true), FILTER_VALIDATE_BOOLEAN);
+$help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN) ?? filter_var(get_option('btcpw_pay_per_view_show_help_link', true), FILTER_VALIDATE_BOOLEAN);
 
-$help_link = get_option('btcpw_pay_per_view_help_link', 'https://btcpaywall.com/how-to-pay-at-the-bitcoin-paywall/');
-$help_text = get_option('btcpw_pay_per_view_help_link_text', 'Help');
+$help_link = !empty($atts['help_link']) ? $atts['help_link'] : get_option('btcpw_pay_per_view_help_link', 'https://btcpaywall.com/how-to-pay-at-the-bitcoin-paywall/');
+$help_text = !empty($atts['help_text']) ? $atts['help_text'] : get_option('btcpw_pay_per_view_help_link_text', 'Help');
 
 
-$additional_help = filter_var(get_option('btcpw_pay_per_view_show_additional_help_link'), FILTER_VALIDATE_BOOLEAN);
-$additional_help_link = get_option('btcpw_pay_per_view_additional_help_link');
-$additional_help_text = get_option('btcpw_pay_per_view_additional_help_link_text');
+$additional_help = filter_var($atts['additional_link'], FILTER_VALIDATE_BOOLEAN) ?? filter_var(get_option('btcpw_pay_per_view_show_additional_help_link'), FILTER_VALIDATE_BOOLEAN);
+$additional_help_link = !empty($atts['additional_help_link']) ? $atts['additional_help_link'] : get_option('btcpw_pay_per_view_additional_help_link');
+$additional_help_text = !empty($atts['additional_help_text']) ? $atts['additional_help_text'] : get_option('btcpw_pay_per_view_additional_help_link_text');
 $background = get_option('btcpw_pay_per_view_background', '#ECF0F1');
-$width = get_option('btcpw_pay_per_view_width', 450);
-$height = get_option('btcpw_pay_per_view_height', 750);
-$header_color = get_option('btcpw_pay_per_view_header_color', '#000000');
-$info_color = get_option('btcpw_pay_per_view_info_color', '#000000');
+$width = get_option('btcpw_pay_per_view_width', 500);
+$height = get_option('btcpw_pay_per_view_height', 550);
+$header_color = !empty($atts['header_color']) ? $atts['header_color'] : get_option('btcpw_pay_per_view_header_color', '#000000');
+$info_color = !empty($atts['info_color']) ? $atts['info_color'] : get_option('btcpw_pay_per_view_info_color', '#000000');
 $button_color = get_option('btcpw_pay_per_view_button_color', '#f6b330');
 $button_text_color = get_option('btcpw_pay_per_view_button_text_color', '#FFFFFF');
 $default_text = get_option('btcpw_pay_per_view_title', 'Pay now to unlock blogpost');
@@ -47,6 +47,8 @@ $help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
 $image = wp_get_attachment_image_src($atts['preview']);
 
 $preview_url = $image ? $image[0] : $atts['preview'];
+$header = !empty($atts['header_text']) ? $atts['header_text'] : btcpaywall_get_payblock_header_string();
+$info = !empty($atts['info_text']) ? $atts['info_text'] : btcpaywall_get_post_info_string(null, 'video');
 ?>
 <style>
     .btcpw_revenue_view_container {
@@ -55,7 +57,8 @@ $preview_url = $image ? $image[0] : $atts['preview'];
         height: <?php echo esc_html($height) . 'px'; ?>;
     }
 
-    .btcpw_pay__content h2 {
+    .btcpw_pay__content h2,
+    #view_revenue_type fieldset:nth-child(2) h2 {
         color: <?php echo esc_html($header_color); ?>;
     }
 
@@ -63,7 +66,8 @@ $preview_url = $image ? $image[0] : $atts['preview'];
         color: <?php echo esc_html($preview_title_color); ?>;
     }
 
-    .btcpw_pay__content p {
+    .btcpw_pay__content p,
+    .btcpw_revenue_view_customer_information label {
         color: <?php echo esc_html($info_color); ?>;
     }
 
@@ -78,9 +82,11 @@ $preview_url = $image ? $image[0] : $atts['preview'];
 
     .btcpw_help_links {
         display: flex;
-        flex-direction: <?php ($help === true && $additional_help === true) ? 'column' : ''; ?>;
-        justify-content: space-between;
+        flex-direction: <?php echo ($help === true && $additional_help === true) ? 'row' : 'column'; ?>;
+        justify-content: center;
         gap: 1em;
+        width: 100%;
+        align-items: center;
     }
 
     #btcpw_revenue_view_button input.revenue-view-next-form {
@@ -98,7 +104,7 @@ $preview_url = $image ? $image[0] : $atts['preview'];
         <form method="POST" action="" id="view_revenue_type">
             <fieldset>
                 <div class="btcpw_pay__content">
-                    <h2><?php echo esc_html__(btcpaywall_get_payblock_header_string(), 'btcpaywall'); ?></h2>
+                    <h2><?php echo esc_html__($header, 'btcpaywall'); ?></h2>
 
                 </div>
                 <div class="btcpw_pay__preview">
@@ -113,7 +119,7 @@ $preview_url = $image ? $image[0] : $atts['preview'];
                 </div>
                 <div class="btcpw_pay__content">
                     <p>
-                        <?php echo esc_html__(btcpaywall_get_post_info_string(null, 'video'), 'btcpaywall'); ?>
+                        <?php echo esc_html__($info, 'btcpaywall'); ?>
                     </p>
                 </div>
 

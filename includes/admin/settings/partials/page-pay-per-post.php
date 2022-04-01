@@ -125,75 +125,7 @@ $previous_button_text_color = get_option('btcpw_pay_per_post_previous_button_tex
                     </select>
                 </div>
             </div>
-            <h3><?php echo esc_html__('Customer information', 'btcpaywall'); ?> <span class="btcpaywall_helper_tip" title="Select which information about customers you want to collect by clicking on the checkboxes. Check the display if you want to make the field optional, or check both checkboxes if you want to make it mandatory."></span></h3>
-            <div class="row">
-                <div class="col-50">
-                    <p>Full name</p>
-                </div>
-                <div class="col-50">
-                    <label for="btcpw_default_pay_per_post_display_name"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
 
-                    <input type="checkbox" class="btcpw_default__name" name="btcpw_default_pay_per_post_display_name" <?php checked($collect_name); ?> value="true" />
-
-                    <label for="btcpw_default_pay_per_post_mandatory_name"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
-                    <input type="checkbox" class="btcpw_default__name_mandatory" name="btcpw_default_pay_per_post_mandatory_name" <?php checked($mandatory_name); ?> value="true" />
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-50">
-                    <p>Email</p>
-                </div>
-                <div class="col-50">
-                    <label for="btcpw_default_pay_per_post_display_email"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
-
-                    <input type="checkbox" class="btcpw_default__email" name="btcpw_default_pay_per_post_display_email" <?php checked($collect_email); ?> value="true" />
-
-                    <label for="btcpw_default_pay_per_post_mandatory_email"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
-                    <input type="checkbox" class="btcpw_default__email_mandatory" name="btcpw_default_pay_per_post_mandatory_email" <?php checked($mandatory_email); ?> value="true" />
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-50">
-                    <p>Address</p>
-                </div>
-                <div class="col-50">
-                    <label for="btcpw_default_pay_per_post_display_address"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
-
-                    <input type="checkbox" class="btcpw_default__address" name="btcpw_default_pay_per_post_display_address" <?php checked($collect_address); ?> value="true" />
-
-                    <label for="btcpw_default_pay_per_post_mandatory_address"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
-                    <input type="checkbox" class="btcpw_default__address_mandatory" name="btcpw_default_pay_per_post_mandatory_address" <?php checked($mandatory_address); ?> value="true" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-50">
-                    <p>Phone number</p>
-                </div>
-                <div class="col-50">
-                    <label for="btcpw_default_pay_per_post_display_phone"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
-
-                    <input type="checkbox" class="btcpw_default__phone" name="btcpw_default_pay_per_post_display_phone" <?php checked($collect_phone); ?> value="true" />
-
-                    <label for="btcpw_default_pay_per_post_mandatory_phone"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
-                    <input type="checkbox" class="btcpw_default__phone_mandatory" name="btcpw_default_pay_per_post_mandatory_phone" <?php checked($mandatory_phone); ?> value="true" />
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-50">
-                    <p>Message</p>
-                </div>
-                <div class="col-50">
-                    <label for="btcpw_default_pay_per_post_display_message"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
-                    <input type="checkbox" class="btcpw_default__message" name="btcpw_default_pay_per_post_display_message" <?php checked($collect_message); ?> value="true" />
-
-                    <label for="btcpw_default_pay_per_post_mandatory_message"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
-                    <input type="checkbox" class="btcpw_default__message_mandatory" name="btcpw_default_pay_per_post_mandatory_message" <?php checked($mandatory_message); ?> value="true" />
-
-                </div>
-            </div>
             <h3>Background</h3>
             <div class="row">
                 <div class="col-20">
@@ -383,6 +315,75 @@ $previous_button_text_color = get_option('btcpw_pay_per_post_previous_button_tex
                     <div class="col-80">
                         <input id="btcpw_pay_per_post_additional_help_link_text" class="btcpw_pay_per_post_additional_help_link_text" name="btcpw_pay_per_post_additional_help_link_text" type="text" value="<?php echo esc_attr($additional_help_text); ?>" />
                     </div>
+                </div>
+            </div>
+            <h3><?php echo esc_html__('Customer information', 'btcpaywall'); ?> <span class="btcpaywall_helper_tip" title="Select which information about customers you want to collect by clicking on the checkboxes. Check the display if you want to make the field optional, or check both checkboxes if you want to make it mandatory."></span></h3>
+            <div class="row">
+                <div class="col-50">
+                    <p>Full name</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_pay_per_post_display_name"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
+
+                    <input type="checkbox" class="btcpw_default__name" name="btcpw_default_pay_per_post_display_name" <?php checked($collect_name); ?> value="true" />
+
+                    <label for="btcpw_default_pay_per_post_mandatory_name"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
+                    <input type="checkbox" class="btcpw_default__name_mandatory" name="btcpw_default_pay_per_post_mandatory_name" <?php checked($mandatory_name); ?> value="true" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p>Email</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_pay_per_post_display_email"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
+
+                    <input type="checkbox" class="btcpw_default__email" name="btcpw_default_pay_per_post_display_email" <?php checked($collect_email); ?> value="true" />
+
+                    <label for="btcpw_default_pay_per_post_mandatory_email"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
+                    <input type="checkbox" class="btcpw_default__email_mandatory" name="btcpw_default_pay_per_post_mandatory_email" <?php checked($mandatory_email); ?> value="true" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p>Address</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_pay_per_post_display_address"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
+
+                    <input type="checkbox" class="btcpw_default__address" name="btcpw_default_pay_per_post_display_address" <?php checked($collect_address); ?> value="true" />
+
+                    <label for="btcpw_default_pay_per_post_mandatory_address"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
+                    <input type="checkbox" class="btcpw_default__address_mandatory" name="btcpw_default_pay_per_post_mandatory_address" <?php checked($mandatory_address); ?> value="true" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p>Phone number</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_pay_per_post_display_phone"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
+
+                    <input type="checkbox" class="btcpw_default__phone" name="btcpw_default_pay_per_post_display_phone" <?php checked($collect_phone); ?> value="true" />
+
+                    <label for="btcpw_default_pay_per_post_mandatory_phone"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
+                    <input type="checkbox" class="btcpw_default__phone_mandatory" name="btcpw_default_pay_per_post_mandatory_phone" <?php checked($mandatory_phone); ?> value="true" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p>Message</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_pay_per_post_display_message"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
+                    <input type="checkbox" class="btcpw_default__message" name="btcpw_default_pay_per_post_display_message" <?php checked($collect_message); ?> value="true" />
+
+                    <label for="btcpw_default_pay_per_post_mandatory_message"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
+                    <input type="checkbox" class="btcpw_default__message_mandatory" name="btcpw_default_pay_per_post_mandatory_message" <?php checked($mandatory_message); ?> value="true" />
+
                 </div>
             </div>
             <div class="btcpw__paywall_submit_button" style="display: inline-block;">

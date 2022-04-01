@@ -88,11 +88,14 @@ https://btcpaywall.com/faq-support-center/
 
 = 1.0.8 =
 
+- Add: Pay-per modules -> buttons, text and links can be customized via editors
 - Fix: Problem with paywall onetime view
 
-- Fix: Problem with enqueueing scripts for donations
+- Improve: Payment gateway page design
 
-- Improve: Gateway page design
+= 1.0.7.1 =
+
+- Fix: Problem with loading scripts for donations
 
 = 1.0.7 =
 
