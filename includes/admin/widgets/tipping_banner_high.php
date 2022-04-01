@@ -113,7 +113,7 @@ class Tipping_Banner_High extends WP_Widget
             .btcpw_widget.btcpw_skyscraper_amount_value_1.high.selected,
             .btcpw_widget.btcpw_skyscraper_amount_value_2.high.selected,
             .btcpw_widget.btcpw_skyscraper_amount_value_3.high.selected {
-                background-color: <?php echo !empty($instance['selected_amount_background'] . ' !important') ? esc_html($instance['selected_amount_background']) : '#000';
+                background-color: <?php echo !empty($instance['selected_amount_background']) ? esc_html($instance['selected_amount_background'] . ' !important') : '#000';
                                     ?>;
                 border: <?php echo esc_html('3px solid' . $instance['fixed_background']);
                         ?>;

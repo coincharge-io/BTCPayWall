@@ -729,7 +729,7 @@
       $ (
         'input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]'
       ).prop ('checked', false);
-      $ ('btcpw_widget.btcpw_skyscraper_amount_value_1.high').removeClass (
+      $ ('.btcpw_widget.btcpw_skyscraper_amount_value_1.high').removeClass (
         'selected'
       );
       $ ('.btcpw_widget.btcpw_skyscraper_amount_value_2.high').removeClass (
