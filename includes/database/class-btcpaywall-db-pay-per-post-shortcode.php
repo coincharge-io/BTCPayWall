@@ -105,11 +105,11 @@ class BTCPayWall_DB_Pay_Per_Post_Shortcode extends BTCPayWall_DB
             'display_message' => false,
             'mandatory_message' => false,
             'continue_button_text' =>   'Continue',
-            'continue_button_text_color' => '#FFF',
-            'continue_button_color' =>   '#FE642E',
+            'continue_button_text_color' => 'FFF',
+            'continue_button_color' =>   'FE642E',
             'previous_button_text' =>   'Previous',
-            'previous_button_text_color' =>  '#FFF',
-            'previous_button_color' =>   '#1d5aa3',
+            'previous_button_text_color' =>  'FFF',
+            'previous_button_color' =>   '1d5aa3',
         );
     }
     public function update($row_id, $data = array(), $where = '')
@@ -122,9 +122,9 @@ class BTCPayWall_DB_Pay_Per_Post_Shortcode extends BTCPayWall_DB
 
     public function insert($data, $type = '')
     {
-        $form_id = parent::insert($data, $type);
+        $shortcode_id = parent::insert($data, $type);
 
-        return $form_id;
+        return $shortcode_id;
     }
 
     public function delete($id = null)
@@ -133,13 +133,13 @@ class BTCPayWall_DB_Pay_Per_Post_Shortcode extends BTCPayWall_DB
         if (empty($id)) {
             return false;
         }
-        $form  = $this->get_form_by($id);
+        $shortcode  = $this->get_shortcode_by($id);
 
-        if ($form->id > 0) {
+        if ($shortcode->id > 0) {
 
             global $wpdb;
 
-            return $wpdb->delete($this->table_name, array('id' => $form->id), array('%d'));
+            return $wpdb->delete($this->table_name, array('id' => $shortcode->id), array('%d'));
         } else {
             return false;
         }
@@ -151,19 +151,19 @@ class BTCPayWall_DB_Pay_Per_Post_Shortcode extends BTCPayWall_DB
             return false;
         }
 
-        $form = $this->get_form_by($data['id']);
+        $shortcode = $this->get_shortcode_by($data['id']);
 
-        if ($form) {
+        if ($shortcode) {
 
-            $this->update($form->id, $data);
+            $this->update($shortcode->id, $data);
 
-            return $form->id;
+            return $shortcode->id;
         } else {
 
-            return $this->insert($data, 'form');
+            return $this->insert($data, 'shortcode');
         }
     }
-    public function get_form_by($id)
+    public function get_shortcode_by($id)
     {
         global $wpdb;
         $row = $wpdb->get_row(
@@ -180,7 +180,7 @@ class BTCPayWall_DB_Pay_Per_Post_Shortcode extends BTCPayWall_DB
         return $wpdb->get_var($sql);
     }
 
-    public function get_forms($per_page = null, $page_number = null)
+    public function get_shortcodes($per_page = null, $page_number = null)
     {
 
         global $wpdb;
@@ -214,9 +214,6 @@ class BTCPayWall_DB_Pay_Per_Post_Shortcode extends BTCPayWall_DB
 			    name TINYTEXT NOT NULL,
                 pay_block BOOLEAN,
                 btc_format CHAR(4),
-                title TEXT,
-                description TEXT,
-                preview MEDIUMINT(9),
                 currency CHAR(4),
                 price DECIMAL(16,8),
                 duration MEDIUMINT(9),
