@@ -360,7 +360,7 @@ function btcpaywall_load_gutenberg()
         'btcpaywall/gutenberg-end-video-block',
         [
             'editor_script' => 'btcpaywall-gutenberg-block-script',
-            'render_callback' => 'btcpaywall_render_end_video_gutenberg',
+            'render_callback' => 'btcpaywall_render_end_gutenberg',
         ]
     );
     register_block_type(

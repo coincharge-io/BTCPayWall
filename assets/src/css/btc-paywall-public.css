@@ -8,6 +8,7 @@
   display: flex;
   justify-content: space-evenly;
   text-align: center;
+  width: 75%;
 }
 
 .btcpw_pay__preview.preview_img {
@@ -1603,9 +1604,9 @@ button.btcpaywall_add_to_cart:hover {
 
 .btcpw_revenue_post_container,
 .btcpw_revenue_view_container {
-  box-shadow: 0 0 5px 5px#888;
-  -webkit-box-shadow: 0 0 5px 5px#888;
-  -moz-box-shadow: 0 0 5px 5px#888;
+  box-shadow: 0 0 5px 5px #888;
+  -webkit-box-shadow: 0 0 5px 5px #888;
+  -moz-box-shadow: 0 0 5px 5px #888;
 
 }
 
@@ -1654,4 +1655,11 @@ button.btcpaywall_add_to_cart:hover {
   -webkit-font-smoothing: antialiased;
   text-indent: 0;
   text-align: center;
+}
+
+/*Pay-per-view*/
+
+.btcpw_pay__preview.preview_img,
+.btcpw_pay__preview.preview_description {
+  max-width: 50%;
 }

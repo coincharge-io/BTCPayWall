@@ -123,7 +123,6 @@ function btcpaywall_generate_invoice_id($post_id, $order_id, $customer_data)
     }
     $revenue_type = $body['metadata']['type'];
 
-
     $customer = new BTCPayWall_Customer();
 
     $customer->create([

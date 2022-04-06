@@ -39,17 +39,7 @@
       });
     });
   });
-
-  function notifyAdmin (donor_info) {
-    $.ajax ({
-      url: '/wp-admin/admin-ajax.php',
-      method: 'POST',
-      data: {
-        action: 'btcpw_notify_admin',
-        donor_info: donor_info,
-      },
-    });
-  }
+  
   $ (document).ready (function () {
     $ ('#btcpw_tipping_currency').change (function () {
       var stepValue = $ (this).val () === 'BTC'

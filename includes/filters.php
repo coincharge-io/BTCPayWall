@@ -44,35 +44,7 @@ function btcpaywall_filter_the_content($content)
 }
 add_filter('the_content',  'btcpaywall_filter_the_content', 50);
 
-/**
- *
- * @param string $content
- * 
- * @since 1.0.9
- * 
- * @return string
- */
-function btcpaywall_filter_the_video($content)
-{
-    if (btcpaywall_is_paid_content()) {
-        return $content;
-    }
 
-    if (($start_pos = strpos($content, '<!-- btcpw:start_video -->')) === false) {
-        return $content;
-    }
-
-    $content_start = substr($content, 0, $start_pos);
-
-    if (($end_pos = strpos($content, '<!-- /btcpw:end_video -->')) === false) {
-        $content_end = '';
-    } else {
-        $content_end = substr($content, $end_pos + 26);
-    }
-
-    return $content_start . $content_end;
-}
-add_filter('the_content',  'btcpaywall_filter_the_video', 55);
 
 function btcpaywall_digital_download_template($single_template)
 {

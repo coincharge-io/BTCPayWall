@@ -189,6 +189,7 @@ function btcpaywall_is_paid_content($post_id = null)
     if (empty($cookie)) {
         return false;
     }
+
     $meta_query = [
         'relation' => 'AND',
         [
@@ -214,6 +215,9 @@ function btcpaywall_is_paid_content($post_id = null)
 
     return true;
 }
+
+
+
 
 /**
  * Generate order id
