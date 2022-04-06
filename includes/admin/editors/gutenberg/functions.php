@@ -60,6 +60,13 @@ function btcpaywall_render_end_gutenberg()
 {
 	return do_shortcode("[btcpw_end_content]");
 }
+/**
+ * @since 1.0.9
+ */
+function btcpaywall_render_end_video_gutenberg()
+{
+	return do_shortcode("[btcpw_end_video]");
+}
 function btcpaywall_render_shortcodes_gutenberg($atts)
 {
 	$atts = shortcode_atts(array(

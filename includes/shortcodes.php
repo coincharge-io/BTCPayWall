@@ -1219,12 +1219,12 @@ function btcpaywall_render_shortcode_btcpw_start_video($atts)
     $payblock = filter_var($atts['pay_view_block'], FILTER_VALIDATE_BOOLEAN);
 
 
+    $s_data = '<!-- btcpw:start_video -->';
 
-    $s_data = '<!-- btcpw:start_content -->';
-
-    if ($payblock) {
+    if (true == $payblock) {
         ob_start();
         include(BTCPAYWALL_PLUGIN_DIR . 'templates/btc-pay-view-block.php');
+
         echo "{$s_data}";
         return ob_get_clean();
     }
@@ -1242,7 +1242,18 @@ function btcpaywall_render_shortcode_btcpw_end_content($atts)
     return '<!-- /btcpw:end_content -->';
 }
 add_shortcode('btcpw_end_content', 'btcpaywall_render_shortcode_btcpw_end_content');
-add_shortcode('btcpw_end_video', 'btcpaywall_render_shortcode_btcpw_end_content');
+
+/**
+ * @param array $atts
+ * @since 1.0.9
+ * @return string
+ */
+function btcpaywall_render_shortcode_btcpw_end_video($atts)
+{
+
+    return '<!-- /btcpw:end_video -->';
+}
+add_shortcode('btcpw_end_video', 'btcpaywall_render_shortcode_btcpw_end_video');
 /**
  * @param $atts
  *
