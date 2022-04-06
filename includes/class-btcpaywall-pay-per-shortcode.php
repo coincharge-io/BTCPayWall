@@ -4,7 +4,7 @@
  * Digital Download
  *
  * @package     BTCPayWall
- * @subpackage  Classes/BTCPayWall_Tipping_Pay_Per_Post_Shortcode
+ * @subpackage  Classes/BTCPayWall_Tipping_Pay_Per_View_Shortcode
  * @copyright   Copyright (c) 2021, Coincharge
  * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
  * @since       1.0.9
@@ -14,7 +14,7 @@
 if (!defined('ABSPATH')) exit;
 
 
-class BTCPayWall_Tipping_Pay_Per_Post_Shortcode
+class BTCPayWall_Tipping_Pay_Per_View_Shortcode
 {
     public $id = 0;
     public $name;
@@ -25,6 +25,9 @@ class BTCPayWall_Tipping_Pay_Per_Post_Shortcode
     public $duration;
     public $duration_type;
     public $background_color;
+    public $title;
+    public $description;
+    public $preview;
     public $header_text;
     public $info_text;
     public $header_color;
@@ -171,7 +174,7 @@ class BTCPayWall_Tipping_Pay_Per_Post_Shortcode
         $columns        = $this->db->get_columns();
         $default_values = $this->db->get_column_defaults();
         $booleans = [
-            'pay_block',
+            'pay_view_block',
             'link',
             'additional_link',
             'display_name',

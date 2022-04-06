@@ -302,25 +302,25 @@ function ajax_btcpaywall_tipping()
     }
 
 
-
     $tipping = new BTCPayWall_Tipping();
     $tipping->create([
         'tipper_id' => $tipper->id,
         'invoice_id' => $body['id'],
         'amount' => $body['amount'],
-        'page_title' => $body['metadata']['blog'],
+        'page_title' => get_the_title($post_id),
         'revenue_type' => $body['metadata']['type'],
         'currency' => $body['currency'],
         'status' => $body['status'],
         'gateway' => get_option('btcpw_selected_payment_gateway', 'BTCPayServer')
     ]);
+
     $payment = new BTCPayWall_Payment();
 
     $payment->create([
         'invoice_id' => $body['id'],
         'customer_id' => $customer->id,
         'amount' => $body['amount'],
-        'page_title' => $body['metadata']['blog'],
+        'page_title' => get_the_title($post_id),
         'revenue_type' => $body['metadata']['type'],
         'currency' => $body['currency'],
         'gateway' => get_option('btcpw_selected_payment_gateway', 'BTCPayServer'),

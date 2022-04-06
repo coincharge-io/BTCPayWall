@@ -4,7 +4,7 @@
  * Digital Download
  *
  * @package     BTCPayWall
- * @subpackage  Classes/BTCPayWall_DB_Pay_Per_View_Shortcode
+ * @subpackage  Classes/BTCPayWall_DB_Pay_Per_Shortcode
  * @copyright   Copyright (c) 2021, Coincharge
  * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
  * @since       1.9
@@ -14,13 +14,13 @@
 if (!defined('ABSPATH')) exit;
 
 
-class BTCPayWall_DB_Pay_Per_View_Shortcode extends BTCPayWall_DB
+class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
 {
     public function __construct()
     {
         global $wpdb;
 
-        $this->table_name = "{$wpdb->prefix}btcpaywall_pay_per_view_shortcodes";
+        $this->table_name = "{$wpdb->prefix}btcpaywall_pay_per_shortcodes";
         $this->primary_key = 'id';
         $this->version     = '1.0';
 
@@ -32,7 +32,7 @@ class BTCPayWall_DB_Pay_Per_View_Shortcode extends BTCPayWall_DB
             'id' => '%d',
             'name' => '%s',
             'time' => '%s',
-            'pay_view_block' => '%d',
+            'pay_block' => '%d',
             'btc_format' => '%s',
             'title' => '%s',
             'description' => '%s',
@@ -78,7 +78,7 @@ class BTCPayWall_DB_Pay_Per_View_Shortcode extends BTCPayWall_DB
         return array(
             'time' => date('Y-m-d H:i:s'),
             'name' => '',
-            'pay_view_block' => 'false',
+            'pay_block' => false,
             'btc_format' => '',
             'title' => 'Untitled',
             'description' => 'No description',
@@ -218,7 +218,7 @@ class BTCPayWall_DB_Pay_Per_View_Shortcode extends BTCPayWall_DB
 			    id bigint(20) NOT NULL AUTO_INCREMENT,
 			    time datetime NOT NULL,
 			    name TINYTEXT NOT NULL,
-                pay_view_block BOOLEAN,
+                pay_block BOOLEAN,
                 btc_format CHAR(4),
                 title TEXT,
                 description TEXT,

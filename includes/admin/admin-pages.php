@@ -21,6 +21,10 @@ function btcpaywall_add_menu_pages()
     add_submenu_page('btcpw_general_settings', __('Payments', 'btcpaywall'), __('Payments', 'btcpaywall'), 'manage_options', 'btcpw_payments', 'btcpaywall_render_payments_page');
     add_submenu_page('btcpw_general_settings', __('Pay-per-Post', 'btcpaywall'), __('Pay-per-Post', 'btcpaywall'), 'manage_options', 'btcpw_pay_per_post', 'btcpaywall_render_pay_per_post');
     add_submenu_page('btcpw_general_settings', __('Pay-per-View', 'btcpaywall'), __('Pay-per-View', 'btcpaywall'), 'manage_options', 'btcpw_pay_per_view', 'btcpaywall_render_pay_per_view');
+
+    add_submenu_page('btcpw_general_settings', __('Add Pay-per-shortcode', 'btcpaywall'), __('Add Pay-per-shortcode', 'btcpaywall'), 'manage_options', 'btcpw_pay_per_shortcode_generator', 'btcpaywall_render_pay_per_shortcode_generator');
+    add_submenu_page(null, __('Pay-per-shortcode', 'btcpaywall'), __('Pay-per-shortcode', 'btcpaywall'), 'manage_options', 'btcpw_pay_per_shortcode', 'btcpaywall_render_pay_per_manage_shortcode_page');
+
     add_submenu_page('btcpw_general_settings', __('Download Store -> Settings', 'btcpaywall'), __('Download Store', 'btcpaywall'), 'manage_options', 'btcpw_download_store', 'btcpaywall_render_download_store_page');
     add_submenu_page('btcpw_general_settings', __('Download Store -> All Products', 'btcpaywall'), __('Download Store -> All Products', 'btcpaywall'), 'manage_options', 'edit.php?post_type=digital_download');
     add_submenu_page('btcpw_general_settings', __('Download Store -> Add Product', 'btcpaywall'), __('Download Store -> Add Product', 'btcpaywall'), 'manage_options', 'post-new.php?post_type=digital_download');

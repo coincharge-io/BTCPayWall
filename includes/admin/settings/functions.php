@@ -109,3 +109,31 @@ function btcpaywall_render_pay_per_view()
 {
     include 'partials/page-pay-per-view.php';
 }
+
+
+/**
+ * @since 1.0.9
+ */
+function btcpaywall_render_pay_per_shortcode_generator()
+{
+    include 'partials/page-generate-pay-per-shortcode.php';
+}
+
+
+
+/**
+ * @since 1.0.9
+ */
+function btcpaywall_render_pay_per_post_page_shortcode_generator()
+{
+    include 'partials/shortcode-generator-pages/page-pay-per-post-shortcode-generator.php';
+}
+
+
+/**
+ * @since 1.0.9
+ */
+function btcpaywall_render_pay_per_manage_shortcode_page()
+{
+    include 'partials/page-manage-pay-per-shortcode.php';
+}
