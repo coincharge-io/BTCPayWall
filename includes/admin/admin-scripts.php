@@ -46,7 +46,7 @@ function btcpaywall_enqueue_scripts_admin()
         'shortcode_ajax_object',
         [
             'ajax_url'  => admin_url('admin-ajax.php'),
-            'redirectUrl' => admin_url('admin.php?page=btcpw_edit&action=edit&id='),
+            'redirectUrl' => admin_url('admin.php?page=btcpw_pay_per_shortcode&id='),
             'currency' => get_option('btcpw_general_settings_currency', 'SATS'),
             'btc_format' => get_option('btcpw_general_settings_btc_format', 'SATS'),
             'price' => get_option('btcpw_general_settings_price', 1000),

@@ -100,6 +100,7 @@ if (get_option('btcpw_remove_data_on_uninstall')) {
 	$tippings_table_name = $wpdb->prefix . "btcpaywall_tippings";
 	$tippers_table_name = $wpdb->prefix . "btcpaywall_tippers";
 	$customers_table_name = $wpdb->prefix . "btcpaywall_customers";
+	$pay_per_shortcodes_table_name = $wpdb->prefix . "btcpaywall_pay_per_shortcodes";
 
 	// Remove all database tables
 	$wpdb->query("DROP TABLE IF EXISTS " . $payments_table_name);
@@ -107,6 +108,7 @@ if (get_option('btcpw_remove_data_on_uninstall')) {
 	$wpdb->query("DROP TABLE IF EXISTS " . $tippings_table_name);
 	$wpdb->query("DROP TABLE IF EXISTS " . $tippers_table_name);
 	$wpdb->query("DROP TABLE IF EXISTS " . $customers_table_name);
+	$wpdb->query("DROP TABLE IF EXISTS " . $pay_per_shortcodes_table_name);
 
 	// Clear DB version
 	delete_option($payments_table_name . '_db_version');
@@ -114,4 +116,5 @@ if (get_option('btcpw_remove_data_on_uninstall')) {
 	delete_option($tippings_table_name . '_db_version');
 	delete_option($tippers_table_name . '_db_version');
 	delete_option($customers_table_name . '_db_version');
+	delete_option($pay_per_shortcodes_table_name . '_db_version');
 }

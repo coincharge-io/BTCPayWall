@@ -76,7 +76,7 @@ add_action('wp_ajax_btcpw_check_greenfield_api_work', 'ajax_btcpaywall_check_gre
 
 
 
-function btcpaywall_create_shortcode()
+/* function btcpaywall_create_shortcode()
 {
     check_ajax_referer('shortcode-security-nonce', 'nonce_ajax');
 
@@ -90,4 +90,22 @@ function btcpaywall_create_shortcode()
         wp_send_json_error(array('res' => false, 'message' => __('Something went wrong. Please try again later.')));
     }
 }
-add_action('wp_ajax_btcpw_create_shortcode', 'btcpaywall_create_shortcode');
+add_action('wp_ajax_btcpw_create_shortcode', 'btcpaywall_create_shortcode'); */
+/**
+ * @since 1.0.9
+ */
+function btcpaywall_create_pay_per_shortcode()
+{
+    check_ajax_referer('shortcode-security-nonce', 'nonce_ajax');
+
+    $row = new BTCPayWall_Tipping_Pay_Per_Shortcode();
+
+    $row->create($_POST);     //BTCPayWall_Tipping_Form class has function for sanitizing $_POST before saving to DB
+
+    if ($row) {
+        wp_send_json_success(array('res' => true, 'data' => array('id' => $row->id)));
+    } else {
+        wp_send_json_error(array('res' => false, 'message' => __('Something went wrong. Please try again later.')));
+    }
+}
+add_action('wp_ajax_btcpw_create_shortcode', 'btcpaywall_create_pay_per_shortcode');

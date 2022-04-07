@@ -61,6 +61,7 @@ if (!class_exists('BTCPayWall')) :
         public $tippings;
         public $payments;
         public $cart;
+        public $pay_per_shortcodes;
 
         public static function instance()
         {
@@ -76,6 +77,7 @@ if (!class_exists('BTCPayWall')) :
                 self::$instance->payments = new BTCPayWall_DB_Payments();
                 self::$instance->tippings = new BTCPayWall_DB_Tippings();
                 self::$instance->forms = new BTCPayWall_DB_Tipping_Forms();
+                self::$instance->pay_per_shortcodes = new BTCPayWall_DB_Pay_Per_Shortcode();
                 self::$instance->cart = new BTCPayWall_Cart();
             }
 
@@ -155,6 +157,8 @@ if (!class_exists('BTCPayWall')) :
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-tipper.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-form.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-digital-download.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-pay-per-shortcode.php';
+
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/tippings/class-btcpaywall-tipping.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/payments/class-btcpaywall-payment.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db.php';
@@ -164,6 +168,7 @@ if (!class_exists('BTCPayWall')) :
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-payments.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-tippings.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-tipping-forms.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-pay-per-shortcode.php';
 
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/wpbakery/actions.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/elementor/functions.php';

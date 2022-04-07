@@ -14,48 +14,54 @@
 if (!defined('ABSPATH')) exit;
 
 
-class BTCPayWall_Tipping_Pay_Per_View_Shortcode
+class BTCPayWall_Tipping_Pay_Per_Shortcode
 {
     public $id = 0;
+    public $type;
     public $name;
-    public $pay_block;
-    public $btc_format;
-    public $currency;
-    public $price;
+    public $pay_block = true;
+    public $width = 500;
+    public $height = 550;
+    public $btc_format = 'SATS';
+    public $currency = 'SATS';
+    public $price = 1000;
     public $duration;
-    public $duration_type;
-    public $background_color;
-    public $title;
-    public $description;
-    public $preview;
+    public $duration_type = 'unlimited';
+    public $background_color = '#ecf0f1';
+    public $preview_title = 'Untitled';
+    public $preview_title_color;
+    public $preview_description = 'No description    ';
+    public $preview_description_color;
+    public $preview_image;
     public $header_text;
     public $info_text;
-    public $header_color;
-    public $info_color;
-    public $button_color;
-    public $button_txt;
-    public $link;
-    public $help_link;
-    public $help_text;
-    public $additional_link;
+    public $header_color = '#000000';
+    public $info_color = '#000000';
+    public $button_color = '#f6b330';
+    public $button_txt = 'Pay';
+    public $button_txt_color = '#ffffff';
+    public $link = true;
+    public $help_link = 'https://btcpaywall.com/how-to-pay-at-the-bitcoin-paywall/';
+    public $help_text = 'Help';
+    public $additional_link = false;
     public $additional_help_link;
     public $additional_help_text;
-    public $display_name;
-    public $mandatory_name;
-    public $display_email;
-    public $mandatory_email;
-    public $display_phone;
-    public $mandatory_phone;
-    public $display_address;
-    public $mandatory_address;
-    public $display_message;
-    public $mandatory_message;
-    public $continue_button_text;
-    public $continue_button_text_color;
-    public $continue_button_color;
-    public $previous_button_text;
-    public $previous_button_text_color;
-    public $previous_button_color;
+    public $display_name = false;
+    public $mandatory_name = false;
+    public $display_email = false;
+    public $mandatory_email = false;
+    public $display_phone = false;
+    public $mandatory_phone = false;
+    public $display_address = false;
+    public $mandatory_address = false;
+    public $display_message = false;
+    public $mandatory_message = false;
+    public $continue_button_text = 'Continue';
+    public $continue_button_text_color = '#ffffff';
+    public $continue_button_color = '#fe642e';
+    public $previous_button_text = 'Previous';
+    public $previous_button_text_color = '#1d5aa3';
+    public $previous_button_color = '#ffffff';
 
     protected $db;
 
@@ -63,7 +69,7 @@ class BTCPayWall_Tipping_Pay_Per_View_Shortcode
     public function __construct($shortcode_id = false)
     {
 
-        $this->db = new BTCPayWall_DB_Pay_Per_Post_Shortcode;
+        $this->db = new BTCPayWall_DB_Pay_Per_Shortcode;
 
         if ((is_numeric($shortcode_id) && (int) $shortcode_id !== absint($shortcode_id)) || $shortcode_id === false) {
             return false;
@@ -174,7 +180,7 @@ class BTCPayWall_Tipping_Pay_Per_View_Shortcode
         $columns        = $this->db->get_columns();
         $default_values = $this->db->get_column_defaults();
         $booleans = [
-            'pay_view_block',
+            'pay_block',
             'link',
             'additional_link',
             'display_name',

@@ -16,8 +16,6 @@ $collect_email = get_option('btcpw_default_pay_per_post_display_email', false);
 $collect_address = get_option('btcpw_default_pay_per_post_display_address', false);
 $collect_phone = get_option('btcpw_default_pay_per_post_display_phone', false);
 $collect_message = get_option('btcpw_default_pay_per_post_display_message', false);
-
-
 $mandatory_name = get_option('btcpw_default_pay_per_post_mandatory_name', false);
 $mandatory_email = get_option('btcpw_default_pay_per_post_mandatory_email', false);
 $mandatory_address = get_option('btcpw_default_pay_per_post_mandatory_address', false);
@@ -32,8 +30,8 @@ $additional_help_text = get_option('btcpw_pay_per_post_additional_help_link_text
 $background = get_option('btcpw_pay_per_post_background');
 $width = get_option('btcpw_pay_per_post_width');
 $height = get_option('btcpw_pay_per_post_height');
-
 $header_color = get_option('btcpw_pay_per_post_header_color');
+
 $info_color = get_option('btcpw_pay_per_post_info_color');
 $button_color = get_option('btcpw_pay_per_post_button_color');
 $button_text_color = get_option('btcpw_pay_per_post_button_text_color');

@@ -66,6 +66,8 @@ function register_tables()
         'tippers_db'        => new BTCPayWall_DB_Tippers(),
         'payments_db'      => new BTCPayWall_DB_Payments(),
         'tippings_db'     => new BTCPayWall_DB_Tippings(),
+        'pay_per_shortcodes_db' => new BTCPayWall_DB_Pay_Per_Shortcode(),
+
     ];
 
     foreach ($tables  as $table) {

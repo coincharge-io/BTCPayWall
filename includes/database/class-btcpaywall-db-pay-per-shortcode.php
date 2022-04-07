@@ -7,7 +7,7 @@
  * @subpackage  Classes/BTCPayWall_DB_Pay_Per_Shortcode
  * @copyright   Copyright (c) 2021, Coincharge
  * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
- * @since       1.9
+ * @since       1.0.9
  */
 
 //Eit if accessed directly
@@ -31,12 +31,17 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
         return array(
             'id' => '%d',
             'name' => '%s',
+            'type'=>'%s',
             'time' => '%s',
             'pay_block' => '%d',
+            'width' => '%f',
+            'height' => '%f',
             'btc_format' => '%s',
-            'title' => '%s',
-            'description' => '%s',
-            'preview' => '%s',
+            'preview_title' => '%s',
+            'preview_title_color' => '%s',
+            'preview_description' => '%s',
+            'preview_description_color' => '%s',
+            'preview_image' => '%s',
             'currency' => '%s',
             'price' => '%f',
             'duration' => '%f',
@@ -78,11 +83,16 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
         return array(
             'time' => date('Y-m-d H:i:s'),
             'name' => '',
+            'type'=>'',
             'pay_block' => false,
+            'width' => 500,
+            'height' => 500,
             'btc_format' => '',
-            'title' => 'Untitled',
-            'description' => 'No description',
-            'preview' => '',
+            'preview_title' => 'Untitled',
+            'preview_title_color' => '',
+            'preview_description' => 'No description',
+            'preview_description_color' => '',
+            'preview_image' => '',
             'currency' => 'SATS',
             'price' => '',
             'duration' => '',
@@ -218,11 +228,16 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
 			    id bigint(20) NOT NULL AUTO_INCREMENT,
 			    time datetime NOT NULL,
 			    name TINYTEXT NOT NULL,
+                type TINYTEXT NOT NULL,
                 pay_block BOOLEAN,
+                width SMALLINT,
+                height SMALLINT,
                 btc_format CHAR(4),
-                title TEXT,
-                description TEXT,
-                preview MEDIUMINT(9),
+                preview_title TEXT,
+                preview_title_color CHAR(6),
+                preview_description TEXT,
+                preview_description_color CHAR(6),
+                preview_image MEDIUMINT(9),
                 currency CHAR(4),
                 price DECIMAL(16,8),
                 duration MEDIUMINT(9),
