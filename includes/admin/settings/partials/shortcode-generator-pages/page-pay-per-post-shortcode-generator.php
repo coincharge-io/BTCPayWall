@@ -12,9 +12,10 @@ $duration_type = get_option('btcpaywall_pay_per_post_duration_type');
 $supported_durations = BTCPayWall::DURATIONS;
 $supported_btc_format = BTCPayWall::BTC_FORMAT;
 $used_format = get_option("btcpaywall_pay_per_post_btc_format");
-$disabled_field = ($duration_type === 'unlimited') || ($duration_type === 'onetime');
+$disabled_field = ($result->duration_type === 'unlimited') || ($result->duration_type === 'onetime');
 $disable = $disabled_field ? 'disabled' : '';
-$collect_name = get_option('btcpaywall_pay_per_post_display_name', false);
+
+/* $collect_name = get_option('btcpaywall_pay_per_post_display_name', false);
 $collect_email = get_option('btcpaywall_pay_per_post_display_email', false);
 $collect_address = get_option('btcpaywall_pay_per_post_display_address', false);
 $collect_phone = get_option('btcpaywall_pay_per_post_display_phone', false);
@@ -48,37 +49,37 @@ $continue_button_text_color = get_option('btcpaywall_pay_per_post_continue_butto
 
 $previous_button = get_option('btcpaywall_pay_per_post_previous_button');
 $previous_button_color = get_option('btcpaywall_pay_per_post_previous_button_color');
-$previous_button_text_color = get_option('btcpaywall_pay_per_post_previous_button_text_color');
+$previous_button_text_color = get_option('btcpaywall_pay_per_post_previous_button_text_color'); */
 ?>
 <style>
     .btcpaywall_help_preview.pay_per_post {
-        display: <?php echo $help === true ? 'block' : 'none'; ?>;
+        display: <?php echo $result->link === true ? 'block' : 'none'; ?>;
     }
 
     .btcpaywall_additional_help_preview.pay_per_post {
-        display: <?php echo $additional_help === true ? 'block' : 'none'; ?>;
+        display: <?php echo $result->additional_link === true ? 'block' : 'none'; ?>;
     }
 
     .btcpaywall_pay_preview {
-        background-color: <?php echo esc_html($background); ?>;
-        width: <?php echo esc_html($width) . 'px'; ?>;
-        height: <?php echo esc_html($height) . 'px'; ?>;
+        background-color: <?php echo esc_html($result->background_color); ?>;
+        width: <?php echo esc_html($result->width) . 'px'; ?>;
+        height: <?php echo esc_html($result->height) . 'px'; ?>;
     }
 
     .btcpaywall_pay__content_preview h2 {
-        color: <?php echo esc_html($header_color); ?>;
+        color: <?php echo esc_html($result->header_color); ?>;
     }
 
     .btcpaywall_pay__content_preview p {
-        color: <?php echo esc_html($info_color); ?>;
+        color: <?php echo esc_html($result->info_color); ?>;
     }
 
     #btcpaywall_pay__button_preview {
-        background-color: <?php echo esc_html($button_color); ?>;
-        color: <?php echo esc_html($button_text_color); ?>;
+        background-color: <?php echo esc_html($result->button_color); ?>;
+        color: <?php echo esc_html($result->button_txt_color); ?>;
     }
 </style>
-<div id="btcpaywall_general_pay_per_post_options_paywall">
+<div id="btcpaywall_pay_per_post_shortcode_generator">
     <div>
         <form method="POST" action="options.php" id="pay-per-post-shortcode-generator-form">
             <div class="row">
@@ -86,7 +87,7 @@ $previous_button_text_color = get_option('btcpaywall_pay_per_post_previous_butto
                     <label for="btcpaywall_pay_per_post_shortcode_name">Name</label>
                 </div>
                 <div class="col-80">
-                    <input type="text" name="btcpaywall_pay_per_post_shortcode_name" id="btcpaywall_pay_per_post_shortcode_name" value="<?php echo esc_attr($name); ?>">
+                    <input type="text" name="btcpaywall_pay_per_post_shortcode_name" id="btcpaywall_pay_per_post_shortcode_name" value="<?php echo esc_attr($result->name); ?>">
                 </div>
             </div>
             <div class="row">
@@ -103,7 +104,7 @@ $previous_button_text_color = get_option('btcpaywall_pay_per_post_previous_butto
                 </div>
                 <div class="col-80">
 
-                    <input required type="number" min=0 placeholder="Default Price" step=1 name="btcpaywall_pay_per_post_price" id="btcpaywall_pay_per_post_price" value="<?php echo esc_attr($price); ?>">
+                    <input required type="number" min=0 placeholder="Default Price" step=1 name="btcpaywall_pay_per_post_price" id="btcpaywall_pay_per_post_price" value="<?php echo esc_attr($result->price); ?>">
 
                     <select required name="btcpaywall_pay_per_post_currency" id="btcpaywall_pay_per_post_currency">
                         <option disabled value="">Select currency</option>
@@ -129,7 +130,7 @@ $previous_button_text_color = get_option('btcpaywall_pay_per_post_previous_butto
                     <label for="btcpaywall_pay_per_post_duration">Default duration</label>
                 </div>
                 <div class="col-80">
-                    <input type="number" min="1" placeholder="Default Access Duration" name="btcpaywall_pay_per_post_duration" id="btcpaywall_pay_per_post_duration" <?php echo esc_attr($disable); ?> value="<?php echo esc_attr($duration); ?>">
+                    <input type="number" min="1" placeholder="Default Access Duration" name="btcpaywall_pay_per_post_duration" id="btcpaywall_pay_per_post_duration" <?php echo esc_attr($disable); ?> value="<?php echo esc_attr($result->duration); ?>">
                     <select required name="btcpaywall_pay_per_post_duration_type" id="btcpaywall_pay_per_post_duration_type">
                         <option disabled value="">Select duration type</option>
                         <?php foreach ($supported_durations as $duration) : ?>
@@ -287,7 +288,7 @@ $previous_button_text_color = get_option('btcpaywall_pay_per_post_previous_butto
                         <label for="btcpaywall_pay_per_post_show_help_link">Display help link</label>
                     </div>
                     <div class="col-80">
-                        <input id="btcpaywall_pay_per_post_show_help_link" class="btcpaywall_pay_per_post_show_help_link" name="btcpaywall_pay_per_post_show_help_link" type="checkbox" <?php echo checked($help); ?> value="<?php echo esc_attr($result->link); ?>" />
+                        <input id="btcpaywall_pay_per_post_show_help_link" class="btcpaywall_pay_per_post_show_help_link" name="btcpaywall_pay_per_post_show_help_link" type="checkbox" <?php echo checked($result->link); ?> value="true" />
                     </div>
                 </div>
                 <div class="row">
@@ -312,7 +313,7 @@ $previous_button_text_color = get_option('btcpaywall_pay_per_post_previous_butto
                         <label for="btcpaywall_pay_per_post_show_additional_help_link">Display additional link</label>
                     </div>
                     <div class="col-80">
-                        <input id="btcpaywall_pay_per_post_show_additional_help_link" class="btcpaywall_pay_per_post_show_additional_help_link" name="btcpaywall_pay_per_post_show_additional_help_link" type="checkbox" <?php echo checked($result->additional_link); ?> value="<?php echo esc_attr($additional_help); ?>" />
+                        <input id="btcpaywall_pay_per_post_show_additional_help_link" class="btcpaywall_pay_per_post_show_additional_help_link" name="btcpaywall_pay_per_post_show_additional_help_link" type="checkbox" <?php echo checked($result->additional_link); ?> value="true" />
                     </div>
                 </div>
                 <div class="row">
@@ -409,29 +410,29 @@ $previous_button_text_color = get_option('btcpaywall_pay_per_post_previous_butto
             </div>
         </form>
     </div>
-    <div id="btcpaywall_pay_per_post_paywall_preview">
-        <div class="btcpaywall_pay_preview pay_per_post">
-            <div class="btcpaywall_pay__content_preview pay_per_post">
-                <h2><?php echo esc_html($text); ?></h2>
+    <div id="btcpw_pay_per_post_paywall_preview">
+        <div class="btcpw_pay_preview pay_per_post">
+            <div class="btcpw_pay__content_preview pay_per_post">
+                <h2><?php echo esc_html($result->header_text); ?></h2>
             </div>
-            <div class="btcpaywall_pay__content_preview pay_per_post">
+            <div class="btcpw_pay__content_preview pay_per_post">
                 <p>
-                    <?php echo esc_html($info); ?>
+                    <?php echo esc_html($result->info_text); ?>
                 </p>
             </div>
             <div>
-                <button disabled type="button" id="btcpaywall_pay__button_preview" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html($button); ?></button>
+                <button disabled type="button" id="btcpw_pay__button_preview"><?php echo esc_html($result->button_txt); ?></button>
             </div>
-            <div class="btcpaywall_pay__loading_preview pay_per_post">
+            <div class="btcpw_pay__loading_preview pay_per_post">
                 <p class="loading_preview"></p>
             </div>
-            <div class="btcpaywall_links_preview">
+            <div class="btcpw_links_preview">
 
-                <div class="btcpaywall_help_preview pay_per_post">
-                    <a class="btcpaywall_help__link_preview pay_per_post" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
+                <div class="btcpw_help_preview pay_per_post">
+                    <a class="btcpw_help__link_preview pay_per_post" href="<?php echo esc_attr($result->help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
                 </div>
-                <div class="btcpaywall_additional_help_preview pay_per_post">
-                    <a class="btcpaywall_help__additional_link_preview pay_per_post" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
+                <div class="btcpw_additional_help_preview pay_per_post">
+                    <a class="btcpw_help__additional_link_preview pay_per_post" href="<?php echo esc_attr($result->additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
                 </div>
             </div>
         </div>

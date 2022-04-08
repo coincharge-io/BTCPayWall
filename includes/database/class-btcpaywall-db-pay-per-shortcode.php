@@ -31,7 +31,7 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
         return array(
             'id' => '%d',
             'name' => '%s',
-            'type'=>'%s',
+            'type' => '%s',
             'time' => '%s',
             'pay_block' => '%d',
             'width' => '%f',
@@ -83,7 +83,7 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
         return array(
             'time' => date('Y-m-d H:i:s'),
             'name' => '',
-            'type'=>'',
+            'type' => '',
             'pay_block' => false,
             'width' => 500,
             'height' => 500,
@@ -227,8 +227,8 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
         $sql = "CREATE TABLE {$this->table_name}(
 			    id bigint(20) NOT NULL AUTO_INCREMENT,
 			    time datetime NOT NULL,
-			    name TINYTEXT NOT NULL,
-                type TINYTEXT NOT NULL,
+			    name TINYTEXT,
+                type TINYTEXT,
                 pay_block BOOLEAN,
                 width SMALLINT,
                 height SMALLINT,

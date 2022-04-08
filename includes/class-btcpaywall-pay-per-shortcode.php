@@ -4,7 +4,7 @@
  * Digital Download
  *
  * @package     BTCPayWall
- * @subpackage  Classes/BTCPayWall_Tipping_Pay_Per_View_Shortcode
+ * @subpackage  Classes/BTCPayWall_Tipping_Pay_Per_Shortcode
  * @copyright   Copyright (c) 2021, Coincharge
  * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
  * @since       1.0.9
@@ -95,10 +95,12 @@ class BTCPayWall_Tipping_Pay_Per_Shortcode
 
         foreach ($shortcode as $key => $value) {
             if (property_exists($this, $key)) {
-                $this->$key = (substr($value, 0, 1) === '#') ? "#{$value}" : $value;
+                if (strpos($key, 'color') !== false) {
+                    $this->$key =  "#{$value}";
+                }
+                $this->$key =  $value;
             }
         }
-
         if (!empty($this->id)) {
             return true;
         }
@@ -145,8 +147,8 @@ class BTCPayWall_Tipping_Pay_Per_Shortcode
 
         if ($this->db->update($this->id, $data)) {
 
-            $form = $this->db->get_shortcode_by('id', $this->id);
-            $this->setup_shortcode($form);
+            $shortcode = $this->db->get_shortcode_by('id', $this->id);
+            $this->setup_shortcode($shortcode);
 
             $updated = true;
         }
@@ -184,14 +186,15 @@ class BTCPayWall_Tipping_Pay_Per_Shortcode
             'link',
             'additional_link',
             'display_name',
-            'mandatory_name ',
-            'display_email ',
-            'mandatory_email ',
-            'display_phone ',
+            'mandatory_name',
+            'display_email',
+            'mandatory_email',
+            'display_phone',
             'mandatory_phone',
-            'display_address ',
+            'display_address',
             'mandatory_address',
             'display_message',
+            'mandatory_message'
         ];
 
 
@@ -201,9 +204,15 @@ class BTCPayWall_Tipping_Pay_Per_Shortcode
             if (!array_key_exists($key, $data)) {
                 continue;
             }
-
             switch ($type) {
+                case '%d':
+                    if (in_array($key, $booleans)) {
+                        $data[$key] = (bool)$data[$key];
+                    } else {
+                        $data[$key] = absint($data[$key]);
+                    }
 
+                    break;
                 case '%s':
                     if (substr($data[$key], 0, 1) === '#') {
                         $data[$key] = sanitize_hex_color_no_hash($data[$key]);
@@ -214,19 +223,10 @@ class BTCPayWall_Tipping_Pay_Per_Shortcode
                     }
                     break;
 
-                case '%d':
 
-                    if (in_array($key, $booleans)) {
-                        $data[$key] = (bool)$data[$key];
-                    } else {
-                        $data[$key] = absint($data[$key]);
-                    }
-
-                    break;
 
                 case '%f':
                     $value = floatval($data[$key]);
-
                     if (!is_float($value)) {
                         $data[$key] = $default_values[$key];
                     } else {

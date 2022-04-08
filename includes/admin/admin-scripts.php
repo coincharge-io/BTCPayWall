@@ -18,7 +18,7 @@ function btcpaywall_admin_enqueue_styles()
 
     wp_enqueue_style('wp-color-picker');
     wp_enqueue_style('load-fa', 'https://use.fontawesome.com/releases/v5.12.1/css/all.css');
-    if (isset($_GET['page']) && (sanitize_text_field($_GET['page']) == 'btcpw_pay_per_post' || sanitize_text_field($_GET['page']) == 'btcpw_pay_per_view') && isset($_GET['tab']) && sanitize_text_field($_GET['tab']) == 'demo') {
+    if (isset($_GET['page']) && (sanitize_text_field($_GET['page']) == 'btcpw_pay_per_post' || sanitize_text_field($_GET['page']) == 'btcpw_pay_per_view') || sanitize_text_field($_GET['page']) == 'btcpw_pay_per_shortcode') {
         wp_enqueue_style('btcpaywall_preview', BTCPAYWALL_PLUGIN_URL . 'assets/src/css/btc-paywall-public.css', array(), BTCPAYWALL_VERSION, 'all');
     }
 }
@@ -37,7 +37,7 @@ function btcpaywall_enqueue_scripts_admin()
         wp_enqueue_script('btcpaywall_unsaved', BTCPAYWALL_PLUGIN_URL . 'assets/src/js/btc-paywall-warn-unsaved.js', array('jquery'), BTCPAYWALL_VERSION, false);
     }
 
-    if (isset($_GET['page']) && (sanitize_text_field($_GET['page']) == 'btcpw_pay_per_post' || sanitize_text_field($_GET['page']) == 'btcpw_pay_per_view' || sanitize_text_field($_GET['page']) == 'btcpw_download_store')) {
+    if (isset($_GET['page']) && (sanitize_text_field($_GET['page']) == 'btcpw_pay_per_post' || sanitize_text_field($_GET['page']) == 'btcpw_pay_per_view' || sanitize_text_field($_GET['page']) == 'btcpw_download_store' || sanitize_text_field($_GET['page']) == 'btcpw_pay_per_shortcode')) {
         wp_enqueue_script('btcpaywall_design_preview', BTCPAYWALL_PLUGIN_URL . 'assets/src/js/btc-paywall-design-preview-admin.js', array('jquery'), BTCPAYWALL_VERSION, false);
         wp_enqueue_script('btcpaywall_unsaved', BTCPAYWALL_PLUGIN_URL . 'assets/src/js/btc-paywall-warn-unsaved.js', array('jquery'), BTCPAYWALL_VERSION, false);
     }

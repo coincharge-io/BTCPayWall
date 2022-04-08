@@ -29,6 +29,36 @@
     });
   });
   $(document).ready(function () {
+    $('#btcpaywall_pay_per_post_duration_type, #btcpaywall_pay_per_view_duration_type').change(function () {
+      var dtype = $(this).val();
+
+      if (dtype === 'unlimited' || dtype === 'onetime') {
+        $('#btcpaywall_pay_per_post_duration, #btcpaywall_pay_per_view_duration').prop({
+          required: false,
+          disabled: true,
+        });
+      } else {
+        $('#btcpaywall_pay_per_post_duration, #btcpaywall_pay_per_view_duration').prop({
+          required: true,
+          disabled: false,
+        });
+      }
+    })
+    $('#btcpaywall_pay_per_post_currency, #btcpaywall_pay_per_view_currency').change(function () {
+      var stepValue = $(this).val() === 'SATS' ? '1' : '0.50';
+
+      $('#btcpaywall_pay_per_post_price,#btcpaywall_pay_per_view_price').attr({
+        step: stepValue,
+        value: parseInt($('#btcpaywall_pay_per_post_price,#btcpaywall_pay_per_view_price').val()),
+      });
+    });
+    $('#btcpaywall_pay_per_post_currency, #btcpaywall_pay_per_view_currency').change(function () {
+      if ($('#btcpaywall_pay_per_post_currency, #btcpaywall_pay_per_view_currency').val() !== 'SATS') {
+        $('.btcpaywall_pay_per_post_price_format, .btcpaywall_pay_per_view_price_format').hide();
+      } else {
+        $('.btcpaywall_pay_per_post_price_format, .btcpaywall_pay_per_view_price_format').show();
+      }
+    });
     $('#btcpw_default_currency').change(function () {
       var stepValue = $(this).val() === 'SATS' ? '1' : '0.50';
 
@@ -37,7 +67,8 @@
         value: parseInt($('#btcpw_default_price').val()),
       });
     });
-  });
+
+  })
   $(document).ready(function () {
     $(
       '#btcpw_default_page_currency1, #btcpw_default_page_currency2, #btcpw_default_page_currency3, #btcpw_banner_wide_default_currency1, #btcpw_banner_wide_default_currency2, #btcpw_banner_wide_default_currency3, #btcpw_banner_high_default_currency1, #btcpw_banner_high_default_currency2, #btcpw_banner_high_default_currency3'
@@ -88,6 +119,21 @@
         });
       } else {
         $('#btcpw_default_pay_per_view_duration').prop({
+          required: true,
+          disabled: false,
+        });
+      }
+    });
+    $('#btcpaywall_pay_per_post_duration_type, #btcpaywall_pay_per_view_duration_type').change(function () {
+      var dtype = $(this).val();
+
+      if (dtype === 'unlimited' || dtype === 'onetime') {
+        $('#btcpaywall_pay_per_post_duration, #btcpaywall_pay_per_view_duration').prop({
+          required: false,
+          disabled: true,
+        });
+      } else {
+        $('#btcpaywall_pay_per_post_duration, #btcpaywall_pay_per_view_duration').prop({
           required: true,
           disabled: false,
         });
@@ -236,7 +282,7 @@
 
   $(document).ready(function () {
     $(
-      '#btcpaywall_tipping_color_background, #btcpaywall_tipping_color_header_footer_background, #btcpaywall_tipping_color_title, #btcpaywall_tipping_color_description, #btcpaywall_tipping_color_progress_bar_step1,#btcpaywall_tipping_color_progress_bar_step2,#btcpaywall_tipping_color_main,#btcpaywall_tipping_color_amounts,#btcpaywall_tipping_color_button_text,#btcpaywall_tipping_color_button, #btcpaywall_tipping_color_continue_button_text, #btcpaywall_tipping_color_continue_button,#btcpaywall_tipping_color_previous_button_text,#btcpaywall_tipping_color_previous_button, #btcpaywall_tipping_color_selected_amount, #btcpw_pay_per_post_continue_button_color,#btcpw_pay_per_post_continue_button_text_color,  #btcpw_pay_per_post_previous_button_color,#btcpw_pay_per_post_previous_button_text_color, #btcpw_pay_per_view_continue_button_color,#btcpw_pay_per_view_continue_button_text_color,  #btcpw_pay_per_view_previous_button_color,#btcpw_pay_per_view_previous_button_text_color'
+      '#btcpaywall_tipping_color_background, #btcpaywall_tipping_color_header_footer_background, #btcpaywall_tipping_color_title, #btcpaywall_tipping_color_description, #btcpaywall_tipping_color_progress_bar_step1,#btcpaywall_tipping_color_progress_bar_step2,#btcpaywall_tipping_color_main,#btcpaywall_tipping_color_amounts,#btcpaywall_tipping_color_button_text,#btcpaywall_tipping_color_button, #btcpaywall_tipping_color_continue_button_text, #btcpaywall_tipping_color_continue_button,#btcpaywall_tipping_color_previous_button_text,#btcpaywall_tipping_color_previous_button, #btcpaywall_tipping_color_selected_amount, #btcpw_pay_per_post_continue_button_color,#btcpw_pay_per_post_continue_button_text_color,  #btcpw_pay_per_post_previous_button_color,#btcpw_pay_per_post_previous_button_text_color, #btcpw_pay_per_view_continue_button_color,#btcpw_pay_per_view_continue_button_text_color,  #btcpw_pay_per_view_previous_button_color,#btcpw_pay_per_view_previous_button_text_color,#btcpaywall_pay_per_post_continue_button_color,#btcpaywall_pay_per_post_continue_button_text_color,  #btcpaywall_pay_per_post_previous_button_color,#btcpaywall_pay_per_post_previous_button_text_color, #btcpaywall_pay_per_view_continue_button_color,#btcpaywall_pay_per_view_continue_button_text_color,  #btcpaywall_pay_per_view_previous_button_color,#btcpaywall_pay_per_view_previous_button_text_color'
     ).iris({
       defaultColor: true,
 
