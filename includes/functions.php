@@ -13,8 +13,71 @@
 
 // Exit if accessed directly
 if (!defined('ABSPATH')) exit;
+/**
+ * Get price information for protected post/video/file from shortcode attributes
+ * 
+ * @param array $atts Shortcode attributes
+ * 
+ * @since 1.0.8.1
+ * 
+ * @return string Display information about price inside paywall
+ */
+function btcpaywall_get_post_info_string_from_attributes($atts)
+{
+    $project = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] ? get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] : 'post';
+
+    $post_id = get_the_ID();
 
 
+    if (get_post_meta($post_id, 'btcpw_price', true)) {
+        $price = get_post_meta($post_id, 'btcpw_price', true);
+    } else {
+        $price = get_option('btcpw_default_pay_per_' . $project . '_price', 1000);
+    }
+
+    if (get_post_meta($post_id, 'btcpw_duration', true)) {
+        $duration = get_post_meta($post_id, 'btcpw_duration', true);
+    } else {
+        $duration = get_option('btcpw_default_pay_per_' . $project . '_duration');
+    }
+
+    if (get_post_meta($post_id, 'btcpw_duration_type', true)) {
+        $duration_type = get_post_meta($post_id, 'btcpw_duration_type', true);
+    } else {
+        $duration_type = get_option('btcpw_default_pay_per_' . $project . '_duration_type', 'unlimited');
+    }
+
+
+    if (get_post_meta($post_id, 'btcpw_currency', true)) {
+        $currency = get_post_meta($post_id, 'btcpw_currency', true);
+    } else {
+        $currency = get_option('btcpw_default_pay_per_' . $project . '_currency', 'SATS');
+    }
+    $btc_format = get_post_meta(get_the_ID(), 'btcpw_btc_format', true) ?: get_option('btcpw_default_pay_per_' . $project . '_btc_format');
+
+
+    if ($currency === 'SATS' && $btc_format === 'BTC') {
+
+        $price = $price / 100000000;
+
+        $price = sprintf('%.8f', $price);
+
+        $price = rtrim($price, '0');
+
+        $currency = 'BTC';
+    }
+    $payblock_info = $atts['info_text'];
+
+
+
+    $search = array('{price}', '{duration}', '{dtype}', '{currency}');
+
+    $replace = array($price, $duration, $duration_type, $currency);
+
+    $formatted = str_replace($search, $replace, $payblock_info);
+
+    return $formatted;
+}
 /**
  * Get price information for protected post/video/file 
  * 
@@ -71,20 +134,23 @@ function btcpaywall_get_post_info_string($post_id = null, $type = 'post')
         $currency = 'BTC';
     }
 
-
-    $payblock_info = btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['info'];
-    if (!empty($payblock_info)) {
-
-        $search = array('[price]', '[duration]', '[dtype]', '[currency]');
-
-        $replace = array($price, $duration, $duration_type, $currency);
-
-        str_replace($search, $replace, $payblock_info);
-    }
-
     $non_number = $duration_type === 'unlimited' || $duration_type === 'onetime';
 
     $duration_type = ($duration > 1 && !$non_number) ? "{$duration_type}s" : $duration_type;
+    $payblock_info = btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['info'];
+
+    if (!empty($payblock_info)) {
+
+        $search = array('{price}', '{duration}', '{dtype}', '{currency}');
+
+        $replace = array($price, $duration, $duration_type, $currency);
+
+        $replaced = str_replace($search, $replace, $payblock_info);
+
+        return $replaced;
+    }
+
+
 
     $unlimited = "For {$price} {$currency} you will have unlimited access to the {$type}.";
 
@@ -110,13 +176,15 @@ function btcpaywall_get_payblock_header_string()
 /**
  * Get paywall button text
  * 
+ * @param array $atts Shortcode attributes
+ * 
  * @since 1.0
  * 
  * @return string Display paywall button text
  */
-function btcpaywall_get_payblock_button_string()
+function btcpaywall_get_payblock_button_string($atts)
 {
-    return btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['button'] ?: 'Pay';
+    return !empty($atts['button_text']) ? $atts['button_text'] : btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['button'];
 }
 /**
  * Return default values for each revenue type
@@ -132,7 +200,7 @@ function btcpaywall_get_default_values($name)
         case 'post':
             return [
                 'title' => get_option('btcpw_pay_per_post_title', 'Pay now to unlock blogpost'),
-                'info'    => get_option('btcpw_pay_per_post_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]'),
+                'info'    => get_option('btcpw_pay_per_post_info', 'For {price} {currency} you will have access to the post for {duration} {dtype}'),
                 'button'    => get_option('btcpw_pay_per_post_button', 'Pay'),
                 'currency' => get_option('btcpw_pay_per_post_currency', 'SATS'),
                 'price'      => get_option('btcpw_pay_per_post_price', 1000), 'duration'    => get_option('btcpw_pay_per_post_duration'),
@@ -142,7 +210,7 @@ function btcpaywall_get_default_values($name)
         case 'video':
             return [
                 'title' => get_option('btcpw_pay_per_view_title', 'Pay now to watch the whole video'),
-                'info'    => get_option('btcpw_pay_per_view_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]'),
+                'info'    => get_option('btcpw_pay_per_view_info', 'For {price} {currency} you will have access to the post for {duration} {dtype}'),
                 'button'    => get_option('btcpw_pay_per_view_button', 'Pay'),
                 'currency' => get_option('btcpw_pay_per_view_currency', 'SATS'),
                 'price'      => get_option('btcpw_pay_per_view_price', 1000), 'duration'    => get_option('btcpw_pay_per_view_duration'),

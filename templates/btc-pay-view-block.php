@@ -48,7 +48,8 @@ $image = wp_get_attachment_image_src($atts['preview']);
 
 $preview_url = $image ? $image[0] : $atts['preview'];
 $header = !empty($atts['header_text']) ? $atts['header_text'] : btcpaywall_get_payblock_header_string();
-$info = !empty($atts['info_text']) ? $atts['info_text'] : btcpaywall_get_post_info_string(null, 'video');
+$info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attributes($atts) : btcpaywall_get_post_info_string(null, 'video');
+
 ?>
 <style>
     .btcpw_revenue_view_container {
@@ -131,7 +132,7 @@ $info = !empty($atts['info_text']) ? $atts['info_text'] : btcpaywall_get_post_in
                         </div>
                     <?php else : ?>
                         <div>
-                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html__(btcpaywall_get_payblock_button_string(), 'btcpaywall'); ?></button>
+                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html__(btcpaywall_get_payblock_button_string($atts), 'btcpaywall'); ?></button>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -174,7 +175,7 @@ $info = !empty($atts['info_text']) ? $atts['info_text'] : btcpaywall_get_post_in
                         </div>
 
                         <div>
-                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html__(btcpaywall_get_payblock_button_string(), 'btcpaywall'); ?></button>
+                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html__(btcpaywall_get_payblock_button_string($atts), 'btcpaywall'); ?></button>
                         </div>
                     </div>
                 </fieldset>
