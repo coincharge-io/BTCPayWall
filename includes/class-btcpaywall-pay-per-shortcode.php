@@ -4,7 +4,7 @@
  * Digital Download
  *
  * @package     BTCPayWall
- * @subpackage  Classes/BTCPayWall_Tipping_Pay_Per_Shortcode
+ * @subpackage  Classes/BTCPayWall_Pay_Per_Shortcode
  * @copyright   Copyright (c) 2021, Coincharge
  * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
  * @since       1.0.9
@@ -14,7 +14,7 @@
 if (!defined('ABSPATH')) exit;
 
 
-class BTCPayWall_Tipping_Pay_Per_Shortcode
+class BTCPayWall_Pay_Per_Shortcode
 {
     public $id = 0;
     public $type;
@@ -95,9 +95,6 @@ class BTCPayWall_Tipping_Pay_Per_Shortcode
 
         foreach ($shortcode as $key => $value) {
             if (property_exists($this, $key)) {
-                if (strpos($key, 'color') !== false) {
-                    $this->$key =  "#{$value}";
-                }
                 $this->$key =  $value;
             }
         }
@@ -183,7 +180,7 @@ class BTCPayWall_Tipping_Pay_Per_Shortcode
         if ($this->type === 'pay-per-post') {
             return  "[btcpw_start_content pay_block='{$this->pay_block}' btc_format='{$this->btc_format}' price='{$this->price}' header_text='{$this->header_text}' info_text='{$this->info_text}' header_color='{$this->header_color}' info_color='{$this->info_color}' duration_type='{$this->duration_type}' link='{$this->link}' help_link='{$this->help_link}' help_text='{$this->help_text}' additional_link='{$this->additional_link}' additional_help_link='{$this->additional_help_link}' additional_help_text='{$this->additional_help_text}' duration='{$this->duration}' currency='{$this->currency}'  button_text='{$this->button_text}' button_text_color='{$this->button_text_color}' button_color='{$this->button_color}' continue_button_text='{$this->continue_button_text}' continue_button_text_color='{$this->continue_button_text_color}' continue_button_color='{$this->continue_button_color}' previous_button_text='{$this->previous_button_text}' previous_button_text_color='{$this->previous_button_text_color}' previous_button_color='{$this->previous_button_color}'  display_name='{$this->display_name}' mandatory_name='{$this->mandatory_name}' display_email='{$this->display_email}' mandatory_email='{$this->mandatory_email}' display_phone='{$this->display_phone}' mandatory_phone='{$this->mandatory_phone}' display_address='{$this->display_address}' mandatory_address='{$this->mandatory_address}' display_message='{$this->display_message}' mandatory_message='{$this->mandatory_message}']";
         }
-        return  "[btcpw_start_video pay_view_block='{$this->pay_block}' btc_format='{$this->btc_format}' title='{$this->title}' description='{$this->description}' preview={$this->preview} price='{$this->price}' header_color='{$this->header_color}' info_color='{$this->info_color}' header_text='{$this->header_text}' info_text='{$this->info_text}' link='{$this->link}' help_link='{$this->help_link}' help_text='{$this->help_text}' additional_link='{$this->additional_link}' additional_help_link='{$this->additional_help_link}' additional_help_text='{$this->additional_help_text}' duration_type='{$this->duration_type}' duration='{$this->duration}' currency='{$this->currency}'  button_text='{$this->button_text}' button_text_color='{$this->button_text_color}' button_color='{$this->button_color}' continue_button_text='{$this->continue_button_text}' continue_button_text_color='{$this->continue_button_text_color}' continue_button_color='{$this->continue_button_color}' previous_button_text='{$this->previous_button_text}' previous_button_text_color='{$this->previous_button_text_color}' previous_button_color='{$this->previous_button_color}'  display_name='{$this->display_name}' mandatory_name='{$this->mandatory_name}' display_email='{$this->display_email}' mandatory_email='{$this->mandatory_email}' display_phone='{$this->display_phone}' mandatory_phone='{$this->mandatory_phone}' display_address='{$this->display_address}' mandatory_address='{$this->mandatory_address}' display_message='{$this->display_message}' mandatory_message='{$this->mandatory_message}]";
+        return  "[btcpw_start_video pay_view_block='{$this->pay_block}' btc_format='{$this->btc_format}' title='{$this->title}' description='{$this->description}' preview={$this->preview} price='{$this->price}' header_color='{$this->header_color}' info_color='{$this->info_color}' header_text='{$this->header_text}' info_text='{$this->info_text}' link='{$this->link}' help_link='{$this->help_link}' help_text='{$this->help_text}' additional_link='{$this->additional_link}' additional_help_link='{$this->additional_help_link}' additional_help_text='{$this->additional_help_text}' duration_type='{$this->duration_type}' duration='{$this->duration}' currency='{$this->currency}'  button_text='{$this->button_text}' button_text_color=#'{$this->button_text_color}' button_color=#'{$this->button_color}' continue_button_text='{$this->continue_button_text}' continue_button_text_color='#{$this->continue_button_text_color}' continue_button_color=#'{$this->continue_button_color}' previous_button_text='{$this->previous_button_text}' previous_button_text_color=#'{$this->previous_button_text_color}' previous_button_color=#'{$this->previous_button_color}'  display_name='{$this->display_name}' mandatory_name='{$this->mandatory_name}' display_email='{$this->display_email}' mandatory_email='{$this->mandatory_email}' display_phone='{$this->display_phone}' mandatory_phone='{$this->mandatory_phone}' display_address='{$this->display_address}' mandatory_address='{$this->mandatory_address}' display_message='{$this->display_message}' mandatory_message='{$this->mandatory_message}]";
     }
 
     private function sanitize_columns($data)
@@ -225,7 +222,7 @@ class BTCPayWall_Tipping_Pay_Per_Shortcode
                     break;
                 case '%s':
                     if (substr($data[$key], 0, 1) === '#') {
-                        $data[$key] = sanitize_hex_color_no_hash($data[$key]);
+                        $data[$key] = sanitize_hex_color($data[$key]);
                     } elseif (!is_string($key)) {
                         $data[$key] = $default_values[$key];
                     } else {

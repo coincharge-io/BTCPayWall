@@ -98,10 +98,10 @@ function btcpaywall_create_pay_per_shortcode()
 {
     check_ajax_referer('shortcode-security-nonce', 'nonce_ajax');
 
-    $row = new BTCPayWall_Tipping_Pay_Per_Shortcode();
+    $row = new BTCPayWall_Pay_Per_Shortcode();
 
     $row->create($_POST);     //BTCPayWall_Tipping_Form class has function for sanitizing $_POST before saving to DB
-
+    
     if ($row) {
         wp_send_json_success(array('res' => true, 'data' => array('id' => $row->id)));
     } else {

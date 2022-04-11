@@ -1,12 +1,11 @@
 <?php
 // Exit if accessed directly.
 
-use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 if (!defined('ABSPATH')) exit;
 $id = sanitize_text_field($_GET['id']) ?? null;
 
-$result = new BTCPayWall_Tipping_Pay_Per_Shortcode($id);
+$result = new BTCPayWall_Pay_Per_Shortcode($id);
 $used_currency = get_option('btcpaywall_pay_per_view_currency');
 $supported_currencies = BTCPayWall::CURRENCIES;
 $price = get_option('btcpaywall_pay_per_view_price');
@@ -17,44 +16,6 @@ $supported_btc_format = BTCPayWall::BTC_FORMAT;
 $used_format = get_option("btcpaywall_pay_per_view_btc_format");
 $disabled_field = ($result->duration_type === 'unlimited') || ($result->duration_type === 'onetime');
 $disable = $disabled_field ? 'disabled' : '';
-
-
-/* $collect_name = get_option('btcpaywall_pay_per_view_display_name', false);
-$collect_email = get_option('btcpaywall_pay_per_view_display_email', false);
-$collect_address = get_option('btcpaywall_pay_per_view_display_address', false);
-$collect_phone = get_option('btcpaywall_pay_per_view_display_phone', false);
-$collect_message = get_option('btcpaywall_pay_per_view_display_message', false);
-
-$mandatory_name = get_option('btcpaywall_pay_per_view_mandatory_name', false);
-$mandatory_email = get_option('btcpaywall_pay_per_view_mandatory_email', false);
-$mandatory_address = get_option('btcpaywall_pay_per_view_mandatory_address', false);
-$mandatory_phone = get_option('btcpaywall_pay_per_view_mandatory_phone', false);
-$mandatory_message = get_option('btcpaywall_pay_per_view_mandatory_message', false);
-$help = filter_var(get_option('btcpaywall_pay_per_view_show_help_link'), FILTER_VALIDATE_BOOLEAN);
-$help_link = get_option('btcpaywall_pay_per_view_help_link');
-$help_text = get_option('btcpaywall_pay_per_view_help_link_text');
-$additional_help = filter_var(get_option('btcpaywall_pay_per_view_show_additional_help_link'), FILTER_VALIDATE_BOOLEAN);
-$additional_help_link = get_option('btcpaywall_pay_per_view_additional_help_link');
-$additional_help_text = get_option('btcpaywall_pay_per_view_additional_help_link_text');
-$width = get_option('btcpaywall_pay_per_view_width');
-$height = get_option('btcpaywall_pay_per_view_height');
-$background = get_option('btcpaywall_pay_per_view_background');
-$header_color = get_option('btcpaywall_pay_per_view_header_color');
-$info_color = get_option('btcpaywall_pay_per_view_info_color');
-$button_color = get_option('btcpaywall_pay_per_view_button_color');
-$button_text_color = get_option('btcpaywall_pay_per_view_button_text_color');
-$preview_title_color = get_option('btcpaywall_pay_per_view_preview_title_color');
-$preview_description_color = get_option('btcpaywall_pay_per_view_preview_description_color');
-$text = get_option('btcpaywall_pay_per_view_title');
-$button = get_option('btcpaywall_pay_per_view_button');
-$info = get_option('btcpaywall_pay_per_view_info');
-$continue_button = get_option('btcpaywall_pay_per_view_continue_button');
-$continue_button_color = get_option('btcpaywall_pay_per_view_continue_button_color');
-$continue_button_text_color = get_option('btcpaywall_pay_per_view_continue_button_text_color');
-
-$previous_button = get_option('btcpaywall_pay_per_view_previous_button');
-$previous_button_color = get_option('btcpaywall_pay_per_view_previous_button_color');
-$previous_button_text_color = get_option('btcpaywall_pay_per_view_previous_button_text_color'); */
 $preview_image = wp_get_attachment_image_src($result->preview_image);
 ?>
 <style>
