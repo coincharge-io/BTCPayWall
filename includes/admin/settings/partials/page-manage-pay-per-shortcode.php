@@ -2,10 +2,8 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 $id = sanitize_text_field($_GET['id']);
-$type = sanitize_text_field($_GET['type']);
-/* $form = new BTCPayWall_Tipping_Form($id);
-$result = json_decode(json_encode($form), true); */
-$result = new BTCPayWall_Tipping_Pay_Per_Shortcode();
+$result = new BTCPayWall_Tipping_Pay_Per_Shortcode($id);
+$type = !empty(sanitize_text_field($_GET['type'])) ? sanitize_text_field($_GET['type']) : $result->type;
 ?>
 <div class="btcpw_pay_per_shortcode">
     <?php switch ($type):

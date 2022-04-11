@@ -403,7 +403,7 @@ $previous_button_text_color = get_option('btcpaywall_pay_per_post_previous_butto
                 </div>
             </div>
             <input type="hidden" id="btcpaywall_pay_per_post_id" value="<?php echo esc_attr($id); ?>" />
-            <input type="hidden" id="btcpaywall_pay_per_post_type" value="Pay-per-Post" />
+            <input type="hidden" id="btcpaywall_pay_per_post_type" value="pay-per-post" />
 
             <div class="btcpaywall__paywall_submit_button" style="display: inline-block;">
                 <button class="button button-primary btcpaywall_button" type="submit">Save</button>

@@ -282,18 +282,17 @@
 
   $(document).ready(function () {
     $(
-      '#btcpaywall_tipping_color_background, #btcpaywall_tipping_color_header_footer_background, #btcpaywall_tipping_color_title, #btcpaywall_tipping_color_description, #btcpaywall_tipping_color_progress_bar_step1,#btcpaywall_tipping_color_progress_bar_step2,#btcpaywall_tipping_color_main,#btcpaywall_tipping_color_amounts,#btcpaywall_tipping_color_button_text,#btcpaywall_tipping_color_button, #btcpaywall_tipping_color_continue_button_text, #btcpaywall_tipping_color_continue_button,#btcpaywall_tipping_color_previous_button_text,#btcpaywall_tipping_color_previous_button, #btcpaywall_tipping_color_selected_amount, #btcpw_pay_per_post_continue_button_color,#btcpw_pay_per_post_continue_button_text_color,  #btcpw_pay_per_post_previous_button_color,#btcpw_pay_per_post_previous_button_text_color, #btcpw_pay_per_view_continue_button_color,#btcpw_pay_per_view_continue_button_text_color,  #btcpw_pay_per_view_previous_button_color,#btcpw_pay_per_view_previous_button_text_color,#btcpaywall_pay_per_post_continue_button_color,#btcpaywall_pay_per_post_continue_button_text_color,  #btcpaywall_pay_per_post_previous_button_color,#btcpaywall_pay_per_post_previous_button_text_color, #btcpaywall_pay_per_view_continue_button_color,#btcpaywall_pay_per_view_continue_button_text_color,  #btcpaywall_pay_per_view_previous_button_color,#btcpaywall_pay_per_view_previous_button_text_color'
-    ).iris({
-      defaultColor: true,
+      '#btcpaywall_tipping_color_background, #btcpaywall_tipping_color_header_footer_background, #btcpaywall_tipping_color_title, #btcpaywall_tipping_color_description, #btcpaywall_tipping_color_progress_bar_step1,#btcpaywall_tipping_color_progress_bar_step2,#btcpaywall_tipping_color_main,#btcpaywall_tipping_color_amounts,#btcpaywall_tipping_color_button_text,#btcpaywall_tipping_color_button, #btcpaywall_tipping_color_continue_button_text, #btcpaywall_tipping_color_continue_button,#btcpaywall_tipping_color_previous_button_text,#btcpaywall_tipping_color_previous_button, #btcpaywall_tipping_color_selected_amount, #btcpw_pay_per_post_continue_button_color,#btcpw_pay_per_post_continue_button_text_color,  #btcpw_pay_per_post_previous_button_color,#btcpw_pay_per_post_previous_button_text_color, #btcpw_pay_per_view_continue_button_color,#btcpw_pay_per_view_continue_button_text_color,  #btcpw_pay_per_view_previous_button_color,#btcpw_pay_per_view_previous_button_text_color,#btcpaywall_pay_per_post_continue_button_color,#btcpaywall_pay_per_post_continue_button_text_color,  #btcpaywall_pay_per_post_previous_button_color,#btcpaywall_pay_per_post_previous_button_text_color, #btcpaywall_pay_per_view_continue_button_color,#btcpaywall_pay_per_view_continue_button_text_color,  #btcpaywall_pay_per_view_previous_button_color,#btcpaywall_pay_per_view_previous_button_text_color').iris({
+        defaultColor: true,
 
-      change: function (event, ui) { },
+        change: function (event, ui) { },
 
-      clear: function () { },
+        clear: function () { },
 
-      hide: true,
+        hide: true,
 
-      palettes: true,
-    });
+        palettes: true,
+      });
   });
 
   $(document).ready(function ($) {
@@ -314,6 +313,13 @@
       $('#btcpaywall_tipping_logo')
     );
     imageRemove($('.btcpaywall_tipping_button_remove_logo'));
+
+
+    imagePreview(
+      $('#btcpaywall_pay_per_view_preview_image'),
+      $('#btcpaywall_pay_per_view_preview_image_id')
+    );
+    imageRemove($('.btcpaywall_pay_per_view_remove_preview_image'));
   });
   $(document).ready(function () {
     showMore(
@@ -493,7 +499,7 @@
           preview_title_color: $("#btcpaywall_pay_per_view_preview_title_color").val(),
           preview_description: $("#btcpaywall_pay_per_view_preview_description").val(),
           preview_description_color: $("#btcpaywall_pay_per_view_preview_description_color").val(),
-          preview_image: '',
+          preview_image: $('#btcpaywall_pay_per_view_preview_image_id').val(),
           currency: $("#btcpaywall_pay_per_post_currency, #btcpaywall_pay_per_view_currency").val(),
           price: $("#btcpaywall_pay_per_post_price, #btcpaywall_pay_per_view_price").val(),
           duration: $("#btcpaywall_pay_per_post_duration, #btcpaywall_pay_per_view_duration").val(),

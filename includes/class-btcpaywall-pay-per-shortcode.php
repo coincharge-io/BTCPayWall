@@ -104,7 +104,6 @@ class BTCPayWall_Tipping_Pay_Per_Shortcode
         if (!empty($this->id)) {
             return true;
         }
-
         return false;
     }
 
@@ -148,6 +147,7 @@ class BTCPayWall_Tipping_Pay_Per_Shortcode
         if ($this->db->update($this->id, $data)) {
 
             $shortcode = $this->db->get_shortcode_by('id', $this->id);
+
             $this->setup_shortcode($shortcode);
 
             $updated = true;

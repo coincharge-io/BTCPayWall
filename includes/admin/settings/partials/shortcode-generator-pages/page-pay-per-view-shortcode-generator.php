@@ -1,5 +1,8 @@
 <?php
 // Exit if accessed directly.
+
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
+
 if (!defined('ABSPATH')) exit;
 $id = sanitize_text_field($_GET['id']) ?? null;
 
@@ -14,7 +17,7 @@ $supported_btc_format = BTCPayWall::BTC_FORMAT;
 $used_format = get_option("btcpaywall_pay_per_view_btc_format");
 $disabled_field = ($result->duration_type === 'unlimited') || ($result->duration_type === 'onetime');
 $disable = $disabled_field ? 'disabled' : '';
-$collect_name = get_option('btcpaywall_pay_per_view_display_name', false);
+/* $collect_name = get_option('btcpaywall_pay_per_view_display_name', false);
 $collect_email = get_option('btcpaywall_pay_per_view_display_email', false);
 $collect_address = get_option('btcpaywall_pay_per_view_display_address', false);
 $collect_phone = get_option('btcpaywall_pay_per_view_display_phone', false);
@@ -49,8 +52,8 @@ $continue_button_text_color = get_option('btcpaywall_pay_per_view_continue_butto
 
 $previous_button = get_option('btcpaywall_pay_per_view_previous_button');
 $previous_button_color = get_option('btcpaywall_pay_per_view_previous_button_color');
-$previous_button_text_color = get_option('btcpaywall_pay_per_view_previous_button_text_color');
-
+$previous_button_text_color = get_option('btcpaywall_pay_per_view_previous_button_text_color'); */
+$preview_image = wp_get_attachment_image_src($result->preview_image);
 ?>
 <style>
     .btcpaywall_pay__preview_preview.pay_per_view h2 {
@@ -212,6 +215,23 @@ $previous_button_text_color = get_option('btcpaywall_pay_per_view_previous_butto
                 </div>
                 <div class="col-80">
                     <input id="btcpaywall_pay_per_view_preview_description_color" class="btcpaywall_pay_per_view_preview_description_color" name="btcpaywall_pay_per_view_preview_description_color" type="text" value="<?php echo esc_attr($result->preview_description_color); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for=""><?php echo esc_html__('Preview image', 'btcpaywall'); ?></label>
+                </div>
+                <div class="col-80">
+                    <?php if ($preview_image) : ?>
+                        <button id="btcpaywall_pay_per_view_preview_image" name="btcpaywall_pay_per_view_preview_image"><img width="100" height="100" alt="Tipping banner high background" src="<?php echo esc_url($preview_image[0]); ?>" /></a></button>
+                        <button type="button" class="btcpaywall_pay_per_view_remove_preview_image">
+                            <?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
+                        <input type="hidden" class="btcpaywall_pay_per_view_preview_image_id" id="btcpaywall_pay_per_view_preview_image_id" type="text" value="<?php echo esc_attr($result->preview_image); ?>" />
+                    <?php else : ?>
+                        <button id="btcpaywall_pay_per_view_preview_image" name="btcpaywall_pay_per_view_preview_image"><?php echo esc_html__('Upload', 'btcpaywall'); ?></button>
+                        <button type="button" class="btcpaywall_pay_per_view_remove_preview_image" style="display:none"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
+                        <input type="hidden" class="btcpaywall_pay_per_view_preview_image_id" id="btcpaywall_pay_per_view_preview_image_id" type="text" value="<?php echo esc_attr($result->preview_image); ?>" />
+                    <?php endif; ?>
                 </div>
             </div>
             <h3>Header</h3>
@@ -449,7 +469,7 @@ $previous_button_text_color = get_option('btcpaywall_pay_per_view_previous_butto
                 </div>
             </div>
             <input type="hidden" id="btcpaywall_pay_per_view_id" value="<?php echo esc_attr($id); ?>" />
-            <input type="hidden" id="btcpaywall_pay_per_view_type" value="Pay-per-View" />
+            <input type="hidden" id="btcpaywall_pay_per_view_type" value="pay-per-view" />
 
             <div class="btcpaywall__paywall_submit_button" style="display: inline-block;">
                 <button class="button button-primary btcpaywall_button" type="submit">Save</button>
@@ -463,7 +483,7 @@ $previous_button_text_color = get_option('btcpaywall_pay_per_view_previous_butto
             </div>
             <div class="btcpw_pay__preview_preview pay_per_view">
                 <div class="btcpw_pay__preview_preview preview_img">
-                    <img src="<?php echo esc_url(BTCPAYWALL_PLUGIN_URL . 'assets/src/img/preview.png'); ?>" alt="Video preview">
+                    <img src="<?php echo esc_url($preview_image[0]); ?>" alt="Video preview">
                 </div>
                 <div class="btcpw_pay__preview_preview preview_description">
                     <h3><?php echo esc_html($result->preview_title); ?></h3>
