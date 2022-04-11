@@ -17,6 +17,8 @@ $supported_btc_format = BTCPayWall::BTC_FORMAT;
 $used_format = get_option("btcpaywall_pay_per_view_btc_format");
 $disabled_field = ($result->duration_type === 'unlimited') || ($result->duration_type === 'onetime');
 $disable = $disabled_field ? 'disabled' : '';
+
+
 /* $collect_name = get_option('btcpaywall_pay_per_view_display_name', false);
 $collect_email = get_option('btcpaywall_pay_per_view_display_email', false);
 $collect_address = get_option('btcpaywall_pay_per_view_display_address', false);
@@ -56,39 +58,39 @@ $previous_button_text_color = get_option('btcpaywall_pay_per_view_previous_butto
 $preview_image = wp_get_attachment_image_src($result->preview_image);
 ?>
 <style>
-    .btcpaywall_pay__preview_preview.pay_per_view h2 {
+    .btcpw_pay__preview_preview.pay_per_view h2 {
         color: <?php echo esc_html($result->preview_title_color); ?>;
 
     }
 
-    .btcpaywall_pay__preview_preview.pay_per_view p {
+    .btcpw_pay__preview_preview.pay_per_view p {
         color: <?php echo esc_html($result->preview_description_color); ?>;
 
     }
 
-    .btcpaywall_help_preview.pay_per_view {
+    .btcpw_help_preview.pay_per_view {
         display: <?php echo $result->link === true ? '' : 'none'; ?>;
     }
 
-    .btcpaywall_additional_help_preview.pay_per_view {
+    .btcpw_additional_help_preview.pay_per_view {
         display: <?php echo $result->additional_link === true ? '' : 'none'; ?>;
     }
 
-    .btcpaywall_pay_preview {
+    .btcpw_pay_preview {
         background-color: <?php echo esc_html($result->background_color); ?>;
         width: <?php echo esc_html($result->width) . 'px'; ?>;
         height: <?php echo esc_html($result->height) . 'px'; ?>;
     }
 
-    .btcpaywall_pay__content_preview h2 {
+    .btcpw_pay__content_preview h2 {
         color: <?php echo esc_html($result->header_color); ?>;
     }
 
-    .btcpaywall_pay__content_preview p {
+    .btcpw_pay__content_preview p {
         color: <?php echo esc_html($result->info_color); ?>;
     }
 
-    #btcpaywall_pay__button_preview {
+    #btcpw_pay__button_preview {
         background-color: <?php echo esc_html($result->button_color); ?>;
         color: <?php echo esc_html($result->button_txt_color); ?>;
     }
@@ -96,6 +98,17 @@ $preview_image = wp_get_attachment_image_src($result->preview_image);
 <div id="btcpaywall_pay_per_view_shortcode_generator">
     <div>
         <form method="POST" action="options.php" id="pay-per-view-shortcode-generator-form">
+            <?php if ($result->id > 0) : ?>
+                <div class="row">
+
+                    <div class="col-20">
+                        <p>Shortcode</p>
+                    </div>
+                    <div class="col-80">
+                        <button class="button hint-tooltip hint--top js-btcpaywall-shortcode-button" data-btcpaywall-shortcode="<?php echo esc_attr($result->shortcode()); ?>"><span class="dashicons dashicons-admin-page"></span>Copy Shortcode</button>
+                    </div>
+                </div>
+            <?php endif; ?>
             <div class="row">
                 <div class="col-20">
                     <label for="btcpaywall_pay_per_view_shortcode_name">Name</label>
@@ -258,10 +271,10 @@ $preview_image = wp_get_attachment_image_src($result->preview_image);
                 <div class="col-80">
                     <textarea id="btcpaywall_pay_per_view_info" name="btcpaywall_pay_per_view_info"><?php echo esc_html($result->info_text); ?></textarea>
                     <div class="btcpaywall_pay_per_placeholders">
-                        <button type="button" class="btcpaywall_pay_per_view_price_placeholder" value="[price]">Price</button>
-                        <button type="button" class="btcpaywall_pay_per_view_currency_placeholder" value="[currency]">Currency</button>
-                        <button type="button" class="btcpaywall_pay_per_view_duration_placeholder" value="[duration]">Duration</button>
-                        <button type="button" class="btcpaywall_pay_per_view_duration_type_placeholder" value="[dtype]">Duration type</button>
+                        <button type="button" class="btcpaywall_pay_per_view_price_placeholder" value="{price}">Price</button>
+                        <button type="button" class="btcpaywall_pay_per_view_currency_placeholder" value="{currency}">Currency</button>
+                        <button type="button" class="btcpaywall_pay_per_view_duration_placeholder" value="{duration}">Duration</button>
+                        <button type="button" class="btcpaywall_pay_per_view_duration_type_placeholder" value="{dtype}">Duration type</button>
                     </div>
                 </div>
             </div>

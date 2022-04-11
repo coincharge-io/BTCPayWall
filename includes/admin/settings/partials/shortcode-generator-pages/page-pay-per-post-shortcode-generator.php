@@ -52,29 +52,29 @@ $previous_button_color = get_option('btcpaywall_pay_per_post_previous_button_col
 $previous_button_text_color = get_option('btcpaywall_pay_per_post_previous_button_text_color'); */
 ?>
 <style>
-    .btcpaywall_help_preview.pay_per_post {
+    .btcpw_help_preview.pay_per_post {
         display: <?php echo $result->link === true ? 'block' : 'none'; ?>;
     }
 
-    .btcpaywall_additional_help_preview.pay_per_post {
+    .btcpw_additional_help_preview.pay_per_post {
         display: <?php echo $result->additional_link === true ? 'block' : 'none'; ?>;
     }
 
-    .btcpaywall_pay_preview {
+    .btcpw_pay_preview {
         background-color: <?php echo esc_html($result->background_color); ?>;
         width: <?php echo esc_html($result->width) . 'px'; ?>;
         height: <?php echo esc_html($result->height) . 'px'; ?>;
     }
 
-    .btcpaywall_pay__content_preview h2 {
+    .btcpw_pay__content_preview h2 {
         color: <?php echo esc_html($result->header_color); ?>;
     }
 
-    .btcpaywall_pay__content_preview p {
+    .btcpw_pay__content_preview p {
         color: <?php echo esc_html($result->info_color); ?>;
     }
 
-    #btcpaywall_pay__button_preview {
+    #btcpw_pay__button_preview {
         background-color: <?php echo esc_html($result->button_color); ?>;
         color: <?php echo esc_html($result->button_txt_color); ?>;
     }
@@ -82,6 +82,17 @@ $previous_button_text_color = get_option('btcpaywall_pay_per_post_previous_butto
 <div id="btcpaywall_pay_per_post_shortcode_generator">
     <div>
         <form method="POST" action="options.php" id="pay-per-post-shortcode-generator-form">
+            <?php if ($result->id > 0) : ?>
+                <div class="row">
+
+                    <div class="col-20">
+                        <p>Shortcode</p>
+                    </div>
+                    <div class="col-80">
+                        <button class="button hint-tooltip hint--top js-btcpaywall-shortcode-button" data-btcpaywall-shortcode="<?php echo esc_attr($result->shortcode()); ?>"><span class="dashicons dashicons-admin-page"></span>Copy Shortcode</button>
+                    </div>
+                </div>
+            <?php endif; ?>
             <div class="row">
                 <div class="col-20">
                     <label for="btcpaywall_pay_per_post_shortcode_name">Name</label>
@@ -192,10 +203,10 @@ $previous_button_text_color = get_option('btcpaywall_pay_per_post_previous_butto
                 <div class="col-80">
                     <textarea id="btcpaywall_pay_per_post_info" name="btcpaywall_pay_per_post_info"><?php echo esc_html($result->info_text); ?></textarea>
                     <div class="btcpaywall_pay_per_placeholders">
-                        <button type="button" class="btcpaywall_pay_per_post_price_placeholder" value="[price]">Price</button>
-                        <button type="button" class="btcpaywall_pay_per_post_currency_placeholder" value="[currency]">Currency</button>
-                        <button type="button" class="btcpaywall_pay_per_post_duration_placeholder" value="[duration]">Duration</button>
-                        <button type="button" class="btcpaywall_pay_per_post_duration_type_placeholder" value="[dtype]">Duration type</button>
+                        <button type="button" class="btcpaywall_pay_per_post_price_placeholder" value="{price}">Price</button>
+                        <button type="button" class="btcpaywall_pay_per_post_currency_placeholder" value="{currency}">Currency</button>
+                        <button type="button" class="btcpaywall_pay_per_post_duration_placeholder" value="{duration}">Duration</button>
+                        <button type="button" class="btcpaywall_pay_per_post_duration_type_placeholder" value="{dtype}">Duration type</button>
                     </div>
                 </div>
             </div>

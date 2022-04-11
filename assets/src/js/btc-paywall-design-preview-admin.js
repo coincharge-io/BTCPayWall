@@ -178,11 +178,11 @@
       '.btcpw_pay_per_view_price_placeholder, .btcpw_pay_per_view_currency_placeholder, .btcpw_pay_per_view_duration_placeholder, .btcpw_pay_per_view_duration_type_placeholder, .btcpaywall_pay_per_view_price_placeholder, .btcpaywall_pay_per_view_currency_placeholder, .btcpaywall_pay_per_view_duration_placeholder, .btcpaywall_pay_per_view_duration_type_placeholder'
     ).click(function () {
       var buttonValue = $(this).val()
-      $('#btcpw_pay_per_view_info').val(function () {
+      $('#btcpw_pay_per_view_info, #btcpaywall_pay_per_view_info').val(function () {
         $(this).focus()
         return $(this).prop('value') + ' ' + buttonValue
       })
-      $('#btcpw_pay_per_view_info').trigger('change')
+      $('#btcpw_pay_per_view_info, #btcpaywall_pay_per_view_info').trigger('change')
     })
     $('.btcpw_pay_per_view_button_color, #btcpaywall_pay_per_view_button_color').iris({
       defaultColor: true,
