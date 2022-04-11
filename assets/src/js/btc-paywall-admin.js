@@ -544,8 +544,8 @@
             );
           }
         },
-        error: function () {
-          console.log("error handling here");
+        error: function (e) {
+          console.log(e);
         },
       });
     });

@@ -9,6 +9,9 @@
  * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
  * @since       1.0
  */
+
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
+
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 function ajax_btcpaywall_check_greenfield_api_work()
@@ -99,9 +102,8 @@ function btcpaywall_create_pay_per_shortcode()
     check_ajax_referer('shortcode-security-nonce', 'nonce_ajax');
 
     $row = new BTCPayWall_Pay_Per_Shortcode();
-
     $row->create($_POST);     //BTCPayWall_Tipping_Form class has function for sanitizing $_POST before saving to DB
-    
+
     if ($row) {
         wp_send_json_success(array('res' => true, 'data' => array('id' => $row->id)));
     } else {

@@ -66,7 +66,7 @@ $preview_image = wp_get_attachment_image_src($result->preview_image);
                         <p>Shortcode</p>
                     </div>
                     <div class="col-80">
-                        <button class="button hint-tooltip hint--top js-btcpaywall-shortcode-button" data-btcpaywall-shortcode="<?php echo esc_attr($result->shortcode()); ?>"><span class="dashicons dashicons-admin-page"></span>Copy Shortcode</button>
+                        <button type="button" class="button hint-tooltip hint--top js-btcpaywall-shortcode-button" data-btcpaywall-shortcode="<?php echo esc_attr($result->shortcode()); ?>"><span class="dashicons dashicons-admin-page"></span>Copy Shortcode</button>
                     </div>
                 </div>
             <?php endif; ?>
@@ -442,7 +442,7 @@ $preview_image = wp_get_attachment_image_src($result->preview_image);
 
                 </div>
             </div>
-            <input type="hidden" id="btcpaywall_pay_per_view_id" value="<?php echo esc_attr($id); ?>" />
+            <input type="hidden" id="btcpaywall_pay_per_view_id" value="<?php echo esc_attr($result->id); ?>" />
             <input type="hidden" id="btcpaywall_pay_per_view_type" value="pay-per-view" />
 
             <div class="btcpaywall__paywall_submit_button" style="display: inline-block;">

@@ -2,8 +2,8 @@
 // Exit if accessed directly.
 if (!defined('ABSPATH')) exit;
 $id = sanitize_text_field($_GET['id']) ?? null;
-
 $result = new BTCPayWall_Pay_Per_Shortcode($id);
+
 $used_currency = get_option('btcpaywall_pay_per_post_currency');
 $supported_currencies = BTCPayWall::CURRENCIES;
 $price = get_option('btcpaywall_pay_per_post_price');
@@ -53,7 +53,7 @@ $disable = $disabled_field ? 'disabled' : '';
                         <p>Shortcode</p>
                     </div>
                     <div class="col-80">
-                        <button class="button hint-tooltip hint--top js-btcpaywall-shortcode-button" data-btcpaywall-shortcode="<?php echo esc_attr($result->shortcode()); ?>"><span class="dashicons dashicons-admin-page"></span>Copy Shortcode</button>
+                        <button type="button" class="button hint-tooltip hint--top js-btcpaywall-shortcode-button" data-btcpaywall-shortcode="<?php echo esc_attr($result->shortcode()); ?>"><span class="dashicons dashicons-admin-page"></span>Copy Shortcode</button>
                     </div>
                 </div>
             <?php endif; ?>
@@ -377,7 +377,7 @@ $disable = $disabled_field ? 'disabled' : '';
 
                 </div>
             </div>
-            <input type="hidden" id="btcpaywall_pay_per_post_id" value="<?php echo esc_attr($id); ?>" />
+            <input type="hidden" id="btcpaywall_pay_per_post_id" value="<?php echo esc_attr($result->id); ?>" />
             <input type="hidden" id="btcpaywall_pay_per_post_type" value="pay-per-post" />
 
             <div class="btcpaywall__paywall_submit_button" style="display: inline-block;">

@@ -162,12 +162,12 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
     }
     public function add($data = array())
     {
-
         if (empty($data)) {
             return false;
         }
-
+        
         $shortcode = $this->get_shortcode_by($data['id']);
+
 
         if ($shortcode) {
 

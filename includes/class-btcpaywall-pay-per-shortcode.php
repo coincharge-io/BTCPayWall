@@ -40,6 +40,12 @@ class BTCPayWall_Pay_Per_Shortcode
     public $button_color = '#f6b330';
     public $button_txt = 'Pay';
     public $button_txt_color = '#ffffff';
+    public $continue_button_text = 'Continue';
+    public $continue_button_text_color = '#ffffff';
+    public $continue_button_color = '#fe642e';
+    public $previous_button_text = 'Previous';
+    public $previous_button_text_color = '#1d5aa3';
+    public $previous_button_color = '#ffffff';
     public $link = true;
     public $help_link = 'https://btcpaywall.com/how-to-pay-at-the-bitcoin-paywall/';
     public $help_text = 'Help';
@@ -56,12 +62,7 @@ class BTCPayWall_Pay_Per_Shortcode
     public $mandatory_address = false;
     public $display_message = false;
     public $mandatory_message = false;
-    public $continue_button_text = 'Continue';
-    public $continue_button_text_color = '#ffffff';
-    public $continue_button_color = '#fe642e';
-    public $previous_button_text = 'Previous';
-    public $previous_button_text_color = '#1d5aa3';
-    public $previous_button_color = '#ffffff';
+
 
     protected $db;
 
@@ -109,11 +110,14 @@ class BTCPayWall_Pay_Per_Shortcode
     public function create($data = array())
     {
 
-        if ($this->id != 0 || empty($data)) {
+        /* if ($this->id != 0 || empty($data)) {
+            return false;
+        } */
+        if (empty($data)) {
             return false;
         }
-
         $data = $this->sanitize_columns($data);
+
 
         $created = false;
         $create_or_update = $this->db->add($data);
@@ -121,9 +125,7 @@ class BTCPayWall_Pay_Per_Shortcode
         if ($create_or_update) {
 
             $form = $this->db->get_shortcode_by($create_or_update);
-
             $this->setup_shortcode($form);
-
             $created = $this->id;
         }
 
@@ -180,7 +182,7 @@ class BTCPayWall_Pay_Per_Shortcode
         if ($this->type === 'pay-per-post') {
             return  "[btcpw_start_content pay_block='{$this->pay_block}' btc_format='{$this->btc_format}' price='{$this->price}' header_text='{$this->header_text}' info_text='{$this->info_text}' header_color='{$this->header_color}' info_color='{$this->info_color}' duration_type='{$this->duration_type}' link='{$this->link}' help_link='{$this->help_link}' help_text='{$this->help_text}' additional_link='{$this->additional_link}' additional_help_link='{$this->additional_help_link}' additional_help_text='{$this->additional_help_text}' duration='{$this->duration}' currency='{$this->currency}'  button_text='{$this->button_text}' button_text_color='{$this->button_text_color}' button_color='{$this->button_color}' continue_button_text='{$this->continue_button_text}' continue_button_text_color='{$this->continue_button_text_color}' continue_button_color='{$this->continue_button_color}' previous_button_text='{$this->previous_button_text}' previous_button_text_color='{$this->previous_button_text_color}' previous_button_color='{$this->previous_button_color}'  display_name='{$this->display_name}' mandatory_name='{$this->mandatory_name}' display_email='{$this->display_email}' mandatory_email='{$this->mandatory_email}' display_phone='{$this->display_phone}' mandatory_phone='{$this->mandatory_phone}' display_address='{$this->display_address}' mandatory_address='{$this->mandatory_address}' display_message='{$this->display_message}' mandatory_message='{$this->mandatory_message}']";
         }
-        return  "[btcpw_start_video pay_view_block='{$this->pay_block}' btc_format='{$this->btc_format}' title='{$this->title}' description='{$this->description}' preview={$this->preview} price='{$this->price}' header_color='{$this->header_color}' info_color='{$this->info_color}' header_text='{$this->header_text}' info_text='{$this->info_text}' link='{$this->link}' help_link='{$this->help_link}' help_text='{$this->help_text}' additional_link='{$this->additional_link}' additional_help_link='{$this->additional_help_link}' additional_help_text='{$this->additional_help_text}' duration_type='{$this->duration_type}' duration='{$this->duration}' currency='{$this->currency}'  button_text='{$this->button_text}' button_text_color=#'{$this->button_text_color}' button_color=#'{$this->button_color}' continue_button_text='{$this->continue_button_text}' continue_button_text_color='#{$this->continue_button_text_color}' continue_button_color=#'{$this->continue_button_color}' previous_button_text='{$this->previous_button_text}' previous_button_text_color=#'{$this->previous_button_text_color}' previous_button_color=#'{$this->previous_button_color}'  display_name='{$this->display_name}' mandatory_name='{$this->mandatory_name}' display_email='{$this->display_email}' mandatory_email='{$this->mandatory_email}' display_phone='{$this->display_phone}' mandatory_phone='{$this->mandatory_phone}' display_address='{$this->display_address}' mandatory_address='{$this->mandatory_address}' display_message='{$this->display_message}' mandatory_message='{$this->mandatory_message}]";
+        return  "[btcpw_start_video pay_view_block='{$this->pay_block}' btc_format='{$this->btc_format}' title='{$this->title}' description='{$this->description}' preview={$this->preview} price='{$this->price}' header_color='{$this->header_color}' info_color='{$this->info_color}' header_text='{$this->header_text}' info_text='{$this->info_text}' link='{$this->link}' help_link='{$this->help_link}' help_text='{$this->help_text}' additional_link='{$this->additional_link}' additional_help_link='{$this->additional_help_link}' additional_help_text='{$this->additional_help_text}' duration_type='{$this->duration_type}' duration='{$this->duration}' currency='{$this->currency}'  button_text='{$this->button_text}' button_text_color='{$this->button_text_color}' button_color='{$this->button_color}' continue_button_text='{$this->continue_button_text}' continue_button_text_color='{$this->continue_button_text_color}' continue_button_color='{$this->continue_button_color}' previous_button_text='{$this->previous_button_text}' previous_button_text_color='{$this->previous_button_text_color}' previous_button_color='{$this->previous_button_color}'  display_name='{$this->display_name}' mandatory_name='{$this->mandatory_name}' display_email='{$this->display_email}' mandatory_email='{$this->mandatory_email}' display_phone='{$this->display_phone}' mandatory_phone='{$this->mandatory_phone}' display_address='{$this->display_address}' mandatory_address='{$this->mandatory_address}' display_message='{$this->display_message}' mandatory_message='{$this->mandatory_message}]";
     }
 
     private function sanitize_columns($data)
@@ -188,7 +190,7 @@ class BTCPayWall_Pay_Per_Shortcode
 
         $columns        = $this->db->get_columns();
         $default_values = $this->db->get_column_defaults();
-        $booleans = [
+        $boolean_values = [
             'pay_block',
             'link',
             'additional_link',
@@ -205,18 +207,19 @@ class BTCPayWall_Pay_Per_Shortcode
         ];
 
 
-
         foreach ($columns as $key => $type) {
-
             if (!array_key_exists($key, $data)) {
                 continue;
             }
+
             switch ($type) {
                 case '%d':
-                    if (in_array($key, $booleans)) {
-                        $data[$key] = (bool)$data[$key];
+                    if ($key == 'id') {
+                        $data[$key] = (int)$data[$key];
+                    } elseif (!in_array($key, $boolean_values)) {
+                        $data[$key] = $default_values[$key];
                     } else {
-                        $data[$key] = absint($data[$key]);
+                        $data[$key] = !empty($data[$key]) ? (bool)$data[$key] : false;
                     }
 
                     break;

@@ -1105,6 +1105,9 @@ function btcpaywall_render_shortcode_btcpw_start_content($atts)
     }
 
     $atts = shortcode_atts(array(
+        'width' => '',
+        'height' => '',
+        'background_color' => '',
         'pay_block' => 'false',
         'btc_format' => '',
         'price' => '',
@@ -1173,6 +1176,9 @@ function btcpaywall_render_shortcode_btcpw_start_video($atts)
     $img_preview = plugin_dir_url(__FILE__) . 'img/preview.png';
 
     $atts = shortcode_atts(array(
+        'width' => '',
+        'height' => '',
+        'background_color' => '',
         'pay_view_block' => 'false',
         'btc_format' => '',
         'title' => 'Untitled',
