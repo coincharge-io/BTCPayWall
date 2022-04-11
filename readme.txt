@@ -85,6 +85,9 @@ Further information can be found here: https://btcpaywall.com
 https://btcpaywall.com/faq-support-center/
 
  == Changelog ==
+= 1.0.8.1 =
+
+- Fix: Placeholder values for paywall 
 
 = 1.0.8 =
 

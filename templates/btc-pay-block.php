@@ -38,8 +38,7 @@ $collect = btcpaywall_get_collect($collect_atts);
 
 $collect_data = btcpaywall_display_is_enabled($collect);
 $header = !empty($atts['header_text']) ? $atts['header_text'] : btcpaywall_get_payblock_header_string();
-$info = !empty($atts['info_text']) ? $atts['info_text'] : btcpaywall_get_post_info_string();
-
+$info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attributes($atts) : btcpaywall_get_post_info_string(null, 'post');
 ?>
 <style>
     .btcpw_revenue_post_container {
@@ -105,7 +104,7 @@ $info = !empty($atts['info_text']) ? $atts['info_text'] : btcpaywall_get_post_in
                     <?php else : ?>
 
                         <div>
-                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html(btcpaywall_get_payblock_button_string()) ?></button>
+                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html(btcpaywall_get_payblock_button_string($atts)) ?></button>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -148,7 +147,7 @@ $info = !empty($atts['info_text']) ? $atts['info_text'] : btcpaywall_get_post_in
                         </div>
 
                         <div>
-                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html(btcpaywall_get_payblock_button_string()); ?></button>
+                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html(btcpaywall_get_payblock_button_string($atts)); ?></button>
                         </div>
                     </div>
                 </fieldset>

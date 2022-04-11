@@ -206,10 +206,10 @@ $previous_button_text_color = get_option('btcpw_pay_per_view_previous_button_tex
                 <div class="col-80">
                     <textarea id="btcpw_pay_per_view_info" name="btcpw_pay_per_view_info"><?php echo esc_html($default_info); ?></textarea>
                     <div class="btcpw_pay_per_placeholders">
-                        <button type="button" class="btcpw_pay_per_view_price_placeholder" value="[price]">Price</button>
-                        <button type="button" class="btcpw_pay_per_view_currency_placeholder" value="[currency]">Currency</button>
-                        <button type="button" class="btcpw_pay_per_view_duration_placeholder" value="[duration]">Duration</button>
-                        <button type="button" class="btcpw_pay_per_view_duration_type_placeholder" value="[dtype]">Duration type</button>
+                        <button type="button" class="btcpw_pay_per_view_price_placeholder" value="{price}">Price</button>
+                        <button type="button" class="btcpw_pay_per_view_currency_placeholder" value="{currency}">Currency</button>
+                        <button type="button" class="btcpw_pay_per_view_duration_placeholder" value="{duration}">Duration</button>
+                        <button type="button" class="btcpw_pay_per_view_duration_type_placeholder" value="{dtype}">Duration type</button>
                     </div>
                 </div>
             </div>
