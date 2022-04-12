@@ -56,12 +56,10 @@ class Pay_Per_Shortcode_List extends WP_List_Table
     {
         return array(
             'cb'      => '<input type="checkbox" />',
-            'template' => (__('Template', 'btcpaywall')),
-            'title'   => (__('Title', 'btcpaywall')),
-            'logo'    => (__('Logo', 'btcpaywall')),
-            'description'  => (__('Description', 'btcpaywall')),
-            'tipping-text'    => (__('Tipping text', 'btcpaywall')),
-            'button-text'    => (__('Button text', 'btcpaywall')),
+            'name' => (__('Name', 'btcpaywall')),
+            'header_text'   => (__('Title', 'btcpaywall')),
+            'info_text'    => (__('Price information text', 'btcpaywall')),
+            'button_text'    => (__('Button text', 'btcpaywall')),
             'shortcode'      => (__('Shortcode', 'btcpaywall')),
         );
     }
@@ -94,8 +92,8 @@ class Pay_Per_Shortcode_List extends WP_List_Table
     public static function record_count()
     {
 
-        $shortcodes = new BTCPayWall_Tipping_Form();
-        return $shortcodes->form_count();
+        $shortcodes = new BTCPayWall_Pay_Per_Shortcode();
+        return $shortcodes->shortcode_count();
     }
 
     /**
@@ -108,9 +106,9 @@ class Pay_Per_Shortcode_List extends WP_List_Table
      */
     public static function get_shortcodes($per_page = 5, $page_number = 1)
     {
-        $shortcodes = new BTCPayWall_Tipping_Form();
+        $shortcodes = new BTCPayWall_Pay_Per_Shortcode();
 
-        return $shortcodes->get_forms($per_page, $page_number);
+        return $shortcodes->get_shortcodes($per_page, $page_number);
     }
     /**
      * Delete a shortcode record.
@@ -119,7 +117,7 @@ class Pay_Per_Shortcode_List extends WP_List_Table
      */
     public static function delete_shortcode($id)
     {
-        $shortcodes = new BTCPayWall_Tipping_Form();
+        $shortcodes = new BTCPayWall_Pay_Per_Shortcode();
         return $shortcodes->delete($id);
     }
 
@@ -155,16 +153,26 @@ class Pay_Per_Shortcode_List extends WP_List_Table
             $item['id']
         );
     }
-    protected function column_logo($item)
+    /* protected function column_logo($item)
     {
         $logo = wp_get_attachment_image_src($item['logo']) ? wp_get_attachment_image_src($item['logo'])[0] : $item['logo'];
         return sprintf(
             '<img width=60 height=60 src="%s" />',
             $logo
         );
+    } */
+
+    protected function column_shortcode($item)
+    {
+        $shortcode = (new BTCPayWall_Pay_Per_Shortcode($item['id']))->shortcode();
+
+        printf(
+            '<div class="misc-pub-section"><button type="button" class="button hint-tooltip hint--top js-btcpaywall-shortcode-button" aria-label="%1$s" data-btcpaywall-shortcode="%2$s"><span class="dashicons dashicons-admin-page"></span> %3$s</button></div>',
+            esc_attr($shortcode),
+            esc_attr($shortcode),
+            esc_html__('Copy Shortcode', 'give')
+        );
     }
-
-
     protected function get_bulk_actions()
     {
         $actions = array(
@@ -174,20 +182,17 @@ class Pay_Per_Shortcode_List extends WP_List_Table
     }
 
 
-    protected function column_template($item)
+    protected function column_name($item)
     {
 
         $page = wp_unslash(sanitize_text_field($_REQUEST['page']));
         $delete_query_args = array(
-            'page'   => 'btcpw_general_settings',
-            'tab' => 'modules',
-            'section' => 'tipping',
-            'subsection' => 'all',
+            'page' => 'btcpw_pay_per_shortcode_list',
             'action' => 'delete',
             'id'  => $item['id'],
         );
         $edit_query_args = array(
-            'page'   => 'btcpw_edit',
+            'page'   => 'btcpw_pay_per_shortcode',
             'action' => 'edit',
             'id'  => $item['id'],
         );
@@ -204,7 +209,7 @@ class Pay_Per_Shortcode_List extends WP_List_Table
         );
         $item_json = json_decode(json_encode($item), true);
 
-        return '<em>' . sprintf('%s %s', $item_json['form_name'], $this->row_actions($actions)) . '</em>';
+        return '<em>' . sprintf('%s %s', $item_json['name'], $this->row_actions($actions)) . '</em>';
     }
     /**
      * Generates content for a single row of the table.
@@ -214,26 +219,23 @@ class Pay_Per_Shortcode_List extends WP_List_Table
      */
     protected function column_default($item, $column_name)
     {
-        $shortcode = btcpaywall_output_shortcode_attributes(btcpaywall_extract_name($item['dimension'])['name'], $item['id']);
+        $shortcode = (new BTCPayWall_Pay_Per_Shortcode($item['id']))->shortcode();
+
         switch ($column_name) {
             case 'cb':
                 return esc_html($item['cb']);
-            case 'template':
-                return esc_html($item['form_name']);
-            case 'title':
-                return esc_html($item['title_text']);
-            case 'logo':
-                return esc_html($item['logo']);
-            case 'description':
-                return esc_html($item['description_text']);
-            case 'tipping-text':
-                return esc_html($item['tipping_text']);
-            case 'button-text':
+            case 'name':
+                return esc_html($item['name']);
+            case 'header_text':
+                return esc_html($item['header_text']);
+            case 'info_text':
+                return esc_html($item['info_text']);
+            case 'button_text':
                 return esc_html($item['button_text']);
             case 'shortcode':
                 return esc_html($shortcode);
             default:
-                return 'Unknown';
+                return '';
         }
     }
 
@@ -308,7 +310,6 @@ class Pay_Per_Shortcode
     {
         add_action('admin_menu', [$this, 'btcpaywall_add_submenu'], 99);
 
-        //add_action('wp', [$this, 'after_load_wordpress']);
         add_filter('set-screen-option', [__CLASS__, 'set_screen'], 10, 3);
     }
     public function after_load_wordpress()
@@ -332,16 +333,16 @@ class Pay_Per_Shortcode
 
         add_screen_option($option, $args);
 
-        $this->customers_obj = new GlobalPay_Per_Shortcode_List();
+        $this->shortcodes = new Pay_Per_Shortcode_List();
     }
     public function btcpaywall_render_pay_per_shortcode_list()
     {
-        $exampleListTable = new Pay_Per_Shortcode_List();
-        $exampleListTable->prepare_items();
+        $shortcodes = new Pay_Per_Shortcode_List();
+        $shortcodes->prepare_items();
     ?>
         <div class="wrap">
-            <h2>Example List Table Page</h2>
-            <?php $exampleListTable->display(); ?>
+            <h2><?php echo esc_html__('Pay-per shortcodes', 'btcpaywall'); ?></h2>
+            <?php $shortcodes->display(); ?>
         </div>
 <?php
     }

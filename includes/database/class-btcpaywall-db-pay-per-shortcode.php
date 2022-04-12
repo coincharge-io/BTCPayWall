@@ -52,7 +52,7 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
             'header_color' => '%s',
             'info_color' => '%s',
             'button_color' => '%s',
-            'button_txt' => '%s',
+            'button_text' => '%s',
             'link'    => '%d',
             'help_link'    => '%s',
             'help_text'    => '%s',
@@ -103,7 +103,7 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
             'header_color' => '',
             'info_color' => '',
             'button_color' => '',
-            'button_txt' => '',
+            'button_text' => '',
             'link'    => true,
             'help_link'    => '',
             'help_text'    => 'Help',
@@ -165,7 +165,7 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
         if (empty($data)) {
             return false;
         }
-        
+
         $shortcode = $this->get_shortcode_by($data['id']);
 
 
@@ -248,7 +248,7 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
                 header_color CHAR(7),
                 info_color CHAR(7),
                 button_color CHAR(7),
-                button_txt TEXT,
+                button_text TEXT,
                 link BOOLEAN,
                 help_link TEXT,
                 help_text TEXT,
