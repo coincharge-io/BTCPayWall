@@ -137,3 +137,7 @@ function btcpaywall_render_pay_per_manage_shortcode_page()
 {
     include 'partials/page-manage-pay-per-shortcode.php';
 }
+
+
+
+

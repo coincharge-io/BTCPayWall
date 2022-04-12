@@ -543,6 +543,10 @@
               shortcode_ajax_object.redirectUrl + data.data.data.id
             );
           }
+          else {
+            location.reload();
+          }
+
         },
         error: function (e) {
           console.log(e);
