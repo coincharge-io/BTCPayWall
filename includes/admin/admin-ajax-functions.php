@@ -102,8 +102,55 @@ function btcpaywall_create_pay_per_shortcode()
     check_ajax_referer('shortcode-security-nonce', 'nonce_ajax');
 
     $row = new BTCPayWall_Pay_Per_Shortcode();
-    $row->create($_POST);     //BTCPayWall_Tipping_Form class has function for sanitizing $_POST before saving to DB
-
+    //$row->create($_POST);     //BTCPayWall_Tipping_Form class has function for sanitizing $_POST before saving to DB
+    $row->create([
+        'id' => $_POST['id'],
+        'type' => $_POST['type'],
+        'name' => $_POST['name'],
+        'pay_block' => $_POST['pay_block'],
+        'width' => $_POST['width'],
+        'height' => $_POST['height'],
+        'btc_format' => $_POST['btc_format'],
+        'currency' => $_POST['currency'],
+        'price' => $_POST['price'],
+        'duration' => $_POST['duration'],
+        'duration_type' => $_POST['duration_type'],
+        'background_color' => $_POST['background_color'],
+        'preview_title' => $_POST['preview_title'],
+        'preview_title_color' => $_POST['preview_title_color'],
+        'preview_description' => $_POST['preview_description'],
+        'preview_description_color' => $_POST['preview_description_color'],
+        'preview_image' => $_POST['preview_image'],
+        'header_text' => $_POST['header_text'],
+        'info_text' => $_POST['info_text'],
+        'header_color' => $_POST['header_color'],
+        'info_color' => $_POST['info_color'],
+        'button_color' => $_POST['button_color'],
+        'button_txt' => $_POST['button_txt'],
+        'button_txt_color' => $_POST['button_txt_color'],
+        'continue_button_text' => $_POST['continue_button_text'],
+        'continue_button_text_color' => $_POST['continue_button_text_color'],
+        'continue_button_color' => $_POST['continue_button_color'],
+        'previous_button_text' => $_POST['previous_button_text'],
+        'previous_button_text_color' => $_POST['previous_button_text_color'],
+        'previous_button_color' => $_POST['previous_button_color'],
+        'link' => $_POST['link'],
+        'help_link' => $_POST['help_link'],
+        'help_text' => $_POST['help_text'],
+        'additional_link' => $_POST['additional_link'],
+        'additional_help_link' => $_POST['additional_help_link'],
+        'additional_help_text' => $_POST['additional_help_text'],
+        'display_name' => $_POST['display_name'],
+        'mandatory_name' => $_POST['mandatory_name'],
+        'display_email' => $_POST['display_email'],
+        'mandatory_email' => $_POST['mandatory_email'],
+        'display_phone' => $_POST['display_phone'],
+        'mandatory_phone' => $_POST['mandatory_phone'],
+        'display_address' => $_POST['display_address'],
+        'mandatory_address' => $_POST['mandatory_address'],
+        'display_message' => $_POST['display_message'],
+        'mandatory_message' => $_POST['mandatory_message'],
+    ]);
     if ($row) {
         wp_send_json_success(array('res' => true, 'data' => array('id' => $row->id)));
     } else {
