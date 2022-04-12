@@ -57,6 +57,7 @@ class Pay_Per_Shortcode_List extends WP_List_Table
         return array(
             'cb'      => '<input type="checkbox" />',
             'name' => (__('Name', 'btcpaywall')),
+            'type' => (__('Type', 'btcpaywall')),
             'header_text'   => (__('Title', 'btcpaywall')),
             'info_text'    => (__('Price information text', 'btcpaywall')),
             'button_text'    => (__('Button text', 'btcpaywall')),
@@ -123,7 +124,6 @@ class Pay_Per_Shortcode_List extends WP_List_Table
 
     public function process_bulk_action()
     {
-
         if ('delete' === $this->current_action()) {
 
             $nonce = esc_attr($_REQUEST['_wpnonce']);
@@ -138,7 +138,6 @@ class Pay_Per_Shortcode_List extends WP_List_Table
         if ((isset($_POST['action']) && sanitize_text_field($_POST['action']) == 'bulk-delete')
             || (isset($_POST['action2']) && sanitize_text_field($_POST['action2']) == 'bulk-delete')
         ) {
-
             $delete_ids = esc_sql($_POST['bulk-delete']);
             foreach ($delete_ids as $id) {
                 self::delete_shortcode($id);
@@ -226,6 +225,8 @@ class Pay_Per_Shortcode_List extends WP_List_Table
                 return esc_html($item['cb']);
             case 'name':
                 return esc_html($item['name']);
+            case 'type':
+                return esc_html($item['type']);
             case 'header_text':
                 return esc_html($item['header_text']);
             case 'info_text':
@@ -342,7 +343,20 @@ class Pay_Per_Shortcode
     ?>
         <div class="wrap">
             <h2><?php echo esc_html__('Pay-per shortcodes', 'btcpaywall'); ?></h2>
-            <?php $shortcodes->display(); ?>
+            <div>
+                <div>
+                    <div>
+                        <div>
+                            <form method="post">
+                                <?php
+                                $shortcodes->prepare_items();
+                                $shortcodes->display(); ?>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <br class="clear">
+            </div>
         </div>
 <?php
     }
