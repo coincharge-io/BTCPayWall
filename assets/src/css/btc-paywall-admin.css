@@ -173,6 +173,11 @@ textarea:not(.btcpw_add_form_preview) {
   -webkit-border-radius: 10px;
 }
 
+.btcpw__paywall_submit_button a {
+  text-decoration: none;
+  color: #fff;
+}
+
 .button.button-primary.btcpw_button {
   background: #0066a2;
   color: #fff;
@@ -193,6 +198,8 @@ textarea:not(.btcpw_add_form_preview) {
   background-color: #008000;
   color: #fff;
   font: bold 15px arial, sans-serif;
+  border-color: #008000;
+  margin: 0 5px;
 }
 
 div.btcpw_help_link a {
@@ -682,7 +689,6 @@ Settings Tabs
   justify-content: space-between;
   color: #fff;
 }
-
 
 .btcpaywall_container_header h2::after,
 .btcpaywall_pay_per_container_header h3::after {

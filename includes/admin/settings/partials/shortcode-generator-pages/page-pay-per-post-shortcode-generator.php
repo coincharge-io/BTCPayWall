@@ -14,6 +14,7 @@ $supported_btc_format = BTCPayWall::BTC_FORMAT;
 $used_format = get_option("btcpaywall_pay_per_post_btc_format");
 $disabled_field = ($result->duration_type === 'unlimited') || ($result->duration_type === 'onetime');
 $disable = $disabled_field ? 'disabled' : '';
+$back_url = (sanitize_text_field($_GET['action']) == 'edit') ? 'admin.php?page=btcpw_pay_per_shortcode_list' : 'admin.php?page=btcpw_pay_per_shortcode_generator';
 ?>
 <style>
     .btcpw_help_preview.pay_per_post {
@@ -130,7 +131,6 @@ $disable = $disabled_field ? 'disabled' : '';
                         <input id="btcpaywall_pay_per_post_background" class="btcpaywall_pay_per_post_background" name="btcpaywall_pay_per_post_background" type="text" value=<?php echo esc_attr($result->background_color); ?> />
                     </div>
                 </div>
-                <h3>Dimension</h3>
                 <div class="row">
                     <div class="col-20">
                         <label for="btcpaywall_pay_per_post_width">Width</label>
@@ -272,7 +272,7 @@ $disable = $disabled_field ? 'disabled' : '';
                 </div>
                 <div id="btcpaywall_pay_per_post_paywall_help_button">
                     <div data-id="link_1" class="btcpaywall_pay_per_container_header">
-                        <h3><?php echo esc_html__('Help link','btcpaywall');?></h3>
+                        <h3><?php echo esc_html__('Help link', 'btcpaywall'); ?></h3>
                     </div>
                     <div class="btcpaywall_pay_per_container_body link_1-body">
 
@@ -303,7 +303,7 @@ $disable = $disabled_field ? 'disabled' : '';
                     </div>
                     <div data-id="link_2" class="btcpaywall_pay_per_container_header">
 
-                    <h3><?php echo esc_html__('Additional link','btcpaywall');?></h3>
+                        <h3><?php echo esc_html__('Additional link', 'btcpaywall'); ?></h3>
                     </div>
                     <div class="btcpaywall_pay_per_container_body link_2-body">
 
@@ -411,8 +411,10 @@ $disable = $disabled_field ? 'disabled' : '';
             <input type="hidden" id="btcpaywall_pay_per_post_id" value="<?php echo esc_attr($result->id); ?>" />
             <input type="hidden" id="btcpaywall_pay_per_post_type" value="pay-per-post" />
 
-            <div class="btcpaywall__paywall_submit_button" style="display: inline-block;">
-                <button class="button button-primary btcpaywall_button" type="submit">Save</button>
+            <div class="btcpw__paywall_submit_button" style="display: inline-block;">
+                <button class="button button-secondary btcpw_button" type="button"><a href="<?php echo admin_url($back_url); ?>"><?php echo esc_html__('Back', 'btcpaywall'); ?></a></button>
+
+                <button class="button button-primary btcpw_button" type="submit">Save</button>
             </div>
         </form>
     </div>

@@ -17,6 +17,8 @@ $used_format = get_option("btcpaywall_pay_per_view_btc_format");
 $disabled_field = ($result->duration_type === 'unlimited') || ($result->duration_type === 'onetime');
 $disable = $disabled_field ? 'disabled' : '';
 $preview_image = wp_get_attachment_image_src($result->preview_image);
+$back_url = (sanitize_text_field($_GET['action']) == 'edit') ? 'admin.php?page=btcpw_pay_per_shortcode_list' : 'admin.php?page=btcpw_pay_per_shortcode_generator';
+
 ?>
 <style>
     .btcpw_pay__preview_preview.pay_per_view h2 {
@@ -145,7 +147,6 @@ $preview_image = wp_get_attachment_image_src($result->preview_image);
                         <input id="btcpaywall_pay_per_view_background" class="btcpaywall_pay_per_view_background" name="btcpaywall_pay_per_view_background" type="text" value=<?php echo esc_attr($result->background_color); ?> />
                     </div>
                 </div>
-                <h3>Dimension</h3>
                 <div class="row">
                     <div class="col-20">
                         <label for="btcpaywall_pay_per_view_width">Width</label>
@@ -188,7 +189,7 @@ $preview_image = wp_get_attachment_image_src($result->preview_image);
                             <label for="btcpaywall_pay_per_view_preview_description">Description</label>
                         </div>
                         <div class="col-80">
-                            <input id="btcpaywall_pay_per_view_preview_description" class="btcpaywall_pay_per_view_preview_description" name="btcpaywall_pay_per_view_preview_description" type="text" value="<?php echo esc_attr($result->preview_description_color); ?>" />
+                            <input id="btcpaywall_pay_per_view_preview_description" class="btcpaywall_pay_per_view_preview_description" name="btcpaywall_pay_per_view_preview_description" type="text" value="<?php echo esc_attr($result->preview_description); ?>" />
                         </div>
                     </div>
                     <div class="row">
@@ -474,8 +475,10 @@ $preview_image = wp_get_attachment_image_src($result->preview_image);
             <input type="hidden" id="btcpaywall_pay_per_view_id" value="<?php echo esc_attr($result->id); ?>" />
             <input type="hidden" id="btcpaywall_pay_per_view_type" value="pay-per-view" />
 
-            <div class="btcpaywall__paywall_submit_button" style="display: inline-block;">
-                <button class="button button-primary btcpaywall_button" type="submit">Save</button>
+            <div class="btcpw__paywall_submit_button" style="display: inline-block;">
+                <button class="button button-secondary btcpw_button" type="button"><a href="<?php echo admin_url($back_url); ?>"><?php echo esc_html__('Back', 'btcpaywall'); ?></a></button>
+
+                <button class="button button-primary btcpw_button" type="submit">Save</button>
             </div>
         </form>
     </div>

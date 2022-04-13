@@ -30,7 +30,7 @@ class BTCPayWall_Pay_Per_Shortcode
     public $background_color = '#ecf0f1';
     public $preview_title = 'Untitled';
     public $preview_title_color;
-    public $preview_description = 'No description    ';
+    public $preview_description = 'No description';
     public $preview_description_color;
     public $preview_image;
     public $header_text = 'Pay to see';
