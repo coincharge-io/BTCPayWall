@@ -319,7 +319,7 @@ class Pay_Per_Shortcode
     }
     public function btcpaywall_add_submenu()
     {
-        $hook = add_submenu_page('btcpw_general_settings', __('All Pay-per-shortcode', 'btcpaywall'), __('All Pay-per-shortcode', 'btcpaywall'), 'manage_options', 'btcpw_pay_per_shortcode_list', array($this, 'btcpaywall_render_pay_per_shortcode_list'));
+        $hook = add_submenu_page('btcpw_general_settings', __('All Pay-per-shortcode', 'btcpaywall'), __('All Pay-per-shortcode', 'btcpaywall'), 'manage_options', 'btcpw_pay_per_shortcode_list', array($this, 'btcpaywall_render_pay_per_shortcode_list'), 5);
         add_action("load-$hook", [$this, 'screen_option']);
     }
     public function screen_option()

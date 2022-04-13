@@ -253,7 +253,7 @@ $preview_image = wp_get_attachment_image_src($result->preview_image);
                     <label for="btcpaywall_pay_per_view_button">Button text</label>
                 </div>
                 <div class="col-80">
-                    <input id="btcpaywall_pay_per_view_button" name="btcpaywall_pay_per_view_button" value="<?php echo esc_attr($result->button_txt); ?>" />
+                    <input id="btcpaywall_pay_per_view_button" name="btcpaywall_pay_per_view_button" value="<?php echo esc_attr($result->button_text); ?>" />
                 </div>
             </div>
             <div class="row">
@@ -471,7 +471,7 @@ $preview_image = wp_get_attachment_image_src($result->preview_image);
             </div>
             <div class="btcpw_pay__footer_preview pay_per_view">
                 <div>
-                    <button disabled type="button" id="btcpw_pay__button_preview_pay_per_view"><?php echo esc_html($result->button_txt); ?></button>
+                    <button disabled type="button" id="btcpw_pay__button_preview_pay_per_view"><?php echo esc_html($result->button_text); ?></button>
                 </div>
                 <div class="btcpw_pay__loading">
                     <p class="loading"></p>

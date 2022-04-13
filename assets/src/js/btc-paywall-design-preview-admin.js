@@ -98,7 +98,7 @@
     $('#btcpaywall_pay_per_post_info').on('change input', function () {
       $('.btcpw_pay__content_preview.pay_per_post p').text($(this).val())
     })
-    $('#btcpw_pay_per_post_button').on('input', function () {
+    $('#btcpw_pay_per_post_button,#btcpaywall_pay_per_post_button').on('input', function () {
       $('#btcpw_pay__button_preview').text($(this).val())
     })
     $('#btcpw_pay_per_post_show_help_link, #btcpaywall_pay_per_post_show_help_link').change(function () {
