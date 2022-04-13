@@ -435,6 +435,17 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       type: 'boolean',
       default: true,
     },
+    background_color: {
+      type: 'string'
+    },
+    width: {
+      type: 'number',
+      default: 500
+    },
+    height: {
+      type: 'number',
+      default: 550
+    },
     btc_format: {
       type: 'string',
     },
@@ -502,21 +513,21 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       type: 'boolean',
       default: false,
     },
-help_link: {
+    help_link: {
       type: 'string',
     },
-help_text: {
+    help_text: {
       type: 'string',
-      default:'Help'
+      default: 'Help'
     },
-additional_link: {
+    additional_link: {
       type: 'boolean',
       default: false,
     },
-additional_help_link: {
+    additional_help_link: {
       type: 'string',
     },
-additional_help_text: {
+    additional_help_text: {
       type: 'string',
     },
     display_name: {
@@ -565,6 +576,9 @@ additional_help_text: {
     const {
       attributes: {
         pay_block,
+        background_color,
+        width,
+        height,
         btc_format,
         currency,
         duration_type,
@@ -582,11 +596,11 @@ additional_help_text: {
         previous_button_text,
         previous_button_text_color,
         link,
-help_link,
-help_text,
-additional_link,
-additional_help_link,
-additional_help_text,
+        help_link,
+        help_text,
+        additional_link,
+        additional_help_link,
+        additional_help_text,
         display_name,
         display_email,
         display_message,
@@ -683,259 +697,281 @@ additional_help_text,
               />
             </PanelRow>
           </PanelBody>
-          <PanelBody title="Header">
-            <TextareaControl
-              label="Title"
-              help="Enter title text"
-              onChange={content => {
-                setAttributes({ header_text: content });
-              }}
-              value={header_text}
-            />
-            <p>Title color</p>
+          <PanelBody title="Paywall design">
+            <p>Background color</p>
             <ColorPicker
-              color={header_color}
+              color={background_color}
               onChangeComplete={value =>
-                setAttributes({ header_color: value.hex })}
+                setAttributes({ background_color: value.hex })}
               disableAlpha
             />
+            <NumberControl
+              label="Width"
+              value={width}
+              onChange={nextValue =>
+                setAttributes({ width: Number(nextValue) })}
+            />
+            <NumberControl
+              label="Height"
+              value={height}
+              onChange={nextValue =>
+                setAttributes({ height: Number(nextValue) })}
+            />
+            <PanelBody title="Main">
+              <TextareaControl
+                label="Title"
+                help="Enter title text"
+                onChange={content => {
+                  setAttributes({ header_text: content });
+                }}
+                value={header_text}
+              />
+              <p>Title color</p>
+              <ColorPicker
+                color={header_color}
+                onChangeComplete={value =>
+                  setAttributes({ header_color: value.hex })}
+                disableAlpha
+              />
 
-            <TextareaControl
-              label="Price information"
-              help="Enter price information text"
-              onChange={content => {
-                setAttributes({ info_text: content });
-              }}
-              value={info_text}
-            />
-            <p>Price information color</p>
-            <ColorPicker
-              color={info_color}
-              onChangeComplete={value =>
-                setAttributes({ info_color: value.hex })}
-              disableAlpha
-            />
-          </PanelBody>
-          <PanelBody title="Footer">
-            <TextareaControl
-              label="Button"
-              help="Enter button text"
-              onChange={content => {
-                setAttributes({ button_text: content });
-              }}
-              value={button_text}
-            />
-            <p>Button color</p>
-            <ColorPicker
-              color={button_color}
-              onChangeComplete={value =>
-                setAttributes({ button_color: value.hex })}
-              disableAlpha
-            />
-            <p>Button text color</p>
-            <ColorPicker
-              color={button_text_color}
-              onChangeComplete={value =>
-                setAttributes({ button_text_color: value.hex })}
-              disableAlpha
-            />
-            <TextareaControl
-              label="Continue button"
-              help="Enter continue button text"
-              onChange={content => {
-                setAttributes({
-                  continue_button_text: content,
-                });
-              }}
-              value={continue_button_text}
-            /> <p> Continue button color </p> <ColorPicker
-              color={continue_button_color}
-              onChangeComplete={value =>
-                setAttributes({
-                  continue_button_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <p> Continue button text color </p> <ColorPicker
-              color={button_text_color}
-              onChangeComplete={value =>
-                setAttributes({
-                  continue_button_text_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <TextareaControl
-              label="Previous button"
-              help="Enter button text"
-              onChange={content => {
-                setAttributes({
-                  previous_button_text: content,
-                });
-              }}
-              value={previous_button_text}
-            /> <p> Previous button color </p> <ColorPicker
-              color={previous_button_color}
-              onChangeComplete={value =>
-                setAttributes({
-                  previous_button_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <p> Previous button text color </p> <ColorPicker
-              color={previous_button_text_color}
-              onChangeComplete={value =>
-                setAttributes({
-                  previous_button_text_color: value.hex,
-                })}
-              disableAlpha
-            />
-          </PanelBody>
-          <PanelBody title="Links" initialOpen={true}>
-          <CheckboxControl
-              label="Display help link"
-              help="Do you want to display help link?"
-              checked={link}
-              onChange={value => {
-                setAttributes ({
-                  link: value,
-                });
-              }}
-            />
+              <TextareaControl
+                label="Price information"
+                help="Enter price information text"
+                onChange={content => {
+                  setAttributes({ info_text: content });
+                }}
+                value={info_text}
+              />
+              <p>Price information color</p>
+              <ColorPicker
+                color={info_color}
+                onChangeComplete={value =>
+                  setAttributes({ info_color: value.hex })}
+                disableAlpha
+              />
+            </PanelBody>
+            <PanelBody title="Button">
+              <TextareaControl
+                label="Button"
+                help="Enter button text"
+                onChange={content => {
+                  setAttributes({ button_text: content });
+                }}
+                value={button_text}
+              />
+              <p>Button color</p>
+              <ColorPicker
+                color={button_color}
+                onChangeComplete={value =>
+                  setAttributes({ button_color: value.hex })}
+                disableAlpha
+              />
+              <p>Button text color</p>
+              <ColorPicker
+                color={button_text_color}
+                onChangeComplete={value =>
+                  setAttributes({ button_text_color: value.hex })}
+                disableAlpha
+              />
+              <TextareaControl
+                label="Continue button"
+                help="Enter continue button text"
+                onChange={content => {
+                  setAttributes({
+                    continue_button_text: content,
+                  });
+                }}
+                value={continue_button_text}
+              /> <p> Continue button color </p> <ColorPicker
+                color={continue_button_color}
+                onChangeComplete={value =>
+                  setAttributes({
+                    continue_button_color: value.hex,
+                  })}
+                disableAlpha
+              />
+              <p> Continue button text color </p> <ColorPicker
+                color={button_text_color}
+                onChangeComplete={value =>
+                  setAttributes({
+                    continue_button_text_color: value.hex,
+                  })}
+                disableAlpha
+              />
+              <TextareaControl
+                label="Previous button"
+                help="Enter button text"
+                onChange={content => {
+                  setAttributes({
+                    previous_button_text: content,
+                  });
+                }}
+                value={previous_button_text}
+              /> <p> Previous button color </p> <ColorPicker
+                color={previous_button_color}
+                onChangeComplete={value =>
+                  setAttributes({
+                    previous_button_color: value.hex,
+                  })}
+                disableAlpha
+              />
+              <p> Previous button text color </p> <ColorPicker
+                color={previous_button_text_color}
+                onChangeComplete={value =>
+                  setAttributes({
+                    previous_button_text_color: value.hex,
+                  })}
+                disableAlpha
+              />
+            </PanelBody>
+            <PanelBody title="Help link" initialOpen={true}>
+              <CheckboxControl
+                label="Display help link"
+                help="Do you want to display help link?"
+                checked={link}
+                onChange={value => {
+                  setAttributes({
+                    link: value,
+                  });
+                }}
+              />
 
-<p> Help link url </p> <URLInputButton
-              label="Help link url"
-              url={help_link}
-              onChange={value =>
-                setAttributes ({
-                  help_link: value,
-                })}
-            />
+              <p> Help link url </p> <URLInputButton
+                label="Help link url"
+                url={help_link}
+                onChange={value =>
+                  setAttributes({
+                    help_link: value,
+                  })}
+              />
 
-<TextareaControl
-              label="Help link text"
-              help="Enter help link text"
-              onChange={content => {
-                setAttributes ({
-                  help_text: content,
-                });
-              }}
-              value={help_text}/>
+              <TextareaControl
+                label="Help link text"
+                help="Enter help link text"
+                onChange={content => {
+                  setAttributes({
+                    help_text: content,
+                  });
+                }}
+                value={help_text} />
+            </PanelBody>
+            <PanelBody title="Additional link">
+              <CheckboxControl
+                label="Display additional help link"
+                help="Do you want to display additional help link?"
+                checked={additional_link}
+                onChange={value => {
+                  setAttributes({
+                    additional_link: value,
+                  });
+                }}
+              />
 
-<CheckboxControl
-              label="Display additional help link"
-              help="Do you want to display additional help link?"
-              checked={additional_link}
-              onChange={value => {
-                setAttributes ({
-                  additional_link: value,
-                });
-              }}
-            />
+              <p> Additional help link url </p>
+              <URLInputButton
+                label="Additional help link"
+                url={additional_help_link}
+                onChange={value =>
+                  setAttributes({
+                    additional_help_link: value,
+                  })}
+              />
 
-<p> Additional help link url </p> 
-<URLInputButton
-              label="Additional help link"
-              url={additional_help_link}
-              onChange={value =>
-                setAttributes ({
-                  additional_help_link: value,
-                })}
-            />
-
-<TextareaControl
-              label="Additional help link text"
-              help="Enter additional help link text"
-              onChange={content => {
-                setAttributes ({
-                  additional_help_text: content,
-                });
-              }}
-              value={additional_help_text}/>
-          </PanelBody>
-          <PanelBody title="Customer information">
-            <PanelRow>
-              <CheckboxControl
-                label="Full name"
-                help="Do you want to collect full name?"
-                checked={display_name}
-                onChange={value => {
-                  setAttributes({ display_name: value });
+              <TextareaControl
+                label="Additional help link text"
+                help="Enter additional help link text"
+                onChange={content => {
+                  setAttributes({
+                    additional_help_text: content,
+                  });
                 }}
-              />
-              <CheckboxControl
-                help="Do you want make this field mandatory?"
-                checked={mandatory_name}
-                onChange={value => {
-                  setAttributes({ mandatory_name: value });
-                }}
-              />
-            </PanelRow>
-            <PanelRow>
-              <CheckboxControl
-                label="Email"
-                help="Do you want to collect email?"
-                checked={display_email}
-                onChange={value => {
-                  setAttributes({ display_email: value });
-                }}
-              />
-              <CheckboxControl
-                help="Do you want make this field mandatory?"
-                checked={mandatory_email}
-                onChange={value => {
-                  setAttributes({ mandatory_email: value });
-                }}
-              />
-            </PanelRow>
-            <PanelRow>
-              <CheckboxControl
-                label="Address"
-                help="Do you want to collect address?"
-                checked={display_address}
-                onChange={value => {
-                  setAttributes({ display_address: value });
-                }}
-              />
-              <CheckboxControl
-                help="Do you want make this field mandatory?"
-                checked={mandatory_address}
-                onChange={value => {
-                  setAttributes({ mandatory_address: value });
-                }}
-              />
-            </PanelRow>
-            <PanelRow>
-              <CheckboxControl
-                label="Phone"
-                checked={display_phone}
-                help="Do you want to collect phone?"
-                onChange={value => setAttributes({ display_phone: value })}
-              />
-              <CheckboxControl
-                help="Do you want make this field mandatory?"
-                checked={mandatory_phone}
-                onChange={value => {
-                  setAttributes({ mandatory_phone: value });
-                }}
-              />
-            </PanelRow>
-            <PanelRow>
-              <CheckboxControl
-                label="Message"
-                help="Do you want to collect message?"
-                checked={display_message}
-                onChange={value => {
-                  setAttributes({ display_message: value });
-                }}
-              />
-              <CheckboxControl
-                help="Do you want make this field mandatory?"
-                checked={mandatory_message}
-                onChange={value => {
-                  setAttributes({ mandatory_message: value });
-                }}
-              />
-            </PanelRow>
+                value={additional_help_text} />
+            </PanelBody>
+            <PanelBody title="Customer information">
+              <PanelRow>
+                <CheckboxControl
+                  label="Full name"
+                  help="Do you want to collect full name?"
+                  checked={display_name}
+                  onChange={value => {
+                    setAttributes({ display_name: value });
+                  }}
+                />
+                <CheckboxControl
+                  help="Do you want make this field mandatory?"
+                  checked={mandatory_name}
+                  onChange={value => {
+                    setAttributes({ mandatory_name: value });
+                  }}
+                />
+              </PanelRow>
+              <PanelRow>
+                <CheckboxControl
+                  label="Email"
+                  help="Do you want to collect email?"
+                  checked={display_email}
+                  onChange={value => {
+                    setAttributes({ display_email: value });
+                  }}
+                />
+                <CheckboxControl
+                  help="Do you want make this field mandatory?"
+                  checked={mandatory_email}
+                  onChange={value => {
+                    setAttributes({ mandatory_email: value });
+                  }}
+                />
+              </PanelRow>
+              <PanelRow>
+                <CheckboxControl
+                  label="Address"
+                  help="Do you want to collect address?"
+                  checked={display_address}
+                  onChange={value => {
+                    setAttributes({ display_address: value });
+                  }}
+                />
+                <CheckboxControl
+                  help="Do you want make this field mandatory?"
+                  checked={mandatory_address}
+                  onChange={value => {
+                    setAttributes({ mandatory_address: value });
+                  }}
+                />
+              </PanelRow>
+              <PanelRow>
+                <CheckboxControl
+                  label="Phone"
+                  checked={display_phone}
+                  help="Do you want to collect phone?"
+                  onChange={value => setAttributes({ display_phone: value })}
+                />
+                <CheckboxControl
+                  help="Do you want make this field mandatory?"
+                  checked={mandatory_phone}
+                  onChange={value => {
+                    setAttributes({ mandatory_phone: value });
+                  }}
+                />
+              </PanelRow>
+              <PanelRow>
+                <CheckboxControl
+                  label="Message"
+                  help="Do you want to collect message?"
+                  checked={display_message}
+                  onChange={value => {
+                    setAttributes({ display_message: value });
+                  }}
+                />
+                <CheckboxControl
+                  help="Do you want make this field mandatory?"
+                  checked={mandatory_message}
+                  onChange={value => {
+                    setAttributes({ mandatory_message: value });
+                  }}
+                />
+              </PanelRow>
+            </PanelBody>
           </PanelBody>
         </Panel>
       </InspectorControls>
@@ -947,17 +983,20 @@ additional_help_text,
           block="btcpaywall/gutenberg-start-block"
           attributes={{
             pay_block,
+            background_color,
+            width,
+            height,
             btc_format,
             currency,
             duration_type,
             price,
             duration,
             link,
-help_link,
-help_text,
-additional_link,
-additional_help_link,
-additional_help_text,
+            help_link,
+            help_text,
+            additional_link,
+            additional_help_link,
+            additional_help_text,
             header_text,
             header_color, info_text, info_color,
             button_color,

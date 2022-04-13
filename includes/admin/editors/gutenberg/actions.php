@@ -40,6 +40,18 @@ function btcpaywall_load_gutenberg()
                     'type' => 'boolean',
                     'default' => true
                 ),
+                'width' => array(
+                    'type' => 'integer',
+                    'default' => '500'
+                ),
+                'height' => array(
+                    'type' => 'integer',
+                    'default' => '550'
+                ),
+                'background_color' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
                 'btc_format' => array(
                     'type' => 'string',
                     'default' => 'SATS'
@@ -204,19 +216,39 @@ function btcpaywall_load_gutenberg()
                     'type' => 'boolean',
                     'default' => true
                 ),
+                'width' => array(
+                    'type' => 'integer',
+                    'default' => '500'
+                ),
+                'height' => array(
+                    'type' => 'integer',
+                    'default' => '550'
+                ),
+                'background_color' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
                 'btc_format' => array(
                     'type' => 'string',
                     'default' => 'SATS'
                 ),
-                'title' => array(
+                'preview_title' => array(
                     'type' => 'string',
                     'default' => 'Untitled'
                 ),
-                'description' => array(
+                'preview_description' => array(
                     'type' => 'string',
                     'default' => ''
                 ),
-                'preview' => array(
+                'preview_title_color' => array(
+                    'type' => 'string',
+                    'default' => '#fff'
+                ),
+                'preview_description_color' => array(
+                    'type' => 'string',
+                    'default' => '#fff'
+                ),
+                'preview_image' => array(
                     'type' => 'string',
                     'default' => ''
                 ),

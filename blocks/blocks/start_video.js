@@ -1,10 +1,12 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { InspectorControls, MediaUpload } from '@wordpress/block-editor';
+import {
+  InspectorControls, MediaUpload,
+  MediaUploadCheck, URLInputButton
+} from '@wordpress/block-editor';
 
 import { useState } from '@wordpress/element';
-import {
-  URLInputButton,
-} from '@wordpress/block-editor';
+import { useSelect } from '@wordpress/data';
+
 import {
   ToggleControl,
   PanelBody,
@@ -437,17 +439,34 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
     btc_format: {
       type: 'string',
     },
-    title: {
+    preview_title: {
       type: 'string',
       default: 'Untitled',
     },
-    description: {
+    preview_description: {
       type: 'string',
       default: 'No description',
     },
-    preview: {
+    preview_title_color: {
+      type: 'string',
+    },
+    preview_description_color: {
+      type: 'string',
+    },
+    preview_image: {
       type: 'string',
       default: '',
+    },
+    background_color: {
+      type: 'string'
+    },
+    width: {
+      type: 'number',
+      default: 500
+    },
+    height: {
+      type: 'number',
+      default: 550
     },
     currency: {
       type: 'string',
@@ -513,21 +532,21 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       type: 'boolean',
       default: false,
     },
-help_link: {
+    help_link: {
       type: 'string',
     },
-help_text: {
+    help_text: {
       type: 'string',
-      default:'Help'
+      default: 'Help'
     },
-additional_link: {
+    additional_link: {
       type: 'boolean',
       default: false,
     },
-additional_help_link: {
+    additional_help_link: {
       type: 'string',
     },
-additional_help_text: {
+    additional_help_text: {
       type: 'string',
     },
     display_name: {
@@ -577,19 +596,24 @@ additional_help_text: {
       attributes: {
         pay_view_block,
         btc_format,
-        title,
-        description,
-        preview,
+        background_color,
+        width,
+        height,
+        preview_title,
+        preview_description,
+        preview_title_color,
+        preview_description_color,
+        preview_image,
         currency,
         duration_type,
         price,
         duration,
         link,
-help_link,
-help_text,
-additional_link,
-additional_help_link,
-additional_help_text,
+        help_link,
+        help_text,
+        additional_link,
+        additional_help_link,
+        additional_help_text,
         header_text,
         header_color, info_text, info_color,
         button_color,
@@ -616,7 +640,14 @@ additional_help_text,
       setAttributes,
     } = props;
     const [show, setShow] = useState(currency === 'SATS');
-
+    const previewMedia = useSelect(
+      select => {
+        return preview_image
+          ? select('core').getMedia(preview_image)
+          : undefined;
+      },
+      [preview_image]
+    );
     const inspectorControls = (
       <InspectorControls>
         <Panel>
@@ -631,36 +662,7 @@ additional_help_text,
                 value={pay_view_block}
               />
             </PanelRow>
-            <PanelRow>
-              <TextareaControl
-                label="Title"
-                help="Enter video title"
-                onChange={content => {
-                  setAttributes({ title: content });
-                }}
-                value={title}
-              />
-            </PanelRow>
-            <PanelRow>
-              <TextareaControl
-                label="Description"
-                help="Enter video description"
-                onChange={desc => {
-                  setAttributes({ description: desc });
-                }}
-                value={description}
-              />
-            </PanelRow>
-            <PanelRow>
-              <MediaUpload
-                onSelect={pic => {
-                  setAttributes({ preview: pic.sizes.full.url });
-                }}
-                render={({ open }) => (
-                  <Button onClick={open}>Video preview</Button>
-                )}
-              />
-            </PanelRow>
+
             <PanelRow>
               <SelectControl
                 label="Currency"
@@ -727,7 +729,125 @@ additional_help_text,
               />
             </PanelRow>
           </PanelBody>
-          <PanelBody title="Header">
+          <PanelBody title="Paywall design" initialOpen={true}>
+            <p>Background color</p>
+            <ColorPicker
+              color={background_color}
+              onChangeComplete={value =>
+                setAttributes({ background_color: value.hex })}
+              disableAlpha
+            />
+            <NumberControl
+              label="Width"
+              value={width}
+              onChange={nextValue =>
+                setAttributes({ width: Number(nextValue) })}
+            />
+            <NumberControl
+              label="Height"
+              value={height}
+              onChange={nextValue =>
+                setAttributes({ height: Number(nextValue) })}
+            />
+          
+          <PanelBody title="Video preview">
+            <TextareaControl
+              label="Title"
+              help="Enter video title"
+              onChange={content => {
+                setAttributes({ preview_title: content });
+              }}
+              value={preview_title}
+            />
+            <p>Title color</p>
+            <ColorPicker
+              color={preview_title_color}
+              onChangeComplete={value =>
+                setAttributes({ preview_title_color: value.hex })}
+              disableAlpha
+            />
+            <TextareaControl
+              label="Description"
+              help="Enter video description text"
+              onChange={content => {
+                setAttributes({ preview_description: content });
+              }}
+              value={preview_description}
+            />
+            <p>Description color</p>
+            <ColorPicker
+              color={preview_description_color}
+              onChangeComplete={value =>
+                setAttributes({ preview_description_color: value.hex })}
+              disableAlpha
+            />
+            <div className="editor-post-featured-image">
+              <MediaUploadCheck>
+                <MediaUpload
+                  onSelect={el => {
+                    setAttributes({ preview_image: el.id });
+                  }}
+                  value={preview_image}
+                  allowedTypes={['image']}
+                  render={({ open }) => (
+                    <Button
+                      className={
+                        preview_image == 0
+                          ? 'btcpaywall editor-post-featured-image__toggle'
+                          : 'btcpaywall editor-post-featured-image__preview'
+                      }
+                      onClick={open}
+                    >
+                      {!preview_image && 'Choose preview image'}
+                      {!!preview_image &&
+                        previewMedia &&
+                        <ResponsiveWrapper
+                          naturalWidth={previewMedia.media_details.width}
+                          naturalHeight={previewMedia.media_details.height}
+                        >
+                          <img src={previewMedia.source_url} />
+                        </ResponsiveWrapper>}
+                    </Button>
+                  )}
+                />
+              </MediaUploadCheck>
+              {!!preview_image &&
+                backgroundMedia &&
+                <MediaUploadCheck>
+                  <MediaUpload
+                    title="Replace preview image"
+                    value={preview_image}
+                    onSelect={el => {
+                      setAttributes({ preview_image: el.id });
+                    }}
+                    allowedTypes={['image']}
+                    render={({ open }) => (
+                      <Button
+                        className="btcpaywall editor-post-featured-image__remove"
+                        onClick={open}
+                        isLarge
+                      >
+                        {'Replace preview image'}
+                      </Button>
+                    )}
+                  />
+                </MediaUploadCheck>}
+              {!!preview_image &&
+                <MediaUploadCheck>
+                  <Button
+                    onClick={el => {
+                      setAttributes({ preview_image: 0 });
+                    }}
+                    className="btcpaywall editor-post-featured-image__remove"
+                    isLink
+                    isDestructive
+                  >
+                    {'Remove preview image'}
+                  </Button>
+                </MediaUploadCheck>}
+            </div>
+          </PanelBody>
+          <PanelBody title="Main">
             <TextareaControl
               label="Title"
               help="Enter title text"
@@ -760,7 +880,7 @@ additional_help_text,
               disableAlpha
             />
           </PanelBody>
-          <PanelBody title="Footer">
+          <PanelBody title="Button">
             <TextareaControl
               label="Button"
               help="Enter button text"
@@ -834,66 +954,67 @@ additional_help_text,
               disableAlpha
             />
           </PanelBody>
-          <PanelBody title="Links" initialOpen={true}>
-          <CheckboxControl
+          <PanelBody title="Help link" initialOpen={true}>
+            <CheckboxControl
               label="Display help link"
               help="Do you want to display help link?"
               checked={link}
               onChange={value => {
-                setAttributes ({
+                setAttributes({
                   link: value,
                 });
               }}
             />
 
-<p> Help link url </p> <URLInputButton
+            <p> Help link url </p> <URLInputButton
               label="Help link url"
               url={help_link}
               onChange={value =>
-                setAttributes ({
+                setAttributes({
                   help_link: value,
                 })}
             />
 
-<TextareaControl
+            <TextareaControl
               label="Help link text"
               help="Enter help link text"
               onChange={content => {
-                setAttributes ({
+                setAttributes({
                   help_text: content,
                 });
               }}
-              value={help_text}/>
-
-<CheckboxControl
+              value={help_text} />
+          </PanelBody>
+          <PanelBody title="Additional link">
+            <CheckboxControl
               label="Display additional help link"
               help="Do you want to display additional help link?"
               checked={additional_link}
               onChange={value => {
-                setAttributes ({
+                setAttributes({
                   additional_link: value,
                 });
               }}
             />
 
-<p> Additional help link url </p> <URLInputButton
+            <p> Additional help link url </p> <URLInputButton
               label="Additional help link"
               url={additional_help_link}
               onChange={value =>
-                setAttributes ({
+                setAttributes({
                   additional_help_link: value,
                 })}
             />
 
-<TextareaControl
+            <TextareaControl
               label="Additional help link text"
               help="Enter additional help link text"
               onChange={content => {
-                setAttributes ({
+                setAttributes({
                   additional_help_text: content,
                 });
               }}
-              value={additional_help_text}/>
+              value={additional_help_text} />
           </PanelBody>
           <PanelBody title="Customer information">
             <PanelRow>
@@ -980,6 +1101,7 @@ additional_help_text,
               />
             </PanelRow>
           </PanelBody>
+          </PanelBody>
         </Panel>
       </InspectorControls>
     );
@@ -990,19 +1112,24 @@ additional_help_text,
           attributes={{
             pay_view_block,
             btc_format,
-            title,
-            description,
-            preview,
+            background_color,
+            width,
+            height,
+            preview_title,
+            preview_description,
+            preview_title_color,
+            preview_description_color,
+            preview_image,
             currency,
             duration_type,
             price,
             duration,
             link,
-help_link,
-help_text,
-additional_link,
-additional_help_link,
-additional_help_text,
+            help_link,
+            help_text,
+            additional_link,
+            additional_help_link,
+            additional_help_text,
             header_text,
             header_color, info_text, info_color,
             button_color,
