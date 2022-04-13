@@ -509,7 +509,7 @@
           info_text: $("#btcpaywall_pay_per_post_info, #btcpaywall_pay_per_view_info").val(),
           header_color: $("#btcpaywall_pay_per_post_title_color, #btcpaywall_pay_per_view_title_color").val(),
           info_color: $("#btcpaywall_pay_per_post_info_color, #btcpaywall_pay_per_view_info_color").val(),
-          button_txt: $("#btcpaywall_pay_per_post_button, #btcpaywall_pay_per_view_button").val(),
+          button_text: $("#btcpaywall_pay_per_post_button, #btcpaywall_pay_per_view_button").val(),
           button_color: $("#btcpaywall_pay_per_post_button_color, #btcpaywall_pay_per_view_button_color").val(),
           button_text_color: $("#btcpaywall_pay_per_post_button_text_color, #btcpaywall_pay_per_view_button_text_color").val(),
           continue_button_text: $("#btcpaywall_pay_per_post_continue_button, #btcpaywall_pay_per_view_continue_button").val(),

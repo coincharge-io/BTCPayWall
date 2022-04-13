@@ -126,7 +126,7 @@ function btcpaywall_create_pay_per_shortcode()
         'header_color' => $_POST['header_color'],
         'info_color' => $_POST['info_color'],
         'button_color' => $_POST['button_color'],
-        'button_txt' => $_POST['button_txt'],
+        'button_text' => $_POST['button_text'],
         'button_txt_color' => $_POST['button_txt_color'],
         'continue_button_text' => $_POST['continue_button_text'],
         'continue_button_text_color' => $_POST['continue_button_text_color'],

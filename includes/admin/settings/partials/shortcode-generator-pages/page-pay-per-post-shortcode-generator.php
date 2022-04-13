@@ -437,10 +437,10 @@ $back_url = (sanitize_text_field($_GET['action']) == 'edit') ? 'admin.php?page=b
             <div class="btcpw_links_preview">
 
                 <div class="btcpw_help_preview pay_per_post">
-                    <a class="btcpw_help__link_preview pay_per_post" href="<?php echo esc_attr($result->help_link); ?>" target="_blank"><?php echo esc_html($help_text); ?></a>
+                    <a class="btcpw_help__link_preview pay_per_post" href="<?php echo esc_attr($result->help_link); ?>" target="_blank"><?php echo esc_html($result->help_text); ?></a>
                 </div>
                 <div class="btcpw_additional_help_preview pay_per_post">
-                    <a class="btcpw_help__additional_link_preview pay_per_post" href="<?php echo esc_attr($result->additional_help_link); ?>" target="_blank"><?php echo esc_html($additional_help_text); ?></a>
+                    <a class="btcpw_help__additional_link_preview pay_per_post" href="<?php echo esc_attr($result->additional_help_link); ?>" target="_blank"><?php echo esc_html($result->additional_help_text); ?></a>
                 </div>
             </div>
         </div>
