@@ -627,7 +627,11 @@
         $(this).text('Copied to clipboard');
         $temp.remove();
       });
-
+      $('.btcpaywall_pay_per_container_header').click(function () {
+        var header_id = $(this).data('id');
+        $('.btcpaywall_pay_per_container_body.' + header_id + '-body').toggle();
+        $(this).toggleClass('inactive');
+      });
       $('.btcpaywall_container_header').click(function () {
         var header_id = $(this).data('id');
         $('.btcpaywall_container_body.' + header_id + '-body').toggle();

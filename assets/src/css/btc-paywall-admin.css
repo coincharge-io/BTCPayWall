@@ -676,29 +676,33 @@ Settings Tabs
   width: 100px;
 }
 
-.btcpaywall_container_header h2 {
+.btcpaywall_container_header h2,
+.btcpaywall_pay_per_container_header h3 {
   display: flex;
   justify-content: space-between;
   color: #fff;
 }
 
-.btcpaywall_container_header h2::after {
+
+.btcpaywall_container_header h2::after,
+.btcpaywall_pay_per_container_header h3::after {
   font-family: "Font Awesome 5 Free";
   content: "\f062";
   vertical-align: middle;
   font-weight: 900;
 }
 
-.btcpaywall_container_header.inactive h2::after {
+.btcpaywall_container_header.inactive h2::after,
+.btcpaywall_pay_per_container_header.inactive h3::after {
   content: "\f063";
 }
 
-.btcpaywall_container_header {
+.btcpaywall_container_header,
+.btcpaywall_pay_per_container_header {
   border-bottom: 1px solid #c3c4c7;
   background-color: #fc852e;
   cursor: pointer;
 }
-
 
 .btcpaywall_tipping_selected_template {
   justify-content: space-evenly;
