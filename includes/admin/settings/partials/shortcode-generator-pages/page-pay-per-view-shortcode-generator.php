@@ -219,7 +219,7 @@ $back_url = (sanitize_text_field($_GET['action']) == 'edit') ? 'admin.php?page=b
                     </div>
                 </div>
                 <div data-id="header" class="btcpaywall_pay_per_container_header">
-                    <h3><?php echo esc_html__('Header', 'btcpaywall'); ?></h3>
+                    <h3><?php echo esc_html__('Main', 'btcpaywall'); ?></h3>
                 </div>
                 <div class="btcpaywall_pay_per_container_body header-body">
                     <div class="row">
