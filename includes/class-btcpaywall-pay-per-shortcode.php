@@ -33,8 +33,8 @@ class BTCPayWall_Pay_Per_Shortcode
     public $preview_description = 'No description    ';
     public $preview_description_color;
     public $preview_image;
-    public $header_text;
-    public $info_text;
+    public $header_text = 'Pay to see';
+    public $info_text = 'For {price} {currency} you will have access for {duration} {dtype}.';
     public $header_color = '#000000';
     public $info_color = '#000000';
     public $button_color = '#f6b330';
@@ -223,7 +223,7 @@ class BTCPayWall_Pay_Per_Shortcode
                     } elseif (!in_array($key, $boolean_values)) {
                         $data[$key] = $default_values[$key];
                     } else {
-                        $data[$key] = !empty($data[$key]) ? (bool)$data[$key] : false;
+                        $data[$key] = (bool)$data[$key];
                     }
 
                     break;
