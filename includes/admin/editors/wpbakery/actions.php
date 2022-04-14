@@ -27,6 +27,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'pay_block',
                 'value' => 'true',
                 'description' => 'Show payment block instead of content',
+                'group' => 'Option'
             ),
             array(
                 'type' => 'dropdown',
@@ -41,6 +42,7 @@ function btcpaywall_load_vc_widgets()
                 ),
                 'std' => 'Default',
                 'description' => 'Set currency',
+                'group' => 'Option'
             ),
             array(
                 'type' => 'dropdown',
@@ -57,12 +59,14 @@ function btcpaywall_load_vc_widgets()
                 ),
                 'std' => 'Default',
                 'description' => 'Set BTC format',
+                'group' => 'Option'
             ),
             array(
                 'type' => 'textfield',
                 'heading' => 'Price',
                 'param_name' => 'price',
                 'description' => 'Set price',
+                'group' => 'Option'
             ),
             array(
                 'type' => 'dropdown',
@@ -81,12 +85,14 @@ function btcpaywall_load_vc_widgets()
                 ),
                 'std' => 'default',
                 'description' => 'Set duration type',
+                'group' => 'Option'
             ),
             array(
                 'type' => 'textfield',
                 'heading' => 'Duration',
                 'param_name' => 'duration',
                 'description' => 'Set duration',
+                'group' => 'Option'
             ),
             array(
                 'type' => 'colorpicker',
@@ -94,18 +100,22 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'background_color',
                 'value' => '',
                 'description' => 'Set background color',
+                'group' => 'Paywall design'
+
             ),
             array(
                 'type' => 'textfield',
                 'heading' => 'Width',
                 'param_name' => 'width',
                 'description' => 'Set paywall width',
+                'group' => 'Paywall design'
             ),
             array(
                 'type' => 'textfield',
                 'heading' => 'Height',
                 'param_name' => 'height',
                 'description' => 'Set paywall height',
+                'group' => 'Paywall design'
             ),
             array(
                 'type' => 'textarea',
@@ -113,6 +123,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'header_text',
                 'value' => 'Pay now to unlock blogpost',
                 'description' => 'Set title',
+                'group' => 'Main'
 
             ),
             array(
@@ -121,6 +132,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'header_color',
                 'value' => '#ffffff',
                 'description' => 'Set title color',
+                'group' => 'Main'
+
             ),
             array(
                 'type' => 'textarea',
@@ -128,6 +141,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'info_text',
                 'value' => '',
                 'description' => 'Add price information text',
+                'group' => 'Main'
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -135,6 +150,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'info_color',
                 'value' => '#ffffff',
                 'description' => 'Set price information color',
+                'group' => 'Main'
 
             ),
             array(
@@ -143,6 +159,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_text',
                 'value' => 'Pay',
                 'description' => 'Set button text',
+                'group' => 'Button'
+
 
             ),
             array(
@@ -151,6 +169,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set button text color',
+                'group' => 'Button'
+
 
             ),
             array(
@@ -159,6 +179,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_color',
                 'value' => '#FE642E',
                 'description' => 'Set button color',
+                'group' => 'Button'
+
 
             ),
             array(
@@ -167,6 +189,8 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_text',
                 'value' => 'Continue',
                 'description' => 'Set continue button text',
+                'group' => 'Button'
+
 
             ),
             array(
@@ -175,7 +199,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set continue_button text color',
-
+                'group' => 'Button'
             ),
             array(
                 'type' => 'colorpicker',
@@ -183,7 +207,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_color',
                 'value' => '#FE642E',
                 'description' => 'Set continue button color',
-
+                'group' => 'Button'
             ),
             array(
                 'type' => 'textarea',
@@ -191,7 +215,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_text',
                 'value' => 'Previous',
                 'description' => 'Set previous button text',
-
+                'group' => 'Button'
             ),
             array(
                 'type' => 'colorpicker',
@@ -199,7 +223,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set previous button text color',
-
+                'group' => 'Button'
             ),
             array(
                 'type' => 'colorpicker',
@@ -207,6 +231,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_color',
                 'value' => '#1d5aa3',
                 'description' => 'Set previous button color',
+                'group' => 'Button'
             ),
             array(
                 'type' => 'checkbox',
@@ -215,18 +240,21 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Display help link',
+                'group' => 'Help link'
             ),
             array(
                 'type' => 'textfield',
                 'heading' => 'Help link url',
                 'param_name' => 'help_link',
                 'description' => 'Set help link url',
+                'group' => 'Help link'
             ),
             array(
                 'type' => 'textfield',
                 'heading' => 'Help link text',
                 'param_name' => 'help_text',
                 'description' => 'Set help link text',
+                'group' => 'Help link'
             ),
             array(
                 'type' => 'checkbox',
@@ -235,18 +263,21 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Display additional help link',
+                'group' => 'Additional link'
             ),
             array(
                 'type' => 'textfield',
                 'heading' => 'Additional help link url',
                 'param_name' => 'additional_help_link',
                 'description' => 'Set additional help link url',
+                'group' => 'Additional link'
             ),
             array(
                 'type' => 'textfield',
                 'heading' => 'Additional help link text',
                 'param_name' => 'additional_help_text',
                 'description' => 'Set additional help link text',
+                'group' => 'Additional link'
             ),
             array(
                 'type' => 'checkbox',
@@ -255,6 +286,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Collect information',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -263,6 +295,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -271,6 +304,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Collect information',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -279,6 +313,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -287,6 +322,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Collect information',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -295,6 +331,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -303,6 +340,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Collect information',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -311,6 +349,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -319,6 +358,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Collect information',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -327,6 +367,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Customer information'
             ),
         ),
     ));
@@ -362,6 +403,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'pay_view_block',
                 'value' => 'true',
                 'description' => 'Show payment block instead of video',
+                'group' => 'Option'
             ),
             array(
                 'type' => 'dropdown',
@@ -376,6 +418,7 @@ function btcpaywall_load_vc_widgets()
                 ),
                 'std' => 'Default',
                 'description' => 'Set currency',
+                'group' => 'Option'
             ),
             array(
                 'type' => 'dropdown',
@@ -392,12 +435,14 @@ function btcpaywall_load_vc_widgets()
                 ),
                 'std' => 'Default',
                 'description' => 'Set BTC format',
+                'group' => 'Option'
             ),
             array(
                 'type' => 'textfield',
                 'heading' => 'Price',
                 'param_name' => 'price',
                 'description' => 'Set price',
+                'group' => 'Option'
             ),
             array(
                 'type' => 'dropdown',
@@ -416,12 +461,14 @@ function btcpaywall_load_vc_widgets()
                 ),
                 'std' => 'default',
                 'description' => 'Set duration type',
+                'group' => 'Option'
             ),
             array(
                 'type' => 'textfield',
                 'heading' => 'Duration',
                 'param_name' => 'duration',
                 'description' => 'Set duration',
+                'group' => 'Option'
             ),
             array(
                 'type' => 'colorpicker',
@@ -429,18 +476,21 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'background_color',
                 'value' => '',
                 'description' => 'Set background color',
+                'group' => 'Paywall design'
             ),
             array(
                 'type' => 'textfield',
                 'heading' => 'Width',
                 'param_name' => 'width',
                 'description' => 'Set paywall width',
+                'group' => 'Paywall design'
             ),
             array(
                 'type' => 'textfield',
                 'heading' => 'Height',
                 'param_name' => 'height',
                 'description' => 'Set paywall height',
+                'group' => 'Paywall design'
             ),
             array(
                 'type' => 'textarea',
@@ -448,6 +498,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'preview_title',
                 'value' => 'Untitled',
                 'description' => 'Enter video title',
+                'group' => 'Video preview'
             ),
             array(
                 'type' => 'textarea',
@@ -455,6 +506,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'preview_title_color',
                 'value' => '',
                 'description' => 'Set title color',
+                'group' => 'Video preview'
             ),
             array(
                 'type' => 'textarea',
@@ -462,6 +514,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'preview_description',
                 'value' => 'No description',
                 'description' => 'Enter video description',
+                'group' => 'Video preview'
             ),
             array(
                 'type' => 'textarea',
@@ -469,12 +522,14 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'preview_description_color',
                 'value' => '',
                 'description' => 'Set description color',
+                'group' => 'Video preview'
             ),
             array(
                 'type' => 'attach_image',
                 'heading' => 'Preview',
                 'param_name' => 'preview_image',
                 'description' => 'Add video preview',
+                'group' => 'Video preview'
             ),
             array(
                 'type' => 'textarea',
@@ -482,6 +537,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'header_text',
                 'value' => 'Pay now to watch the whole video',
                 'description' => 'Set title',
+                'group' => 'Main'
             ),
             array(
                 'type' => 'colorpicker',
@@ -489,6 +545,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'header_color',
                 'value' => '#ffffff',
                 'description' => 'Set title color',
+                'group' => 'Main'
             ),
             array(
                 'type' => 'textarea',
@@ -496,6 +553,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'info_text',
                 'value' => '',
                 'description' => 'Add price information text',
+                'group' => 'Main'
             ),
             array(
                 'type' => 'colorpicker',
@@ -503,7 +561,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'info_color',
                 'value' => '#ffffff',
                 'description' => 'Set price information color',
-
+                'group' => 'Main'
             ),
             array(
                 'type' => 'textarea',
@@ -511,7 +569,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_text',
                 'value' => 'Pay',
                 'description' => 'Set button text',
-
+                'group' => 'Button'
             ),
             array(
                 'type' => 'colorpicker',
@@ -519,7 +577,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set button text color',
-
+                'group' => 'Button'
             ),
             array(
                 'type' => 'colorpicker',
@@ -527,7 +585,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_color',
                 'value' => '#FE642E',
                 'description' => 'Set button color',
-
+                'group' => 'Button'
             ),
             array(
                 'type' => 'textarea',
@@ -535,7 +593,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_text',
                 'value' => 'Continue',
                 'description' => 'Set continue button text',
-
+                'group' => 'Button'
             ),
             array(
                 'type' => 'colorpicker',
@@ -543,7 +601,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set continue_button text color',
-
+                'group' => 'Button'
             ),
             array(
                 'type' => 'colorpicker',
@@ -551,7 +609,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_color',
                 'value' => '#FE642E',
                 'description' => 'Set continue button color',
-
+                'group' => 'Button'
             ),
             array(
                 'type' => 'textarea',
@@ -559,7 +617,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_text',
                 'value' => 'Previous',
                 'description' => 'Set previous button text',
-
+                'group' => 'Button'
             ),
             array(
                 'type' => 'colorpicker',
@@ -567,6 +625,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set previous button text color',
+                'group' => 'Button'
 
             ),
             array(
@@ -575,6 +634,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_color',
                 'value' => '#1d5aa3',
                 'description' => 'Set previous button color',
+                'group' => 'Button'
             ),
             array(
                 'type' => 'checkbox',
@@ -583,18 +643,21 @@ function btcpaywall_load_vc_widgets()
                 'value' => true,
                 'std' => true,
                 'description' => 'Display help link',
+                'group' => 'Help link'
             ),
             array(
                 'type' => 'textfield',
                 'heading' => 'Help link url',
                 'param_name' => 'help_link',
                 'description' => 'Set help link url',
+                'group' => 'Help link'
             ),
             array(
                 'type' => 'textfield',
                 'heading' => 'Help link text',
                 'param_name' => 'help_text',
                 'description' => 'Set help link text',
+                'group' => 'Help link'
             ),
             array(
                 'type' => 'checkbox',
@@ -603,18 +666,21 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Display additional help link',
+                'group' => 'Additional link'
             ),
             array(
                 'type' => 'textfield',
                 'heading' => 'Additional help link url',
                 'param_name' => 'additional_help_link',
                 'description' => 'Set additional help link url',
+                'group' => 'Additional link'
             ),
             array(
                 'type' => 'textfield',
                 'heading' => 'Additional help link text',
                 'param_name' => 'additional_help_text',
                 'description' => 'Set additional help link text',
+                'group' => 'Additional link'
             ),
             array(
                 'type' => 'checkbox',
@@ -623,6 +689,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Collect information',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -631,6 +698,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -639,6 +707,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Collect information',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -647,6 +716,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -655,6 +725,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Collect information',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -663,6 +734,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -671,6 +743,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Collect information',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -679,6 +752,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -687,6 +761,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Collect information',
+                'group' => 'Customer information'
             ),
             array(
                 'type' => 'checkbox',
@@ -695,6 +770,7 @@ function btcpaywall_load_vc_widgets()
                 'value' => false,
                 'std' => false,
                 'description' => 'Set as mandatory',
+                'group' => 'Customer information'
             ),
         ),
     ));
