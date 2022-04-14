@@ -1173,7 +1173,7 @@ function btcpaywall_render_shortcode_btcpw_start_video($atts)
     if (btcpaywall_is_paid_content()) {
         return '';
     }
-    $img_preview = plugin_dir_url(__FILE__) . 'img/preview.png';
+    $img_preview = BTCPAYWALL_PLUGIN_URL . '/assets/src/img/preview.png';
 
     $atts = shortcode_atts(array(
         'width' => '',

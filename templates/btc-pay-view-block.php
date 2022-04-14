@@ -44,12 +44,11 @@ $collect = btcpaywall_get_collect($collect_atts);
 $collect_data = btcpaywall_display_is_enabled($collect);
 $help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
 
-$image = wp_get_attachment_image_src($atts['preview'] ?? $atts['preview_image']);
+$image = wp_get_attachment_image_src($atts['preview_image']);
 
 $preview_url = $image ? $image[0] : $atts['preview_image'];
 $header = !empty($atts['header_text']) ? $atts['header_text'] : btcpaywall_get_payblock_header_string();
 $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attributes($atts) : btcpaywall_get_post_info_string(null, 'video');
-
 ?>
 <style>
     .btcpw_revenue_view_container {
@@ -109,7 +108,7 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
 
                 </div>
                 <div class="btcpw_pay__preview">
-                    <?php if ($preview_url) : ?>
+                    <?php if (!empty($preview_url)) : ?>
                         <div class="btcpw_pay__preview preview_img">
                             <img src=<?php echo esc_url($preview_url); ?> alt="Video preview">
                         </div>
