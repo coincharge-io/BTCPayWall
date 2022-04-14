@@ -46,7 +46,7 @@ $help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
 
 $image = wp_get_attachment_image_src($atts['preview'] ?? $atts['preview_image']);
 
-$preview_url = $image ? $image[0] : ($atts['preview'] ? $atts['preview'] : $atts['preview_image']);
+$preview_url = $image ? $image[0] : $atts['preview_image'];
 $header = !empty($atts['header_text']) ? $atts['header_text'] : btcpaywall_get_payblock_header_string();
 $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attributes($atts) : btcpaywall_get_post_info_string(null, 'video');
 
@@ -109,12 +109,14 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
 
                 </div>
                 <div class="btcpw_pay__preview">
-                    <div class="btcpw_pay__preview preview_img">
-                        <img src=<?php echo esc_url($preview_url); ?> alt="Video preview">
-                    </div>
+                    <?php if ($preview_url) : ?>
+                        <div class="btcpw_pay__preview preview_img">
+                            <img src=<?php echo esc_url($preview_url); ?> alt="Video preview">
+                        </div>
+                    <?php endif; ?>
                     <div class="btcpw_pay__preview preview_description">
-                        <h3><?php echo esc_html__($atts['title'] ?? $atts['preview_title'], 'btcpaywall'); ?></h3>
-                        <p><?php echo esc_html__($atts['description'] ?? $atts['preview_description'], 'btcpaywall'); ?></p>
+                        <h3><?php echo esc_html__($atts['preview_title'], 'btcpaywall'); ?></h3>
+                        <p><?php echo esc_html__($atts['preview_description'], 'btcpaywall'); ?></p>
                     </div>
 
                 </div>

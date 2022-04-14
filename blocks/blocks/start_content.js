@@ -469,7 +469,8 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       type: 'string',
     },
     info_text: {
-      type: 'string'
+      type: 'string',
+      default:'For {price} {currency} you will have access for {duration} {dtype}.'
     },
     info_color: {
       type: 'string',

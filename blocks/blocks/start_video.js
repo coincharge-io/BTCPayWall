@@ -489,6 +489,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
     },
     info_text: {
       type: 'string',
+      default: 'For {price} {currency} you will have access for {duration} {dtype}.'
     },
     info_color: {
       type: 'string',
@@ -749,358 +750,358 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               onChange={nextValue =>
                 setAttributes({ height: Number(nextValue) })}
             />
-          
-          <PanelBody title="Video preview">
-            <TextareaControl
-              label="Title"
-              help="Enter video title"
-              onChange={content => {
-                setAttributes({ preview_title: content });
-              }}
-              value={preview_title}
-            />
-            <p>Title color</p>
-            <ColorPicker
-              color={preview_title_color}
-              onChangeComplete={value =>
-                setAttributes({ preview_title_color: value.hex })}
-              disableAlpha
-            />
-            <TextareaControl
-              label="Description"
-              help="Enter video description text"
-              onChange={content => {
-                setAttributes({ preview_description: content });
-              }}
-              value={preview_description}
-            />
-            <p>Description color</p>
-            <ColorPicker
-              color={preview_description_color}
-              onChangeComplete={value =>
-                setAttributes({ preview_description_color: value.hex })}
-              disableAlpha
-            />
-            <div className="editor-post-featured-image">
-              <MediaUploadCheck>
-                <MediaUpload
-                  onSelect={el => {
-                    setAttributes({ preview_image: el.id });
-                  }}
-                  value={preview_image}
-                  allowedTypes={['image']}
-                  render={({ open }) => (
-                    <Button
-                      className={
-                        preview_image == 0
-                          ? 'btcpaywall editor-post-featured-image__toggle'
-                          : 'btcpaywall editor-post-featured-image__preview'
-                      }
-                      onClick={open}
-                    >
-                      {!preview_image && 'Choose preview image'}
-                      {!!preview_image &&
-                        previewMedia &&
-                        <ResponsiveWrapper
-                          naturalWidth={previewMedia.media_details.width}
-                          naturalHeight={previewMedia.media_details.height}
-                        >
-                          <img src={previewMedia.source_url} />
-                        </ResponsiveWrapper>}
-                    </Button>
-                  )}
-                />
-              </MediaUploadCheck>
-              {!!preview_image &&
-                backgroundMedia &&
+
+            <PanelBody title="Video preview">
+              <TextareaControl
+                label="Title"
+                help="Enter video title"
+                onChange={content => {
+                  setAttributes({ preview_title: content });
+                }}
+                value={preview_title}
+              />
+              <p>Title color</p>
+              <ColorPicker
+                color={preview_title_color}
+                onChangeComplete={value =>
+                  setAttributes({ preview_title_color: value.hex })}
+                disableAlpha
+              />
+              <TextareaControl
+                label="Description"
+                help="Enter video description text"
+                onChange={content => {
+                  setAttributes({ preview_description: content });
+                }}
+                value={preview_description}
+              />
+              <p>Description color</p>
+              <ColorPicker
+                color={preview_description_color}
+                onChangeComplete={value =>
+                  setAttributes({ preview_description_color: value.hex })}
+                disableAlpha
+              />
+              <div className="editor-post-featured-image">
                 <MediaUploadCheck>
                   <MediaUpload
-                    title="Replace preview image"
-                    value={preview_image}
                     onSelect={el => {
                       setAttributes({ preview_image: el.id });
                     }}
+                    value={preview_image}
                     allowedTypes={['image']}
                     render={({ open }) => (
                       <Button
-                        className="btcpaywall editor-post-featured-image__remove"
+                        className={
+                          preview_image == 0
+                            ? 'btcpaywall editor-post-featured-image__toggle'
+                            : 'btcpaywall editor-post-featured-image__preview'
+                        }
                         onClick={open}
-                        isLarge
                       >
-                        {'Replace preview image'}
+                        {!preview_image && 'Choose preview image'}
+                        {!!preview_image &&
+                          previewMedia &&
+                          <ResponsiveWrapper
+                            naturalWidth={previewMedia.media_details.width}
+                            naturalHeight={previewMedia.media_details.height}
+                          >
+                            <img src={previewMedia.source_url} />
+                          </ResponsiveWrapper>}
                       </Button>
                     )}
                   />
-                </MediaUploadCheck>}
-              {!!preview_image &&
-                <MediaUploadCheck>
-                  <Button
-                    onClick={el => {
-                      setAttributes({ preview_image: 0 });
-                    }}
-                    className="btcpaywall editor-post-featured-image__remove"
-                    isLink
-                    isDestructive
-                  >
-                    {'Remove preview image'}
-                  </Button>
-                </MediaUploadCheck>}
-            </div>
-          </PanelBody>
-          <PanelBody title="Main">
-            <TextareaControl
-              label="Title"
-              help="Enter title text"
-              onChange={content => {
-                setAttributes({ header_text: content });
-              }}
-              value={header_text}
-            />
-            <p>Title color</p>
-            <ColorPicker
-              color={header_color}
-              onChangeComplete={value =>
-                setAttributes({ header_color: value.hex })}
-              disableAlpha
-            />
+                </MediaUploadCheck>
+                {!!preview_image &&
+                  backgroundMedia &&
+                  <MediaUploadCheck>
+                    <MediaUpload
+                      title="Replace preview image"
+                      value={preview_image}
+                      onSelect={el => {
+                        setAttributes({ preview_image: el.id });
+                      }}
+                      allowedTypes={['image']}
+                      render={({ open }) => (
+                        <Button
+                          className="btcpaywall editor-post-featured-image__remove"
+                          onClick={open}
+                          isLarge
+                        >
+                          {'Replace preview image'}
+                        </Button>
+                      )}
+                    />
+                  </MediaUploadCheck>}
+                {!!preview_image &&
+                  <MediaUploadCheck>
+                    <Button
+                      onClick={el => {
+                        setAttributes({ preview_image: 0 });
+                      }}
+                      className="btcpaywall editor-post-featured-image__remove"
+                      isLink
+                      isDestructive
+                    >
+                      {'Remove preview image'}
+                    </Button>
+                  </MediaUploadCheck>}
+              </div>
+            </PanelBody>
+            <PanelBody title="Main">
+              <TextareaControl
+                label="Title"
+                help="Enter title text"
+                onChange={content => {
+                  setAttributes({ header_text: content });
+                }}
+                value={header_text}
+              />
+              <p>Title color</p>
+              <ColorPicker
+                color={header_color}
+                onChangeComplete={value =>
+                  setAttributes({ header_color: value.hex })}
+                disableAlpha
+              />
 
-            <TextareaControl
-              label="Price information"
-              help="Enter price information text"
-              onChange={content => {
-                setAttributes({ info_text: content });
-              }}
-              value={info_text}
-            />
-            <p>Price information color</p>
-            <ColorPicker
-              color={info_color}
-              onChangeComplete={value =>
-                setAttributes({ info_color: value.hex })}
-              disableAlpha
-            />
-          </PanelBody>
-          <PanelBody title="Button">
-            <TextareaControl
-              label="Button"
-              help="Enter button text"
-              onChange={content => {
-                setAttributes({ button_text: content });
-              }}
-              value={button_text}
-            />
-            <p>Button color</p>
-            <ColorPicker
-              color={button_color}
-              onChangeComplete={value =>
-                setAttributes({ button_color: value.hex })}
-              disableAlpha
-            />
-            <p>Button text color</p>
-            <ColorPicker
-              color={button_text_color}
-              onChangeComplete={value =>
-                setAttributes({ button_text_color: value.hex })}
-              disableAlpha
-            />
-            <TextareaControl
-              label="Continue button"
-              help="Enter continue button text"
-              onChange={content => {
-                setAttributes({
-                  continue_button_text: content,
-                });
-              }}
-              value={continue_button_text}
-            /> <p> Continue button color </p> <ColorPicker
-              color={continue_button_color}
-              onChangeComplete={value =>
-                setAttributes({
-                  continue_button_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <p> Continue button text color </p> <ColorPicker
-              color={button_text_color}
-              onChangeComplete={value =>
-                setAttributes({
-                  continue_button_text_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <TextareaControl
-              label="Previous button"
-              help="Enter button text"
-              onChange={content => {
-                setAttributes({
-                  previous_button_text: content,
-                });
-              }}
-              value={previous_button_text}
-            /> <p> Previous button color </p> <ColorPicker
-              color={previous_button_color}
-              onChangeComplete={value =>
-                setAttributes({
-                  previous_button_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <p> Previous button text color </p> <ColorPicker
-              color={previous_button_text_color}
-              onChangeComplete={value =>
-                setAttributes({
-                  previous_button_text_color: value.hex,
-                })}
-              disableAlpha
-            />
-          </PanelBody>
-          <PanelBody title="Help link" initialOpen={true}>
-            <CheckboxControl
-              label="Display help link"
-              help="Do you want to display help link?"
-              checked={link}
-              onChange={value => {
-                setAttributes({
-                  link: value,
-                });
-              }}
-            />
+              <TextareaControl
+                label="Price information"
+                help="Enter price information text"
+                onChange={content => {
+                  setAttributes({ info_text: content });
+                }}
+                value={info_text}
+              />
+              <p>Price information color</p>
+              <ColorPicker
+                color={info_color}
+                onChangeComplete={value =>
+                  setAttributes({ info_color: value.hex })}
+                disableAlpha
+              />
+            </PanelBody>
+            <PanelBody title="Button">
+              <TextareaControl
+                label="Button"
+                help="Enter button text"
+                onChange={content => {
+                  setAttributes({ button_text: content });
+                }}
+                value={button_text}
+              />
+              <p>Button color</p>
+              <ColorPicker
+                color={button_color}
+                onChangeComplete={value =>
+                  setAttributes({ button_color: value.hex })}
+                disableAlpha
+              />
+              <p>Button text color</p>
+              <ColorPicker
+                color={button_text_color}
+                onChangeComplete={value =>
+                  setAttributes({ button_text_color: value.hex })}
+                disableAlpha
+              />
+              <TextareaControl
+                label="Continue button"
+                help="Enter continue button text"
+                onChange={content => {
+                  setAttributes({
+                    continue_button_text: content,
+                  });
+                }}
+                value={continue_button_text}
+              /> <p> Continue button color </p> <ColorPicker
+                color={continue_button_color}
+                onChangeComplete={value =>
+                  setAttributes({
+                    continue_button_color: value.hex,
+                  })}
+                disableAlpha
+              />
+              <p> Continue button text color </p> <ColorPicker
+                color={button_text_color}
+                onChangeComplete={value =>
+                  setAttributes({
+                    continue_button_text_color: value.hex,
+                  })}
+                disableAlpha
+              />
+              <TextareaControl
+                label="Previous button"
+                help="Enter button text"
+                onChange={content => {
+                  setAttributes({
+                    previous_button_text: content,
+                  });
+                }}
+                value={previous_button_text}
+              /> <p> Previous button color </p> <ColorPicker
+                color={previous_button_color}
+                onChangeComplete={value =>
+                  setAttributes({
+                    previous_button_color: value.hex,
+                  })}
+                disableAlpha
+              />
+              <p> Previous button text color </p> <ColorPicker
+                color={previous_button_text_color}
+                onChangeComplete={value =>
+                  setAttributes({
+                    previous_button_text_color: value.hex,
+                  })}
+                disableAlpha
+              />
+            </PanelBody>
+            <PanelBody title="Help link" initialOpen={true}>
+              <CheckboxControl
+                label="Display help link"
+                help="Do you want to display help link?"
+                checked={link}
+                onChange={value => {
+                  setAttributes({
+                    link: value,
+                  });
+                }}
+              />
 
-            <p> Help link url </p> <URLInputButton
-              label="Help link url"
-              url={help_link}
-              onChange={value =>
-                setAttributes({
-                  help_link: value,
-                })}
-            />
+              <p> Help link url </p> <URLInputButton
+                label="Help link url"
+                url={help_link}
+                onChange={value =>
+                  setAttributes({
+                    help_link: value,
+                  })}
+              />
 
-            <TextareaControl
-              label="Help link text"
-              help="Enter help link text"
-              onChange={content => {
-                setAttributes({
-                  help_text: content,
-                });
-              }}
-              value={help_text} />
-          </PanelBody>
-          <PanelBody title="Additional link">
-            <CheckboxControl
-              label="Display additional help link"
-              help="Do you want to display additional help link?"
-              checked={additional_link}
-              onChange={value => {
-                setAttributes({
-                  additional_link: value,
-                });
-              }}
-            />
+              <TextareaControl
+                label="Help link text"
+                help="Enter help link text"
+                onChange={content => {
+                  setAttributes({
+                    help_text: content,
+                  });
+                }}
+                value={help_text} />
+            </PanelBody>
+            <PanelBody title="Additional link">
+              <CheckboxControl
+                label="Display additional help link"
+                help="Do you want to display additional help link?"
+                checked={additional_link}
+                onChange={value => {
+                  setAttributes({
+                    additional_link: value,
+                  });
+                }}
+              />
 
-            <p> Additional help link url </p> <URLInputButton
-              label="Additional help link"
-              url={additional_help_link}
-              onChange={value =>
-                setAttributes({
-                  additional_help_link: value,
-                })}
-            />
+              <p> Additional help link url </p> <URLInputButton
+                label="Additional help link"
+                url={additional_help_link}
+                onChange={value =>
+                  setAttributes({
+                    additional_help_link: value,
+                  })}
+              />
 
-            <TextareaControl
-              label="Additional help link text"
-              help="Enter additional help link text"
-              onChange={content => {
-                setAttributes({
-                  additional_help_text: content,
-                });
-              }}
-              value={additional_help_text} />
-          </PanelBody>
-          <PanelBody title="Customer information">
-            <PanelRow>
-              <CheckboxControl
-                label="Full name"
-                help="Do you want to collect full name?"
-                checked={display_name}
-                onChange={value => {
-                  setAttributes({ display_name: value });
+              <TextareaControl
+                label="Additional help link text"
+                help="Enter additional help link text"
+                onChange={content => {
+                  setAttributes({
+                    additional_help_text: content,
+                  });
                 }}
-              />
-              <CheckboxControl
-                help="Do you want make this field mandatory?"
-                checked={mandatory_name}
-                onChange={value => {
-                  setAttributes({ mandatory_name: value });
-                }}
-              />
-            </PanelRow>
-            <PanelRow>
-              <CheckboxControl
-                label="Email"
-                help="Do you want to collect email?"
-                checked={display_email}
-                onChange={value => {
-                  setAttributes({ display_email: value });
-                }}
-              />
-              <CheckboxControl
-                help="Do you want make this field mandatory?"
-                checked={mandatory_email}
-                onChange={value => {
-                  setAttributes({ mandatory_email: value });
-                }}
-              />
-            </PanelRow>
-            <PanelRow>
-              <CheckboxControl
-                label="Address"
-                help="Do you want to collect address?"
-                checked={display_address}
-                onChange={value => {
-                  setAttributes({ display_address: value });
-                }}
-              />
-              <CheckboxControl
-                help="Do you want make this field mandatory?"
-                checked={mandatory_address}
-                onChange={value => {
-                  setAttributes({ mandatory_address: value });
-                }}
-              />
-            </PanelRow>
-            <PanelRow>
-              <CheckboxControl
-                label="Phone"
-                checked={display_phone}
-                help="Do you want to collect phone?"
-                onChange={value => setAttributes({ display_phone: value })}
-              />
-              <CheckboxControl
-                help="Do you want make this field mandatory?"
-                checked={mandatory_phone}
-                onChange={value => {
-                  setAttributes({ mandatory_phone: value });
-                }}
-              />
-            </PanelRow>
-            <PanelRow>
-              <CheckboxControl
-                label="Message"
-                help="Do you want to collect message?"
-                checked={display_message}
-                onChange={value => {
-                  setAttributes({ display_message: value });
-                }}
-              />
-              <CheckboxControl
-                help="Do you want make this field mandatory?"
-                checked={mandatory_message}
-                onChange={value => {
-                  setAttributes({ mandatory_message: value });
-                }}
-              />
-            </PanelRow>
-          </PanelBody>
+                value={additional_help_text} />
+            </PanelBody>
+            <PanelBody title="Customer information">
+              <PanelRow>
+                <CheckboxControl
+                  label="Full name"
+                  help="Do you want to collect full name?"
+                  checked={display_name}
+                  onChange={value => {
+                    setAttributes({ display_name: value });
+                  }}
+                />
+                <CheckboxControl
+                  help="Do you want make this field mandatory?"
+                  checked={mandatory_name}
+                  onChange={value => {
+                    setAttributes({ mandatory_name: value });
+                  }}
+                />
+              </PanelRow>
+              <PanelRow>
+                <CheckboxControl
+                  label="Email"
+                  help="Do you want to collect email?"
+                  checked={display_email}
+                  onChange={value => {
+                    setAttributes({ display_email: value });
+                  }}
+                />
+                <CheckboxControl
+                  help="Do you want make this field mandatory?"
+                  checked={mandatory_email}
+                  onChange={value => {
+                    setAttributes({ mandatory_email: value });
+                  }}
+                />
+              </PanelRow>
+              <PanelRow>
+                <CheckboxControl
+                  label="Address"
+                  help="Do you want to collect address?"
+                  checked={display_address}
+                  onChange={value => {
+                    setAttributes({ display_address: value });
+                  }}
+                />
+                <CheckboxControl
+                  help="Do you want make this field mandatory?"
+                  checked={mandatory_address}
+                  onChange={value => {
+                    setAttributes({ mandatory_address: value });
+                  }}
+                />
+              </PanelRow>
+              <PanelRow>
+                <CheckboxControl
+                  label="Phone"
+                  checked={display_phone}
+                  help="Do you want to collect phone?"
+                  onChange={value => setAttributes({ display_phone: value })}
+                />
+                <CheckboxControl
+                  help="Do you want make this field mandatory?"
+                  checked={mandatory_phone}
+                  onChange={value => {
+                    setAttributes({ mandatory_phone: value });
+                  }}
+                />
+              </PanelRow>
+              <PanelRow>
+                <CheckboxControl
+                  label="Message"
+                  help="Do you want to collect message?"
+                  checked={display_message}
+                  onChange={value => {
+                    setAttributes({ display_message: value });
+                  }}
+                />
+                <CheckboxControl
+                  help="Do you want make this field mandatory?"
+                  checked={mandatory_message}
+                  onChange={value => {
+                    setAttributes({ mandatory_message: value });
+                  }}
+                />
+              </PanelRow>
+            </PanelBody>
           </PanelBody>
         </Panel>
       </InspectorControls>

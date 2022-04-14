@@ -199,6 +199,7 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 			[
 				'label' => 'Price information',
 				'type'  => \Elementor\Controls_Manager::TEXT,
+				'default' => 'For {price} {currency} you will have access for {duration} {dtype}.'
 			]
 		);
 		$this->add_control(

@@ -78,7 +78,7 @@ function btcpaywall_load_gutenberg()
                 ),
                 'info_text' => array(
                     'type' => 'string',
-                    'default' => ''
+                    'default' => 'For {price} {currency} you will have access for {duration} {dtype}.'
                 ),
                 'header_color' => array(
                     'type' => 'string',
@@ -274,7 +274,7 @@ function btcpaywall_load_gutenberg()
                 ),
                 'info_text' => array(
                     'type' => 'string',
-                    'default' => ''
+                    'default' => 'For {price} {currency} you will have access for {duration} {dtype}.'
                 ),
                 'header_color' => array(
                     'type' => 'string',

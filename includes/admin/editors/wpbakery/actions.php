@@ -139,7 +139,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'textarea',
                 'heading' => 'Price information',
                 'param_name' => 'info_text',
-                'value' => '',
+                'value' => 'For {price} {currency} you will have access for {duration} {dtype}.',
                 'description' => 'Add price information text',
                 'group' => 'Main'
 
@@ -551,7 +551,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'textarea',
                 'heading' => 'Price information',
                 'param_name' => 'info_text',
-                'value' => '',
+                'value' => 'For {price} {currency} you will have access for {duration} {dtype}.',
                 'description' => 'Add price information text',
                 'group' => 'Main'
             ),
