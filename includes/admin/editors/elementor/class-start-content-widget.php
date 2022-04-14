@@ -136,7 +136,27 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 				'type'  => \Elementor\Controls_Manager::NUMBER,
 			]
 		);
-
+		$this->add_control(
+			'width',
+			[
+				'label' => 'Width',
+				'type'  => \Elementor\Controls_Manager::NUMBER,
+			]
+		);
+		$this->add_control(
+			'height',
+			[
+				'label' => 'Height',
+				'type'  => \Elementor\Controls_Manager::NUMBER,
+			]
+		);
+		$this->add_control(
+			'background_color',
+			[
+				'label' => 'Background color',
+				'type'  => \Elementor\Controls_Manager::COLOR,
+			]
+		);
 		$this->add_control(
 			'header_text',
 			[
@@ -402,8 +422,9 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 		$link = filter_var($settings['link'], FILTER_VALIDATE_BOOLEAN);
 		$additional_link = filter_var($settings['additional_link'], FILTER_VALIDATE_BOOLEAN);
 
+
 		if ($enable_pay_block) {
-			echo do_shortcode("[btcpw_start_content pay_block='true' currency='{$currency}' btc_format='{$btc_format}' duration='{$duration}' duration_type='{$duration_type}' price='{$price}' button_text = '{$settings['button_text']}'
+			echo do_shortcode("[btcpw_start_content pay_block='true' width='{$settings['width']}' height='{$settings['height']}' background_color='{$settings['background_color']}' currency='{$currency}' btc_format='{$btc_format}' duration='{$duration}' duration_type='{$duration_type}' price='{$price}' button_text = '{$settings['button_text']}'
 			header_text = '{$settings['header_text']}'
 			header_color = '{$settings['header_color']}'
 			info_text = '{$settings['info_text']}'

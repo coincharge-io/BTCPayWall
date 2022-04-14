@@ -72,34 +72,6 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 		);
 
 		$this->add_control(
-			'title',
-			[
-				'label' => 'Title',
-				'type'  => \Elementor\Controls_Manager::TEXT,
-				'default' => 'Untitled',
-			]
-		);
-
-		$this->add_control(
-			'description',
-			[
-				'label' => 'Description',
-				'type'  => \Elementor\Controls_Manager::TEXT,
-				'default' => 'No description',
-			]
-		);
-
-		$this->add_control(
-			'preview',
-			[
-				'label' => 'Preview',
-				'type'  => \Elementor\Controls_Manager::MEDIA,
-				'default' =>
-				['url' => "plugin_dir_url(__DIR__) . 'public/img/preview.png'"]
-			]
-		);
-
-		$this->add_control(
 			'currency',
 			[
 				'label' => 'Currency',
@@ -163,6 +135,69 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 			[
 				'label' => 'Duration',
 				'type'  => \Elementor\Controls_Manager::NUMBER,
+			]
+		);
+		$this->add_control(
+			'width',
+			[
+				'label' => 'Width',
+				'type'  => \Elementor\Controls_Manager::NUMBER,
+			]
+		);
+		$this->add_control(
+			'height',
+			[
+				'label' => 'Height',
+				'type'  => \Elementor\Controls_Manager::NUMBER,
+			]
+		);
+		$this->add_control(
+			'background_color',
+			[
+				'label' => 'Background color',
+				'type'  => \Elementor\Controls_Manager::COLOR,
+			]
+		);
+		$this->add_control(
+			'preview_title',
+			[
+				'label' => 'Title',
+				'type'  => \Elementor\Controls_Manager::TEXT,
+				'default' => 'Untitled',
+			]
+		);
+		$this->add_control(
+			'preview_title_color',
+			[
+				'label' => 'Title color',
+				'type'  => \Elementor\Controls_Manager::COLOR,
+			]
+		);
+		$this->add_control(
+			'preview_description',
+			[
+				'label' => 'Description',
+				'type'  => \Elementor\Controls_Manager::TEXT,
+				'default' => 'No description',
+			]
+		);
+		$this->add_control(
+			'preview_description_color',
+			[
+				[
+					'label' => 'Description color',
+					'type'  => \Elementor\Controls_Manager::COLOR,
+				]
+			]
+		);
+
+		$this->add_control(
+			'preview_image',
+			[
+				'label' => 'Preview',
+				'type'  => \Elementor\Controls_Manager::MEDIA,
+				'default' =>
+				['url' => "plugin_dir_url(__DIR__) . 'public/img/preview.png'"]
 			]
 		);
 		$this->add_control(
@@ -411,9 +446,9 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 
 		$settings         = $this->get_settings_for_display();
 		$enable_pay_view_block = $settings['pay_view_block'];
-		$title = $settings['title'];
-		$description = $settings['description'];
-		$preview = $settings['preview']['url'];
+		$preview_title = $settings['preview_title'];
+		$preview_description = $settings['preview_description'];
+		$preview_image = $settings['preview_image']['url'];
 		$price = $settings['price'];
 		$duration = $settings['duration'];
 		$duration_type = $settings['duration_type'];
@@ -434,7 +469,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 		$additional_link = filter_var($settings['additional_link'], FILTER_VALIDATE_BOOLEAN);
 
 		if ($enable_pay_view_block) {
-			echo do_shortcode("[btcpw_start_video pay_view_block='true' title='{$title}' description='{$description}' preview='{$preview}' currency='{$currency}' btc_format='{$btc_format}' duration='{$duration}' duration_type='{$duration_type}' price='{$price}' button_text = '{$settings['button_text']}'
+			echo do_shortcode("[btcpw_start_video pay_view_block='true' width='{$settings['width']}' height='{$settings['height']}' background_color='{$settings['background_color']}' preview_title='{$preview_title}' preview_description='{$preview_description}' preview_image='{$preview_image}' currency='{$currency}' btc_format='{$btc_format}' duration='{$duration}' duration_type='{$duration_type}' price='{$price}' button_text = '{$settings['button_text']}'
 			header_text = '{$settings['header_text']}'
 			header_color = '{$settings['header_color']}'
 			info_text = '{$settings['info_text']}'
