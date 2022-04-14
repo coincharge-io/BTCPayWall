@@ -13,9 +13,9 @@ $help_text = !empty($atts['help_text']) ? $atts['help_text'] : get_option('btcpw
 $additional_help = filter_var($atts['additional_link'], FILTER_VALIDATE_BOOLEAN) ?? filter_var(get_option('btcpw_pay_per_view_show_additional_help_link'), FILTER_VALIDATE_BOOLEAN);
 $additional_help_link = !empty($atts['additional_help_link']) ? $atts['additional_help_link'] : get_option('btcpw_pay_per_view_additional_help_link');
 $additional_help_text = !empty($atts['additional_help_text']) ? $atts['additional_help_text'] : get_option('btcpw_pay_per_view_additional_help_link_text');
-$background = !empty($atts['background_color'])?$atts['background_color']:get_option('btcpw_pay_per_view_background', '#ECF0F1');
-$width = !empty($atts['width'])?$atts['width']:get_option('btcpw_pay_per_view_width', 500);
-$height = !empty($atts['height'])?$atts['height']:get_option('btcpw_pay_per_view_height', 550);
+$background = !empty($atts['background_color']) ? $atts['background_color'] : get_option('btcpw_pay_per_view_background', '#ECF0F1');
+$width = !empty($atts['width']) ? $atts['width'] : get_option('btcpw_pay_per_view_width', 500);
+$height = !empty($atts['height']) ? $atts['height'] : get_option('btcpw_pay_per_view_height', 550);
 $header_color = !empty($atts['header_color']) ? $atts['header_color'] : get_option('btcpw_pay_per_view_header_color', '#000000');
 $info_color = !empty($atts['info_color']) ? $atts['info_color'] : get_option('btcpw_pay_per_view_info_color', '#000000');
 $button_color = get_option('btcpw_pay_per_view_button_color', '#f6b330');
@@ -23,8 +23,8 @@ $button_text_color = get_option('btcpw_pay_per_view_button_text_color', '#FFFFFF
 $default_text = get_option('btcpw_pay_per_view_title', 'Pay now to unlock blogpost');
 $default_button = get_option('btcpw_pay_per_view_button', 'Pay');
 $default_info = get_option('btcpw_pay_per_view_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]');
-$preview_title_color = get_option('btcpw_pay_per_view_preview_title_color', '#000000');
-$preview_description_color = get_option('btcpw_pay_per_view_preview_description_color', '#000000');
+$preview_title_color = !empty($atts['preview_title_color']) ? $atts['preview_title_color'] : get_option('btcpw_pay_per_view_preview_title_color', '#000000');
+$preview_description_color = !empty($atts['preview_description_color']) ? $atts['preview_description_color'] : get_option('btcpw_pay_per_view_preview_description_color', '#000000');
 
 
 $collect_atts = array(
@@ -44,9 +44,9 @@ $collect = btcpaywall_get_collect($collect_atts);
 $collect_data = btcpaywall_display_is_enabled($collect);
 $help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
 
-$image = wp_get_attachment_image_src($atts['preview']);
+$image = wp_get_attachment_image_src($atts['preview'] ?? $atts['preview_image']);
 
-$preview_url = $image ? $image[0] : $atts['preview'];
+$preview_url = $image ? $image[0] : ($atts['preview'] ? $atts['preview'] : $atts['preview_image']);
 $header = !empty($atts['header_text']) ? $atts['header_text'] : btcpaywall_get_payblock_header_string();
 $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attributes($atts) : btcpaywall_get_post_info_string(null, 'video');
 
@@ -113,8 +113,8 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
                         <img src=<?php echo esc_url($preview_url); ?> alt="Video preview">
                     </div>
                     <div class="btcpw_pay__preview preview_description">
-                        <h3><?php echo esc_html__($atts['title'], 'btcpaywall'); ?></h3>
-                        <p><?php echo esc_html__($atts['description'], 'btcpaywall'); ?></p>
+                        <h3><?php echo esc_html__($atts['title'] ?? $atts['preview_title'], 'btcpaywall'); ?></h3>
+                        <p><?php echo esc_html__($atts['description'] ?? $atts['preview_description'], 'btcpaywall'); ?></p>
                     </div>
 
                 </div>

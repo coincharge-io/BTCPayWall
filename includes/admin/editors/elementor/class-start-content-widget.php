@@ -54,9 +54,9 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 	{
 
 		$this->start_controls_section(
-			'content_section',
+			'option',
 			[
-				'label' => __('Content', 'btcpaywall'),
+				'label' => __('Option', 'btcpaywall'),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -136,6 +136,18 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 				'type'  => \Elementor\Controls_Manager::NUMBER,
 			]
 		);
+		$this->start_controls_tabs(
+			'style_tabs'
+		);
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'design',
+			[
+				'label' => __('Paywall design', 'btcpaywall'),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
 		$this->add_control(
 			'width',
 			[
@@ -155,6 +167,15 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 			[
 				'label' => 'Background color',
 				'type'  => \Elementor\Controls_Manager::COLOR,
+			]
+		);
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'main',
+			[
+				'label' => __('Main', 'btcpaywall'),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
@@ -188,7 +209,14 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 				'default' => '#FFFFFF',
 			]
 		);
-
+		$this->end_controls_tab();
+		$this->start_controls_tab(
+			'button',
+			[
+				'label' => __('Button', 'btcpaywall'),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
 		$this->add_control(
 			'button_text',
 			[
@@ -261,6 +289,14 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 				'default' => '#1d5aa3',
 			]
 		);
+		$this->end_controls_tab();
+		$this->start_controls_tab(
+			'help_link',
+			[
+				'label' => __('Help link', 'btcpaywall'),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
 		$this->add_control(
 			'link',
 			[
@@ -284,6 +320,14 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 				'default' => 'Help',
 			]
 		);
+		$this->end_controls_tab();
+		$this->start_controls_tab(
+			'additional_link',
+			[
+				'label' => __('Additional link', 'btcpaywall'),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
 		$this->add_control(
 			'additional_link',
 			[
@@ -304,6 +348,14 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 			[
 				'label' => 'Additional help link text',
 				'type'  => \Elementor\Controls_Manager::TEXT
+			]
+		);
+		$this->end_controls_tab();
+		$this->start_controls_tab(
+			'customer_information',
+			[
+				'label' => __('Customer information', 'btcpaywall'),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
@@ -391,7 +443,8 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 				'default' => 'no',
 			]
 		);
-
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
 
 		$this->end_controls_section();
 	}
