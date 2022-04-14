@@ -5,11 +5,11 @@ module.exports = {
   ...defaultConfig,
   entry: {
     index: path.join(__dirname, 'blocks/index.js'),
-    admin: path.join(__dirname, 'assets/src/js/btc-paywall-admin.js'),
-    preview: path.join(__dirname, 'assets/src/js/btc-paywall-design-preview-admin.js'),
-    public: path.join(__dirname, 'assets/src/js/btc-paywall-public.js'),
-    unsaved: path.join(__dirname, 'assets/src/js/btc-paywall-warn-unsaved.js'),
-    btcpay: path.join(__dirname, 'assets/src/js/btcpayserver.js'),
+    btc_paywall_admin: path.join(__dirname, 'assets/src/js/btc-paywall-admin.js'),
+    btc_paywall_design_preview_admin: path.join(__dirname, 'assets/src/js/btc-paywall-design-preview-admin.js'),
+    btc_paywall_public: path.join(__dirname, 'assets/src/js/btc-paywall-public.js'),
+    btc_paywall_warn_unsaved: path.join(__dirname, 'assets/src/js/btc-paywall-warn-unsaved.js'),
+    btcpayserver: path.join(__dirname, 'assets/src/js/btcpayserver.js'),
     opennode: path.join(__dirname, 'assets/src/js/opennode.js'),
   },
   output: {
