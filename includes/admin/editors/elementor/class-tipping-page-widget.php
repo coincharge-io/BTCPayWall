@@ -153,7 +153,7 @@ class Elementor_BTCPW_Tipping_Page_Widget extends \Elementor\Widget_Base
                 'label' => 'Logo',
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
-                    'url' => "BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png'",
+                    'url' => "BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png'",
                 ],
             ]
         );

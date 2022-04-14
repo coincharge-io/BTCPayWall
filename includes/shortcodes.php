@@ -38,7 +38,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
         'button_text' => $id ? $result['button_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_button', true) : 'Tipping now'),
         'button_text_color' => $id ? ('#' . $result['button_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_text', true) : '#FFFFFF'),
         'button_color' => $id ? ('#' . $result['button_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button', true) : '#FE642E'),
-        'logo_id' => $id ? $result['logo'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png'),
+        'logo_id' => $id ? $result['logo'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png'),
         'background_id' => $id ? $result['background'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_background', true) : ''),
         'free_input' => $id ? filter_var($result['free_input'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_free_input', true) : true),
         'input_background' => $id ? ('#' . $result['input_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_amounts', true) : '#ffa500'),
@@ -314,7 +314,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
         'button_text' => $id ? $result['button_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_button', true) : 'Tipping now'),
         'button_text_color' => $id ? ('#' . $result['button_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_text', true) : '#FFFFFF'),
         'button_color' => $id ? ('#' . $result['button_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button', true) : '#FE642E'),
-        'logo_id' => $id ? $result['logo'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png'),
+        'logo_id' => $id ? $result['logo'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png'),
         'background_id' => $id ? $result['background'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_background', true) : ''),
         'free_input' => $id ? filter_var($result['free_input'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_free_input', true) : true),
         'input_background' => $id ? ('#' . $result['input_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_amounts', true) : '#ffa500'),
@@ -587,7 +587,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
         'button_text' => $id ? $result['button_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_button', true) : 'Tipping now'),
         'button_text_color' => $id ? ('#' . $result['button_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_text', true) : '#FFFFFF'),
         'button_color' => $id ? ('#' . $result['button_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button', true) : '#FE642E'),
-        'logo_id' => $id ? $result['logo'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png'),
+        'logo_id' => $id ? $result['logo'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png'),
         'background_id' => $id ? $result['background'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_background', true) : ''),
         'free_input' => $id ? filter_var($result['free_input'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_free_input', true) : true),
         'input_background' => $id ? ('#' . $result['input_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_amounts', true) : '#ffa500'),
@@ -899,7 +899,7 @@ function btcpaywall_render_shortcode_box_tipping($atts)
         'button_text' => $id ? $result['button_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_button', true) : 'Tipping now'),
         'button_text_color' => $id ? ('#' . $result['button_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_text', true) : '#FFFFFF'),
         'button_color' => $id ? ('#' . $result['button_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button', true) : '#FE642E'),
-        'logo_id' => $id ? $result['logo'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png'),
+        'logo_id' => $id ? $result['logo'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png'),
         'background_id' => $id ? $result['background'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_background', true) : ''),
         'input_background' => $id ? ('#' . $result['input_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_amounts', true) : '#ffa500'),
         'background' => $id ? ('#' . $result['hf_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_header_footer_background', true) : '#1d5aa3'),
@@ -1173,7 +1173,7 @@ function btcpaywall_render_shortcode_btcpw_start_video($atts)
     if (btcpaywall_is_paid_content()) {
         return '';
     }
-    $img_preview = BTCPAYWALL_PLUGIN_URL . '/assets/src/img/preview.png';
+    $img_preview = BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/preview.png';
 
     $atts = shortcode_atts(array(
         'width' => '',

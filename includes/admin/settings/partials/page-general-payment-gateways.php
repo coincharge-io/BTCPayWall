@@ -22,7 +22,7 @@ $supported_gateways = array(
                 <tr>
                     <td>
                         <div><?php echo esc_html__('BTCPay Server', 'btcpaywall'); ?></div>
-                        <div><?php echo (file_get_contents(BTCPAYWALL_PLUGIN_DIR . 'assets/src/img/btcpay_logo.svg')); ?></div>
+                        <div><?php echo (file_get_contents(BTCPAYWALL_PLUGIN_DIR . 'assets/dist/img/btcpay_logo.svg')); ?></div>
                     </td>
                     <td><input type="radio" id="btcpayserver" name="btcpw_selected_payment_gateway" value=<?php echo esc_attr__("BTCPayServer", "btcpaywall"); ?> <?php echo $selected_gateway === 'BTCPayServer' ? 'checked' : ''; ?>>
                     </td>
@@ -30,7 +30,7 @@ $supported_gateways = array(
                     <td><a href="<?php echo admin_url('admin.php?page=btcpw_general_settings&section=btcpayserver'); ?>"><?php echo esc_html__('Manage', 'btcpaywall'); ?></a></td>
                 </tr>
                 <tr>
-                    <td><?php echo esc_html__('OpenNode', 'btcpaywall'); ?> <div><?php echo (file_get_contents(BTCPAYWALL_PLUGIN_DIR . 'assets/src/img/opennode_logo.svg')); ?></div>
+                    <td><?php echo esc_html__('OpenNode', 'btcpaywall'); ?> <div><?php echo (file_get_contents(BTCPAYWALL_PLUGIN_DIR . 'assets/dist/img/opennode_logo.svg')); ?></div>
                     </td>
                     <td><input type="radio" id="opennode" name="btcpw_selected_payment_gateway" value=<?php echo esc_attr__("OpenNode", "btcpaywall"); ?> <?php echo $selected_gateway === 'OpenNode' ? 'checked' : ''; ?>>
                     </td>

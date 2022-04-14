@@ -468,7 +468,7 @@ function btcpaywall_load_gutenberg()
                 ),
                 'logo_id' => array(
                     'type' => 'number',
-                    'default' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
+                    'default' => BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png',
                 ),
                 'background_id' => array(
                     'type' => 'number',
@@ -550,7 +550,7 @@ function btcpaywall_load_gutenberg()
                 ),
                 'logo_id' => array(
                     'type' => 'number',
-                    'default' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
+                    'default' => BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png',
                 ),
                 'background_id' => array(
                     'type' => 'number',
@@ -756,7 +756,7 @@ function btcpaywall_load_gutenberg()
                 ),
                 'logo_id' => array(
                     'type' => 'number',
-                    'default' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
+                    'default' => BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png',
                 ),
                 'background_id' => array(
                     'type' => 'number',
@@ -962,7 +962,7 @@ function btcpaywall_load_gutenberg()
                 ),
                 'logo_id' => array(
                     'type' => 'number',
-                    'default' => BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png',
+                    'default' => BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png',
                 ),
                 'background_id' => array(
                     'type' => 'number',

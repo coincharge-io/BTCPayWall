@@ -83,7 +83,7 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
                     'BTC' => 'BTC',
                     'EUR' => 'EUR',
                     'USD' => 'USD',
-                    'GBP'=>'GBP'
+                    'GBP' => 'GBP'
                 ],
                 'default' => 'SATS',
             ]
@@ -153,7 +153,7 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
                 'label' => 'Logo',
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
-                    'url' => "BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png'",
+                    'url' => "BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png'",
                 ],
             ]
         );
@@ -230,7 +230,7 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
                 'label' => 'Secondary color for amount',
                 'type'  => \Elementor\Controls_Manager::COLOR,
                 'default' => '#000',
-                'description'=>'This color will be used as background color for selected amount field and as a text and border color for all unselected amount fields.'
+                'description' => 'This color will be used as background color for selected amount field and as a text and border color for all unselected amount fields.'
             ]
         );
         $this->end_controls_section();

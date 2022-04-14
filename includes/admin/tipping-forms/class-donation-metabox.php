@@ -408,7 +408,7 @@ class Donation_Forms_Metabox
                             <tr class="btcpaywall_template_tipping_box">
                                 <td class="btcpaywall_tipping_image_wrap">
 
-                                    <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-box.png'; ?>">
+                                    <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/Tipping-box.png'; ?>">
                                 </td>
                                 <td>
                                     <p>Tipping Box - 250x300/300x300</p>
@@ -421,7 +421,7 @@ class Donation_Forms_Metabox
                             <tr class="btcpaywall_template_tipping_banner_high">
                                 <td class="btcpaywall_tipping_image_wrap">
 
-                                    <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-high.png'; ?>">
+                                    <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/Tipping-banner-high.png'; ?>">
                                 </td>
                                 <td>
                                     <p>Tipping Banner High - 200x710</p>
@@ -434,7 +434,7 @@ class Donation_Forms_Metabox
                             <tr class="btcpaywall_template_tipping_banner_wide">
                                 <td class="btcpaywall_tipping_image_wrap">
 
-                                    <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-banner-wide.png'; ?>">
+                                    <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/Tipping-banner-wide.png'; ?>">
                                 </td>
                                 <td>
                                     <p>Tipping Banner Wide - 600x200</p>
@@ -446,7 +446,7 @@ class Donation_Forms_Metabox
                             </tr>
                             <tr class="btcpaywall_template_tipping_page">
                                 <td class="btcpaywall_tipping_image_wrap">
-                                    <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/src/img/Tipping-page.png'; ?>">
+                                    <img src="<?php echo BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/Tipping-page.png'; ?>">
                                 </td>
                                 <td>
                                     <p>Donation Page - 520x600</p>
