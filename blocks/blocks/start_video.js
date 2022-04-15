@@ -881,7 +881,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 disableAlpha
               />
             </PanelBody>
-            <PanelBody title="Button">
+            <PanelBody title="Buttons">
               <TextareaControl
                 label="Button"
                 help="Enter button text"

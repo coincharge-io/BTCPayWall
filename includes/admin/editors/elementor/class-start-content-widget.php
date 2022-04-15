@@ -214,7 +214,7 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 		$this->start_controls_tab(
 			'button',
 			[
-				'label' => __('Button', 'btcpaywall'),
+				'label' => __('Buttons', 'btcpaywall'),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);

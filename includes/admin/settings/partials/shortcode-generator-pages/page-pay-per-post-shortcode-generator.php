@@ -85,11 +85,11 @@ $back_url = (sanitize_text_field($_GET['action']) == 'edit') ? 'admin.php?page=b
             </div>
             <div class="row">
                 <div class="col-20">
-                    <label for="btcpaywall_pay_per_post_price">Default price</label>
+                    <label for="btcpaywall_pay_per_post_price">Price</label>
                 </div>
                 <div class="col-80">
 
-                    <input required type="number" min=0 placeholder="Default Price" step=1 name="btcpaywall_pay_per_post_price" id="btcpaywall_pay_per_post_price" value="<?php echo esc_attr($result->price); ?>">
+                    <input required type="number" min=0 placeholder="Price" step=1 name="btcpaywall_pay_per_post_price" id="btcpaywall_pay_per_post_price" value="<?php echo esc_attr($result->price); ?>">
 
                     <select required name="btcpaywall_pay_per_post_currency" id="btcpaywall_pay_per_post_currency">
                         <option disabled value="">Select currency</option>
@@ -112,10 +112,10 @@ $back_url = (sanitize_text_field($_GET['action']) == 'edit') ? 'admin.php?page=b
             </div>
             <div class="row">
                 <div class="col-20">
-                    <label for="btcpaywall_pay_per_post_duration">Default duration</label>
+                    <label for="btcpaywall_pay_per_post_duration">Duration</label>
                 </div>
                 <div class="col-80">
-                    <input type="number" min="1" placeholder="Default Access Duration" name="btcpaywall_pay_per_post_duration" id="btcpaywall_pay_per_post_duration" <?php echo esc_attr($disable); ?> value="<?php echo esc_attr($result->duration); ?>">
+                    <input type="number" min="1" placeholder="Access Duration" name="btcpaywall_pay_per_post_duration" id="btcpaywall_pay_per_post_duration" <?php echo esc_attr($disable); ?> value="<?php echo esc_attr($result->duration); ?>">
                     <select required name="btcpaywall_pay_per_post_duration_type" id="btcpaywall_pay_per_post_duration_type">
                         <option disabled value="">Select duration type</option>
                         <?php foreach ($supported_durations as $duration) : ?>
@@ -201,7 +201,7 @@ $back_url = (sanitize_text_field($_GET['action']) == 'edit') ? 'admin.php?page=b
                     </div>
                 </div>
                 <div data-id="button" class="btcpaywall_pay_per_container_header">
-                    <h3><?php echo esc_html__('Button', 'btcpaywall'); ?></h3>
+                    <h3><?php echo esc_html__('Buttons', 'btcpaywall'); ?></h3>
                 </div>
                 <div class="btcpaywall_pay_per_container_body button-body">
 

@@ -159,7 +159,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_text',
                 'value' => 'Pay',
                 'description' => 'Set button text',
-                'group' => 'Button'
+                'group' => 'Buttons'
 
 
             ),
@@ -169,7 +169,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set button text color',
-                'group' => 'Button'
+                'group' => 'Buttons'
 
 
             ),
@@ -179,7 +179,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_color',
                 'value' => '#FE642E',
                 'description' => 'Set button color',
-                'group' => 'Button'
+                'group' => 'Buttons'
 
 
             ),
@@ -189,7 +189,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_text',
                 'value' => 'Continue',
                 'description' => 'Set continue button text',
-                'group' => 'Button'
+                'group' => 'Buttons'
 
 
             ),
@@ -199,7 +199,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set continue_button text color',
-                'group' => 'Button'
+                'group' => 'Buttons'
             ),
             array(
                 'type' => 'colorpicker',
@@ -207,7 +207,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_color',
                 'value' => '#FE642E',
                 'description' => 'Set continue button color',
-                'group' => 'Button'
+                'group' => 'Buttons'
             ),
             array(
                 'type' => 'textarea',
@@ -215,7 +215,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_text',
                 'value' => 'Previous',
                 'description' => 'Set previous button text',
-                'group' => 'Button'
+                'group' => 'Buttons'
             ),
             array(
                 'type' => 'colorpicker',
@@ -223,7 +223,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set previous button text color',
-                'group' => 'Button'
+                'group' => 'Buttons'
             ),
             array(
                 'type' => 'colorpicker',
@@ -231,7 +231,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_color',
                 'value' => '#1d5aa3',
                 'description' => 'Set previous button color',
-                'group' => 'Button'
+                'group' => 'Buttons'
             ),
             array(
                 'type' => 'checkbox',
@@ -569,7 +569,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_text',
                 'value' => 'Pay',
                 'description' => 'Set button text',
-                'group' => 'Button'
+                'group' => 'Buttons'
             ),
             array(
                 'type' => 'colorpicker',
@@ -577,7 +577,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set button text color',
-                'group' => 'Button'
+                'group' => 'Buttons'
             ),
             array(
                 'type' => 'colorpicker',
@@ -585,7 +585,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'button_color',
                 'value' => '#FE642E',
                 'description' => 'Set button color',
-                'group' => 'Button'
+                'group' => 'Buttons'
             ),
             array(
                 'type' => 'textarea',
@@ -593,7 +593,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_text',
                 'value' => 'Continue',
                 'description' => 'Set continue button text',
-                'group' => 'Button'
+                'group' => 'Buttons'
             ),
             array(
                 'type' => 'colorpicker',
@@ -601,7 +601,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set continue_button text color',
-                'group' => 'Button'
+                'group' => 'Buttons'
             ),
             array(
                 'type' => 'colorpicker',
@@ -609,7 +609,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'continue_button_color',
                 'value' => '#FE642E',
                 'description' => 'Set continue button color',
-                'group' => 'Button'
+                'group' => 'Buttons'
             ),
             array(
                 'type' => 'textarea',
@@ -617,7 +617,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_text',
                 'value' => 'Previous',
                 'description' => 'Set previous button text',
-                'group' => 'Button'
+                'group' => 'Buttons'
             ),
             array(
                 'type' => 'colorpicker',
@@ -625,7 +625,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_text_color',
                 'value' => '#ffffff',
                 'description' => 'Set previous button text color',
-                'group' => 'Button'
+                'group' => 'Buttons'
 
             ),
             array(
@@ -634,7 +634,7 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_color',
                 'value' => '#1d5aa3',
                 'description' => 'Set previous button color',
-                'group' => 'Button'
+                'group' => 'Buttons'
             ),
             array(
                 'type' => 'checkbox',
