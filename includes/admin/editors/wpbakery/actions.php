@@ -107,6 +107,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'textfield',
                 'heading' => 'Width',
                 'param_name' => 'width',
+                'value' => 500,
                 'description' => 'Set paywall width',
                 'group' => 'Paywall design'
             ),
@@ -114,6 +115,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'textfield',
                 'heading' => 'Height',
                 'param_name' => 'height',
+                'value' => 550,
                 'description' => 'Set paywall height',
                 'group' => 'Paywall design'
             ),
@@ -283,8 +285,8 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display name',
                 'param_name' => 'display_name',
-                'value' => false,
-                'std' => false,
+                'value' => true,
+                'std' => true,
                 'description' => 'Collect information',
                 'group' => 'Customer information'
             ),
@@ -301,8 +303,8 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display email',
                 'param_name' => 'display_email',
-                'value' => false,
-                'std' => false,
+                'value' => true,
+                'std' => true,
                 'description' => 'Collect information',
                 'group' => 'Customer information'
             ),
@@ -319,8 +321,8 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display phone',
                 'param_name' => 'display_phone',
-                'value' => false,
-                'std' => false,
+                'value' => true,
+                'std' => true,
                 'description' => 'Collect information',
                 'group' => 'Customer information'
             ),
@@ -337,8 +339,8 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display address',
                 'param_name' => 'display_address',
-                'value' => false,
-                'std' => false,
+                'value' => true,
+                'std' => true,
                 'description' => 'Collect information',
                 'group' => 'Customer information'
             ),
@@ -482,6 +484,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'textfield',
                 'heading' => 'Width',
                 'param_name' => 'width',
+                'value' => 500,
                 'description' => 'Set paywall width',
                 'group' => 'Paywall design'
             ),
@@ -489,6 +492,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'textfield',
                 'heading' => 'Height',
                 'param_name' => 'height',
+                'value' => 550,
                 'description' => 'Set paywall height',
                 'group' => 'Paywall design'
             ),
@@ -501,7 +505,7 @@ function btcpaywall_load_vc_widgets()
                 'group' => 'Video preview'
             ),
             array(
-                'type' => 'textarea',
+                'type' => 'colorpicker',
                 'heading' => 'Title color',
                 'param_name' => 'preview_title_color',
                 'value' => '',
@@ -517,7 +521,7 @@ function btcpaywall_load_vc_widgets()
                 'group' => 'Video preview'
             ),
             array(
-                'type' => 'textarea',
+                'type' => 'colorpicker',
                 'heading' => 'Description',
                 'param_name' => 'preview_description_color',
                 'value' => '',
@@ -686,8 +690,8 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display name',
                 'param_name' => 'display_name',
-                'value' => false,
-                'std' => false,
+                'value' => true,
+                'std' => true,
                 'description' => 'Collect information',
                 'group' => 'Customer information'
             ),
@@ -704,8 +708,8 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display email',
                 'param_name' => 'display_email',
-                'value' => false,
-                'std' => false,
+                'value' => true,
+                'std' => true,
                 'description' => 'Collect information',
                 'group' => 'Customer information'
             ),
@@ -722,8 +726,8 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'checkbox',
                 'heading' => 'Display phone',
                 'param_name' => 'display_phone',
-                'value' => false,
-                'std' => false,
+                'value' => true,
+                'std' => true,
                 'description' => 'Collect information',
                 'group' => 'Customer information'
             ),
