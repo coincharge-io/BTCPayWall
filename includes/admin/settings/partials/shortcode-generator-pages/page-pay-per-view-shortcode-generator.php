@@ -74,6 +74,14 @@ $back_url = (sanitize_text_field($_GET['action']) == 'edit') ? 'admin.php?page=b
             <?php endif; ?>
             <div class="row">
                 <div class="col-20">
+                    <label for="btcpaywall_pay_per_view_type">Type</label>
+                </div>
+                <div class="col-80">
+                    <input type="text" readonly id="btcpaywall_pay_per_view_type" value="pay-per-view" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
                     <label for="btcpaywall_pay_per_view_shortcode_name">Name</label>
                 </div>
                 <div class="col-80">
@@ -473,7 +481,6 @@ $back_url = (sanitize_text_field($_GET['action']) == 'edit') ? 'admin.php?page=b
                 </div>
             </div>
             <input type="hidden" id="btcpaywall_pay_per_view_id" value="<?php echo esc_attr($result->id); ?>" />
-            <input type="hidden" id="btcpaywall_pay_per_view_type" value="pay-per-view" />
 
             <div class="btcpw__paywall_submit_button" style="display: inline-block;">
                 <button class="button button-secondary btcpw_button" type="button"><a href="<?php echo admin_url($back_url); ?>"><?php echo esc_html__('Back', 'btcpaywall'); ?></a></button>

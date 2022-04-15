@@ -850,3 +850,9 @@ Gateway
 #btcpw_general_payment_gateway_options td a:hover {
   border: solid 2px;
 }
+
+/*Shortcode generator*/
+.btcpw_pay_per_shortcode {
+  border: 1px solid black;
+  padding: 20px 0px 20px 5px;
+}
