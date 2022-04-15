@@ -153,6 +153,7 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 			[
 				'label' => 'Width',
 				'type'  => \Elementor\Controls_Manager::NUMBER,
+				'default' => 500
 			]
 		);
 		$this->add_control(
@@ -160,6 +161,7 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 			[
 				'label' => 'Height',
 				'type'  => \Elementor\Controls_Manager::NUMBER,
+				'default' => 550
 			]
 		);
 		$this->add_control(
@@ -292,7 +294,7 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 		);
 		$this->end_controls_tab();
 		$this->start_controls_tab(
-			'help_link',
+			'help',
 			[
 				'label' => __('Help link', 'btcpaywall'),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
@@ -323,7 +325,7 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 		);
 		$this->end_controls_tab();
 		$this->start_controls_tab(
-			'additional_link',
+			'additional',
 			[
 				'label' => __('Additional link', 'btcpaywall'),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,

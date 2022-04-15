@@ -154,6 +154,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 			[
 				'label' => 'Width',
 				'type'  => \Elementor\Controls_Manager::NUMBER,
+				'default' => 500
 			]
 		);
 		$this->add_control(
@@ -161,6 +162,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 			[
 				'label' => 'Height',
 				'type'  => \Elementor\Controls_Manager::NUMBER,
+				'default' => 550
 			]
 		);
 		$this->add_control(
@@ -204,10 +206,8 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 		$this->add_control(
 			'preview_description_color',
 			[
-				[
-					'label' => 'Description color',
-					'type'  => \Elementor\Controls_Manager::COLOR,
-				]
+				'label' => 'Description color',
+				'type'  => \Elementor\Controls_Manager::COLOR,
 			]
 		);
 
@@ -343,7 +343,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 		);
 		$this->end_controls_tab();
 		$this->start_controls_tab(
-			'help_link',
+			'help',
 			[
 				'label' => __('Help link', 'btcpaywall'),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
@@ -374,7 +374,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 		);
 		$this->end_controls_tab();
 		$this->start_controls_tab(
-			'additional_link',
+			'additional',
 			[
 				'label' => __('Additional link', 'btcpaywall'),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
@@ -512,7 +512,9 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 		$settings         = $this->get_settings_for_display();
 		$enable_pay_view_block = $settings['pay_view_block'];
 		$preview_title = $settings['preview_title'];
+		$preview_title_color = $settings['preview_title_color'];
 		$preview_description = $settings['preview_description'];
+		$preview_description_color = $settings['preview_description_color'];
 		$preview_image = $settings['preview_image']['url'];
 		$price = $settings['price'];
 		$duration = $settings['duration'];
@@ -534,7 +536,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 		$additional_link = filter_var($settings['additional_link'], FILTER_VALIDATE_BOOLEAN);
 
 		if ($enable_pay_view_block) {
-			echo do_shortcode("[btcpw_start_video pay_view_block='true' width='{$settings['width']}' height='{$settings['height']}' background_color='{$settings['background_color']}' preview_title='{$preview_title}' preview_description='{$preview_description}' preview_image='{$preview_image}' currency='{$currency}' btc_format='{$btc_format}' duration='{$duration}' duration_type='{$duration_type}' price='{$price}' button_text = '{$settings['button_text']}'
+			echo do_shortcode("[btcpw_start_video pay_view_block='true' width='{$settings['width']}' height='{$settings['height']}' background_color='{$settings['background_color']}' preview_title='{$preview_title}' preview_title_color='{$preview_title_color}' preview_description='{$preview_description}' preview_description_color='{$preview_description_color}' preview_image='{$preview_image}' currency='{$currency}' btc_format='{$btc_format}' duration='{$duration}' duration_type='{$duration_type}' price='{$price}' button_text = '{$settings['button_text']}'
 			header_text = '{$settings['header_text']}'
 			header_color = '{$settings['header_color']}'
 			info_text = '{$settings['info_text']}'
