@@ -18,6 +18,7 @@ import {
   SelectControl,
   CheckboxControl,
   ColorPicker,
+  ResponsiveWrapper
 } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
 
@@ -454,7 +455,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       type: 'string',
     },
     preview_image: {
-      type: 'string',
+      type: 'number',
       default: '',
     },
     background_color: {
@@ -813,7 +814,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                   />
                 </MediaUploadCheck>
                 {!!preview_image &&
-                  backgroundMedia &&
+                  previewMedia &&
                   <MediaUploadCheck>
                     <MediaUpload
                       title="Replace preview image"

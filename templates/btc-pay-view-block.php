@@ -66,8 +66,7 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
         color: <?php echo esc_html($preview_title_color); ?>;
     }
 
-    .btcpw_pay__content p,
-    .btcpw_revenue_view_customer_information label {
+    .btcpw_pay__content p {
         color: <?php echo esc_html($info_color); ?>;
     }
 

@@ -249,7 +249,7 @@ function btcpaywall_load_gutenberg()
                     'default' => '#fff'
                 ),
                 'preview_image' => array(
-                    'type' => 'string',
+                    'type' => 'number',
                     'default' => ''
                 ),
                 'currency' => array(
