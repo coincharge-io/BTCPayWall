@@ -220,10 +220,7 @@ class BTCPayWall_DB_Tipping_Forms extends BTCPayWall_DB
 
             $sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
         }
-
-
         $result = $wpdb->get_results($sql, 'ARRAY_A');
-
         return $result;
     }
     public function create_table()

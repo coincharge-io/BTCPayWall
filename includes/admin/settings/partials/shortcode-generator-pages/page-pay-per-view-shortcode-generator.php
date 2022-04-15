@@ -3,7 +3,7 @@
 
 
 if (!defined('ABSPATH')) exit;
-$id = sanitize_text_field($_GET['id']) ?? null;
+$id = isset($_GET['id']) ? sanitize_text_field($_GET['id']) : null;
 
 $result = new BTCPayWall_Pay_Per_Shortcode($id);
 $used_currency = get_option('btcpaywall_pay_per_view_currency');
@@ -17,7 +17,7 @@ $used_format = get_option("btcpaywall_pay_per_view_btc_format");
 $disabled_field = ($result->duration_type === 'unlimited') || ($result->duration_type === 'onetime');
 $disable = $disabled_field ? 'disabled' : '';
 $preview_image = wp_get_attachment_image_src($result->preview_image);
-$back_url = (sanitize_text_field($_GET['action']) == 'edit') ? 'admin.php?page=btcpw_pay_per_shortcode_list' : 'admin.php?page=btcpw_pay_per_shortcode_generator';
+$back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == 'edit') ? 'admin.php?page=btcpw_pay_per_shortcode_list' : 'admin.php?page=btcpw_pay_per_shortcode_generator';
 
 ?>
 <style>
@@ -55,7 +55,7 @@ $back_url = (sanitize_text_field($_GET['action']) == 'edit') ? 'admin.php?page=b
 
     #btcpw_pay__button_preview {
         background-color: <?php echo esc_html($result->button_color); ?>;
-        color: <?php echo esc_html($result->button_txt_color); ?>;
+        color: <?php echo esc_html($result->button_text_color); ?>;
     }
 </style>
 <div id="btcpaywall_pay_per_view_shortcode_generator">
@@ -294,7 +294,7 @@ $back_url = (sanitize_text_field($_GET['action']) == 'edit') ? 'admin.php?page=b
                             <label for="btcpaywall_pay_per_view_button_text_color">Button text color</label>
                         </div>
                         <div class="col-80">
-                            <input id="btcpaywall_pay_per_view_button_text_color" class="btcpaywall_pay_per_view_button_text_color" name="btcpaywall_pay_per_view_button_text_color" type="text" value="<?php echo esc_attr($result->button_txt_color); ?>" />
+                            <input id="btcpaywall_pay_per_view_button_text_color" class="btcpaywall_pay_per_view_button_text_color" name="btcpaywall_pay_per_view_button_text_color" type="text" value="<?php echo esc_attr($result->button_text_color); ?>" />
                         </div>
                     </div>
                     <div class="row">

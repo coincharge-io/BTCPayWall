@@ -498,7 +498,7 @@ class Donation_Forms_Metabox
                                 <label for="btcpaywall_tipping_text_thankyou"><?php echo __('Link to Thank you page', 'btcpaywall'); ?></label>
                             </div>
                             <div>
-                                <input type="text" id="btcpaywall_tipping_text_thankyou" name="btcpaywall_tipping_text_thankyou" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_thankyou'][0]); ?>" />
+                                <input type="text" id="btcpaywall_tipping_text_thankyou" name="btcpaywall_tipping_text_thankyou" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_thankyou'][0] ?? ''); ?>" />
                             </div>
                         </fieldset>
                         <div data-id="global" class="btcpaywall_container_header">
@@ -596,7 +596,7 @@ class Donation_Forms_Metabox
                                     <label for="btcpaywall_tipping_text_description"><?php echo __('Description', 'btcpaywall'); ?></label>
                                 </div>
                                 <div>
-                                    <input type="text" id="btcpaywall_tipping_text_description" name="btcpaywall_tipping_text_description" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_description'][0]); ?>" />
+                                    <input type="text" id="btcpaywall_tipping_text_description" name="btcpaywall_tipping_text_description" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_description'][0] ?? ''); ?>" />
                                 </div>
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_box">
@@ -835,10 +835,10 @@ class Donation_Forms_Metabox
                                     <div>
                                         <label for="btcpaywall_tipping_bool_display_name"><?php echo __('Display', 'btcpaywall'); ?></label>
 
-                                        <input type="checkbox" name="btcpaywall_tipping_bool_display_name" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_name'][0]); ?> />
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_display_name" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_name'][0] ?? false); ?> />
 
                                         <label for="btcpaywall_tipping_bool_mandatory_name"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
-                                        <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_name" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_name'][0]); ?> />
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_name" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_name'][0] ?? false); ?> />
                                     </div>
 
                                 </fieldset>
@@ -849,10 +849,10 @@ class Donation_Forms_Metabox
                                     <div>
                                         <label for="btcpaywall_tipping_bool_display_email"><?php echo __('Display', 'btcpaywall'); ?></label>
 
-                                        <input type="checkbox" name="btcpaywall_tipping_bool_display_email" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_email'][0]); ?> />
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_display_email" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_email'][0] ?? false); ?> />
 
                                         <label for="btcpaywall_tipping_bool_mandatory_email"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
-                                        <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_email" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_email'][0]); ?> />
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_email" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_email'][0] ?? false); ?> />
                                     </div>
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
@@ -862,10 +862,10 @@ class Donation_Forms_Metabox
                                     <div>
                                         <label for="btcpaywall_tipping_bool_display_address"><?php echo __('Display', 'btcpaywall'); ?></label>
 
-                                        <input type="checkbox" name="btcpaywall_tipping_bool_display_address" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_address'][0]); ?> />
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_display_address" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_address'][0] ?? false); ?> />
 
                                         <label for="btcpaywall_tipping_bool_mandatory_email"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
-                                        <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_email" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_address'][0]); ?> />
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_email" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_address'][0] ?? false); ?> />
                                     </div>
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
@@ -875,10 +875,10 @@ class Donation_Forms_Metabox
                                     <div>
                                         <label for="btcpaywall_tipping_bool_display_phone"><?php echo __('Display', 'btcpaywall'); ?></label>
 
-                                        <input type="checkbox" name="btcpaywall_tipping_bool_display_phone" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_phone'][0]); ?> />
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_display_phone" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_phone'][0] ?? false); ?> />
 
                                         <label for="btcpaywall_tipping_bool_mandatory_phone"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
-                                        <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_phone" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_phone'][0]); ?> />
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_phone" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_phone'][0] ?? false); ?> />
                                     </div>
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
@@ -887,10 +887,10 @@ class Donation_Forms_Metabox
                                     </div>
                                     <div>
                                         <label for="btcpaywall_tipping_bool_display_message"><?php echo __('Display', 'btcpaywall'); ?></label>
-                                        <input type="checkbox" name="btcpaywall_tipping_bool_display_message" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_message'][0]); ?> />
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_display_message" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_message'][0] ?? false); ?> />
 
                                         <label for="btcpaywall_tipping_bool_mandatory_message"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
-                                        <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_message" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_message'][0]); ?> />
+                                        <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_message" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_message'][0] ?? false); ?> />
                                     </div>
                                 </fieldset>
 

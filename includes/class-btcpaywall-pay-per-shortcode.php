@@ -39,7 +39,7 @@ class BTCPayWall_Pay_Per_Shortcode
     public $info_color = '#000000';
     public $button_color = '#f6b330';
     public $button_text = 'Pay';
-    public $button_txt_color = '#ffffff';
+    public $button_text_color = '#ffffff';
     public $continue_button_text = 'Continue';
     public $continue_button_text_color = '#ffffff';
     public $continue_button_color = '#fe642e';
