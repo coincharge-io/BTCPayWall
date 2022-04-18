@@ -145,7 +145,6 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 			'content-design',
 			[
 				'label' => __('Paywall design', 'btcpaywall'),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
@@ -177,7 +176,6 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 			'content-main',
 			[
 				'label' => __('Main', 'btcpaywall'),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
@@ -217,7 +215,6 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 			'content-button',
 			[
 				'label' => __('Buttons', 'btcpaywall'),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
@@ -297,7 +294,6 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 			'content-help',
 			[
 				'label' => __('Help link', 'btcpaywall'),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
@@ -328,7 +324,6 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 			'content-additional',
 			[
 				'label' => __('Additional link', 'btcpaywall'),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
@@ -355,10 +350,9 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 		);
 		$this->end_controls_tab();
 		$this->start_controls_tab(
-			'content-customer_information',
+			'content-customer-information',
 			[
 				'label' => __('Customer information', 'btcpaywall'),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
@@ -459,9 +453,9 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 	{
 
 		$settings         = $this->get_settings_for_display();
-		$enable_pay_block = $settings['pay_block'];
+		$enable_pay_block = !empty($settings['pay_block']) ? $settings['pay_block'] : false;
 		$price = $settings['price'];
-		$duration = $settings['duration'];
+		$duration = !empty($settings['duration']) ? $settings['duration'] : '';
 		$duration_type = $settings['duration_type'];
 		$currency = $settings['currency'];
 		$btc_format = $settings['btc_format'];

@@ -146,7 +146,6 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 			'video-design',
 			[
 				'label' => __('Paywall design', 'btcpaywall'),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
@@ -177,7 +176,6 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 			'video-video_preview',
 			[
 				'label' => __('Main', 'btcpaywall'),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
@@ -226,7 +224,6 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 			'video-main',
 			[
 				'label' => __('Main', 'btcpaywall'),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
@@ -266,7 +263,6 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 			'video-button',
 			[
 				'label' => __('Buttons', 'btcpaywall'),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
@@ -346,7 +342,6 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 			'video-help',
 			[
 				'label' => __('Help link', 'btcpaywall'),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
@@ -377,7 +372,6 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 			'video-additional',
 			[
 				'label' => __('Additional link', 'btcpaywall'),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
@@ -404,10 +398,9 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 		);
 		$this->end_controls_tab();
 		$this->start_controls_tab(
-			'video-customer_information',
+			'video-customer-information',
 			[
 				'label' => __('Customer information', 'btcpaywall'),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
@@ -510,14 +503,14 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 	{
 
 		$settings         = $this->get_settings_for_display();
-		$enable_pay_view_block = $settings['pay_view_block'];
-		$preview_title = $settings['title'];
-		$preview_title_color = $settings['title_color'];
-		$preview_description = $settings['description'];
-		$preview_description_color = $settings['description_color'];
-		$preview_image = $settings['preview']['url'];
+		$enable_pay_view_block = !empty($settings['pay_view_block']) ? $settings['pay_view_block'] : false;
+		$preview_title = !empty($settings['title']) ? $settings['title'] : '';
+		$preview_title_color = !empty($settings['title_color']) ? $settings['title_color'] : '';
+		$preview_description = !empty($settings['description']) ? $settings['description'] : '';
+		$preview_description_color = !empty($settings['description_color']) ? $settings['description_color'] : '';
+		$preview_image = !empty($settings['preview']['url']) ? $settings['preview']['url'] : '';
 		$price = $settings['price'];
-		$duration = $settings['duration'];
+		$duration = !empty($settings['duration']) ? $settings['duration'] : 0;
 		$duration_type = $settings['duration_type'];
 		$currency = $settings['currency'];
 		$btc_format = $settings['btc_format'];
