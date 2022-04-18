@@ -69,7 +69,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
             </div>
             <div class="row">
                 <div class="col-20">
-                    <label for="btcpaywall_pay_per_post_shortcode_name">Name</label>
+                    <label for="btcpaywall_pay_per_post_shortcode_name"><?php echo esc_html__('Name', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-80">
                     <input type="text" name="btcpaywall_pay_per_post_shortcode_name" id="btcpaywall_pay_per_post_shortcode_name" value="<?php echo esc_attr($result->name); ?>">
@@ -85,14 +85,14 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
             </div>
             <div class="row">
                 <div class="col-20">
-                    <label for="btcpaywall_pay_per_post_price">Price</label>
+                    <label for="btcpaywall_pay_per_post_price"><?php echo esc_html__('Price', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-80">
 
                     <input required type="number" min=0 placeholder="Price" step=1 name="btcpaywall_pay_per_post_price" id="btcpaywall_pay_per_post_price" value="<?php echo esc_attr($result->price); ?>">
 
                     <select required name="btcpaywall_pay_per_post_currency" id="btcpaywall_pay_per_post_currency">
-                        <option disabled value="">Select currency</option>
+                        <option disabled value=""><?php echo esc_html__('Select currency', 'btcpaywall'); ?></option>
                         <?php foreach ($supported_currencies as $currency) : ?>
                             <option <?php echo $result->currency === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
                                 <?php echo esc_html($currency); ?>
@@ -100,7 +100,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
                         <?php endforeach; ?>
                     </select>
                     <div class="btcpaywall_pay_per_post_price_format">
-                        <p>Select Bitcoin price display:</p>
+                        <p><?php echo esc_html__('Select Bitcoin price display:', 'btcpaywall'); ?></p>
                         <?php foreach ($supported_btc_format as $format) : ?>
                             <div>
                                 <input type="radio" id="btcpaywall_pay_per_post_btc_format" name="btcpaywall_pay_per_post_btc_format" value="<?php echo esc_attr($result->btc_format); ?>" <?php echo $result->btc_format === $format ? 'checked' : '' ?>>
@@ -112,12 +112,12 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
             </div>
             <div class="row">
                 <div class="col-20">
-                    <label for="btcpaywall_pay_per_post_duration">Duration</label>
+                    <label for="btcpaywall_pay_per_post_duration"><?php echo esc_html__('Duration', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-80">
                     <input type="number" min="1" placeholder="Access Duration" name="btcpaywall_pay_per_post_duration" id="btcpaywall_pay_per_post_duration" <?php echo esc_attr($disable); ?> value="<?php echo esc_attr($result->duration); ?>">
                     <select required name="btcpaywall_pay_per_post_duration_type" id="btcpaywall_pay_per_post_duration_type">
-                        <option disabled value="">Select duration type</option>
+                        <option disabled value=""><?php echo esc_html__('Select duration type', 'btcpaywall'); ?></option>
                         <?php foreach ($supported_durations as $duration) : ?>
                             <option <?php echo $result->duration_type === $duration ? 'selected' : ''; ?> value="<?php echo esc_attr($duration); ?>">
                                 <?php echo esc_html($duration); ?>
@@ -134,26 +134,26 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
 
                 <div class="row">
                     <div class="col-20">
-                        <label for="btcpaywall_pay_per_post_background">Background color</label>
+                        <label for="btcpaywall_pay_per_post_background"><?php echo esc_html__('Background color', 'btcpaywall'); ?></label>
                     </div>
                     <div class="col-80">
-                        <input id="btcpaywall_pay_per_post_background" class="btcpaywall_pay_per_post_background" name="btcpaywall_pay_per_post_background" type="text" value=<?php echo esc_attr($result->background_color); ?> />
+                        <input required id="btcpaywall_pay_per_post_background" class="btcpaywall_pay_per_post_background" name="btcpaywall_pay_per_post_background" type="text" value=<?php echo esc_attr($result->background_color); ?> />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-20">
-                        <label for="btcpaywall_pay_per_post_width">Width</label>
+                        <label for="btcpaywall_pay_per_post_width"><?php echo esc_html__('Width', 'btcpaywall'); ?></label>
                     </div>
                     <div class="col-80">
-                        <input id="btcpaywall_pay_per_post_width" class="btcpaywall_pay_per_post_width" name="btcpaywall_pay_per_post_width" type="number" min="200" value=<?php echo esc_attr($result->width); ?> required />
+                        <input required id="btcpaywall_pay_per_post_width" class="btcpaywall_pay_per_post_width" name="btcpaywall_pay_per_post_width" type="number" min="200" value=<?php echo esc_attr($result->width); ?> required />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-20">
-                        <label for="btcpaywall_pay_per_post_height">Height</label>
+                        <label for="btcpaywall_pay_per_post_height"><?php echo esc_html__('Height', 'btcpaywall'); ?></label>
                     </div>
                     <div class="col-80">
-                        <input id="btcpaywall_pay_per_post_height" class="btcpaywall_pay_per_post_height" name="btcpaywall_pay_per_post_height" type="number" min="200" value=<?php echo esc_attr($result->height); ?> required />
+                        <input required id="btcpaywall_pay_per_post_height" class="btcpaywall_pay_per_post_height" name="btcpaywall_pay_per_post_height" type="number" min="200" value=<?php echo esc_attr($result->height); ?> required />
                     </div>
                 </div>
                 <div data-id="header" class="btcpaywall_pay_per_container_header">
@@ -163,15 +163,15 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
 
                     <div class="row">
                         <div class="col-20">
-                            <label for="btcpaywall_pay_per_post_title">Title</label>
+                            <label for="btcpaywall_pay_per_post_title"><?php echo esc_html__('Title', 'btcpaywall'); ?></label>
                         </div>
                         <div class="col-80">
-                            <textarea id="btcpaywall_pay_per_post_title" name="btcpaywall_pay_per_post_title"><?php echo esc_html($result->header_text); ?></textarea>
+                            <textarea required id="btcpaywall_pay_per_post_title" name="btcpaywall_pay_per_post_title"><?php echo esc_html($result->header_text); ?></textarea>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-20">
-                            <label for="btcpaywall_pay_per_post_title_color">Title color</label>
+                            <label for="btcpaywall_pay_per_post_title_color"><?php echo esc_html__('Title color', 'btcpaywall'); ?></label>
                         </div>
                         <div class="col-80">
                             <input id="btcpaywall_pay_per_post_title_color" class="btcpaywall_pay_per_post_title_color" name="btcpaywall_pay_per_post_title_color" type="text" value="<?php echo esc_attr($result->header_color); ?>" />
@@ -179,10 +179,10 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
                     </div>
                     <div class="row">
                         <div class="col-20">
-                            <label for="btcpaywall_pay_per_post_info">Price information <span class="btcpaywall_helper_tip" title="Placeholders will be replaced with actual values in the paywall."></span></label>
+                            <label for="btcpaywall_pay_per_post_info"><?php echo esc_html__('Price information', 'btcpaywall'); ?> <span class="btcpaywall_helper_tip" title="Placeholders will be replaced with actual values in the paywall."></span></label>
                         </div>
                         <div class="col-80">
-                            <textarea id="btcpaywall_pay_per_post_info" name="btcpaywall_pay_per_post_info"><?php echo esc_html($result->info_text); ?></textarea>
+                            <textarea id="btcpaywall_pay_per_post_info" required name="btcpaywall_pay_per_post_info"><?php echo esc_html($result->info_text); ?></textarea>
                             <div class="btcpaywall_pay_per_placeholders">
                                 <button type="button" class="btcpaywall_pay_per_post_price_placeholder" value="{price}">Price</button>
                                 <button type="button" class="btcpaywall_pay_per_post_currency_placeholder" value="{currency}">Currency</button>
@@ -193,7 +193,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
                     </div>
                     <div class="row">
                         <div class="col-20">
-                            <label for="btcpaywall_pay_per_post_info_color">Price information color</label>
+                            <label for="btcpaywall_pay_per_post_info_color"><?php echo esc_html__('Price information color', 'btcpaywall'); ?></label>
                         </div>
                         <div class="col-80">
                             <input id="btcpaywall_pay_per_post_info_color" class="btcpaywall_pay_per_post_info_color" name="btcpaywall_pay_per_post_info_color" type="text" value="<?php echo esc_attr($result->info_color); ?>" />
@@ -207,15 +207,15 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
 
                     <div class="row">
                         <div class="col-20">
-                            <label for="btcpaywall_pay_per_post_button">Button text</label>
+                            <label for="btcpaywall_pay_per_post_button"><?php echo esc_html__('Button text', 'btcpaywall'); ?></label>
                         </div>
                         <div class="col-80">
-                            <input id="btcpaywall_pay_per_post_button" name="btcpaywall_pay_per_post_button" value="<?php echo esc_attr($result->button_text); ?>" />
+                            <input id="btcpaywall_pay_per_post_button" name="btcpaywall_pay_per_post_button" required value="<?php echo esc_attr($result->button_text); ?>" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-20">
-                            <label for="btcpaywall_pay_per_post_button_color">Button color</label>
+                            <label for="btcpaywall_pay_per_post_button_color"><?php echo esc_html__('Button color', 'btcpaywall'); ?></label>
                         </div>
                         <div class="col-80">
                             <input id="btcpaywall_pay_per_post_button_color" class="btcpaywall_pay_per_post_button_color" name="btcpaywall_pay_per_post_button_color" type="text" value="<?php echo esc_attr($result->button_color); ?>" />
@@ -223,7 +223,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
                     </div>
                     <div class="row">
                         <div class="col-20">
-                            <label for="btcpaywall_pay_per_post_button_text_color">Button text color</label>
+                            <label for="btcpaywall_pay_per_post_button_text_color"><?php echo esc_html__('Button text color', 'btcpaywall'); ?></label>
                         </div>
                         <div class="col-80">
                             <input id="btcpaywall_pay_per_post_button_text_color" class="btcpaywall_pay_per_post_button_text_color" name="btcpaywall_pay_per_post_button_text_color" type="text" value="<?php echo esc_attr($result->button_text_color); ?>" />
@@ -232,15 +232,15 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
 
                     <div class="row">
                         <div class="col-20">
-                            <label for="btcpaywall_pay_per_post_continue_button">Continue button text</label>
+                            <label for="btcpaywall_pay_per_post_continue_button"><?php echo esc_html__('Continue button text', 'btcpaywall'); ?></label>
                         </div>
                         <div class="col-80">
-                            <input id="btcpaywall_pay_per_post_continue_button" name="btcpaywall_pay_per_post_continue_button" value="<?php echo esc_attr($result->continue_button_text); ?>" />
+                            <input id="btcpaywall_pay_per_post_continue_button" name="btcpaywall_pay_per_post_continue_button" required value="<?php echo esc_attr($result->continue_button_text); ?>" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-20">
-                            <label for="btcpaywall_pay_per_post_continue_button_color">Continue button color</label>
+                            <label for="btcpaywall_pay_per_post_continue_button_color"><?php echo esc_html__('Continue button color', 'btcpaywall'); ?></label>
                         </div>
                         <div class="col-80">
                             <input id="btcpaywall_pay_per_post_continue_button_color" class="btcpaywall_pay_per_post_continue_button_color" name="btcpaywall_pay_per_post_continue_button_color" type="text" value="<?php echo esc_attr($result->continue_button_color); ?>" />
@@ -248,7 +248,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
                     </div>
                     <div class="row">
                         <div class="col-20">
-                            <label for="btcpaywall_pay_per_post_continue_button_text_color">Continue button text color</label>
+                            <label for="btcpaywall_pay_per_post_continue_button_text_color"><?php echo esc_html__('Continue button text color', 'btcpaywall'); ?></label>
                         </div>
                         <div class="col-80">
                             <input id="btcpaywall_pay_per_post_continue_button_text_color" class="btcpaywall_pay_per_post_continue_button_text_color" name="btcpaywall_pay_per_post_continue_button_text_color" type="text" value="<?php echo esc_attr($result->continue_button_text_color); ?>" />
@@ -256,15 +256,15 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
                     </div>
                     <div class="row">
                         <div class="col-20">
-                            <label for="btcpaywall_pay_per_post_previous_button">Previous button text</label>
+                            <label for="btcpaywall_pay_per_post_previous_button"><?php echo esc_html__('Previous button text', 'btcpaywall'); ?></label>
                         </div>
                         <div class="col-80">
-                            <input id="btcpaywall_pay_per_post_previous_button" name="btcpaywall_pay_per_post_previous_button" value="<?php echo esc_attr($result->previous_button_text); ?>" />
+                            <input id="btcpaywall_pay_per_post_previous_button" name="btcpaywall_pay_per_post_previous_button" required value="<?php echo esc_attr($result->previous_button_text); ?>" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-20">
-                            <label for="btcpaywall_pay_per_post_previous_button_color">Previous button color</label>
+                            <label for="btcpaywall_pay_per_post_previous_button_color"><?php echo esc_html__('Previous button color', 'btcpaywall'); ?></label>
                         </div>
                         <div class="col-80">
                             <input id="btcpaywall_pay_per_post_previous_button_color" class="btcpaywall_pay_per_post_previous_button_color" name="btcpaywall_pay_per_post_previous_button_color" type="text" value="<?php echo esc_attr($result->previous_button_color); ?>" />
@@ -272,7 +272,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
                     </div>
                     <div class="row">
                         <div class="col-20">
-                            <label for="btcpaywall_pay_per_post_previous_button_text_color">Previous button text color</label>
+                            <label for="btcpaywall_pay_per_post_previous_button_text_color"><?php echo esc_html__('Previous button text color', 'btcpaywall'); ?></label>
                         </div>
                         <div class="col-80">
                             <input id="btcpaywall_pay_per_post_previous_button_text_color" class="btcpaywall_pay_per_post_previous_button_text_color" name="btcpaywall_pay_per_post_previous_button_text_color" type="text" value="<?php echo esc_attr($result->previous_button_text_color); ?>" />
@@ -287,7 +287,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
 
                         <div class="row">
                             <div class="col-20">
-                                <label for="btcpaywall_pay_per_post_show_help_link">Display help link</label>
+                                <label for="btcpaywall_pay_per_post_show_help_link"><?php echo esc_html__('Display help link', 'btcpaywall'); ?></label>
                             </div>
                             <div class="col-80">
                                 <input id="btcpaywall_pay_per_post_show_help_link" class="btcpaywall_pay_per_post_show_help_link" name="btcpaywall_pay_per_post_show_help_link" type="checkbox" <?php echo checked($result->link); ?> value="true" />
@@ -295,7 +295,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
                         </div>
                         <div class="row">
                             <div class="col-20">
-                                <label for="btcpaywall_pay_per_post_help_link">Help link url</label>
+                                <label for="btcpaywall_pay_per_post_help_link"><?php echo esc_html__('Help link url', 'btcpaywall'); ?></label>
                             </div>
                             <div class="col-80">
                                 <input id="btcpaywall_pay_per_post_help_link" class="btcpaywall_pay_per_post_help_link" name="btcpaywall_pay_per_post_help_link" type="url" value="<?php echo esc_attr($result->help_link); ?>" />
@@ -303,7 +303,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
                         </div>
                         <div class="row">
                             <div class="col-20">
-                                <label for="btcpaywall_pay_per_post_help_link_text">Help link text</label>
+                                <label for="btcpaywall_pay_per_post_help_link_text"><?php echo esc_html__('Help link text', 'btcpaywall'); ?></label>
                             </div>
                             <div class="col-80">
                                 <input id="btcpaywall_pay_per_post_help_link_text" class="btcpaywall_pay_per_post_help_link_text" name="btcpaywall_pay_per_post_help_link_text" type="text" value="<?php echo esc_attr($result->help_text); ?>" />
@@ -318,7 +318,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
 
                         <div class="row">
                             <div class="col-20">
-                                <label for="btcpaywall_pay_per_post_show_additional_help_link">Display additional link</label>
+                                <label for="btcpaywall_pay_per_post_show_additional_help_link"><?php echo esc_html__('Display additional link', 'btcpaywall'); ?></label>
                             </div>
                             <div class="col-80">
                                 <input id="btcpaywall_pay_per_post_show_additional_help_link" class="btcpaywall_pay_per_post_show_additional_help_link" name="btcpaywall_pay_per_post_show_additional_help_link" type="checkbox" <?php echo checked($result->additional_link); ?> value="true" />
@@ -326,7 +326,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
                         </div>
                         <div class="row">
                             <div class="col-20">
-                                <label for="btcpaywall_pay_per_post_additional_help_link">Additional link url</label>
+                                <label for="btcpaywall_pay_per_post_additional_help_link"><?php echo esc_html__('Additional link url', 'btcpaywall'); ?></label>
                             </div>
                             <div class="col-80">
                                 <input id="btcpaywall_pay_per_post_additional_help_link" class="btcpaywall_pay_per_post_additional_help_link" name="btcpaywall_pay_per_post_additional_help_link" type="url" value="<?php echo esc_attr($result->additional_help_link); ?>" />
@@ -334,7 +334,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
                         </div>
                         <div class="row">
                             <div class="col-20">
-                                <label for="btcpaywall_pay_per_post_additional_help_link_text">Additional link text</label>
+                                <label for="btcpaywall_pay_per_post_additional_help_link_text"><?php echo esc_html__('Additional link text', 'btcpaywall'); ?></label>
                             </div>
                             <div class="col-80">
                                 <input id="btcpaywall_pay_per_post_additional_help_link_text" class="btcpaywall_pay_per_post_additional_help_link_text" name="btcpaywall_pay_per_post_additional_help_link_text" type="text" value="<?php echo esc_attr($result->additional_help_text); ?>" />
@@ -349,7 +349,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
 
                     <div class="row">
                         <div class="col-50">
-                            <p>Full name</p>
+                            <p><?php echo esc_html__('Full name', 'btcpaywall'); ?></p>
                         </div>
                         <div class="col-50">
                             <label for="btcpaywall_pay_per_post_display_name"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
@@ -363,7 +363,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
                     </div>
                     <div class="row">
                         <div class="col-50">
-                            <p>Email</p>
+                            <p><?php echo esc_html__('Email', 'btcpaywall'); ?></p>
                         </div>
                         <div class="col-50">
                             <label for="btcpaywall_pay_per_post_display_email"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
@@ -377,7 +377,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
                     </div>
                     <div class="row">
                         <div class="col-50">
-                            <p>Address</p>
+                            <p><?php echo esc_html__('Address', 'btcpaywall'); ?></p>
                         </div>
                         <div class="col-50">
                             <label for="btcpaywall_pay_per_post_display_address"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
@@ -390,7 +390,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
                     </div>
                     <div class="row">
                         <div class="col-50">
-                            <p>Phone number</p>
+                            <p><?php echo esc_html__('Phone number', 'btcpaywall'); ?></p>
                         </div>
                         <div class="col-50">
                             <label for="btcpaywall_pay_per_post_display_phone"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
@@ -404,7 +404,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
                     </div>
                     <div class="row">
                         <div class="col-50">
-                            <p>Message</p>
+                            <p><?php echo esc_html__('Message', 'btcpaywall'); ?></p>
                         </div>
                         <div class="col-50">
                             <label for="btcpaywall_pay_per_post_display_message"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
@@ -422,7 +422,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
             <div class="btcpw__paywall_submit_button" style="display: inline-block;">
                 <button class="button button-secondary btcpw_button" type="button"><a href="<?php echo admin_url($back_url); ?>"><?php echo esc_html__('Back', 'btcpaywall'); ?></a></button>
 
-                <button class="button button-primary btcpw_button" type="submit">Save</button>
+                <button class="button button-primary btcpw_button" type="submit"><?php echo esc_html__('Save', 'btcpaywall'); ?></button>
             </div>
         </form>
     </div>
