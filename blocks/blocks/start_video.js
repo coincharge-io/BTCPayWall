@@ -440,23 +440,23 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
     btc_format: {
       type: 'string',
     },
-    preview_title: {
+    title: {
       type: 'string',
       default: 'Untitled',
     },
-    preview_description: {
+    description: {
       type: 'string',
       default: 'No description',
     },
-    preview_title_color: {
+    title_color: {
       type: 'string',
     },
-    preview_description_color: {
+    description_color: {
       type: 'string',
     },
-    preview_image: {
+    preview: {
       type: 'number',
-      default: '',
+      default: 0,
     },
     background_color: {
       type: 'string'
@@ -601,11 +601,11 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
         background_color,
         width,
         height,
-        preview_title,
-        preview_description,
-        preview_title_color,
-        preview_description_color,
-        preview_image,
+        title,
+        description,
+        title_color,
+        description_color,
+        preview,
         currency,
         duration_type,
         price,
@@ -644,11 +644,11 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
     const [show, setShow] = useState(currency === 'SATS');
     const previewMedia = useSelect(
       select => {
-        return preview_image
-          ? select('core').getMedia(preview_image)
+        return preview
+          ? select('core').getMedia(preview)
           : undefined;
       },
-      [preview_image]
+      [preview]
     );
     const inspectorControls = (
       <InspectorControls>
@@ -757,51 +757,51 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 label="Title"
                 help="Enter video title"
                 onChange={content => {
-                  setAttributes({ preview_title: content });
+                  setAttributes({ title: content });
                 }}
-                value={preview_title}
+                value={title}
               />
               <p>Title color</p>
               <ColorPicker
-                color={preview_title_color}
+                color={title_color}
                 onChangeComplete={value =>
-                  setAttributes({ preview_title_color: value.hex })}
+                  setAttributes({ title_color: value.hex })}
                 disableAlpha
               />
               <TextareaControl
                 label="Description"
                 help="Enter video description text"
                 onChange={content => {
-                  setAttributes({ preview_description: content });
+                  setAttributes({ description: content });
                 }}
-                value={preview_description}
+                value={description}
               />
               <p>Description color</p>
               <ColorPicker
-                color={preview_description_color}
+                color={description_color}
                 onChangeComplete={value =>
-                  setAttributes({ preview_description_color: value.hex })}
+                  setAttributes({ description_color: value.hex })}
                 disableAlpha
               />
               <div className="editor-post-featured-image">
                 <MediaUploadCheck>
                   <MediaUpload
                     onSelect={el => {
-                      setAttributes({ preview_image: el.id });
+                      setAttributes({ preview: el.id });
                     }}
-                    value={preview_image}
+                    value={preview}
                     allowedTypes={['image']}
                     render={({ open }) => (
                       <Button
                         className={
-                          preview_image == 0
+                          preview == 0
                             ? 'btcpaywall editor-post-featured-image__toggle'
                             : 'btcpaywall editor-post-featured-image__preview'
                         }
                         onClick={open}
                       >
-                        {!preview_image && 'Choose preview image'}
-                        {!!preview_image &&
+                        {!preview && 'Choose preview image'}
+                        {!!preview &&
                           previewMedia &&
                           <ResponsiveWrapper
                             naturalWidth={previewMedia.media_details.width}
@@ -813,14 +813,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                     )}
                   />
                 </MediaUploadCheck>
-                {!!preview_image &&
+                {!!preview &&
                   previewMedia &&
                   <MediaUploadCheck>
                     <MediaUpload
                       title="Replace preview image"
-                      value={preview_image}
+                      value={preview}
                       onSelect={el => {
-                        setAttributes({ preview_image: el.id });
+                        setAttributes({ preview: el.id });
                       }}
                       allowedTypes={['image']}
                       render={({ open }) => (
@@ -834,11 +834,11 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                       )}
                     />
                   </MediaUploadCheck>}
-                {!!preview_image &&
+                {!!preview &&
                   <MediaUploadCheck>
                     <Button
                       onClick={el => {
-                        setAttributes({ preview_image: 0 });
+                        setAttributes({ preview: 0 });
                       }}
                       className="btcpaywall editor-post-featured-image__remove"
                       isLink
@@ -1117,11 +1117,11 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             background_color,
             width,
             height,
-            preview_title,
-            preview_description,
-            preview_title_color,
-            preview_description_color,
-            preview_image,
+            title,
+            description,
+            title_color,
+            description_color,
+            preview,
             currency,
             duration_type,
             price,

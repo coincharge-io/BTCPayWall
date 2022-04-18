@@ -232,23 +232,23 @@ function btcpaywall_load_gutenberg()
                     'type' => 'string',
                     'default' => 'SATS'
                 ),
-                'preview_title' => array(
+                'title' => array(
                     'type' => 'string',
                     'default' => 'Untitled'
                 ),
-                'preview_description' => array(
+                'description' => array(
                     'type' => 'string',
                     'default' => ''
                 ),
-                'preview_title_color' => array(
+                'title_color' => array(
                     'type' => 'string',
                     'default' => '#fff'
                 ),
-                'preview_description_color' => array(
+                'description_color' => array(
                     'type' => 'string',
                     'default' => '#fff'
                 ),
-                'preview_image' => array(
+                'preview' => array(
                     'type' => 'number',
                     'default' => ''
                 ),

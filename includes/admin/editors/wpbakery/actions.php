@@ -499,7 +499,7 @@ function btcpaywall_load_vc_widgets()
             array(
                 'type' => 'textarea',
                 'heading' => 'Title',
-                'param_name' => 'preview_title',
+                'param_name' => 'title',
                 'value' => 'Untitled',
                 'description' => 'Enter video title',
                 'group' => 'Video preview'
@@ -507,7 +507,7 @@ function btcpaywall_load_vc_widgets()
             array(
                 'type' => 'colorpicker',
                 'heading' => 'Title color',
-                'param_name' => 'preview_title_color',
+                'param_name' => 'title_color',
                 'value' => '',
                 'description' => 'Set title color',
                 'group' => 'Video preview'
@@ -515,7 +515,7 @@ function btcpaywall_load_vc_widgets()
             array(
                 'type' => 'textarea',
                 'heading' => 'Description',
-                'param_name' => 'preview_description',
+                'param_name' => 'description',
                 'value' => 'No description',
                 'description' => 'Enter video description',
                 'group' => 'Video preview'
@@ -523,7 +523,7 @@ function btcpaywall_load_vc_widgets()
             array(
                 'type' => 'colorpicker',
                 'heading' => 'Description',
-                'param_name' => 'preview_description_color',
+                'param_name' => 'description_color',
                 'value' => '',
                 'description' => 'Set description color',
                 'group' => 'Video preview'
@@ -531,7 +531,7 @@ function btcpaywall_load_vc_widgets()
             array(
                 'type' => 'attach_image',
                 'heading' => 'Preview',
-                'param_name' => 'preview_image',
+                'param_name' => 'preview',
                 'description' => 'Add video preview',
                 'group' => 'Video preview'
             ),

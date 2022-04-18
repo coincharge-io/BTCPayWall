@@ -16,18 +16,18 @@ $supported_btc_format = BTCPayWall::BTC_FORMAT;
 $used_format = get_option("btcpaywall_pay_per_view_btc_format");
 $disabled_field = ($result->duration_type === 'unlimited') || ($result->duration_type === 'onetime');
 $disable = $disabled_field ? 'disabled' : '';
-$preview_image = wp_get_attachment_image_src($result->preview_image);
+$preview_image = wp_get_attachment_image_src($result->preview);
 $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == 'edit') ? 'admin.php?page=btcpw_pay_per_shortcode_list' : 'admin.php?page=btcpw_pay_per_shortcode_generator';
 
 ?>
 <style>
     .btcpw_pay__preview_preview.pay_per_view h2 {
-        color: <?php echo esc_html($result->preview_title_color); ?>;
+        color: <?php echo esc_html($result->title_color); ?>;
 
     }
 
     .btcpw_pay__preview_preview.pay_per_view p {
-        color: <?php echo esc_html($result->preview_description_color); ?>;
+        color: <?php echo esc_html($result->description_color); ?>;
 
     }
 
@@ -181,7 +181,7 @@ $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == '
                             <label for="btcpaywall_pay_per_view_preview_title">Title</label>
                         </div>
                         <div class="col-80">
-                            <input id="btcpaywall_pay_per_view_preview_title" class="btcpaywall_pay_per_view_preview_title" name="btcpaywall_pay_per_view_preview_title" type="text" value="<?php echo esc_attr($result->preview_title); ?>" />
+                            <input id="btcpaywall_pay_per_view_preview_title" class="btcpaywall_pay_per_view_preview_title" name="btcpaywall_pay_per_view_preview_title" type="text" value="<?php echo esc_attr($result->title); ?>" />
                         </div>
                     </div>
                     <div class="row">
@@ -189,7 +189,7 @@ $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == '
                             <label for="btcpaywall_pay_per_view_preview_title_color">Title color</label>
                         </div>
                         <div class="col-80">
-                            <input id="btcpaywall_pay_per_view_preview_title_color" class="btcpaywall_pay_per_view_preview_title_color" name="btcpaywall_pay_per_view_preview_title_color" type="text" value="<?php echo esc_attr($result->preview_title_color); ?>" />
+                            <input id="btcpaywall_pay_per_view_preview_title_color" class="btcpaywall_pay_per_view_preview_title_color" name="btcpaywall_pay_per_view_preview_title_color" type="text" value="<?php echo esc_attr($result->title_color); ?>" />
                         </div>
                     </div>
                     <div class="row">
@@ -197,7 +197,7 @@ $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == '
                             <label for="btcpaywall_pay_per_view_preview_description">Description</label>
                         </div>
                         <div class="col-80">
-                            <input id="btcpaywall_pay_per_view_preview_description" class="btcpaywall_pay_per_view_preview_description" name="btcpaywall_pay_per_view_preview_description" type="text" value="<?php echo esc_attr($result->preview_description); ?>" />
+                            <input id="btcpaywall_pay_per_view_preview_description" class="btcpaywall_pay_per_view_preview_description" name="btcpaywall_pay_per_view_preview_description" type="text" value="<?php echo esc_attr($result->description); ?>" />
                         </div>
                     </div>
                     <div class="row">
@@ -205,7 +205,7 @@ $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == '
                             <label for="btcpaywall_pay_per_view_preview_description_color">Description color</label>
                         </div>
                         <div class="col-80">
-                            <input id="btcpaywall_pay_per_view_preview_description_color" class="btcpaywall_pay_per_view_preview_description_color" name="btcpaywall_pay_per_view_preview_description_color" type="text" value="<?php echo esc_attr($result->preview_description_color); ?>" />
+                            <input id="btcpaywall_pay_per_view_preview_description_color" class="btcpaywall_pay_per_view_preview_description_color" name="btcpaywall_pay_per_view_preview_description_color" type="text" value="<?php echo esc_attr($result->description_color); ?>" />
                         </div>
                     </div>
                     <div class="row">
@@ -217,11 +217,11 @@ $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == '
                                 <button id="btcpaywall_pay_per_view_preview_image" name="btcpaywall_pay_per_view_preview_image"><img width="100" height="100" alt="Tipping banner high background" src="<?php echo esc_url($preview_image[0]); ?>" /></a></button>
                                 <button type="button" class="btcpaywall_pay_per_view_remove_preview_image">
                                     <?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
-                                <input type="hidden" class="btcpaywall_pay_per_view_preview_image_id" id="btcpaywall_pay_per_view_preview_image_id" type="text" value="<?php echo esc_attr($result->preview_image); ?>" />
+                                <input type="hidden" class="btcpaywall_pay_per_view_preview_image_id" id="btcpaywall_pay_per_view_preview_image_id" type="text" value="<?php echo esc_attr($result->preview); ?>" />
                             <?php else : ?>
                                 <button id="btcpaywall_pay_per_view_preview_image" name="btcpaywall_pay_per_view_preview_image"><?php echo esc_html__('Upload', 'btcpaywall'); ?></button>
                                 <button type="button" class="btcpaywall_pay_per_view_remove_preview_image" style="display:none"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
-                                <input type="hidden" class="btcpaywall_pay_per_view_preview_image_id" id="btcpaywall_pay_per_view_preview_image_id" type="text" value="<?php echo esc_attr($result->preview_image); ?>" />
+                                <input type="hidden" class="btcpaywall_pay_per_view_preview_image_id" id="btcpaywall_pay_per_view_preview_image_id" type="text" value="<?php echo esc_attr($result->preview); ?>" />
                             <?php endif; ?>
                         </div>
                     </div>
