@@ -23,8 +23,8 @@ $button_text_color = get_option('btcpw_pay_per_view_button_text_color', '#FFFFFF
 $default_text = get_option('btcpw_pay_per_view_title', 'Pay now to unlock blogpost');
 $default_button = get_option('btcpw_pay_per_view_button', 'Pay');
 $default_info = get_option('btcpw_pay_per_view_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]');
-$preview_title_color = !empty($atts['preview_title_color']) ? $atts['preview_title_color'] : get_option('btcpw_pay_per_view_preview_title_color', '#000000');
-$preview_description_color = !empty($atts['preview_description_color']) ? $atts['preview_description_color'] : get_option('btcpw_pay_per_view_preview_description_color', '#000000');
+$preview_title_color = !empty($atts['title_color']) ? $atts['title_color'] : get_option('btcpw_pay_per_view_preview_title_color', '#000000');
+$preview_description_color = !empty($atts['description_color']) ? $atts['description_color'] : get_option('btcpw_pay_per_view_preview_description_color', '#000000');
 
 
 $collect_atts = array(
@@ -44,9 +44,9 @@ $collect = btcpaywall_get_collect($collect_atts);
 $collect_data = btcpaywall_display_is_enabled($collect);
 $help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
 
-$image = wp_get_attachment_image_src($atts['preview_image']);
+$image = wp_get_attachment_image_src($atts['preview']);
 
-$preview_url = $image ? $image[0] : $atts['preview_image'];
+$preview_url = $image ? $image[0] : $atts['preview'];
 $header = !empty($atts['header_text']) ? $atts['header_text'] : btcpaywall_get_payblock_header_string();
 $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attributes($atts) : btcpaywall_get_post_info_string(null, 'video');
 ?>
@@ -113,8 +113,8 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
                         </div>
                     <?php endif; ?>
                     <div class="btcpw_pay__preview preview_description">
-                        <h3><?php echo esc_html__($atts['preview_title'], 'btcpaywall'); ?></h3>
-                        <p><?php echo esc_html__($atts['preview_description'], 'btcpaywall'); ?></p>
+                        <h3><?php echo esc_html__($atts['title'], 'btcpaywall'); ?></h3>
+                        <p><?php echo esc_html__($atts['description'], 'btcpaywall'); ?></p>
                     </div>
 
                 </div>

@@ -28,11 +28,11 @@ class BTCPayWall_Pay_Per_Shortcode
     public $duration;
     public $duration_type = 'unlimited';
     public $background_color = '#ecf0f1';
-    public $preview_title = 'Untitled';
-    public $preview_title_color;
-    public $preview_description = 'No description';
-    public $preview_description_color;
-    public $preview_image;
+    public $title = 'Untitled';
+    public $title_color;
+    public $description = 'No description';
+    public $description_color;
+    public $preview;
     public $header_text = 'Pay to see';
     public $info_text = 'For {price} {currency} you will have access for {duration} {dtype}.';
     public $header_color = '#000000';
@@ -200,7 +200,7 @@ class BTCPayWall_Pay_Per_Shortcode
              Replace this text with content
             [btcpw_end_content]";
         }
-        return  "[btcpw_start_video pay_view_block='{$payblock}' btc_format='{$this->btc_format}' background_color='{$this->background_color}' width='{$this->width}' height='{$this->height}' preview_title='{$this->preview_title}' preview_title_color='{$this->preview_title_color}' preview_description='{$this->preview_description}' preview_description_color='{$this->preview_description_color}' preview_image={$this->preview_image} price='{$this->price}' header_color='{$this->header_color}' info_color='{$this->info_color}' header_text='{$this->header_text}' info_text='{$this->info_text}' link='{$link}' help_link='{$this->help_link}' help_text='{$this->help_text}' additional_link='{$additional_link}' additional_help_link='{$this->additional_help_link}' additional_help_text='{$this->additional_help_text}' duration_type='{$this->duration_type}' duration='{$this->duration}' currency='{$this->currency}'  button_text='{$this->button_text}' button_text_color='{$this->button_text_color}' button_color='{$this->button_color}' continue_button_text='{$this->continue_button_text}' continue_button_text_color='{$this->continue_button_text_color}' continue_button_color='{$this->continue_button_color}' previous_button_text='{$this->previous_button_text}' previous_button_text_color='{$this->previous_button_text_color}' previous_button_color='{$this->previous_button_color}'  display_name='{$display_name}' mandatory_name='{$mandatory_name}' display_email='{$display_email}' mandatory_email='{$mandatory_email}' display_phone='{$display_phone}' mandatory_phone='{$mandatory_phone}' display_address='{$display_address}' mandatory_address='{$mandatory_address}' display_message='{$display_message}' mandatory_message='{$mandatory_message}']
+        return  "[btcpw_start_video pay_view_block='{$payblock}' btc_format='{$this->btc_format}' background_color='{$this->background_color}' width='{$this->width}' height='{$this->height}' title='{$this->title}' title_color='{$this->title_color}' description='{$this->description}' description_color='{$this->description_color}' preview={$this->preview} price='{$this->price}' header_color='{$this->header_color}' info_color='{$this->info_color}' header_text='{$this->header_text}' info_text='{$this->info_text}' link='{$link}' help_link='{$this->help_link}' help_text='{$this->help_text}' additional_link='{$additional_link}' additional_help_link='{$this->additional_help_link}' additional_help_text='{$this->additional_help_text}' duration_type='{$this->duration_type}' duration='{$this->duration}' currency='{$this->currency}'  button_text='{$this->button_text}' button_text_color='{$this->button_text_color}' button_color='{$this->button_color}' continue_button_text='{$this->continue_button_text}' continue_button_text_color='{$this->continue_button_text_color}' continue_button_color='{$this->continue_button_color}' previous_button_text='{$this->previous_button_text}' previous_button_text_color='{$this->previous_button_text_color}' previous_button_color='{$this->previous_button_color}'  display_name='{$display_name}' mandatory_name='{$mandatory_name}' display_email='{$display_email}' mandatory_email='{$mandatory_email}' display_phone='{$display_phone}' mandatory_phone='{$mandatory_phone}' display_address='{$display_address}' mandatory_address='{$mandatory_address}' display_message='{$display_message}' mandatory_message='{$mandatory_message}']
         Replace this text with video
         [btcpw_end_video]";
     }

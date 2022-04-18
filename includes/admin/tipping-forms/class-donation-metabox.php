@@ -100,7 +100,10 @@ class Donation_Forms_Metabox
                 "name" => "btcpaywall_tipping_text_dimension",
                 "std" => "250x300"
             ],
-            ["name" => "btcpaywall_tipping_text_background"],
+            [
+                "name" => "btcpaywall_tipping_text_background",
+                "std" => ""
+            ],
             [
                 "name" => "btcpaywall_tipping_color_background",
                 "std" => "#E6E6E6"
@@ -118,7 +121,10 @@ class Donation_Forms_Metabox
                 "name" => "btcpaywall_tipping_color_title",
                 "std" => "#ffffff"
             ],
-            ["name" => "btcpaywall_tipping_text_description"],
+            [
+                "name" => "btcpaywall_tipping_text_description",
+                "std" => ""
+            ],
             [
                 "name" => "btcpaywall_tipping_color_description",
                 "std" => "#000000"
@@ -596,7 +602,7 @@ class Donation_Forms_Metabox
                                     <label for="btcpaywall_tipping_text_description"><?php echo __('Description', 'btcpaywall'); ?></label>
                                 </div>
                                 <div>
-                                    <input type="text" id="btcpaywall_tipping_text_description" name="btcpaywall_tipping_text_description" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_description'][0] ?? ''); ?>" />
+                                    <input type="text" id="btcpaywall_tipping_text_description" name="btcpaywall_tipping_text_description" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_description'][0]); ?>" />
                                 </div>
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_box">

@@ -1181,11 +1181,11 @@ function btcpaywall_render_shortcode_btcpw_start_video($atts)
         'height' => '',
         'background_color' => '',
         'btc_format' => '',
-        'preview_title' => 'Untitled',
-        'preview_title_color' => '',
-        'preview_description' => 'No description',
-        'preview_description_color' => '',
-        'preview_image' => $img_preview,
+        'title' => 'Untitled',
+        'title_color' => '',
+        'description' => 'No description',
+        'description_color' => '',
+        'preview' => $img_preview,
         'currency' => '',
         'price' => '',
         'duration' => '',
@@ -1223,7 +1223,7 @@ function btcpaywall_render_shortcode_btcpw_start_video($atts)
     ), $atts);
     btcpaywall_update_meta_settings($atts);
 
-    $invoice_content = array('title' => 'Pay-per-view: ' . sanitize_text_field($atts['preview_title']), 'project' => 'video');
+    $invoice_content = array('title' => 'Pay-per-view: ' . sanitize_text_field($atts['title']), 'project' => 'video');
     update_post_meta(get_the_ID(), 'btcpw_invoice_content', $invoice_content);
 
     $payblock = filter_var($atts['pay_view_block'], FILTER_VALIDATE_BOOLEAN);
