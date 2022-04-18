@@ -51,7 +51,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
                 <div class="row">
 
                     <div class="col-20">
-                        <p>Shortcode</p>
+                        <p><?php echo esc_html__('Shortcode', 'btcpaywall'); ?></p>
                     </div>
                     <div class="col-80">
                         <button type="button" class="button hint-tooltip hint--top js-btcpaywall-shortcode-button" data-btcpaywall-shortcode="<?php echo esc_attr($result->shortcode()); ?>"><span class="dashicons dashicons-admin-page"></span>Copy Shortcode</button>
@@ -61,7 +61,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
 
             <div class="row">
                 <div class="col-20">
-                    <label for="btcpaywall_pay_per_post_type">Type</label>
+                    <label for="btcpaywall_pay_per_post_type"><?php echo esc_html__('Type', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-80">
                     <input type="text" readonly id="btcpaywall_pay_per_post_type" value="pay-per-post" />
