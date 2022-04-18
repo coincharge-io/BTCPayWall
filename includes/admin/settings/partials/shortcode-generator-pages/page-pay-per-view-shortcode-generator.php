@@ -83,6 +83,7 @@ $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == '
             <div class="row">
                 <div class="col-20">
                     <label for="btcpaywall_pay_per_view_shortcode_name"><?php echo esc_html__('Name', 'btcpaywall'); ?></label>
+                    <span class="btcpaywall_helper_tip" title="This field is used to differentiate generated shortcodes."></span>
                 </div>
                 <div class="col-80">
                     <input type="text" name="btcpaywall_pay_per_view_shortcode_name" id="btcpaywall_pay_per_view_shortcode_name" value="<?php echo esc_attr($result->name); ?>">
@@ -91,6 +92,7 @@ $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == '
             <div class="row">
                 <div class="col-50">
                     <label for="btcpaywall_pay_per_view_paywall"><?php echo esc_html__('Enable paywall', 'btcpaywall'); ?></label>
+                    <span class="btcpaywall_helper_tip" title="Do you want to enable the paywall?"></span>
                 </div>
                 <div class="col-50">
                     <input type="checkbox" id="btcpaywall_pay_per_view_paywall" name="btcpaywall_pay_per_view_paywall" <?php checked($result->pay_block); ?> value="true" />

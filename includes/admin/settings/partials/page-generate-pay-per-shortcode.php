@@ -6,6 +6,7 @@ if (!defined('ABSPATH')) exit;
 <div id="btcpw_general_payment_gateway_options">
     <form method="POST" action="options.php">
         <?php settings_fields('btcpw_general_payment_gateway_options'); ?>
+        <p><?php echo wp_kses('BTCPayWall supports Gutenberg, WPBakery and Elementor editors. You don\'t have to generate shortcode, if you\'re using supported editors, to be able to protect your content. The paywall can be customized directly from the editor. This doesn\'t prevent you from using this page to create a shortcode. The main benefit of using this page for shortcodes is the fact that shortcode, which you create, will be stored. That allows you to reuse the shortcode on different pages.', []); ?></p>
         <table>
             <thead>
                 <tr>
