@@ -37,19 +37,20 @@ if (!class_exists('BTCPayWall')) :
         ];
 
         const CURRENCIES = [
+            'BTC',
             'SATS',
             'USD',
             'EUR',
             'GBP'
         ];
 
-        const TIPPING_CURRENCIES = [
+        /* const TIPPING_CURRENCIES = [
             'SATS',
             'BTC',
             'USD',
             'EUR',
             'GBP'
-        ];
+        ]; */
 
         const BTC_FORMAT = [
             'SATS',

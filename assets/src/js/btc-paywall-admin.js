@@ -494,7 +494,7 @@
           width: $("#btcpaywall_pay_per_post_width, #btcpaywall_pay_per_view_width").val(),
           height: $("#btcpaywall_pay_per_post_height, #btcpaywall_pay_per_view_height").val(),
           pay_block: $("input[name='btcpaywall_pay_per_post_paywall']:checked, input[name='btcpaywall_pay_per_view_paywall']:checked").val(),
-          btc_format: $("#btcpaywall_pay_per_post_btc_format, #btcpaywall_pay_per_view_btc_format").val(),
+          btc_format: $("input[name='btcpaywall_pay_per_post_btc_format']:checked, input[name='btcpaywall_pay_per_view_btc_format']:checked").val(),
           preview_title: $("#btcpaywall_pay_per_view_preview_title").val(),
           preview_title_color: $("#btcpaywall_pay_per_view_preview_title_color").val(),
           preview_description: $("#btcpaywall_pay_per_view_preview_description").val(),

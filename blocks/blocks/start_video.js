@@ -437,9 +437,6 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       type: 'boolean',
       default: true,
     },
-    btc_format: {
-      type: 'string',
-    },
     title: {
       type: 'string',
       default: 'Untitled',
@@ -597,7 +594,6 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
     const {
       attributes: {
         pay_view_block,
-        btc_format,
         background_color,
         width,
         height,
@@ -670,7 +666,6 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 label="Currency"
                 value={currency}
                 onChange={selectedItem => {
-                  selectedItem === 'SATS' ? setShow(true) : setShow(false);
                   setAttributes({ currency: selectedItem });
                 }}
                 options={[
@@ -682,20 +677,6 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 ]}
               />
             </PanelRow>
-            {show &&
-              <PanelRow>
-                <SelectControl
-                  label="BTC format"
-                  value={btc_format}
-                  onChange={selectedItem =>
-                    setAttributes({ btc_format: selectedItem })}
-                  options={[
-                    { value: '', label: 'Default' },
-                    { value: 'SATS', label: 'SATS' },
-                    { value: 'BTC', label: 'BTC' },
-                  ]}
-                />
-              </PanelRow>}
             <PanelRow>
               <NumberControl
                 label="Price"
@@ -1113,7 +1094,6 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
           block="btcpaywall/gutenberg-start-video-block"
           attributes={{
             pay_view_block,
-            btc_format,
             background_color,
             width,
             height,

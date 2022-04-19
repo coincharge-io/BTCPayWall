@@ -31,11 +31,11 @@ function ajax_btcpaywall_get_invoice_id()
     }
 
     $customer_data = array(
-        'full_name' => sanitize_text_field($_POST['full_name']),
-        'email' => sanitize_email($_POST['email']),
-        'address' => sanitize_text_field($_POST['address']),
-        'phone' => sanitize_text_field($_POST['phone']),
-        'message' => sanitize_text_field($_POST['message']),
+        'full_name' => isset($_POST['full_name']) ? sanitize_text_field($_POST['full_name']) : '',
+        'email' => isset($_POST['email']) ? sanitize_email($_POST['email']) : '',
+        'address' => isset($_POST['address']) ? sanitize_text_field($_POST['address']) : '',
+        'phone' => isset($_POST['phone']) ? sanitize_text_field($_POST['phone']) : '',
+        'message' => isset($_POST['message']) ? sanitize_text_field($_POST['message']) : '',
     );
 
     $post_id = sanitize_text_field($_POST['post_id']);

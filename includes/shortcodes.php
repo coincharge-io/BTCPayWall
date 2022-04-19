@@ -76,7 +76,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
         'selected_amount_background' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_selected_amount', true) : '#000'),
     ), $atts);
 
-    $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
+    $supported_currencies = BTCPayWall::CURRENCIES;
     $logo = wp_get_attachment_image_src($atts['logo_id']) ? wp_get_attachment_image_src($atts['logo_id'])[0] : $atts['logo_id'];
     $background = wp_get_attachment_image_src($atts['background_id']) ? wp_get_attachment_image_src($atts['background_id'])[0] : $atts['background_id'];
     $collect = btcpaywall_get_collect($atts);
@@ -353,7 +353,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
     ), $atts);
 
 
-    $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
+    $supported_currencies = BTCPayWall::CURRENCIES;
     $logo = wp_get_attachment_image_src($atts['logo_id']) ? wp_get_attachment_image_src($atts['logo_id'])[0] : $atts['logo_id'];
     $background = wp_get_attachment_image_src($atts['background_id']) ? wp_get_attachment_image_src($atts['background_id'])[0] : $atts['background_id'];
     $collect = btcpaywall_get_collect($atts);
@@ -629,7 +629,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
     ), $atts);
 
     $dimension = explode('x', '520x600');
-    $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
+    $supported_currencies = BTCPayWall::CURRENCIES;
     $logo = wp_get_attachment_image_src($atts['logo_id']) ? wp_get_attachment_image_src($atts['logo_id'])[0] : $atts['logo_id'];
 
     $background = wp_get_attachment_image_src($atts['background_id']) ? wp_get_attachment_image_src($atts['background_id'])[0] : $atts['background_id'];
@@ -908,7 +908,7 @@ function btcpaywall_render_shortcode_box_tipping($atts)
 
     $dimension = explode('x', ($atts['dimension'] == '250x300' ? '250x300' : '300x300'));
 
-    $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
+    $supported_currencies = BTCPayWall::CURRENCIES;
     $logo = wp_get_attachment_image_src($atts['logo_id']) ? wp_get_attachment_image_src($atts['logo_id'])[0] : $atts['logo_id'];
     $background = wp_get_attachment_image_src($atts['background_id']) ? wp_get_attachment_image_src($atts['background_id'])[0] : $atts['background_id'];
 

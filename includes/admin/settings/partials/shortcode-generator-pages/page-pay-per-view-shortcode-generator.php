@@ -115,15 +115,6 @@ $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == '
                             </option>
                         <?php endforeach; ?>
                     </select>
-                    <div class="btcpaywall_pay_per_view_price_format">
-                        <p><?php echo esc_html__('Select Bitcoin price display:', 'btcpaywall'); ?></p>
-                        <?php foreach ($supported_btc_format as $format) : ?>
-                            <div>
-                                <input type="radio" id="btcpaywall_pay_per_view_btc_format" name="btcpaywall_pay_per_view_btc_format" value="<?php echo esc_attr($format); ?>" <?php echo $result->btc_format === $format ? 'checked' : '' ?>>
-                                <label for="btcpaywall_pay_per_view_btc_format"><?php echo esc_html($format); ?></label>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
                 </div>
             </div>
             <div class="row">

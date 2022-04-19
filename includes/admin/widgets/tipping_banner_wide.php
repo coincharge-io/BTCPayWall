@@ -26,7 +26,7 @@ class Tipping_Banner_Wide extends WP_Widget
     {
 
         $dimension = explode('x', '600x200');
-        $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
+        $supported_currencies = BTCPayWall::CURRENCIES;
         $logo = wp_get_attachment_image_src($instance['logo_id']) ? wp_get_attachment_image_src($instance['logo_id'])[0] : $instance['logo_id'];
         $background = wp_get_attachment_image_src($instance['background_id']) ? wp_get_attachment_image_src($instance['background_id'])[0] : $instance['background_id'];
         $collect = btcpaywall_get_collect($instance);
@@ -257,7 +257,7 @@ class Tipping_Banner_Wide extends WP_Widget
     public function form($instance)
     {
         $dimensions = array('160x600', '600x160');
-        $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
+        $supported_currencies = BTCPayWall::CURRENCIES;
         $title = !empty($instance['title']) ? $instance['title'] : esc_html__('Support my work', 'btcpaywall');
 
         $description = !empty($instance['description']) ? $instance['description'] : esc_html__('', 'btcpaywall');

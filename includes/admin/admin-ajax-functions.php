@@ -51,8 +51,8 @@ function ajax_btcpaywall_check_greenfield_api_work()
         wp_send_json_error(['message' => 'Something went wrong. Please check your url and credentials.']);
     }
 
-    $view_permission = json_decode($response_view['body'])->permissions[0];
-    $create_permission = json_decode($response_create['body'])->permissions[0];
+    $view_permission = isset(json_decode($response_view['body'])->permissions[0]) ? json_decode($response_view['body'])->permissions[0] : 'btcpay.store.invalid-permission';
+    $create_permission = isset(json_decode($response_create['body'])->permissions[0]) ? json_decode($response_create['body'])->permissions[0] : 'btcpay.store.invalid-permission';
 
     $valid_view_permission = btcpaywall_check_permission(json_decode($response_view['body'], true)['permissions'], 'btcpay.store.canviewinvoices');
 
@@ -102,7 +102,7 @@ function btcpaywall_create_pay_per_shortcode()
     check_ajax_referer('shortcode-security-nonce', 'nonce_ajax');
 
     $row = new BTCPayWall_Pay_Per_Shortcode();
-    //BTCPayWall_Tipping_Form class has a function for sanitizing $_POST before saving to DB     
+    //BTCPayWall_Tipping_Form class has a function for sanitizing $_POST before saving to DB  
     $row->create([
         'id' => $_POST['id'] ?? null,
         'type' => $_POST['type'] ?? null,

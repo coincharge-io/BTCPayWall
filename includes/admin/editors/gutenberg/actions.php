@@ -52,10 +52,6 @@ function btcpaywall_load_gutenberg()
                     'type' => 'string',
                     'default' => ''
                 ),
-                'btc_format' => array(
-                    'type' => 'string',
-                    'default' => 'SATS'
-                ),
                 'currency' => array(
                     'type' => 'string',
                     'default' => 'SATS'
@@ -227,10 +223,6 @@ function btcpaywall_load_gutenberg()
                 'background_color' => array(
                     'type' => 'string',
                     'default' => ''
-                ),
-                'btc_format' => array(
-                    'type' => 'string',
-                    'default' => 'SATS'
                 ),
                 'title' => array(
                     'type' => 'string',

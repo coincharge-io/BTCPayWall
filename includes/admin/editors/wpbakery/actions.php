@@ -45,23 +45,6 @@ function btcpaywall_load_vc_widgets()
                 'group' => 'Option'
             ),
             array(
-                'type' => 'dropdown',
-                'heading' => 'BTC format',
-                'param_name' => 'btc_format',
-                'dependency' => array(
-                    'element' => 'currency',
-                    'value' => 'SATS'
-                ),
-                'value' => array(
-                    'Default' => '',
-                    'SATS' => 'SATS',
-                    'BTC' => 'BTC',
-                ),
-                'std' => 'Default',
-                'description' => 'Set BTC format',
-                'group' => 'Option'
-            ),
-            array(
                 'type' => 'textfield',
                 'heading' => 'Price',
                 'param_name' => 'price',
@@ -420,23 +403,6 @@ function btcpaywall_load_vc_widgets()
                 ),
                 'std' => 'Default',
                 'description' => 'Set currency',
-                'group' => 'Option'
-            ),
-            array(
-                'type' => 'dropdown',
-                'heading' => 'BTC format',
-                'param_name' => 'btc_format',
-                'dependency' => array(
-                    'element' => 'currency',
-                    'value' => 'SATS'
-                ),
-                'value' => array(
-                    'Default' => '',
-                    'SATS' => 'SATS',
-                    'BTC' => 'BTC',
-                ),
-                'std' => 'Default',
-                'description' => 'Set BTC format',
                 'group' => 'Option'
             ),
             array(

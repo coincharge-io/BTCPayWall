@@ -18,7 +18,6 @@ import ServerSideRender from '@wordpress/server-side-render';
 
 import { InspectorControls } from '@wordpress/block-editor';
 
-import { useState } from '@wordpress/element';
 
 registerBlockType('btcpaywall/gutenberg-start-block', {
   title: 'BTCPW Pay-per-Post Start',
@@ -446,9 +445,6 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       type: 'number',
       default: 550
     },
-    btc_format: {
-      type: 'string',
-    },
     currency: {
       type: 'string',
     },
@@ -580,7 +576,6 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
         background_color,
         width,
         height,
-        btc_format,
         currency,
         duration_type,
         price,
@@ -616,7 +611,6 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       },
       setAttributes,
     } = props;
-    const [show, setShow] = useState(currency === 'SATS');
 
     const inspectorControls = (
       <InspectorControls>
@@ -637,7 +631,6 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 label="Currency"
                 value={currency}
                 onChange={selectedItem => {
-                  selectedItem === 'SATS' ? setShow(true) : setShow(false);
                   setAttributes({ currency: selectedItem });
                 }}
                 options={[
@@ -649,20 +642,6 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 ]}
               />
             </PanelRow>
-            {show &&
-              <PanelRow>
-                <SelectControl
-                  label="BTC format"
-                  value={btc_format}
-                  onChange={selectedItem =>
-                    setAttributes({ btc_format: selectedItem })}
-                  options={[
-                    { value: '', label: 'Default' },
-                    { value: 'SATS', label: 'SATS' },
-                    { value: 'BTC', label: 'BTC' },
-                  ]}
-                />
-              </PanelRow>}
             <PanelRow>
               <NumberControl
                 label="Price"
@@ -987,7 +966,6 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             background_color,
             width,
             height,
-            btc_format,
             currency,
             duration_type,
             price,

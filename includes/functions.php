@@ -55,7 +55,6 @@ function btcpaywall_get_post_info_string_from_attributes($atts)
     }
     $btc_format = get_post_meta(get_the_ID(), 'btcpw_btc_format', true) ?: get_option('btcpw_default_pay_per_' . $project . '_btc_format');
 
-
     if ($currency === 'SATS' && $btc_format === 'BTC') {
 
         $price = $price / 100000000;
@@ -232,7 +231,7 @@ function btcpaywall_get_default_values($name)
  */
 function btcpaywall_calculate_price_for_invoice($post_id)
 {
-    $project = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] ? get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] : 'post';
+    $project = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] !== '' ? get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] : 'post';
 
     return get_post_meta($post_id, 'btcpw_price', true) ? get_post_meta($post_id, 'btcpw_price', true) : get_option('btcpw_default_pay_per_' . $project . '_price', 1000);
 }
@@ -366,11 +365,6 @@ function btcpaywall_update_meta_settings($atts)
     } else {
         delete_post_meta(get_the_ID(), 'btcpw_currency');
     }
-    if (($atts['currency'] === 'SATS') && $valid_btc_format) {
-        update_post_meta(get_the_ID(), 'btcpw_btc_format', sanitize_text_field($atts['btc_format']));
-    } else {
-        delete_post_meta(get_the_ID(), 'btcpw_btc_format');
-    }
     if ($atts['price'] != "") {
         update_post_meta(get_the_ID(), 'btcpw_price', sanitize_text_field($atts['price']));
     } else {
@@ -473,19 +467,19 @@ function btcpaywall_get_fixed_amount($atts)
     return array(
         'value_1' => array(
             'enabled' => (filter_var($atts['value1_enabled'], FILTER_VALIDATE_BOOLEAN)),
-            'currency' => in_array($atts['value1_currency'], BTCPayWall::TIPPING_CURRENCIES) === true ? $atts['value1_currency'] : 'SATS',
+            'currency' => in_array($atts['value1_currency'], BTCPayWall::CURRENCIES) === true ? $atts['value1_currency'] : 'SATS',
             'amount' => esc_html($atts['value1_amount']),
             'icon' => esc_html($atts['value1_icon'])
         ),
         'value_2' => array(
             'enabled' => (filter_var($atts['value2_enabled'], FILTER_VALIDATE_BOOLEAN)),
-            'currency' => in_array($atts['value2_currency'], BTCPayWall::TIPPING_CURRENCIES) === true ? $atts['value2_currency'] : 'SATS',
+            'currency' => in_array($atts['value2_currency'], BTCPayWall::CURRENCIES) === true ? $atts['value2_currency'] : 'SATS',
             'amount' => esc_html($atts['value2_amount']),
             'icon' => esc_html($atts['value2_icon'])
         ),
         'value_3' => array(
             'enabled' => (filter_var($atts['value3_enabled'], FILTER_VALIDATE_BOOLEAN)),
-            'currency' => in_array($atts['value3_currency'], BTCPayWall::TIPPING_CURRENCIES) === true ? $atts['value3_currency'] : 'SATS',
+            'currency' => in_array($atts['value3_currency'], BTCPayWall::CURRENCIES) === true ? $atts['value3_currency'] : 'SATS',
             'amount' => esc_html($atts['value3_amount']),
             'icon' => esc_html($atts['value3_icon'])
         ),

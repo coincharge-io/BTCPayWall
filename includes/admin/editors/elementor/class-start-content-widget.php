@@ -85,22 +85,7 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 				'default' => 'Default',
 			]
 		);
-		$this->add_control(
-			'btc_format',
-			[
-				'label' => 'BTC format',
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'condition'	=> [
-					'currency'	=> 'SATS'
-				],
-				'options' => [
-					'Default' => '',
-					'SATS' => 'SATS',
-					'BTC'  => 'BTC',
-				],
-				'default' => 'Default',
-			]
-		);
+		
 
 		$this->add_control(
 			'price',
@@ -458,7 +443,6 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 		$duration = !empty($settings['duration']) ? $settings['duration'] : '';
 		$duration_type = $settings['duration_type'];
 		$currency = $settings['currency'];
-		$btc_format = $settings['btc_format'];
 		$display_name = filter_var($settings['display_name'], FILTER_VALIDATE_BOOLEAN);
 		$display_email = filter_var($settings['display_email'], FILTER_VALIDATE_BOOLEAN);
 		$display_address = filter_var($settings['display_address'], FILTER_VALIDATE_BOOLEAN);
@@ -474,7 +458,7 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 
 
 		if ($enable_pay_block) {
-			echo do_shortcode("[btcpw_start_content pay_block='true' width='{$settings['width']}' height='{$settings['height']}' background_color='{$settings['background_color']}' currency='{$currency}' btc_format='{$btc_format}' duration='{$duration}' duration_type='{$duration_type}' price='{$price}' button_text = '{$settings['button_text']}'
+			echo do_shortcode("[btcpw_start_content pay_block='true' width='{$settings['width']}' height='{$settings['height']}' background_color='{$settings['background_color']}' currency='{$currency}' duration='{$duration}' duration_type='{$duration_type}' price='{$price}' button_text = '{$settings['button_text']}'
 			header_text = '{$settings['header_text']}'
 			header_color = '{$settings['header_color']}'
 			info_text = '{$settings['info_text']}'

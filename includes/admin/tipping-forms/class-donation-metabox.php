@@ -341,7 +341,7 @@ class Donation_Forms_Metabox
             'btcpaywall_tipping_page' => 'Donation Page'
         );
         $template_name = isset($templates[$template]) ? $templates[$template] : null;
-        $supported_currencies = BTCPayWall::TIPPING_CURRENCIES;
+        $supported_currencies = BTCPayWall::CURRENCIES;
         $dimensions = ['250x300', '300x300'];
         $used_currency = $stored_data['btcpaywall_tipping_text_currency'][0];
         $amount_1_currency = $stored_data['btcpaywall_tipping_text_default_currency_1'][0];
