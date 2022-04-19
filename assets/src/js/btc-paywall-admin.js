@@ -43,33 +43,27 @@
           disabled: false,
         });
       }
-    })
-    $('#btcpaywall_pay_per_post_currency, #btcpaywall_pay_per_view_currency').change(function () {
-      var stepValue = $(this).val() === 'SATS' ? '1' : '0.50';
+    });
 
-      $('#btcpaywall_pay_per_post_price,#btcpaywall_pay_per_view_price').attr({
-        step: stepValue,
-        value: parseInt($('#btcpaywall_pay_per_post_price,#btcpaywall_pay_per_view_price').val()),
-      });
-    });
-    $('#btcpaywall_pay_per_post_currency, #btcpaywall_pay_per_view_currency').change(function () {
-      if ($('#btcpaywall_pay_per_post_currency, #btcpaywall_pay_per_view_currency').val() !== 'SATS') {
-        $('.btcpaywall_pay_per_post_price_format, .btcpaywall_pay_per_view_price_format').hide();
-      } else {
-        $('.btcpaywall_pay_per_post_price_format, .btcpaywall_pay_per_view_price_format').show();
-      }
-    });
-    $('#btcpw_default_currency').change(function () {
+
+    /* $('#btcpw_default_currency').change(function () {
       var stepValue = $(this).val() === 'SATS' ? '1' : '0.50';
 
       $('#btcpw_default_price').attr({
         step: stepValue,
         value: parseInt($('#btcpw_default_price').val()),
       });
-    });
+    }); */
 
   })
   $(document).ready(function () {
+    $('#btcpaywall_pay_per_post_currency, #btcpaywall_pay_per_view_currency').change(function () {
+      var stepValue = $(this).val() === 'SATS' ? '1' : ($(this).val() === 'BTC' ? '0.00000001' : '0.50');
+      $('#btcpaywall_pay_per_post_price,#btcpaywall_pay_per_view_price').attr({
+        step: stepValue,
+        value: parseInt($('#btcpaywall_pay_per_post_price,#btcpaywall_pay_per_view_price').val()),
+      });
+    });
     $(
       '#btcpw_default_page_currency1, #btcpw_default_page_currency2, #btcpw_default_page_currency3, #btcpw_banner_wide_default_currency1, #btcpw_banner_wide_default_currency2, #btcpw_banner_wide_default_currency3, #btcpw_banner_high_default_currency1, #btcpw_banner_high_default_currency2, #btcpw_banner_high_default_currency3'
     ).change(function () {
@@ -83,15 +77,7 @@
       });
     });
   });
-  $(document).ready(function () {
-    $('#btcpw_default_currency').change(function () {
-      if ($('#btcpw_default_currency').val() !== 'SATS') {
-        $('.btcpw_price_format').hide();
-      } else {
-        $('.btcpw_price_format').show();
-      }
-    });
-  });
+
   $(document).ready(function () {
     $('#btcpw_default_pay_per_post_duration_type').change(function () {
       var dtype = $(this).val();
@@ -321,107 +307,7 @@
     );
     imageRemove($('.btcpaywall_pay_per_view_remove_preview_image'));
   });
-  $(document).ready(function () {
-    showMore(
-      $('.btcpw_tipping_banner_high_collect_email'),
-      $(
-        '.btcpw_tipping_banner_high_collect_email_mandatory, label[for="btcpw_tipping_banner_high_collect[email][mandatory]"]'
-      )
-    );
-    showMore(
-      $('.btcpw_tipping_banner_high_collect_name'),
-      $(
-        '.btcpw_tipping_banner_high_collect_name_mandatory, label[for="btcpw_tipping_banner_high_collect[name][mandatory]"]'
-      )
-    );
 
-    showMore(
-      $('.btcpw_tipping_banner_high_collect_phone'),
-      $(
-        '.btcpw_tipping_banner_high_collect_phone_mandatory, label[for="btcpw_tipping_banner_high_collect[phone][mandatory]"]'
-      )
-    );
-
-    showMore(
-      $('.btcpw_tipping_banner_high_collect_address'),
-      $(
-        '.btcpw_tipping_banner_high_collect_address_mandatory, label[for="btcpw_tipping_banner_high_collect[address][mandatory]"]'
-      )
-    );
-
-    showMore(
-      $('.btcpw_tipping_banner_high_collect_message'),
-      $(
-        '.btcpw_tipping_banner_high_collect_message_mandatory, label[for="btcpw_tipping_banner_high_collect[message][mandatory]"]'
-      )
-    );
-    showMore(
-      $('.btcpw_tipping_banner_wide_collect_email'),
-      $(
-        '.btcpw_tipping_banner_wide_collect_email_mandatory, label[for="btcpw_tipping_banner_wide_collect[email][mandatory]"]'
-      )
-    );
-    showMore(
-      $('.btcpw_tipping_banner_wide_collect_name'),
-      $(
-        '.btcpw_tipping_banner_wide_collect_name_mandatory, label[for="btcpw_tipping_banner_wide_collect[name][mandatory]"]'
-      )
-    );
-
-    showMore(
-      $('.btcpw_tipping_banner_wide_collect_phone'),
-      $(
-        '.btcpw_tipping_banner_wide_collect_phone_mandatory, label[for="btcpw_tipping_banner_wide_collect[phone][mandatory]"]'
-      )
-    );
-
-    showMore(
-      $('.btcpw_tipping_banner_wide_collect_address'),
-      $(
-        '.btcpw_tipping_banner_wide_collect_address_mandatory, label[for="btcpw_tipping_banner_wide_collect[address][mandatory]"]'
-      )
-    );
-
-    showMore(
-      $('.btcpw_tipping_banner_wide_collect_message'),
-      $(
-        '.btcpw_tipping_banner_wide_collect_message_mandatory, label[for="btcpw_tipping_banner_wide_collect[message][mandatory]"]'
-      )
-    );
-    showMore(
-      $('.btcpw_tipping_page_collect_email'),
-      $(
-        '.btcpw_tipping_page_collect_email_mandatory, label[for="btcpw_tipping_page_collect[email][mandatory]"]'
-      )
-    );
-    showMore(
-      $('.btcpw_tipping_page_collect_name'),
-      $(
-        '.btcpw_tipping_page_collect_name_mandatory, label[for="btcpw_tipping_page_collect[name][mandatory]"]'
-      )
-    );
-
-    showMore(
-      $('.btcpw_tipping_page_collect_phone'),
-      $(
-        '.btcpw_tipping_page_collect_phone_mandatory, label[for="btcpw_tipping_page_collect[phone][mandatory]"]'
-      )
-    );
-
-    showMore(
-      $('.btcpw_tipping_page_collect_address'),
-      $(
-        '.btcpw_tipping_page_collect_address_mandatory, label[for="btcpw_tipping_page_collect[address][mandatory]"]'
-      )
-    );
-
-    showMore(
-      $('.btcpw_tipping_page_collect_message'),
-      $(
-        '.btcpw_tipping_page_collect_message_mandatory, label[for="btcpw_tipping_page_collect[message][mandatory]"]'
-      )
-    );
-  });
 
   function imagePreview(click_elem, target) {
     var custom_uploader, click_elem, target;
