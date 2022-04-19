@@ -44,8 +44,8 @@ class BTCPayWall_Pay_Per_Shortcode
     public $continue_button_text_color = '#ffffff';
     public $continue_button_color = '#fe642e';
     public $previous_button_text = 'Previous';
-    public $previous_button_text_color = '#1d5aa3';
-    public $previous_button_color = '#ffffff';
+    public $previous_button_text_color = '#ffffff';
+    public $previous_button_color = '#1d5aa3';
     public $link = true;
     public $help_link = 'https://btcpaywall.com/how-to-pay-at-the-bitcoin-paywall/';
     public $help_text = 'Help';
