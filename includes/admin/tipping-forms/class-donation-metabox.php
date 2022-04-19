@@ -112,7 +112,9 @@ class Donation_Forms_Metabox
                 "name" => "btcpaywall_tipping_color_header_footer_background",
                 "std" => "#1d5aa3"
             ],
-            ["name" => "btcpaywall_tipping_text_logo"],
+            [
+                "name" => "btcpaywall_tipping_text_logo"
+            ],
             [
                 "name" => "btcpaywall_tipping_text_title",
                 "std" => "Support my work"
@@ -602,7 +604,7 @@ class Donation_Forms_Metabox
                                     <label for="btcpaywall_tipping_text_description"><?php echo __('Description', 'btcpaywall'); ?></label>
                                 </div>
                                 <div>
-                                    <input type="text" id="btcpaywall_tipping_text_description" name="btcpaywall_tipping_text_description" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_description'][0]); ?>" />
+                                    <input type="text" id="btcpaywall_tipping_text_description" name="btcpaywall_tipping_text_description" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_description'][0] ?? ""); ?>" />
                                 </div>
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_box">

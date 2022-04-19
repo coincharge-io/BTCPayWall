@@ -498,11 +498,11 @@ $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == '
             </div>
             <div class="btcpw_pay__preview_preview pay_per_view">
                 <div class="btcpw_pay__preview_preview preview_img">
-                    <img src="<?php echo esc_url($preview_image[0]); ?>" alt="Video preview">
+                    <img src="<?php echo esc_url(isset($preview_image[0]) ? $preview_image[0] : ''); ?>" alt="Video preview">
                 </div>
                 <div class="btcpw_pay__preview_preview preview_description">
-                    <h3><?php echo esc_html($result->preview_title); ?></h3>
-                    <p><?php echo esc_html($result->preview_description); ?></p>
+                    <h3><?php echo esc_html($result->title); ?></h3>
+                    <p><?php echo esc_html($result->description); ?></p>
                 </div>
             </div>
             <div class="btcpw_pay__content_preview pay_per_view">

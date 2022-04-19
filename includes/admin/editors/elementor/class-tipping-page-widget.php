@@ -588,14 +588,14 @@ class Elementor_BTCPW_Tipping_Page_Widget extends \Elementor\Widget_Base
         $mandatory_phone = filter_var($settings['mandatory_phone'], FILTER_VALIDATE_BOOLEAN);
         $mandatory_message = filter_var($settings['mandatory_message'], FILTER_VALIDATE_BOOLEAN);
 
-        echo do_shortcode("[btcpw_tipping_page dimension='{$settings['dimension']}' title='{$settings['title']}' description='{$settings['description']}'
+        echo do_shortcode("[btcpw_tipping_page dimension='{$settings['dimension']}' 
+        title='{$settings['title']}'
         currency='{$settings['currency']}'
         background_color = '{$settings['background_color']}'
         title_text_color = '{$settings['title_text_color']}'
         tipping_text = '{$settings['tipping_text']}'
         tipping_text_color = '{$settings['tipping_text_color']}'
         redirect = '{$settings['redirect']}'
-        description_color = '{$settings['description_color']}'
         button_text = '{$settings['button_text']}'
         button_text_color = '{$settings['button_text_color']}'
         button_color = '{$settings['button_color']}'
