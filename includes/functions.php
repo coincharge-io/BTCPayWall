@@ -66,7 +66,9 @@ function btcpaywall_get_post_info_string_from_attributes($atts)
         $currency = 'BTC';
     } */
     $payblock_info = $atts['info_text'];
+    $non_number = $duration_type === 'unlimited' || $duration_type === 'onetime';
 
+    $duration_type = ($duration > 1 && !$non_number) ? "{$duration_type}s" : $duration_type;
 
 
     $search = array('{price}', '{duration}', '{dtype}', '{currency}');
