@@ -8,7 +8,7 @@
 </head>
 
 <body style="background-color: #f6f6f6; font-family: sans-serif; -webkit-font-smoothing: antialiased; font-size: 14px; line-height: 1.4; margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
-    <div clas="container" style="display: block; margin: 0 auto !important; max-width: 580px; padding: 10px; width: 580px; background: #ffffff; border-radius: 3px;">
+    <div class="container" style="display: block; margin: 0 auto !important; max-width: 580px; padding: 10px; width: 580px; background: #ffffff; border-radius: 3px;">
         <table style="border-collapse: separate; width: 100%;
             table-layout: auto; margin-top:30px;" role="presentation" border="0" cellpadding="0" cellspacing="0">
             <?php $payment_details = new BTCPayWall_Payment($invoice_id);

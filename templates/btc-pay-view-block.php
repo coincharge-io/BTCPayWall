@@ -18,11 +18,11 @@ $width = !empty($atts['width']) ? $atts['width'] : get_option('btcpw_pay_per_vie
 $height = !empty($atts['height']) ? $atts['height'] : get_option('btcpw_pay_per_view_height', 550);
 $header_color = !empty($atts['header_color']) ? $atts['header_color'] : get_option('btcpw_pay_per_view_header_color', '#000000');
 $info_color = !empty($atts['info_color']) ? $atts['info_color'] : get_option('btcpw_pay_per_view_info_color', '#000000');
-$button_color = get_option('btcpw_pay_per_view_button_color', '#f6b330');
-$button_text_color = get_option('btcpw_pay_per_view_button_text_color', '#FFFFFF');
-$default_text = get_option('btcpw_pay_per_view_title', 'Pay now to unlock blogpost');
-$default_button = get_option('btcpw_pay_per_view_button', 'Pay');
-$default_info = get_option('btcpw_pay_per_view_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]');
+$button_color = !empty($atts['button_color']) ? $atts['button_color'] : get_option('btcpw_pay_per_view_button_color', '#f6b330');
+$button_text_color = !empty($atts['button_text_color']) ? $atts['button_text_color'] : get_option('btcpw_pay_per_view_button_text_color', '#FFFFFF');
+/* $default_text = get_option('btcpw_pay_per_view_title', 'Pay now to unlock blogpost');
+$default_button = get_option('btcpw_pay_per_view_button', 'Pay'); 
+$default_info = get_option('btcpw_pay_per_view_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]');*/
 $preview_title_color = !empty($atts['title_color']) ? $atts['title_color'] : get_option('btcpw_pay_per_view_preview_title_color', '#000000');
 $preview_description_color = !empty($atts['description_color']) ? $atts['description_color'] : get_option('btcpw_pay_per_view_preview_description_color', '#000000');
 
@@ -183,5 +183,3 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
         </form>
     </div>
 </div>
-
-<?php
