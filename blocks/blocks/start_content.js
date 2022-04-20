@@ -466,7 +466,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
     },
     info_text: {
       type: 'string',
-      default:'For {price} {currency} you will have access for {duration} {dtype}.'
+      default: 'For {price} {currency} you will have access for {duration} {dtype}.'
     },
     info_color: {
       type: 'string',
@@ -634,7 +634,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                   setAttributes({ currency: selectedItem });
                 }}
                 options={[
-                  { value: '', label: 'Default' },
+                  { value: 'BTC', label: 'BTC' },
                   { value: 'SATS', label: 'SATS' },
                   { value: 'EUR', label: 'EUR' },
                   { value: 'USD', label: 'USD' },
@@ -657,7 +657,6 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 onChange={selectedItem =>
                   setAttributes({ duration_type: selectedItem })}
                 options={[
-                  { value: '', label: 'Default' },
                   { value: 'minute', label: 'Minute' },
                   { value: 'hour', label: 'Hour' },
                   { value: 'week', label: 'Week' },

@@ -77,7 +77,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 				'label' => 'Currency',
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'options' => [
-					'Default' => '',
+					'BTC' => 'BTC',
 					'SATS' => 'SATS',
 					'EUR' => 'EUR',
 					'USD' => 'USD',
@@ -101,7 +101,6 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 				'label' => 'Duration type',
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'options' => [
-					'default' => '',
 					'minute' => 'minute',
 					'hour' => 'hour',
 					'week' => 'week',

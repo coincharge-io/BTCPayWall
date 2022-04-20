@@ -53,7 +53,7 @@ function btcpaywall_get_post_info_string_from_attributes($atts)
     } else {
         $currency = get_option('btcpw_default_pay_per_' . $project . '_currency', 'SATS');
     }
-    $btc_format = get_post_meta(get_the_ID(), 'btcpw_btc_format', true) ?: get_option('btcpw_default_pay_per_' . $project . '_btc_format');
+    /* $btc_format = get_post_meta(get_the_ID(), 'btcpw_btc_format', true) ?: get_option('btcpw_default_pay_per_' . $project . '_btc_format');
 
     if ($currency === 'SATS' && $btc_format === 'BTC') {
 
@@ -64,7 +64,7 @@ function btcpaywall_get_post_info_string_from_attributes($atts)
         $price = rtrim($price, '0');
 
         $currency = 'BTC';
-    }
+    } */
     $payblock_info = $atts['info_text'];
 
 
@@ -119,7 +119,7 @@ function btcpaywall_get_post_info_string($post_id = null, $type = 'post')
     } else {
         $currency = get_option('btcpw_default_pay_per_' . $project . '_currency', 'SATS');
     }
-    $btc_format = get_post_meta(get_the_ID(), 'btcpw_btc_format', true) ?: get_option('btcpw_default_pay_per_' . $project . '_btc_format');
+    /* $btc_format = get_post_meta(get_the_ID(), 'btcpw_btc_format', true) ?: get_option('btcpw_default_pay_per_' . $project . '_btc_format');
 
 
     if ($currency === 'SATS' && $btc_format === 'BTC') {
@@ -131,7 +131,7 @@ function btcpaywall_get_post_info_string($post_id = null, $type = 'post')
         $price = rtrim($price, '0');
 
         $currency = 'BTC';
-    }
+    } */
 
     $non_number = $duration_type === 'unlimited' || $duration_type === 'onetime';
 
@@ -231,7 +231,7 @@ function btcpaywall_get_default_values($name)
  */
 function btcpaywall_calculate_price_for_invoice($post_id)
 {
-    $project = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] !== '' ? get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] : 'post';
+    $project = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] !== false ? get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] : 'post';
 
     return get_post_meta($post_id, 'btcpw_price', true) ? get_post_meta($post_id, 'btcpw_price', true) : get_option('btcpw_default_pay_per_' . $project . '_price', 1000);
 }

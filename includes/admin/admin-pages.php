@@ -19,9 +19,9 @@ function btcpaywall_add_menu_pages()
     add_menu_page('BTCPayWall', __('BTCPayWall', 'btcpaywall'), 'manage_options', 'btcpw_general_settings', '', 'dashicons-tagcloud');
     add_submenu_page('btcpw_general_settings', __('Settings', 'btcpaywall'), __('Settings', 'btcpaywall'), 'manage_options', 'btcpw_general_settings', 'btcpaywall_render_general_settings_page');
     add_submenu_page('btcpw_general_settings', __('Payments', 'btcpaywall'), __('Payments', 'btcpaywall'), 'manage_options', 'btcpw_payments', 'btcpaywall_render_payments_page');
-    add_submenu_page('btcpw_general_settings', __('Pay-per-Post', 'btcpaywall'), __('Pay-per-Post', 'btcpaywall'), 'manage_options', 'btcpw_pay_per_post', 'btcpaywall_render_pay_per_post');
+    /* add_submenu_page('btcpw_general_settings', __('Pay-per-Post', 'btcpaywall'), __('Pay-per-Post', 'btcpaywall'), 'manage_options', 'btcpw_pay_per_post', 'btcpaywall_render_pay_per_post');
     add_submenu_page('btcpw_general_settings', __('Pay-per-View', 'btcpaywall'), __('Pay-per-View', 'btcpaywall'), 'manage_options', 'btcpw_pay_per_view', 'btcpaywall_render_pay_per_view');
-
+ */
     add_submenu_page('btcpw_general_settings', __('Add Pay-per-shortcode', 'btcpaywall'), __('Add Pay-per-shortcode', 'btcpaywall'), 'manage_options', 'btcpw_pay_per_shortcode_generator', 'btcpaywall_render_pay_per_shortcode_generator');
     add_submenu_page(null, __('Pay-per-shortcode', 'btcpaywall'), __('Pay-per-shortcode', 'btcpaywall'), 'manage_options', 'btcpw_pay_per_shortcode', 'btcpaywall_render_pay_per_manage_shortcode_page');
 

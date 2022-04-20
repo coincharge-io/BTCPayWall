@@ -34,7 +34,7 @@ function btcpaywall_load_vc_widgets()
                 'heading' => 'Currency',
                 'param_name' => 'currency',
                 'value' => array(
-                    'Default' => '',
+                    'BTC' => 'BTC',
                     'SATS' => 'SATS',
                     'EUR' => 'EUR',
                     'USD' => 'USD',
@@ -56,7 +56,6 @@ function btcpaywall_load_vc_widgets()
                 'heading' => 'Duration type',
                 'param_name' => 'duration_type',
                 'value' => array(
-                    'default' => '',
                     'minute' => 'minute',
                     'hour' => 'hour',
                     'day' => 'day',
@@ -395,7 +394,7 @@ function btcpaywall_load_vc_widgets()
                 'heading' => 'Currency',
                 'param_name' => 'currency',
                 'value' => array(
-                    'Default' => '',
+                    'BTC' => 'BTC',
                     'SATS' => 'SATS',
                     'EUR' => 'EUR',
                     'USD' => 'USD',
@@ -417,7 +416,6 @@ function btcpaywall_load_vc_widgets()
                 'heading' => 'Duration type',
                 'param_name' => 'duration_type',
                 'value' => array(
-                    'default' => '',
                     'minute' => 'minute',
                     'hour' => 'hour',
                     'day' => 'day',

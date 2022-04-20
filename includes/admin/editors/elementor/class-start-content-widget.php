@@ -76,7 +76,7 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 				'label' => 'Currency',
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'options' => [
-					'Default' => '',
+					'BTC' => 'BTC',
 					'SATS' => 'SATS',
 					'EUR' => 'EUR',
 					'USD' => 'USD',
@@ -85,7 +85,7 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 				'default' => 'Default',
 			]
 		);
-		
+
 
 		$this->add_control(
 			'price',
@@ -101,7 +101,6 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 				'label' => 'Duration type',
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'options' => [
-					'default' => '',
 					'minute' => 'minute',
 					'hour' => 'hour',
 					'week' => 'week',
