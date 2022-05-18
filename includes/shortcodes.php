@@ -673,7 +673,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
         }
 
         .btcpw_page_header_container h3 {
-            color: <?php echo esc_html($atts['title_text_color']); ?>
+            color: <?php echo esc_html($atts['title_text_color'] . ' !important'); ?>
         }
 
         #page_tipping_form>fieldset>h4 {

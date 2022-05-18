@@ -32,11 +32,11 @@ $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == '
     }
 
     .btcpw_help_preview.pay_per_view {
-        display: <?php echo $result->link === true ? '' : 'none'; ?>;
+        display: <?php echo $result->link == true ? '' : 'none'; ?>;
     }
 
     .btcpw_additional_help_preview.pay_per_view {
-        display: <?php echo $result->additional_link === true ? '' : 'none'; ?>;
+        display: <?php echo $result->additional_link == true ? '' : 'none'; ?>;
     }
 
     .btcpw_pay_preview {

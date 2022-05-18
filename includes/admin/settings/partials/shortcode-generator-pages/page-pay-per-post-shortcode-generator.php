@@ -18,11 +18,11 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
 ?>
 <style>
     .btcpw_help_preview.pay_per_post {
-        display: <?php echo $result->link === true ? 'block' : 'none'; ?>;
+        display: <?php echo $result->link == true ? 'block' : 'none'; ?>;
     }
 
     .btcpw_additional_help_preview.pay_per_post {
-        display: <?php echo $result->additional_link === true ? 'block' : 'none'; ?>;
+        display: <?php echo $result->additional_link == true ? 'block' : 'none'; ?>;
     }
 
     .btcpw_pay_preview {

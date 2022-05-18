@@ -300,7 +300,6 @@ function ajax_btcpaywall_tipping()
         return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
     }
 
-
     $tipping = new BTCPayWall_Tipping();
     $tipping->create([
         'tipper_id' => $tipper->id,

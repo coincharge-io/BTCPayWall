@@ -105,7 +105,7 @@
       $('.btcpw_help_preview.pay_per_post, .btcpaywall_help_preview.pay_per_post').toggle()
     })
     $('#btcpw_pay_per_post_help_link_text, #btcpaywall_pay_per_post_help_link_text').on('input', function () {
-      $('.btcpw_help__link_preview.pay_per_post a, .btcpaywall_help__link_preview.pay_per_post a').text($(this).val())
+      $('.btcpw_help_preview.pay_per_post a, .btcpaywall_help__link_preview.pay_per_post a').text($(this).val())
     })
     $('#btcpw_pay_per_post_help_link, #btcpaywall_pay_per_post_help_link').on('input', function () {
       $('.btcpw_help__link_preview.pay_per_post, .btcpaywall_help__link_preview.pay_per_post').attr('href', $(this).val())

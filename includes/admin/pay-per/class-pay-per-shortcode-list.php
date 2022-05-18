@@ -275,7 +275,31 @@ class Pay_Per_Shortcode_List extends WP_List_Table
         $this->single_row_columns($item);
         echo '</tr>';
     }
+    private function sort_data($a, $b)
+    {
+        // Set defaults
+        $orderby = 'title';
+        $order = 'asc';
 
+        // If orderby is set, use this as the sort column
+        if (!empty($_GET['orderby'])) {
+            $orderby = $_GET['orderby'];
+        }
+
+        // If order is set use this as the order
+        if (!empty($_GET['order'])) {
+            $order = $_GET['order'];
+        }
+
+
+        $result = strcmp($a[$orderby], $b[$orderby]);
+
+        if ($order === 'asc') {
+            return $result;
+        }
+
+        return -$result;
+    }
     public function display()
     {
         $singular = $this->_args['singular'];
@@ -319,7 +343,7 @@ class Pay_Per_Shortcode
     }
     public function btcpaywall_add_submenu()
     {
-        $hook = add_submenu_page('btcpw_general_settings', __('All Pay-per-shortcode', 'btcpaywall'), __('All Pay-per-shortcode', 'btcpaywall'), 'manage_options', 'btcpw_pay_per_shortcode_list', array($this, 'btcpaywall_render_pay_per_shortcode_list'), 3);
+        $hook = add_submenu_page('btcpw_general_settings', __('Pay-per -> All shortcodes', 'btcpaywall'), __('Pay-per -> All shortcodes', 'btcpaywall'), 'manage_options', 'btcpw_pay_per_shortcode_list', array($this, 'btcpaywall_render_pay_per_shortcode_list'), 2);
         add_action("load-$hook", [$this, 'screen_option']);
     }
     public function screen_option()

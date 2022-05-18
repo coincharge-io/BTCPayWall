@@ -77,7 +77,7 @@ class Payments_Table extends WP_List_Table
             $item['id']
         );
     }
-
+    
     public static function record_count()
     {
 

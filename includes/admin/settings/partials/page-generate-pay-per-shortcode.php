@@ -21,14 +21,14 @@ if (!defined('ABSPATH')) exit;
                     </td>
                     </td>
                     <td><?php echo esc_html__('The BTCPayWall offers publishers the opportunity to offer high-quality content to readers willing to pay per single newspaper article.', 'btcpaywall'); ?></td>
-                    <td><a href="<?php echo admin_url('admin.php?page=btcpw_pay_per_shortcode&type=pay-per-post'); ?>"><?php echo esc_html__('Generate shortcode', 'btcpaywall'); ?></a></td>
+                    <td><a href="<?php echo admin_url('admin.php?page=btcpw_pay_per_shortcode&type=pay-per-post'); ?>"><?php echo esc_html__('Add shortcode', 'btcpaywall'); ?></a></td>
                 </tr>
                 <tr>
                     <td><?php echo esc_html__('Pay-per-view', 'btcpaywall'); ?>
                     </td>
                     </td>
                     <td><?php echo esc_html__('With the Content Store View module, BTCPayWall offers the possibility of selling video content that the viewer can watch directly.', 'btcpaywall'); ?></td>
-                    <td><a href="<?php echo admin_url('admin.php?page=btcpw_pay_per_shortcode&type=pay-per-view'); ?>"><?php echo esc_html__('Generate shortcode', 'btcpaywall'); ?></a></td>
+                    <td><a href="<?php echo admin_url('admin.php?page=btcpw_pay_per_shortcode&type=pay-per-view'); ?>"><?php echo esc_html__('Add shortcode', 'btcpaywall'); ?></a></td>
 
                 </tr>
             </tbody>

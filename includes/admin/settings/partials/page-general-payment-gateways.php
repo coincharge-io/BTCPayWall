@@ -1,7 +1,7 @@
 <?php
 // Exit if accessed directly
 if (!defined('ABSPATH')) exit;
-$selected_gateway = get_option('btcpw_selected_payment_gateway');
+$selected_gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer');
 $supported_gateways = array(
     'BTCPayServer',
     'OpenNode'
