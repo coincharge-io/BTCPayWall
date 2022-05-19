@@ -46,15 +46,6 @@
     });
 
 
-    /* $('#btcpw_default_currency').change(function () {
-      var stepValue = $(this).val() === 'SATS' ? '1' : '0.50';
-
-      $('#btcpw_default_price').attr({
-        step: stepValue,
-        value: parseInt($('#btcpw_default_price').val()),
-      });
-    }); */
-
   })
   $(document).ready(function () {
     $('#btcpaywall_pay_per_post_currency, #btcpaywall_pay_per_view_currency').change(function () {
@@ -362,10 +353,14 @@
     });
   }
   $(document).ready(function () {
+    $("#btcpaywall_pay_per_shortcode").css("border", "5px solid #fc852e")
+
     $(
       "#pay-per-post-shortcode-generator-form, #pay-per-view-shortcode-generator-form"
     ).on("submit", function (e) {
       e.preventDefault();
+      /* $(this).scrollTop(); */
+      $("html,body").animate({ scrollTop: 0 }, 100);
       $.ajax({
         type: "POST",
         url: "/wp-admin/admin-ajax.php",
@@ -436,7 +431,7 @@
         },
         error: function (e) {
           console.log(e);
-        },
+        }
       });
     });
   });

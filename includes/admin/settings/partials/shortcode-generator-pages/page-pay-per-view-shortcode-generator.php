@@ -62,8 +62,7 @@ $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == '
     <div>
         <form method="POST" action="options.php" id="pay-per-view-shortcode-generator-form">
             <?php if ($result->id > 0) : ?>
-                <div class="row">
-
+                <div class="row" id="btcpaywall_pay_per_shortcode">
                     <div class="col-20">
                         <p><?php echo esc_html__('Shortcode', 'btcpaywall'); ?></p>
                     </div>

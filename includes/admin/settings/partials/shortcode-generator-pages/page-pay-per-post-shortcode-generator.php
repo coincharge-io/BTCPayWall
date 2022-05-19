@@ -48,7 +48,7 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
     <div>
         <form method="POST" action="options.php" id="pay-per-post-shortcode-generator-form">
             <?php if ($result->id > 0) : ?>
-                <div class="row">
+                <div class="row" id="btcpaywall_pay_per_shortcode">
 
                     <div class="col-20">
                         <p><?php echo esc_html__('Shortcode', 'btcpaywall'); ?></p>
@@ -411,12 +411,12 @@ $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 
                 </div>
             </div>
             <input type="hidden" id="btcpaywall_pay_per_post_id" value="<?php echo esc_attr($result->id); ?>" />
-
             <div class="btcpw__paywall_submit_button" style="display: inline-block;">
                 <button class="button button-secondary btcpw_button" type="button"><a href="<?php echo admin_url($back_url); ?>"><?php echo esc_html__('Back', 'btcpaywall'); ?></a></button>
 
                 <button class="button button-primary btcpw_button" type="submit"><?php echo esc_html__('Save', 'btcpaywall'); ?></button>
             </div>
+
         </form>
     </div>
     <div id="btcpw_pay_per_post_paywall_preview">

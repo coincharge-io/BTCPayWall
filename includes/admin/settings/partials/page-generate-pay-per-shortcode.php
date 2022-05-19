@@ -27,7 +27,7 @@ if (!defined('ABSPATH')) exit;
                     <td><?php echo esc_html__('Pay-per-view', 'btcpaywall'); ?>
                     </td>
                     </td>
-                    <td><?php echo esc_html__('With the Content Store View module, BTCPayWall offers the possibility of selling video content that the viewer can watch directly.', 'btcpaywall'); ?></td>
+                    <td><?php echo esc_html__('With pay-per-view, you can offer video content for a fee to be played on your own website.', 'btcpaywall'); ?></td>
                     <td><a href="<?php echo admin_url('admin.php?page=btcpw_pay_per_shortcode&type=pay-per-view'); ?>"><?php echo esc_html__('Add shortcode', 'btcpaywall'); ?></a></td>
 
                 </tr>
