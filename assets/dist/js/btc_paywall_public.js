@@ -1,1 +1,770 @@
-!function(e){var t={};function a(r){if(t[r])return t[r].exports;var p=t[r]={i:r,l:!1,exports:{}};return e[r].call(p.exports,p,p.exports,a),p.l=!0,p.exports}a.m=e,a.c=t,a.d=function(e,t,r){a.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},a.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.t=function(e,t){if(1&t&&(e=a(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(a.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var p in e)a.d(r,p,function(t){return e[t]}.bind(null,p));return r},a.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return a.d(t,"a",t),t},a.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},a.p="",a(a.s=9)}({9:function(e,t){!function(e){"use strict";function t(e,t,a,r,p,_){var n=Number(t);switch(e){case"BTC":return(n*a).toFixed(2);case"USD":return(p/a*n).toFixed(0);case"EUR":return(p/r*n).toFixed(0);case"GBP":return(p/_*n).toFixed(0);default:return(a/p*n).toFixed(2)}}function a(e){switch(e){case"BTC":return"USD";case"USD":case"EUR":case"GBP":return"SATS";default:return"USD"}}e(document).ready((function(){e(".btcpaywall_cart_remove_item_btn").click((function(t){t.preventDefault();var a=e(this).data("cart-key");e.ajax({url:"/wp-admin/admin-ajax.php",type:"POST",data:{action:"btcpw_remove_from_cart",cart_item:a},success:function(e){location.reload()}})})),e("#btcpaywall_download_form").submit((function(t){t.preventDefault();var a=e("#btcpw_download_id").data("post_id"),r=e("#btcpw_download_id").data("post_title");e.ajax({url:"/wp-admin/admin-ajax.php",method:"POST",data:{action:"btcpw_add_to_cart",id:a,title:r},success:function(e){e.success&&location.replace(e.data.data)},error:function(e){console.error(e)}})}))})),e(document).ready((function(){e("#btcpw_tipping_currency").change((function(){var t="BTC"===e(this).val()?"0.00000001":"SATS"===e(this).val()?"1":"0.50";e("#btcpw_tipping_amount").attr({step:t,value:parseInt(e("#btcpw_tipping_amount").val())})}))})),e(document).ready((function(){var r,p,_,n;e.ajax({url:"/wp-admin/admin-ajax.php",method:"GET",data:{action:"btcpw_convert_currencies"},success:function(e){e.success?(r=e.data.eur.value,p=e.data.usd.value,_=e.data.sats.value,n=e.data.gbp.value):console.error(e)}}),e("#btcpw_tipping_amount").on("input",(function(){var i=e("#btcpw_tipping_currency").val(),c=e(this).val();t(i,c,p,r,_,n),e("#btcpw_converted_amount").attr("readonly",!1).val(t(i,c,p,r,_,n)).attr("readonly",!0),e("#btcpw_converted_currency").attr("readonly",!1).val(a(i)).attr("readonly",!0)})),e("#btcpw_tipping_amount_btcpw_widget").on("input",(function(){var i=e("#btcpw_tipping_currency_btcpw_widget").val(),c=e(this).val();t(i,c,p,r,_,n),e("#btcpw_converted_amount_btcpw_widget").attr("readonly",!1).val(t(i,c,p,r,_,n)).attr("readonly",!0),e("#btcpw_converted_currency_btcpw_widget").attr("readonly",!1).val(a(i)).attr("readonly",!0)})),e("#btcpw_page_tipping_amount").on("input",(function(){var i=e("#btcpw_page_tipping_currency").val(),c=e(this).val();t(i,c,p,r,_,n),e("#btcpw_page_converted_amount").attr("readonly",!1).val(t(i,c,p,r,_,n)).attr("readonly",!0),e("#btcpw_page_converted_currency").attr("readonly",!1).val(a(i)).attr("readonly",!0)})),e("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").on("input",(function(){var i=e("#btcpw_widget_btcpw_skyscraper_tipping_currency_high").val(),c=e(this).val();t(i,c,p,r,_,n),e("#btcpw_widget_btcpw_skyscraper_converted_amount_high").attr("readonly",!1).val(t(i,c,p,r,_,n)).attr("readonly",!0),e("#btcpw_widget_btcpw_skyscraper_converted_currency_high").attr("readonly",!1).val(a(i)).attr("readonly",!0)})),e("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").on("input",(function(){var i=e("#btcpw_widget_btcpw_skyscraper_tipping_currency_wide").val(),c=e(this).val();t(i,c,p,r,_,n),e("#btcpw_widget_btcpw_skyscraper_converted_amount_wide").attr("readonly",!1).val(t(i,c,p,r,_,n)).attr("readonly",!0),e("#btcpw_widget_btcpw_skyscraper_converted_currency_wide").attr("readonly",!1).val(a(i)).attr("readonly",!0)})),e("#btcpw_skyscraper_tipping_high_amount").on("input",(function(){var i=e("#btcpw_skyscraper_tipping_high_currency").val(),c=e(this).val();t(i,c,p,r,_,n),e("#btcpw_skyscraper_high_converted_amount").attr("readonly",!1).val(t(i,c,p,r,_,n)).attr("readonly",!0),e("#btcpw_skyscraper_high_converted_currency").attr("readonly",!1).val(a(i)).attr("readonly",!0)})),e("#value_1_high, #value_2_high, #value_3_high").change((function(){if(e(this).is(":checked")){var i=e(this).val().split(" ");t(i[1],i[0],p,r,_,n),t(i[1],i[0],p,r,_,n),a(i[1]),e("#btcpw_skyscraper_high_converted_amount").attr("readonly",!1).val(t(i[1],i[0],p,r,_,n)).attr("readonly",!0),e("#btcpw_skyscraper_high_converted_currency").attr("readonly",!1).val(a(i[1])).attr("readonly",!0)}})),e("#btcpw_skyscraper_tipping_wide_amount").on("input",(function(){var i=e("#btcpw_skyscraper_tipping_wide_currency").val(),c=e(this).val();t(i,c,p,r,_),e("#btcpw_skyscraper_wide_converted_amount").attr("readonly",!1).val(t(i,c,p,r,_,n)).attr("readonly",!0),e("#btcpw_skyscraper_wide_converted_currency").attr("readonly",!1).val(a(i)).attr("readonly",!0)})),e("#value_1_wide, #value_2_wide, #value_3_wide").change((function(){if(e(this).is(":checked")){var i=e(this).val().split(" ");t(i[1],i[0],p,r,_,n),t(i[1],i[0],p,r,_,n),a(i[1]),e("#btcpw_skyscraper_wide_converted_amount").attr("readonly",!1).val(t(i[1],i[0],p,r,_,n)).attr("readonly",!0),e("#btcpw_skyscraper_wide_converted_currency").attr("readonly",!1).val(a(i[1])).attr("readonly",!0)}})),e(".btcpw_page_amount_value_1, .btcpw_page_amount_value_2, .btcpw_page_amount_value_3").click((function(){switch(e(this)[0].className){case"btcpw_page_amount_value_1":e(".btcpw_page_amount_value_2").removeClass("selected"),e(".btcpw_page_amount_value_3").removeClass("selected");break;case"btcpw_page_amount_value_2":e(".btcpw_page_amount_value_1").removeClass("selected"),e(".btcpw_page_amount_value_3").removeClass("selected");break;case"btcpw_page_amount_value_3":e(".btcpw_page_amount_value_1").removeClass("selected"),e(".btcpw_page_amount_value_2").removeClass("selected");break;default:e(".btcpw_page_amount_value_1").removeClass("selected"),e(".btcpw_page_amount_value_2").removeClass("selected"),e(".btcpw_page_amount_value_3").removeClass("selected")}e(this).children().find("input:radio").prop("checked",!0).change(),e(this).children().find("input:radio").is(":checked")&&e(this).toggleClass("selected");var i=e(this).children().find("input:radio").val().split(" ");t(i[1],i[0],p,r,_,n),t(i[1],i[0],p,r,_,n),a(i[1]),e("#btcpw_page_converted_amount").attr("readonly",!1).val(t(i[1],i[0],p,r,_,n)).attr("readonly",!0),e("#btcpw_page_converted_currency").attr("readonly",!1).val(a(i[1])).attr("readonly",!0)})),e(".btcpw_widget.btcpw_skyscraper_amount_value_1.high, .btcpw_widget.btcpw_skyscraper_amount_value_2.high, .btcpw_widget.btcpw_skyscraper_amount_value_3.high").click((function(){switch(e(this)[0].className){case"btcpw_widget.btcpw_skyscraper_amount_value_1.high":e(".btcpw_widget.btcpw_skyscraper_amount_value_2.high").removeClass("selected"),e(".btcpw_widget.btcpw_skyscraper_amount_value_3.high").removeClass("selected");break;case"btcpw_widget.btcpw_skyscraper_amount_value_2.high":e(".btcpw_widget.btcpw_skyscraper_amount_value_1.high").removeClass("selected"),e(".btcpw_widget.btcpw_skyscraper_amount_value_3.high").removeClass("selected");break;case"btcpw_widget.btcpw_skyscraper_amount_value_3.high":e(".btcpw_widget.btcpw_skyscraper_amount_value_1.high").removeClass("selected"),e(".btcpw_widget.btcpw_skyscraper_amount_value_2.high").removeClass("selected");break;default:e(".btcpw_widget.btcpw_skyscraper_amount_value_1.high").removeClass("selected"),e(".btcpw_widget.btcpw_skyscraper_amount_value_2.high").removeClass("selected"),e(".btcpw_widget.btcpw_skyscraper_amount_value_3.high").removeClass("selected")}e(this).children().find("input:radio").prop("checked",!0).change(),e(this).children().find("input:radio").is(":checked")&&e(this).toggleClass("selected");var i=e(this).children().find("input:radio").val().split(" ");t(i[1],i[0],p,r,_,n),t(i[1],i[0],p,r,_,n),a(i[1]),e("#btcpw_widget_btcpw_skyscraper_converted_amount_high").attr("readonly",!1).val(t(i[1],i[0],p,r,_,n)).attr("readonly",!0),e("#btcpw_widget_btcpw_skyscraper_converted_currency_high").attr("readonly",!1).val(a(i[1])).attr("readonly",!0)})),e(".btcpw_widget.btcpw_skyscraper_amount_value_1.wide, .btcpw_widget.btcpw_skyscraper_amount_value_2.wide, .btcpw_widget.btcpw_skyscraper_amount_value_3.wide").click((function(){switch(e(this)[0].className){case"btcpw_widget.btcpw_skyscraper_amount_value_1.wide":e(".btcpw_widget.btcpw_skyscraper_amount_value_2.wide").removeClass("selected"),e(".btcpw_widget.btcpw_skyscraper_amount_value_3.wide").removeClass("selected");break;case"btcpw_widget.btcpw_skyscraper_amount_value_2.wide":e(".btcpw_widget.btcpw_skyscraper_amount_value_1.wide").removeClass("selected"),e(".btcpw_widget.btcpw_skyscraper_amount_value_3.wide").removeClass("selected");break;case"btcpw_widget.btcpw_skyscraper_amount_value_3.wide":e(".btcpw_widget.btcpw_skyscraper_amount_value_1.wide").removeClass("selected"),e(".btcpw_widget.btcpw_skyscraper_amount_value_2.wide").removeClass("selected");break;default:e(".btcpw_widget.btcpw_skyscraper_amount_value_1.wide").removeClass("selected"),e(".btcpw_widget.btcpw_skyscraper_amount_value_2.wide").removeClass("selected"),e(".btcpw_widget.btcpw_skyscraper_amount_value_3.wide").removeClass("selected")}e(this).children().find("input:radio").prop("checked",!0).change(),e(this).children().find("input:radio").is(":checked")&&e(this).toggleClass("selected");var i=e(this).children().find("input:radio").val().split(" ");t(i[1],i[0],p,r,_,n),t(i[1],i[0],p,r,_,n),a(i[1]),e("#btcpw_widget_btcpw_skyscraper_converted_amount_wide").attr("readonly",!1).val(t(i[1],i[0],p,r,_)).attr("readonly",!0),e("#btcpw_widget_btcpw_skyscraper_converted_currency_wide").attr("readonly",!1).val(a(i[1])).attr("readonly",!0)})),e(".btcpw_skyscraper_amount_value_1.high, .btcpw_skyscraper_amount_value_2.high, .btcpw_skyscraper_amount_value_3.high").click((function(){switch(e(this)[0].className){case"btcpw_skyscraper_amount_value_1.high":e(".btcpw_skyscraper_amount_value_2.high").removeClass("selected"),e(".btcpw_skyscraper_amount_value_3.high").removeClass("selected");break;case"btcpw_skyscraper_amount_value_2.high":e(".btcpw_skyscraper_amount_value_1.high").removeClass("selected"),e(".btcpw_skyscraper_amount_value_3.high").removeClass("selected");break;case"btcpw_skyscraper_amount_value_3.high":e(".btcpw_skyscraper_amount_value_1.high").removeClass("selected"),e(".btcpw_skyscraper_amount_value_2.high").removeClass("selected");break;default:e(".btcpw_skyscraper_amount_value_1.high").removeClass("selected"),e(".btcpw_skyscraper_amount_value_2.high").removeClass("selected"),e(".btcpw_skyscraper_amount_value_3.high").removeClass("selected")}e(this).children().find("input:radio").prop("checked",!0).change(),e(this).children().find("input:radio").is(":checked")&&e(this).toggleClass("selected");var i=e(this).children().find("input:radio").val().split(" ");t(i[1],i[0],p,r,_,n),t(i[1],i[0],p,r,_),a(i[1]),e("#btcpw_skyscraper_converted_amount").attr("readonly",!1).val(t(i[1],i[0],p,r,_,n)).attr("readonly",!0),e("#btcpw_skyscraper_converted_currency").attr("readonly",!1).val(a(i[1])).attr("readonly",!0)})),e(".btcpw_skyscraper_amount_value_1.wide, .btcpw_skyscraper_amount_value_2.wide, .btcpw_skyscraper_amount_value_3.wide").click((function(){switch(e(this)[0].className){case"btcpw_skyscraper_amount_value_1.wide":e(".btcpw_skyscraper_amount_value_2.wide").removeClass("selected"),e(".btcpw_skyscraper_amount_value_3.wide").removeClass("selected");break;case"btcpw_skyscraper_amount_value_2.wide":e(".btcpw_skyscraper_amount_value_1.wide").removeClass("selected"),e(".btcpw_skyscraper_amount_value_3.wide").removeClass("selected");break;case"btcpw_skyscraper_amount_value_3.wide":e(".btcpw_skyscraper_amount_value_1.wide").removeClass("selected"),e(".btcpw_skyscraper_amount_value_2.wide").removeClass("selected");break;default:e(".btcpw_skyscraper_amount_value_1.wide").removeClass("selected"),e(".btcpw_skyscraper_amount_value_2.wide").removeClass("selected"),e(".btcpw_skyscraper_amount_value_3.wide").removeClass("selected")}e(this).children().find("input:radio").prop("checked",!0).change(),e(this).children().find("input:radio").is(":checked")&&e(this).toggleClass("selected");var i=e(this).children().find("input:radio").val().split(" ");t(i[1],i[0],p,r,_),t(i[1],i[0],p,r,_),a(i[1]),e("#btcpw_skyscraper_converted_amount").attr("readonly",!1).val(t(i[1],i[0],p,r,_,n)).attr("readonly",!0),e("#btcpw_skyscraper_converted_currency").attr("readonly",!1).val(a(i[1])).attr("readonly",!0)}))})),e(document).ready((function(){e("input[type=radio][name=btcpw_tipping_default_amount]").change((function(){e("input[type=radio][name=btcpw_tipping_default_amount]").attr("required",!0),e("#btcpw_tipping_amount").removeAttr("required"),e("#btcpw_tipping_amount").val("")})),e("#btcpw_tipping_amount").click((function(){e("#btcpw_tipping_amount").attr("required",!0),e("input[type=radio][name=btcpw_tipping_default_amount]").removeAttr("required"),e("input[type=radio][name=btcpw_tipping_default_amount]").prop("checked",!1)})),e("input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]").change((function(){e("input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]").attr("required",!0),e("input[name=btcpw_skyscraper_tipping_amount_wide]").removeAttr("required"),e("input[name=btcpw_skyscraper_tipping_amount_wide]").val("")})),e("input[name=btcpw_skyscraper_tipping_amount_wide]").click((function(){e("input[name=btcpw_skyscraper_tipping_amount_wide]").attr("required",!0),e("input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]").removeAttr("required"),e("input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]").prop("checked",!1),e(".btcpw_skyscraper_amount_value_1.wide").removeClass("selected"),e(".btcpw_skyscraper_amount_value_2.wide").removeClass("selected"),e(".btcpw_skyscraper_amount_value_3.wide").removeClass("selected")})),e("input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]").change((function(){e("input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]").attr("required",!0),e("input[name=btcpw_skyscraper_tipping_amount_high]").removeAttr("required"),e("input[name=btcpw_skyscraper_tipping_amount_high]").val("")})),e("input[name=btcpw_skyscraper_tipping_amount_high]").click((function(){e("input[name=btcpw_skyscraper_tipping_amount_high]").attr("required",!0),e("input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]").removeAttr("required"),e("input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]").prop("checked",!1),e(".btcpw_skyscraper_amount_value_1.high").removeClass("selected"),e(".btcpw_skyscraper_amount_value_2.high").removeClass("selected"),e(".btcpw_skyscraper_amount_value_3.high").removeClass("selected")})),e("input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]").change((function(){e("input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]").attr("required",!0),e("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]").removeAttr("required"),e("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]").val("")})),e("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]").click((function(){e("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]").attr("required",!0),e("input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]").removeAttr("required"),e("input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]").prop("checked",!1),e(".btcpw_widget.btcpw_skyscraper_amount_value_1.wide").removeClass("selected"),e(".btcpw_widget.btcpw_skyscraper_amount_value_2.wide").removeClass("selected"),e(".btcpw_widget.btcpw_skyscraper_amount_value_3.wide").removeClass("selected")})),e("input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]").change((function(){e("input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]").attr("required",!0),e("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]").removeAttr("required"),e("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]").val("")})),e("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]").click((function(){e("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]").attr("required",!0),e("input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]").removeAttr("required"),e("input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]").prop("checked",!1),e(".btcpw_widget.btcpw_skyscraper_amount_value_1.high").removeClass("selected"),e(".btcpw_widget.btcpw_skyscraper_amount_value_2.high").removeClass("selected"),e(".btcpw_widget.btcpw_skyscraper_amount_value_3.high").removeClass("selected")}))})),e(document).ready((function(){e("input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]").change((function(){e("input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]").attr("required",!0),e("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").removeAttr("required"),e("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").val("")})),e("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").click((function(){e("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").attr("required",!0),e("input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]").removeAttr("required"),e("input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]").prop("checked",!1)}))})),e(document).ready((function(){e("input[name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]").change((function(){e("input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]").attr("required",!0),e("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").removeAttr("required"),e("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").val("")})),e("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").click((function(){e("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").attr("required",!0),e("input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]").removeAttr("required"),e("input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]").prop("checked",!1)})),e("input[type=radio][name=btcpw_page_tipping_default_amount]").change((function(){e("input[type=radio][name=btcpw_page_tipping_default_amount]").attr("required",!0),e("#btcpw_page_tipping_amount").removeAttr("required"),e("#btcpw_page_tipping_amount").val("")})),e("#btcpw_page_tipping_amount").click((function(){e("#btcpw_page_tipping_amount").attr("required",!0),e("input[type=radio][name=btcpw_page_tipping_default_amount]").removeAttr("required"),e("input[type=radio][name=btcpw_page_tipping_default_amount]").prop("checked",!1),e(".btcpw_page_amount_value_1").removeClass("selected"),e(".btcpw_page_amount_value_2").removeClass("selected"),e(".btcpw_page_amount_value_3").removeClass("selected")}))})),e(document).ready((function(){var t;e(".btcpw_skyscraper_tipping_container fieldset").length;var a=e("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]"),r=e("input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"),p=0!==r.length&&0===a.length?r:a;e("input.btcpw_widget.skyscraper-next-form.high").click((function(){p[0].checkValidity()?(t=e(this).parent().parent().parent(),e(this).parent().parent().parent().next().show(),t.hide()):p[0].reportValidity()})),e("input.btcpw_widget.skyscraper-previous-form.high").click((function(){t=e(this).parent().parent().parent(),e(this).parent().parent().parent().prev().show(),t.hide()}))})),e(document).ready((function(){var t;e(".btcpw_skyscraper_tipping_container fieldset").length;var a=e("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]"),r=e("input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"),p=0!==r.length&&0===a.length?r:a;e("input.btcpw_widget.skyscraper-next-form.wide").click((function(){p[0].checkValidity()?(t=e(this).parent().parent().parent(),e(this).parent().parent().parent().next().show(),t.hide()):p[0].reportValidity()})),e("input.btcpw_widget.skyscraper-previous-form.wide").click((function(){t=e(this).parent().parent().parent(),e(this).parent().parent().parent().prev().show(),t.hide()}))})),e(document).ready((function(){var t;e(".btcpw_page_tipping_container fieldset").length;var a=e("#btcpw_page_tipping_amount"),r=e(".btcpw_page_tipping_default_amount"),p=0!==r.length&&0===a.length?r:a;e("input.page-next-form").click((function(){p[0].checkValidity()?(e(".btcpw_page_bar_container.bar-1").removeClass("active"),e(".btcpw_page_bar_container.bar-2").addClass("active"),t=e(this).parent().parent(),e(this).parent().parent().next().show(),t.hide()):p[0].reportValidity()})),e("input.page-previous-form").click((function(){e(".btcpw_page_bar_container.bar-2").removeClass("active"),e(".btcpw_page_bar_container.bar-1").addClass("active"),t=e(this).parent().parent().parent(),e(this).parent().parent().parent().prev().show(),t.hide()}))})),e(document).ready((function(){var t;e(".btcpw_skyscraper_tipping_container fieldset").length;var a=e("input[name=btcpw_skyscraper_tipping_amount_high]"),r=e("input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]"),p=0!==r.length&&0===a.length?r:a;e("input.skyscraper-next-form.high").click((function(){p[0].checkValidity()?(t=e(this).parent().parent().parent(),e(this).parent().parent().parent().next().show(),t.hide()):p[0].reportValidity()})),e("input.skyscraper-previous-form.high").click((function(){t=e(this).parent().parent().parent(),e(this).parent().parent().parent().prev().show(),t.hide()}))})),e(document).ready((function(){var t;e(".btcpw_skyscraper_tipping_container fieldset").length;var a=e("input[name=btcpw_skyscraper_tipping_amount_wide]"),r=e("input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]"),p=0!==r.length&&0===a.length?r:a;e("input.skyscraper-next-form.wide").click((function(){p[0].checkValidity()?(t=e(this).parent().parent().parent(),e(this).parent().parent().parent().next().show(),t.hide()):p[0].reportValidity()})),e("input.skyscraper-previous-form.wide").click((function(){t=e(this).parent().parent().parent(),e(this).parent().parent().parent().prev().show(),t.hide()}))})),e(document).ready((function(){var t;e(".btcpw_revenue_post_container fieldset").length,e(".revenue-post-next-form").click((function(){t=e(this).parent().parent().parent(),e(this).parent().parent().parent().next().show(),t.hide()})),e("input.revenue-post-previous-form").click((function(){t=e(this).parent().parent().parent(),e(this).parent().parent().parent().prev().show(),t.hide()}))})),e(document).ready((function(){var t;e(".btcpw_revenue_view_container fieldset").length,e(".revenue-view-next-form").click((function(){t=e(this).parent().parent().parent(),e(this).parent().parent().parent().next().show(),t.hide()})),e("input.revenue-view-previous-form").click((function(){t=e(this).parent().parent().parent(),e(this).parent().parent().parent().prev().show(),t.hide()}))})),e(document).ready((function(){var t;e(".btcpw_revenue_file_container fieldset").length,e(".revenue-file-next-form").click((function(){t=e(this).parent().parent().parent(),e(this).parent().parent().parent().next().show(),t.hide()})),e("input.revenue-file-previous-form").click((function(){t=e(this).parent().parent().parent(),e(this).parent().parent().parent().prev().show(),t.hide()}))})),e(document).ready((function(){var t;e(".btcpw_digital_download_protected_area fieldset").length,e("input.btcpw_digital_download.next-form").click((function(){t=e(this).parent().parent(),e(this).parent().parent().next().show(),t.hide()})),e("input.btcpw_digital_download.previous-form").click((function(){t=e(this).parent().parent().parent(),e(this).parent().parent().parent().prev().show(),t.hide()}))}))}(jQuery)}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./assets/src/js/btc-paywall-public.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./assets/src/js/btc-paywall-public.js":
+/*!*********************************************!*\
+  !*** ./assets/src/js/btc-paywall-public.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function ($) {
+  'use strict';
+
+  $(document).ready(function () {
+    $('.btcpaywall_cart_remove_item_btn').click(function (e) {
+      e.preventDefault();
+      var item = $(this).data('cart-key');
+      $.ajax({
+        url: '/wp-admin/admin-ajax.php',
+        type: 'POST',
+        data: {
+          action: 'btcpw_remove_from_cart',
+          cart_item: item
+        },
+        success: function (response) {
+          location.reload();
+        }
+      });
+    });
+    $('#btcpaywall_download_form').submit(function (e) {
+      e.preventDefault();
+      var id = $('#btcpw_download_id').data('post_id');
+      var title = $('#btcpw_download_id').data('post_title');
+      $.ajax({
+        url: '/wp-admin/admin-ajax.php',
+        method: 'POST',
+        data: {
+          action: 'btcpw_add_to_cart',
+          id: id,
+          title: title
+        },
+        success: function (response) {
+          if (response.success) {
+            location.replace(response.data.data);
+          }
+        },
+        error: function (error) {
+          console.error(error);
+        }
+      });
+    });
+  });
+  $(document).ready(function () {
+    $('#btcpw_tipping_currency').change(function () {
+      var stepValue = $(this).val() === 'BTC' ? '0.00000001' : $(this).val() === 'SATS' ? '1' : '0.50';
+      $('#btcpw_tipping_amount').attr({
+        step: stepValue,
+        value: parseInt($('#btcpw_tipping_amount').val())
+      });
+    });
+  });
+  $(document).ready(function () {
+    var eur, usd, sats, gbp;
+    $.ajax({
+      url: '/wp-admin/admin-ajax.php',
+      method: 'GET',
+      data: {
+        action: 'btcpw_convert_currencies'
+      },
+      success: function (response) {
+        if (response.success) {
+          eur = response['data']['eur']['value'];
+          usd = response['data']['usd']['value'];
+          sats = response['data']['sats']['value'];
+          gbp = response['data']['gbp']['value'];
+        } else {
+          console.error(response);
+        }
+      }
+    });
+    $('#btcpw_tipping_amount').on('input', function () {
+      var currency = $('#btcpw_tipping_currency').val();
+      var amount = $(this).val();
+      var converted = fiat_to_crypto(currency, amount, usd, eur, sats, gbp);
+      $('#btcpw_converted_amount').attr('readonly', false).val(fiat_to_crypto(currency, amount, usd, eur, sats, gbp)).attr('readonly', true);
+      $('#btcpw_converted_currency').attr('readonly', false).val(get_currency(currency)).attr('readonly', true);
+    });
+    $('#btcpw_tipping_amount_btcpw_widget').on('input', function () {
+      var currency = $('#btcpw_tipping_currency_btcpw_widget').val();
+      var amount = $(this).val();
+      var converted = fiat_to_crypto(currency, amount, usd, eur, sats, gbp);
+      $('#btcpw_converted_amount_btcpw_widget').attr('readonly', false).val(fiat_to_crypto(currency, amount, usd, eur, sats, gbp)).attr('readonly', true);
+      $('#btcpw_converted_currency_btcpw_widget').attr('readonly', false).val(get_currency(currency)).attr('readonly', true);
+    });
+    $('#btcpw_page_tipping_amount').on('input', function () {
+      var currency = $('#btcpw_page_tipping_currency').val();
+      var amount = $(this).val();
+      var converted = fiat_to_crypto(currency, amount, usd, eur, sats, gbp);
+      $('#btcpw_page_converted_amount').attr('readonly', false).val(fiat_to_crypto(currency, amount, usd, eur, sats, gbp)).attr('readonly', true);
+      $('#btcpw_page_converted_currency').attr('readonly', false).val(get_currency(currency)).attr('readonly', true);
+    });
+    $('#btcpw_widget_btcpw_skyscraper_tipping_amount_high').on('input', function () {
+      var currency = $('#btcpw_widget_btcpw_skyscraper_tipping_currency_high').val();
+      var amount = $(this).val();
+      var converted = fiat_to_crypto(currency, amount, usd, eur, sats, gbp);
+      $('#btcpw_widget_btcpw_skyscraper_converted_amount_high').attr('readonly', false).val(fiat_to_crypto(currency, amount, usd, eur, sats, gbp)).attr('readonly', true);
+      $('#btcpw_widget_btcpw_skyscraper_converted_currency_high').attr('readonly', false).val(get_currency(currency)).attr('readonly', true);
+    });
+    $('#btcpw_widget_btcpw_skyscraper_tipping_amount_wide').on('input', function () {
+      var currency = $('#btcpw_widget_btcpw_skyscraper_tipping_currency_wide').val();
+      var amount = $(this).val();
+      var converted = fiat_to_crypto(currency, amount, usd, eur, sats, gbp);
+      $('#btcpw_widget_btcpw_skyscraper_converted_amount_wide').attr('readonly', false).val(fiat_to_crypto(currency, amount, usd, eur, sats, gbp)).attr('readonly', true);
+      $('#btcpw_widget_btcpw_skyscraper_converted_currency_wide').attr('readonly', false).val(get_currency(currency)).attr('readonly', true);
+    });
+    $('#btcpw_skyscraper_tipping_high_amount').on('input', function () {
+      var currency = $('#btcpw_skyscraper_tipping_high_currency').val();
+      var amount = $(this).val();
+      var converted = fiat_to_crypto(currency, amount, usd, eur, sats, gbp);
+      $('#btcpw_skyscraper_high_converted_amount').attr('readonly', false).val(fiat_to_crypto(currency, amount, usd, eur, sats, gbp)).attr('readonly', true);
+      $('#btcpw_skyscraper_high_converted_currency').attr('readonly', false).val(get_currency(currency)).attr('readonly', true);
+    });
+    $('#value_1_high, #value_2_high, #value_3_high').change(function () {
+      if ($(this).is(':checked')) {
+        var predefined = $(this).val().split(' ');
+        var converted_icon = fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp);
+        var converted_icon_amount = fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp) + ' ' + get_currency(predefined[1]);
+        $('#btcpw_skyscraper_high_converted_amount').attr('readonly', false).val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp)).attr('readonly', true);
+        $('#btcpw_skyscraper_high_converted_currency').attr('readonly', false).val(get_currency(predefined[1])).attr('readonly', true);
+      }
+    });
+    $('#btcpw_skyscraper_tipping_wide_amount').on('input', function () {
+      var currency = $('#btcpw_skyscraper_tipping_wide_currency').val();
+      var amount = $(this).val();
+      var converted = fiat_to_crypto(currency, amount, usd, eur, sats);
+      $('#btcpw_skyscraper_wide_converted_amount').attr('readonly', false).val(fiat_to_crypto(currency, amount, usd, eur, sats, gbp)).attr('readonly', true);
+      $('#btcpw_skyscraper_wide_converted_currency').attr('readonly', false).val(get_currency(currency)).attr('readonly', true);
+    });
+    $('#value_1_wide, #value_2_wide, #value_3_wide').change(function () {
+      if ($(this).is(':checked')) {
+        var predefined = $(this).val().split(' ');
+        var converted_icon = fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp);
+        var converted_icon_amount = fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp) + ' ' + get_currency(predefined[1]);
+        $('#btcpw_skyscraper_wide_converted_amount').attr('readonly', false).val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp)).attr('readonly', true);
+        $('#btcpw_skyscraper_wide_converted_currency').attr('readonly', false).val(get_currency(predefined[1])).attr('readonly', true);
+      }
+    });
+    $('.btcpw_page_amount_value_1, .btcpw_page_amount_value_2, .btcpw_page_amount_value_3').click(function () {
+      switch ($(this)[0].className) {
+        case 'btcpw_page_amount_value_1':
+          $('.btcpw_page_amount_value_2').removeClass('selected');
+          $('.btcpw_page_amount_value_3').removeClass('selected');
+          break;
+
+        case 'btcpw_page_amount_value_2':
+          $('.btcpw_page_amount_value_1').removeClass('selected');
+          $('.btcpw_page_amount_value_3').removeClass('selected');
+          break;
+
+        case 'btcpw_page_amount_value_3':
+          $('.btcpw_page_amount_value_1').removeClass('selected');
+          $('.btcpw_page_amount_value_2').removeClass('selected');
+          break;
+
+        default:
+          $('.btcpw_page_amount_value_1').removeClass('selected');
+          $('.btcpw_page_amount_value_2').removeClass('selected');
+          $('.btcpw_page_amount_value_3').removeClass('selected');
+      }
+
+      $(this).children().find('input:radio').prop('checked', true).change();
+
+      if ($(this).children().find('input:radio').is(':checked')) {
+        $(this).toggleClass('selected');
+      }
+
+      var predefined = $(this).children().find('input:radio').val().split(' ');
+      var converted_icon = fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp);
+      var converted_icon_amount = fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp) + ' ' + get_currency(predefined[1]);
+      $('#btcpw_page_converted_amount').attr('readonly', false).val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp)).attr('readonly', true);
+      $('#btcpw_page_converted_currency').attr('readonly', false).val(get_currency(predefined[1])).attr('readonly', true);
+    });
+    $('.btcpw_widget.btcpw_skyscraper_amount_value_1.high, .btcpw_widget.btcpw_skyscraper_amount_value_2.high, .btcpw_widget.btcpw_skyscraper_amount_value_3.high').click(function () {
+      switch ($(this)[0].className) {
+        case 'btcpw_widget.btcpw_skyscraper_amount_value_1.high':
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_2.high').removeClass('selected');
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_3.high').removeClass('selected');
+          break;
+
+        case 'btcpw_widget.btcpw_skyscraper_amount_value_2.high':
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_1.high').removeClass('selected');
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_3.high').removeClass('selected');
+          break;
+
+        case 'btcpw_widget.btcpw_skyscraper_amount_value_3.high':
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_1.high').removeClass('selected');
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_2.high').removeClass('selected');
+          break;
+
+        default:
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_1.high').removeClass('selected');
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_2.high').removeClass('selected');
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_3.high').removeClass('selected');
+      }
+
+      $(this).children().find('input:radio').prop('checked', true).change();
+
+      if ($(this).children().find('input:radio').is(':checked')) {
+        $(this).toggleClass('selected');
+      }
+
+      var predefined = $(this).children().find('input:radio').val().split(' ');
+      var converted_icon = fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp);
+      var converted_icon_amount = fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp) + ' ' + get_currency(predefined[1]);
+      $('#btcpw_widget_btcpw_skyscraper_converted_amount_high').attr('readonly', false).val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp)).attr('readonly', true);
+      $('#btcpw_widget_btcpw_skyscraper_converted_currency_high').attr('readonly', false).val(get_currency(predefined[1])).attr('readonly', true);
+    });
+    $('.btcpw_widget.btcpw_skyscraper_amount_value_1.wide, .btcpw_widget.btcpw_skyscraper_amount_value_2.wide, .btcpw_widget.btcpw_skyscraper_amount_value_3.wide').click(function () {
+      switch ($(this)[0].className) {
+        case 'btcpw_widget.btcpw_skyscraper_amount_value_1.wide':
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_2.wide').removeClass('selected');
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_3.wide').removeClass('selected');
+          break;
+
+        case 'btcpw_widget.btcpw_skyscraper_amount_value_2.wide':
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_1.wide').removeClass('selected');
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_3.wide').removeClass('selected');
+          break;
+
+        case 'btcpw_widget.btcpw_skyscraper_amount_value_3.wide':
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_1.wide').removeClass('selected');
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_2.wide').removeClass('selected');
+          break;
+
+        default:
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_1.wide').removeClass('selected');
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_2.wide').removeClass('selected');
+          $('.btcpw_widget.btcpw_skyscraper_amount_value_3.wide').removeClass('selected');
+      }
+
+      $(this).children().find('input:radio').prop('checked', true).change();
+
+      if ($(this).children().find('input:radio').is(':checked')) {
+        $(this).toggleClass('selected');
+      }
+
+      var predefined = $(this).children().find('input:radio').val().split(' ');
+      var converted_icon = fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp);
+      var converted_icon_amount = fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp) + ' ' + get_currency(predefined[1]);
+      $('#btcpw_widget_btcpw_skyscraper_converted_amount_wide').attr('readonly', false).val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats)).attr('readonly', true);
+      $('#btcpw_widget_btcpw_skyscraper_converted_currency_wide').attr('readonly', false).val(get_currency(predefined[1])).attr('readonly', true);
+    });
+    $('.btcpw_skyscraper_amount_value_1.high, .btcpw_skyscraper_amount_value_2.high, .btcpw_skyscraper_amount_value_3.high').click(function () {
+      switch ($(this)[0].className) {
+        case 'btcpw_skyscraper_amount_value_1.high':
+          $('.btcpw_skyscraper_amount_value_2.high').removeClass('selected');
+          $('.btcpw_skyscraper_amount_value_3.high').removeClass('selected');
+          break;
+
+        case 'btcpw_skyscraper_amount_value_2.high':
+          $('.btcpw_skyscraper_amount_value_1.high').removeClass('selected');
+          $('.btcpw_skyscraper_amount_value_3.high').removeClass('selected');
+          break;
+
+        case 'btcpw_skyscraper_amount_value_3.high':
+          $('.btcpw_skyscraper_amount_value_1.high').removeClass('selected');
+          $('.btcpw_skyscraper_amount_value_2.high').removeClass('selected');
+          break;
+
+        default:
+          $('.btcpw_skyscraper_amount_value_1.high').removeClass('selected');
+          $('.btcpw_skyscraper_amount_value_2.high').removeClass('selected');
+          $('.btcpw_skyscraper_amount_value_3.high').removeClass('selected');
+      }
+
+      $(this).children().find('input:radio').prop('checked', true).change();
+
+      if ($(this).children().find('input:radio').is(':checked')) {
+        $(this).toggleClass('selected');
+      }
+
+      var predefined = $(this).children().find('input:radio').val().split(' ');
+      var converted_icon = fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp);
+      var converted_icon_amount = fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats) + ' ' + get_currency(predefined[1]);
+      $('#btcpw_skyscraper_converted_amount').attr('readonly', false).val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp)).attr('readonly', true);
+      $('#btcpw_skyscraper_converted_currency').attr('readonly', false).val(get_currency(predefined[1])).attr('readonly', true);
+    });
+    $('.btcpw_skyscraper_amount_value_1.wide, .btcpw_skyscraper_amount_value_2.wide, .btcpw_skyscraper_amount_value_3.wide').click(function () {
+      switch ($(this)[0].className) {
+        case 'btcpw_skyscraper_amount_value_1.wide':
+          $('.btcpw_skyscraper_amount_value_2.wide').removeClass('selected');
+          $('.btcpw_skyscraper_amount_value_3.wide').removeClass('selected');
+          break;
+
+        case 'btcpw_skyscraper_amount_value_2.wide':
+          $('.btcpw_skyscraper_amount_value_1.wide').removeClass('selected');
+          $('.btcpw_skyscraper_amount_value_3.wide').removeClass('selected');
+          break;
+
+        case 'btcpw_skyscraper_amount_value_3.wide':
+          $('.btcpw_skyscraper_amount_value_1.wide').removeClass('selected');
+          $('.btcpw_skyscraper_amount_value_2.wide').removeClass('selected');
+          break;
+
+        default:
+          $('.btcpw_skyscraper_amount_value_1.wide').removeClass('selected');
+          $('.btcpw_skyscraper_amount_value_2.wide').removeClass('selected');
+          $('.btcpw_skyscraper_amount_value_3.wide').removeClass('selected');
+      }
+
+      $(this).children().find('input:radio').prop('checked', true).change();
+
+      if ($(this).children().find('input:radio').is(':checked')) {
+        $(this).toggleClass('selected');
+      }
+
+      var predefined = $(this).children().find('input:radio').val().split(' ');
+      var converted_icon = fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats);
+      var converted_icon_amount = fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats) + ' ' + get_currency(predefined[1]);
+      $('#btcpw_skyscraper_converted_amount').attr('readonly', false).val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp)).attr('readonly', true);
+      $('#btcpw_skyscraper_converted_currency').attr('readonly', false).val(get_currency(predefined[1])).attr('readonly', true);
+    });
+  });
+
+  function fiat_to_crypto(currency, val, usd, eur, sats, gbp) {
+    var value = Number(val);
+
+    switch (currency) {
+      case 'BTC':
+        return (value * usd).toFixed(2);
+
+      case 'USD':
+        return (sats / usd * value).toFixed(0);
+
+      case 'EUR':
+        return (sats / eur * value).toFixed(0);
+
+      case 'GBP':
+        return (sats / gbp * value).toFixed(0);
+
+      default:
+        return (usd / sats * value).toFixed(2);
+    }
+  }
+
+  function get_currency(currency) {
+    switch (currency) {
+      case 'BTC':
+        return 'USD';
+
+      case 'USD':
+        return 'SATS';
+
+      case 'EUR':
+        return 'SATS';
+
+      case 'GBP':
+        return 'SATS';
+
+      default:
+        return 'USD';
+    }
+  }
+
+  $(document).ready(function () {
+    $('input[type=radio][name=btcpw_tipping_default_amount]').change(function () {
+      $('input[type=radio][name=btcpw_tipping_default_amount]').attr('required', true);
+      $('#btcpw_tipping_amount').removeAttr('required');
+      $('#btcpw_tipping_amount').val('');
+    });
+    $('#btcpw_tipping_amount').click(function () {
+      $('#btcpw_tipping_amount').attr('required', true);
+      $('input[type=radio][name=btcpw_tipping_default_amount]').removeAttr('required');
+      $('input[type=radio][name=btcpw_tipping_default_amount]').prop('checked', false);
+    });
+    $('input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]').change(function () {
+      $('input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]').attr('required', true);
+      $('input[name=btcpw_skyscraper_tipping_amount_wide]').removeAttr('required');
+      $('input[name=btcpw_skyscraper_tipping_amount_wide]').val('');
+    });
+    $('input[name=btcpw_skyscraper_tipping_amount_wide]').click(function () {
+      $('input[name=btcpw_skyscraper_tipping_amount_wide]').attr('required', true);
+      $('input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]').removeAttr('required');
+      $('input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]').prop('checked', false);
+      $('.btcpw_skyscraper_amount_value_1.wide').removeClass('selected');
+      $('.btcpw_skyscraper_amount_value_2.wide').removeClass('selected');
+      $('.btcpw_skyscraper_amount_value_3.wide').removeClass('selected');
+    });
+    $('input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]').change(function () {
+      $('input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]').attr('required', true);
+      $('input[name=btcpw_skyscraper_tipping_amount_high]').removeAttr('required');
+      $('input[name=btcpw_skyscraper_tipping_amount_high]').val('');
+    });
+    $('input[name=btcpw_skyscraper_tipping_amount_high]').click(function () {
+      $('input[name=btcpw_skyscraper_tipping_amount_high]').attr('required', true);
+      $('input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]').removeAttr('required');
+      $('input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]').prop('checked', false);
+      $('.btcpw_skyscraper_amount_value_1.high').removeClass('selected');
+      $('.btcpw_skyscraper_amount_value_2.high').removeClass('selected');
+      $('.btcpw_skyscraper_amount_value_3.high').removeClass('selected');
+    });
+    $('input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]').change(function () {
+      $('input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]').attr('required', true);
+      $('input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]').removeAttr('required');
+      $('input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]').val('');
+    });
+    $('input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]').click(function () {
+      $('input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]').attr('required', true);
+      $('input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]').removeAttr('required');
+      $('input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]').prop('checked', false);
+      $('.btcpw_widget.btcpw_skyscraper_amount_value_1.wide').removeClass('selected');
+      $('.btcpw_widget.btcpw_skyscraper_amount_value_2.wide').removeClass('selected');
+      $('.btcpw_widget.btcpw_skyscraper_amount_value_3.wide').removeClass('selected');
+    });
+    $('input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]').change(function () {
+      $('input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]').attr('required', true);
+      $('input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]').removeAttr('required');
+      $('input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]').val('');
+    });
+    $('input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]').click(function () {
+      $('input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]').attr('required', true);
+      $('input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]').removeAttr('required');
+      $('input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]').prop('checked', false);
+      $('.btcpw_widget.btcpw_skyscraper_amount_value_1.high').removeClass('selected');
+      $('.btcpw_widget.btcpw_skyscraper_amount_value_2.high').removeClass('selected');
+      $('.btcpw_widget.btcpw_skyscraper_amount_value_3.high').removeClass('selected');
+    });
+  });
+  $(document).ready(function () {
+    $('input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]').change(function () {
+      $('input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]').attr('required', true);
+      $('#btcpw_widget_btcpw_skyscraper_tipping_amount_high').removeAttr('required');
+      $('#btcpw_widget_btcpw_skyscraper_tipping_amount_high').val('');
+    });
+    $('#btcpw_widget_btcpw_skyscraper_tipping_amount_high').click(function () {
+      $('#btcpw_widget_btcpw_skyscraper_tipping_amount_high').attr('required', true);
+      $('input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]').removeAttr('required');
+      $('input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]').prop('checked', false);
+    });
+  });
+  $(document).ready(function () {
+    $('input[name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]').change(function () {
+      $('input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]').attr('required', true);
+      $('#btcpw_widget_btcpw_skyscraper_tipping_amount_wide').removeAttr('required');
+      $('#btcpw_widget_btcpw_skyscraper_tipping_amount_wide').val('');
+    });
+    $('#btcpw_widget_btcpw_skyscraper_tipping_amount_wide').click(function () {
+      $('#btcpw_widget_btcpw_skyscraper_tipping_amount_wide').attr('required', true);
+      $('input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]').removeAttr('required');
+      $('input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]').prop('checked', false);
+    });
+    $('input[type=radio][name=btcpw_page_tipping_default_amount]').change(function () {
+      $('input[type=radio][name=btcpw_page_tipping_default_amount]').attr('required', true);
+      $('#btcpw_page_tipping_amount').removeAttr('required');
+      $('#btcpw_page_tipping_amount').val('');
+    });
+    $('#btcpw_page_tipping_amount').click(function () {
+      $('#btcpw_page_tipping_amount').attr('required', true);
+      $('input[type=radio][name=btcpw_page_tipping_default_amount]').removeAttr('required');
+      $('input[type=radio][name=btcpw_page_tipping_default_amount]').prop('checked', false);
+      $('.btcpw_page_amount_value_1').removeClass('selected');
+      $('.btcpw_page_amount_value_2').removeClass('selected');
+      $('.btcpw_page_amount_value_3').removeClass('selected');
+    });
+  });
+  $(document).ready(function () {
+    var form_count = 1,
+        previous_form,
+        next_form,
+        total_forms;
+    total_forms = $('.btcpw_skyscraper_tipping_container fieldset').length;
+    var freeInput = $('input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]');
+    var fixedAmount = $('input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]');
+    var validationField = fixedAmount.length !== 0 && freeInput.length === 0 ? fixedAmount : freeInput;
+    $('input.btcpw_widget.skyscraper-next-form.high').click(function () {
+      if (validationField[0].checkValidity()) {
+        previous_form = $(this).parent().parent().parent();
+        next_form = $(this).parent().parent().parent().next();
+        next_form.show();
+        previous_form.hide();
+      } else {
+        validationField[0].reportValidity();
+      }
+    });
+    $('input.btcpw_widget.skyscraper-previous-form.high').click(function () {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
+  });
+  $(document).ready(function () {
+    var form_count = 1,
+        previous_form,
+        next_form,
+        total_forms;
+    total_forms = $('.btcpw_skyscraper_tipping_container fieldset').length;
+    var freeInput = $('input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]');
+    var fixedAmount = $('input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]');
+    var validationField = fixedAmount.length !== 0 && freeInput.length === 0 ? fixedAmount : freeInput;
+    $('input.btcpw_widget.skyscraper-next-form.wide').click(function () {
+      if (validationField[0].checkValidity()) {
+        previous_form = $(this).parent().parent().parent();
+        next_form = $(this).parent().parent().parent().next();
+        next_form.show();
+        previous_form.hide();
+      } else {
+        validationField[0].reportValidity();
+      }
+    });
+    $('input.btcpw_widget.skyscraper-previous-form.wide').click(function () {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
+  });
+  $(document).ready(function () {
+    var form_count = 1,
+        previous_form,
+        next_form,
+        total_forms;
+    total_forms = $('.btcpw_page_tipping_container fieldset').length;
+    var freeInput = $('#btcpw_page_tipping_amount');
+    var fixedAmount = $('.btcpw_page_tipping_default_amount');
+    var validationField = fixedAmount.length !== 0 && freeInput.length === 0 ? fixedAmount : freeInput;
+    $('input.page-next-form').click(function () {
+      if (validationField[0].checkValidity()) {
+        $('.btcpw_page_bar_container.bar-1').removeClass('active');
+        $('.btcpw_page_bar_container.bar-2').addClass('active');
+        previous_form = $(this).parent().parent();
+        next_form = $(this).parent().parent().next();
+        next_form.show();
+        previous_form.hide();
+      } else {
+        validationField[0].reportValidity();
+      }
+    });
+    $('input.page-previous-form').click(function () {
+      $('.btcpw_page_bar_container.bar-2').removeClass('active');
+      $('.btcpw_page_bar_container.bar-1').addClass('active');
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
+  });
+  $(document).ready(function () {
+    var form_count = 1,
+        previous_form,
+        next_form,
+        total_forms;
+    total_forms = $('.btcpw_skyscraper_tipping_container fieldset').length;
+    var freeInput = $('input[name=btcpw_skyscraper_tipping_amount_high]');
+    var fixedAmount = $('input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]');
+    var validationField = fixedAmount.length !== 0 && freeInput.length === 0 ? fixedAmount : freeInput;
+    $('input.skyscraper-next-form.high').click(function () {
+      if (validationField[0].checkValidity()) {
+        previous_form = $(this).parent().parent().parent();
+        next_form = $(this).parent().parent().parent().next();
+        next_form.show();
+        previous_form.hide();
+      } else {
+        validationField[0].reportValidity();
+      }
+    });
+    $('input.skyscraper-previous-form.high').click(function () {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
+  });
+  $(document).ready(function () {
+    var form_count = 1,
+        previous_form,
+        next_form,
+        total_forms;
+    total_forms = $('.btcpw_skyscraper_tipping_container fieldset').length;
+    var freeInput = $('input[name=btcpw_skyscraper_tipping_amount_wide]');
+    var fixedAmount = $('input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]');
+    var validationField = fixedAmount.length !== 0 && freeInput.length === 0 ? fixedAmount : freeInput;
+    $('input.skyscraper-next-form.wide').click(function () {
+      if (validationField[0].checkValidity()) {
+        previous_form = $(this).parent().parent().parent();
+        next_form = $(this).parent().parent().parent().next();
+        next_form.show();
+        previous_form.hide();
+      } else {
+        validationField[0].reportValidity();
+      }
+    });
+    $('input.skyscraper-previous-form.wide').click(function () {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
+  }); //Revenue post
+
+  $(document).ready(function () {
+    var form_count = 1,
+        previous_form,
+        next_form,
+        total_forms;
+    total_forms = $('.btcpw_revenue_post_container fieldset').length;
+    $('.revenue-post-next-form').click(function () {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().next();
+      next_form.show();
+      previous_form.hide();
+    });
+    $('input.revenue-post-previous-form').click(function () {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
+  }); //Revenue view
+
+  $(document).ready(function () {
+    var form_count = 1,
+        previous_form,
+        next_form,
+        total_forms;
+    total_forms = $('.btcpw_revenue_view_container fieldset').length;
+    $('.revenue-view-next-form').click(function () {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().next();
+      next_form.show();
+      previous_form.hide();
+    });
+    $('input.revenue-view-previous-form').click(function () {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
+  }); //Revenue file
+
+  $(document).ready(function () {
+    var form_count = 1,
+        previous_form,
+        next_form,
+        total_forms;
+    total_forms = $('.btcpw_revenue_file_container fieldset').length;
+    $('.revenue-file-next-form').click(function () {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().next();
+      next_form.show();
+      previous_form.hide();
+    });
+    $('input.revenue-file-previous-form').click(function () {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
+  }); //Pay-per-file
+
+  $(document).ready(function () {
+    var form_count = 1,
+        previous_form,
+        next_form,
+        total_forms;
+    total_forms = $('.btcpw_digital_download_protected_area fieldset').length;
+    $('input.btcpw_digital_download.next-form').click(function () {
+      previous_form = $(this).parent().parent();
+      next_form = $(this).parent().parent().next();
+      next_form.show();
+      previous_form.hide();
+    });
+    $('input.btcpw_digital_download.previous-form').click(function () {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
+  });
+})(jQuery);
+
+/***/ })
+
+/******/ });
+//# sourceMappingURL=btc_paywall_public.js.map

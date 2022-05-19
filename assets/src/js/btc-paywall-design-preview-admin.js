@@ -14,7 +14,7 @@
       defaultColor: true,
 
       change: function (event, ui) {
-        $('#btcpw_pay__button_preview').css('backgroundColor', $(this).val())
+        $('#btcpw_pay__button_preview').css('backgroundColor', ui.color.toString())
       },
 
       clear: function () { },
@@ -29,7 +29,7 @@
       change: function (event, ui) {
         $('.btcpw_pay_preview.pay_per_post').css(
           'backgroundColor',
-          $(this).val()
+          ui.color.toString()
         )
       },
 
@@ -46,7 +46,7 @@
       change: function (event, ui) {
         $('.btcpw_pay__content_preview.pay_per_post h2').css(
           'color',
-          $(this).val()
+          ui.color.toString()
         )
       },
 
@@ -62,7 +62,7 @@
       change: function (event, ui) {
         $('.btcpw_pay__content_preview.pay_per_post p').css(
           'color',
-          $(this).val()
+          ui.color.toString()
         )
       },
 
@@ -77,7 +77,7 @@
       defaultColor: true,
 
       change: function (event, ui) {
-        $('#btcpw_pay__button_preview').css('color', $(this).val())
+        $('#btcpw_pay__button_preview').css('color', ui.color.toString())
       },
 
       clear: function () { },
@@ -190,7 +190,7 @@
       change: function (event, ui) {
         $('#btcpw_pay__button_preview_pay_per_view, #btcpaywall_pay__button_preview_pay_per_view').css(
           'backgroundColor',
-          $(this).val()
+          ui.color.toString()
         )
       },
 
@@ -208,7 +208,7 @@
       change: function (event, ui) {
         $('.btcpw_pay_preview.pay_per_view, .btcpaywall_pay_preview.pay_per_view').css(
           'backgroundColor',
-          $(this).val()
+          ui.color.toString()
         )
       },
 
@@ -230,7 +230,7 @@
       change: function (event, ui) {
         $('.btcpw_pay__content_preview.pay_per_view h2, .btcpaywall_pay__content_preview.pay_per_view h2').css(
           'color',
-          $(this).val()
+          ui.color.toString()
         )
       },
 
@@ -246,7 +246,7 @@
       change: function (event, ui) {
         $('.btcpw_pay__content_preview.pay_per_view p, .btcpaywall_pay__content_preview.pay_per_view p').css(
           'color',
-          $(this).val()
+          ui.color.toString()
         )
       },
 
@@ -261,7 +261,7 @@
       defaultColor: true,
 
       change: function (event, ui) {
-        $('#btcpw_pay__button_preview_pay_per_view, #btcpaywall_pay__button_preview_pay_per_view').css('color', $(this).val())
+        $('#btcpw_pay__button_preview_pay_per_view, #btcpaywall_pay__button_preview_pay_per_view').css('color', ui.color.toString())
       },
 
       clear: function () { },
@@ -277,7 +277,7 @@
       change: function (event, ui) {
         $('.btcpw_pay__content_preview.pay_per_view h2').css(
           'color',
-          $(this).val()
+          ui.color.toString()
         )
       },
 
@@ -301,7 +301,7 @@
       change: function (event, ui) {
         $('.btcpw_pay__preview_preview.pay_per_view h2, .btcpw_pay__preview_preview.preview_description h3').css(
           'color',
-          $(this).val()
+          ui.color.toString()
         )
       },
 
@@ -317,7 +317,7 @@
       change: function (event, ui) {
         $('.btcpw_pay__preview_preview.pay_per_view p, .btcpw_pay__preview_preview.preview_description p').css(
           'color',
-          $(this).val()
+          ui.color.toString()
         )
       },
 
@@ -337,7 +337,7 @@
       change: function (event, ui) {
         $('.btcpw_pay_preview.content_store button').css(
           'backgroundColor',
-          $(this).val()
+          ui.color.toString()
         )
       },
 
@@ -352,7 +352,7 @@
       defaultColor: true,
 
       change: function (event, ui) {
-        $('.btcpw_pay_preview.content_store button').css('color', $(this).val())
+        $('.btcpw_pay_preview.content_store button').css('color', ui.color.toString())
       },
 
       clear: function () { },
