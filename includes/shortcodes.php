@@ -1121,7 +1121,8 @@ function btcpaywall_render_shortcode_btcpw_start_content($atts)
         'info_color' => '',
         'button_color' => '',
         'button_text' => '',
-        'button_color' => '',
+        'button_text_color' => '',
+        'button_color_hover' => '#FFF',
         'link'    => true,
         'help_link'    => '',
         'help_text'    => 'Help',
@@ -1141,9 +1142,11 @@ function btcpaywall_render_shortcode_btcpw_start_content($atts)
         'continue_button_text' =>  'Continue',
         'continue_button_text_color' =>   '#FFF',
         'continue_button_color' =>  '#FE642E',
+        'continue_button_color_hover' =>  '#FFF',
         'previous_button_text' =>  'Previous',
         'previous_button_text_color' => '#FFF',
         'previous_button_color' =>  '#1d5aa3',
+        'previous_button_color_hover' =>  '#FFF',
     ), $atts);
 
     btcpaywall_update_meta_settings($atts);
@@ -1198,6 +1201,7 @@ function btcpaywall_render_shortcode_btcpw_start_video($atts)
         'button_color' => '',
         'button_text' => '',
         'button_text_color' => '',
+        'button_color_hover' => '#FFF',
         'link'    => true,
         'help_link'    => '',
         'help_text'    => 'Help',
@@ -1217,9 +1221,11 @@ function btcpaywall_render_shortcode_btcpw_start_video($atts)
         'continue_button_text' =>  'Continue',
         'continue_button_text_color' =>   '#FFF',
         'continue_button_color' =>  '#FE642E',
+        'continue_button_color_hover' => '#FFF',
         'previous_button_text' =>  'Previous',
         'previous_button_text_color' => '#FFF',
         'previous_button_color' =>  '#1d5aa3',
+        'previous_button_color_hover' => '#FFF',
     ), $atts);
     btcpaywall_update_meta_settings($atts);
 

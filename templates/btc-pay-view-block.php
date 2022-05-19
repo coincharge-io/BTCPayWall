@@ -79,6 +79,10 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
         color: <?php echo esc_html($button_text_color); ?>;
     }
 
+    #btcpw_pay__button:hover {
+        background-color: <?php echo esc_html($atts['button_color_hover']); ?>;
+    }
+
     .btcpw_help_links {
         display: flex;
         flex-direction: <?php echo ($help === true && $additional_help === true) ? 'row' : 'column'; ?>;
@@ -89,13 +93,21 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
     }
 
     #btcpw_revenue_view_button input.revenue-view-next-form {
-        color: <?php echo esc_html__($atts['continue_button_text_color'], 'btcpaywall'); ?>;
-        background: <?php echo  esc_html($atts['continue_button_color'], 'btcpaywall'); ?>;
+        color: <?php echo esc_html($atts['continue_button_text_color']); ?>;
+        background: <?php echo  esc_html($atts['continue_button_color']); ?>;
+    }
+
+    #btcpw_revenue_view_button input.revenue-view-next-form:hover {
+        background: <?php echo  esc_html($atts['continue_button_color_hover']); ?>;
     }
 
     #btcpw_revenue_view_button_second_step input.revenue-view-previous-form {
         color: <?php echo  esc_html__($atts['previous_button_text_color'], 'btcpaywall'); ?>;
         background: <?php echo  esc_html($atts['previous_button_color'], 'btcpaywall'); ?>;
+    }
+
+    #btcpw_revenue_view_button_second_step input.revenue-view-previous-form:hover {
+        background: <?php echo  esc_html($atts['previous_button_color_hover']); ?>;
     }
 </style>
 <div id="btcpw_revenue_container">

@@ -291,6 +291,14 @@ $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == '
                     </div>
                     <div class="row">
                         <div class="col-20">
+                            <label for="btcpaywall_pay_per_view_button_color_hover"><?php echo esc_html__('Button color on hover', 'btcpaywall'); ?></label>
+                        </div>
+                        <div class="col-80">
+                            <input id="btcpaywall_pay_per_view_button_color_hover" class="btcpaywall_pay_per_view_button_color_hover" name="btcpaywall_pay_per_view_button_color_hover" type="text" value="<?php echo esc_attr($result->button_color_hover); ?>" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-20">
                             <label for="btcpaywall_pay_per_view_continue_button"><?php echo esc_html__('Continue button text', 'btcpaywall'); ?></label>
                         </div>
                         <div class="col-80">
@@ -315,6 +323,14 @@ $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == '
                     </div>
                     <div class="row">
                         <div class="col-20">
+                            <label for="btcpaywall_pay_per_view_continue_button_color_hover"><?php echo esc_html__('Continue button color on hover', 'btcpaywall'); ?></label>
+                        </div>
+                        <div class="col-80">
+                            <input id="btcpaywall_pay_per_view_continue_button_color_hover" class="btcpaywall_pay_per_view_continue_button_color_hover" name="btcpaywall_pay_per_view_continue_button_color_hover" type="text" value="<?php echo esc_attr($result->continue_button_color_hover); ?>" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-20">
                             <label for="btcpaywall_pay_per_view_previous_button"><?php echo esc_html__('Previous button text', 'btcpaywall'); ?></label>
                         </div>
                         <div class="col-80">
@@ -335,6 +351,14 @@ $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == '
                         </div>
                         <div class="col-80">
                             <input id="btcpaywall_pay_per_view_previous_button_text_color" class="btcpaywall_pay_per_view_previous_button_text_color" name="btcpaywall_pay_per_view_previous_button_text_color" type="text" value="<?php echo esc_attr($result->previous_button_text_color); ?>" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-20">
+                            <label for="btcpaywall_pay_per_view_previous_button_color_hover"><?php echo esc_html__('Previous button color on hover', 'btcpaywall'); ?></label>
+                        </div>
+                        <div class="col-80">
+                            <input id="btcpaywall_pay_per_view_previous_button_color_hover" class="btcpaywall_pay_per_view_previous_button_color_hover" name="btcpaywall_pay_per_view_previous_button_color_hover" type="text" value="<?php echo esc_attr($result->previous_button_color_hover); ?>" />
                         </div>
                     </div>
                 </div>

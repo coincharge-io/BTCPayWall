@@ -23,6 +23,21 @@
 
       palettes: true
     })
+    $('.btcpw_pay_per_post_button_color_hover, .btcpaywall_pay_per_post_button_color_hover').iris({
+      defaultColor: true,
+
+      change: function (event, ui) {
+        $('#btcpw_pay__button_preview').hover(function () {
+          $(this).css('backgroundColor', ui.color.toString())
+        })
+      },
+
+      clear: function () { },
+
+      hide: true,
+
+      palettes: true
+    })
     $('.btcpw_pay_per_post_background, .btcpaywall_pay_per_post_background').iris({
       defaultColor: true,
 
@@ -201,6 +216,22 @@
       palettes: true
     })
 
+    $('.btcpw_pay_per_view_button_color_hover, #btcpaywall_pay_per_view_button_color_hover').iris({
+      defaultColor: true,
+
+      change: function (event, ui) {
+        $('#btcpw_pay__button_preview:hover').css(
+          'backgroundColor',
+          ui.color.toString()
+        )
+      },
+
+      clear: function () { },
+
+      hide: true,
+
+      palettes: true
+    })
 
     $('.btcpw_pay_per_view_background, #btcpaywall_pay_per_view_background').iris({
       defaultColor: true,

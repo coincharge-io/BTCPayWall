@@ -53,6 +53,7 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
             'button_color' => '%s',
             'button_text' => '%s',
             'button_text_color' => '%s',
+            'button_color_hover' => '%s',
             'link'    => '%d',
             'help_link'    => '%s',
             'help_text'    => '%s',
@@ -72,9 +73,11 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
             'continue_button_text' =>  '%s',
             'continue_button_text_color' =>  '%s',
             'continue_button_color' => '%s',
+            'continue_button_color_hover' => '%s',
             'previous_button_text' =>  '%s',
             'previous_button_text_color' => '%s',
             'previous_button_color' => '%s',
+            'previous_button_color_hover' => '%s',
         );
     }
 
@@ -104,6 +107,7 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
             'button_color' => '',
             'button_text' => '',
             'button_text_color' => '',
+            'button_color_hover' => '#FFF',
             'link'    => true,
             'help_link'    => '',
             'help_text'    => 'Help',
@@ -123,9 +127,11 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
             'continue_button_text' =>   'Continue',
             'continue_button_text_color' => 'FFF',
             'continue_button_color' =>   'FE642E',
+            'continue_button_color_hover' => '#FFF',
             'previous_button_text' =>   'Previous',
             'previous_button_text_color' =>  'FFF',
             'previous_button_color' =>   '1d5aa3',
+            'previous_button_color_hover' => '#FFF',
         );
     }
     public function update($row_id, $data = array(), $where = '')
@@ -249,6 +255,7 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
                 button_color CHAR(7),
                 button_text TEXT,
                 button_text_color CHAR(7),
+                button_color_hover CHAR(7),
                 link BOOLEAN,
                 help_link TEXT,
                 help_text TEXT,
@@ -268,9 +275,11 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
                 continue_button_text TEXT,
                 continue_button_text_color CHAR(7),
                 continue_button_color CHAR(7),
+                continue_button_color_hover CHAR(7),
                 previous_button_text TEXT,
                 previous_button_text_color CHAR(7),
                 previous_button_color CHAR(7),
+                previous_button_color_hover CHAR(7),
 			  PRIMARY KEY  (id)) {$charset_collate};";
 
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';

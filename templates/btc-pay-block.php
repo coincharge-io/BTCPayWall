@@ -17,6 +17,7 @@ $header_color = !empty($atts['header_color']) ? $atts['header_color'] : get_opti
 $info_color = !empty($atts['info_color']) ? $atts['info_color'] : get_option('btcpw_pay_per_post_info_color', '#000000');
 $button_color = !empty($atts['button_color']) ? $atts['button_color'] : get_option('btcpw_pay_per_post_button_color', '#f6b330');
 $button_text_color = !empty($atts['button_text_color']) ? $atts['button_text_color'] : get_option('btcpw_pay_per_post_button_text_color', '#FFFFFF');
+
 /* $default_text = get_option('btcpw_pay_per_post_title', 'Pay now to unlock blogpost');
 $default_button = get_option('btcpw_pay_per_post_button', 'Pay');
 $default_info = get_option('btcpw_pay_per_post_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]');
@@ -61,6 +62,10 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
         color: <?php echo esc_html($button_text_color); ?>;
     }
 
+    #btcpw_pay__button:hover {
+        background-color: <?php echo esc_html($atts['button_color_hover']); ?>;
+    }
+
     .btcpw_help_links {
         display: flex;
         flex-direction: <?php echo ($help === true && $additional_help === true) ? 'row' : ''; ?>;
@@ -71,13 +76,22 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
     }
 
     #btcpw_revenue_post_button input.revenue-post-next-form {
-        color: <?php echo esc_html__($atts['continue_button_text_color'], 'btcpaywall'); ?>;
-        background: <?php echo  esc_html($atts['continue_button_color'], 'btcpaywall'); ?>;
+        color: <?php echo esc_html($atts['continue_button_text_color']); ?>;
+        background: <?php echo  esc_html($atts['continue_button_color']); ?>;
+    }
+
+    #btcpw_revenue_post_button input.revenue-post-next-form:hover {
+        background: <?php echo  esc_html($atts['continue_button_color_hover']); ?>;
     }
 
     #btcpw_revenue_post_button_second_step input.revenue-post-previous-form {
-        color: <?php echo  esc_html__($atts['previous_button_text_color'], 'btcpaywall'); ?>;
-        background: <?php echo  esc_html($atts['previous_button_color'], 'btcpaywall'); ?>;
+        color: <?php echo  esc_html($atts['previous_button_text_color']); ?>;
+        background: <?php echo  esc_html($atts['previous_button_color']); ?>;
+
+    }
+
+    #btcpw_revenue_post_button_second_step input.revenue-post-previous-form:hover {
+        background: <?php echo  esc_html($atts['previous_button_color_hover']); ?>;
 
     }
 </style>
