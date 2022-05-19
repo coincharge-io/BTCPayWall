@@ -13,7 +13,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 # BTCPayWall - The Bitcoin Paywall to sell content and digital products on WordPress
 
-[![IMAGE_ALT](https://img.youtube.com/watch?v=gjxcc1Ld3R8.jpg)](https://www.youtube.com/watch?v=gjxcc1Ld3R8)
+[![IMAGE_ALT](https://img.youtube.com/vi/gjxcc1Ld3R8/0.jpg)](https://www.youtube.com/watch?v=gjxcc1Ld3R8)
 
 **BTCPayWall supports four different modules to distribute its digital products and content:**
 

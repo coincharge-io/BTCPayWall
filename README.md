@@ -1,6 +1,6 @@
 ![Image of BTCPaywall](https://btcpaywall.com/wp-content/uploads/2021/12/btcpaywall_logo669x182.png)
 
-[![IMAGE_ALT](https://img.youtube.com/watch?v=gjxcc1Ld3R8.jpg)](https://www.youtube.com/watch?v=gjxcc1Ld3R8)
+[![IMAGE_ALT](https://img.youtube.com/vi/gjxcc1Ld3R8/0.jpg)](https://www.youtube.com/watch?v=gjxcc1Ld3R8)
 
 
 
