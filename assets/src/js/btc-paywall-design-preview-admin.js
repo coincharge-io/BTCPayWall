@@ -27,9 +27,7 @@
       defaultColor: true,
 
       change: function (event, ui) {
-        $('#btcpw_pay__button_preview').hover(function () {
-          $(this).css('backgroundColor', ui.color.toString())
-        })
+        $('#btcpw_pay__button_preview').css('backgroundColor', ui.color.toString())
       },
 
       clear: function () { },
@@ -111,7 +109,17 @@
       $('.btcpw_pay_preview.pay_per_post, .btcpaywall_pay_preview.pay_per_post').css('height', $(this).val() + 'px')
     })
     $('#btcpaywall_pay_per_post_info').on('change input', function () {
+      var mapObj = {
+        '{price}': $("#btcpaywall_pay_per_post_price").val(),
+        '{currency}': $("#btcpaywall_pay_per_post_currency").val(),
+        '{duration}': $("#btcpaywall_pay_per_post_duration").val(),
+        '{dtype}': $("#btcpaywall_pay_per_post_duration_type").val()
+
+      };
       $('.btcpw_pay__content_preview.pay_per_post p').text($(this).val())
+      $('.btcpw_pay__content_preview.pay_per_post p').text($('.btcpw_pay__content_preview.pay_per_post p').text().replaceAll(/\{price\}|\{currency\}|\{duration\}|\{dtype\}/gi, function (matched) {
+        return mapObj[matched];
+      }))
     })
     $('#btcpw_pay_per_post_button,#btcpaywall_pay_per_post_button').on('input', function () {
       $('#btcpw_pay__button_preview').text($(this).val())
@@ -150,7 +158,9 @@
         $(this).focus()
         return $(this).prop('value') + ' ' + buttonValue
       })
+
       $('#btcpw_pay_per_post_info, #btcpaywall_pay_per_post_info').trigger('change')
+
     })
 
     $('#btcpw_pay_per_view_show_help_link, #btcpaywall_pay_per_view_show_help_link').change(function () {
@@ -178,7 +188,18 @@
       $('.btcpw_pay__content_preview.pay_per_view h2, .btcpaywall_pay__content_preview.pay_per_view h2').text($(this).val())
     })
     $('#btcpw_pay_per_view_info, #btcpaywall_pay_per_view_info').on('change input', function () {
+
       $('.btcpw_pay__content_preview.pay_per_view p').text($(this).val())
+      var mapObj = {
+        '{price}': $("#btcpaywall_pay_per_view_price").val(),
+        '{currency}': $("#btcpaywall_pay_per_view_currency").val(),
+        '{duration}': $("#btcpaywall_pay_per_view_duration").val(),
+        '{dtype}': $("#btcpaywall_pay_per_view_duration_type").val()
+
+      };
+      $('.btcpw_pay__content_preview.pay_per_view p').text($('.btcpw_pay__content_preview.pay_per_view p').text().replaceAll(/\{price\}|\{currency\}|\{duration\}|\{dtype\}/gi, function (matched) {
+        return mapObj[matched];
+      }))
     })
     $('#btcpw_pay_per_view_button, #btcpaywall_pay_per_view_button').on('input', function () {
       $('#btcpw_pay__button_preview_pay_per_view, #btcpaywall_pay__button_preview_pay_per_view').text($(this).val())

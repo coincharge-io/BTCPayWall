@@ -53,18 +53,7 @@ function btcpaywall_get_post_info_string_from_attributes($atts)
     } else {
         $currency = get_option('btcpw_default_pay_per_' . $project . '_currency', 'SATS');
     }
-    /* $btc_format = get_post_meta(get_the_ID(), 'btcpw_btc_format', true) ?: get_option('btcpw_default_pay_per_' . $project . '_btc_format');
 
-    if ($currency === 'SATS' && $btc_format === 'BTC') {
-
-        $price = $price / 100000000;
-
-        $price = sprintf('%.8f', $price);
-
-        $price = rtrim($price, '0');
-
-        $currency = 'BTC';
-    } */
     $payblock_info = $atts['info_text'];
     $non_number = $duration_type === 'unlimited' || $duration_type === 'onetime';
 
@@ -121,19 +110,7 @@ function btcpaywall_get_post_info_string($post_id = null, $type = 'post')
     } else {
         $currency = get_option('btcpw_default_pay_per_' . $project . '_currency', 'SATS');
     }
-    /* $btc_format = get_post_meta(get_the_ID(), 'btcpw_btc_format', true) ?: get_option('btcpw_default_pay_per_' . $project . '_btc_format');
 
-
-    if ($currency === 'SATS' && $btc_format === 'BTC') {
-
-        $price = $price / 100000000;
-
-        $price = sprintf('%.8f', $price);
-
-        $price = rtrim($price, '0');
-
-        $currency = 'BTC';
-    } */
 
     $non_number = $duration_type === 'unlimited' || $duration_type === 'onetime';
 

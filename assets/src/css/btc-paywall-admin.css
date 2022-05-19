@@ -437,7 +437,6 @@ div.btcpw_help_link a:hover {
 #btcpw_pay__button_preview_pay_per_view:hover,
 #btcpw_pay__button_preview_pay_per_file:hover,
 #btcpw_pay__button_preview:hover {
-  background: #8c82fc;
   color: #fff;
   cursor: pointer;
 }

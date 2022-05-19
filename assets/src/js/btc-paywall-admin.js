@@ -353,13 +353,10 @@
     });
   }
   $(document).ready(function () {
-    $("#btcpaywall_pay_per_shortcode").css("border", "5px solid #fc852e")
-
     $(
       "#pay-per-post-shortcode-generator-form, #pay-per-view-shortcode-generator-form"
     ).on("submit", function (e) {
       e.preventDefault();
-      $("html,body").animate({ scrollTop: 0 });
       $.ajax({
         type: "POST",
         url: "/wp-admin/admin-ajax.php",

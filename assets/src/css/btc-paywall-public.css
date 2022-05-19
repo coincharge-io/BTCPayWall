@@ -79,9 +79,9 @@
   animation: spinner 1s linear infinite;
 }
 
-.btcpw_help>a.btcpw_help__link {
+.btcpw_help_links>.btcpw_help a,
+.btcpw_help_links>.btcpw_additional_help a {
   margin-top: 5px;
-  color: #2980b9;
   text-decoration: underline;
 }
 

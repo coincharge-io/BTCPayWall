@@ -18,7 +18,9 @@ $disabled_field = ($result->duration_type === 'unlimited') || ($result->duration
 $disable = $disabled_field ? 'disabled' : '';
 $preview_image = wp_get_attachment_image_src($result->preview);
 $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == 'edit') ? 'admin.php?page=btcpw_pay_per_shortcode_list' : 'admin.php?page=btcpw_pay_per_shortcode_generator';
-
+$search = array('{price}', '{duration}', '{dtype}', '{currency}');
+$replace = array($result->price, $result->duration, $result->duration_type, $result->currency);
+$info_text = str_replace($search, $replace, $result->info_text);
 ?>
 <style>
     .btcpw_pay__preview_preview.pay_per_view h2 {
@@ -57,20 +59,14 @@ $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == '
         background-color: <?php echo esc_html($result->button_color); ?>;
         color: <?php echo esc_html($result->button_text_color); ?>;
     }
+
+    #btcpw_pay__button_preview:hover {
+        background-color: <?php echo esc_html($result->button_color_hover); ?>;
+    }
 </style>
 <div id="btcpaywall_pay_per_view_shortcode_generator">
     <div>
         <form method="POST" action="options.php" id="pay-per-view-shortcode-generator-form">
-            <?php if ($result->id > 0) : ?>
-                <div class="row" id="btcpaywall_pay_per_shortcode">
-                    <div class="col-20">
-                        <p><?php echo esc_html__('Shortcode', 'btcpaywall'); ?></p>
-                    </div>
-                    <div class="col-80">
-                        <button type="button" class="button hint-tooltip hint--top js-btcpaywall-shortcode-button" data-btcpaywall-shortcode="<?php echo esc_attr($result->shortcode()); ?>"><span class="dashicons dashicons-admin-page"></span>Copy Shortcode</button>
-                    </div>
-                </div>
-            <?php endif; ?>
             <div class="row">
                 <div class="col-20">
                     <label for="btcpaywall_pay_per_view_type"><?php echo esc_html__('Type', 'btcpaywall'); ?></label>
@@ -503,6 +499,15 @@ $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == '
 
                 <button class="button button-primary btcpw_button" type="submit"><?php echo esc_html__('Save', 'btcpaywall'); ?></button>
             </div>
+            <?php if ($result->id > 0) : ?>
+                <div class="row" id="btcpaywall_pay_per_shortcode">
+
+                    <p><?php echo esc_html__('Copy this shortcode and paste it to the place where you want the paywall to start', 'btcpaywall'); ?></p>
+
+                    <button type="button" class="button hint-tooltip hint--top js-btcpaywall-shortcode-button" data-btcpaywall-shortcode="<?php echo esc_attr($result->shortcode()); ?>"><span class="dashicons dashicons-admin-page"></span>Copy Shortcode</button>
+
+                </div>
+            <?php endif; ?>
         </form>
     </div>
     <div id="btcpw_pay_per_view_paywall_preview">
@@ -521,7 +526,7 @@ $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == '
             </div>
             <div class="btcpw_pay__content_preview pay_per_view">
                 <p>
-                    <?php echo esc_html($result->info_text); ?>
+                    <?php echo esc_html($info_text); ?>
                 </p>
             </div>
             <div class="btcpw_pay__footer_preview pay_per_view">

@@ -92,6 +92,10 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
         align-items: center;
     }
 
+    .btcpw_help_links a {
+        color: <?php echo esc_html($info_color); ?>;
+    }
+
     #btcpw_revenue_view_button input.revenue-view-next-form {
         color: <?php echo esc_html($atts['continue_button_text_color']); ?>;
         background: <?php echo  esc_html($atts['continue_button_color']); ?>;
