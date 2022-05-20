@@ -160,6 +160,10 @@ function btcpaywall_load_gutenberg()
                     'type' => 'string',
                     'default' => '#FE642E'
                 ),
+                'button_color_hover' => array(
+                    'type' => 'string',
+                    'default' => '#FFF'
+                ),
                 'continue_button_text' => array(
                     'type' => 'string',
                     'default' => 'Continue'
@@ -172,6 +176,10 @@ function btcpaywall_load_gutenberg()
                     'type' => 'string',
                     'default' => '#FE642E'
                 ),
+                'continue_button_color_hover' => array(
+                    'type' => 'string',
+                    'default' => '#FFF'
+                ),
                 'previous_button_text' => array(
                     'type' => 'string',
                     'default' => 'Previous'
@@ -183,6 +191,10 @@ function btcpaywall_load_gutenberg()
                 'previous_button_color' => array(
                     'type' => 'string',
                     'default' => '#1d5aa3'
+                ),
+                'previous_button_color_hover' => array(
+                    'type' => 'string',
+                    'default' => '#fff'
                 ),
             )
         ]
@@ -352,6 +364,10 @@ function btcpaywall_load_gutenberg()
                     'type' => 'string',
                     'default' => '#FE642E'
                 ),
+                'button_color_hover' => array(
+                    'type' => 'string',
+                    'default' => '#FFF'
+                ),
                 'continue_button_text' => array(
                     'type' => 'string',
                     'default' => 'Continue'
@@ -364,6 +380,10 @@ function btcpaywall_load_gutenberg()
                     'type' => 'string',
                     'default' => '#FE642E'
                 ),
+                'continue_button_color_hover' => array(
+                    'type' => 'string',
+                    'default' => '#FFF'
+                ),
                 'previous_button_text' => array(
                     'type' => 'string',
                     'default' => 'Previous'
@@ -375,6 +395,10 @@ function btcpaywall_load_gutenberg()
                 'previous_button_color' => array(
                     'type' => 'string',
                     'default' => '#1d5aa3'
+                ),
+                'previous_button_color_hover' => array(
+                    'type' => 'string',
+                    'default' => '#FFF'
                 ),
             )
         ]

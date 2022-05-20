@@ -273,6 +273,14 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 			]
 		);
 		$this->add_control(
+			'button_color_hover',
+			[
+				'label' => 'Button color on hover',
+				'type'  => \Elementor\Controls_Manager::COLOR,
+				'default' => '#FFF',
+			]
+		);
+		$this->add_control(
 			'continue_button_text',
 			[
 				'label' => 'Continue button text',
@@ -297,6 +305,14 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 			]
 		);
 		$this->add_control(
+			'continue_button_color_hover',
+			[
+				'label' => 'Continue button color on hover',
+				'type'  => \Elementor\Controls_Manager::COLOR,
+				'default' => '#FFF',
+			]
+		);
+		$this->add_control(
 			'previous_button_text',
 			[
 				'label' => 'Previous button text',
@@ -318,6 +334,14 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 				'label' => 'Previous button color',
 				'type'  => \Elementor\Controls_Manager::COLOR,
 				'default' => '#1d5aa3',
+			]
+		);
+		$this->add_control(
+			'previous_button_color_hover',
+			[
+				'label' => 'Previous button color on hover',
+				'type'  => \Elementor\Controls_Manager::COLOR,
+				'default' => '#FFF',
 			]
 		);
 		$this->end_controls_tab();
@@ -519,12 +543,15 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 			link='{$link}' help_link='{$settings['help_link']}' help_text='{$settings['help_text']}' additional_link='{$additional_link}' additional_help_link='{$settings['additional_help_link']}' additional_help_text='{$settings['additional_help_text']}' 
 			button_text_color = '{$settings['button_text_color']}'
 			button_color = '{$settings['button_color']}'
+			button_color_hover = '{$settings['button_color_hover']}'
 			continue_button_text = '{$settings['continue_button_text']}'
 			continue_button_text_color = '{$settings['continue_button_text_color']}'
 			continue_button_color = '{$settings['continue_button_color']}'
+			continue_button_color_hover = '{$settings['continue_button_color_hover']}'
 			previous_button_text = '{$settings['previous_button_text']}'
 			previous_button_text_color = '{$settings['previous_button_text_color']}'
-			previous_button_color = '{$settings['previous_button_color']}' display_name='{$display_name}' mandatory_name='{$mandatory_name}' display_email='{$display_email}' mandatory_email='{$mandatory_email}' display_phone='{$display_phone}' mandatory_phone='{$mandatory_phone}' display_address='{$display_address}' mandatory_address='{$mandatory_address}' display_message='{$display_message}' mandatory_message='{$mandatory_message}']");
+			previous_button_color = '{$settings['previous_button_color']}'
+			previous_button_color_hover = '{$settings['previous_button_color_hover']}' display_name='{$display_name}' mandatory_name='{$mandatory_name}' display_email='{$display_email}' mandatory_email='{$mandatory_email}' display_phone='{$display_phone}' mandatory_phone='{$mandatory_phone}' display_address='{$display_address}' mandatory_address='{$mandatory_address}' display_message='{$display_message}' mandatory_message='{$mandatory_message}']");
 		}
 	}
 }

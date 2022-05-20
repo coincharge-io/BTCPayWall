@@ -482,6 +482,10 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       type: 'string',
       default: '#FE642E',
     },
+    button_color_hover: {
+      type: 'string',
+      default: '#FFF',
+    },
     continue_button_text: {
       type: 'string',
       default: 'Continue',
@@ -494,6 +498,10 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       type: 'string',
       default: '#FE642E',
     },
+    continue_button_color_hover: {
+      type: 'string',
+      default: '#FFF',
+    },
     previous_button_text: {
       type: 'string',
       default: 'Previous',
@@ -505,6 +513,10 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
     previous_button_color: {
       type: 'string',
       default: '#1d5aa3',
+    },
+    previous_button_color_hover: {
+      type: 'string',
+      default: '#FFF',
     },
     link: {
       type: 'boolean',
@@ -585,12 +597,15 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
         button_color,
         button_text,
         button_text_color,
+        button_color_hover,
         continue_button_color,
         continue_button_text,
         continue_button_text_color,
+        continue_button_color_hover,
         previous_button_color,
         previous_button_text,
         previous_button_text_color,
+        previous_button_color_hover,
         link,
         help_link,
         help_text,
@@ -752,6 +767,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                   setAttributes({ button_text_color: value.hex })}
                 disableAlpha
               />
+              <p> Button color on hover</p> <ColorPicker
+                color={button_color_hover}
+                onChangeComplete={value =>
+                  setAttributes({
+                    button_color_hover: value.hex,
+                  })}
+                disableAlpha
+              />
               <TextareaControl
                 label="Continue button"
                 help="Enter continue button text"
@@ -777,6 +800,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                   })}
                 disableAlpha
               />
+              <p> Continue button color on hover </p> <ColorPicker
+                color={continue_button_color_hover}
+                onChangeComplete={value =>
+                  setAttributes({
+                    continue_button_color_hover: value.hex,
+                  })}
+                disableAlpha
+              />
               <TextareaControl
                 label="Previous button"
                 help="Enter button text"
@@ -799,6 +830,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 onChangeComplete={value =>
                   setAttributes({
                     previous_button_text_color: value.hex,
+                  })}
+                disableAlpha
+              />
+              <p> Previous button color on hover </p> <ColorPicker
+                color={previous_button_color_hover}
+                onChangeComplete={value =>
+                  setAttributes({
+                    previous_button_color_hover: value.hex,
                   })}
                 disableAlpha
               />
@@ -980,12 +1019,15 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             button_color,
             button_text,
             button_text_color,
+            button_color_hover,
             continue_button_color,
             continue_button_text,
             continue_button_text_color,
+            continue_button_color_hover,
             previous_button_color,
             previous_button_text,
             previous_button_text_color,
+            previous_button_color_hover,
             display_name,
             display_email,
             display_message,

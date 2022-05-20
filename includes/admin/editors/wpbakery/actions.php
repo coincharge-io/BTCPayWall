@@ -164,8 +164,14 @@ function btcpaywall_load_vc_widgets()
                 'value' => '#FE642E',
                 'description' => 'Set button color',
                 'group' => 'Buttons'
-
-
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Button color on hover',
+                'param_name' => 'button_color_hover',
+                'value' => '#FFF',
+                'description' => 'Set button color on hover',
+                'group' => 'Buttons'
             ),
             array(
                 'type' => 'textarea',
@@ -194,6 +200,14 @@ function btcpaywall_load_vc_widgets()
                 'group' => 'Buttons'
             ),
             array(
+                'type' => 'colorpicker',
+                'heading' => 'Continue button color on hover',
+                'param_name' => 'continue_button_color_hover',
+                'value' => '#FFF',
+                'description' => 'Set continue button color on hover',
+                'group' => 'Buttons'
+            ),
+            array(
                 'type' => 'textarea',
                 'heading' => 'Previous button text',
                 'param_name' => 'previous_button_text',
@@ -215,6 +229,14 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_color',
                 'value' => '#1d5aa3',
                 'description' => 'Set previous button color',
+                'group' => 'Buttons'
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Previous button color on hover',
+                'param_name' => 'previous_button_color_hover',
+                'value' => '#FFF',
+                'description' => 'Set previous button color on hover',
                 'group' => 'Buttons'
             ),
             array(
@@ -538,6 +560,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => 'Pay',
                 'description' => 'Set button text',
                 'group' => 'Buttons'
+
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -546,6 +570,8 @@ function btcpaywall_load_vc_widgets()
                 'value' => '#ffffff',
                 'description' => 'Set button text color',
                 'group' => 'Buttons'
+
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -556,12 +582,22 @@ function btcpaywall_load_vc_widgets()
                 'group' => 'Buttons'
             ),
             array(
+                'type' => 'colorpicker',
+                'heading' => 'Button color on hover',
+                'param_name' => 'button_color_hover',
+                'value' => '#FFF',
+                'description' => 'Set button color on hover',
+                'group' => 'Buttons'
+            ),
+            array(
                 'type' => 'textarea',
                 'heading' => 'Continue button text',
                 'param_name' => 'continue_button_text',
                 'value' => 'Continue',
                 'description' => 'Set continue button text',
                 'group' => 'Buttons'
+
+
             ),
             array(
                 'type' => 'colorpicker',
@@ -580,6 +616,14 @@ function btcpaywall_load_vc_widgets()
                 'group' => 'Buttons'
             ),
             array(
+                'type' => 'colorpicker',
+                'heading' => 'Continue button color on hover',
+                'param_name' => 'continue_button_color_hover',
+                'value' => '#FFF',
+                'description' => 'Set continue button color on hover',
+                'group' => 'Buttons'
+            ),
+            array(
                 'type' => 'textarea',
                 'heading' => 'Previous button text',
                 'param_name' => 'previous_button_text',
@@ -594,7 +638,6 @@ function btcpaywall_load_vc_widgets()
                 'value' => '#ffffff',
                 'description' => 'Set previous button text color',
                 'group' => 'Buttons'
-
             ),
             array(
                 'type' => 'colorpicker',
@@ -602,6 +645,14 @@ function btcpaywall_load_vc_widgets()
                 'param_name' => 'previous_button_color',
                 'value' => '#1d5aa3',
                 'description' => 'Set previous button color',
+                'group' => 'Buttons'
+            ),
+            array(
+                'type' => 'colorpicker',
+                'heading' => 'Previous button color on hover',
+                'param_name' => 'previous_button_color_hover',
+                'value' => '#FFF',
+                'description' => 'Set previous button color on hover',
                 'group' => 'Buttons'
             ),
             array(
