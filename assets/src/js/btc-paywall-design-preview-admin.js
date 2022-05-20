@@ -112,7 +112,7 @@
       var mapObj = {
         '{price}': $("#btcpaywall_pay_per_post_price").val(),
         '{currency}': $("#btcpaywall_pay_per_post_currency").val(),
-        '{duration}': $("#btcpaywall_pay_per_post_duration").val(),
+        '{duration}': ($("#btcpaywall_pay_per_post_duration_type").val() == 'onetime' || $("#btcpaywall_pay_per_post_duration_type").val() == 'unlimited') ? '' : $("#btcpaywall_pay_per_post_duration").val(),
         '{dtype}': $("#btcpaywall_pay_per_post_duration_type").val()
 
       };
@@ -200,7 +200,7 @@
       var mapObj = {
         '{price}': $("#btcpaywall_pay_per_view_price").val(),
         '{currency}': $("#btcpaywall_pay_per_view_currency").val(),
-        '{duration}': $("#btcpaywall_pay_per_view_duration").val(),
+        '{duration}': ($("#btcpaywall_pay_per_view_duration_type").val() == 'onetime' || $("#btcpaywall_pay_per_view_duration_type").val() == 'unlimited') ? '' : $("#btcpaywall_pay_per_view_duration").val(),
         '{dtype}': $("#btcpaywall_pay_per_view_duration_type").val()
 
       };
@@ -346,8 +346,14 @@
 
       palettes: true
     })
-
+    $('#btcpaywall_pay_per_view_duration_type, #btcpaywall_pay_per_view_duration,#btcpaywall_pay_per_view_price,#btcpaywall_pay_per_view_currency').change(function () {
+      $('#btcpaywall_pay_per_view_info').trigger('change')
+    })
+    $('#btcpaywall_pay_per_post_duration_type, #btcpaywall_pay_per_post_duration,#btcpaywall_pay_per_post_price,#btcpaywall_pay_per_post_currency').change(function () {
+      $('#btcpaywall_pay_per_post_info').trigger('change')
+    })
     $('#btcpaywall_pay_per_view_duration_type').change(function () {
+
       if ($(this).val() === 'unlimited' || $(this).val() === 'onetime') {
         $('#btcpaywall_pay_per_view_duration').prop({
           required: false,
