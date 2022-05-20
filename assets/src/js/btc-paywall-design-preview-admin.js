@@ -145,11 +145,18 @@
         $(this).val()
       )
     })
-    $('#btcpw_pay_per_post_duration_type').change(function () {
+    $('#btcpaywall_pay_per_post_duration_type').change(function () {
       if ($(this).val() === 'unlimited' || $(this).val() === 'onetime') {
-        $('#btcpw_pay_per_post_duration').prop('disabled', true)
+        $('#btcpaywall_pay_per_post_duration').prop({
+          required: false,
+          disabled: true,
+        });
+        $('#btcpaywall_pay_per_post_duration').val('')
       } else {
-        $('#btcpw_pay_per_post_duration').prop('disabled', false)
+        $('#btcpaywall_pay_per_post_duration').prop({
+          required: true,
+          disabled: false,
+        });
       }
     })
     $('.btcpw_pay_per_post_price_placeholder, .btcpw_pay_per_post_currency_placeholder, .btcpw_pay_per_post_duration_placeholder, .btcpw_pay_per_post_duration_type_placeholder, .btcpaywall_pay_per_post_price_placeholder, .btcpaywall_pay_per_post_currency_placeholder, .btcpaywall_pay_per_post_duration_placeholder, .btcpaywall_pay_per_post_duration_type_placeholder').click(function () {
@@ -340,11 +347,18 @@
       palettes: true
     })
 
-    $('#btcpw_pay_per_view_duration_type').change(function () {
+    $('#btcpaywall_pay_per_view_duration_type').change(function () {
       if ($(this).val() === 'unlimited' || $(this).val() === 'onetime') {
-        $('#btcpw_pay_per_view_duration').prop('disabled', true)
+        $('#btcpaywall_pay_per_view_duration').prop({
+          required: false,
+          disabled: true,
+        });
+        $('#btcpaywall_pay_per_view_duration').val('')
       } else {
-        $('#btcpw_pay_per_view_duration').prop('disabled', false)
+        $('#btcpaywall_pay_per_view_duration').prop({
+          required: true,
+          disabled: false,
+        });
       }
     })
     $('.btcpw_pay_per_view_preview_title_color, #btcpaywall_pay_per_view_preview_title_color').iris({

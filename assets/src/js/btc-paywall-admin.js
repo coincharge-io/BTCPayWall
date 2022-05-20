@@ -69,54 +69,54 @@
     });
   });
 
-  $(document).ready(function () {
-    $('#btcpw_default_pay_per_post_duration_type').change(function () {
-      var dtype = $(this).val();
+  //$(document).ready(function () {
+  /* $('#btcpw_default_pay_per_post_duration_type').change(function () {
+    var dtype = $(this).val();
 
-      if (dtype === 'unlimited' || dtype === 'onetime') {
-        $('#btcpw_default_pay_per_post_duration').prop({
-          required: false,
-          disabled: true,
-        });
-      } else {
-        $('#btcpw_default_pay_per_post_duration').prop({
-          required: true,
-          disabled: false,
-        });
-      }
-    });
-
-    $('#btcpw_default_pay_per_view_duration_type').change(function () {
-      var dtype = $(this).val();
-
-      if (dtype === 'unlimited' || dtype === 'onetime') {
-        $('#btcpw_default_pay_per_view_duration').prop({
-          required: false,
-          disabled: true,
-        });
-      } else {
-        $('#btcpw_default_pay_per_view_duration').prop({
-          required: true,
-          disabled: false,
-        });
-      }
-    });
-    $('#btcpaywall_pay_per_post_duration_type, #btcpaywall_pay_per_view_duration_type').change(function () {
-      var dtype = $(this).val();
-
-      if (dtype === 'unlimited' || dtype === 'onetime') {
-        $('#btcpaywall_pay_per_post_duration, #btcpaywall_pay_per_view_duration').prop({
-          required: false,
-          disabled: true,
-        });
-      } else {
-        $('#btcpaywall_pay_per_post_duration, #btcpaywall_pay_per_view_duration').prop({
-          required: true,
-          disabled: false,
-        });
-      }
-    });
+    if (dtype === 'unlimited' || dtype === 'onetime') {
+      $('#btcpw_default_pay_per_post_duration').prop({
+        required: false,
+        disabled: true,
+      });
+    } else {
+      $('#btcpw_default_pay_per_post_duration').prop({
+        required: true,
+        disabled: false,
+      });
+    }
   });
+
+  $('#btcpw_default_pay_per_view_duration_type').change(function () {
+    var dtype = $(this).val();
+
+    if (dtype === 'unlimited' || dtype === 'onetime') {
+      $('#btcpw_default_pay_per_view_duration').prop({
+        required: false,
+        disabled: true,
+      });
+    } else {
+      $('#btcpw_default_pay_per_view_duration').prop({
+        required: true,
+        disabled: false,
+      });
+    }
+  }); */
+  /* $('#btcpaywall_pay_per_post_duration_type, #btcpaywall_pay_per_view_duration_type').change(function () {
+    var dtype = $(this).val();
+
+    if (dtype === 'unlimited' || dtype === 'onetime') {
+      $('#btcpaywall_pay_per_post_duration, #btcpaywall_pay_per_view_duration').prop({
+        required: false,
+        disabled: true,
+      });
+    } else {
+      $('#btcpaywall_pay_per_post_duration, #btcpaywall_pay_per_view_duration').prop({
+        required: true,
+        disabled: false,
+      });
+    }
+  });
+}); */
 
   function isValidUrl(url) {
     if (
@@ -226,13 +226,15 @@
   function initColorPicker(widget) {
     widget
       .find(
-        '.widget-tipping-basic-background_color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-button_text_color,.widget-tipping-basic-button-color,.widget-tipping-basic-description-color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-tipping-color,.widget-tipping-basic-input_background,.widget-tipping-basic-fixed_background,.widget-tipping-basic-background_color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-button_text_color_high,.widget-tipping-basic-button_color_high,.widget-tipping-basic-continue_button_text_color_high,.widget-tipping-basic-continue_button_color_high,.widget-tipping-basic-previous_button_text_color_high,.widget-tipping-basic-previous_button_color_high,.widget-tipping-basic-continue_button_text_color_wide,.widget-tipping-basic-continue_button_color_wide,.widget-tipping-basic-previous_button_text_color_wide,.widget-tipping-basic-previous_button_color_wide,.widget-tipping-basic-description-color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-tipping-color_high,.widget-tipping-basic-fixed_background_high,.widget-tipping-basic-background_color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-button_text_color_wide,.widget-tipping-basic-button_color_wide,.widget-tipping-basic-description-color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-tipping-color_wide,.widget-tipping-basic-fixed_background_wide,.widget-tipping-basic-hf_color,.widget-tipping-basic-hf_color_high,.widget-tipping-basic-hf_color_wide,.widget-tipping-basic-box-hf_color,.widget-tipping-basic-button_color,.widget-tipping-basic-selected_amount_background_wide,.widget-tipping-basic-selected_amount_background_high'
+        '.widget-tipping-basic-background_color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-button_text_color,.widget-tipping-basic-button-color,.widget-tipping-basic-button_color_hover,.widget-tipping-basic-description-color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-tipping-color,.widget-tipping-basic-input_background,.widget-tipping-basic-fixed_background,.widget-tipping-basic-background_color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-button_text_color_high,.widget-tipping-basic-button_color_high,.widget-tipping-basic-continue_button_text_color_high,.widget-tipping-basic-continue_button_color_high,.widget-tipping-basic-previous_button_text_color_high,.widget-tipping-basic-previous_button_color_high,.widget-tipping-basic-button_color_hover_wide,.widget-tipping-basic-continue_button_color_hover_wide,.widget-tipping-basic-previous_button_color_hover_wide,.widget-tipping-basic-continue_button_text_color_wide,.widget-tipping-basic-continue_button_color_wide,.widget-tipping-basic-previous_button_text_color_wide,.widget-tipping-basic-previous_button_color_wide,.widget-tipping-basic-description-color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-tipping-color_high,.widget-tipping-basic-fixed_background_high,.widget-tipping-basic-background_color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-button_text_color_wide,.widget-tipping-basic-button_color_wide,.widget-tipping-basic-description-color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-tipping-color_wide,.widget-tipping-basic-fixed_background_wide,.widget-tipping-basic-hf_color,.widget-tipping-basic-hf_color_high,.widget-tipping-basic-hf_color_wide,.widget-tipping-basic-box-hf_color,.widget-tipping-basic-button_color,.widget-tipping-basic-selected_amount_background_wide,.widget-tipping-basic-selected_amount_background_high,.widget-tipping-basic-button_color_hover_high,.widget-tipping-basic-continue_button_color_hover_high,.widget-tipping-basic-previous_button_color_hover_high'
       )
       .iris({
         defaultColor: true,
 
         change: _.throttle(function () {
-          $(this).trigger('change');
+          if ($(this).val()) {
+            $(this).trigger('change');
+          }
         }, 3000),
 
         clear: function () { },
@@ -251,9 +253,11 @@
 
   $(document).ready(function () {
     $(
-      '#widgets-right .widget:has( .widget-tipping-basic-background_color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-button_text_color,.widget-tipping-basic-button-color,.widget-tipping-basic-button_color_hover,.widget-tipping-basic-description-color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-tipping-color,.widget-tipping-basic-input_background,.widget-tipping-basic-fixed_background,.widget-tipping-basic-background_color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-button_text_color_high,.widget-tipping-basic-button_color_high, .widget-tipping-basic-button_color_hover_high,.widget-tipping-basic-continue_button_color_hover_high,.widget-tipping-basic-previous_button_color_hover_high,.widget-tipping-basic-continue_button_text_color_high,.widget-tipping-basic-continue_button_color_high,.widget-tipping-basic-previous_button_text_color_high,.widget-tipping-basic-previous_button_color_high,.widget-tipping-basic-continue_button_text_color_wide,.widget-tipping-basic-continue_button_color_wide,.widget-tipping-basic-previous_button_text_color_wide,.widget-tipping-basic-previous_button_color_wide, .widget-tipping-basic-previous_button_color_hover_wide,.widget-tipping-basic-continue_button_color_hover_wide,.widget-tipping-basic-button_color_hover_wide,.widget-tipping-basic-description-color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-tipping-color_high,.widget-tipping-basic-fixed_background_high,.widget-tipping-basic-background_color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-button_text_color_wide,.widget-tipping-basic-button_color_wide,.widget-tipping-basic-description-color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-tipping-color_wide,.widget-tipping-basic-fixed_background_wide,.widget-tipping-basic-hf_color,.widget-tipping-basic-hf_color_high,.widget-tipping-basic-hf_color_wide,.widget-tipping-basic-box-hf_color,.widget-tipping-basic-button_color,.widget-tipping-basic-selected_amount_background_wide,.widget-tipping-basic-selected_amount_background_high)'
+      '#widgets-right .widget:has( .widget-tipping-basic-background_color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-button_text_color,.widget-tipping-basic-button-color,.widget-tipping-basic-button_color_hover,.widget-tipping-basic-description-color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-tipping-color,.widget-tipping-basic-input_background,.widget-tipping-basic-fixed_background,.widget-tipping-basic-background_color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-button_text_color_high,.widget-tipping-basic-button_color_high, .widget-tipping-basic-button_color_hover_high,.widget-tipping-basic-continue_button_color_hover_high,.widget-tipping-basic-previous_button_color_hover_high,.widget-tipping-basic-continue_button_text_color_high,.widget-tipping-basic-continue_button_color_high,.widget-tipping-basic-previous_button_text_color_high,.widget-tipping-basic-previous_button_color_high,.widget-tipping-basic-continue_button_text_color_wide,.widget-tipping-basic-continue_button_color_wide,.widget-tipping-basic-previous_button_text_color_wide,.widget-tipping-basic-previous_button_color_wide,.widget-tipping-basic-previous_button_color_hover_wide,.widget-tipping-basic-continue_button_color_hover_wide,.widget-tipping-basic-button_color_hover_wide,.widget-tipping-basic-description-color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-tipping-color_high,.widget-tipping-basic-fixed_background_high,.widget-tipping-basic-background_color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-button_text_color_wide,.widget-tipping-basic-button_color_wide,.widget-tipping-basic-description-color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-tipping-color_wide,.widget-tipping-basic-fixed_background_wide,.widget-tipping-basic-hf_color,.widget-tipping-basic-hf_color_high,.widget-tipping-basic-hf_color_wide,.widget-tipping-basic-box-hf_color,.widget-tipping-basic-button_color,.widget-tipping-basic-selected_amount_background_wide,.widget-tipping-basic-selected_amount_background_high)'
     ).each(function () {
-      initColorPicker($(this));
+      if ($(this).val()) {
+        initColorPicker($(this));
+      }
     });
   });
 
@@ -420,7 +424,7 @@
             $("#btcpaywall_pay_per_post_id, #btcpaywall_pay_per_view_id").val() < 1
           ) {
             location.replace(
-              shortcode_ajax_object.redirectUrl + data.data.data.id
+              shortcode_ajax_object.redirectUrl + data.data.data.id + '#btcpaywall_pay_per_shortcode'
             );
           }
           else {

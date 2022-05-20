@@ -475,6 +475,10 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       type: 'string',
       default: '#FE642E',
     },
+    button_color_hover: {
+      type: 'string',
+      default: '#FFF',
+    },
     continue_button_text: {
       type: 'string',
       default: 'Continue',
@@ -487,6 +491,10 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       type: 'string',
       default: '#FE642E',
     },
+    continue_button_color_hover: {
+      type: 'string',
+      default: '#FFF',
+    },
     previous_button_text: {
       type: 'string',
       default: 'Previous',
@@ -498,6 +506,10 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
     previous_button_color: {
       type: 'string',
       default: '#1d5aa3',
+    },
+    previous_button_color_hover: {
+      type: 'string',
+      default: '#FFF',
     },
     input_background: {
       type: 'string',
@@ -627,12 +639,15 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
         button_color,
         button_text,
         button_text_color,
+        button_color_hover,
         continue_button_color,
         continue_button_text,
         continue_button_text_color,
+        continue_button_color_hover,
         previous_button_color,
         previous_button_text,
         previous_button_text_color,
+        previous_button_color_hover,
         selected_amount_background,
         description_color,
         redirect,
@@ -985,78 +1000,102 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             />
           </PanelBody>
           <PanelBody title="Footer">
-            <TextareaControl
-              label="Button"
-              help="Enter button text"
-              onChange={content => {
-                setAttributes ({button_text: content});
-              }}
-              value={button_text}
-            />
-            <p>Button color</p>
-            <ColorPicker
-              color={button_color}
-              onChangeComplete={value =>
-                setAttributes ({button_color: value.hex})}
-              disableAlpha
-            />
-            <p>Button text color</p>
-            <ColorPicker
-              color={button_text_color}
-              onChangeComplete={value =>
-                setAttributes ({button_text_color: value.hex})}
-              disableAlpha
-            />
-            <TextareaControl
-              label="Continue button"
-              help="Enter continue button text"
-              onChange={content => {
-                setAttributes ({
-                  continue_button_text: content,
-                });
-              }}
-              value={continue_button_text}
-            /> <p> Continue button color </p> <ColorPicker
-              color={continue_button_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  continue_button_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <p> Continue button text color </p> <ColorPicker
-              color={button_text_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  continue_button_text_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <TextareaControl
-              label="Previous button"
-              help="Enter button text"
-              onChange={content => {
-                setAttributes ({
-                  previous_button_text: content,
-                });
-              }}
-              value={previous_button_text}
-            /> <p> Previous button color </p> <ColorPicker
-              color={previous_button_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  previous_button_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <p> Previous button text color </p> <ColorPicker
-              color={previous_button_text_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  previous_button_text_color: value.hex,
-                })}
-              disableAlpha
-            />
+          <TextareaControl
+                label="Button"
+                help="Enter button text"
+                onChange={content => {
+                  setAttributes({ button_text: content });
+                }}
+                value={button_text}
+              />
+              <p>Button color</p>
+              <ColorPicker
+                color={button_color}
+                onChangeComplete={value =>
+                  setAttributes({ button_color: value.hex })}
+                disableAlpha
+              />
+              <p>Button text color</p>
+              <ColorPicker
+                color={button_text_color}
+                onChangeComplete={value =>
+                  setAttributes({ button_text_color: value.hex })}
+                disableAlpha
+              />
+              <p> Button color on hover</p> <ColorPicker
+                color={button_color_hover}
+                onChangeComplete={value =>
+                  setAttributes({
+                    button_color_hover: value.hex,
+                  })}
+                disableAlpha
+              />
+              <TextareaControl
+                label="Continue button"
+                help="Enter continue button text"
+                onChange={content => {
+                  setAttributes({
+                    continue_button_text: content,
+                  });
+                }}
+                value={continue_button_text}
+              /> <p> Continue button color </p> <ColorPicker
+                color={continue_button_color}
+                onChangeComplete={value =>
+                  setAttributes({
+                    continue_button_color: value.hex,
+                  })}
+                disableAlpha
+              />
+              <p> Continue button text color </p> <ColorPicker
+                color={button_text_color}
+                onChangeComplete={value =>
+                  setAttributes({
+                    continue_button_text_color: value.hex,
+                  })}
+                disableAlpha
+              />
+              <p> Continue button color on hover </p> <ColorPicker
+                color={continue_button_color_hover}
+                onChangeComplete={value =>
+                  setAttributes({
+                    continue_button_color_hover: value.hex,
+                  })}
+                disableAlpha
+              />
+              <TextareaControl
+                label="Previous button"
+                help="Enter button text"
+                onChange={content => {
+                  setAttributes({
+                    previous_button_text: content,
+                  });
+                }}
+                value={previous_button_text}
+              /> <p> Previous button color </p> <ColorPicker
+                color={previous_button_color}
+                onChangeComplete={value =>
+                  setAttributes({
+                    previous_button_color: value.hex,
+                  })}
+                disableAlpha
+              />
+              <p> Previous button text color </p> <ColorPicker
+                color={previous_button_text_color}
+                onChangeComplete={value =>
+                  setAttributes({
+                    previous_button_text_color: value.hex,
+                  })}
+                disableAlpha
+              />
+              <p> Previous button color on hover </p> <ColorPicker
+                color={previous_button_color_hover}
+                onChangeComplete={value =>
+                  setAttributes({
+                    previous_button_color_hover: value.hex,
+                  })}
+                disableAlpha
+              />
           </PanelBody>
 
           <PanelBody title="Fixed amount">
@@ -1284,7 +1323,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
         <ServerSideRender
           block="btcpaywall/gutenberg-tipping-banner-wide"
           attributes={
-            (dimension, background_color, background, background_id, logo_id, input_background, button_color, button_text, button_text_color, continue_button_color, continue_button_text, continue_button_text_color, previous_button_color, previous_button_text, previous_button_text_color, selected_amount_background, description_color, redirect, title, title_text_color, tipping_text, tipping_text_color, description, currency, value1_amount, value1_currency, value1_enabled, value1_icon, value2_amount, value2_currency, value2_enabled, value2_icon, value3_amount, value3_currency, value3_enabled, value3_icon, display_name, display_email, display_message, display_phone, display_address, mandatory_address, mandatory_email, mandatory_phone, mandatory_message, mandatory_name, free_input, show_icon, className)
+            (dimension, background_color, background, background_id, logo_id, input_background, button_color, button_text,button_color_hover,continue_button_color_hover, previous_button_color_hover, button_text_color, continue_button_color, continue_button_text, continue_button_text_color, previous_button_color, previous_button_text, previous_button_text_color, selected_amount_background, description_color, redirect, title, title_text_color, tipping_text, tipping_text_color, description, currency, value1_amount, value1_currency, value1_enabled, value1_icon, value2_amount, value2_currency, value2_enabled, value2_icon, value3_amount, value3_currency, value3_enabled, value3_icon, display_name, display_email, display_message, display_phone, display_address, mandatory_address, mandatory_email, mandatory_phone, mandatory_message, mandatory_name, free_input, show_icon, className)
           }
         />
         {inspectorControls}

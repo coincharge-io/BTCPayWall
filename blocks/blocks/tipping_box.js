@@ -1,5 +1,5 @@
-import {registerBlockType} from '@wordpress/blocks';
-import {useSelect} from '@wordpress/data';
+import { registerBlockType } from '@wordpress/blocks';
+import { useSelect } from '@wordpress/data';
 import ServerSideRender from '@wordpress/server-side-render';
 import {
   InspectorControls,
@@ -20,7 +20,7 @@ import {
   ResponsiveWrapper,
 } from '@wordpress/components';
 
-registerBlockType ('btcpaywall/gutenberg-tipping-box', {
+registerBlockType('btcpaywall/gutenberg-tipping-box', {
   title: 'BTCPW Tipping Box',
   icon: (
     <svg
@@ -477,6 +477,10 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       type: 'string',
       default: '#FE642E',
     },
+    button_color_hover: {
+      type: 'string',
+      default: '#FFF',
+    },
     input_background: {
       type: 'string',
     },
@@ -504,6 +508,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
         logo_id,
         input_background,
         button_color,
+        button_color_hover,
         button_text,
         button_text_color,
         description_color,
@@ -519,17 +524,17 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       },
       setAttributes,
     } = props;
-    const backgroundMedia = useSelect (
+    const backgroundMedia = useSelect(
       select => {
         return background_id
-          ? select ('core').getMedia (background_id)
+          ? select('core').getMedia(background_id)
           : undefined;
       },
       [background_id]
     );
-    const logoMedia = useSelect (
+    const logoMedia = useSelect(
       select => {
-        return logo_id ? select ('core').getMedia (logo_id) : undefined;
+        return logo_id ? select('core').getMedia(logo_id) : undefined;
       },
       [logo_id]
     );
@@ -541,11 +546,11 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               <SelectControl
                 value={dimension}
                 onChange={selectedItem => {
-                  setAttributes ({dimension: selectedItem});
+                  setAttributes({ dimension: selectedItem });
                 }}
                 options={[
-                  {value: '250x300', label: '250x300'},
-                  {value: '300x300', label: '300x300'},
+                  { value: '250x300', label: '250x300' },
+                  { value: '300x300', label: '300x300' },
                 ]}
               />
             </div>
@@ -555,14 +560,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               label="Currency"
               value={currency}
               onChange={selectedItem => {
-                setAttributes ({currency: selectedItem});
+                setAttributes({ currency: selectedItem });
               }}
               options={[
-                {value: 'SATS', label: 'SATS'},
-                {value: 'BTC', label: 'BTC'},
-                {value: 'EUR', label: 'EUR'},
-                {value: 'USD', label: 'USD'},
-                {value: 'GBP', label: 'GBP'},
+                { value: 'SATS', label: 'SATS' },
+                { value: 'BTC', label: 'BTC' },
+                { value: 'EUR', label: 'EUR' },
+                { value: 'USD', label: 'USD' },
+                { value: 'GBP', label: 'GBP' },
               ]}
             />
           </div>
@@ -571,7 +576,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             <URLInputButton
               label="Link to Thank You Page"
               url={redirect}
-              onChange={value => setAttributes ({redirect: value})}
+              onChange={value => setAttributes({ redirect: value })}
             />
           </div>
           <PanelBody title="Global" initialOpen={true}>
@@ -579,11 +584,11 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               <MediaUploadCheck>
                 <MediaUpload
                   onSelect={el => {
-                    setAttributes ({background_id: el.id});
+                    setAttributes({ background_id: el.id });
                   }}
                   value={background_id}
                   allowedTypes={['image']}
-                  render={({open}) => (
+                  render={({ open }) => (
                     <Button
                       className={
                         background_id == 0
@@ -612,10 +617,10 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                     title="Replace background image"
                     value={background_id}
                     onSelect={el => {
-                      setAttributes ({background_id: el.id});
+                      setAttributes({ background_id: el.id });
                     }}
                     allowedTypes={['image']}
-                    render={({open}) => (
+                    render={({ open }) => (
                       <Button
                         className="btcpaywall editor-post-featured-image__remove"
                         onClick={open}
@@ -630,7 +635,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 <MediaUploadCheck>
                   <Button
                     onClick={el => {
-                      setAttributes ({background_id: 0});
+                      setAttributes({ background_id: 0 });
                     }}
                     isLink
                     isDestructive
@@ -644,14 +649,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             <ColorPicker
               color={background_color}
               onChangeComplete={value =>
-                setAttributes ({background_color: value.hex})}
+                setAttributes({ background_color: value.hex })}
               disableAlpha
             />
             <p>Header and footer background color</p>
             <ColorPicker
               color={background}
               onChangeComplete={value =>
-                setAttributes ({background: value.hex})}
+                setAttributes({ background: value.hex })}
               disableAlpha
             />
           </PanelBody>
@@ -660,11 +665,11 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               <MediaUploadCheck>
                 <MediaUpload
                   onSelect={el => {
-                    setAttributes ({logo_id: el.id});
+                    setAttributes({ logo_id: el.id });
                   }}
                   value={logo_id}
                   allowedTypes={['image']}
-                  render={({open}) => (
+                  render={({ open }) => (
                     <Button
                       className={
                         logo_id == 0
@@ -693,10 +698,10 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                     title="Replace logo"
                     value={logo_id}
                     onSelect={el => {
-                      setAttributes ({logo_id: el.id});
+                      setAttributes({ logo_id: el.id });
                     }}
                     allowedTypes={['image']}
-                    render={({open}) => (
+                    render={({ open }) => (
                       <Button
                         className="btcpaywall editor-post-featured-image__remove"
                         onClick={open}
@@ -711,7 +716,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 <MediaUploadCheck>
                   <Button
                     onClick={el => {
-                      setAttributes ({logo_id: 0});
+                      setAttributes({ logo_id: 0 });
                     }}
                     className="btcpaywall editor-post-featured-image__remove"
                     isLink
@@ -725,7 +730,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               label="Title"
               help="Enter title"
               onChange={content => {
-                setAttributes ({title: content});
+                setAttributes({ title: content });
               }}
               value={title}
             />
@@ -733,14 +738,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             <ColorPicker
               color={title_text_color}
               onChangeComplete={value =>
-                setAttributes ({title_text_color: value.hex})}
+                setAttributes({ title_text_color: value.hex })}
               disableAlpha
             />
             <TextareaControl
               label="Description"
               help="Enter description"
               onChange={content => {
-                setAttributes ({description: content});
+                setAttributes({ description: content });
               }}
               value={description}
             />
@@ -749,7 +754,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             <ColorPicker
               color={description_color}
               onChangeComplete={value =>
-                setAttributes ({description_color: value.hex})}
+                setAttributes({ description_color: value.hex })}
               disableAlpha
             />
           </PanelBody>
@@ -758,7 +763,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               label="Main text"
               help="Enter main text"
               onChange={content => {
-                setAttributes ({tipping_text: content});
+                setAttributes({ tipping_text: content });
               }}
               value={tipping_text}
             />
@@ -766,7 +771,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             <ColorPicker
               color={tipping_text_color}
               onChangeComplete={value =>
-                setAttributes ({tipping_text_color: value.hex})}
+                setAttributes({ tipping_text_color: value.hex })}
               disableAlpha
             />
 
@@ -774,7 +779,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             <ColorPicker
               color={input_background}
               onChangeComplete={value =>
-                setAttributes ({input_background: value.hex})}
+                setAttributes({ input_background: value.hex })}
               disableAlpha
             />
           </PanelBody>
@@ -784,7 +789,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               label="Button"
               help="Enter button text"
               onChange={content => {
-                setAttributes ({button_text: content});
+                setAttributes({ button_text: content });
               }}
               value={button_text}
             />
@@ -792,14 +797,21 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             <ColorPicker
               color={button_color}
               onChangeComplete={value =>
-                setAttributes ({button_color: value.hex})}
+                setAttributes({ button_color: value.hex })}
               disableAlpha
             />
             <p>Button text color</p>
             <ColorPicker
               color={button_text_color}
               onChangeComplete={value =>
-                setAttributes ({button_text_color: value.hex})}
+                setAttributes({ button_text_color: value.hex })}
+              disableAlpha
+            />
+            <p>Button color on hover</p>
+            <ColorPicker
+              color={button_color_hover}
+              onChangeComplete={value =>
+                setAttributes({ button_color_hover: value.hex })}
               disableAlpha
             />
           </PanelBody>
@@ -811,7 +823,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
         <ServerSideRender
           block="btcpaywall/gutenberg-tipping-box"
           attributes={
-            (dimension, background_color, background, background_id, logo_id, input_background, button_color, button_text, button_text_color, description_color, redirect, title, title_text_color, tipping_text, tipping_text_color, description, background_image, currency, className)
+            (dimension, background_color, background, button_color_hover, background_id, logo_id, input_background, button_color, button_text, button_text_color, description_color, redirect, title, title_text_color, tipping_text, tipping_text_color, description, background_image, currency, className)
           }
         />
         {inspectorControls}

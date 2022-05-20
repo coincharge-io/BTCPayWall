@@ -1,5 +1,5 @@
-import {registerBlockType} from '@wordpress/blocks';
-import {useSelect} from '@wordpress/data';
+import { registerBlockType } from '@wordpress/blocks';
+import { useSelect } from '@wordpress/data';
 import {
   InspectorControls,
   MediaUpload,
@@ -22,7 +22,7 @@ import {
 } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
 
-registerBlockType ('btcpaywall/gutenberg-tipping-banner-high', {
+registerBlockType('btcpaywall/gutenberg-tipping-banner-high', {
   title: 'BTCPW Tipping Banner High',
   icon: (
     <svg
@@ -475,6 +475,10 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       type: 'string',
       default: '#FE642E',
     },
+    button_color_hover: {
+      type: 'string',
+      default: '#FFF',
+    },
     continue_button_text: {
       type: 'string',
       default: 'Continue',
@@ -487,6 +491,10 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       type: 'string',
       default: '#FE642E',
     },
+    continue_button_color_hover: {
+      type: 'string',
+      default: '#FFF',
+    },
     previous_button_text: {
       type: 'string',
       default: 'Previous',
@@ -498,6 +506,10 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
     previous_button_color: {
       type: 'string',
       default: '#1d5aa3',
+    },
+    previous_button_color_hover: {
+      type: 'string',
+      default: '#FFF',
     },
     input_background: {
       type: 'string',
@@ -627,12 +639,15 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
         button_color,
         button_text,
         button_text_color,
+        button_color_hover,
         continue_button_color,
         continue_button_text,
         continue_button_text_color,
+        continue_button_color_hover,
         previous_button_color,
         previous_button_text,
         previous_button_text_color,
+        previous_button_color_hover,
         selected_amount_background,
         description_color,
         redirect,
@@ -670,17 +685,17 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
       },
       setAttributes,
     } = props;
-    const backgroundMedia = useSelect (
+    const backgroundMedia = useSelect(
       select => {
         return background_id
-          ? select ('core').getMedia (background_id)
+          ? select('core').getMedia(background_id)
           : undefined;
       },
       [background_id]
     );
-    const logoMedia = useSelect (
+    const logoMedia = useSelect(
       select => {
-        return logo_id ? select ('core').getMedia (logo_id) : undefined;
+        return logo_id ? select('core').getMedia(logo_id) : undefined;
       },
       [logo_id]
     );
@@ -692,9 +707,9 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               <SelectControl
                 value={dimension}
                 onChange={selectedItem => {
-                  setAttributes ({dimension: selectedItem});
+                  setAttributes({ dimension: selectedItem });
                 }}
-                options={[{value: '200x710', label: '200x710'}]}
+                options={[{ value: '200x710', label: '200x710' }]}
               />
             </div>
           </PanelBody>
@@ -704,14 +719,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               label="Currency"
               value={currency}
               onChange={selectedItem => {
-                setAttributes ({currency: selectedItem});
+                setAttributes({ currency: selectedItem });
               }}
               options={[
-                {value: 'SATS', label: 'SATS'},
-                {value: 'BTC', label: 'BTC'},
-                {value: 'EUR', label: 'EUR'},
-                {value: 'USD', label: 'USD'},
-                {value: 'GBP', label: 'GBP'},
+                { value: 'SATS', label: 'SATS' },
+                { value: 'BTC', label: 'BTC' },
+                { value: 'EUR', label: 'EUR' },
+                { value: 'USD', label: 'USD' },
+                { value: 'GBP', label: 'GBP' },
               ]}
             />
           </div>
@@ -720,7 +735,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               label="Display free input"
               help="Do you want to display free input field?"
               checked={free_input}
-              onChange={newvalue => setAttributes ({free_input: newvalue})}
+              onChange={newvalue => setAttributes({ free_input: newvalue })}
             />
           </div>
           <div className="btcpaywall_gutenberg_wrap">
@@ -728,7 +743,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             <URLInputButton
               label="Link to Thank You Page"
               url={redirect}
-              onChange={value => setAttributes ({redirect: value})}
+              onChange={value => setAttributes({ redirect: value })}
             />
           </div>
           <PanelBody title="Global" initialOpen={true}>
@@ -736,11 +751,11 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               <MediaUploadCheck>
                 <MediaUpload
                   onSelect={el => {
-                    setAttributes ({background_id: el.id});
+                    setAttributes({ background_id: el.id });
                   }}
                   value={background_id}
                   allowedTypes={['image']}
-                  render={({open}) => (
+                  render={({ open }) => (
                     <Button
                       className={
                         background_id == 0
@@ -769,10 +784,10 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                     title="Replace background image"
                     value={background_id}
                     onSelect={el => {
-                      setAttributes ({background_id: el.id});
+                      setAttributes({ background_id: el.id });
                     }}
                     allowedTypes={['image']}
-                    render={({open}) => (
+                    render={({ open }) => (
                       <Button
                         className="btcpaywall editor-post-featured-image__remove"
                         onClick={open}
@@ -787,7 +802,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 <MediaUploadCheck>
                   <Button
                     onClick={el => {
-                      setAttributes ({background_id: 0});
+                      setAttributes({ background_id: 0 });
                     }}
                     className="btcpaywall editor-post-featured-image__remove"
                     isLink
@@ -801,14 +816,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             <ColorPicker
               color={background_color}
               onChangeComplete={value =>
-                setAttributes ({background_color: value.hex})}
+                setAttributes({ background_color: value.hex })}
               disableAlpha
             />
             <p>Header and footer background color</p>
             <ColorPicker
               color={background}
               onChangeComplete={value =>
-                setAttributes ({background: value.hex})}
+                setAttributes({ background: value.hex })}
               disableAlpha
             />
           </PanelBody>
@@ -817,11 +832,11 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               <MediaUploadCheck>
                 <MediaUpload
                   onSelect={el => {
-                    setAttributes ({logo_id: el.id});
+                    setAttributes({ logo_id: el.id });
                   }}
                   value={logo_id}
                   allowedTypes={['image']}
-                  render={({open}) => (
+                  render={({ open }) => (
                     <Button
                       className={
                         logo_id == 0
@@ -850,10 +865,10 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                     title="Replace logo"
                     value={logo_id}
                     onSelect={el => {
-                      setAttributes ({logo_id: el.id});
+                      setAttributes({ logo_id: el.id });
                     }}
                     allowedTypes={['image']}
-                    render={({open}) => (
+                    render={({ open }) => (
                       <Button
                         className="btcpaywall editor-post-featured-image__remove"
                         onClick={open}
@@ -868,7 +883,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 <MediaUploadCheck>
                   <Button
                     onClick={el => {
-                      setAttributes ({logo_id: 0});
+                      setAttributes({ logo_id: 0 });
                     }}
                     className="btcpaywall editor-post-featured-image__remove"
                     isLink
@@ -882,7 +897,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               label="Title"
               help="Enter title"
               onChange={content => {
-                setAttributes ({title: content});
+                setAttributes({ title: content });
               }}
               value={title}
             />
@@ -890,7 +905,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             <ColorPicker
               color={title_text_color}
               onChangeComplete={value =>
-                setAttributes ({title_text_color: value.hex})}
+                setAttributes({ title_text_color: value.hex })}
               disableAlpha
             />
 
@@ -898,7 +913,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               label="Description"
               help="Enter description"
               onChange={content => {
-                setAttributes ({description: content});
+                setAttributes({ description: content });
               }}
               value={description}
             />
@@ -906,7 +921,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             <ColorPicker
               color={description_color}
               onChangeComplete={value =>
-                setAttributes ({description_color: value.hex})}
+                setAttributes({ description_color: value.hex })}
               disableAlpha
             />
           </PanelBody>
@@ -915,7 +930,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               label="Main text"
               help="Enter main text"
               onChange={content => {
-                setAttributes ({tipping_text: content});
+                setAttributes({ tipping_text: content });
               }}
               value={tipping_text}
             />
@@ -923,7 +938,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             <ColorPicker
               color={tipping_text_color}
               onChangeComplete={value =>
-                setAttributes ({tipping_text_color: value})}
+                setAttributes({ tipping_text_color: value })}
               disableAlpha
             />
 
@@ -961,7 +976,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             <ColorPicker
               color={input_background}
               onChangeComplete={value =>
-                setAttributes ({
+                setAttributes({
                   input_background: value.hex,
                 })}
               disableAlpha
@@ -978,85 +993,109 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             </p> <ColorPicker
               color={selected_amount_background}
               onChangeComplete={value =>
-                setAttributes ({
+                setAttributes({
                   selected_amount_background: value.hex,
                 })}
               disableAlpha
             />
           </PanelBody>
           <PanelBody title="Footer">
-            <TextareaControl
-              label="Button"
-              help="Enter button text"
-              onChange={content => {
-                setAttributes ({button_text: content});
-              }}
-              value={button_text}
-            />
-            <p>Button color</p>
-            <ColorPicker
-              color={button_color}
-              onChangeComplete={value =>
-                setAttributes ({button_color: value.hex})}
-              disableAlpha
-            />
-            <p>Button text color</p>
-            <ColorPicker
-              color={button_text_color}
-              onChangeComplete={value =>
-                setAttributes ({button_text_color: value.hex})}
-              disableAlpha
-            />
-            <TextareaControl
-              label="Continue button"
-              help="Enter continue button text"
-              onChange={content => {
-                setAttributes ({
-                  continue_button_text: content,
-                });
-              }}
-              value={continue_button_text}
-            /> <p> Continue button color </p> <ColorPicker
-              color={continue_button_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  continue_button_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <p> Continue button text color </p> <ColorPicker
-              color={button_text_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  continue_button_text_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <TextareaControl
-              label="Previous button"
-              help="Enter button text"
-              onChange={content => {
-                setAttributes ({
-                  previous_button_text: content,
-                });
-              }}
-              value={previous_button_text}
-            /> <p> Previous button color </p> <ColorPicker
-              color={previous_button_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  previous_button_color: value.hex,
-                })}
-              disableAlpha
-            />
-            <p> Previous button text color </p> <ColorPicker
-              color={previous_button_text_color}
-              onChangeComplete={value =>
-                setAttributes ({
-                  previous_button_text_color: value.hex,
-                })}
-              disableAlpha
-            />
+          <TextareaControl
+                label="Button"
+                help="Enter button text"
+                onChange={content => {
+                  setAttributes({ button_text: content });
+                }}
+                value={button_text}
+              />
+              <p>Button color</p>
+              <ColorPicker
+                color={button_color}
+                onChangeComplete={value =>
+                  setAttributes({ button_color: value.hex })}
+                disableAlpha
+              />
+              <p>Button text color</p>
+              <ColorPicker
+                color={button_text_color}
+                onChangeComplete={value =>
+                  setAttributes({ button_text_color: value.hex })}
+                disableAlpha
+              />
+              <p> Button color on hover</p> <ColorPicker
+                color={button_color_hover}
+                onChangeComplete={value =>
+                  setAttributes({
+                    button_color_hover: value.hex,
+                  })}
+                disableAlpha
+              />
+              <TextareaControl
+                label="Continue button"
+                help="Enter continue button text"
+                onChange={content => {
+                  setAttributes({
+                    continue_button_text: content,
+                  });
+                }}
+                value={continue_button_text}
+              /> <p> Continue button color </p> <ColorPicker
+                color={continue_button_color}
+                onChangeComplete={value =>
+                  setAttributes({
+                    continue_button_color: value.hex,
+                  })}
+                disableAlpha
+              />
+              <p> Continue button text color </p> <ColorPicker
+                color={button_text_color}
+                onChangeComplete={value =>
+                  setAttributes({
+                    continue_button_text_color: value.hex,
+                  })}
+                disableAlpha
+              />
+              <p> Continue button color on hover </p> <ColorPicker
+                color={continue_button_color_hover}
+                onChangeComplete={value =>
+                  setAttributes({
+                    continue_button_color_hover: value.hex,
+                  })}
+                disableAlpha
+              />
+              <TextareaControl
+                label="Previous button"
+                help="Enter button text"
+                onChange={content => {
+                  setAttributes({
+                    previous_button_text: content,
+                  });
+                }}
+                value={previous_button_text}
+              /> <p> Previous button color </p> <ColorPicker
+                color={previous_button_color}
+                onChangeComplete={value =>
+                  setAttributes({
+                    previous_button_color: value.hex,
+                  })}
+                disableAlpha
+              />
+              <p> Previous button text color </p> <ColorPicker
+                color={previous_button_text_color}
+                onChangeComplete={value =>
+                  setAttributes({
+                    previous_button_text_color: value.hex,
+                  })}
+                disableAlpha
+              />
+              <p> Previous button color on hover </p> <ColorPicker
+                color={previous_button_color_hover}
+                onChangeComplete={value =>
+                  setAttributes({
+                    previous_button_color_hover: value.hex,
+                  })}
+                disableAlpha
+              />
           </PanelBody>
 
           <PanelBody title="Fixed amount">
@@ -1064,25 +1103,25 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               label="Display icons"
               help="Do you want to display icons?"
               checked={show_icon}
-              onChange={newvalue => setAttributes ({show_icon: newvalue})}
+              onChange={newvalue => setAttributes({ show_icon: newvalue })}
             />
             <CheckboxControl
               label="Display value 1"
               help="Do you want to display value 1?"
               checked={value1_enabled}
-              onChange={newval => setAttributes ({value1_enabled: newval})}
+              onChange={newval => setAttributes({ value1_enabled: newval })}
             />
             <div className="btcpw_gutenberg_sel_num_control">
               <SelectControl
                 value={value1_currency}
                 onChange={selectedItem => {
-                  setAttributes ({value1_currency: selectedItem});
+                  setAttributes({ value1_currency: selectedItem });
                 }}
                 options={[
-                  {value: 'SATS', label: 'SATS'},
-                  {value: 'BTC', label: 'BTC'},
-                  {value: 'EUR', label: 'EUR'},
-                  {value: 'USD', label: 'USD'},
+                  { value: 'SATS', label: 'SATS' },
+                  { value: 'BTC', label: 'BTC' },
+                  { value: 'EUR', label: 'EUR' },
+                  { value: 'USD', label: 'USD' },
                   {
                     value: 'GBP',
                     label: 'GBP',
@@ -1094,7 +1133,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               <NumberControl
                 isShiftStepEnabled={true}
                 onChange={amount => {
-                  setAttributes ({value1_amount: amount});
+                  setAttributes({ value1_amount: amount });
                 }}
                 shiftStep={10}
                 value={value1_amount}
@@ -1103,7 +1142,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             <TextControl
               label="FA Icon class"
               value={value1_icon}
-              onChange={value => setAttributes ({value1_icon: value})}
+              onChange={value => setAttributes({ value1_icon: value })}
             />
 
             <CheckboxControl
@@ -1111,20 +1150,20 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               help="Do you want to display value 2?"
               checked={value2_enabled}
               onChange={value => {
-                setAttributes ({value2_enabled: value});
+                setAttributes({ value2_enabled: value });
               }}
             />
             <div className="btcpw_gutenberg_sel_num_control">
               <SelectControl
                 value={value2_currency}
                 onChange={selectedItem => {
-                  setAttributes ({value2_currency: selectedItem});
+                  setAttributes({ value2_currency: selectedItem });
                 }}
                 options={[
-                  {value: 'SATS', label: 'SATS'},
-                  {value: 'BTC', label: 'BTC'},
-                  {value: 'EUR', label: 'EUR'},
-                  {value: 'USD', label: 'USD'},
+                  { value: 'SATS', label: 'SATS' },
+                  { value: 'BTC', label: 'BTC' },
+                  { value: 'EUR', label: 'EUR' },
+                  { value: 'USD', label: 'USD' },
                   {
                     value: 'GBP',
                     label: 'GBP',
@@ -1136,7 +1175,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               <NumberControl
                 isShiftStepEnabled={true}
                 onChange={amount => {
-                  setAttributes ({value2_amount: amount});
+                  setAttributes({ value2_amount: amount });
                 }}
                 shiftStep={10}
                 value={value2_amount}
@@ -1145,7 +1184,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             <TextControl
               label="FA Icon class"
               value={value2_icon}
-              onChange={value => setAttributes ({value2_icon: value})}
+              onChange={value => setAttributes({ value2_icon: value })}
             />
 
             <CheckboxControl
@@ -1153,20 +1192,20 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               help="Do you want to display value 3?"
               checked={value3_enabled}
               onChange={value => {
-                setAttributes ({value3_enabled: value});
+                setAttributes({ value3_enabled: value });
               }}
             />
             <div className="btcpw_gutenberg_sel_num_control">
               <SelectControl
                 value={value3_currency}
                 onChange={selectedItem => {
-                  setAttributes ({value3_currency: selectedItem});
+                  setAttributes({ value3_currency: selectedItem });
                 }}
                 options={[
-                  {value: 'SATS', label: 'SATS'},
-                  {value: 'BTC', label: 'BTC'},
-                  {value: 'EUR', label: 'EUR'},
-                  {value: 'USD', label: 'USD'},
+                  { value: 'SATS', label: 'SATS' },
+                  { value: 'BTC', label: 'BTC' },
+                  { value: 'EUR', label: 'EUR' },
+                  { value: 'USD', label: 'USD' },
                   {
                     value: 'GBP',
                     label: 'GBP',
@@ -1178,7 +1217,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
               <NumberControl
                 isShiftStepEnabled={true}
                 onChange={amount => {
-                  setAttributes ({value3_amount: amount});
+                  setAttributes({ value3_amount: amount });
                 }}
                 shiftStep={10}
                 value={value3_amount}
@@ -1187,7 +1226,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
             <TextControl
               label="FA Icon class"
               value={value3_icon}
-              onChange={value => setAttributes ({value3_icon: value})}
+              onChange={value => setAttributes({ value3_icon: value })}
             />
           </PanelBody>
 
@@ -1198,14 +1237,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 help="Do you want to collect full name?"
                 checked={display_name}
                 onChange={value => {
-                  setAttributes ({display_name: value});
+                  setAttributes({ display_name: value });
                 }}
               />
               <CheckboxControl
                 help="Do you want make this field mandatory?"
                 checked={mandatory_name}
                 onChange={value => {
-                  setAttributes ({mandatory_name: value});
+                  setAttributes({ mandatory_name: value });
                 }}
               />
             </PanelRow>
@@ -1215,14 +1254,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 help="Do you want to collect email?"
                 checked={display_email}
                 onChange={value => {
-                  setAttributes ({display_email: value});
+                  setAttributes({ display_email: value });
                 }}
               />
               <CheckboxControl
                 help="Do you want make this field mandatory?"
                 checked={mandatory_email}
                 onChange={value => {
-                  setAttributes ({mandatory_email: value});
+                  setAttributes({ mandatory_email: value });
                 }}
               />
             </PanelRow>
@@ -1232,14 +1271,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 help="Do you want to collect address?"
                 checked={display_address}
                 onChange={value => {
-                  setAttributes ({display_address: value});
+                  setAttributes({ display_address: value });
                 }}
               />
               <CheckboxControl
                 help="Do you want make this field mandatory?"
                 checked={mandatory_address}
                 onChange={value => {
-                  setAttributes ({mandatory_address: value});
+                  setAttributes({ mandatory_address: value });
                 }}
               />
             </PanelRow>
@@ -1248,13 +1287,13 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 label="Phone"
                 checked={display_phone}
                 help="Do you want to collect phone?"
-                onChange={value => setAttributes ({display_phone: value})}
+                onChange={value => setAttributes({ display_phone: value })}
               />
               <CheckboxControl
                 help="Do you want make this field mandatory?"
                 checked={mandatory_phone}
                 onChange={value => {
-                  setAttributes ({mandatory_phone: value});
+                  setAttributes({ mandatory_phone: value });
                 }}
               />
             </PanelRow>
@@ -1264,14 +1303,14 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
                 help="Do you want to collect message?"
                 checked={display_message}
                 onChange={value => {
-                  setAttributes ({display_message: value});
+                  setAttributes({ display_message: value });
                 }}
               />
               <CheckboxControl
                 help="Do you want make this field mandatory?"
                 checked={mandatory_message}
                 onChange={value => {
-                  setAttributes ({mandatory_message: value});
+                  setAttributes({ mandatory_message: value });
                 }}
               />
             </PanelRow>
@@ -1284,7 +1323,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
         <ServerSideRender
           block="btcpaywall/gutenberg-tipping-banner-high"
           attributes={
-            (dimension, background, background_id, background_color, logo_id, continue_button_color, continue_button_text, continue_button_text_color, previous_button_color, previous_button_text, previous_button_text_color, selected_amount_background, input_background, button_color, button_text, button_text_color, description_color, redirect, title, title_text_color, tipping_text, tipping_text_color, description, currency, value1_amount, value1_currency, value1_enabled, value1_icon, value2_amount, value2_currency, value2_enabled, value2_icon, value3_amount, value3_currency, value3_enabled, value3_icon, display_name, display_email, display_message, display_phone, display_address, mandatory_address, mandatory_email, mandatory_phone, mandatory_message, mandatory_name, free_input, show_icon, className)
+            (dimension, background, background_id, background_color, logo_id, continue_button_color, continue_button_text, continue_button_text_color, previous_button_color, button_color_hover, previous_button_color_hover, continue_button_color_hover, previous_button_text, previous_button_text_color, selected_amount_background, input_background, button_color, button_text, button_text_color, description_color, redirect, title, title_text_color, tipping_text, tipping_text_color, description, currency, value1_amount, value1_currency, value1_enabled, value1_icon, value2_amount, value2_currency, value2_enabled, value2_icon, value3_amount, value3_currency, value3_enabled, value3_icon, display_name, display_email, display_message, display_phone, display_address, mandatory_address, mandatory_email, mandatory_phone, mandatory_message, mandatory_name, free_input, show_icon, className)
           }
         />
         {inspectorControls}

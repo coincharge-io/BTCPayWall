@@ -18,8 +18,9 @@ $disabled_field = ($result->duration_type === 'unlimited') || ($result->duration
 $disable = $disabled_field ? 'disabled' : '';
 $preview_image = wp_get_attachment_image_src($result->preview);
 $back_url = (isset($_GET['action']) && sanitize_text_field($_GET['action']) == 'edit') ? 'admin.php?page=btcpw_pay_per_shortcode_list' : 'admin.php?page=btcpw_pay_per_shortcode_generator';
+$preview_duration = ($result->duration_type == 'unlimited' || $result->duration_type == 'onetime' || $result->duration == 0) ? '' : $result->duration;
 $search = array('{price}', '{duration}', '{dtype}', '{currency}');
-$replace = array($result->price, $result->duration, $result->duration_type, $result->currency);
+$replace = array(btcpaywall_round_amount($result->currency, $result->price), $preview_duration, $result->duration_type, $result->currency);
 $info_text = str_replace($search, $replace, $result->info_text);
 ?>
 <style>

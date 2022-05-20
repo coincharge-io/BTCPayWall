@@ -482,6 +482,10 @@ function btcpaywall_load_gutenberg()
                     'type' => 'string',
                     'default' => '#FE642E'
                 ),
+                'button_color_hover'=>array(
+                    'type'=>'string',
+                    'default'=>'#FFF'
+                ),
                 'logo_id' => array(
                     'type' => 'number',
                     'default' => BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png',
@@ -552,18 +556,6 @@ function btcpaywall_load_gutenberg()
                     'type' => 'string',
                     'default' => '#000000'
                 ),
-                'button_text' => array(
-                    'type' => 'string',
-                    'default' => 'Tipping now'
-                ),
-                'button_text_color' => array(
-                    'type' => 'string',
-                    'default' => '#FFFFFF'
-                ),
-                'button_color' => array(
-                    'type' => 'string',
-                    'default' => '#FE642E'
-                ),
                 'logo_id' => array(
                     'type' => 'number',
                     'default' => BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png',
@@ -676,6 +668,22 @@ function btcpaywall_load_gutenberg()
                     'type' => 'boolean',
                     'default' => true
                 ),
+                'button_text' => array(
+                    'type' => 'string',
+                    'default' => 'Pay'
+                ),
+                'button_text_color' => array(
+                    'type' => 'string',
+                    'default' => '#FFFFFF'
+                ),
+                'button_color' => array(
+                    'type' => 'string',
+                    'default' => '#FE642E'
+                ),
+                'button_color_hover' => array(
+                    'type' => 'string',
+                    'default' => '#FFF'
+                ),
                 'continue_button_text' => array(
                     'type' => 'string',
                     'default' => 'Continue'
@@ -688,6 +696,10 @@ function btcpaywall_load_gutenberg()
                     'type' => 'string',
                     'default' => '#FE642E'
                 ),
+                'continue_button_color_hover' => array(
+                    'type' => 'string',
+                    'default' => '#FFF'
+                ),
                 'previous_button_text' => array(
                     'type' => 'string',
                     'default' => 'Previous'
@@ -699,6 +711,10 @@ function btcpaywall_load_gutenberg()
                 'previous_button_color' => array(
                     'type' => 'string',
                     'default' => '#1d5aa3'
+                ),
+                'previous_button_color_hover' => array(
+                    'type' => 'string',
+                    'default' => '#FFF'
                 ),
                 'selected_amount_background' => array(
                     'type' => 'string',
@@ -758,18 +774,6 @@ function btcpaywall_load_gutenberg()
                     'type' => 'string',
                     'default' => '#000000'
                 ),
-                'button_text' => array(
-                    'type' => 'string',
-                    'default' => 'Tipping now'
-                ),
-                'button_text_color' => array(
-                    'type' => 'string',
-                    'default' => '#FFFFFF'
-                ),
-                'button_color' => array(
-                    'type' => 'string',
-                    'default' => '#FE642E'
-                ),
                 'logo_id' => array(
                     'type' => 'number',
                     'default' => BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png',
@@ -882,6 +886,22 @@ function btcpaywall_load_gutenberg()
                     'type' => 'boolean',
                     'default' => true
                 ),
+                'button_text' => array(
+                    'type' => 'string',
+                    'default' => 'Pay'
+                ),
+                'button_text_color' => array(
+                    'type' => 'string',
+                    'default' => '#FFFFFF'
+                ),
+                'button_color' => array(
+                    'type' => 'string',
+                    'default' => '#FE642E'
+                ),
+                'button_color_hover' => array(
+                    'type' => 'string',
+                    'default' => '#FFF'
+                ),
                 'continue_button_text' => array(
                     'type' => 'string',
                     'default' => 'Continue'
@@ -894,6 +914,10 @@ function btcpaywall_load_gutenberg()
                     'type' => 'string',
                     'default' => '#FE642E'
                 ),
+                'continue_button_color_hover' => array(
+                    'type' => 'string',
+                    'default' => '#FFF'
+                ),
                 'previous_button_text' => array(
                     'type' => 'string',
                     'default' => 'Previous'
@@ -905,6 +929,10 @@ function btcpaywall_load_gutenberg()
                 'previous_button_color' => array(
                     'type' => 'string',
                     'default' => '#1d5aa3'
+                ),
+                'previous_button_color_hover' => array(
+                    'type' => 'string',
+                    'default' => '#FFF'
                 ),
                 'selected_amount_background' => array(
                     'type' => 'string',
@@ -963,18 +991,6 @@ function btcpaywall_load_gutenberg()
                 'description_color' => array(
                     'type' => 'string',
                     'default' => '#000000'
-                ),
-                'button_text' => array(
-                    'type' => 'string',
-                    'default' => 'Tipping now'
-                ),
-                'button_text_color' => array(
-                    'type' => 'string',
-                    'default' => '#FFFFFF'
-                ),
-                'button_color' => array(
-                    'type' => 'string',
-                    'default' => '#FE642E'
                 ),
                 'logo_id' => array(
                     'type' => 'number',
@@ -1104,6 +1120,22 @@ function btcpaywall_load_gutenberg()
                     'type' => 'string',
                     'default' => '#D3D3D3'
                 ),
+                'button_text' => array(
+                    'type' => 'string',
+                    'default' => 'Pay'
+                ),
+                'button_text_color' => array(
+                    'type' => 'string',
+                    'default' => '#FFFFFF'
+                ),
+                'button_color' => array(
+                    'type' => 'string',
+                    'default' => '#FE642E'
+                ),
+                'button_color_hover' => array(
+                    'type' => 'string',
+                    'default' => '#FFF'
+                ),
                 'continue_button_text' => array(
                     'type' => 'string',
                     'default' => 'Continue'
@@ -1116,6 +1148,10 @@ function btcpaywall_load_gutenberg()
                     'type' => 'string',
                     'default' => '#FE642E'
                 ),
+                'continue_button_color_hover' => array(
+                    'type' => 'string',
+                    'default' => '#FFF'
+                ),
                 'previous_button_text' => array(
                     'type' => 'string',
                     'default' => 'Previous'
@@ -1127,6 +1163,10 @@ function btcpaywall_load_gutenberg()
                 'previous_button_color' => array(
                     'type' => 'string',
                     'default' => '#1d5aa3'
+                ),
+                'previous_button_color_hover' => array(
+                    'type' => 'string',
+                    'default' => '#FFF'
                 ),
                 'selected_amount_background' => array(
                     'type' => 'string',

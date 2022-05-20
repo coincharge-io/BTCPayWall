@@ -87,6 +87,12 @@ Further information can be found here: https://btcpaywall.com
 https://btcpaywall.com/faq-support-center/
 
  == Changelog ==
+
+= 1.0.9 =
+
+- Add: Template generator for Pay-per modules
+- Add: Change buttons color on hover
+
 = 1.0.8.1 =
 
 - Fix: Placeholder values for paywall 

@@ -855,3 +855,7 @@ Gateway
   border: 1px solid black;
   padding: 20px 0px 20px 5px;
 }
+
+#btcpaywall_pay_per_shortcode {
+  border: 5px solid #fc852e;
+}

@@ -246,9 +246,14 @@ class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
                 'default' => '#FE642E',
             ]
         );
-
-
-
+        $this->add_control(
+            'button_color_hover',
+            [
+                'label' => 'Button color on hover',
+                'type'  => \Elementor\Controls_Manager::COLOR,
+                'default' => '#FFF',
+            ]
+        );
         $this->end_controls_section();
     }
 
@@ -269,6 +274,7 @@ class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
         button_text = '{$settings['button_text']}'
         button_text_color = '{$settings['button_text_color']}'
         button_color = '{$settings['button_color']}'
+        button_color_hover = '{$settings['button_color_hover']}'
         logo_id = '{$settings['logo_id']['url']}'
         background_id = '{$settings['background_id']['url']}'
         background = '{$settings['background']}'
