@@ -57,6 +57,11 @@ class Tipping_Banner_High extends WP_Widget
                             ?>;
             }
 
+            #btcpw_widget_btcpw_skyscraper_tipping__button_high:hover {
+                background: <?php echo esc_html($instance['button_color_hover']);
+                            ?>;
+            }
+
             #btcpw_widget_btcpw_skyscraper_button_high .btcpw_widget.skyscraper-next-form.high {
                 color: <?php echo esc_html($instance['continue_button_text_color']);
                         ?>;
@@ -64,10 +69,20 @@ class Tipping_Banner_High extends WP_Widget
                             ?>;
             }
 
+            #btcpw_widget_btcpw_skyscraper_button_high .btcpw_widget.skyscraper-next-form.high:hover {
+                background: <?php echo esc_html($instance['continue_button_color_hover']);
+                            ?>;
+            }
+
             #btcpw_widget_btcpw_skyscraper_button_high .btcpw_widget.skyscraper-previous-form.high {
                 color: <?php echo esc_html($instance['previous_button_text_color']);
                         ?>;
                 background: <?php echo esc_html($instance['previous_button_color']);
+                            ?>;
+            }
+
+            #btcpw_widget_btcpw_skyscraper_button_high .btcpw_widget.skyscraper-previous-form.high:hover {
+                background: <?php echo esc_html($instance['previous_button_color_hover']);
                             ?>;
             }
 
@@ -295,6 +310,7 @@ class Tipping_Banner_High extends WP_Widget
 
         $button_color = !empty($instance['button_color']) ? $instance['button_color'] : esc_html__('#FE642E', 'btcpaywall');
 
+        $button_color_hover = !empty($instance['button_color_hover']) ? $instance['button_color_hover'] : '#FFF';
 
         $logo_id = !empty($instance['logo_id']) ? $instance['logo_id'] : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png';
 
@@ -369,10 +385,14 @@ class Tipping_Banner_High extends WP_Widget
         $continue_button_text_color = !empty($instance['continue_button_text_color']) ? $instance['continue_button_text_color'] : '#FFFFFF';
 
         $continue_button_color = !empty($instance['continue_button_color']) ? $instance['continue_button_color'] : '#FE642E';
+        $continue_button_color_hover = !empty($instance['continue_button_color_hover']) ? $instance['continue_button_color_hover'] : '#FFF';
+
         $previous_button_text = !empty($instance['previous_button_text']) ? $instance['previous_button_text'] : esc_html__('Previous', 'btcpaywall');
         $previous_button_text_color = !empty($instance['previous_button_text_color']) ? $instance['previous_button_text_color'] : '#FFFFFF';
 
         $previous_button_color = !empty($instance['previous_button_color']) ? $instance['previous_button_color'] : '#1d5aa3';
+        $previous_button_color_hover = !empty($instance['previous_button_color_hover']) ? $instance['previous_button_color_hover'] : '#FFF';
+
     ?>
         <style>
             .row {
@@ -600,14 +620,20 @@ class Tipping_Banner_High extends WP_Widget
 
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-20">
                     <label for="<?php echo esc_attr($this->get_field_id('button_color')); ?>"><?php echo esc_html__('Button color', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-80">
                     <input id="<?php echo esc_attr($this->get_field_id('button_color')); ?>" class="widget-tipping-basic-button_color_high" name="<?php echo esc_attr($this->get_field_name('button_color')); ?>" type="text" value="<?php echo esc_attr($button_color); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="<?php echo esc_attr($this->get_field_id('button_color_hover')); ?>"><?php echo esc_html__('Button color on hover', 'btcpaywall'); ?></label>
+                </div>
+                <div class="col-80">
+                    <input id="<?php echo esc_attr($this->get_field_id('button_color_hover')); ?>" class="widget-tipping-basic-button_color_hover_high" name="<?php echo esc_attr($this->get_field_name('button_color_hover')); ?>" type="text" value="<?php echo esc_attr($button_color_hover); ?>" />
                 </div>
             </div>
             <div class="row">
@@ -627,14 +653,20 @@ class Tipping_Banner_High extends WP_Widget
 
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-20">
                     <label for="<?php echo esc_attr($this->get_field_id('continue_button_color')); ?>"><?php echo esc_html__('Continue button color', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-80">
                     <input id="<?php echo esc_attr($this->get_field_id('continue_button_color')); ?>" class="widget-tipping-basic-continue_button_color_high" name="<?php echo esc_attr($this->get_field_name('continue_button_color')); ?>" type="text" value="<?php echo esc_attr($continue_button_color); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="<?php echo esc_attr($this->get_field_id('continue_button_color_hover')); ?>"><?php echo esc_html__('Continue button color on hover', 'btcpaywall'); ?></label>
+                </div>
+                <div class="col-80">
+                    <input id="<?php echo esc_attr($this->get_field_id('continue_button_color_hover')); ?>" class="widget-tipping-basic-continue_button_color_hover_high" name="<?php echo esc_attr($this->get_field_name('continue_button_color_hover')); ?>" type="text" value="<?php echo esc_attr($continue_button_color_hover); ?>" />
                 </div>
             </div>
             <div class="row">
@@ -660,6 +692,14 @@ class Tipping_Banner_High extends WP_Widget
                 </div>
                 <div class="col-80">
                     <input id="<?php echo esc_attr($this->get_field_id('previous_button_color')); ?>" class="widget-tipping-basic-previous_button_color_high" name="<?php echo esc_attr($this->get_field_name('previous_button_color')); ?>" type="text" value="<?php echo esc_attr($previous_button_color); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="<?php echo esc_attr($this->get_field_id('previous_button_color_hover')); ?>"><?php echo esc_html__('Previous button color on hover', 'btcpaywall'); ?></label>
+                </div>
+                <div class="col-80">
+                    <input id="<?php echo esc_attr($this->get_field_id('previous_button_color_hover')); ?>" class="widget-tipping-basic-previous_button_color_hover_high" name="<?php echo esc_attr($this->get_field_name('previous_button_color_hover')); ?>" type="text" value="<?php echo esc_attr($previous_button_color_hover); ?>" />
                 </div>
             </div>
             <h3><?php echo esc_html__('Fixed amount'); ?></h3>
@@ -832,6 +872,8 @@ class Tipping_Banner_High extends WP_Widget
 
         $instance['button_color'] = !empty($new_instance['button_color']) ? wp_strip_all_tags($new_instance['button_color']) : '';
 
+        $instance['button_color_hover'] = !empty($new_instance['button_color_hover']) ? wp_strip_all_tags($new_instance['button_color_hover']) : '';
+
         $instance['logo_id'] = !empty($new_instance['logo_id']) ? $new_instance['logo_id'] : '';
         $instance['background_id'] = !empty($new_instance['background_id']) ? $new_instance['background_id'] : '';
         $instance['hf_color'] = !empty($new_instance['hf_color']) ? wp_strip_all_tags($new_instance['hf_color']) : '';
@@ -874,11 +916,14 @@ class Tipping_Banner_High extends WP_Widget
         $instance['continue_button_text_color'] = !empty($new_instance['continue_button_text_color']) ? wp_strip_all_tags($new_instance['continue_button_text_color']) : '';
 
         $instance['continue_button_color'] = !empty($new_instance['continue_button_color']) ? wp_strip_all_tags($new_instance['continue_button_color']) : '';
+        $instance['continue_button_color_hover'] = !empty($new_instance['continue_button_color_hover']) ? wp_strip_all_tags($new_instance['continue_button_color_hover']) : '';
 
         $instance['previous_button_text'] = !empty($new_instance['previous_button_text']) ? wp_strip_all_tags($new_instance['previous_button_text']) : '';
         $instance['previous_button_text_color'] = !empty($new_instance['previous_button_text_color']) ? wp_strip_all_tags($new_instance['previous_button_text_color']) : '';
 
         $instance['previous_button_color'] = !empty($new_instance['previous_button_color']) ? wp_strip_all_tags($new_instance['previous_button_color']) : '';
+        $instance['previous_button_color_hover'] = !empty($new_instance['previous_button_color_hover']) ? wp_strip_all_tags($new_instance['previous_button_color_hover']) : '';
+
         $instance['selected_amount_background'] = !empty($new_instance['selected_amount_background']) ? wp_strip_all_tags($new_instance['selected_amount_background']) : '';
 
 

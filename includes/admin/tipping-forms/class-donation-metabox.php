@@ -176,6 +176,10 @@ class Donation_Forms_Metabox
                 "std" => "#FE642E"
             ],
             [
+                "name" => "btcpaywall_tipping_color_button_hover",
+                "std" => "#FFF"
+            ],
+            [
                 "name" => "btcpaywall_tipping_text_continue_button",
                 "std" => "Continue"
             ],
@@ -188,6 +192,10 @@ class Donation_Forms_Metabox
                 "std" => "#FE642E"
             ],
             [
+                "name" => "btcpaywall_tipping_color_continue_button_hover",
+                "std" => "#FFF"
+            ],
+            [
                 "name" => "btcpaywall_tipping_text_previous_button",
                 "std" => "Previous"
             ],
@@ -198,6 +206,10 @@ class Donation_Forms_Metabox
             [
                 "name" => "btcpaywall_tipping_color_previous_button",
                 "std" => "#1d5aa3"
+            ],
+            [
+                "name" => "btcpaywall_tipping_color_previous_button_hover",
+                "std" => "#FFF"
             ],
             [
                 "name" => "btcpaywall_tipping_text_currency",
@@ -722,6 +734,14 @@ class Donation_Forms_Metabox
                                         <input id="btcpaywall_tipping_color_button" name="btcpaywall_tipping_color_button" type="text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_button'][0]); ?>" />
                                     </div>
                                 </fieldset>
+                                <fieldset class="btcpaywall_field_wrap common">
+                                    <div>
+                                        <label for="btcpaywall_tipping_color_button_hover"><?php echo __('Button color on hover', 'btcpaywall'); ?></label>
+                                    </div>
+                                    <div>
+                                        <input id="btcpaywall_tipping_color_button_hover" name="btcpaywall_tipping_color_button_hover" type="text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_button_hover'][0]); ?>" />
+                                    </div>
+                                </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_page">
                                     <div>
                                         <label for="btcpaywall_tipping_text_continue_button"><?php echo __('Continue button text', 'btcpaywall'); ?></label>
@@ -746,7 +766,14 @@ class Donation_Forms_Metabox
                                         <input id="btcpaywall_tipping_color_continue_button" name="btcpaywall_tipping_color_continue_button" type="text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_continue_button'][0]); ?>" />
                                     </div>
                                 </fieldset>
-
+                                <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_page">
+                                    <div>
+                                        <label for="btcpaywall_tipping_color_continue_button_hover"><?php echo __('Continue button color on hover', 'btcpaywall'); ?></label>
+                                    </div>
+                                    <div>
+                                        <input id="btcpaywall_tipping_color_continue_button_hover" name="btcpaywall_tipping_color_continue_button_hover" type="text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_continue_button_hover'][0]); ?>" />
+                                    </div>
+                                </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_page">
                                     <div>
                                         <label for="btcpaywall_tipping_text_previous_button"><?php echo __('Previous button text', 'btcpaywall'); ?></label>
@@ -769,6 +796,14 @@ class Donation_Forms_Metabox
                                     </div>
                                     <div>
                                         <input id="btcpaywall_tipping_color_previous_button" name="btcpaywall_tipping_color_previous_button" type="text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_previous_button'][0]); ?>" />
+                                    </div>
+                                </fieldset>
+                                <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_page">
+                                    <div>
+                                        <label for="btcpaywall_tipping_color_previous_button_hover"><?php echo __('Previous button color on hover', 'btcpaywall'); ?></label>
+                                    </div>
+                                    <div>
+                                        <input id="btcpaywall_tipping_color_previous_button_hover" name="btcpaywall_tipping_color_previous_button_hover" type="text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_previous_button_hover'][0]); ?>" />
                                     </div>
                                 </fieldset>
                             </div>

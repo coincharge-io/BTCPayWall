@@ -38,6 +38,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
         'button_text' => $id ? $result['button_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_button', true) : 'Tipping now'),
         'button_text_color' => $id ? ('#' . $result['button_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_text', true) : '#FFFFFF'),
         'button_color' => $id ? ('#' . $result['button_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button', true) : '#FE642E'),
+        'button_color_hover' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_hover', true) : '#FFF'),
         'logo_id' => $id ? $result['logo'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png'),
         'background_id' => $id ? $result['background'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_background', true) : ''),
         'free_input' => $id ? filter_var($result['free_input'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_free_input', true) : true),
@@ -70,9 +71,11 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
         'continue_button_text' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_continue_button', true) : 'Continue'),
         'continue_button_text_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_continue_button_text', true) : '#FFFFFF'),
         'continue_button_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_continue_button', true) : '#FE642E'),
+        'continue_button_color_hover' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_continue_button_hover', true) : '#FFF'),
         'previous_button_text' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_previous_button', true) : 'Previous'),
         'previous_button_text_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_previous_color_button_text', true) : '#FFFFFF'),
         'previous_button_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_previous_button', true) : '#1d5aa3'),
+        'previous_button_color_hover' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_previous_button_hover', true) : '#FFF'),
         'selected_amount_background' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_selected_amount', true) : '#000'),
     ), $atts);
 
@@ -109,14 +112,26 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
             background: <?php echo esc_html($atts['button_color']); ?>;
         }
 
+        #btcpw_skyscraper_tipping_wide_button:hover {
+            background: <?php echo esc_html($atts['button_color_hover']); ?>;
+        }
+
         #btcpw_skyscraper_wide_button input.skyscraper-next-form {
             color: <?php echo esc_html($atts['continue_button_text_color']); ?>;
             background: <?php echo esc_html($atts['continue_button_color']); ?>;
         }
 
+        #btcpw_skyscraper_wide_button input.skyscraper-next-form:hover {
+            background: <?php echo esc_html($atts['continue_button_color_hover']); ?>;
+        }
+
         #btcpw_skyscraper_wide_button input.skyscraper-previous-form {
             color: <?php echo esc_html($atts['previous_button_text_color']); ?>;
             background: <?php echo esc_html($atts['previous_button_color']); ?>;
+        }
+
+        #btcpw_skyscraper_wide_button input.skyscraper-previous-form:hover {
+            background: <?php echo esc_html($atts['previous_button_color_hover']); ?>;
         }
 
         .btcpw_skyscraper_header_container.wide h3 {
@@ -314,6 +329,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
         'button_text' => $id ? $result['button_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_button', true) : 'Tipping now'),
         'button_text_color' => $id ? ('#' . $result['button_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_text', true) : '#FFFFFF'),
         'button_color' => $id ? ('#' . $result['button_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button', true) : '#FE642E'),
+        'button_color_hover' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_hover', true) : '#FFF'),
         'logo_id' => $id ? $result['logo'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png'),
         'background_id' => $id ? $result['background'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_background', true) : ''),
         'free_input' => $id ? filter_var($result['free_input'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_free_input', true) : true),
@@ -346,9 +362,11 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
         'continue_button_text' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_continue_button', true) : 'Continue'),
         'continue_button_text_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_continue_button_text', true) : '#FFFFFF'),
         'continue_button_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_continue_button', true) : '#FE642E'),
+        'continue_button_color_hover' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_continue_button_hover', true) : '#FFF'),
         'previous_button_text' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_previous_button', true) : 'Previous'),
         'previous_button_text_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_previous_color_button_text', true) : '#FFFFFF'),
         'previous_button_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_previous_button', true) : '#1d5aa3'),
+        'previous_button_color_hover' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_previous_button_hover', true) : '#FFF'),
         'selected_amount_background' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_selected_amount', true) : '#000'),
     ), $atts);
 
@@ -383,14 +401,26 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
             background: <?php echo esc_html($atts['button_color']); ?>;
         }
 
+        #btcpw_skyscraper_tipping_high_button:hover {
+            background: <?php echo esc_html($atts['button_color_hover']); ?>;
+        }
+
         #btcpw_skyscraper_high_button input.skyscraper-next-form {
             color: <?php echo esc_html($atts['continue_button_text_color']); ?>;
             background: <?php echo esc_html($atts['continue_button_color']); ?>;
         }
 
+        #btcpw_skyscraper_high_button input.skyscraper-next-form:hover {
+            background: <?php echo esc_html($atts['continue_button_color_hover']); ?>;
+        }
+
         #btcpw_skyscraper_high_button input.skyscraper-previous-form {
             color: <?php echo esc_html($atts['previous_button_text_color']); ?>;
             background: <?php echo esc_html($atts['previous_button_color']); ?>;
+        }
+
+        #btcpw_skyscraper_high_button input.skyscraper-previous-form:hover {
+            background: <?php echo esc_html($atts['previous_button_color_hover']); ?>;
         }
 
         .btcpw_skyscraper_header_container.high h3 {
@@ -587,6 +617,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
         'button_text' => $id ? $result['button_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_button', true) : 'Tipping now'),
         'button_text_color' => $id ? ('#' . $result['button_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_text', true) : '#FFFFFF'),
         'button_color' => $id ? ('#' . $result['button_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button', true) : '#FE642E'),
+        'button_color_hover' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_hover', true) : '#FFF'),
         'logo_id' => $id ? $result['logo'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png'),
         'background_id' => $id ? $result['background'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_background', true) : ''),
         'free_input' => $id ? filter_var($result['free_input'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_free_input', true) : true),
@@ -622,9 +653,11 @@ function btcpaywall_render_shortcode_page_tipping($atts)
         'continue_button_text' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_continue_button', true) : 'Continue'),
         'continue_button_text_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_continue_button_text', true) : '#FFFFFF'),
         'continue_button_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_continue_button', true) : '#FE642E'),
+        'continue_button_color_hover' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_continue_button_hover', true) : '#FFF'),
         'previous_button_text' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_previous_button', true) : 'Previous'),
         'previous_button_text_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_previous_color_button_text', true) : '#FFFFFF'),
         'previous_button_color' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_previous_button', true) : '#1d5aa3'),
+        'previous_button_color_hover' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_previous_button_hover', true) : '#FFF'),
         'selected_amount_background' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_selected_amount', true) : '#000'),
     ), $atts);
 
@@ -655,16 +688,26 @@ function btcpaywall_render_shortcode_page_tipping($atts)
             background-color: <?php echo esc_html($atts['button_color']); ?>;
         }
 
+        #btcpw_page_tipping__button:hover {
+            background-color: <?php echo esc_html($atts['button_color_hover']); ?>;
+        }
+
         #btcpw_page_button input.page-next-form {
             color: <?php echo esc_html($atts['continue_button_text_color']); ?>;
             background-color: <?php echo esc_html($atts['continue_button_color']); ?>;
+        }
 
+        #btcpw_page_button input.page-next-form:hover {
+            background-color: <?php echo esc_html($atts['continue_button_color_hover']); ?>;
         }
 
         #btcpw_page_button input.page-previous-form {
             color: <?php echo esc_html($atts['previous_button_text_color']); ?>;
             background-color: <?php echo esc_html($atts['previous_button_color']); ?>;
+        }
 
+        #btcpw_page_button input.page-previous-form:hover {
+            background-color: <?php echo esc_html($atts['previous_button_color_hover']); ?>;
         }
 
         #btcpw_page_button {
@@ -899,6 +942,7 @@ function btcpaywall_render_shortcode_box_tipping($atts)
         'button_text' => $id ? $result['button_text'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_button', true) : 'Tipping now'),
         'button_text_color' => $id ? ('#' . $result['button_text_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_text', true) : '#FFFFFF'),
         'button_color' => $id ? ('#' . $result['button_color']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button', true) : '#FE642E'),
+        'button_color_hover' => ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_button_hover', true) : '#FFF'),
         'logo_id' => $id ? $result['logo'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_logo', true) : BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png'),
         'background_id' => $id ? $result['background'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_background', true) : ''),
         'input_background' => $id ? ('#' . $result['input_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_amounts', true) : '#ffa500'),
@@ -928,6 +972,10 @@ function btcpaywall_render_shortcode_box_tipping($atts)
         #btcpw_tipping__button {
             color: <?php echo esc_html($atts['button_text_color']); ?>;
             background: <?php echo esc_html($atts['button_color']); ?>;
+        }
+
+        #btcpw_tipping__button:hover {
+            background: <?php echo esc_html($atts['button_color_hover']); ?>;
         }
 
         #tipping_form_box fieldset div.btcpw_tipping_box_header_container div h4 {

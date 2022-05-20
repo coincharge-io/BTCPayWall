@@ -55,6 +55,12 @@ class Tipping_Box extends WP_Widget
                             ?>;
             }
 
+            #btcpw_tipping__button_btcpw_widget:hover {
+
+                background: <?php echo esc_html($instance['button_color_hover']);
+                            ?>;
+            }
+
             #tipping_form_box_widget fieldset div.btcpw_tipping_box_header_container h4 {
                 color: <?php echo esc_html($instance['title_text_color']);
                         ?>
@@ -176,6 +182,9 @@ work', 'btcpaywall');
             $instance['button_text_color'] : esc_html__('#FFFFFF', 'btcpaywall');
         $button_color = !empty($instance['button_color']) ? $instance['button_color'] :
             esc_html__('#FE642E', 'btcpaywall');
+
+        $button_color_hover = !empty($instance['button_color_hover']) ? $instance['button_color_hover'] :
+            '#FFF';
         $logo_id = !empty($instance['logo_id']) ?
             $instance['logo_id'] : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png';
         $background_id = !empty($instance['background_id']) ? $instance['background_id'] :
@@ -391,14 +400,20 @@ work', 'btcpaywall');
 
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-20">
                     <label for="<?php echo esc_attr($this->get_field_id('button_color')); ?>"><?php echo esc_html__('Button color', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-80">
                     <input id="<?php echo esc_attr($this->get_field_id('button_color')); ?>" class="widget-tipping-basic-button_color" name="<?php echo esc_attr($this->get_field_name('button_color')); ?>" type="text" value="<?php echo esc_attr($button_color); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="<?php echo esc_attr($this->get_field_id('button_color_hover')); ?>"><?php echo esc_html__('Button color on hover', 'btcpaywall'); ?></label>
+                </div>
+                <div class="col-80">
+                    <input id="<?php echo esc_attr($this->get_field_id('button_color_hover')); ?>" class="widget-tipping-basic-button_color_hover" name="<?php echo esc_attr($this->get_field_name('button_color_hover')); ?>" type="text" value="<?php echo esc_attr($button_color_hover); ?>" />
                 </div>
             </div>
         </div>
@@ -429,6 +444,8 @@ work', 'btcpaywall');
         $instance['button_text_color'] = !empty($new_instance['button_text_color']) ? wp_strip_all_tags($new_instance['button_text_color']) : '';
 
         $instance['button_color'] = !empty($new_instance['button_color']) ? wp_strip_all_tags($new_instance['button_color']) : '';
+        $instance['button_color_hover'] = !empty($new_instance['button_color_hover']) ? wp_strip_all_tags($new_instance['button_color_hover']) : '';
+
         $instance['hf_color'] = !empty($new_instance['hf_color']) ? wp_strip_all_tags($new_instance['hf_color']) : '';
         $instance['logo_id'] = !empty($new_instance['logo_id']) ? $new_instance['logo_id'] : '';
         $instance['background_id'] = !empty($new_instance['background_id']) ? $new_instance['background_id'] : '';

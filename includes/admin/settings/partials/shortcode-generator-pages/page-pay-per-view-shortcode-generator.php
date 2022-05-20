@@ -6,14 +6,14 @@ if (!defined('ABSPATH')) exit;
 $id = isset($_GET['id']) ? sanitize_text_field($_GET['id']) : null;
 
 $result = new BTCPayWall_Pay_Per_Shortcode($id);
-$used_currency = get_option('btcpaywall_pay_per_view_currency');
+/* $used_currency = get_option('btcpaywall_pay_per_view_currency'); */
 $supported_currencies = BTCPayWall::CURRENCIES;
-$price = get_option('btcpaywall_pay_per_view_price');
+/* $price = get_option('btcpaywall_pay_per_view_price');
 $duration = get_option('btcpaywall_pay_per_view_duration');
-$duration_type = get_option('btcpaywall_pay_per_view_duration_type');
+$duration_type = get_option('btcpaywall_pay_per_view_duration_type'); */
 $supported_durations = BTCPayWall::DURATIONS;
 $supported_btc_format = BTCPayWall::BTC_FORMAT;
-$used_format = get_option("btcpaywall_pay_per_view_btc_format");
+/* $used_format = get_option("btcpaywall_pay_per_view_btc_format"); */
 $disabled_field = ($result->duration_type === 'unlimited') || ($result->duration_type === 'onetime');
 $disable = $disabled_field ? 'disabled' : '';
 $preview_image = wp_get_attachment_image_src($result->preview);
@@ -100,7 +100,7 @@ $info_text = str_replace($search, $replace, $result->info_text);
                 </div>
                 <div class="col-80">
 
-                    <input required type="number" min=0 placeholder="Price" step=1 name="btcpaywall_pay_per_view_price" id="btcpaywall_pay_per_view_price" value="<?php echo esc_attr($result->price); ?>">
+                    <input required type="number" min=0 placeholder="Price" step=1 name="btcpaywall_pay_per_view_price" id="btcpaywall_pay_per_view_price" value="<?php echo esc_attr(btcpaywall_round_amount($result->currency, $result->price)); ?>">
 
                     <select required name="btcpaywall_pay_per_view_currency" id="btcpaywall_pay_per_view_currency">
                         <option disabled value=""><?php echo esc_html__('Select currency', 'btcpaywall'); ?></option>

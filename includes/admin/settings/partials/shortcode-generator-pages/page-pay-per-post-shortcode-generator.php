@@ -4,14 +4,15 @@ if (!defined('ABSPATH')) exit;
 $id = isset($_GET['id']) ? sanitize_text_field($_GET['id']) : null;
 $result = new BTCPayWall_Pay_Per_Shortcode($id);
 
-$used_currency = get_option('btcpaywall_pay_per_post_currency');
+/* $used_currency = get_option('btcpaywall_pay_per_post_currency');
+ */
 $supported_currencies = BTCPayWall::CURRENCIES;
-$price = get_option('btcpaywall_pay_per_post_price');
+/* $price = get_option('btcpaywall_pay_per_post_price');
 $duration = get_option('btcpaywall_pay_per_post_duration');
-$duration_type = get_option('btcpaywall_pay_per_post_duration_type');
+$duration_type = get_option('btcpaywall_pay_per_post_duration_type'); */
 $supported_durations = BTCPayWall::DURATIONS;
 $supported_btc_format = BTCPayWall::BTC_FORMAT;
-$used_format = get_option("btcpaywall_pay_per_post_btc_format");
+/* $used_format = get_option("btcpaywall_pay_per_post_btc_format"); */
 $disabled_field = ($result->duration_type === 'unlimited') || ($result->duration_type === 'onetime');
 $disable = $disabled_field ? 'disabled' : '';
 $back_url = (isset($_GET['action']) && (sanitize_text_field($_GET['action']) == 'edit')) ? 'admin.php?page=btcpw_pay_per_shortcode_list' : 'admin.php?page=btcpw_pay_per_shortcode_generator';
@@ -87,7 +88,7 @@ $info_text = str_replace($search, $replace, $result->info_text);
                 </div>
                 <div class="col-80">
 
-                    <input required type="number" min=0 placeholder="Price" step=1 name="btcpaywall_pay_per_post_price" id="btcpaywall_pay_per_post_price" value="<?php echo esc_attr($result->price); ?>">
+                    <input required type="number" min=0 placeholder="Price" step=1 name="btcpaywall_pay_per_post_price" id="btcpaywall_pay_per_post_price" value="<?php echo esc_attr(btcpaywall_round_amount($result->currency, $result->price)); ?>">
 
                     <select required name="btcpaywall_pay_per_post_currency" id="btcpaywall_pay_per_post_currency">
                         <option disabled value=""><?php echo esc_html__('Select currency', 'btcpaywall'); ?></option>
