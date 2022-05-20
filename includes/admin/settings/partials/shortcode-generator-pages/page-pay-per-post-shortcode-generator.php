@@ -89,7 +89,7 @@ $info_text = str_replace($search, $replace, $result->info_text);
                 </div>
                 <div class="col-80">
 
-                    <input required type="number" min=0 placeholder="Price" step=1 name="btcpaywall_pay_per_post_price" id="btcpaywall_pay_per_post_price" value="<?php echo esc_attr(btcpaywall_round_amount($result->currency, $result->price)); ?>">
+                    <input required type="number" min=0 placeholder="Price" step="any" name="btcpaywall_pay_per_post_price" id="btcpaywall_pay_per_post_price" value="<?php echo esc_attr(btcpaywall_round_amount($result->currency, $result->price)); ?>">
 
                     <select required name="btcpaywall_pay_per_post_currency" id="btcpaywall_pay_per_post_currency">
                         <option disabled value=""><?php echo esc_html__('Select currency', 'btcpaywall'); ?></option>

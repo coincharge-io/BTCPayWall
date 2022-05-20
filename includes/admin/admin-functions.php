@@ -106,13 +106,13 @@ function btcpaywall_round_amount($currency, $amount)
 {
     switch ($currency) {
         case 'BTC':
-            return $amount;
+            return (float) $amount;
         case 'SATS':
-            return round($amount, 0);
+            return round((float) $amount, 0);
         case 'EUR':
         case 'USD':
-            return round($amount, 1);
+            return round((float) $amount, 2);
         default:
-            return round($amount, 0);
+            return round((float) $amount, 0);
     }
 }

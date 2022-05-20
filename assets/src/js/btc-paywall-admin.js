@@ -47,7 +47,7 @@
 
 
   })
-  $(document).ready(function () {
+  /* $(document).ready(function () {
     $('#btcpaywall_pay_per_post_currency, #btcpaywall_pay_per_view_currency').change(function () {
       var stepValue = $(this).val() === 'SATS' ? '1' : ($(this).val() === 'BTC' ? '0.00000001' : '0.50');
       $('#btcpaywall_pay_per_post_price,#btcpaywall_pay_per_view_price').attr({
@@ -67,7 +67,7 @@
         value: parseInt($(this).prev('input').val()),
       });
     });
-  });
+  }); */
 
   //$(document).ready(function () {
   /* $('#btcpw_default_pay_per_post_duration_type').change(function () {

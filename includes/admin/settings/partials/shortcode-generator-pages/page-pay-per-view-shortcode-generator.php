@@ -118,7 +118,7 @@ $info_text = str_replace($search, $replace, $result->info_text);
                     <label for="btcpaywall_pay_per_view_duration"><?php echo esc_html__('Duration', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-80">
-                    <input type="number" min="1" placeholder="Access Duration" name="btcpaywall_pay_per_view_duration" id="btcpaywall_pay_per_view_duration" <?php echo esc_attr($disable); ?> value="<?php echo esc_attr($result->duration); ?>">
+                    <input type="number" min=0 step="any" placeholder="Access Duration" name="btcpaywall_pay_per_view_duration" id="btcpaywall_pay_per_view_duration" <?php echo esc_attr($disable); ?> value="<?php echo esc_attr($result->duration); ?>">
                     <select required name="btcpaywall_pay_per_view_duration_type" id="btcpaywall_pay_per_view_duration_type">
                         <option disabled value=""><?php echo esc_html__('Select duration type', 'btcpaywall'); ?></option>
                         <?php foreach ($supported_durations as $duration) : ?>
