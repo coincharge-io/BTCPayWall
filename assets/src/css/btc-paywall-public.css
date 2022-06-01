@@ -409,6 +409,7 @@ a.btcpw_pay__download {
   height: 200px !important;
 }
 
+
 .btcpw_skyscraper_tipping_container fieldset {
   display: flex;
   flex-direction: column;
@@ -553,12 +554,6 @@ a.btcpw_pay__download {
   padding: 0;
 }
 
-/* #btcpw_skyscraper_high_button>div:nth-child(1)>input,
-#btcpw_skyscraper_wide_button>div:nth-child(1)>input,
-#btcpw_widget_btcpw_skyscraper_button_wide>div:nth-child(1)>input,
-#btcpw_widget_btcpw_skyscraper_button_high>div:nth-child(1)>input {
-  color: white;
-} */
 
 #btcpw_skyscraper_high_button button,
 #btcpw_skyscraper_high_button input[type="button"],
@@ -788,12 +783,6 @@ a.btcpw_pay__download {
   background-color: white !important;
 }
 
-/* #btcpw_skyscraper_tipping_high_currency,
-#btcpw_skyscraper_tipping_wide_currency,
-#btcpw_widget_btcpw_skyscraper_tipping_currency_wide,
-#btcpw_widget_btcpw_skyscraper_tipping_currency_high {
-  color: white !important;
-} */
 
 #btcpw_skyscraper_tipping_high_currency,
 #btcpw_skyscraper_tipping_wide_currency,
@@ -833,18 +822,6 @@ a.btcpw_pay__download {
 .btcpw_skyscraper_tipping_container.wide fieldset {
   padding: 0 1em;
 }
-
-/* .btcpw_skyscraper_amount_value_1.selected,
-.btcpw_skyscraper_amount_value_2.selected,
-.btcpw_skyscraper_amount_value_3.selected,
-.btcpw_widget.btcpw_skyscraper_amount_value_1.wide.selected,
-.btcpw_widget.btcpw_skyscraper_amount_value_2.wide.selected,
-.btcpw_widget.btcpw_skyscraper_amount_value_3.wide.selected,
-.btcpw_widget.btcpw_skyscraper_amount_value_1.high.selected,
-.btcpw_widget.btcpw_skyscraper_amount_value_2.high.selected,
-.btcpw_widget.btcpw_skyscraper_amount_value_3.high.selected {
-  background-color: hsl(354, 78%, 7%) !important;
-} */
 
 .btcpw_skyscraper_amount_value_1 input[type="radio"],
 .btcpw_skyscraper_amount_value_2 input[type="radio"],
@@ -892,10 +869,26 @@ a.btcpw_pay__download {
   height: 450px !important;
 }
 
+@media screen and (max-width:610px) {
+
+  div.btcpw_skyscraper_banner.wide {
+    width: 300px !important;
+    height: 400px !important;
+  }
+
+  .btcpw_widget.btcpw_skyscraper_tipping_container.wide,
+  .btcpw_skyscraper_tipping_container.wide {
+    width: 300px !important;
+    height: 300px !important;
+  }
+}
+
 .btcpw_skyscraper_banner.wide,
 .btcpw_widget.btcpw_skyscraper_banner.wide {
   width: 600px !important;
 }
+
+
 
 .btcpw_skyscraper_header_container p,
 .btcpw_widget.btcpw_skyscraper_header_container p {
@@ -938,6 +931,28 @@ a.btcpw_pay__download {
   background-repeat: no-repeat;
   line-height: 1em;
   position: relative;
+}
+
+@media screen and (max-width:610px) {
+
+  div.btcpw_page_tipping_container {
+    width: 330px !important;
+    height: 600px !important;
+  }
+
+  #btcpw_page_logo_wrap {
+    width: 100px;
+    height: 90px;
+  }
+
+  div.btcpw_page_header_container {
+    height: 150px !important;
+  }
+
+  div.btcpw_page_amount>div {
+    width: 110px;
+    height: 60px;
+  }
 }
 
 .btcpw_page_tipping_container fieldset {
@@ -1247,10 +1262,6 @@ div.btcpw_page_header_container>div:nth-child(2) {
   background-color: #fff;
   border-radius: 10px;
 }
-
-/* .btcpw_gutenberg_sel_num_control {
-  height: 50px;
-} */
 
 .btcpaywall_gutenberg_wrap {
   margin: 20px 10px;

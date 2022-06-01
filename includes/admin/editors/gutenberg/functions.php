@@ -129,7 +129,7 @@ function btcpaywall_render_start_video_gutenberg($atts)
 	), $atts);
 	return do_shortcode("[btcpw_start_video pay_view_block='{$atts['pay_view_block']}' width='{$atts['width']}' height='{$atts['height']}' background_color='{$atts['background_color']}' title='{$atts['title']}' description='{$atts['description']}' title_color='{$atts['title_color']}' description_color='{$atts['description_color']}' preview={$atts['preview']} price='{$atts['price']}' header_color='{$atts['header_color']}' info_color='{$atts['info_color']}'
 	header_text='{$atts['header_text']}' info_text='{$atts['info_text']}' link='{$atts['link']}' help_link='{$atts['help_link']}' help_text='{$atts['help_text']}' additional_link='{$atts['additional_link']}' additional_help_link='{$atts['additional_help_link']}' additional_help_text='{$atts['additional_help_text']}' duration_type='{$atts['duration_type']}' duration='{$atts['duration']}' currency='{$atts['currency']}'  button_text='{$atts['button_text']}' button_text_color='{$atts['button_text_color']}' button_color='{$atts['button_color']}' button_color_hover='{$atts['button_color_hover']}' continue_button_color_hover='{$atts['continue_button_color_hover']}' previous_button_color_hover='{$atts['previous_button_color_hover']}'
-	continue_button_text='{$atts['continue_button_text']}' continue_button_text_color='{$atts['continue_button_text_color']}' continue_button_color='{$atts['continue_button_color']}' previous_button_text='{$atts['previous_button_text']}' previous_button_text_color='{$atts['previous_button_text_color']}' previous_button_color='{$atts['previous_button_color']}'  display_name='{$atts['display_name']}' mandatory_name='{$atts['mandatory_name']}' display_email='{$atts['display_email']}' mandatory_email='{$atts['mandatory_email']}' display_phone='{$atts['display_phone']}' mandatory_phone='{$atts['mandatory_phone']}' display_address='{$atts['display_address']}' mandatory_address='{$atts['mandatory_address']}' display_message='{$atts['display_message']}' mandatory_message='{$atts['mandatory_message']}']");
+	continue_button_text='{$atts['continue_button_text']}' continue_button_text_color='{$atts['continue_button_text_color']}' continue_button_color='{$atts['continue_button_color']}' previous_button_text='{$atts['previous_button_text']}' previous_button_text_color='{$atts['previous_button_text_color']}' previous_button_color='{$atts['previous_button_color']}'  display_name='{$atts['display_name']}' mandatory_name='{$atts['mandatory_name']}' display_email='{$atts['display_email']}' mandatory_email='{$atts['mandatory_email']}' display_phone='{$atts['display_phone']}' mandatory_phone='{$atts['mandatory_phone']}' display_address='{$atts['display_address']}' mandatory_address='{$atts['mandatory_address']}' display_message='{$atts['display_message']}' mandatory_message='{$atts['mandatory_message']}'  selected_amount_background='{$atts['selected_amount_background']}']");
 }
 function btcpaywall_render_tipping_box($atts)
 {
@@ -209,6 +209,7 @@ function btcpaywall_render_tipping_banner_wide($atts)
 		'previous_button_text_color' => '#FFFFFF',
 		'previous_button_color' => '#1d5aa3',
 		'previous_button_color_hover' =>  '#FFF',
+		'selected_amount_background' => '#000',
 	), $atts);
 
 	return do_shortcode(

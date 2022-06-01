@@ -88,7 +88,6 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
     $first_enabled = array_column($fixed_amount, 'enabled');
     $d = array_search('true', $first_enabled);
     $index = 'value' . ($d + 1);
-
     ob_start();
 ?>
     <style>
