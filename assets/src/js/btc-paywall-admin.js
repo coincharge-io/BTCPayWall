@@ -491,6 +491,14 @@
       });
     }
     $(document).ready(function () {
+      $('.btcpaywall_import_store_credentials').click(function () {
+        $("#btcpw_btcpay_server_url").val(localStorage.getItem('BTCPayUrl'))
+        $("#btcpw_btcpay_auth_key_view").val(localStorage.getItem('BTCPayViewKey'))
+        $("#btcpw_btcpay_auth_key_create").val(localStorage.getItem('BTCPayCreateKey'))
+        localStorage.removeItem('BTCPayUrl')
+        localStorage.removeItem('BTCPayViewKey')
+        localStorage.removeItem('BTCPayCreateKey')
+      })
       $('.btcpaywall-demo-shortcode-attributes').click(function () {
         $('.btcpaywall-demo-shortcode-attributes').toggleClass('inactive');
         $('.btcpaywall-demo-shortcode-usage').toggle();

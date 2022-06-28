@@ -66,7 +66,12 @@ $store_id = get_option('btcpw_btcpay_store_id');
                     </div>
                 </div>
             </div>
-
+            <div style="margin-top: 20px;">
+                <a href="<?php echo esc_url("http://127.0.0.1/2022/06/1771"); ?>" target="_blank"><?php echo esc_html__('Create your store', 'btcpaywall'); ?></a>
+            </div>
+            <div style="margin-top: 20px;">
+                <button class="btcpaywall_import_store_credentials"><?php echo esc_html__('Import store credentials', 'btcpaywall'); ?></button>
+            </div>
             <div class="btcpw_help_link" style="margin-top: 20px;">
                 <a href="<?php echo esc_url("https://btcpaywall.com/"); ?>" target="_blank"><?php echo esc_html__('Help', 'btcpaywall'); ?></a>
             </div>
