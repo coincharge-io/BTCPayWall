@@ -491,14 +491,19 @@
       });
     }
     $(document).ready(function () {
-      if (location.href.indexOf("?page=btcpw_general_settings&section=btcpayserver") > -1) {
-        $("#btcpw_btcpay_server_url").val(localStorage.getItem('BTCPayUrl'))
-        $("#btcpw_btcpay_auth_key_view").val(localStorage.getItem('BTCPayViewKey'))
-        $("#btcpw_btcpay_auth_key_create").val(localStorage.getItem('BTCPayCreateKey'))
-        localStorage.removeItem('BTCPayUrl')
-        localStorage.removeItem('BTCPayViewKey')
-        localStorage.removeItem('BTCPayCreateKey')
-        console.log('dsadsada')
+      if ((localStorage.getItem("BTCPayUrl") !== null) && (localStorage.getItem("BTCPayViewKey") !== null) && (localStorage.getItem("BTCPayCreateKey") !== null)) {
+        if (location.href.indexOf("?page=btcpw_general_settings&section=btcpayserver") > -1) {
+          $("#btcpw_btcpay_server_url").val(localStorage.getItem('BTCPayUrl'))
+          $("#btcpw_btcpay_auth_key_view").val(localStorage.getItem('BTCPayViewKey'))
+          $("#btcpw_btcpay_auth_key_create").val(localStorage.getItem('BTCPayCreateKey'))
+          localStorage.removeItem('BTCPayUrl')
+          localStorage.removeItem('BTCPayViewKey')
+          localStorage.removeItem('BTCPayCreateKey')
+          $('.button.button-secondary.btcpw_button').trigger('click')
+          setTimeout(function () {
+            $('.button.button-primary.btcpw_button').trigger('click')
+          }, 6000);
+        }
       }
       $('.btcpaywall-demo-shortcode-attributes').click(function () {
         $('.btcpaywall-demo-shortcode-attributes').toggleClass('inactive');
