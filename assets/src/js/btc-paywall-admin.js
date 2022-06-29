@@ -491,14 +491,15 @@
       });
     }
     $(document).ready(function () {
-      $('.btcpaywall_import_store_credentials').click(function () {
+      if (location.href.indexOf("?page=btcpw_general_settings&section=btcpayserver") > -1) {
         $("#btcpw_btcpay_server_url").val(localStorage.getItem('BTCPayUrl'))
         $("#btcpw_btcpay_auth_key_view").val(localStorage.getItem('BTCPayViewKey'))
         $("#btcpw_btcpay_auth_key_create").val(localStorage.getItem('BTCPayCreateKey'))
         localStorage.removeItem('BTCPayUrl')
         localStorage.removeItem('BTCPayViewKey')
         localStorage.removeItem('BTCPayCreateKey')
-      })
+        console.log('dsadsada')
+      }
       $('.btcpaywall-demo-shortcode-attributes').click(function () {
         $('.btcpaywall-demo-shortcode-attributes').toggleClass('inactive');
         $('.btcpaywall-demo-shortcode-usage').toggle();
