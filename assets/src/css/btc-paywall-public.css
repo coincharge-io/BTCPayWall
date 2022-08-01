@@ -869,9 +869,16 @@ a.btcpw_pay__download {
   height: 450px !important;
 }
 
+
+.btcpw_skyscraper_banner.wide,
+.btcpw_widget.btcpw_skyscraper_banner.wide {
+  width: 600px !important;
+}
+
 @media screen and (max-width:610px) {
 
-  div.btcpw_skyscraper_banner.wide {
+  .btcpw_skyscraper_banner.wide,
+  .btcpw_widget.btcpw_skyscraper_banner.wide {
     width: 300px !important;
     height: 400px !important;
   }
@@ -881,12 +888,13 @@ a.btcpw_pay__download {
     width: 300px !important;
     height: 300px !important;
   }
+
+  .btcpw_skyscraper_tipping_container.wide fieldset,
+  .btcpw_widget.btcpw_skyscraper_tipping_container.wide fieldset {
+    padding: 1em 1em;
+  }
 }
 
-.btcpw_skyscraper_banner.wide,
-.btcpw_widget.btcpw_skyscraper_banner.wide {
-  width: 600px !important;
-}
 
 
 

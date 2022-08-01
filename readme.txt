@@ -88,6 +88,9 @@ https://btcpaywall.com/faq-support-center/
 
  == Changelog ==
 
+= 1.1.0 =
+
+- Fix: Add support for smaller screens - responsiveness
 = 1.0.9 =
 
 - Add: Template generator for Pay-per modules

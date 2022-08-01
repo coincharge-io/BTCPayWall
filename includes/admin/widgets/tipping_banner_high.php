@@ -44,10 +44,6 @@ class Tipping_Banner_High extends WP_Widget
                                     ?>;
                 background-image: url(<?php echo ($background ? esc_url($background) : '');
                                         ?>);
-                width: <?php echo esc_html($dimension[0]) . 'px !important';
-                        ?>;
-                height: <?php echo esc_html($dimension[1]) . 'px !important';
-                        ?>;
             }
 
             #btcpw_widget_btcpw_skyscraper_tipping__button_high {
