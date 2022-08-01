@@ -32,7 +32,7 @@ class Tipping_Box extends WP_Widget
         $background = wp_get_attachment_image_src($instance['background_id']) ? wp_get_attachment_image_src($instance['background_id'])[0] : $instance['background_id'];
         $dimension = explode('x', ($instance['dimension'] == '250x300' ? '250x300' : '300x300'));
 
-
+        //TODO - Refactor responsive design
 ?>
         <style>
             .btcpw_tipping_box_container.btcpw_widget {
@@ -46,7 +46,6 @@ class Tipping_Box extends WP_Widget
                                         ?>);
 
             }
-
 
             #btcpw_tipping__button_btcpw_widget {
                 color: <?php echo esc_html($instance['button_text_color']);
@@ -88,6 +87,27 @@ class Tipping_Box extends WP_Widget
                 background-color: <?php echo esc_html($instance['input_background']);
                                     ?>;
             }
+            
+            @media screen and (max-width:900px) {
+            .btcpw_tipping_box_container.btcpw_widget {
+                width: 200px !important;
+                height: 250px !important;
+            }
+            #tipping_form_box_widget fieldset .btcpw_tipping_box_header_container h4 {
+                margin-bottom: 0.2rem;
+                font-size: 12px;
+            }
+            #btcpw_box_widget_logo_wrap{
+                height: 30px !important;
+                width: 30px !important;
+            }
+            .btcpw_tipping_box_header_container{
+                height: 60px !important;
+            }
+            #button button {
+                font-size: 11px;
+            }
+            }
         </style>
         <div id="btcpw_page">
             <div class="btcpw_tipping_box_container btcpw_widget">
@@ -97,7 +117,7 @@ class Tipping_Box extends WP_Widget
                         <div class="btcpw_tipping_box_header_container">
                             <?php if ($logo) : ?>
                                 <div id="btcpw_box_widget_logo_wrap">
-                                    <img width="70" height="70" alt="Tipping logo" src=<?php echo esc_url($logo); ?> />
+                                    <img alt="Tipping logo" src=<?php echo esc_url($logo); ?> />
                                 </div>
                             <?php endif; ?>
                             <div>
