@@ -941,7 +941,7 @@ a.btcpw_pay__download {
   position: relative;
 }
 
-@media screen and (max-width:610px) {
+@media screen and (max-width:770px) {
 
   div.btcpw_page_tipping_container {
     width: 330px !important;
