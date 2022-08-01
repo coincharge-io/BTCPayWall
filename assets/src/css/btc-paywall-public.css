@@ -875,7 +875,7 @@ a.btcpw_pay__download {
   width: 600px !important;
 }
 
-@media screen and (max-width:610px) {
+@media screen and (max-width:770px) {
 
   .btcpw_skyscraper_banner.wide,
   .btcpw_widget.btcpw_skyscraper_banner.wide {
