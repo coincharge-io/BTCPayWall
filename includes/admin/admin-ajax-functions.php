@@ -10,13 +10,13 @@
  * @since       1.0
  */
 
-use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 function ajax_btcpaywall_check_greenfield_api_work()
 {
-
     if (empty($_POST['auth_key_view']) || empty($_POST['auth_key_create']) || empty($_POST['server_url'])) {
         wp_send_json_error(['message' => 'Auth Keys & Server Url required']);
     }
@@ -79,21 +79,6 @@ add_action('wp_ajax_btcpw_check_greenfield_api_work', 'ajax_btcpaywall_check_gre
 
 
 
-/* function btcpaywall_create_shortcode()
-{
-    check_ajax_referer('shortcode-security-nonce', 'nonce_ajax');
-
-    $row = new BTCPayWall_Tipping_Form();
-
-    $row->create($_POST);     //BTCPayWall_Tipping_Form class has function for sanitizing $_POST before saving to DB
-
-    if ($row) {
-        wp_send_json_success(array('res' => true, 'data' => array('id' => $row->id)));
-    } else {
-        wp_send_json_error(array('res' => false, 'message' => __('Something went wrong. Please try again later.')));
-    }
-}
-add_action('wp_ajax_btcpw_create_shortcode', 'btcpaywall_create_shortcode'); */
 /**
  * @since 1.0.9
  */
@@ -102,7 +87,7 @@ function btcpaywall_create_pay_per_shortcode()
     check_ajax_referer('shortcode-security-nonce', 'nonce_ajax');
 
     $row = new BTCPayWall_Pay_Per_Shortcode();
-    //BTCPayWall_Tipping_Form class has a function for sanitizing $_POST before saving to DB  
+    //BTCPayWall_Tipping_Form class has a function for sanitizing $_POST before saving to DB
     $row->create([
         'id' => $_POST['id'] ?? null,
         'type' => $_POST['type'] ?? null,
@@ -161,3 +146,46 @@ function btcpaywall_create_pay_per_shortcode()
     }
 }
 add_action('wp_ajax_btcpw_create_shortcode', 'btcpaywall_create_pay_per_shortcode');
+
+/**
+ * @since 1.1.0
+ */
+function ajax_btcpaywall_create_store_coincharge_pay()
+{
+    if (empty($_POST['email']) || empty($_POST['password']) || empty($_POST['storeName']) || empty($_POST['lightningAddress'])) {
+        wp_send_json_error(['message' => 'All fields are required.']);
+    }
+    //No need to sanitize since values aren't stored in database ??
+    $args = array(
+        'headers' => array(
+            'Content-Type' => 'application/json'
+        ),
+        'body' => json_encode(
+            [
+                'email' => $_POST['email'],
+                'password' => $_POST['password'],
+                'storeName' => $_POST['storeName'],
+                'lightningAddressOrLNURL' => $_POST['lightningAddress']
+            ]
+        ),
+        'method' => 'POST',
+        'timeout' => 30
+    );
+    //Change
+    $server_url = 'http://localhost:5000';
+    $url = "{$server_url}/btcpaywall/create-store";
+    $response = wp_remote_request($url, $args);
+    if (is_wp_error($response)) {
+        wp_send_json_error(['message' => 'Something went wrong.']);
+    }
+    $body = json_decode($response['body'], true);
+    if ($body['status'] != 200) {
+        wp_send_json_error([$body]);
+    }
+    //Sanitize ?
+    update_option('btcpw_coincharge_pay_auth_key', $body['apiKey']);
+    update_option('btcpw_coincharge_pay_server_url', $body['serverUrl']);
+    update_option('btcpw_coincharge_pay_store_id', $body['storeId']);
+    wp_send_json_success([$body]);
+}
+add_action('wp_ajax_btcpw_create_coincharge_store', 'ajax_btcpaywall_create_store_coincharge_pay');

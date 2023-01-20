@@ -37,7 +37,8 @@ function btcpaywall_filter_the_content($content)
     if (($end_pos = strpos($content, '<!-- /btcpw:end_content -->')) === false) {
         $content_end = '';
     } else {
-        $content_end = substr($content, $end_pos + 26);
+        //Increase from 26 to 27
+        $content_end = substr($content, $end_pos + 27);
     }
 
     return $content_start . $content_end;

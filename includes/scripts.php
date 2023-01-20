@@ -10,17 +10,18 @@
  * @since       1.0
  */
 // Exit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 function btcpaywall_enqueue_styles()
 {
-
     wp_enqueue_style('btcpaywall', BTCPAYWALL_PLUGIN_URL . 'assets/src/css/btc-paywall-public.css', array(), null, 'all');
 
     wp_enqueue_style('load-fa', 'https://use.fontawesome.com/releases/v5.12.1/css/all.css');
 }
-add_action('wp_enqueue_scripts',  'btcpaywall_enqueue_styles');
+add_action('wp_enqueue_scripts', 'btcpaywall_enqueue_styles');
 add_action('enqueue_block_assets', 'btcpaywall_enqueue_styles');
 
 /**
@@ -29,8 +30,9 @@ add_action('enqueue_block_assets', 'btcpaywall_enqueue_styles');
  */
 function btcpaywall_enqueue_scripts()
 {
-    $script = (get_option('btcpw_selected_payment_gateway', 'BTCPayServer') == 'BTCPayServer') ? (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/btcpayserver.js') : (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/opennode.js');
+    $script = (get_option('btcpw_selected_payment_gateway', 'BTCPayServer') == 'BTCPayServer' || get_option('btcpw_selected_payment_gateway', 'BTCPayServer') == 'CoinchargePay') ? (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/btcpayserver.js') : (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/opennode.js');
 
+    $url = (get_option('btcpw_selected_payment_gateway', 'BTCPayServer') == 'BTCPayServer') ? get_option('btcpw_btcpay_server_url', '') . '/modal/btcpay.js' : get_option('btcpw_coincharge_pay_server_url', '') . '/modal/btcpay.js';
 
     //wp_enqueue_script('btcpaywall', BTCPAYWALL_PLUGIN_URL . 'assets/src/js/btc-paywall-public.js', array('jquery'), null, false);
     wp_enqueue_script('btcpaywall', BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/btc_paywall_public.js', array('jquery'), null, false);
@@ -38,7 +40,7 @@ function btcpaywall_enqueue_scripts()
 
     wp_enqueue_script('btcpaywall_gateway', $script, array('jquery'), null, true);
 
-    wp_enqueue_script('btcpay', get_option('btcpw_btcpay_server_url', '') . '/modal/btcpay.js', array(), null, true);
+    wp_enqueue_script('btcpay', $url, array(), null, true);
     wp_enqueue_script('jquery-ui-dialog');
 
 
@@ -52,4 +54,4 @@ function btcpaywall_enqueue_scripts()
         ]
     );
 }
-add_action('wp_enqueue_scripts',  'btcpaywall_enqueue_scripts');
+add_action('wp_enqueue_scripts', 'btcpaywall_enqueue_scripts');

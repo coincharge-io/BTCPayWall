@@ -9,7 +9,9 @@
  * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
  * @since       1.0
  */
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 function btcpaywall_register_settings()
 {
@@ -21,6 +23,8 @@ function btcpaywall_register_settings()
 
 
     register_setting('btcpw_opennode_settings', 'btcpw_opennode_auth_key', array('type' => 'string', 'sanitize_callback' => 'btcpaywall_sanitize_btcpay_auth_key'));
+
+    register_setting('btcpw_coincharge_settings', 'btcpw_coincharge_pay_auth_key', array('type' => 'string', 'sanitize_callback' => 'btcpaywall_sanitize_btcpay_auth_key'));
 
     register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_currency', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
     register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_btc_format', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'btcpaywall_sanitize_text'));

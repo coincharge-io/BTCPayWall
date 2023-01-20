@@ -1,6 +1,8 @@
 <?php
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 $used_currency = get_option('btcpw_default_currency');
 $supported_currencies = BTCPayWall::CURRENCIES;
@@ -18,12 +20,6 @@ $btcpay_auth_key_view = get_option('btcpw_btcpay_auth_key_view');
 $btcpay_auth_key_create = get_option('btcpw_btcpay_auth_key_create');
 $store_id = get_option('btcpw_btcpay_store_id');
 ?>
-<style>
-    .btcpw_price_format {
-        display: <?php echo $used_currency === 'SATS' ? 'block' : 'none';
-                    ?>;
-    }
-</style>
 <div class="btcpw_general_settings">
     <div style="margin-top: 25px;">
 
@@ -65,9 +61,6 @@ $store_id = get_option('btcpw_btcpay_store_id');
                         <input required type="text" placeholder="Auth Key Create" name="btcpw_btcpay_auth_key_create" id="btcpw_btcpay_auth_key_create" value="<?php echo esc_attr($btcpay_auth_key_create); ?>" style="min-width: 500px;">
                     </div>
                 </div>
-            </div>
-            <div style="margin-top: 20px;">
-                <a href="<?php echo esc_url("http://127.0.0.1/2022/06/1771"); ?>" target="_blank"><?php echo esc_html__('Create your store', 'btcpaywall'); ?></a>
             </div>
             <div class="btcpw_help_link" style="margin-top: 20px;">
                 <a href="<?php echo esc_url("https://btcpaywall.com/"); ?>" target="_blank"><?php echo esc_html__('Help', 'btcpaywall'); ?></a>

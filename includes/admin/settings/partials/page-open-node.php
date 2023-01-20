@@ -1,6 +1,8 @@
 <?php
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 $btcpw_opennode_auth_key = get_option('btcpw_opennode_auth_key');
 ?>
 <div class="btcpw_general_settings">
@@ -20,6 +22,7 @@ $btcpw_opennode_auth_key = get_option('btcpw_opennode_auth_key');
                 <div class="btcpw_general_settings_buttons" style="display: inline-block;">
                     <button class="button button-primary btcpw_button" type="submit">Save</button>
                 </div>
+            </div>
         </form>
 
     </div>

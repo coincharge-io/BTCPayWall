@@ -10,7 +10,9 @@
  * @since       1.0
  */
 // Exit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 
@@ -21,7 +23,6 @@ function btcpaywall_sanitize_number($value)
 }
 function btcpaywall_validate_textarea($values)
 {
-
     $default_values = array();
 
     if (!is_array($values)) {
@@ -29,7 +30,6 @@ function btcpaywall_validate_textarea($values)
     }
 
     foreach ($values as $key => $value) {
-
         $default_values[$key] = sanitize_textarea_field($value);
     }
 
@@ -38,7 +38,6 @@ function btcpaywall_validate_textarea($values)
 
 function btcpaywall_sanitize_btcpay_server_url($value)
 {
-
     $value = sanitize_text_field($value);
 
     return trim($value, '/');
@@ -54,7 +53,6 @@ function btcpaywall_sanitize_btcpay_auth_key($value)
 
 function btcpaywall_sanitize_payblock_area($value)
 {
-
     $value = sanitize_textarea_field($value);
 
     return $value;
@@ -62,7 +60,6 @@ function btcpaywall_sanitize_payblock_area($value)
 
 function btcpaywall_sanitize_color($value)
 {
-
     $value = sanitize_hex_color($value);
 
     return $value;
@@ -70,7 +67,6 @@ function btcpaywall_sanitize_color($value)
 
 function btcpaywall_sanitize_text($value)
 {
-
     $value = sanitize_text_field($value);
 
     return $value;
@@ -78,7 +74,6 @@ function btcpaywall_sanitize_text($value)
 
 function btcpaywall_sanitize_boolean($value)
 {
-
     return (isset($value) ? true : false);
 }
 function btcpaywall_render_general_settings_page()
@@ -137,7 +132,3 @@ function btcpaywall_render_pay_per_manage_shortcode_page()
 {
     include 'partials/page-manage-pay-per-shortcode.php';
 }
-
-
-
-

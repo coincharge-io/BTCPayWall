@@ -11,18 +11,19 @@
  */
 
 // Exit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 class BTCPayWall_Cart
 {
-
     /**
      * Cart Content
      *
      * @since 1.0
-     * 
+     *
      * @access public
-     * 
+     *
      * @var array
      */
     public $content = array();
@@ -31,9 +32,9 @@ class BTCPayWall_Cart
      * Cart Details
      *
      * @since 1.0
-     * 
+     *
      * @access public
-     * 
+     *
      * @var array
      */
 
@@ -45,7 +46,7 @@ class BTCPayWall_Cart
      * @since 1.0
      *
      * @access public
-     * 
+     *
      * @var float
      */
     public $subtotal = 0.00;
@@ -56,7 +57,7 @@ class BTCPayWall_Cart
      * @since 1.0
      *
      * @access public
-     * 
+     *
      * @var float
      */
     public $total = 0.00;
@@ -69,7 +70,6 @@ class BTCPayWall_Cart
      */
     public function __construct()
     {
-
         add_action('init', array($this, 'setup_cart'), 1);
     }
 
@@ -77,9 +77,9 @@ class BTCPayWall_Cart
      * Set Cart
      *
      * @since  1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @return void
      */
     public function setup_cart()
@@ -89,7 +89,7 @@ class BTCPayWall_Cart
     }
     /**
      * Get cart content
-     * 
+     *
      * @since 1.0.0
      */
     public function get_cart_contents()
@@ -99,13 +99,17 @@ class BTCPayWall_Cart
     }
     /**
      * Sanitize cart content
-     * 
+     *
      * @since 1.0.0
      */
     public function sanitize_cart()
     {
         $sanitized = array();
         $stripped_cookie = !empty($_COOKIE['btcpaywall_product_cart']) ? stripslashes($_COOKIE['btcpaywall_product_cart']) : null;
+        //Need testing
+        if (!$stripped_cookie) {
+            return false;
+        }
         $cookie = json_decode($stripped_cookie, true);
         if (empty($cookie)) {
             return false;
@@ -120,7 +124,7 @@ class BTCPayWall_Cart
     }
     /**
      * Get cart content
-     * 
+     *
      * @since 1.0.0
      */
     public function get_contents()
@@ -143,7 +147,7 @@ class BTCPayWall_Cart
     }
     /**
      * Update cart content
-     * 
+     *
      * @since 1.0.0
      */
     public function update_cart()
@@ -151,8 +155,8 @@ class BTCPayWall_Cart
         setcookie("btcpaywall_product_cart", json_encode(array_filter($this->content)), strtotime('+1 day'), '/');
     }
     /**
-     * Add to cart 
-     * 
+     * Add to cart
+     *
      * @since 1.0.0
      */
     public function add($download_id, $options = array())
@@ -191,7 +195,7 @@ class BTCPayWall_Cart
     }
     /**
      * Check if item already in cart
-     * 
+     *
      * @since 1.0.0
      */
     public function is_item_in_cart($download_id = 0)
@@ -210,7 +214,7 @@ class BTCPayWall_Cart
     }
     /**
      * Remove item from cart
-     * 
+     *
      * @since 1.0.0
      */
     public function remove($key)
@@ -227,7 +231,7 @@ class BTCPayWall_Cart
     }
     /**
      * Get cart item price
-     * 
+     *
      * @since 1.0.0
      */
     public function get_item_price($download_id = 0)
@@ -238,7 +242,7 @@ class BTCPayWall_Cart
     }
     /**
      * Clear cart
-     * 
+     *
      * @since 1.0.0
      */
     public function empty_cart()
@@ -250,7 +254,7 @@ class BTCPayWall_Cart
     }
     /**
      * Get cart item name
-     * 
+     *
      * @since 1.0.0
      */
     public function get_item_name($item = array())
@@ -265,7 +269,7 @@ class BTCPayWall_Cart
     }
     /**
      * Remove cart item url
-     * 
+     *
      * @since 1.0.0
      */
     public function remove_item_url($cart_key)
@@ -281,7 +285,7 @@ class BTCPayWall_Cart
     }
     /**
      * Get cart total
-     * 
+     *
      * @since 1.0.0
      */
     public function get_total()

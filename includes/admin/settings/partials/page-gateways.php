@@ -1,6 +1,8 @@
 <?php
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 $default_section = null;
 $section = isset($_GET['section']) ? sanitize_text_field($_GET['section']) : $default_section;
 ?>
@@ -12,6 +14,9 @@ $section = isset($_GET['section']) ? sanitize_text_field($_GET['section']) : $de
                 break;
             case 'btcpayserver':
                 require('page-btcpay-server.php');
+                break;
+            case 'coincharge_pay':
+                require('page-coincharge-pay.php');
                 break;
             default:
                 require('page-general-payment-gateways.php');
