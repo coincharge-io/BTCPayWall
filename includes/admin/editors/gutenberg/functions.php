@@ -10,14 +10,16 @@
  * @since       1.0
  */
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+	exit;
+}
 
 function btcpaywall_render_gutenberg($atts)
 {
 	$atts = shortcode_atts(array(
 		'pay_block' => 'true',
 		'width' => 500,
-		'height' => 550,
+		'height' => 600,
 		'background_color' => '',
 		'currency' => '',
 		'price' => '',
@@ -82,7 +84,7 @@ function btcpaywall_render_start_video_gutenberg($atts)
 	$atts = shortcode_atts(array(
 		'pay_view_block' => 'true',
 		'width' => 500,
-		'height' => 550,
+		'height' => 600,
 		'background_color' => '',
 		'title' => 'Untitled',
 		'description' => 'No description',

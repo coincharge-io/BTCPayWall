@@ -11,7 +11,9 @@
  */
 
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 function btcpaywall_load_gutenberg()
@@ -46,7 +48,7 @@ function btcpaywall_load_gutenberg()
                 ),
                 'height' => array(
                     'type' => 'integer',
-                    'default' => '550'
+                    'default' => '600'
                 ),
                 'background_color' => array(
                     'type' => 'string',
@@ -230,7 +232,7 @@ function btcpaywall_load_gutenberg()
                 ),
                 'height' => array(
                     'type' => 'integer',
-                    'default' => '550'
+                    'default' => '600'
                 ),
                 'background_color' => array(
                     'type' => 'string',
@@ -482,9 +484,9 @@ function btcpaywall_load_gutenberg()
                     'type' => 'string',
                     'default' => '#FE642E'
                 ),
-                'button_color_hover'=>array(
-                    'type'=>'string',
-                    'default'=>'#FFF'
+                'button_color_hover' => array(
+                    'type' => 'string',
+                    'default' => '#FFF'
                 ),
                 'logo_id' => array(
                     'type' => 'number',

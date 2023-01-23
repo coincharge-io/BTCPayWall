@@ -10,7 +10,9 @@
  * @since       1.0
  */
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 class Tipping_Banner_Wide extends WP_Widget
 {
@@ -24,7 +26,6 @@ class Tipping_Banner_Wide extends WP_Widget
 
     public function widget($args, $instance)
     {
-
         $dimension = explode('x', '600x200');
         $supported_currencies = BTCPayWall::CURRENCIES;
         $logo = wp_get_attachment_image_src($instance['logo_id']) ? wp_get_attachment_image_src($instance['logo_id'])[0] : $instance['logo_id'];
@@ -805,7 +806,6 @@ class Tipping_Banner_Wide extends WP_Widget
     public function update($new_instance, $old_instance)
     {
         $instance = array();
-
         $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
 
         $instance['description'] = !empty($new_instance['description']) ? wp_strip_all_tags($new_instance['description']) : '';
@@ -813,19 +813,18 @@ class Tipping_Banner_Wide extends WP_Widget
         $instance['currency'] = !empty($new_instance['currency']) ? $new_instance['currency'] : '';
 
         $instance['background_color'] = !empty($new_instance['background_color']) ? wp_strip_all_tags($new_instance['background_color']) : '';
-        $instance['title_text_color'] = !empty($new_instance['title_text_color']) ? wp_strip_all_tags($new_instance['title_text_color']) : '';
+        $instance['title_text_color'] = !empty($new_instance['title_text_color']) ? wp_strip_all_tags($new_instance['title_text_color']) : '#ffffff';
         $instance['tipping_text'] = !empty($new_instance['tipping_text']) ? wp_strip_all_tags($new_instance['tipping_text']) : '';
-        $instance['tipping_text_color'] = !empty($new_instance['tipping_text_color']) ? wp_strip_all_tags($new_instance['tipping_text_color']) : '';
-        $instance['tipping_color'] = !empty($new_instance['tipping_color']) ? wp_strip_all_tags($new_instance['tipping_color']) : '';
+        $instance['tipping_text_color'] = !empty($new_instance['tipping_text_color']) ? wp_strip_all_tags($new_instance['tipping_text_color']) : '#000000';
         $instance['redirect'] = !empty($new_instance['redirect']) ? wp_strip_all_tags($new_instance['redirect']) : '';
         $instance['amount'] = !empty($new_instance['amount']) ? wp_strip_all_tags($new_instance['amount']) : '';
-        $instance['description_color'] = !empty($new_instance['description_color']) ? wp_strip_all_tags($new_instance['description_color']) : '';
+        $instance['description_color'] = !empty($new_instance['description_color']) ? wp_strip_all_tags($new_instance['description_color']) : '#000000';
 
         $instance['button_text'] = !empty($new_instance['button_text']) ? wp_strip_all_tags($new_instance['button_text']) : '';
-        $instance['button_text_color'] = !empty($new_instance['button_text_color']) ? wp_strip_all_tags($new_instance['button_text_color']) : '';
+        $instance['button_text_color'] = !empty($new_instance['button_text_color']) ? wp_strip_all_tags($new_instance['button_text_color']) : '#FFFFFF';
 
-        $instance['button_color'] = !empty($new_instance['button_color']) ? wp_strip_all_tags($new_instance['button_color']) : '';
-        $instance['button_color_hover'] = !empty($new_instance['button_color_hover']) ? wp_strip_all_tags($new_instance['button_color_hover']) : '';
+        $instance['button_color'] = !empty($new_instance['button_color']) ? wp_strip_all_tags($new_instance['button_color']) : '#FE642E';
+        $instance['button_color_hover'] = !empty($new_instance['button_color_hover']) ? wp_strip_all_tags($new_instance['button_color_hover']) : '#FFF';
 
         $instance['logo_id'] = !empty($new_instance['logo_id']) ? $new_instance['logo_id'] : '';
         $instance['background_id'] = !empty($new_instance['background_id']) ? $new_instance['background_id'] : '';
@@ -863,22 +862,21 @@ class Tipping_Banner_Wide extends WP_Widget
         $instance['value3_icon'] = !empty($new_instance['value3_icon']) ? $new_instance['value3_icon'] : '';
 
         $instance['free_input'] = !empty($new_instance['free_input']) ? $new_instance['free_input'] : 'false';
-        $instance['fixed_background'] = !empty($new_instance['fixed_background']) ? $new_instance['fixed_background'] : '';
-        $instance['hf_color'] = !empty($new_instance['hf_color']) ? wp_strip_all_tags($new_instance['hf_color']) : '';
+        $instance['fixed_background'] = !empty($new_instance['fixed_background']) ? $new_instance['fixed_background'] : '#ffa500';
+        $instance['hf_color'] = !empty($new_instance['hf_color']) ? wp_strip_all_tags($new_instance['hf_color']) : '#1d5aa3';
         $instance['continue_button_text'] = !empty($new_instance['continue_button_text']) ? wp_strip_all_tags($new_instance['continue_button_text']) : '';
-        $instance['continue_button_text_color'] = !empty($new_instance['continue_button_text_color']) ? wp_strip_all_tags($new_instance['continue_button_text_color']) : '';
+        $instance['continue_button_text_color'] = !empty($new_instance['continue_button_text_color']) ? wp_strip_all_tags($new_instance['continue_button_text_color']) : '#FFF';
 
-        $instance['continue_button_color'] = !empty($new_instance['continue_button_color']) ? wp_strip_all_tags($new_instance['continue_button_color']) : '';
-        $instance['continue_button_color_hover'] = !empty($new_instance['continue_button_color_hover']) ? wp_strip_all_tags($new_instance['continue_button_color_hover']) : '';
+        $instance['continue_button_color'] = !empty($new_instance['continue_button_color']) ? wp_strip_all_tags($new_instance['continue_button_color']) : '#FE642E';
+        $instance['continue_button_color_hover'] = !empty($new_instance['continue_button_color_hover']) ? wp_strip_all_tags($new_instance['continue_button_color_hover']) : '#FFF';
 
         $instance['previous_button_text'] = !empty($new_instance['previous_button_text']) ? wp_strip_all_tags($new_instance['previous_button_text']) : '';
-        $instance['previous_button_text_color'] = !empty($new_instance['previous_button_text_color']) ? wp_strip_all_tags($new_instance['previous_button_text_color']) : '';
+        $instance['previous_button_text_color'] = !empty($new_instance['previous_button_text_color']) ? wp_strip_all_tags($new_instance['previous_button_text_color']) : '#FFF';
 
-        $instance['previous_button_color'] = !empty($new_instance['previous_button_color']) ? wp_strip_all_tags($new_instance['previous_button_color']) : '';
-        $instance['previous_button_color_hover'] = !empty($new_instance['previous_button_color_hover']) ? wp_strip_all_tags($new_instance['previous_button_color_hover']) : '';
+        $instance['previous_button_color'] = !empty($new_instance['previous_button_color']) ? wp_strip_all_tags($new_instance['previous_button_color']) : '#1d5aa3';
+        $instance['previous_button_color_hover'] = !empty($new_instance['previous_button_color_hover']) ? wp_strip_all_tags($new_instance['previous_button_color_hover']) : '#FFF';
 
-        $instance['selected_amount_background'] = !empty($new_instance['selected_amount_background']) ? wp_strip_all_tags($new_instance['selected_amount_background']) : '';
-
+        $instance['selected_amount_background'] = !empty($new_instance['selected_amount_background']) ? wp_strip_all_tags($new_instance['selected_amount_background']) : '#000';
         return $instance;
     }
 }

@@ -4,16 +4,6 @@
   display: none;
 }
 
-/* input[type="text"]:not(.btcpw_add_form_preview),
-select:not(.btcpw_add_form_preview),
-textarea:not(.btcpw_add_form_preview) {
-  padding: 6px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  resize: vertical;
-  vertical-align: middle;
-} */
 #btcpw_general_pay_per_view_options_paywall input[type="text"],
 #btcpw_general_pay_per_view_options_paywall select,
 #btcpw_general_pay_per_view_options_paywall textarea,
@@ -50,7 +40,6 @@ textarea:not(.btcpw_add_form_preview) {
   margin-top: 8px;
   flex: 0.4;
 }
-
 
 .btcpw_pay__gutenberg_block_separator {
   width: 100%;
@@ -272,14 +261,14 @@ div.btcpw_help_link a:hover {
   display: flex;
 }
 
-#btcpw_pay_per_post_paywall>div,
-#btcpw_pay_per_view_paywall>div,
-#btcpw_pay_per_file_paywall>div,
-#btcpw_general_pay_per_post_options_paywall>div,
-#btcpw_general_content_store_options>div,
-#btcpw_general_pay_per_view_options_paywall>div,
-#btcpaywall_pay_per_post_shortcode_generator>div,
-#btcpaywall_pay_per_view_shortcode_generator>div {
+#btcpw_pay_per_post_paywall > div,
+#btcpw_pay_per_view_paywall > div,
+#btcpw_pay_per_file_paywall > div,
+#btcpw_general_pay_per_post_options_paywall > div,
+#btcpw_general_content_store_options > div,
+#btcpw_general_pay_per_view_options_paywall > div,
+#btcpaywall_pay_per_post_shortcode_generator > div,
+#btcpaywall_pay_per_view_shortcode_generator > div {
   flex: 1;
 }
 
@@ -319,7 +308,7 @@ div.btcpw_help_link a:hover {
   cursor: pointer;
 }
 
-.btcpw_help_preview>a.btcpw_help__link_preview {
+.btcpw_help_preview > a.btcpw_help__link_preview {
   margin-top: 5px;
   color: #2980b9;
   text-decoration: underline;
@@ -622,7 +611,7 @@ Settings Tabs
 
 .btcpaywall_metabox_wrap_metabox_tabs li.current {
   background: #fcfafa;
-  color: #000000
+  color: #000000;
 }
 
 .btcpaywall_tabset {
@@ -651,8 +640,8 @@ Settings Tabs
   display: flex;
 }
 
-.btcpaywall_container_header[data-id=fixed-amount],
-.btcpaywall_container_header[data-id=donor] {
+.btcpaywall_container_header[data-id="fixed-amount"],
+.btcpaywall_container_header[data-id="donor"] {
   display: none;
 }
 
@@ -747,7 +736,6 @@ Settings Tabs
   text-align: center;
 }
 
-
 .btcpaywall_tipping_templates button,
 .btcpaywall_tipping_selected_template button {
   padding: 15px 17px;
@@ -797,7 +785,6 @@ Settings Tabs
 .btcpaywall_metabox_wrap thead th:nth-child(4) {
   width: 35%;
 }
-
 
 .btcpaywall_metabox_wrap th,
 .btcpaywall_metabox_wrap td,
@@ -858,4 +845,20 @@ Gateway
 
 #btcpaywall_pay_per_shortcode {
   border: 5px solid #fc852e;
+}
+.loading-spinner {
+  content: "";
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #ffa500 #1d5aa3 #ffa500 #1d5aa3;
+  animation: spinner 1s linear infinite;
+}
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
 }

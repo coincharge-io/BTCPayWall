@@ -10,13 +10,13 @@
  * @since       1.0
  */
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 class Tipping_Box extends WP_Widget
 {
-
     public function __construct()
     {
-
         parent::__construct(
             'tipping-box',  // Base ID
             'BTCPW Tipping Box'   // Name
@@ -87,26 +87,30 @@ class Tipping_Box extends WP_Widget
                 background-color: <?php echo esc_html($instance['input_background']);
                                     ?>;
             }
-            
+
             @media screen and (max-width:900px) {
-            .btcpw_tipping_box_container.btcpw_widget {
-                width: 200px !important;
-                height: 250px !important;
-            }
-            #tipping_form_box_widget fieldset .btcpw_tipping_box_header_container h4 {
-                margin-bottom: 0.2rem;
-                font-size: 12px;
-            }
-            #btcpw_box_widget_logo_wrap{
-                height: 30px !important;
-                width: 30px !important;
-            }
-            .btcpw_tipping_box_header_container{
-                height: 60px !important;
-            }
-            #button button {
-                font-size: 11px;
-            }
+                .btcpw_tipping_box_container.btcpw_widget {
+                    width: 200px !important;
+                    height: 250px !important;
+                }
+
+                #tipping_form_box_widget fieldset .btcpw_tipping_box_header_container h4 {
+                    margin-bottom: 0.2rem;
+                    font-size: 12px;
+                }
+
+                #btcpw_box_widget_logo_wrap {
+                    height: 30px !important;
+                    width: 30px !important;
+                }
+
+                .btcpw_tipping_box_header_container {
+                    height: 60px !important;
+                }
+
+                #button button {
+                    font-size: 11px;
+                }
             }
         </style>
         <div id="btcpw_page">
@@ -444,6 +448,7 @@ work', 'btcpaywall');
     {
         $instance = array();
 
+
         $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
         $instance['dimension'] = (!empty($new_instance['dimension'])) ? $new_instance['dimension'] : '';
 
@@ -451,26 +456,25 @@ work', 'btcpaywall');
 
         $instance['currency'] = !empty($new_instance['currency']) ? $new_instance['currency'] : '';
 
-        $instance['background_color'] = !empty($new_instance['background_color']) ? wp_strip_all_tags($new_instance['background_color']) : '';
-        $instance['title_text_color'] = !empty($new_instance['title_text_color']) ? wp_strip_all_tags($new_instance['title_text_color']) : '';
+        $instance['background_color'] = !empty($new_instance['background_color']) ? wp_strip_all_tags($new_instance['background_color']) : '#E6E6E6';
+        $instance['title_text_color'] = !empty($new_instance['title_text_color']) ? wp_strip_all_tags($new_instance['title_text_color']) : '#ffffff';
         $instance['tipping_text'] = !empty($new_instance['tipping_text']) ? wp_strip_all_tags($new_instance['tipping_text']) : '';
-        $instance['tipping_text_color'] = !empty($new_instance['tipping_text_color']) ? wp_strip_all_tags($new_instance['tipping_text_color']) : '';
-        $instance['tipping_color'] = !empty($new_instance['tipping_color']) ? wp_strip_all_tags($new_instance['tipping_color']) : '';
+        $instance['tipping_text_color'] = !empty($new_instance['tipping_text_color']) ? wp_strip_all_tags($new_instance['tipping_text_color']) : '#000000';
+
         $instance['redirect'] = !empty($new_instance['redirect']) ? wp_strip_all_tags($new_instance['redirect']) : '';
         $instance['amount'] = !empty($new_instance['amount']) ? wp_strip_all_tags($new_instance['amount']) : '';
-        $instance['description_color'] = !empty($new_instance['description_color']) ? wp_strip_all_tags($new_instance['description_color']) : '';
+        $instance['description_color'] = !empty($new_instance['description_color']) ? wp_strip_all_tags($new_instance['description_color']) : '#000000';
 
         $instance['button_text'] = !empty($new_instance['button_text']) ? wp_strip_all_tags($new_instance['button_text']) : '';
-        $instance['button_text_color'] = !empty($new_instance['button_text_color']) ? wp_strip_all_tags($new_instance['button_text_color']) : '';
+        $instance['button_text_color'] = !empty($new_instance['button_text_color']) ? wp_strip_all_tags($new_instance['button_text_color']) : '#FFFFFF';
 
-        $instance['button_color'] = !empty($new_instance['button_color']) ? wp_strip_all_tags($new_instance['button_color']) : '';
-        $instance['button_color_hover'] = !empty($new_instance['button_color_hover']) ? wp_strip_all_tags($new_instance['button_color_hover']) : '';
+        $instance['button_color'] = !empty($new_instance['button_color']) ? wp_strip_all_tags($new_instance['button_color']) : '#FE642E';
+        $instance['button_color_hover'] = !empty($new_instance['button_color_hover']) ? wp_strip_all_tags($new_instance['button_color_hover']) : '#FFF';
 
-        $instance['hf_color'] = !empty($new_instance['hf_color']) ? wp_strip_all_tags($new_instance['hf_color']) : '';
+        $instance['hf_color'] = !empty($new_instance['hf_color']) ? wp_strip_all_tags($new_instance['hf_color']) : '#1d5aa3';
         $instance['logo_id'] = !empty($new_instance['logo_id']) ? $new_instance['logo_id'] : '';
         $instance['background_id'] = !empty($new_instance['background_id']) ? $new_instance['background_id'] : '';
-        $instance['hf_color'] = !empty($new_instance['hf_color']) ? wp_strip_all_tags($new_instance['hf_color']) : '';
-        $instance['input_background'] = !empty($new_instance['input_background']) ? $new_instance['input_background'] : '';
+        $instance['input_background'] = !empty($new_instance['input_background']) ? $new_instance['input_background'] : '#ffa500';
 
         return $instance;
     }

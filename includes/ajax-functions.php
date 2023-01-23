@@ -82,7 +82,6 @@ function btcpaywall_generate_invoice_id($post_id, $order_id, $customer_data)
     $auth = ($gateway === 'CoinchargePay') ? 'token ' . get_option('btcpw_coincharge_pay_auth_key') : 'token ' . get_option('btcpw_btcpay_auth_key_create');
     $currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ? get_post_meta($post_id, 'btcpw_currency', true) : get_option('btcpw_default_currency', 'SATS');
     $blogname = get_post($post_id)->post_title;
-
     $data = array(
         'amount' => $amount,
         'currency' => $currency_scope,

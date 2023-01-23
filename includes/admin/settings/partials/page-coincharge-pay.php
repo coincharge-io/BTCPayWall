@@ -18,6 +18,7 @@ $button_text = $btcpw_coincharge_pay_key ? 'Save' : 'Create';
             </div>
             <div class="col-80">
               <input required type="text" placeholder="Email" name="btcpw_coincharge_pay_email" id="btcpw_coincharge_pay_email" value="<?php echo esc_attr(""); ?>" style="min-width: 500px;">
+              <p class="btcpw_coincharge_pay_email_message" style="color:red;"></p>
             </div>
           </div>
           <div class="row">
@@ -26,6 +27,7 @@ $button_text = $btcpw_coincharge_pay_key ? 'Save' : 'Create';
             </div>
             <div class="col-80">
               <input required type="password" placeholder="Password" name="btcpw_coincharge_pay_password" id="btcpw_coincharge_pay_password" value="<?php echo esc_attr(""); ?>" style="min-width: 500px;">
+              <p class="btcpw_coincharge_pay_password_message" style="color:red;"></p>
               <ul style="columns : 2; -webkit-columns : 2; -moz-columns : 2;">
                 <li> 8 characters minimum</li>
                 <li> One number</li>
@@ -49,6 +51,8 @@ $button_text = $btcpw_coincharge_pay_key ? 'Save' : 'Create';
             </div>
             <div class="col-80">
               <input required type="text" placeholder="Lightning Address for receiving Sats" name="btcpw_coincharge_pay_lightning_address" id="btcpw_coincharge_pay_lightning_address" value="<?php echo esc_attr(""); ?>" style="min-width: 500px;">
+              <p class="btcpw_coincharge_pay_lightning_address_message" style="color:red;"></p>
+              <p class="btcpw_coincharge_pay_message" style="color:red;"></p>
             </div>
           </div>
           <div class="btcpw_general_settings_buttons" style="display: inline-block;">

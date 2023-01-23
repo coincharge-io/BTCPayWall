@@ -67,6 +67,9 @@ function ajax_btcpaywall_check_greenfield_api_work()
     $valid_store_id = $view_store_id === $create_store_id;
     if ($valid_permissions && $valid_store_id && $valid_response_code) {
         btcpaywall_check_store_id($view_store_id);
+        update_option('btcpw_btcpay_server_url', $server_url);
+        update_option('btcpw_btcpay_auth_key_view', $auth_key_view);
+        update_option('btcpw_btcpay_auth_key_create', $auth_key_create);
         wp_send_json_success(["store_id" => $view_store_id]);
     } else {
         update_option("btcpw_btcpay_store_id", null);
@@ -180,7 +183,11 @@ function ajax_btcpaywall_create_store_coincharge_pay()
     }
     $body = json_decode($response['body'], true);
     if ($body['status'] != 200) {
-        wp_send_json_error([$body]);
+        $messages = [];
+        foreach ($body['message'] as $msg) {
+            $messages[$msg['param']] = $msg['msg'];
+        }
+        wp_send_json_error([$messages]);
     }
     //Sanitize ?
     update_option('btcpw_coincharge_pay_auth_key', $body['apiKey']);

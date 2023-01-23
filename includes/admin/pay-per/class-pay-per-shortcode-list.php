@@ -13,7 +13,9 @@
 use Pay_Per_Shortcode_List as GlobalPay_Per_Shortcode_List;
 
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 if (!class_exists('WP_List_Table')) {
     require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
 }
@@ -71,7 +73,6 @@ class Pay_Per_Shortcode_List extends WP_List_Table
 
     public function prepare_items()
     {
-
         $this->_column_headers = array($this->get_columns(), array(), array(), 'cb');
         $this->process_bulk_action();
 
@@ -92,7 +93,6 @@ class Pay_Per_Shortcode_List extends WP_List_Table
      */
     public static function record_count()
     {
-
         $shortcodes = new BTCPayWall_Pay_Per_Shortcode();
         return $shortcodes->shortcode_count();
     }
@@ -125,7 +125,6 @@ class Pay_Per_Shortcode_List extends WP_List_Table
     public function process_bulk_action()
     {
         if ('delete' === $this->current_action()) {
-
             $nonce = esc_attr($_REQUEST['_wpnonce']);
 
             if (!wp_verify_nonce($nonce, 'delete')) {
@@ -152,14 +151,6 @@ class Pay_Per_Shortcode_List extends WP_List_Table
             $item['id']
         );
     }
-    /* protected function column_logo($item)
-    {
-        $logo = wp_get_attachment_image_src($item['logo']) ? wp_get_attachment_image_src($item['logo'])[0] : $item['logo'];
-        return sprintf(
-            '<img width=60 height=60 src="%s" />',
-            $logo
-        );
-    } */
 
     protected function column_shortcode($item)
     {
@@ -183,7 +174,6 @@ class Pay_Per_Shortcode_List extends WP_List_Table
 
     protected function column_name($item)
     {
-
         $page = wp_unslash(sanitize_text_field($_REQUEST['page']));
         $delete_query_args = array(
             'page' => 'btcpw_pay_per_shortcode_list',
@@ -212,7 +202,7 @@ class Pay_Per_Shortcode_List extends WP_List_Table
     }
     /**
      * Generates content for a single row of the table.
-     * 
+     *
      * @param object $item The current item.
      * @param string $column_name The current column name.
      */
@@ -242,7 +232,7 @@ class Pay_Per_Shortcode_List extends WP_List_Table
 
     /**
      * Generates custom table navigation to prevent conflicting nonces.
-     * 
+     *
      * @param string $which The location of the bulk actions: 'top' or 'bottom'.
      */
     protected function display_tablenav($which)
@@ -348,7 +338,6 @@ class Pay_Per_Shortcode
     }
     public function screen_option()
     {
-
         $option = 'per_page';
         $args   = [
             'label'   => 'Shortcodes',

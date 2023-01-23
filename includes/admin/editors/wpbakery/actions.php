@@ -10,10 +10,11 @@
  * @since       1.0
  */
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 function btcpaywall_load_vc_widgets()
 {
-
     vc_map(array(
         'name' => 'BTCPW Pay-per-Post Start',
         'base' => 'btcpw_start_content',
@@ -97,7 +98,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'textfield',
                 'heading' => 'Height',
                 'param_name' => 'height',
-                'value' => 550,
+                'value' => 600,
                 'description' => 'Set paywall height',
                 'group' => 'Paywall design'
             ),
@@ -478,7 +479,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'textfield',
                 'heading' => 'Height',
                 'param_name' => 'height',
-                'value' => 550,
+                'value' => 600,
                 'description' => 'Set paywall height',
                 'group' => 'Paywall design'
             ),

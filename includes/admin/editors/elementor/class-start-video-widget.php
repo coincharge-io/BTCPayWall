@@ -10,12 +10,12 @@
  * @since       1.0
  */
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+	exit;
+}
 
 class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 {
-
-
 	/**
 	 * @return string
 	 */
@@ -53,7 +53,6 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 	 */
 	protected function _register_controls()
 	{
-
 		$this->start_controls_section(
 			'video-option',
 			[
@@ -144,7 +143,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 			[
 				'label' => 'Height',
 				'type'  => \Elementor\Controls_Manager::NUMBER,
-				'default' => 550
+				'default' => 600
 			]
 		);
 		$this->add_control(
@@ -508,7 +507,6 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 	 */
 	protected function render()
 	{
-
 		$settings         = $this->get_settings_for_display();
 		$enable_pay_view_block = !empty($settings['pay_view_block']) ? $settings['pay_view_block'] : false;
 		$preview_title = !empty($settings['title']) ? $settings['title'] : '';

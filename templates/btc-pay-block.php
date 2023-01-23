@@ -1,6 +1,8 @@
 <?php
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 $help =  filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN) ?? filter_var(get_option('btcpw_pay_per_post_show_help_link', true), FILTER_VALIDATE_BOOLEAN);
 $help_link = !empty($atts['help_link']) ? $atts['help_link'] : get_option('btcpw_pay_per_post_help_link', 'https://btcpaywall.com/how-to-pay-at-the-bitcoin-paywall/');
@@ -12,16 +14,12 @@ $background = !empty($atts['background_color']) ? $atts['background_color'] : ge
 
 
 $width = !empty($atts['width']) ? $atts['width'] : get_option('btcpw_pay_per_post_width', 500);
-$height = !empty($atts['height']) ? $atts['height'] : get_option('btcpw_pay_per_post_height', 500);
+$height = !empty($atts['height']) ? $atts['height'] : get_option('btcpw_pay_per_post_height', 600);
 $header_color = !empty($atts['header_color']) ? $atts['header_color'] : get_option('btcpw_pay_per_post_header_color', '#000000');
 $info_color = !empty($atts['info_color']) ? $atts['info_color'] : get_option('btcpw_pay_per_post_info_color', '#000000');
 $button_color = !empty($atts['button_color']) ? $atts['button_color'] : get_option('btcpw_pay_per_post_button_color', '#f6b330');
 $button_text_color = !empty($atts['button_text_color']) ? $atts['button_text_color'] : get_option('btcpw_pay_per_post_button_text_color', '#FFFFFF');
 
-/* $default_text = get_option('btcpw_pay_per_post_title', 'Pay now to unlock blogpost');
-$default_button = get_option('btcpw_pay_per_post_button', 'Pay');
-$default_info = get_option('btcpw_pay_per_post_info', 'For [price] [currency] you will have access to the post for [duration] [dtype]');
- */
 
 $collect_atts = array(
     'display_name' =>  $atts['display_name'],
@@ -75,7 +73,7 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
         align-items: center;
     }
 
-    .btcpw_help_links a{
+    .btcpw_help_links a {
         color: <?php echo esc_html($info_color); ?>;
     }
 

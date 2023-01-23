@@ -24,7 +24,6 @@ $supported_gateways = array(
             <tbody>
                 <tr>
                     <td>
-                        <div><?php echo esc_html__('BTCPay Server', 'btcpaywall'); ?></div>
                         <div><?php echo (file_get_contents(BTCPAYWALL_PLUGIN_DIR . 'assets/dist/img/btcpay_logo.svg')); ?></div>
                     </td>
                     <td><input type="radio" id="btcpayserver" name="btcpw_selected_payment_gateway" value=<?php echo esc_attr__("BTCPayServer", "btcpaywall"); ?> <?php echo $selected_gateway === 'BTCPayServer' ? 'checked' : ''; ?>>
@@ -33,7 +32,8 @@ $supported_gateways = array(
                     <td><a href="<?php echo admin_url('admin.php?page=btcpw_general_settings&section=btcpayserver'); ?>"><?php echo esc_html__('Manage', 'btcpaywall'); ?></a></td>
                 </tr>
                 <tr>
-                    <td><?php echo esc_html__('OpenNode', 'btcpaywall'); ?> <div><?php echo (file_get_contents(BTCPAYWALL_PLUGIN_DIR . 'assets/dist/img/opennode_logo.svg')); ?></div>
+                    <td>
+                        <div><?php echo (file_get_contents(BTCPAYWALL_PLUGIN_DIR . 'assets/dist/img/opennode_logo.svg')); ?></div>
                     </td>
                     <td><input type="radio" id="opennode" name="btcpw_selected_payment_gateway" value=<?php echo esc_attr__("OpenNode", "btcpaywall"); ?> <?php echo $selected_gateway === 'OpenNode' ? 'checked' : ''; ?>>
                     </td>
@@ -41,11 +41,12 @@ $supported_gateways = array(
                     <td><a href="<?php echo admin_url('admin.php?page=btcpw_general_settings&section=opennode'); ?>"><?php echo esc_html__('Manage', 'btcpaywall'); ?></a></td>
                 </tr>
                 <tr>
-                    <td><?php echo esc_html__('CoinchargePay', 'btcpaywall'); ?> <div><?php echo (file_get_contents(BTCPAYWALL_PLUGIN_DIR . 'assets/dist/img/coincharge_pay_logo.svg')); ?></div>
+                    <td>
+                        <div><?php echo (file_get_contents(BTCPAYWALL_PLUGIN_DIR . 'assets/dist/img/coincharge_pay_logo.svg')); ?></div>
                     </td>
                     <td><input type="radio" id="coincharge_pay" name="btcpw_selected_payment_gateway" value=<?php echo esc_attr__("CoinchargePay", "btcpaywall"); ?> <?php echo $selected_gateway === 'CoinchargePay' ? 'checked' : ''; ?>>
                     </td>
-                    <td><?php echo esc_html__('Coincharge pay', 'btcpaywall'); ?></td>
+                    <td><?php echo esc_html__('Receive Lightning payments without your own Lightning node. You only need your own Lightning address. Your Lightning sales will be credited directly to your Lightning address.', 'btcpaywall'); ?></td>
                     <td><a href="<?php echo admin_url('admin.php?page=btcpw_general_settings&section=coincharge_pay'); ?>"><?php echo esc_html__('Manage', 'btcpaywall'); ?></a></td>
                 </tr>
             </tbody>

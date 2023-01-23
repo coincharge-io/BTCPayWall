@@ -464,7 +464,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
     },
     height: {
       type: 'number',
-      default: 550
+      default: 600
     },
     currency: {
       type: 'string',

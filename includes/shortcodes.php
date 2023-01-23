@@ -12,14 +12,15 @@
 
 
 // Exit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 
 
 function btcpaywall_render_shortcode_banner_wide_tipping($atts)
 {
-
     $id = (!empty($atts['id']) && isset($atts['type']) && 'new' !== $atts['type']) ? intval($atts['id']) : null;
     $form = new BTCPayWall_Tipping_Form($id);
     $result = json_decode(json_encode($form), true);
@@ -45,7 +46,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
         'input_background' => $id ? ('#' . $result['input_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_amounts', true) : '#ffa500'),
         'background' => $id ? ('#' . $result['hf_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_header_footer_background', true) : '#1d5aa3'),
         'value1_enabled' => $id ? filter_var($result['value1_enabled'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_1', true) : true),
-        'value1_amount' => $id ? round($result['value1_amount'], 0) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_1', true) :  1000),
+        'value1_amount' => $id ? round($result['value1_amount'], 0) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_1', true) : 1000),
         'value1_currency' => $id ? $result['value1_currency'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_1', true) : 'SATS'),
         'value1_icon' => $id ? $result['value1_icon'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_1', true) : 'fas fa-coffee'),
         'value2_enabled' => $id ? filter_var($result['value2_enabled'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_2', true) : true),
@@ -310,7 +311,6 @@ add_shortcode('btcpw_tipping_banner_wide', 'btcpaywall_render_shortcode_banner_w
  */
 function btcpaywall_render_shortcode_banner_high_tipping($atts)
 {
-
     $id = (!empty($atts['id']) && isset($atts['type']) && 'new' !== $atts['type']) ? intval($atts['id']) : null;
     $form = new BTCPayWall_Tipping_Form($id);
     $result = json_decode(json_encode($form), true);
@@ -335,7 +335,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
         'input_background' => $id ? ('#' . $result['input_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_amounts', true) : '#ffa500'),
         'background' => $id ? ('#' . $result['hf_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_header_footer_background', true) : '#1d5aa3'),
         'value1_enabled' => $id ? filter_var($result['value1_enabled'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_1', true) : true),
-        'value1_amount' => $id ? round($result['value1_amount'], 0) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_1', true) :  1000),
+        'value1_amount' => $id ? round($result['value1_amount'], 0) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_1', true) : 1000),
         'value1_currency' => $id ? $result['value1_currency'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_1', true) : 'SATS'),
         'value1_icon' => $id ? $result['value1_icon'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_1', true) : 'fas fa-coffee'),
         'value2_enabled' => $id ? filter_var($result['value2_enabled'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_2', true) : true),
@@ -597,7 +597,6 @@ add_shortcode('btcpw_tipping_banner_high', 'btcpaywall_render_shortcode_banner_h
  */
 function btcpaywall_render_shortcode_page_tipping($atts)
 {
-
     $id = (!empty($atts['id']) && (isset($atts['type']) && 'new' !== $atts['type'])) ? intval($atts['id']) : null;
     $form = new BTCPayWall_Tipping_Form($id);
     $result = json_decode(json_encode($form), true);
@@ -623,7 +622,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
         'input_background' => $id ? ('#' . $result['input_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_amounts', true) : '#ffa500'),
         'background' => $id ? ('#' . $result['hf_background']) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_color_header_footer_background', true) : '#1d5aa3'),
         'value1_enabled' => $id ? filter_var($result['value1_enabled'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_1', true) : true),
-        'value1_amount' => $id ? round($result['value1_amount'], 0) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_1', true) :  1000),
+        'value1_amount' => $id ? round($result['value1_amount'], 0) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_number_default_amount_1', true) : 1000),
         'value1_currency' => $id ? $result['value1_currency'] : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_currency_1', true) : 'SATS'),
         'value1_icon' => $id ? $result['value1_icon'] : (isset($atts['type']) && ($atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_text_default_icon_1', true) : 'fas fa-coffee'),
         'value2_enabled' => $id ? filter_var($result['value2_enabled'], FILTER_VALIDATE_BOOLEAN) : ((isset($atts['type']) && $atts['type'] === 'new') ? get_post_meta(absint($atts['id']), 'btcpaywall_tipping_bool_show_default_amount_2', true) : true),
@@ -923,7 +922,6 @@ add_shortcode('btcpw_tipping_page', 'btcpaywall_render_shortcode_page_tipping');
  */
 function btcpaywall_render_shortcode_box_tipping($atts)
 {
-
     $id = (!empty($atts['id']) && isset($atts['type']) && 'new' !== $atts['type']) ? intval($atts['id']) : null;
     $form = new BTCPayWall_Tipping_Form($id);
     $result = json_decode(json_encode($form), true);
@@ -1063,83 +1061,6 @@ function btcpaywall_render_shortcode_box_tipping($atts)
     return ob_get_clean();
 }
 add_shortcode('btcpw_tipping_box', 'btcpaywall_render_shortcode_box_tipping');
-/* function btcpaywall_render_shortcode_btcpw_pay_file_block($atts)
-{
-    if (btcpaywall_is_paid_content()) {
-        return '';
-    }
-
-    $atts = shortcode_atts(array(
-        'title' => '',
-        'description' => '',
-        'preview' => '',
-        'link'    => true,
-        'help_link' => 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/',
-        'help_text'    => 'Text',
-    ), $atts);
-    $help = (filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN));
-
-    $image = wp_get_attachment_image_src($atts['preview']);
-
-    $preview_url = $image ? $image[0] : $atts['preview'];
-
-    ob_start();
-    include BTCPAYWALL_PLUGIN_URL . 'templates/btc-pay-file-block.php';
-
-
-    return ob_get_clean();
-}
-add_shortcode('btcpw_pay_file_block', 'btcpaywall_render_shortcode_btcpw_pay_file_block'); */
-/**
- * @param $atts
- *
- * @return string
- */
-/* function btcpaywall_render_shortcode_btcpw_pay_view_block($atts)
-{
-    if (btcpaywall_is_paid_content()) {
-        return '';
-    }
-
-    $atts = shortcode_atts(array(
-        'title' => '',
-        'description' => '',
-        'preview' => '',
-        'background_color' => '#ECF0F1',
-        'header_color' => '#000000',
-        'info_color' => '#000000',
-        'button_color' => '#000000',
-        'button_txt' => '#FFFFFF',
-        'link'    => 'true',
-        'help_link' => 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/',
-        'help_text'    => 'Help',
-        'display_name' => get_option('btcpw_default_pay_per_view_display_name', false),
-        'mandatory_name' => get_option('btcpw_default_pay_per_view_mandatory_name', false),
-        'display_email' => get_option('btcpw_default_pay_per_view_display_email', false),
-        'mandatory_email' => get_option('btcpw_default_pay_per_view_mandatory_email', false),
-        'display_phone' => get_option('btcpw_default_pay_per_view_display_phone', false),
-        'mandatory_phone' => get_option('btcpw_default_pay_per_view_mandatory_phone', false),
-        'display_address' => get_option('btcpw_default_pay_per_view_display_address', false),
-        'mandatory_address' => get_option('btcpw_default_pay_per_view_mandatory_address', false),
-        'display_message' => get_option('btcpw_default_pay_per_view_display_message', false),
-        'mandatory_message' => get_option('btcpw_default_pay_per_view_mandatory_message', false),
-    ), $atts);
-
-    $help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
-
-
-    $image = wp_get_attachment_image_src($atts['preview']);
-
-    $preview_url = $image ? $image[0] : $atts['preview'];
-
-    ob_start();
-    include BTCPAYWALL_PLUGIN_URL . 'templates/btc-pay-view-block.php';
-
-
-
-    return ob_get_clean();
-}
-add_shortcode('btcpw_pay_video_block', 'btcpaywall_render_shortcode_btcpw_pay_view_block'); */
 /**
  * @param array $atts
  *
@@ -1301,7 +1222,6 @@ add_shortcode('btcpw_start_video', 'btcpaywall_render_shortcode_btcpw_start_vide
  */
 function btcpaywall_render_shortcode_btcpw_end_content($atts)
 {
-
     return '<!-- /btcpw:end_content -->';
 }
 add_shortcode('btcpw_end_content', 'btcpaywall_render_shortcode_btcpw_end_content');
@@ -1352,7 +1272,7 @@ add_shortcode('btcpw_pay_block', 'btcpaywall_render_shortcode_btcpw_pay_block');
 
 
 /**
- * 
+ *
  */
 function btcpaywall_render_checkout()
 {
@@ -1472,8 +1392,6 @@ add_shortcode('btcpaywall_checkout', 'btcpaywall_render_checkout');
 
 function btcpaywall_render_receipt()
 {
-
-    //$payment = new BTCPayWall_Payment(sanitize_text_field($_SESSION['btcpaywall_purchase']));
     $payment = new BTCPayWall_Payment(sanitize_text_field($_COOKIE['btcpaywall_purchase']));
     $currency = get_option('btcpw_default_pay_per_file_currency', 'SATS');
     $download_ids = explode(',', $payment->download_ids);

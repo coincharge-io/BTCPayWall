@@ -1,15 +1,12 @@
 <?php
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 $id = isset($_GET['id']) ? sanitize_text_field($_GET['id']) : null;
 $result = new BTCPayWall_Pay_Per_Shortcode($id);
 
-/* $used_currency = get_option('btcpaywall_pay_per_post_currency');
- */
 $supported_currencies = BTCPayWall::CURRENCIES;
-/* $price = get_option('btcpaywall_pay_per_post_price');
-$duration = get_option('btcpaywall_pay_per_post_duration');
-$duration_type = get_option('btcpaywall_pay_per_post_duration_type'); */
 $supported_durations = BTCPayWall::DURATIONS;
 $supported_btc_format = BTCPayWall::BTC_FORMAT;
 /* $used_format = get_option("btcpaywall_pay_per_post_btc_format"); */

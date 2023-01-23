@@ -47,6 +47,30 @@ function btcpaywall_sanitize_btcpay_auth_key($value)
 {
     $value = sanitize_text_field($value);
 
+    update_option('btcpw_selected_payment_gateway', 'BTCPayServer');
+
+    return $value;
+}
+/**
+ * @since 1.1.0
+ */
+function btcpaywall_sanitize_opennode_auth_key($value)
+{
+    $value = sanitize_text_field($value);
+
+    update_option('btcpw_selected_payment_gateway', 'OpenNode');
+
+    return $value;
+}
+/**
+ * @since 1.1.0
+ */
+function btcpaywall_sanitize_coincharge_pay_auth_key($value)
+{
+    $value = sanitize_text_field($value);
+
+    update_option('btcpw_selected_payment_gateway', 'CoinchargePay');
+
     return $value;
 }
 

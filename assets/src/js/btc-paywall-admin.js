@@ -3,6 +3,10 @@
   $(document).ready(function() {
     $("#btcpw_coincharge_pay_create_store").click(function(e) {
       e.preventDefault();
+      var text = $("#btcpw_coincharge_pay_create_store").text();
+      $("#btcpw_coincharge_pay_create_store").html(
+        `<span class="loading-spinner" role="status" aria-hidden="true"></span>`
+      );
       $.ajax({
         url: "/wp-admin/admin-ajax.php",
         method: "POST",
@@ -15,7 +19,32 @@
           lightningAddress: $("#btcpw_coincharge_pay_lightning_address").val(),
         },
         success: function(response) {
-          location.reload();
+          $("#btcpw_coincharge_pay_create_store").html(text);
+          if (response.success) {
+            setTimeout(function() {
+              location.reload();
+            }, 8000);
+            $(".btcpw_coincharge_pay_message")
+              .css("color", "green")
+              .text(
+                `You've successfully created a store. We've sent a confirmation link to your email. You need to confirm your account in order to login to CoinchargePay.`
+              );
+          } else {
+            const email = response.data[0]?.email ? response.data[0].email : "";
+            $(".btcpw_coincharge_pay_email_message").text(email);
+            const password = response.data[0]?.password
+              ? response.data[0].password
+              : "";
+            $(".btcpw_coincharge_pay_password_message").text(password);
+            const lightningAddress = response.data[0]?.lightningAddressOrLNURL
+              ? response.data[0].lightningAddressOrLNURL
+              : "";
+            $(".btcpw_coincharge_pay_lightning_address_message").text(
+              lightningAddress
+            );
+            const message = response.data?.message ? response.data.message : "";
+            $(".btcpw_coincharge_pay_message").text(message);
+          }
         },
         error: function(xmlhttprequest, textstatus, message) {
           if (textstatus === "timeout") {
@@ -28,6 +57,10 @@
     });
     $("#btcpw_btcpay_check_status").click(function() {
       $(".btcpw_btcpay_status").hide(500);
+      var text = $("#btcpw_btcpay_check_status").text();
+      $("#btcpw_btcpay_check_status").html(
+        `<span class="loading-spinner" role="status" aria-hidden="true"></span>`
+      );
       $.ajax({
         url: "/wp-admin/admin-ajax.php",
         method: "POST",
@@ -38,6 +71,7 @@
           server_url: $("#btcpw_btcpay_server_url").val(),
         },
         success: function(response) {
+          $("#btcpw_btcpay_check_status").html(text);
           if (response.success) {
             $("#btcpw_btcpay_store_id").val(response.data.store_id);
             $("#btcpw_btcpay_status_success").fadeIn(500);
@@ -87,7 +121,7 @@
 
     function formatUrl(url) {
       if (typeof url === "string") {
-        return url.replace(new RegExp("/^(.+?)/*?$/"), "$1");
+        return url.replace(/\/+$/, "");
       }
 
       return null;
