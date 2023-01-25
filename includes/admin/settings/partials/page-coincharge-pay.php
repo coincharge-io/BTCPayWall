@@ -28,6 +28,8 @@ $button_text = $btcpw_coincharge_pay_key ? 'Save' : 'Create';
             <div class="col-80">
               <input required type="password" placeholder="Password" name="btcpw_coincharge_pay_password" id="btcpw_coincharge_pay_password" value="<?php echo esc_attr(""); ?>" style="min-width: 500px;">
               <p class="btcpw_coincharge_pay_password_message" style="color:red;"></p>
+              <input type="checkbox" name="show_password" id="show_password" />
+              <label for="show_password"> Show Password</label>
               <ul style="columns : 2; -webkit-columns : 2; -moz-columns : 2;">
                 <li> 8 characters minimum</li>
                 <li> One number</li>

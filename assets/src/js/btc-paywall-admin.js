@@ -1,6 +1,14 @@
 (function($) {
   "use strict";
   $(document).ready(function() {
+    $("input[name=show_password]").click(function() {
+      var isChecked = $("input[name=show_password]").is(":checked");
+      if (isChecked) {
+        $("input[name=btcpw_coincharge_pay_password]").prop("type", "text");
+      } else {
+        $("input[name=btcpw_coincharge_pay_password]").prop("type", "password");
+      }
+    });
     $("#btcpw_coincharge_pay_create_store").click(function(e) {
       e.preventDefault();
       var text = $("#btcpw_coincharge_pay_create_store").text();
