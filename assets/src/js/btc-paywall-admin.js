@@ -1,6 +1,14 @@
 (function($) {
   "use strict";
   $(document).ready(function() {
+    $("#show_wallets").click(function() {
+      console.log("works", $(this).is(":checked"));
+      if ($(this).is(":checked")) {
+        $(".wallet_list").show();
+      } else {
+        $(".wallet_list").hide();
+      }
+    });
     $("input[name=show_password]").click(function() {
       var isChecked = $("input[name=show_password]").is(":checked");
       if (isChecked) {
