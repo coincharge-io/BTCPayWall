@@ -33,6 +33,7 @@
           password: $("#btcpw_coincharge_pay_password").val(),
           storeName: $("#btcpw_coincharge_pay_store_name").val(),
           lightningAddress: $("#btcpw_coincharge_pay_lightning_address").val(),
+          xPub: $("#btcpw_coincharge_pay_xPub").val(),
         },
         success: function(response) {
           $("#btcpw_coincharge_pay_create_store").html(text);
@@ -58,6 +59,8 @@
             $(".btcpw_coincharge_pay_lightning_address_message").text(
               lightningAddress
             );
+            const xPub = response.data[0]?.xPub ? response.data[0].xPub : "";
+            $(".btcpw_coincharge_pay_xPub_message").text(xPub);
             const message = response.data?.message ? response.data.message : "";
             $(".btcpw_coincharge_pay_message").text(message);
           }

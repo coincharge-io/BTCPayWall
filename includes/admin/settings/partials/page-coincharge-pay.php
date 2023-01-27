@@ -58,6 +58,16 @@ $button_text = $btcpw_coincharge_pay_key ? 'Save' : 'Create';
               <p class="btcpw_coincharge_pay_message" style="color:red;"></p>
             </div>
           </div>
+          <div class="row">
+            <div class="col-20">
+              <label for="btcpw_coincharge_pay_xPub"><?php echo esc_html__('xPub', 'btcpaywall'); ?></label>
+            </div>
+            <div class="col-80">
+              <input required type="text" placeholder="XPub for receiving BTC" name="btcpw_coincharge_pay_xPub" id="btcpw_coincharge_pay_lightning_address" value="<?php echo esc_attr(""); ?>" style="min-width: 500px;">
+              <p class="btcpw_coincharge_pay_xPub_message" style="color:red;"></p>
+              <p class="btcpw_coincharge_pay_message" style="color:red;"></p>
+            </div>
+          </div>
           <div>
             <div>
               <label>Don't have a wallet?</label>
