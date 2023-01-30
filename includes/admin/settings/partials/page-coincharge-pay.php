@@ -68,29 +68,19 @@ $button_text = $btcpw_coincharge_pay_key ? 'Save' : 'Create';
               <p class="btcpw_coincharge_pay_message" style="color:red;"></p>
             </div>
           </div>
-          <div>
-            <div>
-              <label>Don't have a wallet?</label>
-              <input type="checkbox" id="show_wallets" />
+          <div class="row">
+            <div class="col-20">
+              <label for="btcpay_coincharge_pay_speed_policy">Consider the invoice settled when the payment transaction</label>
             </div>
-            <div class="wallet_list" style="display:none;">
-              <ul>
-                <li>
-                  <a href="https://coincharge.io/en/lightning-login/#Alby_Wallet" target="_blank">Alby</a>
-                </li>
-                <li>
-                  <a href="https://coincharge.io/en/lightning-login/#LightningTipBot" target="_blank">LightningTipBot</a>
-                </li>
-                <li>
-                  <a href="https://coincharge.io/en/lightning-login/#Breez_Wallet" target="_blank">Breez Wallet</a>
-                </li>
-                <li>
-                  <a href="https://coincharge.io/en/lightning-login/#Blixt_Wallet" target="_blank">Blixt Wallet</a>
-                </li>
-                <li>
-                  <a href="https://coincharge.io/en/lightning-login/#Phoenix_Wallet" target="_blank">Phoenix Wallet</a>
-                </li>
-              </ul>
+            <div class="col-80">
+              <select required name="btcpw_coincharge_pay_speed_policy" id="btcpay_coincharge_pay_speed_policy">
+                <option value="0">
+                  <?php echo esc_html('Is uncomfirmed', 'btcpaywall'); ?>
+                </option>
+                <option 'selected' value='1'>
+                  <?php echo esc_html('Has at least 1 confirmation', 'btcpaywall'); ?>
+                </option>
+              </select>
             </div>
           </div>
           <div class="row">
@@ -99,6 +89,9 @@ $button_text = $btcpw_coincharge_pay_key ? 'Save' : 'Create';
       </div>
       <div class="btcpw_general_settings_buttons" style="display: inline-block;">
         <button id="btcpw_coincharge_pay_create_store" class="button button-secondary btcpw_button" type="button">Create</button>
+      </div>
+      <div>
+        <p> If you don't have a Lightning address yet. You will find all the information about Lightning address and a list of different providers where you can get a Lightning address here: <a href="https://coincharge.io/en/lightning-address/" target="_blank"> https://coincharge.io/en/lightning-address</a>
       </div>
     <?php else : ?>
       <div class="row">

@@ -1,14 +1,6 @@
 (function($) {
   "use strict";
   $(document).ready(function() {
-    $("#show_wallets").click(function() {
-      console.log("works", $(this).is(":checked"));
-      if ($(this).is(":checked")) {
-        $(".wallet_list").show();
-      } else {
-        $(".wallet_list").hide();
-      }
-    });
     $("input[name=show_password]").click(function() {
       var isChecked = $("input[name=show_password]").is(":checked");
       if (isChecked) {
@@ -34,6 +26,7 @@
           storeName: $("#btcpw_coincharge_pay_store_name").val(),
           lightningAddress: $("#btcpw_coincharge_pay_lightning_address").val(),
           xPub: $("#btcpw_coincharge_pay_xPub").val(),
+          storePolicy: $("#btcpw_coincharge_pay_store_policy").val(),
         },
         success: function(response) {
           $("#btcpw_coincharge_pay_create_store").html(text);

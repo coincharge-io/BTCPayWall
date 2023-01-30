@@ -155,7 +155,7 @@ add_action('wp_ajax_btcpw_create_shortcode', 'btcpaywall_create_pay_per_shortcod
  */
 function ajax_btcpaywall_create_store_coincharge_pay()
 {
-    if (empty($_POST['email']) || empty($_POST['password']) || empty($_POST['storeName']) || empty($_POST['lightningAddress']) || empty($_POST['xPub'])) {
+    if (empty($_POST['email']) || empty($_POST['password']) || empty($_POST['storeName']) || empty($_POST['lightningAddress']) || empty($_POST['xPub']) || empty($_POST['speedPolicy'])) {
         wp_send_json_error(['message' => 'All fields are required.']);
     }
     //No need to sanitize since values aren't stored in database ??
@@ -169,7 +169,8 @@ function ajax_btcpaywall_create_store_coincharge_pay()
                 'password' => $_POST['password'],
                 'storeName' => $_POST['storeName'],
                 'lightningAddressOrLNURL' => $_POST['lightningAddress'],
-                'xPub' => $_POST['xPub']
+                'xPub' => $_POST['xPub'],
+                'speedPolicy' => $_POST['speedPolicy']
             ]
         ),
         'method' => 'POST',
