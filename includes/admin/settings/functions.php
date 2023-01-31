@@ -74,6 +74,17 @@ function btcpaywall_sanitize_coincharge_pay_auth_key($value)
     return $value;
 }
 
+/**
+ * @since 1.1.0
+ */
+function btcpaywall_sanitize_lnbits_auth_key($value)
+{
+    $value = sanitize_text_field($value);
+
+    update_option('btcpw_selected_payment_gateway', 'LNBits');
+
+    return $value;
+}
 
 function btcpaywall_sanitize_payblock_area($value)
 {

@@ -46,13 +46,6 @@ if (!class_exists('BTCPayWall')) :
             'GBP'
         ];
 
-        /* const TIPPING_CURRENCIES = [
-            'SATS',
-            'BTC',
-            'USD',
-            'EUR',
-            'GBP'
-        ]; */
 
         public const BTC_FORMAT = [
             'SATS',

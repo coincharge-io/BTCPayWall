@@ -26,6 +26,9 @@ function btcpaywall_register_settings()
 
     register_setting('btcpw_coincharge_settings', 'btcpw_coincharge_pay_auth_key', array('type' => 'string', 'sanitize_callback' => 'btcpaywall_sanitize_coincharge_pay_auth_key'));
 
+    register_setting('btcpw_lnbits_settings', 'btcpw_lnbits_server_url', array('type' => 'string', 'sanitize_callback' => 'btcpaywall_sanitize_btcpay_server_url'));
+    register_setting('btcpw_lnbits_settings', 'btcpw_lnbits_auth_key', array('type' => 'string', 'sanitize_callback' => 'btcpaywall_sanitize_lnbits_auth_key'));
+
     register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_currency', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
     register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_btc_format', array('type' => 'string', 'default' => 'SATS', 'sanitize_callback' => 'btcpaywall_sanitize_text'));
     register_setting('btcpw_general_pay_per_post_options', 'btcpw_default_pay_per_post_price', array('type' => 'number', 'default' => 1000, 'sanitize_callback' => 'btcpaywall_sanitize_number'));

@@ -46,6 +46,19 @@ class BTCPayWall_BTCPay_Client extends BTCPayWall_Abstract_Client
     );
     return $this->httpClient->request($url, $args);
   }
+  public function getPaymentMethod()
+  {
+    $url = $this->getBaseUrl() .  '/api/v1/stores/' . $this->getStoreId() . '/invoices/' . $invoiceId . '/payment-methods';
+    $args = array(
+      'headers' => array(
+        'Authorization' => $this->getViewKey(),
+        'Content-Type' => 'application/json',
+      ),
+      'method' => 'GET',
+      'timeout' => 30,
+    );
+    return $this->httpClient->request($url, $args);
+  }
   public function getCreateKey()
   {
     return $this->apiKeyCreate;

@@ -18,6 +18,9 @@ $section = isset($_GET['section']) ? sanitize_text_field($_GET['section']) : $de
             case 'coincharge_pay':
                 require('page-coincharge-pay.php');
                 break;
+            case 'lnbits':
+                require('page-lnbits.php');
+                break;
             default:
                 require('page-general-payment-gateways.php');
                 break;

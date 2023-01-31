@@ -1674,3 +1674,29 @@ button.btcpaywall_add_to_cart:hover {
 .btcpw_pay__preview.preview_description {
   max-width: 50%;
 }
+
+/*LNBits modal */
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
+.ui-dialog-buttonset {
+  display: flex;
+  justify-content: space-between;
+}
+.ui-button.ui-corner-all.ui-widget {
+  background-color: transparent;
+  color: #9e9e9e;
+  cursor: pointer;
+  font-size: 20px;
+}
+.ui-dialog-buttonset > button:hover {
+  background-color: #c4c4c4;
+}
+.ui-dialog-buttonset button:first-child {
+  border: 1px solid #c4c4c4;
+  border-radius: 3px;
+}
+#lnbits_modal:has(div),
+.ui-dialog-buttonset {
+  background-color: #fff;
+}

@@ -30,8 +30,18 @@ add_action('enqueue_block_assets', 'btcpaywall_enqueue_styles');
  */
 function btcpaywall_enqueue_scripts()
 {
-    $script = (get_option('btcpw_selected_payment_gateway', 'BTCPayServer') == 'BTCPayServer' || get_option('btcpw_selected_payment_gateway', 'BTCPayServer') == 'CoinchargePay') ? (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/btcpayserver.js') : (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/opennode.js');
-
+    $gateway = get_option('btcpw_selected_payment_gateway');
+    $script = '';
+    if ($gateway === 'LNBits') {
+        $script = (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/lnbits.js');
+        wp_enqueue_script('btcpaywall-qr-code', BTCPAYWALL_PLUGIN_URL . 'assets/src/js/qrcode-min.js', array('jquery'), null, false);
+    } elseif ($gateway === 'OpenNode') {
+        $script = (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/opennode.js');
+    } else {
+        $script = (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/btcpayserver.js');
+        wp_enqueue_script('btcpay', $url, array(), null, true);
+    }
+    //$script = (get_option('btcpw_selected_payment_gateway', 'BTCPayServer') == 'BTCPayServer' || get_option('btcpw_selected_payment_gateway', 'BTCPayServer') == 'CoinchargePay') ? (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/btcpayserver.js') : (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/opennode.js');
     $url = (get_option('btcpw_selected_payment_gateway', 'BTCPayServer') == 'BTCPayServer') ? get_option('btcpw_btcpay_server_url', '') . '/modal/btcpay.js' : get_option('btcpw_coincharge_pay_server_url', '') . '/modal/btcpay.js';
 
     //wp_enqueue_script('btcpaywall', BTCPAYWALL_PLUGIN_URL . 'assets/src/js/btc-paywall-public.js', array('jquery'), null, false);
@@ -40,7 +50,6 @@ function btcpaywall_enqueue_scripts()
 
     wp_enqueue_script('btcpaywall_gateway', $script, array('jquery'), null, true);
 
-    wp_enqueue_script('btcpay', $url, array(), null, true);
     wp_enqueue_script('jquery-ui-dialog');
 
 
