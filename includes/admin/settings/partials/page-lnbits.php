@@ -4,6 +4,8 @@ if (!defined('ABSPATH')) {
   exit;
 }
 
+$lnbits_server_url = get_option('btcpw_lnbits_server_url');
+$lnbits_auth_key = get_option('btcpw_lnbits_auth_key');
 ?>
 <div class="btcpw_general_settings">
   <div style="margin-top: 25px;">

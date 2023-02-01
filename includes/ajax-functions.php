@@ -41,9 +41,11 @@ function ajax_btcpaywall_get_invoice_id()
 
     $post_id = sanitize_text_field($_POST['post_id']);
     $order_id = btcpaywall_generate_order_id($post_id);
-    $gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer');
+    $gateway = get_option('btcpw_selected_payment_gateway');
     if ($gateway === 'BTCPayServer' || $gateway === 'CoinchargePay') {
         $invoice_id = btcpaywall_generate_invoice_id($post_id, $order_id, $customer_data);
+    } elseif ($gateway === "LNBits") {
+        $invoice_id = btcpaywall_generate_lnbits_invoice_id($post_id, $order_id, $customer_data);
     } else {
         $invoice_id = btcpaywall_generate_opennode_invoice_id($post_id, $order_id, $customer_data);
     }
@@ -58,6 +60,7 @@ function ajax_btcpaywall_get_invoice_id()
         'amount' => $invoice_id['amount'],
         'invoice_id' => $invoice_id['id'],
         'order_id' => $order_id,
+        'payment_request' => $invoice_id['payment_request']
     ]);
 }
 add_action('wp_ajax_btcpw_get_invoice_id', 'ajax_btcpaywall_get_invoice_id');
@@ -283,22 +286,22 @@ function ajax_btcpaywall_tipping()
         return $response;
     }
 
-    if ($response['response']['code'] != 200) {
-        return new WP_Error($response['response']['code'], 'HTTP Error ' . $response['response']['code']);
-    }
+    // if ($response['response']['code'] != 200) {
+    //     return new WP_Error($response['response']['code'], 'HTTP Error ' . $response['response']['code']);
+    // }
 
-    $body = $gateway === 'OpenNode' ? json_decode($response['body'], true)['data'] : json_decode($response['body'], true);
+    $bod = $gateway === 'OpenNode' ? json_decode($response['body'], true)['data'] : json_decode($response['body'], true);
 
-
-    if (empty($body) || !empty($body['error'])) {
+    if (empty($bod) || !empty($bod['error'])) {
         return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
     }
-
+    $body = btcpaywall_format_server_response($gateway, $bod, $type, $customer);
+    $amountToStore = $gateway === 'LNBits' ? $amount : $body['amount'];
     $tipping = new BTCPayWall_Tipping();
     $tipping->create([
         'tipper_id' => $tipper->id,
         'invoice_id' => $body['id'],
-        'amount' => $body['amount'],
+        'amount' => $amountToStore,
         'page_title' => get_the_title($post_id),
         'revenue_type' => $body['metadata']['type'],
         'currency' => $body['currency'],
@@ -311,7 +314,7 @@ function ajax_btcpaywall_tipping()
     $payment->create([
         'invoice_id' => $body['id'],
         'customer_id' => $customer->id,
-        'amount' => $body['amount'],
+        'amount' => $amountToStore,
         'page_title' => get_the_title($post_id),
         'revenue_type' => $body['metadata']['type'],
         'currency' => $body['currency'],
@@ -323,10 +326,30 @@ function ajax_btcpaywall_tipping()
     wp_send_json_success([
         'invoice_id' => $body['id'],
         'donor' => $body['metadata']['donor'],
+        'payment_request' => $body['payment_request'] ?? ''
     ]);
 }
 add_action('wp_ajax_btcpw_tipping', 'ajax_btcpaywall_tipping');
 add_action('wp_ajax_nopriv_btcpw_tipping', 'ajax_btcpaywall_tipping');
+/**
+ * @since 1.1.0
+ */
+function btcpaywall_format_server_response($gateway, $response, $type, $customer)
+{
+    if ($gateway === 'LNBits') {
+        return array(
+            'id' => $response['checking_id'],
+            'status' => 'New',
+            'currency' => 'SATS',
+            'payment_request' => $response['payment_request'],
+            'metadata' => array(
+                'type' => $type,
+                'donor' => $customer
+            )
+        );
+    }
+    return $response;
+}
 function ajax_btcpaywall_paid_invoice()
 {
     if (empty($_POST['order_id'])) {
@@ -503,7 +526,6 @@ function btcpaywall_generate_opennode_invoice_id($post_id, $order_id, $customer_
     );
 
     $response = wp_remote_request($url, $args);
-
     if (is_wp_error($response)) {
         return $response;
     }
@@ -553,61 +575,262 @@ function btcpaywall_generate_opennode_invoice_id($post_id, $order_id, $customer_
         'amount' => $body['data']['amount'] . $body['data']['currency']
     );
 }
-
-function btcpaywall_tipping_invoice_args($amount, $currency, $type, $collects)
+/**
+ * Retrieve OrderId and InvoiceID for LNBits
+ *
+ * @param int $post_id WP Post id.
+ * @param int $order_id Order id.
+ *
+ * @since 1.1.0
+ *
+ * @return array Return invoice id and amount
+ * @throws WP_Error
+ */
+function btcpaywall_generate_lnbits_invoice_id($post_id, $order_id, $customer_data)
 {
-    $gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer');
-    $url = ($gateway === 'CoinchargePay') ? get_option('btcpw_coincharge_pay_server_url') . '/api/v1/stores/' . get_option('btcpw_coincharge_pay_store_id') . '/invoices/' : get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
+    $amount = btcpaywall_calculate_price_for_invoice($post_id);
 
-    $auth = ($gateway === 'CoinchargePay') ? 'token ' . get_option('btcpw_coincharge_pay_auth_key') : 'token ' . get_option('btcpw_btcpay_auth_key_create');
-    $data = array(
+    $url = get_option('btcpw_lnbits_server_url') . '/api/v1/payments';
+    $get_url     = wp_get_referer();
+    $get_post_id = $post_id ? $post_id : url_to_postid($get_url);
+    $blogname = get_post($get_post_id)->post_title;
+
+
+
+    /*$data = array(
         'amount' => $amount,
-        'currency' => $currency,
         'metadata' => array(
-            'type' => $type,
-            'donor' => $collects,
+            'orderId' => $order_id,
+            'type' => 'Pay-per-' . get_post_meta($post_id, 'btcpw_invoice_content', true)['project'],
+            'blog' => $blogname,
+            'buyer' => array(
+                'name' => (string) $_SERVER['REMOTE_ADDR']
+            ),
+            'customer_data' => $customer_data
         )
+    );*/
+    $memo = json_encode(array(
+        'orderId' => $order_id,
+        'type' => 'Pay-per-' . get_post_meta($post_id, 'btcpw_invoice_content', true)['project'],
+        'blog' => $blogname,
+        'buyer' => array(
+            'name' => (string) $_SERVER['REMOTE_ADDR']
+        ),
+        'customer_data' => $customer_data
+    ));
+    //"orderId=$order_id, type=$type, blog=$blogname"
+    $type = 'Pay-per-' . get_post_meta($post_id, 'btcpw_invoice_content', true)['project'];
+    $data = array(
+        'out' => false,
+        'amount' => $amount,
+        'memo' => $memo,
     );
+
     $args = array(
         'headers' => array(
-            'Authorization' => $auth,
             'Content-Type' => 'application/json',
+            'X-Api-Key' => get_option('btcpw_lnbits_auth_key'),
         ),
         'body' => json_encode($data),
         'method' => 'POST',
         'timeout' => 60,
     );
+    $response = wp_remote_request($url, $args);
+    if (is_wp_error($response)) {
+        return $response;
+    }
 
-    if ($gateway === 'BTCPayServer') {
+
+    $body = json_decode($response['body'], true);
+
+    if (empty($body) || !empty($body['error'])) {
+        return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
+    }
+    //$revenue_type = $body['data']['metadata']['type'];
+
+
+    $customer = new BTCPayWall_Customer();
+
+    $customer->create([
+        'full_name' => sanitize_text_field($customer_data['full_name']),
+        'email' => sanitize_email($customer_data['email']),
+        'address' => sanitize_text_field($customer_data['address']),
+        'phone' => sanitize_text_field($customer_data['phone']),
+        'message' => sanitize_text_field($customer_data['message'])
+    ]);
+
+    $payment = new BTCPayWall_Payment();
+
+    $payment->create([
+        'invoice_id' => $body['checking_id'],
+        'customer_id' => $customer->id,
+        'amount' => floatval($amount),
+        'page_title' => $blogname,
+        'revenue_type' => $type,
+        'currency' => 'SATS',
+        'status' => 'New',
+        'payment_method' => 'BTC',
+        'gateway' => 'LNBits',
+        'date_created'  => date('Y-m-d H:i:s')
+    ]);
+
+    update_post_meta($order_id, 'btcpw_invoice_id', $body['checking_id']);
+
+
+    return array(
+        'id' => $body['checking_id'],
+        'amount' => $amount,
+        'payment_request' => $body['payment_request']
+    );
+}
+
+function btcpaywall_tipping_invoice_args($amount, $currency, $type, $collects)
+{
+    $gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer');
+    //$url = ($gateway === 'CoinchargePay') ? get_option('btcpw_coincharge_pay_server_url') . '/api/v1/stores/' . get_option('btcpw_coincharge_pay_store_id') . '/invoices/' : get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
+    if ($gateway === 'CoinchargePay') {
+        $url = get_option('btcpw_coincharge_pay_server_url') . '/api/v1/stores/' . get_option('btcpw_coincharge_pay_store_id') . '/invoices/';
+        $auth =  'token ' . get_option('btcpw_coincharge_pay_auth_key');
+        $data = array(
+            'amount' => $amount,
+            'currency' => $currency,
+            'metadata' => array(
+                'type' => $type,
+                'donor' => $collects,
+            )
+        );
+        $args = array(
+            'headers' => array(
+                'Authorization' => $auth,
+                'Content-Type' => 'application/json',
+            ),
+            'body' => json_encode($data),
+            'method' => 'POST',
+            'timeout' => 60,
+        );
+        return array(
+            'url' => $url,
+            'args' => $args
+        );
+    } elseif ($gateway === 'BTCPayServer') {
+        $auth =  'token ' . get_option('btcpw_btcpay_auth_key_create');
+        $url =  get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
+        $data = array(
+            'amount' => $amount,
+            'currency' => $currency,
+            'metadata' => array(
+                'type' => $type,
+                'donor' => $collects,
+            )
+        );
+        $args = array(
+            'headers' => array(
+                'Authorization' => $auth,
+                'Content-Type' => 'application/json',
+            ),
+            'body' => json_encode($data),
+            'method' => 'POST',
+            'timeout' => 60,
+        );
+    } elseif ($gateway === 'OpenNode') {
+        $auth = get_option('btcpw_opennode_auth_key');
+        $url = 'https://api.opennode.com/v1/charges';
+        $data = array(
+            'amount' => $amount,
+            'currency' => $currency === 'SATS' ? 'BTC' : $currency,
+            'metadata' => array(
+                'type' => $type,
+                'donor' => $collects,
+            ),
+        );
+        $args = array(
+            'headers' => array(
+                'Authorization' => $auth,
+                'Content-Type' => 'application/json',
+            ),
+            'body' => json_encode($data),
+            'method' => 'POST',
+            'timeout' => 60,
+        );
+        return array(
+            'url' => $url,
+            'args' => $args
+        );
+    } elseif ($gateway === 'LNBits') {
+        $url = get_option('btcpw_lnbits_server_url') . '/api/v1/payments';
+        $auth = get_option('btcpw_lnbits_auth_key');
+        $data = array(
+            'amount' => $amount,
+            'out' => false,
+            'memo' => json_encode(array(
+                'type' => $type,
+                'donor' => $collects,
+            )),
+        );
+        $args = array(
+            'headers' => array(
+                'X-Api-Key' => $auth,
+                'Content-Type' => 'application/json',
+            ),
+            'body' => json_encode($data),
+            'method' => 'POST',
+            'timeout' => 60,
+        );
         return array(
             'url' => $url,
             'args' => $args
         );
     }
-    $url = 'https://api.opennode.com/v1/charges';
-
-
-    $data = array(
-        'amount' => $amount,
-        'currency' => $currency === 'SATS' ? 'BTC' : $currency,
-        'metadata' => array(
-            'type' => $type,
-            'donor' => $collects,
-        ),
-    );
-    $args = array(
-        'headers' => array(
-            'Authorization' => get_option('btcpw_opennode_auth_key'),
-            'Content-Type' => 'application/json',
-        ),
-        'body' => json_encode($data),
-        'method' => 'POST',
-        'timeout' => 60,
-    );
-    return array(
-        'url' => $url,
-        'args' => $args
-    );
+    //'X-Api-Key' => get_option('btcpw_lnbits_auth_key'),
+    // $auth = ($gateway === 'CoinchargePay') ? 'token ' . get_option('btcpw_coincharge_pay_auth_key') : 'token ' . get_option('btcpw_btcpay_auth_key_create');
+    // $data = array(
+    //     'amount' => $amount,
+    //     'currency' => $currency,
+    //     'metadata' => array(
+    //         'type' => $type,
+    //         'donor' => $collects,
+    //     )
+    // );
+    // $args = array(
+    //     'headers' => array(
+    //         'Authorization' => $auth,
+    //         'Content-Type' => 'application/json',
+    //     ),
+    //     'body' => json_encode($data),
+    //     'method' => 'POST',
+    //     'timeout' => 60,
+    // );
+    //
+    // if ($gateway === 'BTCPayServer') {
+    //     return array(
+    //         'url' => $url,
+    //         'args' => $args
+    //     );
+    // }
+    // $url = 'https://api.opennode.com/v1/charges';
+    //
+    //
+    // $data = array(
+    //     'amount' => $amount,
+    //     'currency' => $currency === 'SATS' ? 'BTC' : $currency,
+    //     'metadata' => array(
+    //         'type' => $type,
+    //         'donor' => $collects,
+    //     ),
+    // );
+    // $args = array(
+    //     'headers' => array(
+    //         'Authorization' => get_option('btcpw_opennode_auth_key'),
+    //         'Content-Type' => 'application/json',
+    //     ),
+    //     'body' => json_encode($data),
+    //     'method' => 'POST',
+    //     'timeout' => 60,
+    // );
+    // return array(
+    //     'url' => $url,
+    //     'args' => $args
+    // );
 }
 
 function ajax_btcpaywall_paid_opennode_invoice()
@@ -676,7 +899,77 @@ function ajax_btcpaywall_paid_opennode_invoice()
 }
 add_action('wp_ajax_opennode_paid_invoice', 'ajax_btcpaywall_paid_opennode_invoice');
 add_action('wp_ajax_nopriv_opennode_paid_invoice', 'ajax_btcpaywall_paid_opennode_invoice');
+/**
+ * @since 1.1.o
+ */
+function ajax_btcpaywall_paid_lnbits_invoice()
+{
+    $id = sanitize_text_field($_POST['id']);
+    if (!$id) {
+        wp_send_json_error([
+            'message' => 'Invoice doesn\'t exist',
+            'status' => 404
+        ]);
+    }
+    $url = get_option('btcpw_lnbits_server_url') . '/api/v1/payments/' . $id;
 
+
+    $args = array(
+        'headers' => array(
+            'Content-Type' => 'application/json',
+            'X-Api-Key' => get_option('btcpw_lnbits_auth_key'),
+        ),
+        'method' => 'GET',
+        'timeout' => 60,
+    );
+    $response = wp_remote_request($url, $args);
+
+    if (is_wp_error($response)) {
+        wp_send_json_error([
+            'message' => 'Invoice doesn\'t exist',
+            'status' => 404
+        ]);
+    }
+
+
+    $body = json_decode($response['body'], true);
+
+    if (empty($body) || !empty($body['error'])) {
+        return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
+    }
+    $memo = json_decode($body['details']['memo'], true);
+
+    $order_id = $memo['orderId'];
+
+    $post_id = get_post_meta($memo['orderId'], 'btcpw_post_id', true);
+    $invoice_id = get_post_meta($memo['orderId'], 'btcpw_invoice_id', true);
+    $secret = get_post_meta($memo['orderId'], 'btcpw_secret', true);
+    $content_title = get_post_meta($post_id, 'btcpw_invoice_content', true)['title'];
+
+    if ($body['paid'] !== true) {
+        wp_send_json_error(['message' => 'Invoice is not paid.']);
+    }
+    $cookie_path = parse_url(get_permalink($post_id), PHP_URL_PATH);
+    $amount = "{$body['data']['amount']} {$body['data']['currency']}";
+    $payment = new BTCPayWall_Payment($invoice_id);
+
+    $status = $body['paid'] === true ? 'Settled' : 'Invalid';
+    $payment->update(array('status' => $status, 'payment_method' => 'Lightning'));
+    update_post_meta($memo['orderId'], 'btcpw_payment_id', $payment->invoice_id);
+
+    setcookie("btcpw_{$post_id}", $secret, btcpaywall_get_cookie_duration($post_id), $cookie_path);
+
+    update_post_meta($order_id, 'btcpw_status', 'success');
+    btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($invoice_id, $memo['customer_data'], $memo['type']), 'Pay');
+    btcpaywall_notify_customer($memo['customer_data']['email'], btcpaywall_get_notify_customers_body($invoice_id, $memo['customer_data']), 'Pay');
+
+    wp_send_json_success(array(
+        'status' => $status,
+        'expires' => $body['details']['expiry'],
+    ));
+}
+add_action('wp_ajax_lnbits_paid_invoice', 'ajax_btcpaywall_paid_lnbits_invoice');
+add_action('wp_ajax_nopriv_lnbits_paid_invoice', 'ajax_btcpaywall_paid_lnbits_invoice');
 /**
  * @since 1.0.2
  */
@@ -740,6 +1033,98 @@ function ajax_btcpaywall_paid_tipping_opennode_invoice()
 add_action('wp_ajax_opennode_tipping_paid_invoice', 'ajax_btcpaywall_paid_tipping_opennode_invoice');
 add_action('wp_ajax_nopriv_opennode_tipping_paid_invoice', 'ajax_btcpaywall_paid_tipping_opennode_invoice');
 
+/**
+ * @since 1.1.0
+ */
+function ajax_btcpaywall_paid_tipping_lnbits_invoice()
+{
+    $id = sanitize_text_field($_POST['id']);
+
+    if (!$id) {
+        wp_send_json_error([
+            'message' => 'Invoice doesn\'t exist',
+            'status' => 404
+        ]);
+    }
+    $url = get_option('btcpw_lnbits_server_url') . '/api/v1/payments/' . $id;
+
+
+    $args = array(
+        'headers' => array(
+            'Content-Type' => 'application/json',
+            'X-Api-Key' => get_option('btcpw_lnbits_auth_key'),
+        ),
+        'method' => 'GET',
+        'timeout' => 60,
+    );
+    $response = wp_remote_request($url, $args);
+
+    if (is_wp_error($response)) {
+        wp_send_json_error([
+            'message' => 'Invoice doesn\'t exist',
+            'status' => 404
+        ]);
+    }
+
+
+    $body = json_decode($response['body'], true);
+
+    if (empty($body) || !empty($body['error'])) {
+        return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
+    }
+    $memo = json_decode($body['details']['memo'], true);
+
+    $order_id = $memo['orderId'];
+
+    // $url = "https://api.opennode.com/v1/charge/{$id}";
+    //
+    //
+    // $args = array(
+    //     'headers' => array(
+    //         'Authorization' => get_option('btcpw_opennode_auth_key'),
+    //         'Content-Type' => 'application/json',
+    //     ),
+    //     'method' => 'GET',
+    //     'timeout' => 60,
+    // );
+    // $response = wp_remote_request($url, $args);
+    //
+    // if (is_wp_error($response)) {
+    //     wp_send_json_error([
+    //         'message' => 'Invoice doesn\'t exist',
+    //         'status' => 404
+    //     ]);
+    // }
+    //
+    //
+    // $body = json_decode($response['body'], true);
+    //
+    // if (empty($body) || !empty($body['error'])) {
+    //     return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
+    // }
+
+    if ($body['paid'] !== true) {
+        wp_send_json_error(['message' => 'Invoice is not paid.']);
+    }
+    $amount = "{$body['data']['amount']} {$body['data']['currency']}";
+
+
+
+
+    $tipping = new BTCPayWall_Tipping($id);
+    $payment = new BTCPayWall_Payment($id);
+    $status = $body['paid'] === true ? 'Settled' : 'Invalid';
+    $payment->update(array('status' => $status, 'payment_method' => 'Lightning'));
+    $tipping->update(array('status' => $status, 'payment_method' => 'Lightning'));
+    btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($id, $memo['donor'], $memo['type']), 'Tipping');
+    btcpaywall_notify_customer($memo['donor']['email'], btcpaywall_get_notify_customers_body($id, $memo['donor']), 'Tipping');
+    wp_send_json_success(array(
+        'status' => $status,
+        'expires' => $body['expiry'],
+    ));
+}
+add_action('wp_ajax_lnbits_tipping_paid_invoice', 'ajax_btcpaywall_paid_tipping_lnbits_invoice');
+add_action('wp_ajax_nopriv_lnbits_tipping_paid_invoice', 'ajax_btcpaywall_paid_tipping_lnbits_invoice');
 function ajax_btcpaywall_add_to_cart()
 {
     if (!is_numeric($_POST['id'])) {
@@ -985,3 +1370,48 @@ function ajax_btcpaywall_opennode_monitor_invoice_status()
 
 add_action('wp_ajax_btcpw_opennode_monitor_invoice_status', 'ajax_btcpaywall_opennode_monitor_invoice_status');
 add_action('wp_ajax_nopriv_btcpw_opennode_monitor_invoice_status', 'ajax_btcpaywall_opennode_monitor_invoice_status');
+
+/**
+ * @since 1.1.0
+ */
+
+function ajax_btcpaywall_lnbits_monitor_invoice_status()
+{
+    if (empty($_GET['invoice_id'])) {
+        wp_send_json_error(['status' => 'unpaid']);
+    }
+
+    $invoice_id = sanitize_text_field($_GET['invoice_id']);
+    $url = get_option('btcpw_lnbits_server_url') . '/api/v1/payments/' . $invoice_id;
+
+
+    $args = array(
+        'headers' => array(
+            'Content-Type' => 'application/json',
+            'X-Api-Key' => get_option('btcpw_lnbits_auth_key'),
+        ),
+        'method' => 'GET',
+        'timeout' => 60,
+    );
+
+    $response = wp_remote_request($url, $args);
+
+    if (is_wp_error($response)) {
+        return $response;
+    }
+    $body = json_decode($response['body'], true);
+
+
+    if (empty($body) || !empty($body['error'])) {
+        return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
+    }
+
+    if ($body['paid'] !== true) {
+        wp_send_json_error(['status' => 'unpaid']);
+    }
+
+    wp_send_json_success(['status' => 'paid']);
+}
+
+add_action('wp_ajax_btcpw_lnbits_monitor_invoice_status', 'ajax_btcpaywall_lnbits_monitor_invoice_status');
+add_action('wp_ajax_nopriv_btcpw_lnbits_monitor_invoice_status', 'ajax_btcpaywall_lnbits_monitor_invoice_status');

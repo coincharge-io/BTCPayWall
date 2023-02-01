@@ -1,7 +1,9 @@
 <?php
 
 // Exit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 /**
@@ -14,7 +16,9 @@ function btcpaywall_gateway_admin_notice()
     $gateway = get_option('btcpw_selected_payment_gateway');
     $is_valid_btcpay = !empty(get_option('btcpw_btcpay_store_id')) && $gateway === 'BTCPayServer';
     $is_valid_opennode = !empty(get_option('btcpw_opennode_auth_key')) && $gateway === 'OpenNode';
-    $configurated_gateway = $is_valid_btcpay == false && $is_valid_opennode == false;
+    $is_valid_coincharge = !empty(get_option('btcpw_coincharge_pay_auth_key')) && $gateway === 'CoinchargePay';
+    $is_valid_lnbits = !empty(get_option('btcpw_lnbits_auth_key')) && $gateway === 'LNBits';
+    $configurated_gateway = $is_valid_btcpay == false && $is_valid_opennode == false && $is_valid_coincharge == false && $is_valid_lnbits == false;
 
 
     if (empty($gateway) || true == $configurated_gateway) {
