@@ -1433,10 +1433,10 @@ function ajax_btcpaywall_paid_content_file_invoice()
 
     $memo = json_decode($body['details']['memo'], true);
     $customer = $gateway === 'LNBits' ? $memo['customer_data'] : $bod['metadata']['customer_data'];
-    $body = btcpaywall_format_server_response($gateway, $body, $type, $customer);
+    $body = btcpaywall_format_server_response($gateway, $bod, $type, $customer);
 
-    if (empty($body) || !empty($body['error'])) {
-        return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
+    if (empty($body) || !empty($bod['error'])) {
+        return new WP_Error('invoice_error', $bod['error'] ?? 'Something went wrong');
     }
     //$amount = $body['amount'] . ' ' . $body['currency'];
     $storeId = get_option('btcpw_btcpay_store_id');
@@ -1463,7 +1463,6 @@ function ajax_btcpaywall_paid_content_file_invoice()
     $payment->update(array(
         'status' => $status, 'payment_method' => $payment_method, 'download_links' => $db_links
     ));
-    //$_SESSION['btcpaywall_purchase'] = $payment->invoice_id;
     setcookie('btcpaywall_purchase', $payment->invoice_id, time() + 60 * 60 * 24 * 30, '/');
     btcpaywall_notify_customer($body['metadata']['customer_data']['email'], btcpaywall_get_notify_customers_body($invoice_id, $body['metadata']['customer_data']), 'Pay');
 
