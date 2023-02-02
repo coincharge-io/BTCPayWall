@@ -1446,7 +1446,6 @@ function ajax_btcpaywall_paid_content_file_invoice()
     if ($bod['status'] !== 'Settled' && $bod['status'] !== 'paid' && $bod['paid'] !== true) {
         wp_send_json_error(['message' => 'Invoice is not paid.']);
     }
-
     $payment = new BTCPayWall_Payment($invoice_id);
 
     $customer = new BTCPayWall_Customer($payment->customer_id);
@@ -1457,7 +1456,7 @@ function ajax_btcpaywall_paid_content_file_invoice()
     foreach ($download_ids as $link_id) {
         $download = new BTCPayWall_Digital_Download($link_id);
         $download->increase_sales();
-        $link = btcpaywall_get_download_url($payment->invoice_id, $download->get_file_url(), $link_id, $customer->email);
+        $link = btcpaywall_get_download_url($payment->invoice_id, $link_id, $customer->email, attachment_url_to_postid($download->get_file_url()));
         $db_links[] = esc_url_raw(rawurldecode($link));
     }
     $status = $gateway === 'LNBits' ? 'Settled' : $body['status'];

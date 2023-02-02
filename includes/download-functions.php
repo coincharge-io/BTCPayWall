@@ -33,7 +33,7 @@ if (!defined('ABSPATH')) {
  * @return string Download url
  */
 
-function btcpaywall_get_download_url($payment_id, $file_url, $download_id, $email)
+function btcpaywall_get_download_url($payment_id, $download_id, $email, $download_file)
 {
     if (!get_option('btcpw_secret_key')) {
         update_option('btcpw_secret_key', bin2hex(random_bytes(14)));
@@ -43,14 +43,12 @@ function btcpaywall_get_download_url($payment_id, $file_url, $download_id, $emai
 
     $params = array(
         'payment_id'    => rawurlencode($payment_id),
-        'digital_file'  => rawurlencode($file_url),
         'download_id'   => (int)$download_id,
         'expire'        => rawurlencode($date),
-        'email'         => rawurlencode($email)
+        'email'         => rawurlencode($email),
+        'download_file' => (int)($download_file)
     );
-    //var_dump(attachment_url_to_postid($file_url));
     $payment = new BTCPayWall_Payment($params['payment_id']);
-
     if (!$payment) {
         return false;
     }
@@ -59,20 +57,17 @@ function btcpaywall_get_download_url($payment_id, $file_url, $download_id, $emai
 
     if (!empty($payment->id)) {
         $args = array(
-            'btcpw_file'  => $params['digital_file'],
             'payment_id'  => $params['payment_id'],
             'download_id' => $params['download_id'],
             'email'       => $params['email'],
+            'download_file' => $params['download_file']
         );
-
 
         if (isset($params['expire'])) {
             $args['ttl'] = $params['expire'];
         }
-
         $args['token'] = btcpaywall_generate_url_token($secret_key, $args);
     }
-
     $download_url = add_query_arg($args, site_url('index.php'));
 
     return $download_url;
@@ -85,12 +80,13 @@ function btcpaywall_process_download()
         'download_id' => (isset($_GET['download_id'])) ? (int) $_GET['download_id'] : '',
         'payment_id' => (isset($_GET['payment_id'])) ? sanitize_text_field($_GET['payment_id']) : '',
         'email'    => (isset($_GET['email'])) ? sanitize_email($_GET['email']) : '',
-        'btcpw_file'  => (isset($_GET['btcpw_file'])) ? sanitize_text_field($_GET['btcpw_file']) : '',
         'ttl'      => (isset($_GET['ttl'])) ? sanitize_text_field($_GET['ttl']) : '',
-        'token'    => (isset($_GET['token'])) ? sanitize_text_field($_GET['token']) : ''
+        'token'    => (isset($_GET['token'])) ? sanitize_text_field($_GET['token']) : '',
+        'download_file' => (isset($_GET['download_file'])) ? (int) $_GET['download_file'] : '',
     );
 
-    if (!empty($args['btcpw_file']) && !empty($args['payment_id']) && !empty($args['download_id']) && !empty($args['ttl']) && !empty($args['token'])) {
+    if (!empty($args['download_file']) && !empty($args['payment_id']) && !empty($args['download_id']) && !empty($args['ttl']) && !empty($args['token'])) {
+        $args['btcpw_file'] = wp_get_attachment_url($args['download_file']);
         $payment = new BTCPayWall_Payment($args['payment_id']);
         $download = new BTCPayWall_Digital_Download($args['download_id']);
         if ($download->get_download_is_allowed($payment->invoice_id) == false) {
@@ -112,8 +108,8 @@ function btcpaywall_process_download()
         }
 
         $file['url'] = $download_args['btcpw_file'];
-        $id = btcpaywall_get_attachment_id($download_args['btcpw_file']);
-
+        //$id = btcpaywall_get_attachment_id($download_args['btcpw_file']);
+        $id = $args['download_file'];
         $file_path = get_attached_file($id);
 
         $file['name'] = btcpaywall_get_file_name_from_path($download_args['btcpw_file']);
@@ -1130,7 +1126,7 @@ function btcpaywall_process_download_url($args)
 
     $verificationToken = btcpaywall_generate_url_token($secret_key, [
         'ttl' => rawurlencode($query_args['ttl']),
-        'btcpw_file' => rawurlencode($query_args['btcpw_file']),
+        'download_file' => (int)($query_args['download_file']),
         'payment_id' => rawurlencode($query_args['payment_id']),
         'download_id' => (int)$query_args['download_id'],
         'email' => rawurlencode($query_args['email']),
@@ -1151,14 +1147,12 @@ function btcpaywall_generate_url_token($secret_key, $args)
 {
     $tokenData = [
         'ttl' => sanitize_text_field($args['ttl']),
-        'btcpw_file' => sanitize_text_field($args['btcpw_file']),
+        'download_file' => (int)($args['download_file']),
         'payment_id' => sanitize_text_field($args['payment_id']),
-        'download_id' => (int)$args['download_id'],
+        'download_id' => (int)($args['download_id']),
         'email' => sanitize_email($args['email']),
         'ip' => $_SERVER['REMOTE_ADDR'],
     ];
-
-
     $serialized = json_encode($tokenData);
 
     return hash_hmac('sha256', $serialized, $secret_key);
