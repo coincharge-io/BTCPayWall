@@ -29,7 +29,9 @@
           $(".btcpw_digital_download").html(text);
           if (response.success) {
             btcpw_invoice_id = response.data.invoice_id;
-            form_container = $("#btcpw_digital_download_customer_info");
+            form_container = $("#btcpw_digital_download_customer_info").length
+              ? $("#btcpw_digital_download_customer_info")
+              : $("#btcpaywall_checkout_cart");
             btcpwShowOpenNodeFileInvoice(btcpw_invoice_id, form_container);
           }
         },

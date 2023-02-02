@@ -34,8 +34,12 @@
     var payment_request;
     $("#btcpw_digital_download_form").submit(function(e) {
       e.preventDefault();
-      if (btcpw_invoice_id && form_container) {
-        btcpwShowLNBitsFileInvoice(btcpw_invoice_id, form_container);
+      if (payment_request && btcpw_invoice_id && form_container) {
+        btcpwShowLNBitsFileInvoice(
+          payment_request,
+          btcpw_invoice_id,
+          form_container
+        );
         return;
       }
       var text = $(".btcpw_digital_download").text();
@@ -57,9 +61,12 @@
         success: function(response) {
           $(".btcpw_digital_download").html(text);
           if (response.success) {
+            console.log(response);
             payment_request = response.data.payment_request;
             btcpw_invoice_id = response.data.invoice_id;
-            form_container = $("#btcpw_digital_download_customer_info");
+            form_container = $("#btcpw_digital_download_customer_info").length
+              ? $("#btcpw_digital_download_customer_info")
+              : $("#btcpaywall_checkout_cart");
             btcpwShowLNBitsFileInvoice(
               payment_request,
               btcpw_invoice_id,
