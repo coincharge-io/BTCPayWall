@@ -155,8 +155,11 @@ add_action('wp_ajax_btcpw_create_shortcode', 'btcpaywall_create_pay_per_shortcod
  */
 function ajax_btcpaywall_create_store_coincharge_pay()
 {
-    if (empty($_POST['email']) || empty($_POST['password']) || empty($_POST['storeName']) || empty($_POST['lightningAddress']) || empty($_POST['xPub']) || empty($_POST['speedPolicy'])) {
-        wp_send_json_error(['message' => 'All fields are required.']);
+    if (empty($_POST['lightningAddress']) && empty($_POST['xPub'])) {
+        wp_send_json_error(['message' => 'You need to provide lightning address or xPub.']);
+    }
+    if (empty($_POST['email']) || empty($_POST['password']) || empty($_POST['storeName'])) {
+        wp_send_json_error(['message' => 'Email, password and store name are required.']);
     }
     //No need to sanitize since values aren't stored in database ??
     $args = array(
@@ -176,8 +179,7 @@ function ajax_btcpaywall_create_store_coincharge_pay()
         'method' => 'POST',
         'timeout' => 30
     );
-    //Change
-    $server_url = 'http://localhost:5000';
+    $server_url = 'https://ccpay.coincharge.io';
     $url = "{$server_url}/btcpaywall/create-store";
     $response = wp_remote_request($url, $args);
     if (is_wp_error($response)) {

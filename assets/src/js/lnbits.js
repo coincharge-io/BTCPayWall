@@ -19,7 +19,7 @@
             .then(() =>
               $(".ui-dialog-buttonset button:first-child")
                 .text("Copied to clipboard")
-                .css({ backgroundColor: "green" })
+                .css({ backgroundColor: "#008000", color: "#fff" })
             );
         },
         Close: function() {

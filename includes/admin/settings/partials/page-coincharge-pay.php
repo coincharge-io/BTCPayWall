@@ -53,9 +53,8 @@ $button_text = $btcpw_coincharge_pay_key ? 'Save' : 'Create';
               <label for="btcpw_coincharge_pay_lightning_address"><?php echo esc_html__('Lightning Address', 'btcpaywall'); ?></label>
             </div>
             <div class="col-80">
-              <input required type="text" placeholder="Lightning Address for receiving Sats" name="btcpw_coincharge_pay_lightning_address" id="btcpw_coincharge_pay_lightning_address" value="<?php echo esc_attr(""); ?>" style="min-width: 500px;">
+              <input type="text" placeholder="Lightning Address for receiving Sats" name="btcpw_coincharge_pay_lightning_address" id="btcpw_coincharge_pay_lightning_address" value="<?php echo esc_attr(""); ?>" style="min-width: 500px;">
               <p class="btcpw_coincharge_pay_lightning_address_message" style="color:red;"></p>
-              <p class="btcpw_coincharge_pay_message" style="color:red;"></p>
             </div>
           </div>
           <div class="row">
@@ -63,9 +62,8 @@ $button_text = $btcpw_coincharge_pay_key ? 'Save' : 'Create';
               <label for="btcpw_coincharge_pay_xPub"><?php echo esc_html__('xPub', 'btcpaywall'); ?></label>
             </div>
             <div class="col-80">
-              <input required type="text" placeholder="XPub for receiving BTC" name="btcpw_coincharge_pay_xPub" id="btcpw_coincharge_pay_lightning_address" value="<?php echo esc_attr(""); ?>" style="min-width: 500px;">
+              <input type="text" placeholder="XPub for receiving BTC" name="btcpw_coincharge_pay_xPub" id="btcpw_coincharge_pay_xPub" value="<?php echo esc_attr(""); ?>" style="min-width: 500px;">
               <p class="btcpw_coincharge_pay_xPub_message" style="color:red;"></p>
-              <p class="btcpw_coincharge_pay_message" style="color:red;"></p>
             </div>
           </div>
           <div class="row">
@@ -81,6 +79,7 @@ $button_text = $btcpw_coincharge_pay_key ? 'Save' : 'Create';
                   <?php echo esc_html('Has at least 1 confirmation', 'btcpaywall'); ?>
                 </option>
               </select>
+              <p class="btcpw_coincharge_pay_message" style="color:red;"></p>
             </div>
           </div>
           <div class="row">
