@@ -122,11 +122,9 @@ function btcpaywall_process_download()
         $file['content_type'] = btcpaywall_get_file_content_type($file['extension']);
         setcookie("btcpw_{$payment->invoice_id}{$download->ID}", isset($_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"]) ? ++$_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"] : 1, strtotime("14 Jan 2038"), '/');
         $headers = btcpaywall_get_all_headers();
-
         if (in_array($file['extension'], array('php', 'js'))) {
             wp_die(__('File extension is not supported.', 'btcpaywall'));
         }
-
         if (headers_sent()) {
             wp_die(__('Headers sent before download.', 'btcpaywall'));
         }
@@ -1215,11 +1213,11 @@ function btcpaywall_set_headers_for_file_download($file)
 }
 function btcpaywall_prepare_system_before_download_file()
 {
-    $disabled = explode(',', ini_get('disable_functions'));
-    $is_func_disabled = in_array('set_time_limit', $disabled);
-    if (!$is_func_disabled && !ini_get('safe_mode')) {
-        @set_time_limit(0);
-    }
+    // $disabled = explode(',', ini_get('disable_functions'));
+    // $is_func_disabled = in_array('set_time_limit', $disabled);
+    // if (!$is_func_disabled && !ini_get('safe_mode')) {
+    //     @set_time_limit(0);
+    // }
 
     @session_write_close();
     if (function_exists('apache_setenv')) {
