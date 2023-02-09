@@ -12,14 +12,16 @@
 
 
 // Exit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 /**
  * Get price information for protected post/video/file from shortcode attributes
- * 
+ *
  * @param array $atts Shortcode attributes
- * 
+ *
  * @since 1.0.8.1
- * 
+ *
  * @return string Display information about price inside paywall
  */
 function btcpaywall_get_post_info_string_from_attributes($atts)
@@ -69,13 +71,13 @@ function btcpaywall_get_post_info_string_from_attributes($atts)
     return $formatted;
 }
 /**
- * Get price information for protected post/video/file 
- * 
+ * Get price information for protected post/video/file
+ *
  * @param int $post_id  Post id
  * @param string $type Module name
- * 
+ *
  * @since 1.0
- * 
+ *
  * @return string Display information about price inside paywall
  */
 function btcpaywall_get_post_info_string($post_id = null, $type = 'post')
@@ -118,7 +120,6 @@ function btcpaywall_get_post_info_string($post_id = null, $type = 'post')
     $payblock_info = btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['info'];
 
     if (!empty($payblock_info)) {
-
         $search = array('{price}', '{duration}', '{dtype}', '{currency}');
 
         $replace = array($price, $duration, $duration_type, $currency);
@@ -141,23 +142,22 @@ function btcpaywall_get_post_info_string($post_id = null, $type = 'post')
 
 /**
  * Get paywall title
- * 
+ *
  * @since 1.0
- * 
+ *
  * @return string Display paywall title
  */
 function btcpaywall_get_payblock_header_string()
 {
-
     return btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['title'] ? btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['title'] : 'For access to ' . get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] . ' first pay';
 }
 /**
  * Get paywall button text
- * 
+ *
  * @param array $atts Shortcode attributes
- * 
+ *
  * @since 1.0
- * 
+ *
  * @return string Display paywall button text
  */
 function btcpaywall_get_payblock_button_string($atts)
@@ -166,10 +166,10 @@ function btcpaywall_get_payblock_button_string($atts)
 }
 /**
  * Return default values for each revenue type
- * 
+ *
  * @params string $name The name of revenue type.
  * @since 1.0
- * 
+ *
  * @return array Show default values for choosen project.
  */
 function btcpaywall_get_default_values($name)
@@ -200,13 +200,13 @@ function btcpaywall_get_default_values($name)
     }
 }
 /**
- * Calculate price for invoice 
- * 
+ * Calculate price for invoice
+ *
  * @params int $post_id Post id.
- * 
+ *
  * @since 1.0
- * 
- * @return string Price 
+ *
+ * @return string Price
  */
 function btcpaywall_calculate_price_for_invoice($post_id)
 {
@@ -217,16 +217,15 @@ function btcpaywall_calculate_price_for_invoice($post_id)
 
 /**
  * Check if protected content is paid
- * 
- * @param int $post_id Post id. 
- * 
+ *
+ * @param int $post_id Post id.
+ *
  * @since 1.0
- * 
+ *
  * @return bool Whether or not content is paid
  */
 function btcpaywall_is_paid_content($post_id = null)
 {
-
     if (empty($post_id)) {
         $post_id = get_the_ID();
     }
@@ -267,17 +266,16 @@ function btcpaywall_is_paid_content($post_id = null)
 
 /**
  * Generate order id
- * 
+ *
  * @param $post_id Post id.
  *
  * @since 1.0
- * 
+ *
  * @return int Order id.
  * @throws Exception
  */
 function btcpaywall_generate_order_id($post_id)
 {
-
     $order_id = wp_insert_post([
         'post_title' => 'Pay ' . $post_id . ' from ' . $_SERVER['REMOTE_ADDR'],
         'post_status' => 'publish',
@@ -293,16 +291,15 @@ function btcpaywall_generate_order_id($post_id)
 }
 /**
  * Get cookie duration
- * 
- * @param $post_id Post id. 
- * 
+ *
+ * @param $post_id Post id.
+ *
  * @since 1.0
- * 
+ *
  * @return false|int Cookie duration.
  */
 function btcpaywall_get_cookie_duration($post_id)
 {
-
     $duration = get_post_meta($post_id, 'btcpw_duration', true);
     $project = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] ? get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] : 'post';
     if (empty($duration)) {
@@ -319,17 +316,17 @@ function btcpaywall_get_cookie_duration($post_id)
 }
 /**
  * Update post meta values
- * 
+ *
  * @param array $atts Attribute values.
- * 
- * @type string $currency   
+ *
+ * @type string $currency
  * @type string $duration_type
  * @type string $duration
  * @type string $btc_format
  * @type int $price
- * 
+ *
  * @since 1.0
- * 
+ *
  * @return string|bool Update meta values or false.
  */
 
@@ -364,17 +361,16 @@ function btcpaywall_update_meta_settings($atts)
 
 /**
  * Display fields for collecting donor/customer information
- * 
- * @params array $arr 
- * 
+ *
+ * @params array $arr
+ *
  * @since 1.0
- * 
+ *
  * @return bool Whether or not to display fields
  */
 
 function btcpaywall_display_is_enabled($arr)
 {
-
     if (!is_array($arr)) {
         return;
     }
@@ -388,11 +384,11 @@ function btcpaywall_display_is_enabled($arr)
 }
 
 /**
- * 
+ *
  * @param $atts
  *
  * @since 1.0
- * 
+ *
  * @return array
  */
 function btcpaywall_get_collect($atts)
@@ -467,14 +463,13 @@ function btcpaywall_get_fixed_amount($atts)
 
 /**
  * Get an attachment ID given a URL.
- * 
+ *
  * @param string $url
  *
  * @return int Attachment ID on success, 0 on failure
  */
 function btcpaywall_get_attachment_id($url)
 {
-
     $attachment_id = 0;
 
     $dir = wp_upload_dir();
@@ -498,9 +493,7 @@ function btcpaywall_get_attachment_id($url)
         $query = new WP_Query($query_args);
 
         if ($query->have_posts()) {
-
             foreach ($query->posts as $post_id) {
-
                 $meta = wp_get_attachment_metadata($post_id);
 
                 $original_file       = basename($meta['file']);

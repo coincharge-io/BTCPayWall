@@ -39,6 +39,10 @@
               .text(
                 `You've successfully created a store. We've sent a confirmation link to your email. You need to confirm your account in order to login to CoinchargePay.`
               );
+            $(".btcpw_coincharge_pay_email_message").text("");
+            $(".btcpw_coincharge_pay_password_message").text("");
+            $(".btcpw_coincharge_pay_lightning_address_message").text("");
+            $(".btcpw_coincharge_pay_xPub_message").text("");
           } else {
             const email = response.data[0]?.email ? response.data[0].email : "";
             $(".btcpw_coincharge_pay_email_message").text(email);

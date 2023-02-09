@@ -23,10 +23,12 @@ $lnbits_auth_key = get_option('btcpw_lnbits_auth_key');
       <div class="row">
         <div class="col-20">
           <label for="btcpw_lnbits_auth_key"><?php echo esc_html__('LNBits API Key', 'btcpaywall'); ?></label>
-          <span class="btcpaywall_helper_tip" title="Invoice/read key"></span>
         </div>
         <div class="col-80">
           <input required type="text" name="btcpw_lnbits_auth_key" id="btcpw_lnbits_auth_key" value="<?php echo esc_attr($lnbits_auth_key); ?>" style="min-width: 500px;">
+          <div>
+            <span>LNBits Invoice/read key</span>
+          </div>
         </div>
       </div>
   </div>

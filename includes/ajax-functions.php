@@ -337,7 +337,7 @@ add_action('wp_ajax_nopriv_btcpw_tipping', 'ajax_btcpaywall_tipping');
 function btcpaywall_format_server_response($gateway, $response, $type, $customer)
 {
     if ($gateway === 'LNBits') {
-        $key = $type === 'Pay-per-file' ? 'customer_data' : 'donor';
+        $key = ($type === 'Pay-per-file') ? 'customer_data' : 'donor';
         return array(
             'id' => $response['checking_id'],
             'status' => 'New',
@@ -1432,9 +1432,18 @@ function ajax_btcpaywall_paid_content_file_invoice()
     $bod = $gateway === 'OpenNode' ? json_decode($response['body'], true)['data'] : json_decode($response['body'], true);
 
     $memo = json_decode($body['details']['memo'], true);
-    $customer = $gateway === 'LNBits' ? $memo['customer_data'] : $bod['metadata']['customer_data'];
-    $body = btcpaywall_format_server_response($gateway, $bod, $type, $customer);
+    //$customer = $gateway === 'LNBits' ? $memo['customer_data'] : $bod['metadata']['customer_data'];
+    $payment = new BTCPayWall_Payment($invoice_id);
 
+    $customer = new BTCPayWall_Customer($payment->customer_id);
+
+    $body = btcpaywall_format_server_response($gateway, $bod, 'Pay-per-file', [
+        'full_name' => $customer->full_name,
+        'email' => $customer->email,
+        'address' => $customer->address,
+        'phone' => $customer->phone,
+        'message' => $customer->message
+    ]);
     if (empty($body) || !empty($bod['error'])) {
         return new WP_Error('invoice_error', $bod['error'] ?? 'Something went wrong');
     }
@@ -1446,9 +1455,6 @@ function ajax_btcpaywall_paid_content_file_invoice()
     if ($bod['status'] !== 'Settled' && $bod['status'] !== 'paid' && $bod['paid'] !== true) {
         wp_send_json_error(['message' => 'Invoice is not paid.']);
     }
-    $payment = new BTCPayWall_Payment($invoice_id);
-
-    $customer = new BTCPayWall_Customer($payment->customer_id);
     $payment_method = btcpaywall_get_payment_method($body['id']) ? btcpaywall_get_payment_method($body['id']) : 'BTC';
 
     $db_links = array();
@@ -1465,7 +1471,6 @@ function ajax_btcpaywall_paid_content_file_invoice()
     ));
     setcookie('btcpaywall_purchase', $payment->invoice_id, time() + 60 * 60 * 24 * 30, '/');
     btcpaywall_notify_customer($body['metadata']['customer_data']['email'], btcpaywall_get_notify_customers_body($invoice_id, $body['metadata']['customer_data']), 'Pay');
-
     BTCPayWall()->cart->empty_cart();
     btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($invoice_id, $body['metadata']['customer_data'], 'Pay-per-file'), 'Pay');
     wp_send_json_success();

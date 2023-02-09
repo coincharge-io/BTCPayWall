@@ -12,7 +12,7 @@
                 <?php //$customer = empty($name) ? 'customer' : $name;
                 $payment_details = new BTCPayWall_Payment($invoice_id);
                 $customer_data = new BTCPayWall_Customer($payment_details->customer_id);
-                $customer = empty($customer_data->full_name) ? ',' :  " {$customer_data->full_name},";
+                $customer = empty($customer_data->full_name) ? ',' : " {$customer_data->full_name},";
                 $download_links = explode(',', $payment_details->download_links);
                 $is_tipping = strtolower($payment_details->revenue_type)[0] == 't' ? true : false;
                 $message = strtolower($payment_details->revenue_type)[0] == 't' ? 'Thank you for your tipping. You can see tipping details in the table below.' : 'Thank you for your purchase. You can see payment details in the table below.'; ?>
@@ -126,7 +126,7 @@
                                                                 <ul>
                                                                         <?php foreach ($download_links as $key => $link) : ?><?php $product = new BTCPayWall_Digital_Download($download_ids[$key]);
                                                                                                                                 $name = $product->get_name(); ?>
-                                                                        <li><a href="%3C?php%20echo%20esc_url($link);%20?%3E" target="_blank"><?php echo esc_html__($name, 'btcpaywall'); ?></a></li>
+                                                                        <li><a href="<?php echo esc_url($link); ?>" target="_blank"><?php echo esc_html__($name, 'btcpaywall'); ?></a></li>
                                                                 <?php endforeach; ?>
                                                                 </ul>
                                                         </div>

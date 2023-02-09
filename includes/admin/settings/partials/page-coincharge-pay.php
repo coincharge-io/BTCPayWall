@@ -15,10 +15,12 @@ $button_text = $btcpw_coincharge_pay_key ? 'Save' : 'Create';
           <div class="row">
             <div class="col-20">
               <label for="btcpw_coincharge_pay_email"><?php echo esc_html__('Email', 'btcpaywall'); ?></label>
-              <span class="btcpaywall_helper_tip" title="This email will be used for authentication on CoinchargePay and receiving payment notifications."></span>
             </div>
             <div class="col-80">
               <input required type="text" placeholder="Email" name="btcpw_coincharge_pay_email" id="btcpw_coincharge_pay_email" value="<?php echo esc_attr(""); ?>" style="min-width: 500px;">
+              <div>
+                <span>This email will be used for authentication on CoinchargePay and receiving payment notifications.</span>
+              </div>
               <p class="btcpw_coincharge_pay_email_message" style="color:red;"></p>
             </div>
           </div>
