@@ -299,6 +299,23 @@
         }
       });
     }
+    var next_form, previous_form;
+    $("input.btcpw_coincharge_pay.next-form").click(function() {
+      //if (validationField[0].checkValidity()) {
+      previous_form = $(this).parent().parent();
+      next_form = $(this).parent().parent().next();
+      next_form.show();
+      previous_form.hide();
+      // } else {
+      //   validationField[0].reportValidity();
+      // }
+    });
+    $("input.btcpw_coincharge_pay.previous-form").click(function() {
+      previous_form = $(this).parent().parent();
+      next_form = $(this).parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
     $(
       "#pay-per-post-shortcode-generator-form, #pay-per-view-shortcode-generator-form"
     ).on("submit", function(e) {
