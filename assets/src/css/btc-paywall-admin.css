@@ -863,8 +863,21 @@ Gateway
   }
 }
 
-/*CoinchargePay wizzard*/
+table.general_settings_table {
+  table-layout: fixed;
+  width: 100%;
+}
 
-#btcpw_coincharge_pay_form fieldset:not(:first-of-type) {
-  display: none;
+table.general_settings_table input:not(#show_password),
+table.general_settings_table select {
+  width: 100%;
+  height: 100%;
+}
+
+table.general_settings_table tr.odd > * {
+  box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.023);
+}
+
+table.general_settings_table tr.even > * {
+  box-shadow: inset 0 0 0 9999px rgba(13 110 253, 0.903);
 }
