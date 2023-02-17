@@ -229,7 +229,7 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 			[
 				'label' => 'Button color on hover',
 				'type'  => \Elementor\Controls_Manager::COLOR,
-				'default' => '#FFF',
+				'default' => '#e45a29j',
 			]
 		);
 		$this->add_control(

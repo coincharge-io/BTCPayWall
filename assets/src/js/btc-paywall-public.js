@@ -38,7 +38,9 @@
         },
       });
     });
+  });
 
+  $(document).ready(function() {
     $("#btcpw_tipping_currency").change(function() {
       var stepValue =
         $(this).val() === "BTC"
@@ -51,6 +53,8 @@
         value: parseInt($("#btcpw_tipping_amount").val()),
       });
     });
+  });
+  $(document).ready(function() {
     var eur, usd, sats, gbp;
     $.ajax({
       url: "/wp-admin/admin-ajax.php",
@@ -533,93 +537,195 @@
     }
   }
 
-  $("input[type=radio][name=btcpw_tipping_default_amount]").change(function() {
-    $("input[type=radio][name=btcpw_tipping_default_amount]").attr(
-      "required",
-      true
+  $(document).ready(function() {
+    $("input[type=radio][name=btcpw_tipping_default_amount]").change(
+      function() {
+        $("input[type=radio][name=btcpw_tipping_default_amount]").attr(
+          "required",
+          true
+        );
+        $("#btcpw_tipping_amount").removeAttr("required");
+        $("#btcpw_tipping_amount").val("");
+      }
     );
-    $("#btcpw_tipping_amount").removeAttr("required");
-    $("#btcpw_tipping_amount").val("");
-  });
-  $("#btcpw_tipping_amount").click(function() {
-    $("#btcpw_tipping_amount").attr("required", true);
-    $("input[type=radio][name=btcpw_tipping_default_amount]").removeAttr(
-      "required"
-    );
-    $("input[type=radio][name=btcpw_tipping_default_amount]").prop(
-      "checked",
-      false
-    );
-  });
+    $("#btcpw_tipping_amount").click(function() {
+      $("#btcpw_tipping_amount").attr("required", true);
+      $("input[type=radio][name=btcpw_tipping_default_amount]").removeAttr(
+        "required"
+      );
+      $("input[type=radio][name=btcpw_tipping_default_amount]").prop(
+        "checked",
+        false
+      );
+    });
 
-  $(
-    "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]"
-  ).change(function() {
     $(
       "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]"
-    ).attr("required", true);
-    $("input[name=btcpw_skyscraper_tipping_amount_wide]").removeAttr(
-      "required"
-    );
-    $("input[name=btcpw_skyscraper_tipping_amount_wide]").val("");
-  });
-  $("input[name=btcpw_skyscraper_tipping_amount_wide]").click(function() {
-    $("input[name=btcpw_skyscraper_tipping_amount_wide]").attr(
-      "required",
-      true
-    );
-    $(
-      "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]"
-    ).removeAttr("required");
-    $(
-      "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]"
-    ).prop("checked", false);
-    $(".btcpw_skyscraper_amount_value_1.wide").removeClass("selected");
-    $(".btcpw_skyscraper_amount_value_2.wide").removeClass("selected");
-    $(".btcpw_skyscraper_amount_value_3.wide").removeClass("selected");
-  });
+    ).change(function() {
+      $(
+        "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]"
+      ).attr("required", true);
+      $("input[name=btcpw_skyscraper_tipping_amount_wide]").removeAttr(
+        "required"
+      );
+      $("input[name=btcpw_skyscraper_tipping_amount_wide]").val("");
+    });
+    $("input[name=btcpw_skyscraper_tipping_amount_wide]").click(function() {
+      $("input[name=btcpw_skyscraper_tipping_amount_wide]").attr(
+        "required",
+        true
+      );
+      $(
+        "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]"
+      ).removeAttr("required");
+      $(
+        "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]"
+      ).prop("checked", false);
+      $(".btcpw_skyscraper_amount_value_1.wide").removeClass("selected");
+      $(".btcpw_skyscraper_amount_value_2.wide").removeClass("selected");
+      $(".btcpw_skyscraper_amount_value_3.wide").removeClass("selected");
+    });
 
-  $(
-    "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]"
-  ).change(function() {
     $(
       "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]"
-    ).attr("required", true);
-    $("input[name=btcpw_skyscraper_tipping_amount_high]").removeAttr(
-      "required"
-    );
-    $("input[name=btcpw_skyscraper_tipping_amount_high]").val("");
-  });
-  $("input[name=btcpw_skyscraper_tipping_amount_high]").click(function() {
-    $("input[name=btcpw_skyscraper_tipping_amount_high]").attr(
-      "required",
-      true
-    );
-    $(
-      "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]"
-    ).removeAttr("required");
-    $(
-      "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]"
-    ).prop("checked", false);
-    $(".btcpw_skyscraper_amount_value_1.high").removeClass("selected");
-    $(".btcpw_skyscraper_amount_value_2.high").removeClass("selected");
-    $(".btcpw_skyscraper_amount_value_3.high").removeClass("selected");
-  });
+    ).change(function() {
+      $(
+        "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]"
+      ).attr("required", true);
+      $("input[name=btcpw_skyscraper_tipping_amount_high]").removeAttr(
+        "required"
+      );
+      $("input[name=btcpw_skyscraper_tipping_amount_high]").val("");
+    });
+    $("input[name=btcpw_skyscraper_tipping_amount_high]").click(function() {
+      $("input[name=btcpw_skyscraper_tipping_amount_high]").attr(
+        "required",
+        true
+      );
+      $(
+        "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]"
+      ).removeAttr("required");
+      $(
+        "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]"
+      ).prop("checked", false);
+      $(".btcpw_skyscraper_amount_value_1.high").removeClass("selected");
+      $(".btcpw_skyscraper_amount_value_2.high").removeClass("selected");
+      $(".btcpw_skyscraper_amount_value_3.high").removeClass("selected");
+    });
 
-  $(
-    "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
-  ).change(function() {
     $(
       "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
-    ).attr("required", true);
+    ).change(function() {
+      $(
+        "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
+      ).attr("required", true);
+      $(
+        "input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]"
+      ).removeAttr("required");
+      $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]").val(
+        ""
+      );
+    });
+    $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]").click(
+      function() {
+        $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]").attr(
+          "required",
+          true
+        );
+        $(
+          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
+        ).removeAttr("required");
+        $(
+          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
+        ).prop("checked", false);
+        $(".btcpw_widget.btcpw_skyscraper_amount_value_1.wide").removeClass(
+          "selected"
+        );
+        $(".btcpw_widget.btcpw_skyscraper_amount_value_2.wide").removeClass(
+          "selected"
+        );
+        $(".btcpw_widget.btcpw_skyscraper_amount_value_3.wide").removeClass(
+          "selected"
+        );
+      }
+    );
+
     $(
-      "input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]"
-    ).removeAttr("required");
-    $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]").val("");
+      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
+    ).change(function() {
+      $(
+        "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
+      ).attr("required", true);
+      $(
+        "input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]"
+      ).removeAttr("required");
+      $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]").val(
+        ""
+      );
+    });
+    $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]").click(
+      function() {
+        $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]").attr(
+          "required",
+          true
+        );
+        $(
+          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
+        ).removeAttr("required");
+        $(
+          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
+        ).prop("checked", false);
+        $(".btcpw_widget.btcpw_skyscraper_amount_value_1.high").removeClass(
+          "selected"
+        );
+        $(".btcpw_widget.btcpw_skyscraper_amount_value_2.high").removeClass(
+          "selected"
+        );
+        $(".btcpw_widget.btcpw_skyscraper_amount_value_3.high").removeClass(
+          "selected"
+        );
+      }
+    );
   });
-  $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]").click(
-    function() {
-      $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]").attr(
+  $(document).ready(function() {
+    $(
+      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
+    ).change(function() {
+      $(
+        "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
+      ).attr("required", true);
+      $("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").removeAttr(
+        "required"
+      );
+      $("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").val("");
+    });
+    $("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").click(function() {
+      $("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").attr(
+        "required",
+        true
+      );
+      $(
+        "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
+      ).removeAttr("required");
+      $(
+        "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
+      ).prop("checked", false);
+    });
+  });
+  $(document).ready(function() {
+    $(
+      "input[name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
+    ).change(function() {
+      $(
+        "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
+      ).attr("required", true);
+      $("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").removeAttr(
+        "required"
+      );
+      $("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").val("");
+    });
+    $("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").click(function() {
+      $("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").attr(
         "required",
         true
       );
@@ -629,330 +735,290 @@
       $(
         "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
       ).prop("checked", false);
-      $(".btcpw_widget.btcpw_skyscraper_amount_value_1.wide").removeClass(
-        "selected"
-      );
-      $(".btcpw_widget.btcpw_skyscraper_amount_value_2.wide").removeClass(
-        "selected"
-      );
-      $(".btcpw_widget.btcpw_skyscraper_amount_value_3.wide").removeClass(
-        "selected"
-      );
-    }
-  );
+    });
 
-  $(
-    "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
-  ).change(function() {
-    $(
-      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
-    ).attr("required", true);
-    $(
+    $("input[type=radio][name=btcpw_page_tipping_default_amount]").change(
+      function() {
+        $("input[type=radio][name=btcpw_page_tipping_default_amount]").attr(
+          "required",
+          true
+        );
+        $("#btcpw_page_tipping_amount").removeAttr("required");
+        $("#btcpw_page_tipping_amount").val("");
+      }
+    );
+    $("#btcpw_page_tipping_amount").click(function() {
+      $("#btcpw_page_tipping_amount").attr("required", true);
+      $("input[type=radio][name=btcpw_page_tipping_default_amount]").removeAttr(
+        "required"
+      );
+      $("input[type=radio][name=btcpw_page_tipping_default_amount]").prop(
+        "checked",
+        false
+      );
+      $(".btcpw_page_amount_value_1").removeClass("selected");
+      $(".btcpw_page_amount_value_2").removeClass("selected");
+      $(".btcpw_page_amount_value_3").removeClass("selected");
+    });
+  });
+
+  $(document).ready(function() {
+    var form_count = 1,
+      previous_form,
+      next_form,
+      total_forms;
+    total_forms = $(".btcpw_skyscraper_tipping_container fieldset").length;
+    var freeInput = $(
       "input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]"
-    ).removeAttr("required");
-    $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]").val("");
-  });
-  $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]").click(
-    function() {
-      $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]").attr(
-        "required",
-        true
-      );
-      $(
-        "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
-      ).removeAttr("required");
-      $(
-        "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
-      ).prop("checked", false);
-      $(".btcpw_widget.btcpw_skyscraper_amount_value_1.high").removeClass(
-        "selected"
-      );
-      $(".btcpw_widget.btcpw_skyscraper_amount_value_2.high").removeClass(
-        "selected"
-      );
-      $(".btcpw_widget.btcpw_skyscraper_amount_value_3.high").removeClass(
-        "selected"
-      );
-    }
-  );
-  $(
-    "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
-  ).change(function() {
-    $(
+    );
+    var fixedAmount = $(
       "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
-    ).attr("required", true);
-    $("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").removeAttr(
-      "required"
     );
-    $("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").val("");
-  });
-  $("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").click(function() {
-    $("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").attr(
-      "required",
-      true
-    );
-    $(
-      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
-    ).removeAttr("required");
-    $(
-      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
-    ).prop("checked", false);
-  });
-  $(
-    "input[name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
-  ).change(function() {
-    $(
-      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
-    ).attr("required", true);
-    $("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").removeAttr(
-      "required"
-    );
-    $("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").val("");
-  });
-  $("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").click(function() {
-    $("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").attr(
-      "required",
-      true
-    );
-    $(
-      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
-    ).removeAttr("required");
-    $(
-      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
-    ).prop("checked", false);
+    var validationField =
+      fixedAmount.length !== 0 && freeInput.length === 0
+        ? fixedAmount
+        : freeInput;
+
+    $("input.btcpw_widget.skyscraper-next-form.high").click(function() {
+      if (validationField[0].checkValidity()) {
+        previous_form = $(this).parent().parent().parent();
+        next_form = $(this).parent().parent().parent().next();
+        next_form.show();
+        previous_form.hide();
+      } else {
+        validationField[0].reportValidity();
+      }
+    });
+    $("input.btcpw_widget.skyscraper-previous-form.high").click(function() {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
   });
 
-  $("input[type=radio][name=btcpw_page_tipping_default_amount]").change(
-    function() {
-      $("input[type=radio][name=btcpw_page_tipping_default_amount]").attr(
-        "required",
-        true
-      );
-      $("#btcpw_page_tipping_amount").removeAttr("required");
-      $("#btcpw_page_tipping_amount").val("");
-    }
-  );
-  $("#btcpw_page_tipping_amount").click(function() {
-    $("#btcpw_page_tipping_amount").attr("required", true);
-    $("input[type=radio][name=btcpw_page_tipping_default_amount]").removeAttr(
-      "required"
+  $(document).ready(function() {
+    var form_count = 1,
+      previous_form,
+      next_form,
+      total_forms;
+    total_forms = $(".btcpw_skyscraper_tipping_container fieldset").length;
+    var freeInput = $(
+      "input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]"
     );
-    $("input[type=radio][name=btcpw_page_tipping_default_amount]").prop(
-      "checked",
-      false
+    var fixedAmount = $(
+      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
     );
-    $(".btcpw_page_amount_value_1").removeClass("selected");
-    $(".btcpw_page_amount_value_2").removeClass("selected");
-    $(".btcpw_page_amount_value_3").removeClass("selected");
+
+    var validationField =
+      fixedAmount.length !== 0 && freeInput.length === 0
+        ? fixedAmount
+        : freeInput;
+
+    $("input.btcpw_widget.skyscraper-next-form.wide").click(function() {
+      if (validationField[0].checkValidity()) {
+        previous_form = $(this).parent().parent().parent();
+        next_form = $(this).parent().parent().parent().next();
+        next_form.show();
+        previous_form.hide();
+      } else {
+        validationField[0].reportValidity();
+      }
+    });
+    $("input.btcpw_widget.skyscraper-previous-form.wide").click(function() {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
+  });
+  $(document).ready(function() {
+    var form_count = 1,
+      previous_form,
+      next_form,
+      total_forms;
+    total_forms = $(".btcpw_page_tipping_container fieldset").length;
+    var freeInput = $("#btcpw_page_tipping_amount");
+    var fixedAmount = $(".btcpw_page_tipping_default_amount");
+    var validationField =
+      fixedAmount.length !== 0 && freeInput.length === 0
+        ? fixedAmount
+        : freeInput;
+
+    $("input.page-next-form").click(function() {
+      if (validationField[0].checkValidity()) {
+        $(".btcpw_page_bar_container.bar-1").removeClass("active");
+        $(".btcpw_page_bar_container.bar-2").addClass("active");
+        previous_form = $(this).parent().parent();
+        next_form = $(this).parent().parent().next();
+        next_form.show();
+        previous_form.hide();
+      } else {
+        validationField[0].reportValidity();
+      }
+    });
+    $("input.page-previous-form").click(function() {
+      $(".btcpw_page_bar_container.bar-2").removeClass("active");
+      $(".btcpw_page_bar_container.bar-1").addClass("active");
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
   });
 
-  var form_count = 1,
-    previous_form,
-    next_form,
-    total_forms;
-  total_forms = $(".btcpw_skyscraper_tipping_container fieldset").length;
-  var freeInput = $(
-    "input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]"
-  );
-  var fixedAmount = $(
-    "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
-  );
-  var validationField =
-    fixedAmount.length !== 0 && freeInput.length === 0
-      ? fixedAmount
-      : freeInput;
+  $(document).ready(function() {
+    var form_count = 1,
+      previous_form,
+      next_form,
+      total_forms;
+    total_forms = $(".btcpw_skyscraper_tipping_container fieldset").length;
+    var freeInput = $("input[name=btcpw_skyscraper_tipping_amount_high]");
+    var fixedAmount = $(
+      "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]"
+    );
+    var validationField =
+      fixedAmount.length !== 0 && freeInput.length === 0
+        ? fixedAmount
+        : freeInput;
 
-  $("input.btcpw_widget.skyscraper-next-form.high").click(function() {
-    if (validationField[0].checkValidity()) {
+    $("input.skyscraper-next-form.high").click(function() {
+      if (validationField[0].checkValidity()) {
+        previous_form = $(this).parent().parent().parent();
+        next_form = $(this).parent().parent().parent().next();
+        next_form.show();
+        previous_form.hide();
+      } else {
+        validationField[0].reportValidity();
+      }
+    });
+    $("input.skyscraper-previous-form.high").click(function() {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
+  });
+
+  $(document).ready(function() {
+    var form_count = 1,
+      previous_form,
+      next_form,
+      total_forms;
+    total_forms = $(".btcpw_skyscraper_tipping_container fieldset").length;
+    var freeInput = $("input[name=btcpw_skyscraper_tipping_amount_wide]");
+    var fixedAmount = $(
+      "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]"
+    );
+    var validationField =
+      fixedAmount.length !== 0 && freeInput.length === 0
+        ? fixedAmount
+        : freeInput;
+
+    $("input.skyscraper-next-form.wide").click(function() {
+      if (validationField[0].checkValidity()) {
+        previous_form = $(this).parent().parent().parent();
+        next_form = $(this).parent().parent().parent().next();
+        next_form.show();
+        previous_form.hide();
+      } else {
+        validationField[0].reportValidity();
+      }
+    });
+    $("input.skyscraper-previous-form.wide").click(function() {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
+  });
+
+  //Revenue post
+  $(document).ready(function() {
+    var form_count = 1,
+      previous_form,
+      next_form,
+      total_forms;
+    total_forms = $(".btcpw_revenue_post_container fieldset").length;
+
+    $(".revenue-post-next-form").click(function() {
       previous_form = $(this).parent().parent().parent();
       next_form = $(this).parent().parent().parent().next();
       next_form.show();
       previous_form.hide();
-    } else {
-      validationField[0].reportValidity();
-    }
-  });
-  $("input.btcpw_widget.skyscraper-previous-form.high").click(function() {
-    previous_form = $(this).parent().parent().parent();
-    next_form = $(this).parent().parent().parent().prev();
-    next_form.show();
-    previous_form.hide();
+    });
+    $("input.revenue-post-previous-form").click(function() {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
   });
 
-  total_forms = $(".btcpw_skyscraper_tipping_container fieldset").length;
-  var freeInput = $(
-    "input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]"
-  );
-  var fixedAmount = $(
-    "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
-  );
+  //Revenue view
+  $(document).ready(function() {
+    var form_count = 1,
+      previous_form,
+      next_form,
+      total_forms;
+    total_forms = $(".btcpw_revenue_view_container fieldset").length;
 
-  var validationField =
-    fixedAmount.length !== 0 && freeInput.length === 0
-      ? fixedAmount
-      : freeInput;
-
-  $("input.btcpw_widget.skyscraper-next-form.wide").click(function() {
-    if (validationField[0].checkValidity()) {
+    $(".revenue-view-next-form").click(function() {
       previous_form = $(this).parent().parent().parent();
       next_form = $(this).parent().parent().parent().next();
       next_form.show();
       previous_form.hide();
-    } else {
-      validationField[0].reportValidity();
-    }
+    });
+    $("input.revenue-view-previous-form").click(function() {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
   });
-  $("input.btcpw_widget.skyscraper-previous-form.wide").click(function() {
-    previous_form = $(this).parent().parent().parent();
-    next_form = $(this).parent().parent().parent().prev();
-    next_form.show();
-    previous_form.hide();
-  });
-  total_forms = $(".btcpw_page_tipping_container fieldset").length;
-  var freeInput = $("#btcpw_page_tipping_amount");
-  var fixedAmount = $(".btcpw_page_tipping_default_amount");
-  var validationField =
-    fixedAmount.length !== 0 && freeInput.length === 0
-      ? fixedAmount
-      : freeInput;
 
-  $("input.page-next-form").click(function() {
-    if (validationField[0].checkValidity()) {
-      $(".btcpw_page_bar_container.bar-1").removeClass("active");
-      $(".btcpw_page_bar_container.bar-2").addClass("active");
+  //Revenue file
+  $(document).ready(function() {
+    var form_count = 1,
+      previous_form,
+      next_form,
+      total_forms;
+    total_forms = $(".btcpw_revenue_file_container fieldset").length;
+
+    $(".revenue-file-next-form").click(function() {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().next();
+      next_form.show();
+      previous_form.hide();
+    });
+    $("input.revenue-file-previous-form").click(function() {
+      previous_form = $(this).parent().parent().parent();
+      next_form = $(this).parent().parent().parent().prev();
+      next_form.show();
+      previous_form.hide();
+    });
+  });
+
+  //Pay-per-file
+  $(document).ready(function() {
+    var form_count = 1,
+      previous_form,
+      next_form,
+      total_forms;
+    total_forms = $(".btcpw_digital_download_protected_area fieldset").length;
+
+    $("input.btcpw_digital_download.next-form").click(function() {
       previous_form = $(this).parent().parent();
       next_form = $(this).parent().parent().next();
       next_form.show();
       previous_form.hide();
-    } else {
-      validationField[0].reportValidity();
-    }
-  });
-  $("input.page-previous-form").click(function() {
-    $(".btcpw_page_bar_container.bar-2").removeClass("active");
-    $(".btcpw_page_bar_container.bar-1").addClass("active");
-    previous_form = $(this).parent().parent().parent();
-    next_form = $(this).parent().parent().parent().prev();
-    next_form.show();
-    previous_form.hide();
-  });
+    });
 
-  total_forms = $(".btcpw_skyscraper_tipping_container fieldset").length;
-  var freeInput = $("input[name=btcpw_skyscraper_tipping_amount_high]");
-  var fixedAmount = $(
-    "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]"
-  );
-  var validationField =
-    fixedAmount.length !== 0 && freeInput.length === 0
-      ? fixedAmount
-      : freeInput;
-
-  $("input.skyscraper-next-form.high").click(function() {
-    if (validationField[0].checkValidity()) {
+    $("input.btcpw_digital_download.previous-form").click(function() {
       previous_form = $(this).parent().parent().parent();
-      next_form = $(this).parent().parent().parent().next();
+      next_form = $(this).parent().parent().parent().prev();
       next_form.show();
       previous_form.hide();
-    } else {
-      validationField[0].reportValidity();
-    }
-  });
-  $("input.skyscraper-previous-form.high").click(function() {
-    previous_form = $(this).parent().parent().parent();
-    next_form = $(this).parent().parent().parent().prev();
-    next_form.show();
-    previous_form.hide();
-  });
-
-  total_forms = $(".btcpw_skyscraper_tipping_container fieldset").length;
-  var freeInput = $("input[name=btcpw_skyscraper_tipping_amount_wide]");
-  var fixedAmount = $(
-    "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]"
-  );
-  var validationField =
-    fixedAmount.length !== 0 && freeInput.length === 0
-      ? fixedAmount
-      : freeInput;
-
-  $("input.skyscraper-next-form.wide").click(function() {
-    if (validationField[0].checkValidity()) {
-      previous_form = $(this).parent().parent().parent();
-      next_form = $(this).parent().parent().parent().next();
-      next_form.show();
-      previous_form.hide();
-    } else {
-      validationField[0].reportValidity();
-    }
-  });
-  $("input.skyscraper-previous-form.wide").click(function() {
-    previous_form = $(this).parent().parent().parent();
-    next_form = $(this).parent().parent().parent().prev();
-    next_form.show();
-    previous_form.hide();
-  });
-
-  //Revenue post
-  total_forms = $(".btcpw_revenue_post_container fieldset").length;
-
-  $(".revenue-post-next-form").click(function() {
-    previous_form = $(this).parent().parent().parent();
-    next_form = $(this).parent().parent().parent().next();
-    next_form.show();
-    previous_form.hide();
-  });
-  $("input.revenue-post-previous-form").click(function() {
-    previous_form = $(this).parent().parent().parent();
-    next_form = $(this).parent().parent().parent().prev();
-    next_form.show();
-    previous_form.hide();
-  });
-
-  //Revenue view
-  total_forms = $(".btcpw_revenue_view_container fieldset").length;
-
-  $(".revenue-view-next-form").click(function() {
-    previous_form = $(this).parent().parent().parent();
-    next_form = $(this).parent().parent().parent().next();
-    next_form.show();
-    previous_form.hide();
-  });
-  $("input.revenue-view-previous-form").click(function() {
-    previous_form = $(this).parent().parent().parent();
-    next_form = $(this).parent().parent().parent().prev();
-    next_form.show();
-    previous_form.hide();
-  });
-
-  //Revenue file
-  total_forms = $(".btcpw_revenue_file_container fieldset").length;
-
-  $(".revenue-file-next-form").click(function() {
-    previous_form = $(this).parent().parent().parent();
-    next_form = $(this).parent().parent().parent().next();
-    next_form.show();
-    previous_form.hide();
-  });
-  $("input.revenue-file-previous-form").click(function() {
-    previous_form = $(this).parent().parent().parent();
-    next_form = $(this).parent().parent().parent().prev();
-    next_form.show();
-    previous_form.hide();
-  });
-
-  //Pay-per-file
-  total_forms = $(".btcpw_digital_download_protected_area fieldset").length;
-
-  $("input.btcpw_digital_download.next-form").click(function() {
-    previous_form = $(this).parent().parent();
-    next_form = $(this).parent().parent().next();
-    next_form.show();
-    previous_form.hide();
-  });
-
-  $("input.btcpw_digital_download.previous-form").click(function() {
-    previous_form = $(this).parent().parent().parent();
-    next_form = $(this).parent().parent().parent().prev();
-    next_form.show();
-    previous_form.hide();
+    });
   });
 })(jQuery);

@@ -17,9 +17,12 @@ $btcpw_opennode_auth_key = get_option('btcpw_opennode_auth_key');
                         </td>
                         <td>
                             <input required type="text" name="btcpw_opennode_auth_key" id="btcpw_opennode_auth_key" value="<?php echo esc_attr($btcpw_opennode_auth_key); ?>" style="min-width: 500px;">
+                            <div>
+                                <span>E-commerce Key</span>
+                            </div>
                         </td>
                     </tr>
-                    <tr class="even btcpw_general_settings_buttons" style="display: inline-block;">
+                    <tr class="even btcpw_general_settings_buttons">
                         <td colspan=2>
                             <button class="button button-primary btcpw_button" type="submit">Save</button>
                         </td>

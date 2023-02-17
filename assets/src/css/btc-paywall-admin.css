@@ -173,17 +173,17 @@
   border-style: outset;
   border-color: #0066a2;
   height: 50px;
-  width: 100px;
+  width: 100%;
   font: bold 15px arial, sans-serif;
   text-shadow: none;
   border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  margin-left: -5px;
 }
 
 .button.button-secondary.btcpw_button {
   height: 50px;
+  width: 100%;
   background-color: #008000;
   color: #fff;
   font: bold 15px arial, sans-serif;
@@ -340,6 +340,7 @@ div.btcpw_help_link a:hover {
 
 .btcpw__paywall_submit_button {
   margin-top: 25px;
+  width: 15%;
 }
 
 .btcpw_pay_per_placeholders {

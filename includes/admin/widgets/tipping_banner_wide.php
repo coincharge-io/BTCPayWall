@@ -291,7 +291,7 @@ class Tipping_Banner_Wide extends WP_Widget
 
         $button_color = !empty($instance['button_color']) ? $instance['button_color'] : esc_html__('#FE642E', 'btcpaywall');
 
-        $button_color_hover = !empty($instance['button_color_hover']) ? $instance['button_color_hover'] : '#FFF';
+        $button_color_hover = !empty($instance['button_color_hover']) ? $instance['button_color_hover'] : '#e45a29j';
 
         $logo_id = !empty($instance['logo_id']) ? $instance['logo_id'] : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png';
         $background_id = !empty($instance['background_id']) ? $instance['background_id'] : esc_html__('', 'btcpaywall');

@@ -657,7 +657,7 @@ registerBlockType ('btcpaywall/gutenberg-tipping-page', {
     },
     button_color_hover: {
       type: 'string',
-      default: '#FFF',
+      default: '#e45a29j',
     },
     continue_button_text: {
       type: 'string',

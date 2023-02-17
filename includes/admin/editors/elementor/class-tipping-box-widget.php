@@ -10,11 +10,11 @@
  * @since       1.0
  */
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
 {
-
-
     /**
      * @return string
      */
@@ -52,8 +52,6 @@ class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
      */
     protected function _register_controls()
     {
-
-
         $this->start_controls_section(
             'settings',
             [
@@ -251,7 +249,7 @@ class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
             [
                 'label' => 'Button color on hover',
                 'type'  => \Elementor\Controls_Manager::COLOR,
-                'default' => '#FFF',
+                'default' => '#e45a29j',
             ]
         );
         $this->end_controls_section();

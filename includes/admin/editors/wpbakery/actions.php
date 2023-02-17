@@ -170,7 +170,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'colorpicker',
                 'heading' => 'Button color on hover',
                 'param_name' => 'button_color_hover',
-                'value' => '#FFF',
+                'value' => '#e45a29j',
                 'description' => 'Set button color on hover',
                 'group' => 'Buttons'
             ),
@@ -586,7 +586,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'colorpicker',
                 'heading' => 'Button color on hover',
                 'param_name' => 'button_color_hover',
-                'value' => '#FFF',
+                'value' => '#e45a29j',
                 'description' => 'Set button color on hover',
                 'group' => 'Buttons'
             ),
@@ -979,7 +979,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'colorpicker',
                 'heading' => 'Button color on hover',
                 'param_name' => 'button_color_hover',
-                'value' => '#FFF',
+                'value' => '#e45a29j',
                 'description' => 'Set button color on hover',
                 'group' => 'Buttons'
             ),
@@ -1449,7 +1449,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'colorpicker',
                 'heading' => 'Button color on hover',
                 'param_name' => 'button_color_hover',
-                'value' => '#FFF',
+                'value' => '#e45a29j',
                 'description' => 'Set button color on hover',
                 'group' => 'Buttons'
             ),
@@ -1908,7 +1908,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'colorpicker',
                 'heading' => 'Button color on hover',
                 'param_name' => 'button_color_hover',
-                'value' => '#FFF',
+                'value' => '#e45a29j',
                 'description' => 'Set button color on hover',
                 'group' => 'Buttons'
             ),
@@ -2109,7 +2109,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'colorpicker',
                 'heading' => 'Button color on hover',
                 'param_name' => 'button_color_hover',
-                'value' => '#FFF',
+                'value' => '#e45a29j',
                 'description' => 'Set button color on hover',
                 'group' => 'Buttons'
             ),

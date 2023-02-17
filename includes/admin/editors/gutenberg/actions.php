@@ -164,7 +164,7 @@ function btcpaywall_load_gutenberg()
                 ),
                 'button_color_hover' => array(
                     'type' => 'string',
-                    'default' => '#FFF'
+                    'default' => '#e45a29j'
                 ),
                 'continue_button_text' => array(
                     'type' => 'string',
@@ -368,7 +368,7 @@ function btcpaywall_load_gutenberg()
                 ),
                 'button_color_hover' => array(
                     'type' => 'string',
-                    'default' => '#FFF'
+                    'default' => '#e45a29j'
                 ),
                 'continue_button_text' => array(
                     'type' => 'string',
@@ -486,7 +486,7 @@ function btcpaywall_load_gutenberg()
                 ),
                 'button_color_hover' => array(
                     'type' => 'string',
-                    'default' => '#FFF'
+                    'default' => '#e45a29j'
                 ),
                 'logo_id' => array(
                     'type' => 'number',
@@ -902,7 +902,7 @@ function btcpaywall_load_gutenberg()
                 ),
                 'button_color_hover' => array(
                     'type' => 'string',
-                    'default' => '#FFF'
+                    'default' => '#e45a29j'
                 ),
                 'continue_button_text' => array(
                     'type' => 'string',
@@ -1136,7 +1136,7 @@ function btcpaywall_load_gutenberg()
                 ),
                 'button_color_hover' => array(
                     'type' => 'string',
-                    'default' => '#FFF'
+                    'default' => '#e45a29j'
                 ),
                 'continue_button_text' => array(
                     'type' => 'string',

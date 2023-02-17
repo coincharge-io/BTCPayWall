@@ -479,7 +479,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z" />
     },
     button_color_hover: {
       type: 'string',
-      default: '#FFF',
+      default: '#e45a29j',
     },
     input_background: {
       type: 'string',
