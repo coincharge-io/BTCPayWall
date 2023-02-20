@@ -68,7 +68,7 @@ $info_text = str_replace($search, $replace, $result->info_text);
                     <span class="btcpaywall_helper_tip" title="This field is used to differentiate generated shortcodes."></span>
                 </div>
                 <div class="col-80">
-                    <input type="text" name="btcpaywall_pay_per_post_shortcode_name" id="btcpaywall_pay_per_post_shortcode_name" value="<?php echo esc_attr($result->name); ?>">
+                    <input type="text" name="btcpaywall_pay_per_post_shortcode_name" required id="btcpaywall_pay_per_post_shortcode_name" value="<?php echo esc_attr($result->name); ?>">
                 </div>
             </div>
             <div class="row">

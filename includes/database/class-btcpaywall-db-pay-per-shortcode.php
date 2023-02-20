@@ -11,7 +11,9 @@
  */
 
 //Eit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
@@ -136,7 +138,6 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
     }
     public function update($row_id, $data = array(), $where = '')
     {
-
         $status = parent::update($row_id, $data, $where);
         return $status;
     }
@@ -151,14 +152,12 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
 
     public function delete($id = null)
     {
-
         if (empty($id)) {
             return false;
         }
         $shortcode  = $this->get_shortcode_by($id);
 
         if ($shortcode->id > 0) {
-
             global $wpdb;
 
             return $wpdb->delete($this->table_name, array('id' => $shortcode->id), array('%d'));
@@ -176,12 +175,10 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
 
 
         if ($shortcode) {
-
             $this->update($shortcode->id, $data);
 
             return $shortcode->id;
         } else {
-
             return $this->insert($data, 'shortcode');
         }
     }
@@ -193,7 +190,7 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
         );
         return $row;
     }
-    public  function record_count()
+    public function record_count()
     {
         global $wpdb;
 
@@ -202,9 +199,20 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
         return $wpdb->get_var($sql);
     }
 
+    public function get_all_shortcodes()
+    {
+        global $wpdb;
+
+        $sql = "SELECT * FROM {$this->table_name}";
+
+
+        $sql .= ' ORDER BY time DESC';
+        $result = $wpdb->get_results($sql, 'ARRAY_A');
+
+        return $result;
+    }
     public function get_shortcodes($per_page = null, $page_number = null)
     {
-
         global $wpdb;
 
         $sql = "SELECT * FROM {$this->table_name}";

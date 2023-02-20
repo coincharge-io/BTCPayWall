@@ -10,7 +10,9 @@
  * @since       1.0
  */
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 function btcpaywall_starts_with($string, $startString)
 {
     $len = strlen($startString);
@@ -30,6 +32,34 @@ function btcpaywall_check_permission($list, $permission)
         }
     }
     return false;
+}
+function btcpaywall_get_donation_templates()
+{
+    $query_args = [
+        'post_type' => 'btcpw_donation',
+        'fields'  => 'ids',
+        'no_found_rows' => true,
+        'posts_per_page' => -1,
+    ];
+    $templates = [];
+    $query = new WP_Query($query_args);
+    if ($query->posts) {
+        foreach ($query->posts as $key => $post_id) {
+            $template = get_post_meta($post_id, 'btcpaywall_tipping_text_template_name', true);
+            $shortcode = btcpaywall_output_shortcode_attributes($template, $post_id);
+            $templates["#" . $post_id . '-' . get_the_title($post_id)] = $shortcode;
+        }
+    }
+    return $templates;
+}
+function btcpaywall_get_pay_per_templates()
+{
+    $shortcodes = new BTCPayWall_Pay_Per_Shortcode();
+    $prepare_templates = [];
+    foreach ($shortcodes->get_all_shortcodes() as $val) {
+        $prepare_templates["#$val[id]-$val[name]"] = (new BTCPayWall_Pay_Per_Shortcode($val['id']))->shortcode();
+    }
+    return $prepare_templates;
 }
 function btcpaywall_all_created_forms()
 {
@@ -88,18 +118,14 @@ function btcpaywall_extract_name($dimension)
 }
 function btcpaywall_check_store_id($store_id)
 {
-
     if (get_option("btcpw_btcpay_store_id") !== false) {
-
         update_option("btcpw_btcpay_store_id", $store_id);
     } else {
-
         add_option("btcpw_btcpay_store_id", $store_id, null, 'no');
     }
 }
 function btcpaywall_render_post_settings_meta_box($post, $meta)
 {
-
     wp_nonce_field(plugin_basename(__FILE__), 'btcpw_post_meta_box_nonce');
 }
 function btcpaywall_round_amount($currency, $amount)

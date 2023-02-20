@@ -1048,7 +1048,6 @@ function btcpaywall_render_shortcode_box_tipping($atts)
                         <button type="submit" id="btcpw_tipping__button"><?php echo (!empty($atts['button_text']) ? esc_html__($atts['button_text'], 'btcpaywall') : 'Tip'); ?></button>
                     </div>
                 </fieldset>
-
             </form>
         </div>
         <div id="powered_by_box">
@@ -1492,3 +1491,13 @@ function btcpaywall_render_receipt()
 }
 
 add_shortcode('btcpaywall_receipt', 'btcpaywall_render_receipt');
+
+function btcpaywall_render_templates_wpbakery($atts)
+{
+    $atts = shortcode_atts(array(
+        'shortcode' => '',
+    ), $atts);
+    var_dump($atts);
+}
+add_shortcode('btcpw_pay_per_templates', 'btcpaywall_render_templates_wpbakery');
+add_shortcode('btcpw_donation_templates', 'btcpaywall_render_templates_wpbakery');

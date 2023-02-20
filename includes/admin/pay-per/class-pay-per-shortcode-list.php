@@ -30,25 +30,7 @@ class Pay_Per_Shortcode_List extends WP_List_Table
             'plural'   => __('Shortcodes', 'btcpaywall'),
             'ajax'     => false
         ]);
-        /*  add_action('admin_menu', [$this, 'btcpaywall_add_submenu'], 99);
-
-        add_action('wp', [$this, 'after_load_wordpress']); */
     }
-    /* public function btcpaywall_add_submenu()
-    {
-        add_submenu_page('btcpw_general_settings', __('All Pay-per-shortcode', 'btcpaywall'), __('All Pay-per-shortcode', 'btcpaywall'), 'manage_options', 'btcpw_pay_per_shortcode_list', array($this, 'btcpaywall_render_pay_per_shortcode_list'));
-    }
-    public function btcpaywall_render_pay_per_shortcode_list()
-    {
-        $exampleListTable = new Pay_Per_Shortcode_List();
-        $exampleListTable->prepare_items();
-?>
-        <div class="wrap">
-            <h2>Example List Table Page</h2>
-            <?php $exampleListTable->display(); ?>
-        </div>
-    <?php
-    } */
     /**
      * Get a list of columns.
      *
@@ -110,6 +92,18 @@ class Pay_Per_Shortcode_List extends WP_List_Table
         $shortcodes = new BTCPayWall_Pay_Per_Shortcode();
 
         return $shortcodes->get_shortcodes($per_page, $page_number);
+    }
+    /**
+     * Retrieve all shortcodes from the database
+     *
+     *
+     * @return mixed
+     */
+    public static function get_all_shortcodes()
+    {
+        $shortcodes = new BTCPayWall_Pay_Per_Shortcode();
+
+        return $shortcodes->get_all_shortcodes();
     }
     /**
      * Delete a shortcode record.

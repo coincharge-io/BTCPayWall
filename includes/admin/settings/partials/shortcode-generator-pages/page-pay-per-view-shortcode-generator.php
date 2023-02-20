@@ -2,18 +2,15 @@
 // Exit if accessed directly.
 
 
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 $id = isset($_GET['id']) ? sanitize_text_field($_GET['id']) : null;
 
 $result = new BTCPayWall_Pay_Per_Shortcode($id);
-/* $used_currency = get_option('btcpaywall_pay_per_view_currency'); */
 $supported_currencies = BTCPayWall::CURRENCIES;
-/* $price = get_option('btcpaywall_pay_per_view_price');
-$duration = get_option('btcpaywall_pay_per_view_duration');
-$duration_type = get_option('btcpaywall_pay_per_view_duration_type'); */
 $supported_durations = BTCPayWall::DURATIONS;
 $supported_btc_format = BTCPayWall::BTC_FORMAT;
-/* $used_format = get_option("btcpaywall_pay_per_view_btc_format"); */
 $disabled_field = ($result->duration_type === 'unlimited') || ($result->duration_type === 'onetime');
 $disable = $disabled_field ? 'disabled' : '';
 $preview_image = wp_get_attachment_image_src($result->preview);
@@ -82,7 +79,7 @@ $info_text = str_replace($search, $replace, $result->info_text);
                     <span class="btcpaywall_helper_tip" title="This field is used to differentiate generated shortcodes."></span>
                 </div>
                 <div class="col-80">
-                    <input type="text" name="btcpaywall_pay_per_view_shortcode_name" id="btcpaywall_pay_per_view_shortcode_name" value="<?php echo esc_attr($result->name); ?>">
+                    <input type="text" required name="btcpaywall_pay_per_view_shortcode_name" id="btcpaywall_pay_per_view_shortcode_name" value="<?php echo esc_attr($result->name); ?>">
                 </div>
             </div>
             <div class="row">

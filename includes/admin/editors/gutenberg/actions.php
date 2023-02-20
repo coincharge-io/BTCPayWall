@@ -413,13 +413,6 @@ function btcpaywall_load_gutenberg()
             'render_callback' => 'btcpaywall_render_end_gutenberg',
         ]
     );
-    register_block_type(
-        'btcpaywall/gutenberg-shortcode-list',
-        [
-            'editor_script' => 'btcpaywall-gutenberg-block-script',
-            'render_callback' => 'btcpaywall_render_shortcodes_gutenberg',
-        ]
-    );
 
 
     register_block_type(
@@ -1174,6 +1167,38 @@ function btcpaywall_load_gutenberg()
                     'type' => 'string',
                     'default' => '#000'
                 ),
+            )
+        ]
+    );
+    register_block_type(
+        'btcpaywall/gutenberg-pay-per-templates',
+        [
+            'editor_script' => 'btcpaywall-gutenberg-block-script',
+            'render_callback' => 'btcpaywall_render_shortcodes_gutenberg',
+            'attributes' => array(
+                'className' => array(
+                    'default' => '',
+                    'type' => 'string'
+                ),
+                'shortcode' => array(
+                    'type' => 'string'
+                )
+            )
+        ]
+    );
+    register_block_type(
+        'btcpaywall/gutenberg-donation-templates',
+        [
+            'editor_script' => 'btcpaywall-gutenberg-block-script',
+            'render_callback' => 'btcpaywall_render_shortcodes_gutenberg',
+            'attributes' => array(
+                'className' => array(
+                    'default' => '',
+                    'type' => 'string'
+                ),
+                'shortcode' => array(
+                    'type' => 'string'
+                )
             )
         ]
     );

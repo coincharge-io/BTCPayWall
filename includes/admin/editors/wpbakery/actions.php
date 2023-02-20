@@ -2438,18 +2438,34 @@ function btcpaywall_load_vc_widgets()
     ));
 
     vc_map(array(
-        'name' => 'BTCPW Shortcode List',
-        'base' => 'btcpw_list_shortcodes',
-        'description' => 'Shortcode list',
+        'name' => 'BTCPW Donation Templates',
+        'base' => 'btcpw_donation_templates',
+        'description' => 'Donation Templates',
         'category' => 'Content',
         'icon' => BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png',
         'params' => array(
             array(
                 'type' => 'dropdown',
-                'heading' => 'Shortcode',
+                'heading' => 'Templates',
                 'param_name' => 'shortcode',
-                'value' => btcpaywall_all_created_forms(),
-                'description' => 'Shortcode',
+                'value' => btcpaywall_get_donation_templates(),
+                'description' => 'Donation Templates',
+            ),
+        )
+    ));
+    vc_map(array(
+        'name' => 'BTCPW Pay Per Templates',
+        'base' => 'btcpw_pay_per_templates',
+        'description' => 'Pay Per Templates',
+        'category' => 'Content',
+        'icon' => BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png',
+        'params' => array(
+            array(
+                'type' => 'dropdown',
+                'heading' => 'Templates',
+                'param_name' => 'shortcode',
+                'value' => btcpaywall_get_pay_per_templates(),
+                'description' => 'Pay Per Templates',
             ),
         )
     ));

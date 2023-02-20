@@ -156,6 +156,12 @@ class BTCPayWall_Pay_Per_Shortcode
 
         return $shortcodes;
     }
+    public function get_all_shortcodes()
+    {
+        $shortcodes = $this->db->get_all_shortcodes();
+
+        return $shortcodes;
+    }
 
 
     public function shortcode_count()
@@ -190,11 +196,11 @@ class BTCPayWall_Pay_Per_Shortcode
         $display_message = filter_var($this->display_message, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
         $mandatory_message = filter_var($this->mandatory_message, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
 
-
+        $id = (int) $this->id;
         if ($this->type === 'pay-per-post') {
-            return  "[btcpw_start_content pay_block='{$payblock}' background_color='{$this->background_color}' width='{$this->width}' height='{$this->height}' price='{$this->price}' header_text='{$this->header_text}' info_text='{$this->info_text}' header_color='{$this->header_color}' info_color='{$this->info_color}' duration_type='{$this->duration_type}' link='{$link}' help_link='{$this->help_link}' help_text='{$this->help_text}' additional_link='{$additional_link}' additional_help_link='{$this->additional_help_link}' additional_help_text='{$this->additional_help_text}' duration='{$this->duration}' currency='{$this->currency}'  button_text='{$this->button_text}' button_text_color='{$this->button_text_color}' button_color='{$this->button_color}' button_color_hover='{$this->button_color_hover}' continue_button_text='{$this->continue_button_text}' continue_button_text_color='{$this->continue_button_text_color}' continue_button_color='{$this->continue_button_color}' continue_button_color_hover='{$this->continue_button_color_hover}' previous_button_text='{$this->previous_button_text}' previous_button_text_color='{$this->previous_button_text_color}' previous_button_color='{$this->previous_button_color}' previous_button_color_hover='{$this->previous_button_color_hover}'  display_name='{$display_name}' mandatory_name='{$mandatory_name}' display_email='{$display_email}' mandatory_email='{$mandatory_email}' display_phone='{$display_phone}' mandatory_phone='{$mandatory_phone}' display_address='{$display_address}' mandatory_address='{$mandatory_address}' display_message='{$display_message}' mandatory_message='{$mandatory_message}']";
+            return  "[btcpw_start_content id='{$id}']";
         }
-        return  "[btcpw_start_video pay_view_block='{$payblock}' background_color='{$this->background_color}' width='{$this->width}' height='{$this->height}' title='{$this->title}' title_color='{$this->title_color}' description='{$this->description}' description_color='{$this->description_color}' preview={$this->preview} price='{$this->price}' header_color='{$this->header_color}' info_color='{$this->info_color}' header_text='{$this->header_text}' info_text='{$this->info_text}' link='{$link}' help_link='{$this->help_link}' help_text='{$this->help_text}' additional_link='{$additional_link}' additional_help_link='{$this->additional_help_link}' additional_help_text='{$this->additional_help_text}' duration_type='{$this->duration_type}' duration='{$this->duration}' currency='{$this->currency}'  button_text='{$this->button_text}' button_text_color='{$this->button_text_color}' button_color='{$this->button_color}' button_color_hover='{$this->button_color_hover}' continue_button_text='{$this->continue_button_text}' continue_button_text_color='{$this->continue_button_text_color}' continue_button_color='{$this->continue_button_color}' continue_button_color_hover='{$this->continue_button_color_hover}' previous_button_text='{$this->previous_button_text}' previous_button_text_color='{$this->previous_button_text_color}' previous_button_color='{$this->previous_button_color}' previous_button_color_hover='{$this->previous_button_color_hover}'  display_name='{$display_name}' mandatory_name='{$mandatory_name}' display_email='{$display_email}' mandatory_email='{$mandatory_email}' display_phone='{$display_phone}' mandatory_phone='{$mandatory_phone}' display_address='{$display_address}' mandatory_address='{$mandatory_address}' display_message='{$display_message}' mandatory_message='{$mandatory_message}']";
+        return  "[btcpw_start_video id='{$id}']";
     }
 
     private function sanitize_columns($data)
