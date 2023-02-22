@@ -1067,11 +1067,20 @@ add_shortcode('btcpw_tipping_box', 'btcpaywall_render_shortcode_box_tipping');
  */
 function btcpaywall_render_shortcode_btcpw_start_content($atts)
 {
+    $customizable = [
+        'type' => 'pay-per-post',
+        'payblock' => $atts['payblock'],
+        'price' => $atts['price'],
+        'currency' => $atts['currency'],
+        'duration' => $atts['duration'],
+        'duration_type' => $atts['duration_type']
+    ];
+    $pay_per_class =  (new BTCPayWall_Pay_Per_Shortcode($atts['id']))->get_pairs($customizable);
     if (btcpaywall_is_paid_content()) {
         return '';
     }
 
-    $atts = shortcode_atts(array(
+    /*$atts = shortcode_atts(array(
         'width' => '',
         'height' => '',
         'background_color' => '',
@@ -1114,7 +1123,8 @@ function btcpaywall_render_shortcode_btcpw_start_content($atts)
         'previous_button_text_color' => '#FFF',
         'previous_button_color' =>  '#1d5aa3',
         'previous_button_color_hover' =>  '#FFF',
-    ), $atts);
+    ), $atts);*/
+    $atts = shortcode_atts($pay_per_class, $atts);
 
     btcpaywall_update_meta_settings($atts);
 
@@ -1140,12 +1150,25 @@ add_shortcode('btcpw_start_content', 'btcpaywall_render_shortcode_btcpw_start_co
 
 function btcpaywall_render_shortcode_btcpw_start_video($atts)
 {
+    $customizable = [
+        'type' => 'pay-per-view',
+        'payblock' => $atts['pay_view_block'],
+        'price' => $atts['price'],
+        'currency' => $atts['currency'],
+        'duration' => $atts['duration'],
+        'duration_type' => $atts['duration_type'],
+        'title' => $atts['title'],
+        'description' => $atts['description'],
+        'preview' => $atts['preview'],
+    ];
+    $pay_per_class =  (new BTCPayWall_Pay_Per_Shortcode($atts['id']))->get_pairs($customizable);
     if (btcpaywall_is_paid_content()) {
         return '';
     }
     $img_preview = BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/preview.png';
 
-    $atts = shortcode_atts(array(
+    $atts = shortcode_atts($pay_per_class, $atts);
+    /*$atts = shortcode_atts(array(
         'pay_view_block' => false,
         'width' => '',
         'height' => '',
@@ -1193,7 +1216,7 @@ function btcpaywall_render_shortcode_btcpw_start_video($atts)
         'previous_button_text_color' => '#FFF',
         'previous_button_color' =>  '#1d5aa3',
         'previous_button_color_hover' => '#FFF',
-    ), $atts);
+    ), $atts);*/
     btcpaywall_update_meta_settings($atts);
 
     $invoice_content = array('title' => 'Pay-per-view: ' . sanitize_text_field($atts['title']), 'project' => 'video');
@@ -1232,40 +1255,40 @@ add_shortcode('btcpw_end_video', 'btcpaywall_render_shortcode_btcpw_end_content'
  *
  * @return false|string
  */
-function btcpaywall_render_shortcode_btcpw_pay_block($atts)
-{
-    if (btcpaywall_is_paid_content()) {
-        return '';
-    }
-
-    $atts = shortcode_atts(array(
-        'background_color' => '#ECF0F1',
-        'header_color' => '#000000',
-        'info_color' => '#000000',
-        'button_color' => '#000000',
-        'button_txt' => '#FFFFFF',
-        'link'    => 'true',
-        'help_link' => 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/',
-        'help_text' => 'Help',
-        'display_name' => get_option('btcpw_default_pay_per_post_display_name', false),
-        'mandatory_name' =>  get_option('btcpw_default_pay_per_post_mandatory_name', false),
-        'display_email' => get_option('btcpw_default_pay_per_post_display_email', false),
-        'mandatory_email' => get_option('btcpw_default_pay_per_post_mandatory_email', false),
-        'display_phone' => get_option('btcpw_default_pay_per_post_display_phone', false),
-        'mandatory_phone' => get_option('btcpw_default_pay_per_post_mandatory_phone', false),
-        'display_address' =>  get_option('btcpw_default_pay_per_post_display_address', false),
-        'mandatory_address' =>  get_option('btcpw_default_pay_per_post_mandatory_address', false),
-        'display_message' =>  get_option('btcpw_default_pay_per_post_display_message', false),
-        'mandatory_message' =>  get_option('btcpw_default_pay_per_post_mandatory_message', false),
-    ), $atts);
-    $help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
-    ob_start();
-
-    include(BTCPAYWALL_PLUGIN_DIR . 'templates/btc-pay-block.php');
-
-    return ob_get_clean();
-}
-add_shortcode('btcpw_pay_block', 'btcpaywall_render_shortcode_btcpw_pay_block');
+// function btcpaywall_render_shortcode_btcpw_pay_block($atts)
+// {
+//     if (btcpaywall_is_paid_content()) {
+//         return '';
+//     }
+//
+//     $atts = shortcode_atts(array(
+//         'background_color' => '#ECF0F1',
+//         'header_color' => '#000000',
+//         'info_color' => '#000000',
+//         'button_color' => '#000000',
+//         'button_txt' => '#FFFFFF',
+//         'link'    => 'true',
+//         'help_link' => 'https://btcpaywall.com/how-to-pay-the-bitcoin-paywall/',
+//         'help_text' => 'Help',
+//         'display_name' => get_option('btcpw_default_pay_per_post_display_name', false),
+//         'mandatory_name' =>  get_option('btcpw_default_pay_per_post_mandatory_name', false),
+//         'display_email' => get_option('btcpw_default_pay_per_post_display_email', false),
+//         'mandatory_email' => get_option('btcpw_default_pay_per_post_mandatory_email', false),
+//         'display_phone' => get_option('btcpw_default_pay_per_post_display_phone', false),
+//         'mandatory_phone' => get_option('btcpw_default_pay_per_post_mandatory_phone', false),
+//         'display_address' =>  get_option('btcpw_default_pay_per_post_display_address', false),
+//         'mandatory_address' =>  get_option('btcpw_default_pay_per_post_mandatory_address', false),
+//         'display_message' =>  get_option('btcpw_default_pay_per_post_display_message', false),
+//         'mandatory_message' =>  get_option('btcpw_default_pay_per_post_mandatory_message', false),
+//     ), $atts);
+//     $help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
+//     ob_start();
+//
+//     include(BTCPAYWALL_PLUGIN_DIR . 'templates/btc-pay-block.php');
+//
+//     return ob_get_clean();
+// }
+// add_shortcode('btcpw_pay_block', 'btcpaywall_render_shortcode_btcpw_pay_block');
 
 
 
@@ -1492,12 +1515,86 @@ function btcpaywall_render_receipt()
 
 add_shortcode('btcpaywall_receipt', 'btcpaywall_render_receipt');
 
+function btcpaywall_render_pay_per_post_templates_wpbakery($atts)
+{
+    $atts = shortcode_atts(array(
+        'shortcode' => '',
+        'override' => false,
+        'pay_block' => false,
+        'price' => '',
+        'currency' => 'SATS',
+        'duration' => '',
+        'duration_type' => '',
+    ), $atts);
+    $trim_shortcode = trim($atts['shortcode'], '`{}`');
+    if ($atts['override']) {
+        $split_shortcode = explode(" ", $trim_shortcode);
+        $payblock = $atts['pay_block'] != $split_shortcode[2] ? ("payblock={$atts['pay_block']}") : $split_shortcode[2];
+
+        $price = (is_numeric($atts['price']) && $atts['price'] != $split_shortcode[3]) ? $atts['price'] : $split_shortcode[3];
+        $currency = (in_array($atts['currency'], BTCPayWall::CURRENCIES) && $atts['currency'] != $split_shortcode[4]) ? $atts['currency'] : $split_shortcode[4];
+        $duration = (is_numeric($atts['duration']) && $atts['duration'] != $split_shortcode[5]) ? $atts['duration'] : $split_shortcode[5];
+        $duration_type = (in_array($atts['duration_type'], BTCPayWall::DURATIONS) && $atts['duration_type'] != $split_shortcode[6]) ? $atts['duration_type'] : $split_shortcode[6];
+        return do_shortcode("[$split_shortcode[0] $split_shortcode[1] {$payblock} price='{$price}' currency='{$currency}' duration='{$duration}' duration_type='{$duration_type}']");
+    }
+    return do_shortcode("[$trim_shortcode]");
+}
+add_shortcode('btcpw_pay_per_post_templates', 'btcpaywall_render_pay_per_post_templates_wpbakery');
+function btcpaywall_render_pay_per_view_templates_wpbakery($atts)
+{
+    $atts = shortcode_atts(array(
+        'shortcode' => '',
+        'override' => false,
+        'pay_block' => false,
+        'price' => '',
+        'currency' => 'SATS',
+        'duration' => '',
+        'duration_type' => '',
+        'title' => '',
+        'description' => 'preview',
+        'preview' => ''
+    ), $atts);
+    $trim_shortcode = trim($atts['shortcode'], '`{}`');
+    $split_shortcode = explode(" ", $trim_shortcode);
+    $title = $atts['title'] !== $split_shortcode[7] ? $atts['title'] : $split_shortcode[7];
+    $description = $atts['description'] !== $split_shortcode[8] ? $atts['description'] : $split_shortcode[8];
+    $preview_image = ($atts['preview'] !== $split_shortcode[9]) ? $atts['preview'] : $split_shortcode[9];
+    $additional = "title='{$title}' description='{$description}' preview='{$preview_image}'";
+    if ($atts['override']) {
+        $payblock = $atts['pay_block'] != $split_shortcode[2] ? ("pay_view_block={$atts['pay_block']}") : $split_shortcode[2];
+
+        $price = (is_numeric($atts['price']) && $atts['price'] != $split_shortcode[3]) ? $atts['price'] : $split_shortcode[3];
+        $currency = (in_array($atts['currency'], BTCPayWall::CURRENCIES) && $atts['currency'] != $split_shortcode[4]) ? $atts['currency'] : $split_shortcode[4];
+        $duration = (is_numeric($atts['duration']) && $atts['duration'] != $split_shortcode[5]) ? $atts['duration'] : $split_shortcode[5];
+        $duration_type = (in_array($atts['duration_type'], BTCPayWall::DURATIONS) && $atts['duration_type'] != $split_shortcode[6]) ? $atts['duration_type'] : $split_shortcode[6];
+        return do_shortcode("[$split_shortcode[0] $split_shortcode[1] {$payblock} price='{$price}' currency='{$currency}' duration='{$duration}' duration_type='{$duration_type}' $additional]");
+    }
+    return do_shortcode("[btcpw_start_video $split_shortcode[1] $split_shortcode[2] $split_shortcode[3] $split_shortcode[4] $split_shortcode[5] $split_shortcode[6] {$additional}]");
+    /*if ($settings['override'] === 'yes') {
+        $split_shortcode = explode(" ", $settings['shortcode']);
+        $payblock = $settings['pay_block'] != $split_shortcode[2] ? $settings['pay_block'] : $split_shortcode[2];
+
+        $price = (is_numeric($settings['price']) && $settings['price'] != $split_shortcode[3]) ? $settings['price'] : $split_shortcode[3];
+        $currency = (in_array($settings['currency'], BTCPayWall::CURRENCIES) && $settings['currency'] != $split_shortcode[4]) ? $settings['currency'] : $split_shortcode[4];
+        $duration = (is_numeric($settings['duration']) && $settings['duration'] != $split_shortcode[5]) ? $settings['duration'] : $split_shortcode[5];
+        $duration_type = (in_array($settings['duration_type'], BTCPayWall::DURATIONS) && $settings['duration_type'] != $split_shortcode[6]) ? $settings['duration_type'] : $split_shortcode[6];
+        echo "[$split_shortcode[0] $split_shortcode[1] pay_view_block='{$payblock}' price='{$price}' currency='{$currency}' duration='{$duration}' duration_type='{$duration_type}' {$additional}]";
+    } else {
+        $split_shortcode = explode(" ", $settings['shortcode']);
+        $title = $settings['title'] !== $split_shortcode[7] ? $settings['title'] : $split_shortcode[7];
+        $description = $settings['description'] !== $split_shortcode[8] ? $settings['description'] : $split_shortcode[8];
+        $preview_image = ($settings['preview']['url'] !== $split_shortcode[9]) ? $settings['preview']['url'] : $split_shortcode[9];
+        $additional = "title='{$title}' description='{$description}' preview='{$preview_image}'";
+        echo "[btcpw_start_video $split_shortcode[1] $split_shortcode[2] $split_shortcode[3] $split_shortcode[4] $split_shortcode[5] $split_shortcode[6] {$additional}]";
+    }*/
+}
+add_shortcode('btcpw_pay_per_view_templates', 'btcpaywall_render_pay_per_view_templates_wpbakery');
 function btcpaywall_render_templates_wpbakery($atts)
 {
     $atts = shortcode_atts(array(
         'shortcode' => '',
     ), $atts);
-    var_dump($atts);
+    $trim_shortcode = trim($atts['shortcode'], '`{}`');
+    echo do_shortcode("[$trim_shortcode]");
 }
-add_shortcode('btcpw_pay_per_templates', 'btcpaywall_render_templates_wpbakery');
 add_shortcode('btcpw_donation_templates', 'btcpaywall_render_templates_wpbakery');

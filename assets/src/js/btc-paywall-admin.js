@@ -175,32 +175,6 @@
       }
     });
 
-    function initColorPicker(widget) {
-      widget
-        .find(
-          ".widget-tipping-basic-background_color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-button_text_color,.widget-tipping-basic-button-color,.widget-tipping-basic-button_color_hover,.widget-tipping-basic-description-color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-tipping-color,.widget-tipping-basic-input_background,.widget-tipping-basic-fixed_background,.widget-tipping-basic-background_color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-button_text_color_high,.widget-tipping-basic-button_color_high,.widget-tipping-basic-continue_button_text_color_high,.widget-tipping-basic-continue_button_color_high,.widget-tipping-basic-previous_button_text_color_high,.widget-tipping-basic-previous_button_color_high,.widget-tipping-basic-button_color_hover_wide,.widget-tipping-basic-continue_button_color_hover_wide,.widget-tipping-basic-previous_button_color_hover_wide,.widget-tipping-basic-continue_button_text_color_wide,.widget-tipping-basic-continue_button_color_wide,.widget-tipping-basic-previous_button_text_color_wide,.widget-tipping-basic-previous_button_color_wide,.widget-tipping-basic-description-color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-tipping-color_high,.widget-tipping-basic-fixed_background_high,.widget-tipping-basic-background_color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-button_text_color_wide,.widget-tipping-basic-button_color_wide,.widget-tipping-basic-description-color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-tipping-color_wide,.widget-tipping-basic-fixed_background_wide,.widget-tipping-basic-hf_color,.widget-tipping-basic-hf_color_high,.widget-tipping-basic-hf_color_wide,.widget-tipping-basic-box-hf_color,.widget-tipping-basic-button_color,.widget-tipping-basic-selected_amount_background_wide,.widget-tipping-basic-selected_amount_background_high,.widget-tipping-basic-button_color_hover_high,.widget-tipping-basic-continue_button_color_hover_high,.widget-tipping-basic-previous_button_color_hover_high"
-        )
-        .iris({
-          defaultColor: true,
-
-          change: _.throttle(function() {
-            if ($(this).val()) {
-              $(this).trigger("change");
-            }
-          }, 3000),
-
-          clear: function() { },
-
-          hide: true,
-
-          palettes: true,
-        });
-    }
-
-    function onFormUpdate(event, widget) {
-      initColorPicker(widget);
-    }
-
     $(
       "#widgets-right .widget:has( .widget-tipping-basic-background_color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-button_text_color,.widget-tipping-basic-button-color,.widget-tipping-basic-button_color_hover,.widget-tipping-basic-description-color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-tipping-color,.widget-tipping-basic-input_background,.widget-tipping-basic-fixed_background,.widget-tipping-basic-background_color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-button_text_color_high,.widget-tipping-basic-button_color_high, .widget-tipping-basic-button_color_hover_high,.widget-tipping-basic-continue_button_color_hover_high,.widget-tipping-basic-previous_button_color_hover_high,.widget-tipping-basic-continue_button_text_color_high,.widget-tipping-basic-continue_button_color_high,.widget-tipping-basic-previous_button_text_color_high,.widget-tipping-basic-previous_button_color_high,.widget-tipping-basic-continue_button_text_color_wide,.widget-tipping-basic-continue_button_color_wide,.widget-tipping-basic-previous_button_text_color_wide,.widget-tipping-basic-previous_button_color_wide,.widget-tipping-basic-previous_button_color_hover_wide,.widget-tipping-basic-continue_button_color_hover_wide,.widget-tipping-basic-button_color_hover_wide,.widget-tipping-basic-description-color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-tipping-color_high,.widget-tipping-basic-fixed_background_high,.widget-tipping-basic-background_color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-button_text_color_wide,.widget-tipping-basic-button_color_wide,.widget-tipping-basic-description-color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-tipping-color_wide,.widget-tipping-basic-fixed_background_wide,.widget-tipping-basic-hf_color,.widget-tipping-basic-hf_color_high,.widget-tipping-basic-hf_color_wide,.widget-tipping-basic-box-hf_color,.widget-tipping-basic-button_color,.widget-tipping-basic-selected_amount_background_wide,.widget-tipping-basic-selected_amount_background_high)"
     ).each(function() {
@@ -247,58 +221,6 @@
     );
     imageRemove($(".btcpaywall_pay_per_view_remove_preview_image"));
 
-    function imagePreview(click_elem, target) {
-      var custom_uploader, click_elem, target;
-      click_elem.click(function(e) {
-        e.preventDefault();
-        if (custom_uploader) {
-          custom_uploader.open();
-          return;
-        }
-
-        custom_uploader = wp.media.frames.file_frame = wp.media({
-          title: "Choose Image",
-          button: {
-            text: "Choose Image",
-          },
-          multiple: false,
-        });
-
-        custom_uploader.on("select", function() {
-          var attachment = custom_uploader
-            .state()
-            .get("selection")
-            .first()
-            .toJSON();
-          target.val(attachment.id).trigger("change");
-          click_elem
-            .html('<img height=100px width=100px src="' + attachment.url + '">')
-            .next()
-            .show();
-        });
-
-        custom_uploader.open();
-      });
-    }
-
-    function imageRemove(remove) {
-      $(remove).on("click", function(e) {
-        e.preventDefault();
-        var button = $(this);
-        button.next().val("").trigger("change");
-        button.hide().prev().html("Upload");
-      });
-    }
-
-    function showMore(click_elem, target) {
-      $(click_elem).click(function() {
-        if (!$(this).is(":checked")) {
-          $(target).prop("checked", false).css("visibility", "hidden");
-        } else {
-          $(target).css("visibility", "visible");
-        }
-      });
-    }
     $(
       "#pay-per-post-shortcode-generator-form, #pay-per-view-shortcode-generator-form"
     ).on("submit", function(e) {
@@ -667,5 +589,81 @@
     );
     imageRemove($(".widget-tipping-basic-remove_box_logo_wide"));
   });
+  function onFormUpdate(event, widget) {
+    initColorPicker(widget);
+  }
+  function imagePreview(click_elem, target) {
+    var custom_uploader, click_elem, target;
+    click_elem.click(function(e) {
+      e.preventDefault();
+      if (custom_uploader) {
+        custom_uploader.open();
+        return;
+      }
+
+      custom_uploader = wp.media.frames.file_frame = wp.media({
+        title: "Choose Image",
+        button: {
+          text: "Choose Image",
+        },
+        multiple: false,
+      });
+
+      custom_uploader.on("select", function() {
+        var attachment = custom_uploader
+          .state()
+          .get("selection")
+          .first()
+          .toJSON();
+        target.val(attachment.id).trigger("change");
+        click_elem
+          .html('<img height=100px width=100px src="' + attachment.url + '">')
+          .next()
+          .show();
+      });
+
+      custom_uploader.open();
+    });
+  }
+
+  function imageRemove(remove) {
+    $(remove).on("click", function(e) {
+      e.preventDefault();
+      var button = $(this);
+      button.next().val("").trigger("change");
+      button.hide().prev().html("Upload");
+    });
+  }
+
+  function showMore(click_elem, target) {
+    $(click_elem).click(function() {
+      if (!$(this).is(":checked")) {
+        $(target).prop("checked", false).css("visibility", "hidden");
+      } else {
+        $(target).css("visibility", "visible");
+      }
+    });
+  }
+  function initColorPicker(widget) {
+    widget
+      .find(
+        ".widget-tipping-basic-background_color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-button_text_color,.widget-tipping-basic-button-color,.widget-tipping-basic-button_color_hover,.widget-tipping-basic-description-color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-tipping-color,.widget-tipping-basic-input_background,.widget-tipping-basic-fixed_background,.widget-tipping-basic-background_color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-button_text_color_high,.widget-tipping-basic-button_color_high,.widget-tipping-basic-continue_button_text_color_high,.widget-tipping-basic-continue_button_color_high,.widget-tipping-basic-previous_button_text_color_high,.widget-tipping-basic-previous_button_color_high,.widget-tipping-basic-button_color_hover_wide,.widget-tipping-basic-continue_button_color_hover_wide,.widget-tipping-basic-previous_button_color_hover_wide,.widget-tipping-basic-continue_button_text_color_wide,.widget-tipping-basic-continue_button_color_wide,.widget-tipping-basic-previous_button_text_color_wide,.widget-tipping-basic-previous_button_color_wide,.widget-tipping-basic-description-color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-tipping-color_high,.widget-tipping-basic-fixed_background_high,.widget-tipping-basic-background_color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-button_text_color_wide,.widget-tipping-basic-button_color_wide,.widget-tipping-basic-description-color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-tipping-color_wide,.widget-tipping-basic-fixed_background_wide,.widget-tipping-basic-hf_color,.widget-tipping-basic-hf_color_high,.widget-tipping-basic-hf_color_wide,.widget-tipping-basic-box-hf_color,.widget-tipping-basic-button_color,.widget-tipping-basic-selected_amount_background_wide,.widget-tipping-basic-selected_amount_background_high,.widget-tipping-basic-button_color_hover_high,.widget-tipping-basic-continue_button_color_hover_high,.widget-tipping-basic-previous_button_color_hover_high"
+      )
+      .iris({
+        defaultColor: true,
+
+        change: _.throttle(function() {
+          if ($(this).val()) {
+            $(this).trigger("change");
+          }
+        }, 3000),
+
+        clear: function() { },
+
+        hide: true,
+
+        palettes: true,
+      });
+  }
   $(document).on("widget-added widget-updated ready", onFormUpdate);
 })(jQuery);

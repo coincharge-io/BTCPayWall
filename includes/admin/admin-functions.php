@@ -37,11 +37,13 @@ function btcpaywall_get_donation_templates()
 {
     $query_args = [
         'post_type' => 'btcpw_donation',
+        'post_status' => 'publish',
         'fields'  => 'ids',
         'no_found_rows' => true,
         'posts_per_page' => -1,
     ];
     $templates = [];
+    $templates[''] = [''];
     $query = new WP_Query($query_args);
     if ($query->posts) {
         foreach ($query->posts as $key => $post_id) {
@@ -52,11 +54,22 @@ function btcpaywall_get_donation_templates()
     }
     return $templates;
 }
-function btcpaywall_get_pay_per_templates()
+function btcpaywall_get_pay_per_post_templates()
 {
     $shortcodes = new BTCPayWall_Pay_Per_Shortcode();
     $prepare_templates = [];
-    foreach ($shortcodes->get_all_shortcodes() as $val) {
+    $prepare_templates[''] = '';
+    foreach ($shortcodes->get_all_shortcodes('pay-per-post') as $val) {
+        $prepare_templates["#$val[id]-$val[name]"] = (new BTCPayWall_Pay_Per_Shortcode($val['id']))->shortcode();
+    }
+    return $prepare_templates;
+}
+function btcpaywall_get_pay_per_view_templates()
+{
+    $shortcodes = new BTCPayWall_Pay_Per_Shortcode();
+    $prepare_templates = [];
+    $prepare_templates[''] = '';
+    foreach ($shortcodes->get_all_shortcodes('pay-per-view') as $val) {
         $prepare_templates["#$val[id]-$val[name]"] = (new BTCPayWall_Pay_Per_Shortcode($val['id']))->shortcode();
     }
     return $prepare_templates;

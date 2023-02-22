@@ -2454,9 +2454,9 @@ function btcpaywall_load_vc_widgets()
         )
     ));
     vc_map(array(
-        'name' => 'BTCPW Pay Per Templates',
-        'base' => 'btcpw_pay_per_templates',
-        'description' => 'Pay Per Templates',
+        'name' => 'BTCPW Pay Per Post Templates',
+        'base' => 'btcpw_pay_per_post_templates',
+        'description' => 'Pay Per Post Templates',
         'category' => 'Content',
         'icon' => BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png',
         'params' => array(
@@ -2464,8 +2464,231 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'dropdown',
                 'heading' => 'Templates',
                 'param_name' => 'shortcode',
-                'value' => btcpaywall_get_pay_per_templates(),
-                'description' => 'Pay Per Templates',
+                'value' => btcpaywall_get_pay_per_post_templates(),
+                'description' => 'Pay Per Post Templates',
+            ),
+            array(
+                'type' => 'checkbox',
+                'heading' => 'Override default values for template',
+                'param_name' => 'override',
+                'value' => 'false',
+                'dependency' => [
+                    'element' => 'shortcode',
+                    'not_empty' => true
+                ],
+                'group' => 'Option'
+            ),
+            array(
+                'type' => 'checkbox',
+                'heading' => 'Enable payment block',
+                'param_name' => 'pay_block',
+                'value' => 'true',
+                'dependency' => [
+                    'element' => 'override',
+                    'value' => 'true'
+                ],
+                'description' => 'Show payment block instead of content',
+                'group' => 'Option'
+            ),
+            array(
+                'type' => 'dropdown',
+                'heading' => 'Currency',
+                'param_name' => 'currency',
+                'value' => array(
+                    'BTC' => 'BTC',
+                    'SATS' => 'SATS',
+                    'EUR' => 'EUR',
+                    'USD' => 'USD',
+                    'GBP' => 'GBP'
+                ),
+                'std' => 'Default',
+                'dependency' => [
+                    'element' => 'override',
+                    'value' => 'true'
+                ],
+                'description' => 'Set currency',
+                'group' => 'Option'
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => 'Price',
+                'param_name' => 'price',
+                'dependency' => [
+                    'element' => 'override',
+                    'value' => 'true'
+                ],
+                'description' => 'Set price',
+                'group' => 'Option'
+            ),
+            array(
+                'type' => 'dropdown',
+                'heading' => 'Duration type',
+                'param_name' => 'duration_type',
+                'value' => array(
+                    'minute' => 'minute',
+                    'hour' => 'hour',
+                    'day' => 'day',
+                    'week' => 'week',
+                    'month' => 'month',
+                    'year' => 'year',
+                    'onetime' => 'onetime',
+                    'unlimited' => 'unlimited',
+                ),
+                'std' => 'default',
+                'dependency' => [
+                    'element' => 'override',
+                    'value' => 'true'
+                ],
+                'description' => 'Set duration type',
+                'group' => 'Option'
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => 'Duration',
+                'param_name' => 'duration',
+                'dependency' => [
+                    'element' => 'override',
+                    'value' => 'true'
+                ],
+                'description' => 'Set duration',
+                'group' => 'Option'
+            ),
+        )
+    ));
+    vc_map(array(
+        'name' => 'BTCPW Pay Per View Templates',
+        'base' => 'btcpw_pay_per_view_templates',
+        'description' => 'Pay Per View Templates',
+        'category' => 'Content',
+        'icon' => BTCPAYWALL_PLUGIN_URL . '/assets/dist/img/BTCPayWall_logo.png',
+        'params' => array(
+            array(
+                'type' => 'dropdown',
+                'heading' => 'Templates',
+                'param_name' => 'shortcode',
+                'value' => btcpaywall_get_pay_per_view_templates(),
+                'description' => 'Pay Per View Templates',
+            ),
+            array(
+                'type' => 'textarea',
+                'heading' => 'Title',
+                'param_name' => 'title',
+                'value' => 'Untitled',
+                'description' => 'Enter video title',
+                'dependency' => [
+                    'element' => 'shortcode',
+                    'not_empty' => true
+                ],
+                'group' => 'Video preview'
+            ),
+            array(
+                'type' => 'textarea',
+                'heading' => 'Description',
+                'param_name' => 'description',
+                'value' => 'No description',
+                'dependency' => [
+                    'element' => 'shortcode',
+                    'not_empty' => true
+                ],
+                'description' => 'Enter video description',
+                'group' => 'Video preview'
+            ),
+            array(
+                'type' => 'attach_image',
+                'heading' => 'Preview',
+                'param_name' => 'preview',
+                'dependency' => [
+                    'element' => 'shortcode',
+                    'not_empty' => true
+                ],
+                'description' => 'Add video preview',
+                'group' => 'Video preview'
+            ),
+            array(
+                'type' => 'checkbox',
+                'heading' => 'Override default values for template',
+                'param_name' => 'override',
+                'value' => 'false',
+                'dependency' => [
+                    'element' => 'shortcode',
+                    'not_empty' => true
+                ],
+                'group' => 'Option'
+            ),
+            array(
+                'type' => 'checkbox',
+                'heading' => 'Enable payment block',
+                'param_name' => 'pay_block',
+                'value' => 'true',
+                'dependency' => [
+                    'element' => 'override',
+                    'value' => 'true'
+                ],
+                'description' => 'Show payment block instead of content',
+                'group' => 'Option'
+            ),
+            array(
+                'type' => 'dropdown',
+                'heading' => 'Currency',
+                'param_name' => 'currency',
+                'value' => array(
+                    'BTC' => 'BTC',
+                    'SATS' => 'SATS',
+                    'EUR' => 'EUR',
+                    'USD' => 'USD',
+                    'GBP' => 'GBP'
+                ),
+                'std' => 'Default',
+                'dependency' => [
+                    'element' => 'override',
+                    'value' => 'true'
+                ],
+                'description' => 'Set currency',
+                'group' => 'Option'
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => 'Price',
+                'param_name' => 'price',
+                'dependency' => [
+                    'element' => 'override',
+                    'value' => 'true'
+                ],
+                'description' => 'Set price',
+                'group' => 'Option'
+            ),
+            array(
+                'type' => 'dropdown',
+                'heading' => 'Duration type',
+                'param_name' => 'duration_type',
+                'value' => array(
+                    'minute' => 'minute',
+                    'hour' => 'hour',
+                    'day' => 'day',
+                    'week' => 'week',
+                    'month' => 'month',
+                    'year' => 'year',
+                    'onetime' => 'onetime',
+                    'unlimited' => 'unlimited',
+                ),
+                'std' => 'default',
+                'dependency' => [
+                    'element' => 'override',
+                    'value' => 'true'
+                ],
+                'description' => 'Set duration type',
+                'group' => 'Option'
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => 'Duration',
+                'param_name' => 'duration',
+                'dependency' => [
+                    'element' => 'override',
+                    'value' => 'true'
+                ],
+                'description' => 'Set duration',
+                'group' => 'Option'
             ),
         )
     ));

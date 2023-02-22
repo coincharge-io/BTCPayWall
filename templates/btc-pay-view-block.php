@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 }
 
 
-$help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN) ?? filter_var(get_option('btcpw_pay_per_view_show_help_link', true), FILTER_VALIDATE_BOOLEAN);
+/*$help = filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN) ?? filter_var(get_option('btcpw_pay_per_view_show_help_link', true), FILTER_VALIDATE_BOOLEAN);
 
 $help_link = !empty($atts['help_link']) ? $atts['help_link'] : get_option('btcpw_pay_per_view_help_link', 'https://btcpaywall.com/how-to-pay-at-the-bitcoin-paywall/');
 $help_text = !empty($atts['help_text']) ? $atts['help_text'] : get_option('btcpw_pay_per_view_help_link_text', 'Help');
@@ -24,8 +24,26 @@ $button_color = !empty($atts['button_color']) ? $atts['button_color'] : get_opti
 $button_text_color = !empty($atts['button_text_color']) ? $atts['button_text_color'] : get_option('btcpw_pay_per_view_button_text_color', '#FFFFFF');
 $preview_title_color = !empty($atts['title_color']) ? $atts['title_color'] : get_option('btcpw_pay_per_view_preview_title_color', '#000000');
 $preview_description_color = !empty($atts['description_color']) ? $atts['description_color'] : get_option('btcpw_pay_per_view_preview_description_color', '#000000');
+*/
 
 
+$help =  filter_var($atts['link'], FILTER_VALIDATE_BOOLEAN);
+$help_link =  $atts['help_link'];
+$help_text =  $atts['help_text'];
+$additional_help = filter_var($atts['additional_link'], FILTER_VALIDATE_BOOLEAN);
+$additional_help_link =  $atts['additional_help_link'];
+$additional_help_text =  $atts['additional_help_text'];
+$background = $atts['background_color'];
+
+
+$width =  $atts['width'];
+$height = $atts['height'];
+$header_color =  $atts['header_color'];
+$info_color = $atts['info_color'];
+$button_color = $atts['button_color'];
+$button_text_color = $atts['button_text_color'];
+$preview_title_color = $atts['title_color'];
+$preview_description_color =  $atts['description_color'];
 $collect_atts = array(
     'display_name' =>  $atts['display_name'],
     'display_email' =>  $atts['display_email'],

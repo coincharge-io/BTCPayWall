@@ -199,11 +199,11 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
         return $wpdb->get_var($sql);
     }
 
-    public function get_all_shortcodes()
+    public function get_all_shortcodes($type = 'pay-per-post')
     {
         global $wpdb;
 
-        $sql = "SELECT * FROM {$this->table_name}";
+        $sql = "SELECT * FROM {$this->table_name} WHERE type='{$type}'";
 
 
         $sql .= ' ORDER BY time DESC';

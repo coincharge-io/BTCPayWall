@@ -28,10 +28,21 @@ function btcpaywall_register_apis()
     );
     register_rest_route(
         'btcpaywall/v1',
-        '/pay-per-templates',
+        '/pay-per-post-templates',
         array(
             'methods'             => 'GET',
-            'callback'            => 'btcpaywall_get_pay_per_templates',
+            'callback'            => 'btcpaywall_get_pay_per_post_templates',
+            'permission_callback' => function () {
+                return current_user_can('edit_posts');
+            },
+        )
+    );
+    register_rest_route(
+        'btcpaywall/v1',
+        '/pay-per-view-templates',
+        array(
+            'methods'             => 'GET',
+            'callback'            => 'btcpaywall_get_pay_per_view_templates',
             'permission_callback' => function () {
                 return current_user_can('edit_posts');
             },

@@ -3,9 +3,16 @@ import { useSelect } from "@wordpress/data";
 import { InspectorControls } from "@wordpress/block-editor";
 import "./template_store";
 import ServerSideRender from "@wordpress/server-side-render";
-import { PanelBody, SelectControl, Panel } from "@wordpress/components";
-registerBlockType("btcpaywall/gutenberg-pay-per-templates", {
-  title: "BTCPW Pay Per Templates",
+import {
+  ToggleControl,
+  PanelBody,
+  PanelRow,
+  SelectControl,
+  Panel,
+  __experimentalNumberControl as NumberControl,
+} from "@wordpress/components";
+registerBlockType("btcpaywall/gutenberg-pay-per-post-templates", {
+  title: "BTCPW Pay Per Post Templates",
   icon: (
     <svg
       version="1.0"
@@ -559,7 +566,7 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z"
     </svg>
   ),
   category: "widgets",
-  keywords: ["paywall", "pay-per-templates"],
+  keywords: ["paywall", "pay-per-post-templates"],
   attributes: {
     className: {
       type: "string",
@@ -569,38 +576,143 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z"
       type: "string",
       default: "",
     },
+    override: {
+      type: "boolean",
+      default: false,
+    },
+    pay_block: {
+      type: "boolean",
+      default: true,
+    },
+    currency: {
+      type: "string",
+    },
+    price: {
+      type: "number",
+    },
+    duration_type: {
+      type: "string",
+    },
+    duration: {
+      type: "number",
+    },
   },
   edit: (props) => {
     const {
-      attributes: { shortcode, className },
+      attributes: {
+        shortcode,
+        className,
+        override,
+        pay_block,
+        currency,
+        price,
+        duration_type,
+        duration,
+      },
       setAttributes,
     } = props;
     const shortcodes = useSelect((select) =>
-      select("btcpaywall/shortcode_data").getPayPerTemplateList()
-    );
-    console.log(
-      Object.entries(shortcodes).map((pair) => ({
-        label: pair[0],
-        value: pair[1],
-      }))
+      select("btcpaywall/shortcode_data").getPayPerPostTemplateList()
     );
     const inspectorControls = (
       <div>
         <InspectorControls>
           <Panel>
-            <PanelBody title="Shortcodes" initialOpen={true}>
-              <div className="btcpw_gutenberg_sel_num_control">
-                <SelectControl
-                  value={shortcode}
-                  onChange={(selectedItem) => {
-                    setAttributes({ shortcode: selectedItem });
-                  }}
-                  options={Object.entries(shortcodes).map((pair) => ({
-                    label: pair[0],
-                    value: pair[1],
-                  }))}
-                />
-              </div>
+            <PanelBody title="Templates" initialOpen={true}>
+              <PanelRow>
+                <div className="btcpw_gutenberg_sel_num_control">
+                  <SelectControl
+                    value={shortcode}
+                    onChange={(selectedItem) => {
+                      setAttributes({ shortcode: selectedItem });
+                    }}
+                    options={Object.entries(shortcodes).map((pair) => ({
+                      label: pair[0],
+                      value: pair[1],
+                    }))}
+                  />
+                </div>
+              </PanelRow>
+              {shortcode && (
+                <>
+                  <PanelRow>
+                    <ToggleControl
+                      label="Override default values for template"
+                      checked={override}
+                      onChange={(checked) => {
+                        setAttributes({ override: checked });
+                      }}
+                      value={override}
+                    />
+                  </PanelRow>
+                  {override && (
+                    <>
+                      <PanelRow>
+                        <ToggleControl
+                          label="Enable paywall"
+                          checked={pay_block}
+                          onChange={(checked) => {
+                            setAttributes({ pay_block: checked });
+                          }}
+                          value={pay_block}
+                        />
+                      </PanelRow>
+                      <PanelRow>
+                        <SelectControl
+                          label="Currency"
+                          value={currency}
+                          onChange={(selectedItem) => {
+                            setAttributes({ currency: selectedItem });
+                          }}
+                          options={[
+                            { value: "BTC", label: "BTC" },
+                            { value: "SATS", label: "SATS" },
+                            { value: "EUR", label: "EUR" },
+                            { value: "USD", label: "USD" },
+                            { value: "GBP", label: "GBP" },
+                          ]}
+                        />
+                      </PanelRow>
+                      <PanelRow>
+                        <NumberControl
+                          label="Price"
+                          value={price}
+                          onChange={(nextValue) =>
+                            setAttributes({ price: Number(nextValue) })
+                          }
+                        />
+                      </PanelRow>
+                      <PanelRow>
+                        <SelectControl
+                          label="Duration type"
+                          value={duration_type}
+                          onChange={(selectedItem) =>
+                            setAttributes({ duration_type: selectedItem })
+                          }
+                          options={[
+                            { value: "minute", label: "Minute" },
+                            { value: "hour", label: "Hour" },
+                            { value: "week", label: "Week" },
+                            { value: "month", label: "Month" },
+                            { value: "year", label: "Year" },
+                            { value: "onetime", label: "Onetime" },
+                            { value: "unlimited", label: "Unlimited" },
+                          ]}
+                        />
+                      </PanelRow>
+                      <PanelRow>
+                        <NumberControl
+                          label="Duration"
+                          value={duration}
+                          onChange={(nextValue) =>
+                            setAttributes({ duration: Number(nextValue) })
+                          }
+                        />
+                      </PanelRow>
+                    </>
+                  )}
+                </>
+              )}
             </PanelBody>
           </Panel>
         </InspectorControls>
@@ -609,10 +721,16 @@ c-8 15 -32 47 -53 71 l-39 44 -67 -63z"
     return [
       <div>
         <ServerSideRender
-          block="btcpaywall/gutenberg-pay-per-templates"
+          block="btcpaywall/gutenberg-pay-per-post-templates"
           attributes={{
             shortcode,
             className,
+            override,
+            pay_block,
+            price,
+            currency,
+            duration,
+            duration_type,
           }}
         />
         {inspectorControls}

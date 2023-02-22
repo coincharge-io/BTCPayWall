@@ -127,18 +127,18 @@ function btcpaywall_render_download_store_page()
 /**
  * @since 1.0.6
  */
-function btcpaywall_render_pay_per_post()
-{
-    include 'partials/page-pay-per-post.php';
-}
+// function btcpaywall_render_pay_per_post()
+// {
+//     include 'partials/page-pay-per-post.php';
+// }
 
 /**
  * @since 1.0.6
  */
-function btcpaywall_render_pay_per_view()
-{
-    include 'partials/page-pay-per-view.php';
-}
+// function btcpaywall_render_pay_per_view()
+// {
+//     include 'partials/page-pay-per-view.php';
+// }
 
 
 /**

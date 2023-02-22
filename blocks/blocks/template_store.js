@@ -3,7 +3,8 @@ import { createReduxStore, register } from "@wordpress/data";
 
 const DEFAULT_STATE = {
   donationTemplateList: {},
-  payPerTemplateList: {},
+  payPerPostTemplateList: {},
+  payPerViewTemplateList: {},
 };
 const STORE_NAME = "btcpaywall/shortcode_data";
 const actions = {
@@ -19,15 +20,27 @@ const actions = {
       path,
     };
   },
-  setPayPerTemplateList(payPerList) {
+  setPayPerPostTemplateList(payPerPostList) {
     return {
-      type: "SET_PAY_PER_TEMPLATE_LIST",
-      payPerList,
+      type: "SET_PAY_PER_POST_TEMPLATE_LIST",
+      payPerPostList,
     };
   },
-  getPayPerTemplateList(path) {
+  getPayPerPostTemplateList(path) {
     return {
-      type: "GET_PAY_PER_TEMPLATE_LIST",
+      type: "GET_PAY_PER_POST_TEMPLATE_LIST",
+      path,
+    };
+  },
+  setPayPerViewTemplateList(payPerViewList) {
+    return {
+      type: "SET_PAY_PER_VIEW_TEMPLATE_LIST",
+      payPerViewList,
+    };
+  },
+  getPayPerViewTemplateList(path) {
+    return {
+      type: "GET_PAY_PER_VIEW_TEMPLATE_LIST",
       path,
     };
   },
@@ -44,12 +57,21 @@ const store = createReduxStore(STORE_NAME, {
           },
         };
       }
-      case "SET_PAY_PER_TEMPLATE_LIST": {
+      case "SET_PAY_PER_POST_TEMPLATE_LIST": {
         return {
           ...state,
-          payPerTemplateList: {
-            ...state.payPerTemplateList,
-            ...action.payPerList,
+          payPerPostTemplateList: {
+            ...state.payPerPostTemplateList,
+            ...action.payPerPostList,
+          },
+        };
+      }
+      case "SET_PAY_PER_VIEW_TEMPLATE_LIST": {
+        return {
+          ...state,
+          payPerViewTemplateList: {
+            ...state.payPerViewTemplateList,
+            ...action.payPerViewList,
           },
         };
       }
@@ -63,16 +85,23 @@ const store = createReduxStore(STORE_NAME, {
       const { donationTemplateList } = state;
       return donationTemplateList;
     },
-    getPayPerTemplateList(state) {
-      const { payPerTemplateList } = state;
-      return payPerTemplateList;
+    getPayPerPostTemplateList(state) {
+      const { payPerPostTemplateList } = state;
+      return payPerPostTemplateList;
+    },
+    getPayPerViewTemplateList(state) {
+      const { payPerViewTemplateList } = state;
+      return payPerViewTemplateList;
     },
   },
   controls: {
     GET_DONATION_TEMPLATE_LIST(action) {
       return apiFetch({ path: action.path });
     },
-    GET_PAY_PER_TEMPLATE_LIST(action) {
+    GET_PAY_PER_POST_TEMPLATE_LIST(action) {
+      return apiFetch({ path: action.path });
+    },
+    GET_PAY_PER_VIEW_TEMPLATE_LIST(action) {
       return apiFetch({ path: action.path });
     },
   },
@@ -82,20 +111,19 @@ const store = createReduxStore(STORE_NAME, {
       const donationList = yield actions.getDonationTemplateList(
         "/btcpaywall/v1/donation-templates"
       );
-      console.log(donationList);
       return actions.setDonationTemplateList(donationList);
     },
-    *getPayPerTemplateList() {
-      const payPerList = yield actions.getPayPerTemplateList(
-        "/btcpaywall/v1/pay-per-templates"
+    *getPayPerPostTemplateList() {
+      const payPerPostList = yield actions.getPayPerPostTemplateList(
+        "/btcpaywall/v1/pay-per-post-templates"
       );
-      // let prepareTemplate = {};
-      // payPerList.forEach((template) => {
-      //   prepareTemplate[`#${template.id}-${template.name}`] =
-      //     Object.values(template);
-      // });
-      console.log(payPerList);
-      return actions.setPayPerTemplateList(payPerList);
+      return actions.setPayPerPostTemplateList(payPerPostList);
+    },
+    *getPayPerViewTemplateList() {
+      const payPerViewList = yield actions.getPayPerViewTemplateList(
+        "/btcpaywall/v1/pay-per-view-templates"
+      );
+      return actions.setPayPerViewTemplateList(payPerViewList);
     },
   },
 });

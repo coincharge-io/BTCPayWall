@@ -104,6 +104,31 @@ class BTCPayWall_Pay_Per_Shortcode
         }
         return false;
     }
+    public function get_pairs($customizable)
+    {
+        $pairs = [];
+
+        foreach ($this as $key => $val) {
+            if ($key === 'db') {
+                continue;
+            }
+            if ($key === 'pay_block' && $customizable['type'] === 'pay_per_view') {
+                $pairs['pay_view_block'] = $val;
+                continue;
+            }
+            $pairs[$key] = $val;
+        }
+        $paywall_placeholder = $customizable['type'] === 'pay-per-post' ? 'payblock' : 'pay_view_block';
+        $pairs[$paywall_placeholder] = $customizable['payblock'];
+        $pairs['price'] = $customizable['price'];
+        $pairs['currency'] = $customizable['currency'];
+        $pairs['duration'] = $customizable['duration'];
+        $pairs['duration_type'] = $customizable['duration_type'];
+        $pairs['title'] = $customizable['title'];
+        $pairs['description'] = $customizable['description'];
+        $pairs['preview'] = $customizable['preview'];
+        return $pairs;
+    }
 
 
 
@@ -156,9 +181,9 @@ class BTCPayWall_Pay_Per_Shortcode
 
         return $shortcodes;
     }
-    public function get_all_shortcodes()
+    public function get_all_shortcodes($type)
     {
-        $shortcodes = $this->db->get_all_shortcodes();
+        $shortcodes = $this->db->get_all_shortcodes($type);
 
         return $shortcodes;
     }
@@ -177,30 +202,16 @@ class BTCPayWall_Pay_Per_Shortcode
      */
     public function shortcode()
     {
-        $payblock = filter_var($this->pay_block, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
-        $link = filter_var($this->link, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
-        $additional_link = filter_var($this->additional_link, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
-
-        $display_name = filter_var($this->display_name, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
-        $mandatory_name = filter_var($this->mandatory_name, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
-
-        $display_email = filter_var($this->display_email, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
-        $mandatory_email = filter_var($this->mandatory_email, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
-
-        $display_phone = filter_var($this->display_phone, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
-        $mandatory_phone = filter_var($this->mandatory_phone, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
-
-        $display_address = filter_var($this->display_address, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
-        $mandatory_address = filter_var($this->mandatory_address, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
-
-        $display_message = filter_var($this->display_message, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
-        $mandatory_message = filter_var($this->mandatory_message, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
-
         $id = (int) $this->id;
+        $payblock = filter_var($this->pay_block, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
+        $currency = $this->currency;
+        $price = $this->price;
+        $duration = $this->duration;
+        $duration_type = $this->duration_type;
         if ($this->type === 'pay-per-post') {
-            return  "[btcpw_start_content id='{$id}']";
+            return  "[btcpw_start_content id='{$id}' payblock='{$payblock}' price='{$price}' currency='{$currency}' duration='{$duration}' duration_type='{$duration_type}']";
         }
-        return  "[btcpw_start_video id='{$id}']";
+        return  "[btcpw_start_video id='{$id}' pay_view_block='{$payblock}' price='{$price}' currency='{$currency}' duration='{$duration}' duration_type='{$duration_type}' title='{$this->title}' description='{$this->description}' preview='{$this->preview}']";
     }
 
     private function sanitize_columns($data)

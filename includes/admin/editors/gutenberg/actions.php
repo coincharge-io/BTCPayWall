@@ -1171,10 +1171,10 @@ function btcpaywall_load_gutenberg()
         ]
     );
     register_block_type(
-        'btcpaywall/gutenberg-pay-per-templates',
+        'btcpaywall/gutenberg-pay-per-post-templates',
         [
             'editor_script' => 'btcpaywall-gutenberg-block-script',
-            'render_callback' => 'btcpaywall_render_shortcodes_gutenberg',
+            'render_callback' => 'btcpaywall_render_pay_per_post_templates_gutenberg',
             'attributes' => array(
                 'className' => array(
                     'default' => '',
@@ -1182,7 +1182,83 @@ function btcpaywall_load_gutenberg()
                 ),
                 'shortcode' => array(
                     'type' => 'string'
-                )
+                ),
+                'override' => array(
+                    'type' => 'boolean',
+                    'default' => false
+                ),
+                'pay_block' => array(
+                    'type' => 'boolean',
+                    'default' => true
+                ),
+                'currency' => array(
+                    'type' => 'string',
+                    'default' => 'SATS'
+                ),
+                'price' => array(
+                    'type' => 'integer',
+                    'default' => '1000'
+                ),
+                'duration' => array(
+                    'type' => 'integer',
+                    'default' => '20'
+                ),
+                'duration_type' => array(
+                    'type' => 'string',
+                    'default' => 'minute'
+                ),
+            )
+        ]
+    );
+    register_block_type(
+        'btcpaywall/gutenberg-pay-per-view-templates',
+        [
+            'editor_script' => 'btcpaywall-gutenberg-block-script',
+            'render_callback' => 'btcpaywall_render_pay_per_view_templates_gutenberg',
+            'attributes' => array(
+                'className' => array(
+                    'default' => '',
+                    'type' => 'string'
+                ),
+                'shortcode' => array(
+                    'type' => 'string'
+                ),
+                'title' => array(
+                    'type' => 'string',
+                    'default' => 'Untitled'
+                ),
+                'description' => array(
+                    'type' => 'string',
+                    'default' => ''
+                ),
+                'preview' => array(
+                    'type' => 'number',
+                    'default' => ''
+                ),
+                'override' => array(
+                    'type' => 'boolean',
+                    'default' => false
+                ),
+                'pay_block' => array(
+                    'type' => 'boolean',
+                    'default' => true
+                ),
+                'currency' => array(
+                    'type' => 'string',
+                    'default' => 'SATS'
+                ),
+                'price' => array(
+                    'type' => 'integer',
+                    'default' => '1000'
+                ),
+                'duration' => array(
+                    'type' => 'integer',
+                    'default' => '20'
+                ),
+                'duration_type' => array(
+                    'type' => 'string',
+                    'default' => 'minute'
+                ),
             )
         ]
     );

@@ -6,6 +6,6 @@ import "./blocks/tipping_box";
 import "./blocks/tipping_banner_wide";
 import "./blocks/tipping_banner_high";
 import "./blocks/tipping_page";
-//import "./blocks/tipping_list_shortcodes";
 import "./blocks/donation_templates";
-import "./blocks/pay_per_templates";
+import "./blocks/pay_per_post_templates";
+import "./blocks/pay_per_view_templates";
