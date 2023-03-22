@@ -65,7 +65,7 @@ class Elementor_BTCPW_Pay_Per_Post_Template_Widget extends \Elementor\Widget_Bas
       [
         'label' => 'Templates',
         'type' => \Elementor\Controls_Manager::SELECT,
-        'options' => array_flip(btcpaywall_get_pay_per_post_templates()),
+        'options' => array_flip(btcpaywall_get_templates('pay-per-post')),
       ]
     );
     $this->add_control(

@@ -2464,7 +2464,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'dropdown',
                 'heading' => 'Templates',
                 'param_name' => 'shortcode',
-                'value' => btcpaywall_get_pay_per_post_templates(),
+                'value' => btcpaywall_get_templates('pay-per-post'),
                 'description' => 'Pay Per Post Templates',
             ),
             array(
@@ -2566,7 +2566,7 @@ function btcpaywall_load_vc_widgets()
                 'type' => 'dropdown',
                 'heading' => 'Templates',
                 'param_name' => 'shortcode',
-                'value' => btcpaywall_get_pay_per_view_templates(),
+                'value' => btcpaywall_get_templates('pay-per-view'),
                 'description' => 'Pay Per View Templates',
             ),
             array(

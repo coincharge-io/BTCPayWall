@@ -42,7 +42,7 @@ function ajax_btcpaywall_get_invoice_id()
     $post_id = sanitize_text_field($_POST['post_id']);
     $order_id = btcpaywall_generate_order_id($post_id);
     $gateway = get_option('btcpw_selected_payment_gateway');
-    if ($gateway === 'BTCPayServer' || $gateway === 'CoinchargePay') {
+    if ($gateway === 'BTCPayServer' || $gateway === 'Coinsnap') {
         $invoice_id = btcpaywall_generate_invoice_id($post_id, $order_id, $customer_data);
     } elseif ($gateway === "LNBits") {
         $invoice_id = btcpaywall_generate_lnbits_invoice_id($post_id, $order_id, $customer_data);
@@ -81,8 +81,8 @@ function btcpaywall_generate_invoice_id($post_id, $order_id, $customer_data)
 {
     $gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer');
     $amount = btcpaywall_calculate_price_for_invoice($post_id);
-    $url = ($gateway === 'CoinchargePay') ? get_option('btcpw_coincharge_pay_server_url') . '/api/v1/stores/' . get_option('btcpw_coincharge_pay_store_id') . '/invoices' : get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
-    $auth = ($gateway === 'CoinchargePay') ? 'token ' . get_option('btcpw_coincharge_pay_auth_key') : 'token ' . get_option('btcpw_btcpay_auth_key_create');
+    $url = ($gateway === 'Coinsnap') ? get_option('btcpw_coinsnap_server_url') . '/api/v1/stores/' . get_option('btcpw_coinsnap_store_id') . '/invoices' : get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
+    $auth = ($gateway === 'Coinsnap') ? 'token ' . get_option('btcpw_coinsnap_auth_key') : 'token ' . get_option('btcpw_btcpay_auth_key_create');
     $currency_scope = get_post_meta($post_id, 'btcpw_currency', true) ? get_post_meta($post_id, 'btcpw_currency', true) : get_option('btcpw_default_currency', 'SATS');
     $blogname = get_post($post_id)->post_title;
     $data = array(
@@ -167,8 +167,8 @@ function btcpaywall_generate_invoice_id($post_id, $order_id, $customer_data)
 function btcpaywall_get_payment_method($invoice_id)
 {
     $gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer');
-    $url = ($gateway === 'CoinchargePay') ? get_option('btcpw_coincharge_pay_server_url') . '/api/v1/stores/' . get_option('btcpw_coincharge_pay_store_id') . '/invoices/' . $invoice_id . '/payment-methods' : get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices/' . $invoice_id . '/payment-methods';
-    $auth = ($gateway === 'CoinchargePay') ? 'token ' . get_option('btcpw_coincharge_pay_auth_key') : 'token ' . get_option('btcpw_btcpay_auth_key_view');
+    $url = ($gateway === 'Coinsnap') ? get_option('btcpw_coinsnap_server_url') . '/api/v1/stores/' . get_option('btcpw_coinsnap_store_id') . '/invoices/' . $invoice_id . '/payment-methods' : get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices/' . $invoice_id . '/payment-methods';
+    $auth = ($gateway === 'Coinsnap') ? 'token ' . get_option('btcpw_coinsnap_auth_key') : 'token ' . get_option('btcpw_btcpay_auth_key_view');
     $args = array(
         'headers' => array(
             'Authorization' => $auth,
@@ -369,8 +369,8 @@ function ajax_btcpaywall_paid_invoice()
     }
 
     $gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer');
-    $url = ($gateway === 'CoinchargePay') ? get_option('btcpw_coincharge_pay_server_url') . '/api/v1/stores/' . get_option('btcpw_coincharge_pay_store_id') . '/invoices/' . $invoice_id : get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices/' . $invoice_id;
-    $auth = ($gateway === 'CoinchargePay') ? 'token ' . get_option('btcpw_coincharge_pay_auth_key') : 'token ' . get_option('btcpw_btcpay_auth_key_view');
+    $url = ($gateway === 'Coinsnap') ? get_option('btcpw_coinsnap_server_url') . '/api/v1/stores/' . get_option('btcpw_coinsnap_store_id') . '/invoices/' . $invoice_id : get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices/' . $invoice_id;
+    $auth = ($gateway === 'Coinsnap') ? 'token ' . get_option('btcpw_coinsnap_auth_key') : 'token ' . get_option('btcpw_btcpay_auth_key_view');
 
 
     $args = array(
@@ -434,8 +434,8 @@ function ajax_btcpaywall_paid_tipping()
 
     $invoice_id = sanitize_text_field($_POST['invoice_id']);
     $gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer');
-    $url = ($gateway === 'CoinchargePay') ? get_option('btcpw_coincharge_pay_server_url') . '/api/v1/stores/' . get_option('btcpw_coincharge_pay_store_id') . '/invoices/' . $invoice_id : get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices/' . $invoice_id;
-    $auth = ($gateway === 'CoinchargePay') ? 'token ' . get_option('btcpw_coincharge_pay_auth_key') : 'token ' . get_option('btcpw_btcpay_auth_key_view');
+    $url = ($gateway === 'Coinsnap') ? get_option('btcpw_coinsnap_server_url') . '/api/v1/stores/' . get_option('btcpw_coinsnap_store_id') . '/invoices/' . $invoice_id : get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices/' . $invoice_id;
+    $auth = ($gateway === 'Coinsnap') ? 'token ' . get_option('btcpw_coinsnap_auth_key') : 'token ' . get_option('btcpw_btcpay_auth_key_view');
 
     $args = array(
         'headers' => array(
@@ -688,10 +688,10 @@ function btcpaywall_generate_lnbits_invoice_id($post_id, $order_id, $customer_da
 function btcpaywall_tipping_invoice_args($amount, $currency, $type, $collects)
 {
     $gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer');
-    //$url = ($gateway === 'CoinchargePay') ? get_option('btcpw_coincharge_pay_server_url') . '/api/v1/stores/' . get_option('btcpw_coincharge_pay_store_id') . '/invoices/' : get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
-    if ($gateway === 'CoinchargePay') {
-        $url = get_option('btcpw_coincharge_pay_server_url') . '/api/v1/stores/' . get_option('btcpw_coincharge_pay_store_id') . '/invoices/';
-        $auth =  'token ' . get_option('btcpw_coincharge_pay_auth_key');
+    //$url = ($gateway === 'Coinsnap') ? get_option('btcpw_coincharge_pay_server_url') . '/api/v1/stores/' . get_option('btcpw_coincharge_pay_store_id') . '/invoices/' : get_option('btcpw_btcpay_server_url') . '/api/v1/stores/' . get_option('btcpw_btcpay_store_id') . '/invoices';
+    if ($gateway === 'Coinsnap') {
+        $url = get_option('btcpw_coinsnap_server_url') . '/api/v1/stores/' . get_option('btcpw_coinsnap_store_id') . '/invoices/';
+        $auth =  'token ' . get_option('btcpw_coinsnap_auth_key');
         $data = array(
             'amount' => $amount,
             'currency' => $currency,
@@ -1189,9 +1189,9 @@ function ajax_btcpaywall_generate_invoice_id_content_file()
         'post_status' => 'publish',
         'post_type' => 'btcpw_order',
     ]);
-    if ($gateway === 'CoinchargePay') {
-        $url = get_option('btcpw_coincharge_pay_server_url') . '/api/v1/stores/' . get_option('btcpw_coincharge_pay_store_id') . '/invoices/';
-        $auth =  'token ' . get_option('btcpw_coincharge_pay_auth_key');
+    if ($gateway === 'Coinsnap') {
+        $url = get_option('btcpw_coinsnap_server_url') . '/api/v1/stores/' . get_option('btcpw_coinsnap_store_id') . '/invoices/';
+        $auth =  'token ' . get_option('btcpw_coinsnap_auth_key');
         $data = array(
             'amount' => $total,
             'currency' => $currency,
@@ -1360,9 +1360,9 @@ function ajax_btcpaywall_paid_content_file_invoice()
 
     $gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer');
 
-    if ($gateway === 'CoinchargePay') {
-        $url = get_option('btcpw_coincharge_pay_server_url') . '/api/v1/stores/' . get_option('btcpw_coincharge_pay_store_id') . '/invoices/' . $invoice_id;
-        $auth =  'token ' . get_option('btcpw_coincharge_pay_auth_key');
+    if ($gateway === 'Coinsnap') {
+        $url = get_option('btcpw_coinsnap_server_url') . '/api/v1/stores/' . get_option('btcpw_coinsnap_store_id') . '/invoices/' . $invoice_id;
+        $auth =  'token ' . get_option('btcpw_coinsnap_auth_key');
         $args = array(
             'headers' => array(
                 'Authorization' => $auth,

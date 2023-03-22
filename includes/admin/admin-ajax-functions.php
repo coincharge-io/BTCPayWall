@@ -153,7 +153,7 @@ add_action('wp_ajax_btcpw_create_shortcode', 'btcpaywall_create_pay_per_shortcod
 /**
  * @since 1.1.0
  */
-function ajax_btcpaywall_create_store_coincharge_pay()
+function ajax_btcpaywall_coinsnap_connect_website()
 {
     if (empty($_POST['lightningAddress']) && empty($_POST['xPub'])) {
         wp_send_json_error(['message' => 'You need to provide lightning address or xPub.']);
@@ -179,9 +179,9 @@ function ajax_btcpaywall_create_store_coincharge_pay()
         'method' => 'POST',
         'timeout' => 30
     );
-    $server_url = 'https://ccpay.coincharge.io';
+    $server_url = 'https://app.coinsnap.io';
     //$server_url = 'http://localhost:5000';
-    $url = "{$server_url}/btcpaywall/create-store";
+    $url = "{$server_url}/btcpaywall/setup";
     $response = wp_remote_request($url, $args);
     if (is_wp_error($response)) {
         wp_send_json_error(['message' => 'Something went wrong.']);
@@ -194,17 +194,17 @@ function ajax_btcpaywall_create_store_coincharge_pay()
         }
         wp_send_json_error([$messages]);
     }
-    update_option('btcpw_coincharge_pay_store_name', sanitize_text_field($_POST['storeName']));
-    update_option('btcpw_coincharge_pay_store_policy', (int) $_POST['speedPolicy']);
-    update_option('btcpw_coincharge_pay_email', sanitize_email($_POST['email']));
-    update_option('btcpw_coincharge_pay_xPub', sanitize_text_field($_POST['xPub']));
-    update_option('btcpw_coincharge_pay_lightning_address', sanitize_text_field($_POST['lightningAddress']));
-    update_option('btcpw_coincharge_pay_min_sendable', (int)$body['minSendable']);
-    update_option('btcpw_coincharge_pay_max_sendable', (int) $body['maxSendable']);
+    update_option('btcpw_coinsnap_store_name', sanitize_text_field($_POST['storeName']));
+    update_option('btcpw_coinsnap_store_policy', (int) $_POST['speedPolicy']);
+    update_option('btcpw_coinsnap_email', sanitize_email($_POST['email']));
+    update_option('btcpw_coinsnap_xPub', sanitize_text_field($_POST['xPub']));
+    update_option('btcpw_coinsnap_lightning_address', sanitize_text_field($_POST['lightningAddress']));
+    update_option('btcpw_coinsnap_min_sendable', (int)$body['minSendable']);
+    update_option('btcpw_coinsnap_max_sendable', (int) $body['maxSendable']);
     //Sanitize ?
-    update_option('btcpw_coincharge_pay_auth_key', sanitize_text_field($body['apiKey']));
-    update_option('btcpw_coincharge_pay_server_url', sanitize_text_field($body['serverUrl']));
-    update_option('btcpw_coincharge_pay_store_id', sanitize_text_field($body['storeId']));
+    update_option('btcpw_coinsnap_auth_key', sanitize_text_field($body['apiKey']));
+    update_option('btcpw_coinsnap_server_url', sanitize_text_field($body['serverUrl']));
+    update_option('btcpw_coinsnap_store_id', sanitize_text_field($body['storeId']));
     wp_send_json_success([$body]);
 }
-add_action('wp_ajax_btcpw_create_coincharge_store', 'ajax_btcpaywall_create_store_coincharge_pay');
+add_action('wp_ajax_btcpw_coinsnap_connect_website', 'ajax_btcpaywall_coinsnap_connect_website');

@@ -1,6 +1,8 @@
 <?php
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 $used_currency = get_option('btcpw_default_pay_per_post_currency');
 $supported_currencies = BTCPayWall::CURRENCIES;
 $default_price = get_option('btcpw_default_pay_per_post_price');
@@ -86,7 +88,7 @@ $previous_button_text_color = get_option('btcpw_pay_per_post_previous_button_tex
                 </div>
                 <div class="col-80">
 
-                    <input required type="number" min=0 placeholder="Default Price" step=1 name="btcpw_default_pay_per_post_price" id="btcpw_general_pay_per_post_settings_price" value="<?php echo esc_attr($default_price); ?>">
+                    <input required type="number" min=0 placeholder="Default Price" name="btcpw_default_pay_per_post_price" id="btcpw_general_pay_per_post_settings_price" value="<?php echo esc_attr($default_price); ?>">
 
                     <select required name="btcpw_default_pay_per_post_currency" id="btcpw_general_pay_per_post_settings_currency">
                         <option disabled value="">Select currency</option>

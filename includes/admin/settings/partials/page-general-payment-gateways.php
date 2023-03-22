@@ -7,7 +7,7 @@ $selected_gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer')
 $supported_gateways = array(
     'BTCPayServer',
     'OpenNode',
-    'CoinchargePay',
+    'Coinsnap',
     'LNBits'
 );
 ?>
@@ -45,10 +45,10 @@ $supported_gateways = array(
                     <td>
                         <div><?php echo (file_get_contents(BTCPAYWALL_PLUGIN_DIR . 'assets/dist/img/coincharge_pay_logo.svg')); ?></div>
                     </td>
-                    <td><input type="radio" id="coincharge_pay" name="btcpw_selected_payment_gateway" value=<?php echo esc_attr__("CoinchargePay", "btcpaywall"); ?> <?php echo $selected_gateway === 'CoinchargePay' ? 'checked' : ''; ?>>
+                    <td><input type="radio" id="coinsnap" name="btcpw_selected_payment_gateway" value=<?php echo esc_attr__("Coinsnap", "btcpaywall"); ?> <?php echo $selected_gateway === 'Coinsnap' ? 'checked' : ''; ?>>
                     </td>
-                    <td><?php echo esc_html__('Receive Lightning payments without your own Lightning node. You only need your own Lightning address. Your Lightning sales will be credited directly to your Lightning address.', 'btcpaywall'); ?></td>
-                    <td><a href="<?php echo admin_url('admin.php?page=btcpw_general_settings&section=coincharge_pay'); ?>"><?php echo esc_html__('Manage', 'btcpaywall'); ?></a></td>
+                    <td><?php echo esc_html__('Receive Bitcoin and Lightning payments without your own Lightning node. You only need your own Lightning address or xPub.', 'btcpaywall'); ?></td>
+                    <td><a href="<?php echo admin_url('admin.php?page=btcpw_general_settings&section=coinsnap'); ?>"><?php echo esc_html__('Manage', 'btcpaywall'); ?></a></td>
                 </tr>
                 <tr>
                     <td>

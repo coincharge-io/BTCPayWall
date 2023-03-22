@@ -31,7 +31,15 @@ function btcpaywall_register_apis()
         '/pay-per-post-templates',
         array(
             'methods'             => 'GET',
-            'callback'            => 'btcpaywall_get_pay_per_post_templates',
+            'callback'            => function () {
+                $shortcodes = new BTCPayWall_Pay_Per_Shortcode();
+                $prepare_templates = [];
+                $prepare_templates[''] = '';
+                foreach ($shortcodes->get_all_shortcodes('pay-per-post') as $val) {
+                    $prepare_templates["#$val[id]-$val[name]"] = (new BTCPayWall_Pay_Per_Shortcode($val['id']))->shortcode();
+                }
+                return $prepare_templates;
+            },
             'permission_callback' => function () {
                 return current_user_can('edit_posts');
             },
@@ -42,8 +50,15 @@ function btcpaywall_register_apis()
         '/pay-per-view-templates',
         array(
             'methods'             => 'GET',
-            'callback'            => 'btcpaywall_get_pay_per_view_templates',
-            'permission_callback' => function () {
+            'callback'            => function () {
+                $shortcodes = new BTCPayWall_Pay_Per_Shortcode();
+                $prepare_templates = [];
+                $prepare_templates[''] = '';
+                foreach ($shortcodes->get_all_shortcodes('pay-per-view') as $val) {
+                    $prepare_templates["#$val[id]-$val[name]"] = (new BTCPayWall_Pay_Per_Shortcode($val['id']))->shortcode();
+                }
+                return $prepare_templates;
+            },            'permission_callback' => function () {
                 return current_user_can('edit_posts');
             },
         )

@@ -65,11 +65,11 @@ function btcpaywall_sanitize_opennode_auth_key($value)
 /**
  * @since 1.1.0
  */
-function btcpaywall_sanitize_coincharge_pay_auth_key($value)
+function btcpaywall_sanitize_coinsnap_auth_key($value)
 {
     $value = sanitize_text_field($value);
 
-    update_option('btcpw_selected_payment_gateway', 'CoinchargePay');
+    update_option('btcpw_selected_payment_gateway', 'Coinsnap');
 
     return $value;
 }

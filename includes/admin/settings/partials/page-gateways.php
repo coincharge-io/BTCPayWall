@@ -15,8 +15,8 @@ $section = isset($_GET['section']) ? sanitize_text_field($_GET['section']) : $de
             case 'btcpayserver':
                 require('page-btcpay-server.php');
                 break;
-            case 'coincharge_pay':
-                require('page-coincharge-pay.php');
+            case 'coinsnap':
+                require('page-coinsnap.php');
                 break;
             case 'lnbits':
                 require('page-lnbits.php');

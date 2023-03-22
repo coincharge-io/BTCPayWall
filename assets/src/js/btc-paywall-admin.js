@@ -4,15 +4,15 @@
     $("input[name=show_password]").click(function() {
       var isChecked = $("input[name=show_password]").is(":checked");
       if (isChecked) {
-        $("input[name=btcpw_coincharge_pay_password]").prop("type", "text");
+        $("input[name=btcpw_coinsnap_password]").prop("type", "text");
       } else {
-        $("input[name=btcpw_coincharge_pay_password]").prop("type", "password");
+        $("input[name=btcpw_coinsnap_password]").prop("type", "password");
       }
     });
-    $("#btcpw_coincharge_pay_create_store").click(function(e) {
+    $("#btcpw_coinsnap_connect_website").click(function(e) {
       e.preventDefault();
-      var text = $("#btcpw_coincharge_pay_create_store").text();
-      $("#btcpw_coincharge_pay_create_store").html(
+      var text = $("#btcpw_coinsnap_connect_website").text();
+      $("#btcpw_coinsnap_connect_website").html(
         `<span class="loading-spinner" role="status" aria-hidden="true"></span>`
       );
       $.ajax({
@@ -20,46 +20,46 @@
         method: "POST",
         timeout: 30000,
         data: {
-          action: "btcpw_create_coincharge_store",
-          email: $("#btcpw_coincharge_pay_email").val(),
-          password: $("#btcpw_coincharge_pay_password").val(),
-          storeName: $("#btcpw_coincharge_pay_store_name").val(),
-          lightningAddress: $("#btcpw_coincharge_pay_lightning_address").val(),
-          xPub: $("#btcpw_coincharge_pay_xPub").val(),
-          storePolicy: $("#btcpw_coincharge_pay_store_policy").val(),
+          action: "btcpw_coinsnap_connect_website",
+          email: $("#btcpw_coinsnap_email").val(),
+          password: $("#btcpw_coinsnap_password").val(),
+          storeName: $("#btcpw_coinsnap_store_name").val(),
+          lightningAddress: $("#btcpw_coinsnap_lightning_address").val(),
+          xPub: $("#btcpw_coinsnap_xPub").val(),
+          storePolicy: $("#btcpw_coinsnap_store_policy").val(),
         },
         success: function(response) {
-          $("#btcpw_coincharge_pay_create_store").html(text);
+          $("#btcpw_coinsnap_create_store").html(text);
           if (response.success) {
             setTimeout(function() {
               location.reload();
             }, 8000);
-            $(".btcpw_coincharge_pay_message")
+            $(".btcpw_coinsnap_message")
               .css("color", "green")
               .text(
-                `You've successfully created a store. We've sent a confirmation link to your email. You need to confirm your account in order to login to CoinchargePay.`
+                `You've successfully connected website. We've sent a confirmation link to your email. You need to confirm your account in order to login to Coinsnap.`
               );
-            $(".btcpw_coincharge_pay_email_message").text("");
-            $(".btcpw_coincharge_pay_password_message").text("");
-            $(".btcpw_coincharge_pay_lightning_address_message").text("");
-            $(".btcpw_coincharge_pay_xPub_message").text("");
+            $(".btcpw_coinsnap_email_message").text("");
+            $(".btcpw_coinsnap_password_message").text("");
+            $(".btcpw_coinsnap_lightning_address_message").text("");
+            $(".btcpw_coinsnap_xPub_message").text("");
           } else {
             const email = response.data[0]?.email ? response.data[0].email : "";
-            $(".btcpw_coincharge_pay_email_message").text(email);
+            $(".btcpw_coinsnap_email_message").text(email);
             const password = response.data[0]?.password
               ? response.data[0].password
               : "";
-            $(".btcpw_coincharge_pay_password_message").text(password);
+            $(".btcpw_coinsnap_password_message").text(password);
             const lightningAddress = response.data[0]?.lightningAddressOrLNURL
               ? response.data[0].lightningAddressOrLNURL
               : "";
-            $(".btcpw_coincharge_pay_lightning_address_message").text(
+            $(".btcpw_coinsnap_lightning_address_message").text(
               lightningAddress
             );
             const xPub = response.data[0]?.xPub ? response.data[0].xPub : "";
-            $(".btcpw_coincharge_pay_xPub_message").text(xPub);
+            $(".btcpw_coinsnap_xPub_message").text(xPub);
             const message = response.data?.message ? response.data.message : "";
-            $(".btcpw_coincharge_pay_message").text(message);
+            $(".btcpw_coinsnap_message").text(message);
           }
         },
         error: function(xmlhttprequest, textstatus, message) {

@@ -32,7 +32,7 @@ function btcpaywall_enqueue_scripts()
 {
     $gateway = get_option('btcpw_selected_payment_gateway');
     $script = '';
-    $url = (get_option('btcpw_selected_payment_gateway', 'BTCPayServer') == 'BTCPayServer') ? get_option('btcpw_btcpay_server_url', '') . '/modal/btcpay.js' : get_option('btcpw_coincharge_pay_server_url', '') . '/modal/btcpay.js';
+    $url = (get_option('btcpw_selected_payment_gateway', 'BTCPayServer') == 'BTCPayServer') ? get_option('btcpw_btcpay_server_url', '') . '/modal/btcpay.js' : get_option('btcpw_coinsnap_server_url', '') . '/modal/btcpay.js';
     if ($gateway === 'LNBits') {
         $script = (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/lnbits.js');
         wp_enqueue_script('btcpaywall-qr-code', BTCPAYWALL_PLUGIN_URL . 'assets/src/js/qrcode-min.js', array('jquery'), null, false);

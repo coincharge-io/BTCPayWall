@@ -54,26 +54,26 @@ function btcpaywall_get_donation_templates()
     }
     return $templates;
 }
-function btcpaywall_get_pay_per_post_templates()
+function btcpaywall_get_templates($type = 'pay-per-post')
 {
     $shortcodes = new BTCPayWall_Pay_Per_Shortcode();
     $prepare_templates = [];
     $prepare_templates[''] = '';
-    foreach ($shortcodes->get_all_shortcodes('pay-per-post') as $val) {
+    foreach ($shortcodes->get_all_shortcodes($type) as $val) {
         $prepare_templates["#$val[id]-$val[name]"] = (new BTCPayWall_Pay_Per_Shortcode($val['id']))->shortcode();
     }
     return $prepare_templates;
 }
-function btcpaywall_get_pay_per_view_templates()
-{
-    $shortcodes = new BTCPayWall_Pay_Per_Shortcode();
-    $prepare_templates = [];
-    $prepare_templates[''] = '';
-    foreach ($shortcodes->get_all_shortcodes('pay-per-view') as $val) {
-        $prepare_templates["#$val[id]-$val[name]"] = (new BTCPayWall_Pay_Per_Shortcode($val['id']))->shortcode();
-    }
-    return $prepare_templates;
-}
+// function btcpaywall_get_pay_per_view_templates()
+// {
+//     $shortcodes = new BTCPayWall_Pay_Per_Shortcode();
+//     $prepare_templates = [];
+//     $prepare_templates[''] = '';
+//     foreach ($shortcodes->get_all_shortcodes('pay-per-view') as $val) {
+//         $prepare_templates["#$val[id]-$val[name]"] = (new BTCPayWall_Pay_Per_Shortcode($val['id']))->shortcode();
+//     }
+//     return $prepare_templates;
+// }
 function btcpaywall_all_created_forms()
 {
     $form = new BTCPayWall_Tipping_Form();
