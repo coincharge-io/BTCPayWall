@@ -29,7 +29,7 @@
           storePolicy: $("#btcpw_coinsnap_store_policy").val(),
         },
         success: function(response) {
-          $("#btcpw_coinsnap_create_store").html(text);
+          $("#btcpw_coinsnap_connect_website").html(text);
           if (response.success) {
             setTimeout(function() {
               location.reload();
@@ -63,6 +63,7 @@
           }
         },
         error: function(xmlhttprequest, textstatus, message) {
+          $("#btcpw_coinsnap_connect_website").html(text);
           if (textstatus === "timeout") {
             console.error("got timeout");
           } else {
