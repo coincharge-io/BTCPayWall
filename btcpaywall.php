@@ -51,13 +51,13 @@ if (!class_exists('BTCPayWall')) :
             'SATS',
             'BTC',
         ];
-        public $forms;
+        /*public $forms;
         public $tippers;
         public $customers;
         public $tippings;
         public $payments;
         public $cart;
-        public $pay_per_shortcodes;
+        public $pay_per_shortcodes;*/
 
         public static function instance()
         {
@@ -68,13 +68,13 @@ if (!class_exists('BTCPayWall')) :
                 add_action('plugins_loaded', array(self::$instance, 'load_textdomain'));
 
                 self::$instance->includes();
-                self::$instance->tippers = new BTCPayWall_DB_Tippers();
+                /*self::$instance->tippers = new BTCPayWall_DB_Tippers();
                 self::$instance->customers = new BTCPayWall_DB_Customers();
                 self::$instance->payments = new BTCPayWall_DB_Payments();
                 self::$instance->tippings = new BTCPayWall_DB_Tippings();
                 self::$instance->forms = new BTCPayWall_DB_Tipping_Forms();
                 self::$instance->pay_per_shortcodes = new BTCPayWall_DB_Pay_Per_Shortcode();
-                self::$instance->cart = new BTCPayWall_Cart();
+                self::$instance->cart = new BTCPayWall_Cart();*/
             }
 
             return self::$instance;
