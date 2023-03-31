@@ -1,6 +1,38 @@
 (function($) {
   "use strict";
   $(document).ready(function() {
+    $("#coinsnap-connect-website").click(function(e) {
+      e.preventDefault();
+      $(".btcpw_btcpay_status").hide(500);
+      //var text = $("#btcpw_btcpay_check_status").text();
+      $(".coinsnap-connect-website").html(
+        `<span class="loading-spinner" role="status" aria-hidden="true"></span>`
+      );
+      $.ajax({
+        url: "/wp-admin/admin-ajax.php",
+        method: "POST",
+        data: {
+          action: "btcpw_connect_coinsnap",
+          auth_key: $("#btcpw_coinsnap_auth_key").val(),
+        },
+        success: function(response) {
+          console.log(response);
+          //$("#btcpw_btcpay_check_status").html(text);
+          if (response.success) {
+            location.reload();
+            //$("#btcpw_btcpay_store_id").val(response.data.store_id);
+            //$("#btcpw_btcpay_status_success").fadeIn(500);
+          } else {
+            /*$("#btcpw_btcpay_status_error")
+              .html(response.data.message)
+              .fadeIn(500);*/
+          }
+        },
+        error: function(error) {
+          console.log(error);
+        },
+      });
+    });
     $("#btcpw_btcpay_check_status").click(function() {
       $(".btcpw_btcpay_status").hide(500);
       var text = $("#btcpw_btcpay_check_status").text();

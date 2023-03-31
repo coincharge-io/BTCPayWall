@@ -149,3 +149,47 @@ function btcpaywall_create_pay_per_shortcode()
     }
 }
 add_action('wp_ajax_btcpw_create_shortcode', 'btcpaywall_create_pay_per_shortcode');
+
+function ajax_btcpaywall_connect_coinsnap()
+{
+    if (empty($_POST['auth_key'])) {
+        wp_send_json_error(['message' => 'API key is required']);
+    }
+
+    $auth_key = sanitize_text_field($_POST['auth_key']);
+    update_option('btcpw_coinsnap_auth_key', $auth_key);
+    update_option('btcpw_coinsnap_server_url', 'https://stores.coinsnap.io');
+
+    $server_url = get_option("btcpw_coinsnap_server_url");
+    $args = array(
+        'headers' => array(
+            'Authorization' => 'token ' . $auth_key,
+            'Content-Type' => 'application/json',
+        ),
+        'method' => 'GET',
+        'timeout' => 50
+    );
+    $url = "{$server_url}/api/v1/api-keys/current";
+    $response = wp_remote_get($url, $args);
+
+
+    if (is_wp_error($response)) {
+        update_option("btcpw_btcpay_store_id", null);
+        wp_send_json_error(['message' => 'Something went wrong. Please check your API key.']);
+    }
+
+    $permission = isset(json_decode($response['body'])->permissions[0]) ? json_decode($response['body'])->permissions[0] : false;
+
+
+    $view_store_id = substr($permission, strrpos($permission, ':') + 1);
+    if ($view_store_id) {
+        update_option('btcpw_coinsnap_store_id', $view_store_id);
+        update_option('btcpw_selected_payment_gateway', 'Coinsnap');
+        wp_send_json_success();
+    } else {
+        update_option("btcpw_coinsnap_store_id", null);
+
+        wp_send_json_error(['message' => 'Something went wrong. Please check your credentials.']);
+    }
+}
+add_action('wp_ajax_btcpw_connect_coinsnap', 'ajax_btcpaywall_connect_coinsnap');
