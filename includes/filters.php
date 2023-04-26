@@ -12,14 +12,16 @@
 
 
 // Exit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 /**
  *
  * @param string $content
- * 
- * 
+ *
+ *
  * @return string
  */
 function btcpaywall_filter_the_content($content)
@@ -37,12 +39,12 @@ function btcpaywall_filter_the_content($content)
     if (($end_pos = strpos($content, '<!-- /btcpw:end_content -->')) === false) {
         $content_end = '';
     } else {
-        $content_end = substr($content, $end_pos + 26);
+        $content_end = substr($content, $end_pos + 27);
     }
 
     return $content_start . $content_end;
 }
-add_filter('the_content',  'btcpaywall_filter_the_content', 50);
+add_filter('the_content', 'btcpaywall_filter_the_content', 50);
 
 
 
@@ -102,8 +104,6 @@ add_filter('btcpaywall_change_product_labels', 'btcpaywall_change_product_labels
  */
 function btcpaywall_change_cpt_slug($args, $post_type)
 {
-
-
     if ('digital_download' === $post_type) {
         $args['rewrite']['slug'] = 'digital-product';
     }

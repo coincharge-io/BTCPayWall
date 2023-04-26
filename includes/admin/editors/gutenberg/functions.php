@@ -10,7 +10,9 @@
  * @since       1.0
  */
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+	exit;
+}
 
 function btcpaywall_render_gutenberg($atts)
 {
@@ -154,7 +156,7 @@ function btcpaywall_render_tipping_box($atts)
 		'background' =>  '#1d5aa3',
 	), $atts);
 
-	return do_shortcode("[btcpw_tipping_box dimension='{$atts['dimension']}' button_color_hover='{$atts['button_color_hover']}' title = '{$atts['title']}' description='{$atts['description']}' currency = '{$atts['currency']}' background_color = '{$atts['background_color']}' title_text_color = '{$atts['title_text_color']}' tipping_text = '{$atts['tipping_text']}' tipping_text_color = '{$atts['tipping_text_color']}' redirect = '{$atts['redirect']}' description_color = '{$atts['description_color']}' button_text = '{$atts['button_text']}' button_text_color = '{$atts['button_text_color']}' button_color = '{$atts['button_color']}' logo_id = '{$atts['logo_id']}' background_id = '{$atts['background_id']}' background = '{$atts['background']}' input_background = '{$atts['input_background']}']");
+	return do_shortcode("[btcpw_tipping_box dimension='{$atts['dimension']}' button_color_hover='{$atts['button_color_hover']}' title='{$atts['title']}' description='{$atts['description']}' currency='{$atts['currency']}' background_color='{$atts['background_color']}' title_text_color='{$atts['title_text_color']}' tipping_text='{$atts['tipping_text']}' tipping_text_color='{$atts['tipping_text_color']}' redirect='{$atts['redirect']}' description_color='{$atts['description_color']}' button_text='{$atts['button_text']}' button_text_color='{$atts['button_text_color']}' button_color='{$atts['button_color']}' logo_id='{$atts['logo_id']}' background_id='{$atts['background_id']}' background='{$atts['background']}' input_background='{$atts['input_background']}']");
 }
 function btcpaywall_render_tipping_banner_wide($atts)
 {

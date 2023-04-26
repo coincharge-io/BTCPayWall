@@ -3,8 +3,8 @@
 /**
  * Plugin Name: BTCPayWall
  * Plugin URI: https://wordpress.org/plugins/btcpaywall
- * Description: The Bitcoin Paywall to sell content and digital goods on WordPress. 
- * Version: 1.0.9
+ * Description: The Bitcoin Paywall to sell content and digital goods on WordPress.
+ * Version: 1.0.9.1
  * Author: Coincharge https://btcpaywall.com
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
@@ -14,7 +14,9 @@
 
 
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 if (!class_exists('BTCPayWall')) :
 
@@ -26,7 +28,7 @@ if (!class_exists('BTCPayWall')) :
     final class BTCPayWall
     {
         private static $instance;
-        const DURATIONS = [
+        public const DURATIONS = [
             'minute',
             'hour',
             'week',
@@ -36,7 +38,7 @@ if (!class_exists('BTCPayWall')) :
             'unlimited',
         ];
 
-        const CURRENCIES = [
+        public const CURRENCIES = [
             'BTC',
             'SATS',
             'USD',
@@ -52,7 +54,7 @@ if (!class_exists('BTCPayWall')) :
             'GBP'
         ]; */
 
-        const BTC_FORMAT = [
+        public const BTC_FORMAT = [
             'SATS',
             'BTC',
         ];
@@ -67,7 +69,7 @@ if (!class_exists('BTCPayWall')) :
         public static function instance()
         {
             if (!isset(self::$instance) && !(self::$instance instanceof BTCPayWall)) {
-                self::$instance = new BTCPayWall;
+                self::$instance = new BTCPayWall();
                 self::$instance->setup_constants();
 
                 add_action('plugins_loaded', array(self::$instance, 'load_textdomain'));
@@ -104,10 +106,9 @@ if (!class_exists('BTCPayWall')) :
          */
         private function setup_constants()
         {
-
             // Plugin version.
             if (!defined('BTCPAYWALL_VERSION')) {
-                define('BTCPAYWALL_VERSION', '1.0.9');
+                define('BTCPAYWALL_VERSION', '1.0.9.1');
             }
 
             // Plugin Folder Path.
@@ -204,7 +205,6 @@ if (!class_exists('BTCPayWall')) :
          */
         public function load_textdomain()
         {
-
             load_plugin_textdomain(
                 'btcpaywall',
                 false,

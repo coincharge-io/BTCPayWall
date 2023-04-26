@@ -10,11 +10,11 @@
  * @since       1.0
  */
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+	exit;
+}
 class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 {
-
-
 	/**
 	 * @return string
 	 */
@@ -52,7 +52,6 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 	 */
 	protected function _register_controls()
 	{
-
 		$this->start_controls_section(
 			'content-option',
 			[
@@ -459,7 +458,6 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 	 */
 	protected function render()
 	{
-
 		$settings         = $this->get_settings_for_display();
 		$enable_pay_block = !empty($settings['pay_block']) ? $settings['pay_block'] : false;
 		$price = $settings['price'];
@@ -481,24 +479,7 @@ class Elementor_BTCPW_Start_Content_Widget extends \Elementor\Widget_Base
 
 
 		if ($enable_pay_block) {
-			echo do_shortcode("[btcpw_start_content pay_block='true' width='{$settings['width']}' height='{$settings['height']}' background_color='{$settings['background_color']}' currency='{$currency}' duration='{$duration}' duration_type='{$duration_type}' price='{$price}' button_text = '{$settings['button_text']}'
-			header_text = '{$settings['header_text']}'
-			header_color = '{$settings['header_color']}'
-			info_text = '{$settings['info_text']}'
-			info_color = '{$settings['info_color']}'
-			link='{$link}' help_link='{$settings['help_link']}' help_text='{$settings['help_text']}' additional_link='{$additional_link}' additional_help_link='{$settings['additional_help_link']}' additional_help_text='{$settings['additional_help_text']}' 
-			button_text_color = '{$settings['button_text_color']}'
-			button_color = '{$settings['button_color']}'
-			button_color_hover = '{$settings['button_color_hover']}'
-			continue_button_text = '{$settings['continue_button_text']}'
-			continue_button_text_color = '{$settings['continue_button_text_color']}'
-			continue_button_color = '{$settings['continue_button_color']}'
-			continue_button_color_hover = '{$settings['continue_button_color_hover']}'
-			previous_button_text = '{$settings['previous_button_text']}'
-			previous_button_text_color = '{$settings['previous_button_text_color']}'
-			previous_button_color = '{$settings['previous_button_color']}'
-			previous_button_color_hover = '{$settings['previous_button_color_hover']}'
-			display_name='{$display_name}' mandatory_name='{$mandatory_name}' display_email='{$display_email}' mandatory_email='{$mandatory_email}' display_phone='{$display_phone}' mandatory_phone='{$mandatory_phone}' display_address='{$display_address}' mandatory_address='{$mandatory_address}' display_message='{$display_message}' mandatory_message='{$mandatory_message}']");
+			echo do_shortcode("[btcpw_start_content pay_block='true' width='{$settings['width']}' height='{$settings['height']}' background_color='{$settings['background_color']}' currency='{$currency}' duration='{$duration}' duration_type='{$duration_type}' price='{$price}' button_text='{$settings['button_text']}' header_text='{$settings['header_text']}' header_color='{$settings['header_color']}' info_text='{$settings['info_text']}' info_color='{$settings['info_color']}' link='{$link}' help_link='{$settings['help_link']}' help_text='{$settings['help_text']}' additional_link='{$additional_link}' additional_help_link='{$settings['additional_help_link']}' additional_help_text='{$settings['additional_help_text']}' button_text_color='{$settings['button_text_color']}' button_color='{$settings['button_color']}' button_color_hover='{$settings['button_color_hover']}' continue_button_text='{$settings['continue_button_text']}' continue_button_text_color='{$settings['continue_button_text_color']}' continue_button_color='{$settings['continue_button_color']}' continue_button_color_hover='{$settings['continue_button_color_hover']}' previous_button_text='{$settings['previous_button_text']}' previous_button_text_color='{$settings['previous_button_text_color']}' previous_button_color='{$settings['previous_button_color']}' previous_button_color_hover='{$settings['previous_button_color_hover']}' display_name='{$display_name}' mandatory_name='{$mandatory_name}' display_email='{$display_email}' mandatory_email='{$mandatory_email}' display_phone='{$display_phone}' mandatory_phone='{$mandatory_phone}' display_address='{$display_address}' mandatory_address='{$mandatory_address}' display_message='{$display_message}' mandatory_message='{$mandatory_message}']");
 		}
 	}
 }
