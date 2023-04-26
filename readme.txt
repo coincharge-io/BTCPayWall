@@ -88,6 +88,9 @@ https://btcpaywall.com/faq-support-center/
 
  == Changelog ==
 
+= 1.0.9.1 =
+
+- Fix: Problem with customizing colors in Elementor
 = 1.0.9 =
 
 - Add: Template generator for Pay-per modules
