@@ -113,7 +113,7 @@ function btcpaywall_render_pay_per_view_templates_gutenberg($atts)
     $preview_image = ($atts['preview'] !== $split_shortcode[9]) ? $atts['preview'] : $split_shortcode[9];
     $additional = "title='{$title}' description='{$description}' preview='{$preview_image}'";
     if ($atts['override']) {
-        $payblock = $atts['pay_block'] != $split_shortcode[2] ? ("pay_view_block = {$atts['pay_block']}") : $split_shortcode[2];
+        $payblock = $atts['pay_block'] != $split_shortcode[2] ? ("pay_view_block={$atts['pay_block']}") : $split_shortcode[2];
 
         $price = (is_numeric($atts['price']) && $atts['price'] != $split_shortcode[3]) ? $atts['price'] : $split_shortcode[3];
         $currency = (in_array($atts['currency'], BTCPayWall::CURRENCIES) && $atts['currency'] != $split_shortcode[4]) ? $atts['currency'] : $split_shortcode[4];
@@ -204,7 +204,7 @@ function btcpaywall_render_tipping_box($atts)
         'background' =>  '#1d5aa3',
     ), $atts);
 
-    return do_shortcode("[btcpw_tipping_box dimension='{$atts['dimension']}' button_color_hover='{$atts['button_color_hover']}' title = '{$atts['title']}' description='{$atts['description']}' currency = '{$atts['currency']}' background_color = '{$atts['background_color']}' title_text_color = '{$atts['title_text_color']}' tipping_text = '{$atts['tipping_text']}' tipping_text_color = '{$atts['tipping_text_color']}' redirect = '{$atts['redirect']}' description_color = '{$atts['description_color']}' button_text = '{$atts['button_text']}' button_text_color = '{$atts['button_text_color']}' button_color = '{$atts['button_color']}' logo_id = '{$atts['logo_id']}' background_id = '{$atts['background_id']}' background = '{$atts['background']}' input_background = '{$atts['input_background']}']");
+    return do_shortcode("[btcpw_tipping_box dimension='{$atts['dimension']}' button_color_hover='{$atts['button_color_hover']}' title='{$atts['title']}' description='{$atts['description']}' currency='{$atts['currency']}' background_color='{$atts['background_color']}' title_text_color='{$atts['title_text_color']}' tipping_text='{$atts['tipping_text']}' tipping_text_color='{$atts['tipping_text_color']}' redirect='{$atts['redirect']}' description_color='{$atts['description_color']}' button_text='{$atts['button_text']}' button_text_color='{$atts['button_text_color']}' button_color='{$atts['button_color']}' logo_id='{$atts['logo_id']}' background_id='{$atts['background_id']}' background='{$atts['background']}' input_background='{$atts['input_background']}']");
 }
 function btcpaywall_render_tipping_banner_wide($atts)
 {
@@ -219,7 +219,7 @@ function btcpaywall_render_tipping_banner_wide($atts)
         'tipping_text_color' =>  '#000000',
         'redirect' =>  false,
         'description_color' =>  '#000000',
-        'logo_id'	=> '',
+        'logo_id'    => '',
         'background_id' =>  '',
         'free_input' =>  true,
         'input_background' =>  '#ffa500',
@@ -246,7 +246,7 @@ function btcpaywall_render_tipping_banner_wide($atts)
         'mandatory_address' => false,
         'display_message' =>  true,
         'mandatory_message' => false,
-        'show_icon'	=>  true,
+        'show_icon'    =>  true,
         'button_text' =>  'Tipping now',
         'button_text_color' =>  '#FFFFFF',
         'button_color' =>  '#FE642E',
@@ -279,7 +279,7 @@ function btcpaywall_render_tipping_banner_high($atts)
         'tipping_text_color' =>  '#000000',
         'redirect' =>  false,
         'description_color' =>  '#000000',
-        'logo_id'	=> '',
+        'logo_id'    => '',
         'background_id' =>  '',
         'free_input' =>  true,
         'input_background' =>  '#ffa500',
@@ -306,7 +306,7 @@ function btcpaywall_render_tipping_banner_high($atts)
         'mandatory_address' => false,
         'display_message' =>  true,
         'mandatory_message' => false,
-        'show_icon'	=>  true,
+        'show_icon'    =>  true,
         'button_text' =>  'Tipping now',
         'button_text_color' =>  '#FFFFFF',
         'button_color' =>  '#FE642E',
@@ -339,7 +339,7 @@ function btcpaywall_render_tipping_pages($atts)
         'tipping_text_color' =>  '#000000',
         'redirect' =>  false,
         'description_color' =>  '#000000',
-        'logo_id'	=> '',
+        'logo_id'    => '',
         'background_id' =>  '',
         'input_background' =>  '#ffa500',
         'background' =>  '#1d5aa3',
@@ -366,8 +366,8 @@ function btcpaywall_render_tipping_pages($atts)
         'display_message' =>  true,
         'mandatory_message' => false,
         'free_input' =>  true,
-        'show_icon'	=>  true,
-        'step1'	=> 'Pledge',
+        'show_icon'    =>  true,
+        'step1'    => 'Pledge',
         'step2' => 'Info',
         'active_color' => '#808080',
         'inactive_color' => '#D3D3D3',

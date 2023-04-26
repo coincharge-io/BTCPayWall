@@ -261,21 +261,6 @@ class Elementor_BTCPW_Tipping_Box_Widget extends \Elementor\Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        echo do_shortcode("[btcpw_tipping_box dimension='{$settings['dimension']}' title='{$settings['title']}' description='{$settings['description']}'
-        currency='{$settings['currency']}'
-        background_color = '{$settings['background_color']}'
-        title_text_color = '{$settings['title_text_color']}'
-        tipping_text = '{$settings['tipping_text']}'
-        tipping_text_color = '{$settings['tipping_text_color']}'
-        redirect = '{$settings['redirect']}'
-        description_color = '{$settings['description_color']}'
-        button_text = '{$settings['button_text']}'
-        button_text_color = '{$settings['button_text_color']}'
-        button_color = '{$settings['button_color']}'
-        button_color_hover = '{$settings['button_color_hover']}'
-        logo_id = '{$settings['logo_id']['url']}'
-        background_id = '{$settings['background_id']['url']}'
-        background = '{$settings['background']}'
-        input_background = '{$settings['input_background']}']");
+        echo do_shortcode("[btcpw_tipping_box dimension='{$settings['dimension']}' title='{$settings['title']}' description='{$settings['description']}' currency='{$settings['currency']}' background_color='{$settings['background_color']}' title_text_color='{$settings['title_text_color']}' tipping_text='{$settings['tipping_text']}' tipping_text_color='{$settings['tipping_text_color']}' redirect='{$settings['redirect']}' description_color='{$settings['description_color']}' button_text='{$settings['button_text']}' button_text_color='{$settings['button_text_color']}' button_color='{$settings['button_color']}' button_color_hover='{$settings['button_color_hover']}' logo_id='{$settings['logo_id']['url']}' background_id='{$settings['background_id']['url']}' background='{$settings['background']}' input_background='{$settings['input_background']}']");
     }
 }

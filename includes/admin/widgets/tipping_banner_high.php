@@ -387,7 +387,7 @@ class Tipping_Banner_High extends WP_Widget
         $previous_button_text = !empty($instance['previous_button_text']) ? $instance['previous_button_text'] : esc_html__('Previous', 'btcpaywall');
         $previous_button_text_color = !empty($instance['previous_button_text_color']) ? $instance['previous_button_text_color'] : '#FFFFFF';
 
-        $previous_button_color = !empty($instance['previous_button_color']) ? $instance['previous_button_color'] : '#1d5aa3';
+        $previous_button_color = !empty($instance['previous_button_color']) ? $instance['previous_button_color'] : '#2d5aa3';
         $previous_button_color_hover = !empty($instance['previous_button_color_hover']) ? $instance['previous_button_color_hover'] : '#FFF';
 
     ?>

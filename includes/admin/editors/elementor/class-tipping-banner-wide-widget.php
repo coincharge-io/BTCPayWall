@@ -594,30 +594,6 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
         $mandatory_phone = filter_var($settings['mandatory_phone'], FILTER_VALIDATE_BOOLEAN);
         $mandatory_message = filter_var($settings['mandatory_message'], FILTER_VALIDATE_BOOLEAN);
 
-        echo do_shortcode("[btcpw_tipping_banner_wide dimension='{$settings['dimension']}' title='{$settings['title']}' description='{$settings['description']}'
-        currency='{$settings['currency']}'
-        background_color = '{$settings['background_color']}'
-        title_text_color = '{$settings['title_text_color']}'
-        tipping_text = '{$settings['tipping_text']}'
-        tipping_text_color = '{$settings['tipping_text_color']}'
-        redirect = '{$settings['redirect']}'
-        description_color = '{$settings['description_color']}'
-        button_text = '{$settings['button_text']}'
-        button_text_color = '{$settings['button_text_color']}'
-        button_color = '{$settings['button_color']}'
-        button_color_hover = '{$settings['button_color_hover']}'
-			continue_button_text = '{$settings['continue_button_text']}'
-			continue_button_text_color = '{$settings['continue_button_text_color']}'
-			continue_button_color = '{$settings['continue_button_color']}'
-			continue_button_color_hover = '{$settings['continue_button_color_hover']}'
-			previous_button_text = '{$settings['previous_button_text']}'
-			previous_button_text_color = '{$settings['previous_button_text_color']}'
-			previous_button_color = '{$settings['previous_button_color']}'
-			previous_button_color_hover = '{$settings['previous_button_color_hover']}'
-        selected_amount_background = '{$settings['selected_amount_background']}'
-        logo_id = '{$settings['logo_id']['url']}'
-        background_id = '{$settings['background_id']['url']}'
-        background = '{$settings['background']}'
-        input_background = '{$settings['input_background']}' free_input='{$settings['free_input']}' value1_enabled='{$value1_enabled}' value1_amount='{$settings['value1_amount']}' value1_currency='{$settings['value1_currency']}' value1_icon='{$settings['value1_icon']}' value2_enabled='{$value2_enabled}' value2_amount='{$settings['value2_amount']}' value2_currency='{$settings['value2_currency']}' value2_icon='{$settings['value2_icon']}' value3_enabled='{$value3_enabled}' value3_amount='{$settings['value3_amount']}' value3_currency='{$settings['value3_currency']}' value3_icon='{$settings['value3_icon']}' display_name='{$display_name}' mandatory_name='{$mandatory_name}' display_email='{$display_email}' mandatory_email='{$mandatory_email}' display_phone='{$display_phone}' mandatory_phone='{$mandatory_phone}' display_address='{$display_address}' mandatory_address='{$mandatory_address}' display_message='{$display_message}' mandatory_message='{$mandatory_message}' show_icon='{$show_icon}' free_input='{$free_input}']");
+        echo do_shortcode("[btcpw_tipping_banner_wide dimension='{$settings['dimension']}' title='{$settings['title']}' description='{$settings['description']}' currency='{$settings['currency']}' background_color='{$settings['background_color']}' title_text_color='{$settings['title_text_color']}' tipping_text='{$settings['tipping_text']}' tipping_text_color='{$settings['tipping_text_color']}' redirect='{$settings['redirect']}' description_color='{$settings['description_color']}' button_text='{$settings['button_text']}' button_text_color='{$settings['button_text_color']}' button_color='{$settings['button_color']}' button_color_hover='{$settings['button_color_hover']}' continue_button_text='{$settings['continue_button_text']}' continue_button_text_color='{$settings['continue_button_text_color']}' continue_button_color='{$settings['continue_button_color']}' continue_button_color_hover='{$settings['continue_button_color_hover']}' previous_button_text='{$settings['previous_button_text']}' previous_button_text_color='{$settings['previous_button_text_color']}' previous_button_color='{$settings['previous_button_color']}' previous_button_color_hover='{$settings['previous_button_color_hover']}' selected_amount_background='{$settings['selected_amount_background']}' logo_id='{$settings['logo_id']['url']}' background_id='{$settings['background_id']['url']}' background='{$settings['background']}' input_background='{$settings['input_background']}' free_input='{$settings['free_input']}' value1_enabled='{$value1_enabled}' value1_amount='{$settings['value1_amount']}' value1_currency='{$settings['value1_currency']}' value1_icon='{$settings['value1_icon']}' value2_enabled='{$value2_enabled}' value2_amount='{$settings['value2_amount']}' value2_currency='{$settings['value2_currency']}' value2_icon='{$settings['value2_icon']}' value3_enabled='{$value3_enabled}' value3_amount='{$settings['value3_amount']}' value3_currency='{$settings['value3_currency']}' value3_icon='{$settings['value3_icon']}' display_name='{$display_name}' mandatory_name='{$mandatory_name}' display_email='{$display_email}' mandatory_email='{$mandatory_email}' display_phone='{$display_phone}' mandatory_phone='{$mandatory_phone}' display_address='{$display_address}' mandatory_address='{$mandatory_address}' display_message='{$display_message}' mandatory_message='{$mandatory_message}' show_icon='{$show_icon}' free_input='{$free_input}']");
     }
 }
