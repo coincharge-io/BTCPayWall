@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 }
 
 
-class BTCPayWall_Abstract_Client
+class Abstract_Client
 {
     private $baseUrl;
     private $httpClient;
@@ -14,7 +14,6 @@ class BTCPayWall_Abstract_Client
 
     public function __construct($baseUrl)
     {
-        $this->httpClient = new WP_Http();
         $this->baseUrl = $baseUrl;
     }
     public function getBaseUrl()

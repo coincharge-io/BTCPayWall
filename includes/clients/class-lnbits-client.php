@@ -7,41 +7,41 @@ if (!defined('ABSPATH')) {
 }
 
 
-class BTCPayWall_OpenNode_Client extends BTCPayWall_Abstract_Client
+class LNBits_Client extends Abstract_Client
 {
-  private $apiKey;
+  private string $apiKey;
   public function __construct($settings = [])
   {
-    $this->baseUrl = 'https://api.opennode.com';
-    $this->apiKey = $settings['apiKey'];
-    parent::__construct($this->baseUrl);
+    $baseUrl = get_option('btcpw_lnbits_server_url');
+    $this->apiKey = get_option('btcpw_lnbits_auth_key');
+    parent::__construct($baseUrl);
   }
   public function createInvoice(array $data = [])
   {
-    $url = $this->getBaseUrl() . '/v1/charges';
+    $url = $this->getBaseUrl() . '/api/v1/payments';
     $args = array(
       'headers' => array(
-        'Authorization' => $this->getKey(),
+        'X-Api-Key' => $this->getKey(),
         'Content-Type' => 'application/json',
       ),
       'json' => $data,
       'method' => 'POST',
       'timeout' => 60,
     );
-    return $this->httpClient->request($url, $args);
+    return wp_remote_request($url, $args);
   }
-  public function getInvoice(string $invoiceId)
+  public function getInvoice(string $paymentHash)
   {
-    $url = $this->getBaseUrl() . '/v1/charge/' . $invoiceId;
+    $url = $this->getBaseUrl() .  '/api/v1/payments/' . $paymentHash;
     $args = array(
       'headers' => array(
-        'Authorization' => $this->getKey(),
+        'X-Api-Key' => $this->getKey(),
         'Content-Type' => 'application/json',
       ),
       'method' => 'GET',
       'timeout' => 30,
     );
-    return $this->httpClient->request($url, $args);
+    return wp_remote_request($url, $args);
   }
   public function getKey()
   {

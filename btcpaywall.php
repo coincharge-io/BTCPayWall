@@ -168,6 +168,13 @@ if (!class_exists('BTCPayWall')) :
 
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/wpbakery/actions.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/elementor/functions.php';
+
+
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/abstract-class-btcpaywall-client.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/class-btcpay-client.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/class-opennode-client.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/class-lnbits-client.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/class-coinsnap-client.php';
             if (is_admin()) {
                 require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/settings/functions.php';
 
@@ -203,6 +210,22 @@ if (!class_exists('BTCPayWall')) :
                 false,
                 BTCPAYWALL_PLUGIN_URL . '/languages/'
             );
+        }
+        public static function create_client()
+        {
+            $client_type = get_option('btcpw_selected_payment_gateway');
+            switch ($client_type) {
+                case 'BTCPayServer':
+                    return new BTCPay_Client();
+                case 'OpenNode':
+                    return new OpenNode_Client();
+                case 'LNBits':
+                    return new LNBits_Client();
+                case 'Coinsnap':
+                    return new Coinsnap_Client();
+                default:
+                    throw new \Exception('Invalid client');
+            }
         }
     }
 

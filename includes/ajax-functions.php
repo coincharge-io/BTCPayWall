@@ -208,7 +208,7 @@ function btcpaywall_get_payment_method($invoice_id)
 function ajax_btcpaywall_convert_currencies()
 {
     $url = 'https://api.coingecko.com/api/v3/exchange_rates';
-
+    //TODO: Cache call
     $args = array(
         'headers' => array(
             'Content-Type' => 'application/json',
