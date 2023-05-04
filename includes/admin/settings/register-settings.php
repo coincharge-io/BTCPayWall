@@ -25,7 +25,9 @@ function btcpaywall_register_settings()
     register_setting('btcpw_opennode_settings', 'btcpw_opennode_auth_key', array('type' => 'string', 'sanitize_callback' => 'btcpaywall_sanitize_opennode_auth_key'));
 
 
-    //register_setting('btcpw_coinsnap_settings', 'btcpw_coinsnap_auth_key', array('type' => 'string', 'sanitize_callback' => 'btcpaywall_sanitize_coinsnap_auth_key'));
+    register_setting('btcpw_coinsnap_settings', 'btcpw_coinsnap_auth_key', array('type' => 'string', 'sanitize_callback' => 'btcpaywall_sanitize_coinsnap_auth_key'));
+    register_setting('btcpw_coinsnap_settings', 'btcpw_coinsnap_website_id', array('type' => 'string', 'sanitize_callback' => 'btcpaywall_sanitize_coinsnap_auth_key'));
+    register_setting('btcpw_coinsnap_settings', 'btcpw_coinsnap_secret', array('type' => 'string', 'sanitize_callback' => 'btcpaywall_sanitize_coinsnap_auth_key'));
 
 
     register_setting('btcpw_lnbits_settings', 'btcpw_lnbits_server_url', array('type' => 'string', 'sanitize_callback' => 'btcpaywall_sanitize_btcpay_server_url'));

@@ -6,10 +6,9 @@ if (!defined('ABSPATH')) {
 }
 
 
-class Abstract_Client
+abstract class Abstract_Client
 {
     private $baseUrl;
-    private $httpClient;
     private $apiKey;
 
     public function __construct($baseUrl)
@@ -24,4 +23,5 @@ class Abstract_Client
     {
         return $this->apiKey;
     }
+    abstract protected function formatResponse($response);
 }

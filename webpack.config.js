@@ -24,6 +24,7 @@ module.exports = {
     btcpayserver: path.join(__dirname, "assets/src/js/btcpayserver.js"),
     opennode: path.join(__dirname, "assets/src/js/opennode.js"),
     lnbits: path.join(__dirname, "assets/src/js/lnbits.js"),
+    coinsnap: path.join(__dirname, "assets/src/js/coinsnap.js"),
   },
   output: {
     filename: "[name].js",

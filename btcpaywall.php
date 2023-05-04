@@ -51,13 +51,13 @@ if (!class_exists('BTCPayWall')) :
             'SATS',
             'BTC',
         ];
-        /*public $forms;
+        public $forms;
         public $tippers;
         public $customers;
         public $tippings;
         public $payments;
         public $cart;
-        public $pay_per_shortcodes;*/
+        public $pay_per_shortcodes;
 
         public static function instance()
         {
@@ -68,13 +68,13 @@ if (!class_exists('BTCPayWall')) :
                 add_action('plugins_loaded', array(self::$instance, 'load_textdomain'));
 
                 self::$instance->includes();
-                /*self::$instance->tippers = new BTCPayWall_DB_Tippers();
+                self::$instance->tippers = new BTCPayWall_DB_Tippers();
                 self::$instance->customers = new BTCPayWall_DB_Customers();
                 self::$instance->payments = new BTCPayWall_DB_Payments();
                 self::$instance->tippings = new BTCPayWall_DB_Tippings();
                 self::$instance->forms = new BTCPayWall_DB_Tipping_Forms();
                 self::$instance->pay_per_shortcodes = new BTCPayWall_DB_Pay_Per_Shortcode();
-                self::$instance->cart = new BTCPayWall_Cart();*/
+                self::$instance->cart = new BTCPayWall_Cart();
             }
 
             return self::$instance;
@@ -136,6 +136,12 @@ if (!class_exists('BTCPayWall')) :
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/widgets/functions.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/gutenberg/functions.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/gutenberg/actions.php';
+
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/trait/format-trait.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/exception/class-exception.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/webhook/class-webhook-handler.php';
+            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/webhook/class-coinsnap-webhook.php';
+
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/actions.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/functions.php';
             require_once BTCPAYWALL_PLUGIN_DIR . 'includes/download-functions.php';

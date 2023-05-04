@@ -32,14 +32,18 @@ function btcpaywall_enqueue_scripts()
 {
     $gateway = get_option('btcpw_selected_payment_gateway');
     $script = '';
-    $url = (get_option('btcpw_selected_payment_gateway', 'BTCPayServer') == 'BTCPayServer') ? get_option('btcpw_btcpay_server_url', '') . '/modal/btcpay.js' : get_option('btcpw_coinsnap_server_url', '') . '/modal/btcpay.js';
+    $url = (get_option('btcpw_selected_payment_gateway', 'BTCPayServer') == 'BTCPayServer') ? get_option('btcpw_btcpay_server_url', '') . '/modal/btcpay.js' : 'https://stores.coinsnap.io/modal/btcpay.js';
     if ($gateway === 'LNBits') {
         $script = (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/lnbits.js');
         wp_enqueue_script('btcpaywall-qr-code', BTCPAYWALL_PLUGIN_URL . 'assets/src/js/qrcode-min.js', array('jquery'), null, false);
     } elseif ($gateway === 'OpenNode') {
         $script = (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/opennode.js');
-    } else {
+    } elseif ($gateway === 'BTCPayServer') {
         $script = (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/btcpayserver.js');
+    } elseif ($gateway === 'Coinsnap') {
+        $script = (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/coinsnap.js');
+    }
+    if ($gateway === 'Coinsnap' || $gateway === 'BTCPayServer') {
         wp_enqueue_script('btcpay', $url, array(), null, true);
     }
     //$script = (get_option('btcpw_selected_payment_gateway', 'BTCPayServer') == 'BTCPayServer' || get_option('btcpw_selected_payment_gateway', 'BTCPayServer') == 'CoinchargePay') ? (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/btcpayserver.js') : (BTCPAYWALL_PLUGIN_URL . 'assets/dist/js/opennode.js');

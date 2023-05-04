@@ -9,6 +9,7 @@ if (!defined('ABSPATH')) {
 
 class BTCPay_Client extends Abstract_Client
 {
+  use FormatJsonTrait;
   private string $storeId;
   private string $apiKeyView;
   private string $apiKeyCreate;
@@ -32,7 +33,11 @@ class BTCPay_Client extends Abstract_Client
       'method' => 'POST',
       'timeout' => 60,
     );
-    return wp_remote_request($url, $args);
+    $response = wp_remote_request($url, $args);
+    if (is_wp_error($response)) {
+      throw new Gateway_Exception($response['response']['message'], $response['response']['code']);
+    }
+    return $this->formatResponse($response['body']);
   }
   public function getInvoice(string $invoiceId)
   {
@@ -45,7 +50,11 @@ class BTCPay_Client extends Abstract_Client
       'method' => 'GET',
       'timeout' => 30,
     );
-    return wp_remote_request($url, $args);
+    $response = wp_remote_request($url, $args);
+    if (is_wp_error($response)) {
+      throw new Gateway_Exception($response['response']['message'], $response['response']['code']);
+    }
+    return $this->formatResponse($response['body']);
   }
   public function getPaymentMethod()
   {
@@ -58,7 +67,11 @@ class BTCPay_Client extends Abstract_Client
       'method' => 'GET',
       'timeout' => 30,
     );
-    return wp_remote_request($url, $args);
+    $response = wp_remote_request($url, $args);
+    if (is_wp_error($response)) {
+      throw new Gateway_Exception($response['response']['message'], $response['response']['code']);
+    }
+    return $this->formatResponse($response['body']);
   }
   public function getCreateKey()
   {
@@ -71,5 +84,9 @@ class BTCPay_Client extends Abstract_Client
   public function getStoreId()
   {
     return $this->storeId;
+  }
+  protected function formatResponse($response)
+  {
+    return $this->jsonDecode($response);
   }
 }

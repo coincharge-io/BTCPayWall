@@ -9,6 +9,7 @@ if (!defined('ABSPATH')) {
 
 class OpenNode_Client extends Abstract_Client
 {
+  use FormatJsonTrait;
   private $apiKey;
   public function __construct($settings = [])
   {
@@ -24,11 +25,15 @@ class OpenNode_Client extends Abstract_Client
         'Authorization' => $this->getKey(),
         'Content-Type' => 'application/json',
       ),
-      'json' => $data,
+      'body' => json_encode($data),
       'method' => 'POST',
       'timeout' => 60,
     );
-    return wp_remote_request($url, $args);
+    $response = wp_remote_request($url, $args);
+    if (is_wp_error($response)) {
+      throw new Gateway_Exception($response['response']['message'], $response['response']['code']);
+    }
+    return $this->formatResponse($response['body']);
   }
   public function getInvoice(string $invoiceId)
   {
@@ -41,10 +46,18 @@ class OpenNode_Client extends Abstract_Client
       'method' => 'GET',
       'timeout' => 30,
     );
-    return wp_remote_request($url, $args);
+    $response = wp_remote_request($url, $args);
+    if (is_wp_error($response)) {
+      throw new Gateway_Exception($response['response']['message'], $response['response']['code']);
+    }
+    return $this->formatResponse($response['body']);
   }
   public function getKey()
   {
     return $this->apiKey;
+  }
+  protected function formatResponse($response)
+  {
+    return $this->jsonDecode($response)['data'];
   }
 }
