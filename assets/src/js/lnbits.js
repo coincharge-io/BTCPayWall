@@ -61,7 +61,6 @@
         success: function(response) {
           $(".btcpw_digital_download").html(text);
           if (response.success) {
-            console.log(response);
             payment_request = response.data.payment_request;
             btcpw_invoice_id = response.data.invoice_id;
             form_container = $("#btcpw_digital_download_customer_info").length
@@ -595,7 +594,7 @@
               }
             },
             error: function(error) {
-              console.error(error);
+              console.log(error.message);
             },
           });
         }
@@ -620,7 +619,7 @@
               action: "lnbits_paid_invoice",
               id: invoice_id,
             },
-            success: function(response) {
+            done: function(response) {
               if (response.success) {
                 if (
                   /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(
@@ -633,8 +632,8 @@
                 }
               }
             },
-            error: function(error) {
-              console.error(error);
+            fail: function(error) {
+              console.log(error.message);
             },
           });
         }

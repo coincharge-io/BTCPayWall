@@ -63,9 +63,5 @@ function btcpaywall_register_apis()
             },
         )
     );
-    register_rest_route('btcpaywall/v1', '/coinsnap-webhook', array(
-        'methods' => 'POST',
-        'callback' => array(new CoinsnapWebhookHandler(), 'handle'),
-    ));
 }
 add_action('rest_api_init', 'btcpaywall_register_apis');

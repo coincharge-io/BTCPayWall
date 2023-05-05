@@ -44,7 +44,7 @@ class LNBits_Client extends Abstract_Client
         'Content-Type' => 'application/json',
       ),
       'method' => 'GET',
-      'timeout' => 30,
+      'timeout' => 60,
     );
     $response = wp_remote_request($url, $args);
     if (is_wp_error($response)) {

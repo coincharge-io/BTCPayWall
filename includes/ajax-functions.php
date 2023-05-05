@@ -54,6 +54,8 @@ function ajax_btcpaywall_get_invoice_id()
             'message' => 'Invoice could not be generated.',
         ]);
     }
+    $cookie_path = parse_url(get_permalink($post_id), PHP_URL_PATH);
+    setcookie("btcpw_initiated_{$post_id}", $order_id, time() + 86400, $cookie_path);
 
     wp_send_json_success([
         'amount' => $invoice_id['amount'],
@@ -417,6 +419,7 @@ function ajax_btcpaywall_paid_invoice()
     update_post_meta($body['metadata']['orderId'], 'btcpw_payment_id', $payment->invoice_id);
 
     setcookie("btcpw_{$post_id}", $secret, btcpaywall_get_cookie_duration($post_id), $cookie_path);
+    setcookie("btcpw_initiated_{$post_id}", '', time() - 3600);
 
     update_post_meta($order_id, 'btcpw_status', 'success');
     btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($invoice_id, $body['metadata']['customer_data'], $body['metadata']['type']), 'Pay');
@@ -919,7 +922,7 @@ function ajax_btcpaywall_paid_lnbits_invoice()
             'status' => 404
         ]);
     }
-    $url = get_option('btcpw_lnbits_server_url') . '/api/v1/payments/' . $id;
+    /*$url = get_option('btcpw_lnbits_server_url') . '/api/v1/payments/' . $id;
 
 
     $args = array(
@@ -940,7 +943,9 @@ function ajax_btcpaywall_paid_lnbits_invoice()
     }
 
 
-    $body = json_decode($response['body'], true);
+    $body = json_decode($response['body'], true);*/
+    $payment_gateway = BTCPayWall::create_client();
+    $body = $payment_gateway->getInvoice($id);
 
     if (empty($body) || !empty($body['error'])) {
         return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
@@ -948,7 +953,6 @@ function ajax_btcpaywall_paid_lnbits_invoice()
     $memo = json_decode($body['details']['memo'], true);
 
     $order_id = $memo['orderId'];
-
     $post_id = get_post_meta($memo['orderId'], 'btcpw_post_id', true);
     $invoice_id = get_post_meta($memo['orderId'], 'btcpw_invoice_id', true);
     $secret = get_post_meta($memo['orderId'], 'btcpw_secret', true);
