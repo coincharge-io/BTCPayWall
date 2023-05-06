@@ -33,7 +33,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -62,7 +62,7 @@
           }
         },
         error: function(error) {
-          console.error(response);
+          console.log(response.message);
         },
       });
     }
@@ -119,7 +119,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -170,7 +170,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -214,7 +214,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -266,7 +266,7 @@
           }
         },
         error: function(error) {
-          console.log(error);
+          console.log(error.message);
         },
       });
     });
@@ -318,7 +318,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -385,7 +385,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -437,7 +437,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -502,7 +502,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -521,12 +521,11 @@
           },
           success: function(response) {
             if (response.success) {
-              //notifyAdmin(response.data.notify + 'Url:' + window.location.href)
               location.reload(true);
             }
           },
           error: function(error) {
-            console.error(error);
+            console.log(error.message);
           },
         });
       }
@@ -550,7 +549,7 @@
             }
           },
           error: function(error) {
-            console.error(error);
+            console.log(error.message);
           },
         });
       }
@@ -570,8 +569,6 @@
           },
           success: function(response) {
             if (response.success) {
-              /* notifyAdmin(donor) */
-              //!redirect ? location.reload(true) : location.replace(redirect)
               if (
                 /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(
                   redirect
@@ -584,7 +581,7 @@
             }
           },
           error: function(error) {
-            console.error(response);
+            console.log(error.message);
           },
         });
       }
@@ -619,7 +616,7 @@
             }
           },
           error: function(error) {
-            console.error(error);
+            console.log(error.message);
           },
         });
       }

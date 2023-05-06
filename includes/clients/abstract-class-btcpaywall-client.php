@@ -9,7 +9,6 @@ if (!defined('ABSPATH')) {
 abstract class Abstract_Client
 {
     private $baseUrl;
-    private $apiKey;
 
     public function __construct($baseUrl)
     {
@@ -18,10 +17,6 @@ abstract class Abstract_Client
     public function getBaseUrl()
     {
         return $this->baseUrl;
-    }
-    public function getApiKey()
-    {
-        return $this->apiKey;
     }
     abstract protected function formatResponse($response);
 }

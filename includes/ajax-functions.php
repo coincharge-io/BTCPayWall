@@ -643,6 +643,7 @@ function btcpaywall_generate_lnbits_invoice_id($post_id, $order_id, $customer_da
         'timeout' => 60,
     );
     $response = wp_remote_request($url, $args);
+
     if (is_wp_error($response)) {
         return $response;
     }

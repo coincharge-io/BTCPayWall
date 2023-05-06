@@ -31,7 +31,7 @@ class LNBits_Client extends Abstract_Client
     );
     $response = wp_remote_request($url, $args);
     if (is_wp_error($response)) {
-      throw new Gateway_Exception($response['response']['message'], $response['response']['code']);
+      throw new Gateway_Exception($response->get_error_message(), $response->get_error_code());
     }
     return $this->formatResponse($response['body']);
   }
@@ -48,7 +48,7 @@ class LNBits_Client extends Abstract_Client
     );
     $response = wp_remote_request($url, $args);
     if (is_wp_error($response)) {
-      throw new Gateway_Exception($response['response']['message'], $response['response']['code']);
+      throw new Gateway_Exception($response->get_error_message(), $response->get_error_code());
     }
     return $this->formatResponse($response['body']);
   }

@@ -16,7 +16,7 @@ class Coinsnap_Client extends Abstract_Client
   {
     //$baseUrl = 'https://app.coinsnap.io';
     $baseUrl = 'https://a5f1-93-87-234-2.ngrok-free.app';
-    $this->websiteId = get_option(btcpw_coinsnap_website_id);
+    $this->websiteId = get_option('btcpw_coinsnap_website_id');
     $this->apiKey = get_option('btcpw_coinsnap_auth_key');
     parent::__construct($baseUrl);
   }
@@ -34,7 +34,7 @@ class Coinsnap_Client extends Abstract_Client
     );
     $response = wp_remote_request($url, $args);
     if (is_wp_error($response)) {
-      throw new Gateway_Exception($response['response']['message'], $response['response']['code']);
+      throw new Gateway_Exception($response->get_error_message(), $response->get_error_code());
     }
     return $this->formatResponse($response['body']);
   }
@@ -51,7 +51,7 @@ class Coinsnap_Client extends Abstract_Client
     );
     $response = wp_remote_request($url, $args);
     if (is_wp_error($response)) {
-      throw new Gateway_Exception($response['response']['message'], $response['response']['code']);
+      throw new Gateway_Exception($response->get_error_message(), $response->get_error_code());
     }
     return $this->formatResponse($response['body']);
   }

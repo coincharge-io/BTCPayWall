@@ -1,39 +1,7 @@
 (function($) {
   "use strict";
   $(document).ready(function() {
-    $("#coinsnap-connect-website").click(function(e) {
-      e.preventDefault();
-      $(".btcpw_btcpay_status").hide(500);
-      //var text = $("#btcpw_btcpay_check_status").text();
-      $(".coinsnap-connect-website").html(
-        `<span class="loading-spinner" role="status" aria-hidden="true"></span>`
-      );
-      $.ajax({
-        url: "/wp-admin/admin-ajax.php",
-        method: "POST",
-        data: {
-          action: "btcpw_connect_coinsnap",
-          auth_key: $("#btcpw_coinsnap_auth_key").val(),
-        },
-        success: function(response) {
-          console.log(response);
-          //$("#btcpw_btcpay_check_status").html(text);
-          if (response.success) {
-            location.reload();
-            //$("#btcpw_btcpay_store_id").val(response.data.store_id);
-            //$("#btcpw_btcpay_status_success").fadeIn(500);
-          } else {
-            /*$("#btcpw_btcpay_status_error")
-              .html(response.data.message)
-              .fadeIn(500);*/
-          }
-        },
-        error: function(error) {
-          console.log(error);
-        },
-      });
-    });
-    $("#btcpw_btcpay_check_status").click(function() {
+    $("#btcpw_btcpay_check_status").on("click", function() {
       $(".btcpw_btcpay_status").hide(500);
       var text = $("#btcpw_btcpay_check_status").text();
       $("#btcpw_btcpay_check_status").html(
@@ -60,7 +28,7 @@
           }
         },
         error: function(error) {
-          console.log(error);
+          console.log(error.message);
         },
       });
     });
@@ -119,7 +87,7 @@
       }
     });
 
-    $("#design-button").click(function(e) {
+    $("#design-button").on("click", function(e) {
       e.preventDefault();
     });
 
@@ -129,7 +97,7 @@
         : $(this).next().prop("required", false);
     });
 
-    $(".btcpw_tipping_enter_amount").click(function() {
+    $(".btcpw_tipping_enter_amount").on("click", function() {
       if (!$(this).is(":checked")) {
         $(".container_predefined_amount").show();
       } else {
@@ -355,18 +323,18 @@
           }
         },
         error: function(e) {
-          console.log(e);
+          console.log(e.message);
         },
       });
     });
 
-    $("#btcpw_shortcodes").click(function() {
+    $("#btcpw_shortcodes").on("click", function() {
       $("#sc_menu").toggle();
       $("#btcpw_shortcodes span i").toggleClass(
         "fas fa-arrow-down fas fa-arrow-up"
       );
     });
-    $(".sc_menu_item.btcpw_shortcode").click(function() {
+    $(".sc_menu_item.btcpw_shortcode").on("click", function() {
       send_to_editor($(this).attr("data"));
       $("#sc_menu").toggle();
       $("#btcpw_shortcodes span i").toggleClass(
@@ -378,7 +346,7 @@
     function uploadFile(click_elem, fileUrl, fileName, fileId) {
       var custom_uploader, click_elem, fileUrl, fileName, fileId;
 
-      click_elem.click(function(e) {
+      click_elem.on("click", function(e) {
         e.preventDefault();
         if (custom_uploader) {
           custom_uploader.open();
@@ -433,7 +401,7 @@
         }, 6000);
       }
     }
-    $(".btcpaywall-demo-shortcode-attributes").click(function() {
+    $(".btcpaywall-demo-shortcode-attributes").on("click", function() {
       $(".btcpaywall-demo-shortcode-attributes").toggleClass("inactive");
       $(".btcpaywall-demo-shortcode-usage").toggle();
     });
@@ -444,7 +412,7 @@
       $("#btcpw_product_filename", $("#btcpw_product_file_id"))
     );
     //Tipping Metabox
-    $(".js-btcpaywall-shortcode-button").click(function() {
+    $(".js-btcpaywall-shortcode-button").on("click", function() {
       var shortcode = $(this).data("btcpaywall-shortcode");
       var $temp = $("<input>");
       $("body").append($temp);
@@ -453,24 +421,24 @@
       $(this).text("Copied to clipboard");
       $temp.remove();
     });
-    $(".btcpaywall_pay_per_container_header").click(function() {
+    $(".btcpaywall_pay_per_container_header").on("click", function() {
       var header_id = $(this).data("id");
       $(".btcpaywall_pay_per_container_body." + header_id + "-body").toggle();
       $(this).toggleClass("inactive");
     });
-    $(".btcpaywall_container_header").click(function() {
+    $(".btcpaywall_container_header").on("click", function() {
       var header_id = $(this).data("id");
       $(".btcpaywall_container_body." + header_id + "-body").toggle();
       $(this).toggleClass("inactive");
     });
-    $(".btcpaywall_tipping_selected_template button").click(function() {
+    $(".btcpaywall_tipping_selected_template button").on("click", function() {
       $(".btcpaywall_tipping_selected_template").css("display", "none");
       $(".btcpaywall_tipping_templates").css("display", "flex");
       $("#btcpaywall_template_appearance-wrap").toggle();
       //$('.btcpaywall_tipping_templates button').removeClass('activated')
       $("#btcpaywall_tipping_template_name").val("");
     });
-    $(".btcpaywall_tipping_templates button").click(function(e) {
+    $(".btcpaywall_tipping_templates button").on("click", function(e) {
       e.preventDefault();
       template_id = $(this).data("id");
       $(document).scrollTop(0);
@@ -556,7 +524,7 @@
   }
   function imagePreview(click_elem, target) {
     var custom_uploader, click_elem, target;
-    click_elem.click(function(e) {
+    click_elem.on("click", function(e) {
       e.preventDefault();
       if (custom_uploader) {
         custom_uploader.open();
@@ -598,7 +566,7 @@
   }
 
   function showMore(click_elem, target) {
-    $(click_elem).click(function() {
+    $(click_elem).on("click", function() {
       if (!$(this).is(":checked")) {
         $(target).prop("checked", false).css("visibility", "hidden");
       } else {
@@ -607,6 +575,9 @@
     });
   }
   function initColorPicker(widget) {
+    if (typeof widget == "undefined") {
+      return false;
+    }
     widget
       .find(
         ".widget-tipping-basic-background_color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-button_text_color,.widget-tipping-basic-button-color,.widget-tipping-basic-button_color_hover,.widget-tipping-basic-description-color,.widget-tipping-basic-title_text_color,.widget-tipping-basic-tipping-color,.widget-tipping-basic-input_background,.widget-tipping-basic-fixed_background,.widget-tipping-basic-background_color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-button_text_color_high,.widget-tipping-basic-button_color_high,.widget-tipping-basic-continue_button_text_color_high,.widget-tipping-basic-continue_button_color_high,.widget-tipping-basic-previous_button_text_color_high,.widget-tipping-basic-previous_button_color_high,.widget-tipping-basic-button_color_hover_wide,.widget-tipping-basic-continue_button_color_hover_wide,.widget-tipping-basic-previous_button_color_hover_wide,.widget-tipping-basic-continue_button_text_color_wide,.widget-tipping-basic-continue_button_color_wide,.widget-tipping-basic-previous_button_text_color_wide,.widget-tipping-basic-previous_button_color_wide,.widget-tipping-basic-description-color_high,.widget-tipping-basic-title_text_color_high,.widget-tipping-basic-tipping-color_high,.widget-tipping-basic-fixed_background_high,.widget-tipping-basic-background_color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-button_text_color_wide,.widget-tipping-basic-button_color_wide,.widget-tipping-basic-description-color_wide,.widget-tipping-basic-title_text_color_wide,.widget-tipping-basic-tipping-color_wide,.widget-tipping-basic-fixed_background_wide,.widget-tipping-basic-hf_color,.widget-tipping-basic-hf_color_high,.widget-tipping-basic-hf_color_wide,.widget-tipping-basic-box-hf_color,.widget-tipping-basic-button_color,.widget-tipping-basic-selected_amount_background_wide,.widget-tipping-basic-selected_amount_background_high,.widget-tipping-basic-button_color_hover_high,.widget-tipping-basic-continue_button_color_hover_high,.widget-tipping-basic-previous_button_color_hover_high"

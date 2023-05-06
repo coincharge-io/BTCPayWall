@@ -36,7 +36,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -105,7 +105,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -158,7 +158,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -202,7 +202,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -255,7 +255,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -308,7 +308,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -375,7 +375,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -428,7 +428,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -494,7 +494,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -515,10 +515,11 @@
     btcpw_order_id,
     amount
   ) {
-    setInterval(() => {
+    let check = setInterval(() => {
       btcpaywall_monitor_invoice(invoice_id)
         .done(function(response) {
           if (response.success) {
+            clearInterval(check);
             $.ajax({
               url: "/wp-admin/admin-ajax.php",
               method: "POST",
@@ -535,7 +536,7 @@
                 }
               },
               error: function(error) {
-                console.error(error);
+                console.log(error.message);
               },
             });
           }
@@ -554,10 +555,11 @@
     amount,
     redirectTo = null
   ) {
-    setInterval(() => {
+    let check = setInterval(() => {
       btcpaywall_monitor_invoice(invoice_id)
         .done(function(response) {
           if (response.success) {
+            clearInterval(check);
             $.ajax({
               url: "/wp-admin/admin-ajax.php",
               method: "POST",
@@ -581,7 +583,7 @@
                 }
               },
               error: function(error) {
-                console.error(error.message);
+                console.log(error.message);
               },
             });
           }
@@ -599,9 +601,10 @@
     form_container,
     redirectTo = null
   ) {
-    setInterval(() => {
+    let check = setInterval(() => {
       btcpaywall_monitor_invoice(invoice_id).done(function(response) {
         if (response.success) {
+          clearInterval(check);
           $.ajax({
             url: "/wp-admin/admin-ajax.php",
             method: "POST",
@@ -623,7 +626,7 @@
               }
             },
             error: function(error) {
-              console.error(error);
+              console.log(error.message);
             },
           });
         }

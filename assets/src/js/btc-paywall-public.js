@@ -1,7 +1,7 @@
 (function($) {
   "use strict";
   $(document).ready(function() {
-    $(".btcpaywall_cart_remove_item_btn").click(function(e) {
+    $(".btcpaywall_cart_remove_item_btn").on('click',function(e) {
       e.preventDefault();
       var item = $(this).data("cart-key");
       $.ajax({
@@ -11,7 +11,7 @@
           action: "btcpw_remove_from_cart",
           cart_item: item,
         },
-        success: function(response) {
+        success: function() {
           location.reload();
         },
       });
@@ -34,7 +34,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -69,7 +69,7 @@
           sats = response["data"]["sats"]["value"];
           gbp = response["data"]["gbp"]["value"];
         } else {
-          console.error(response);
+          console.log(response);
         }
       },
     });
@@ -236,7 +236,7 @@
     });
     $(
       ".btcpw_page_amount_value_1, .btcpw_page_amount_value_2, .btcpw_page_amount_value_3"
-    ).click(function() {
+    ).on('click',function() {
       switch ($(this)[0].className) {
         case "btcpw_page_amount_value_1":
           $(".btcpw_page_amount_value_2").removeClass("selected");
@@ -284,7 +284,7 @@
 
     $(
       ".btcpw_widget.btcpw_skyscraper_amount_value_1.high, .btcpw_widget.btcpw_skyscraper_amount_value_2.high, .btcpw_widget.btcpw_skyscraper_amount_value_3.high"
-    ).click(function() {
+    ).on('click', function() {
       switch ($(this)[0].className) {
         case "btcpw_widget.btcpw_skyscraper_amount_value_1.high":
           $(".btcpw_widget.btcpw_skyscraper_amount_value_2.high").removeClass(
@@ -350,7 +350,7 @@
 
     $(
       ".btcpw_widget.btcpw_skyscraper_amount_value_1.wide, .btcpw_widget.btcpw_skyscraper_amount_value_2.wide, .btcpw_widget.btcpw_skyscraper_amount_value_3.wide"
-    ).click(function() {
+    ).on('click',function() {
       switch ($(this)[0].className) {
         case "btcpw_widget.btcpw_skyscraper_amount_value_1.wide":
           $(".btcpw_widget.btcpw_skyscraper_amount_value_2.wide").removeClass(
@@ -415,7 +415,7 @@
     });
     $(
       ".btcpw_skyscraper_amount_value_1.high, .btcpw_skyscraper_amount_value_2.high, .btcpw_skyscraper_amount_value_3.high"
-    ).click(function() {
+    ).on('click',function() {
       switch ($(this)[0].className) {
         case "btcpw_skyscraper_amount_value_1.high":
           $(".btcpw_skyscraper_amount_value_2.high").removeClass("selected");
@@ -462,7 +462,7 @@
     });
     $(
       ".btcpw_skyscraper_amount_value_1.wide, .btcpw_skyscraper_amount_value_2.wide, .btcpw_skyscraper_amount_value_3.wide"
-    ).click(function() {
+    ).on('click',function() {
       switch ($(this)[0].className) {
         case "btcpw_skyscraper_amount_value_1.wide":
           $(".btcpw_skyscraper_amount_value_2.wide").removeClass("selected");
@@ -548,7 +548,7 @@
         $("#btcpw_tipping_amount").val("");
       }
     );
-    $("#btcpw_tipping_amount").click(function() {
+    $("#btcpw_tipping_amount").on('click',function() {
       $("#btcpw_tipping_amount").attr("required", true);
       $("input[type=radio][name=btcpw_tipping_default_amount]").removeAttr(
         "required"
@@ -570,7 +570,7 @@
       );
       $("input[name=btcpw_skyscraper_tipping_amount_wide]").val("");
     });
-    $("input[name=btcpw_skyscraper_tipping_amount_wide]").click(function() {
+    $("input[name=btcpw_skyscraper_tipping_amount_wide]").on('click',function() {
       $("input[name=btcpw_skyscraper_tipping_amount_wide]").attr(
         "required",
         true
@@ -597,7 +597,7 @@
       );
       $("input[name=btcpw_skyscraper_tipping_amount_high]").val("");
     });
-    $("input[name=btcpw_skyscraper_tipping_amount_high]").click(function() {
+    $("input[name=btcpw_skyscraper_tipping_amount_high]").on('click',function() {
       $("input[name=btcpw_skyscraper_tipping_amount_high]").attr(
         "required",
         true
@@ -626,7 +626,7 @@
         ""
       );
     });
-    $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]").click(
+    $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]").on('click',
       function() {
         $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]").attr(
           "required",
@@ -663,7 +663,7 @@
         ""
       );
     });
-    $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]").click(
+    $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]").on('click',
       function() {
         $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]").attr(
           "required",
@@ -699,7 +699,7 @@
       );
       $("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").val("");
     });
-    $("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").click(function() {
+    $("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").on('click',function() {
       $("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").attr(
         "required",
         true
@@ -724,7 +724,7 @@
       );
       $("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").val("");
     });
-    $("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").click(function() {
+    $("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").on('click',function() {
       $("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").attr(
         "required",
         true
@@ -747,7 +747,7 @@
         $("#btcpw_page_tipping_amount").val("");
       }
     );
-    $("#btcpw_page_tipping_amount").click(function() {
+    $("#btcpw_page_tipping_amount").on('click',function() {
       $("#btcpw_page_tipping_amount").attr("required", true);
       $("input[type=radio][name=btcpw_page_tipping_default_amount]").removeAttr(
         "required"
@@ -779,7 +779,7 @@
         ? fixedAmount
         : freeInput;
 
-    $("input.btcpw_widget.skyscraper-next-form.high").click(function() {
+    $("input.btcpw_widget.skyscraper-next-form.high").on('click',function() {
       if (validationField[0].checkValidity()) {
         previous_form = $(this).parent().parent().parent();
         next_form = $(this).parent().parent().parent().next();
@@ -789,7 +789,7 @@
         validationField[0].reportValidity();
       }
     });
-    $("input.btcpw_widget.skyscraper-previous-form.high").click(function() {
+    $("input.btcpw_widget.skyscraper-previous-form.high").on('click',function() {
       previous_form = $(this).parent().parent().parent();
       next_form = $(this).parent().parent().parent().prev();
       next_form.show();
@@ -815,7 +815,7 @@
         ? fixedAmount
         : freeInput;
 
-    $("input.btcpw_widget.skyscraper-next-form.wide").click(function() {
+    $("input.btcpw_widget.skyscraper-next-form.wide").on('click',function() {
       if (validationField[0].checkValidity()) {
         previous_form = $(this).parent().parent().parent();
         next_form = $(this).parent().parent().parent().next();
@@ -825,7 +825,7 @@
         validationField[0].reportValidity();
       }
     });
-    $("input.btcpw_widget.skyscraper-previous-form.wide").click(function() {
+    $("input.btcpw_widget.skyscraper-previous-form.wide").on('click',function() {
       previous_form = $(this).parent().parent().parent();
       next_form = $(this).parent().parent().parent().prev();
       next_form.show();
@@ -845,7 +845,7 @@
         ? fixedAmount
         : freeInput;
 
-    $("input.page-next-form").click(function() {
+    $("input.page-next-form").on('click',function() {
       if (validationField[0].checkValidity()) {
         $(".btcpw_page_bar_container.bar-1").removeClass("active");
         $(".btcpw_page_bar_container.bar-2").addClass("active");
@@ -857,7 +857,7 @@
         validationField[0].reportValidity();
       }
     });
-    $("input.page-previous-form").click(function() {
+    $("input.page-previous-form").on('click',function() {
       $(".btcpw_page_bar_container.bar-2").removeClass("active");
       $(".btcpw_page_bar_container.bar-1").addClass("active");
       previous_form = $(this).parent().parent().parent();
@@ -882,7 +882,7 @@
         ? fixedAmount
         : freeInput;
 
-    $("input.skyscraper-next-form.high").click(function() {
+    $("input.skyscraper-next-form.high").on('click',function() {
       if (validationField[0].checkValidity()) {
         previous_form = $(this).parent().parent().parent();
         next_form = $(this).parent().parent().parent().next();
@@ -892,7 +892,7 @@
         validationField[0].reportValidity();
       }
     });
-    $("input.skyscraper-previous-form.high").click(function() {
+    $("input.skyscraper-previous-form.high").on('click',function() {
       previous_form = $(this).parent().parent().parent();
       next_form = $(this).parent().parent().parent().prev();
       next_form.show();
@@ -915,7 +915,7 @@
         ? fixedAmount
         : freeInput;
 
-    $("input.skyscraper-next-form.wide").click(function() {
+    $("input.skyscraper-next-form.wide").on('click',function() {
       if (validationField[0].checkValidity()) {
         previous_form = $(this).parent().parent().parent();
         next_form = $(this).parent().parent().parent().next();
@@ -925,7 +925,7 @@
         validationField[0].reportValidity();
       }
     });
-    $("input.skyscraper-previous-form.wide").click(function() {
+    $("input.skyscraper-previous-form.wide").on('click',function() {
       previous_form = $(this).parent().parent().parent();
       next_form = $(this).parent().parent().parent().prev();
       next_form.show();
@@ -941,13 +941,13 @@
       total_forms;
     total_forms = $(".btcpw_revenue_post_container fieldset").length;
 
-    $(".revenue-post-next-form").click(function() {
+    $(".revenue-post-next-form").on('click',function() {
       previous_form = $(this).parent().parent().parent();
       next_form = $(this).parent().parent().parent().next();
       next_form.show();
       previous_form.hide();
     });
-    $("input.revenue-post-previous-form").click(function() {
+    $("input.revenue-post-previous-form").on('click',function() {
       previous_form = $(this).parent().parent().parent();
       next_form = $(this).parent().parent().parent().prev();
       next_form.show();
@@ -963,13 +963,13 @@
       total_forms;
     total_forms = $(".btcpw_revenue_view_container fieldset").length;
 
-    $(".revenue-view-next-form").click(function() {
+    $(".revenue-view-next-form").on('click',function() {
       previous_form = $(this).parent().parent().parent();
       next_form = $(this).parent().parent().parent().next();
       next_form.show();
       previous_form.hide();
     });
-    $("input.revenue-view-previous-form").click(function() {
+    $("input.revenue-view-previous-form").on('click',function() {
       previous_form = $(this).parent().parent().parent();
       next_form = $(this).parent().parent().parent().prev();
       next_form.show();
@@ -985,13 +985,13 @@
       total_forms;
     total_forms = $(".btcpw_revenue_file_container fieldset").length;
 
-    $(".revenue-file-next-form").click(function() {
+    $(".revenue-file-next-form").on('click',function() {
       previous_form = $(this).parent().parent().parent();
       next_form = $(this).parent().parent().parent().next();
       next_form.show();
       previous_form.hide();
     });
-    $("input.revenue-file-previous-form").click(function() {
+    $("input.revenue-file-previous-form").on('click',function() {
       previous_form = $(this).parent().parent().parent();
       next_form = $(this).parent().parent().parent().prev();
       next_form.show();
@@ -1007,14 +1007,14 @@
       total_forms;
     total_forms = $(".btcpw_digital_download_protected_area fieldset").length;
 
-    $("input.btcpw_digital_download.next-form").click(function() {
+    $("input.btcpw_digital_download.next-form").on('click',function() {
       previous_form = $(this).parent().parent();
       next_form = $(this).parent().parent().next();
       next_form.show();
       previous_form.hide();
     });
 
-    $("input.btcpw_digital_download.previous-form").click(function() {
+    $("input.btcpw_digital_download.previous-form").on('click',function() {
       previous_form = $(this).parent().parent().parent();
       next_form = $(this).parent().parent().parent().prev();
       next_form.show();

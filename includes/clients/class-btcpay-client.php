@@ -16,7 +16,7 @@ class BTCPay_Client extends Abstract_Client
   public function __construct()
   {
     $baseUrl = get_option('btcpw_btcpay_server_url');
-    $this->storeId = get_option(btcpw_btcpay_store_id);
+    $this->storeId = get_option('btcpw_btcpay_store_id');
     $this->apiKeyView = get_option('btcpw_btcpay_auth_key_view');
     $this->apiKeyCreate = get_option('btcpw_btcpay_auth_key_create');
     parent::__construct($baseUrl);
@@ -35,7 +35,7 @@ class BTCPay_Client extends Abstract_Client
     );
     $response = wp_remote_request($url, $args);
     if (is_wp_error($response)) {
-      throw new Gateway_Exception($response['response']['message'], $response['response']['code']);
+      throw new Gateway_Exception($response->get_error_message(), $response->get_error_code());
     }
     return $this->formatResponse($response['body']);
   }
@@ -52,7 +52,7 @@ class BTCPay_Client extends Abstract_Client
     );
     $response = wp_remote_request($url, $args);
     if (is_wp_error($response)) {
-      throw new Gateway_Exception($response['response']['message'], $response['response']['code']);
+      throw new Gateway_Exception($response->get_error_message(), $response->get_error_code());
     }
     return $this->formatResponse($response['body']);
   }
@@ -69,7 +69,7 @@ class BTCPay_Client extends Abstract_Client
     );
     $response = wp_remote_request($url, $args);
     if (is_wp_error($response)) {
-      throw new Gateway_Exception($response['response']['message'], $response['response']['code']);
+      throw new Gateway_Exception($response->get_error_message(), $response->get_error_code());
     }
     return $this->formatResponse($response['body']);
   }

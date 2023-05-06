@@ -74,7 +74,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -135,7 +135,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -192,7 +192,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -242,7 +242,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -301,7 +301,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -359,7 +359,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -431,7 +431,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -490,7 +490,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -562,7 +562,7 @@
           }
         },
         error: function(error) {
-          console.error(error);
+          console.log(error.message);
         },
       });
     });
@@ -578,9 +578,10 @@
     });
   }
   function btcpwShowLNBitsFileInvoice(request, invoice_id, form_container) {
-    setInterval(() => {
+    let check = setInterval(() => {
       btcpaywall_monitor_invoice(invoice_id).done(function(response) {
         if (response.data.status === "paid") {
+          clearInterval(check);
           $.ajax({
             url: "/wp-admin/admin-ajax.php",
             method: "POST",
@@ -609,17 +610,17 @@
     form_container,
     redirectTo = null
   ) {
-    setInterval(() => {
+    let check = setInterval(() => {
       btcpaywall_monitor_invoice(invoice_id).done(function(response) {
         if (response.data.status === "paid") {
-          $.ajax({
+          clearInterval(check);
+          $.post({
             url: "/wp-admin/admin-ajax.php",
-            method: "POST",
             data: {
               action: "lnbits_paid_invoice",
               id: invoice_id,
             },
-            done: function(response) {
+            success: function(response) {
               if (response.success) {
                 if (
                   /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(
@@ -632,7 +633,7 @@
                 }
               }
             },
-            fail: function(error) {
+            error: function(error) {
               console.log(error.message);
             },
           });
@@ -648,12 +649,12 @@
     form_container,
     redirectTo = null
   ) {
-    setInterval(() => {
+    let check = setInterval(() => {
       btcpaywall_monitor_invoice(invoice_id).done(function(response) {
         if (response.data.status === "paid") {
-          $.ajax({
+          clearInterval(check);
+          $.post({
             url: "/wp-admin/admin-ajax.php",
-            method: "POST",
             data: {
               action: "lnbits_tipping_paid_invoice",
               id: invoice_id,
@@ -672,7 +673,7 @@
               }
             },
             error: function(error) {
-              console.error(error);
+              console.log(error.message);
             },
           });
         }
