@@ -37,32 +37,37 @@
         },
       });
     });
-    if (
-      getCookie("btcpw_initiated_" + payment.post_id) &&
-      isCookieReady("btcpw_initiated_" + payment.post_id)
-    ) {
+    if (getCookie("btcpw_donation_initiated_" + payment.post_id)) {
       $.ajax({
         url: "/wp-admin/admin-ajax.php",
         method: "POST",
         data: {
-          action: "btcpw_paid_invoice",
+          action: "btcpw_paid_tipping",
+          invoice_id: getCookie("btcpw_donation_initiated_" + payment.post_id),
+        },
+        success: function(response) {
+          if (response.success) {
+          }
+        },
+        error: function(error) {
+          console.log(error.message);
+        },
+      });
+    }
+    if (getCookie("btcpw_initiated_" + payment.post_id)) {
+      $.ajax({
+        url: "/wp-admin/admin-ajax.php",
+        method: "POST",
+        data: {
+          action: "btcpw_check_order_after_expiration",
           order_id: getCookie("btcpw_initiated_" + payment.post_id),
         },
         success: function(response) {
           if (response.success) {
-            if (
-              /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(
-                redirect
-              )
-            ) {
-              location.replace(redirect);
-            } else {
-              location.reload(true);
-            }
           }
         },
         error: function(error) {
-          console.log(response.message);
+          console.log(error.message);
         },
       });
     }
@@ -632,15 +637,5 @@
       }
     }
     return null;
-  }
-  function isCookieReady(cookieName) {
-    const cookieValue = getCookie(cookieName);
-    if (cookieValue) {
-      const cookieDate = new Date(cookieValue);
-      const now = new Date();
-      const diffInMinutes = (now - cookieDate) / (1000 * 60);
-      return diffInMinutes > 15;
-    }
-    return false;
   }
 })(jQuery);

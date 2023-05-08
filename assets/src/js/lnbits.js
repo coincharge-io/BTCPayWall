@@ -566,13 +566,64 @@
         },
       });
     });
+    if (getCookie("btcpw_donation_initiated_" + payment.post_id)) {
+      $.ajax({
+        url: "/wp-admin/admin-ajax.php",
+        method: "POST",
+        data: {
+          action: "btcpw_paid_tipping",
+          invoice_id: getCookie("btcpw_donation_initiated_" + payment.post_id),
+        },
+        success: function(response) {
+          if (response.success) {
+          }
+        },
+        error: function(error) {
+          console.log(error.message);
+        },
+      });
+    }
+    if (getCookie("btcpw_initiated_" + payment.post_id)) {
+      $.ajax({
+        url: "/wp-admin/admin-ajax.php",
+        method: "POST",
+        data: {
+          action: "btcpw_check_order_after_expiration",
+          order_id: getCookie("btcpw_initiated_" + payment.post_id),
+        },
+        success: function(response) {
+          if (response.success) {
+          }
+        },
+        error: function(error) {
+          console.log(error.message);
+        },
+      });
+    }
+    if (getCookie("btcpaywall_initiated_purchase")) {
+      $.ajax({
+        url: "/wp-admin/admin-ajax.php",
+        method: "POST",
+        data: {
+          action: "btcpw_paid_content_file_invoice",
+          invoice_id: getCookie("btcpaywall_initiated_purchase"),
+        },
+        success: function(response) {
+          if (response.success) {
+          }
+        },
+        error: function(error) {
+          console.log(error.message);
+        },
+      });
+    }
   });
   function btcpaywall_monitor_invoice(id) {
     return $.ajax({
       url: "/wp-admin/admin-ajax.php",
       method: "GET",
       data: {
-        action: "btcpw_lnbits_monitor_invoice_status",
+        action: "btcpw_coinsnap_monitor_invoice_status",
         invoice_id: id,
       },
     });
@@ -618,7 +669,7 @@
             url: "/wp-admin/admin-ajax.php",
             data: {
               action: "lnbits_paid_invoice",
-              id: invoice_id,
+              invoice_id: invoice_id,
             },
             success: function(response) {
               if (response.success) {
@@ -656,8 +707,8 @@
           $.post({
             url: "/wp-admin/admin-ajax.php",
             data: {
-              action: "lnbits_tipping_paid_invoice",
-              id: invoice_id,
+              action: "btcpw_paid_tipping",
+              invoice_id: invoice_id,
             },
             success: function(response) {
               if (response.success) {
@@ -680,5 +731,15 @@
       });
     }, 10000);
     showQR(form_container, request);
+  }
+  function getCookie(name) {
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.startsWith(name + "=")) {
+        return cookie.substring(name.length + 1);
+      }
+    }
+    return null;
   }
 })(jQuery);

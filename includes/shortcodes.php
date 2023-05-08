@@ -1495,7 +1495,7 @@ function btcpaywall_render_receipt()
 
             </tbody>
         </table>
-        <?php if ($download_links) : ?>
+        <?php if ($download_links && $payment->status == 'Paid') : ?>
             <div>
                 <p>
                     You can download file/s by clicking on the button/s bellow.
@@ -1570,23 +1570,6 @@ function btcpaywall_render_pay_per_view_templates_wpbakery($atts)
         return do_shortcode("[$split_shortcode[0] $split_shortcode[1] {$payblock} price='{$price}' currency='{$currency}' duration='{$duration}' duration_type='{$duration_type}' $additional]");
     }
     return do_shortcode("[btcpw_start_video $split_shortcode[1] $split_shortcode[2] $split_shortcode[3] $split_shortcode[4] $split_shortcode[5] $split_shortcode[6] {$additional}]");
-    /*if ($settings['override'] === 'yes') {
-        $split_shortcode = explode(" ", $settings['shortcode']);
-        $payblock = $settings['pay_block'] != $split_shortcode[2] ? $settings['pay_block'] : $split_shortcode[2];
-
-        $price = (is_numeric($settings['price']) && $settings['price'] != $split_shortcode[3]) ? $settings['price'] : $split_shortcode[3];
-        $currency = (in_array($settings['currency'], BTCPayWall::CURRENCIES) && $settings['currency'] != $split_shortcode[4]) ? $settings['currency'] : $split_shortcode[4];
-        $duration = (is_numeric($settings['duration']) && $settings['duration'] != $split_shortcode[5]) ? $settings['duration'] : $split_shortcode[5];
-        $duration_type = (in_array($settings['duration_type'], BTCPayWall::DURATIONS) && $settings['duration_type'] != $split_shortcode[6]) ? $settings['duration_type'] : $split_shortcode[6];
-        echo "[$split_shortcode[0] $split_shortcode[1] pay_view_block='{$payblock}' price='{$price}' currency='{$currency}' duration='{$duration}' duration_type='{$duration_type}' {$additional}]";
-    } else {
-        $split_shortcode = explode(" ", $settings['shortcode']);
-        $title = $settings['title'] !== $split_shortcode[7] ? $settings['title'] : $split_shortcode[7];
-        $description = $settings['description'] !== $split_shortcode[8] ? $settings['description'] : $split_shortcode[8];
-        $preview_image = ($settings['preview']['url'] !== $split_shortcode[9]) ? $settings['preview']['url'] : $split_shortcode[9];
-        $additional = "title='{$title}' description='{$description}' preview='{$preview_image}'";
-        echo "[btcpw_start_video $split_shortcode[1] $split_shortcode[2] $split_shortcode[3] $split_shortcode[4] $split_shortcode[5] $split_shortcode[6] {$additional}]";
-    }*/
 }
 add_shortcode('btcpw_pay_per_view_templates', 'btcpaywall_render_pay_per_view_templates_wpbakery');
 function btcpaywall_render_templates_wpbakery($atts)
