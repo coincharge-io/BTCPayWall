@@ -47,6 +47,7 @@
         },
         success: function(response) {
           if (response.success) {
+            location.reload();
           }
         },
         error: function(error) {
@@ -64,6 +65,7 @@
         },
         success: function(response) {
           if (response.success) {
+            location.reload();
           }
         },
         error: function(error) {

@@ -5,7 +5,6 @@ if (!defined('ABSPATH')) {
 }
 $btcpw_coinsnap_key = get_option('btcpw_coinsnap_auth_key');
 $btcpw_coinsnap_website_id = get_option('btcpw_coinsnap_website_id');
-
 ?>
 <style>
   .connected {

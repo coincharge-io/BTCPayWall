@@ -29,7 +29,7 @@ $supported_gateways = array(
                     </td>
                     <td><input type="radio" id="coinsnap" name="btcpw_selected_payment_gateway" value=<?php echo esc_attr__("Coinsnap", "btcpaywall"); ?> <?php echo $selected_gateway === 'Coinsnap' ? 'checked' : ''; ?>>
                     </td>
-                    <td><?php echo esc_html__('Receive Bitcoin and Lightning payments without your own Lightning node. You only need your own Lightning address or xPub.', 'btcpaywall'); ?></td>
+                    <td><?php echo esc_html__('Receive Bitcoin and Lightning payments without your own Lightning node. You only need your own Lightning address.', 'btcpaywall'); ?></td>
                     <td><a href="<?php echo admin_url('admin.php?page=btcpw_general_settings&section=coinsnap'); ?>"><?php echo esc_html__('Manage', 'btcpaywall'); ?></a></td>
                 </tr>
                 <tr>

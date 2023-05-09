@@ -40,6 +40,24 @@
         },
       });
     });
+    if (getCookie("btcpaywall_initiated_purchase")) {
+      $.ajax({
+        url: "/wp-admin/admin-ajax.php",
+        method: "POST",
+        data: {
+          action: "btcpw_paid_content_file_invoice",
+          invoice_id: getCookie("btcpaywall_initiated_purchase"),
+        },
+        success: function(response) {
+          if (response.success) {
+            location.reload();
+          }
+        },
+        error: function(error) {
+          console.log(error.message);
+        },
+      });
+    }
     if (getCookie("btcpw_donation_initiated_" + payment.post_id)) {
       $.ajax({
         url: "/wp-admin/admin-ajax.php",
@@ -50,6 +68,7 @@
         },
         success: function(response) {
           if (response.success) {
+            location.reload();
           }
         },
         error: function(error) {
@@ -67,10 +86,11 @@
         },
         success: function(response) {
           if (response.success) {
+            location.reload();
           }
         },
-        error: function(error) {
-          console.log(error.message);
+        error: function(xhr, status, error) {
+          console.log("AJAX call failed: " + status + ", " + error);
         },
       });
     }

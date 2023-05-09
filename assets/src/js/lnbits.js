@@ -32,6 +32,7 @@
     var btcpw_invoice_id = null;
     var form_container = null;
     var payment_request;
+    var donor;
     $("#btcpw_digital_download_form").submit(function(e) {
       e.preventDefault();
       if (payment_request && btcpw_invoice_id && form_container) {
@@ -141,7 +142,6 @@
     });
     // var btcpw_invoice_id = null;
     // var form_container = null;
-    var donor = null;
     $("#tipping_form_box").submit(function(e) {
       e.preventDefault();
       if (payment_request && btcpw_invoice_id && form_container) {
@@ -345,6 +345,7 @@
             btcpw_invoice_id = response.data.invoice_id;
             form_container = $(".btcpw_skyscraper_banner.high");
             btcpwShowTippingLNBitsInvoice(
+              payment_request,
               btcpw_invoice_id,
               form_container,
               $("#btcpw_skyscraper_redirect_link_high").val()
@@ -417,6 +418,7 @@
             btcpw_invoice_id = response.data.invoice_id;
             form_container = $(".btcpw_widget.btcpw_skyscraper_banner.high");
             btcpwShowTippingLNBitsInvoice(
+              payment_request,
               btcpw_invoice_id,
               form_container,
               $("#btcpw_widget_btcpw_skyscraper_redirect_link_high").val()
@@ -576,6 +578,7 @@
         },
         success: function(response) {
           if (response.success) {
+            location.reload();
           }
         },
         error: function(error) {
@@ -593,6 +596,7 @@
         },
         success: function(response) {
           if (response.success) {
+            location.reload();
           }
         },
         error: function(error) {
@@ -610,6 +614,7 @@
         },
         success: function(response) {
           if (response.success) {
+            location.reload();
           }
         },
         error: function(error) {
