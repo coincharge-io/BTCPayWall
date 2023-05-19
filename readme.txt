@@ -5,7 +5,7 @@ Tags: btcpaywall, Bitcoin, Lightning, paywall, BTCPay, pay-per-post, pay-per-vie
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.2 
-Stable tag: 1.0.9.1
+Stable tag: 1.0.9.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,9 +88,14 @@ https://btcpaywall.com/faq-support-center/
 
  == Changelog ==
 
+= 1.0.9.2 =
+
+- Fix: Paywall breaks page
+
 = 1.0.9.1 =
 
 - Fix: Problem with customizing colors in Elementor
+
 = 1.0.9 =
 
 - Add: Template generator for Pay-per modules
