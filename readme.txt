@@ -90,7 +90,7 @@ https://btcpaywall.com/faq-support-center/
 
 = 1.0.9.2 =
 
-- Fix: Paywall breaks page
+- Fix: Paywall breaks page on some websites
 
 = 1.0.9.1 =
 
