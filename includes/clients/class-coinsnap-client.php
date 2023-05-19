@@ -14,8 +14,7 @@ class Coinsnap_Client extends Abstract_Client
   private string $apiKey;
   public function __construct()
   {
-    $baseUrl = 'https://0ed9-93-87-234-2.ngrok-free.app';
-    //$baseUrl = 'https://app.coinsnap.io';
+    $baseUrl = 'https://app.coinsnap.io';
     $this->websiteId = get_option('btcpw_coinsnap_website_id');
     $this->apiKey = get_option('btcpw_coinsnap_auth_key');
     parent::__construct($baseUrl);

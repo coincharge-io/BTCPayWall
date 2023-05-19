@@ -379,7 +379,7 @@ function ajax_btcpaywall_paid_invoice()
     }
 
     $valid_statuses = ['paid', 'Complete', 'Settled', 'Paid'];
-    if (!in_array($body['status'], $valid_statuses) || body['paid'] != true) {
+    if (!in_array($body['status'], $valid_statuses) && body['paid'] != true) {
         wp_send_json_error(['message' => 'Donation is not paid.']);
     }
 
@@ -427,7 +427,7 @@ function ajax_btcpaywall_paid_tipping()
     $tipping = new BTCPayWall_Tipping($invoice_id);
     $payment_method = btcpaywall_get_payment_method($body['id']);
     $invalid_statuses = ['failed', 'expired', 'Unpaid', 'Expired', 'Cancelled', 'Failed', 'Invalid', 'Expired'];
-    if (in_array($body['status'], $invalid_statuses) && body['paid'] != true) {
+    if (in_array($body['status'], $invalid_statuses)) {
         setcookie("btcpw_donation_initiated_{$post_id}", '', time() - 3600, $cookie_path);
         wp_send_json_error(['message' => 'Donation is not paid.']);
     }
@@ -899,7 +899,7 @@ function ajax_btcpaywall_paid_tipping_opennode_invoice()
         wp_send_json_error(['message' => 'Donation is not paid.']);
     }
     $valid_statuses = ['paid', 'Complete', 'Settled', 'Paid'];
-    if (!in_array($body['status'], $valid_statuses) || body['paid'] != true) {
+    if (!in_array($body['status'], $valid_statuses) && body['paid'] != true) {
         wp_send_json_error(['message' => 'Donation is not paid.']);
     }
 
@@ -951,7 +951,7 @@ function ajax_btcpaywall_paid_tipping_lnbits_invoice()
         wp_send_json_error(['message' => 'Donation is not paid.']);
     }
     $valid_statuses = ['paid', 'Complete', 'Settled', 'Paid'];
-    if (!in_array($body['status'], $valid_statuses) || body['paid'] != true) {
+    if (!in_array($body['status'], $valid_statuses) && body['paid'] != true) {
         wp_send_json_error(['message' => 'Donation is not paid.']);
     }
 
@@ -1311,12 +1311,12 @@ function ajax_btcpaywall_check_invoice_after_expiration()
     $amount = sanitize_text_field($_POST['amount']);
     $invalid_statuses = ['failed', 'expired', 'Unpaid', 'Expired', 'Cancelled', 'Failed', 'Invalid', 'Expired'];
     $cookie_path = parse_url(get_permalink($post_id), PHP_URL_PATH);
-    if (in_array($body['status'], $invalid_statuses) && $body['paid'] != true) {
+    if (in_array($body['status'], $invalid_statuses)) {
         setcookie("btcpw_initiated_{$post_id}", '', time() - 3600, $cookie_path);
         wp_send_json_error(['message' => 'Invoice is invalid.']);
     }
     $valid_statuses = ['paid', 'Complete', 'Settled', 'Paid'];
-    if (!in_array($body['status'], $valid_statuses) || body['paid'] != true) {
+    if (!in_array($body['status'], $valid_statuses) && $body['paid'] !== 'true') {
         wp_send_json_error(['message' => 'Invoice is invalid.']);
     }
     if (get_post_meta($order_id, 'btcpw_status', true) == 'success') {

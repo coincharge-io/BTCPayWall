@@ -26,7 +26,9 @@ if (!defined('ABSPATH')) {
  */
 function btcpaywall_get_post_info_string_from_attributes($atts)
 {
-    $project = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] ? get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] : 'post';
+    $project_object = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true);
+    $project = isset($project_object['project']) ? $project_object['project'] : 'post';
+
 
     $post_id = get_the_ID();
 
@@ -82,7 +84,8 @@ function btcpaywall_get_post_info_string_from_attributes($atts)
  */
 function btcpaywall_get_post_info_string($post_id = null, $type = 'post')
 {
-    $project = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] ? get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] : 'post';
+    $project_object = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true);
+    $project = isset($project_object['project']) ? $project_object['project'] : 'post';
 
     if (!$post_id) {
         $post_id = get_the_ID();
@@ -117,8 +120,9 @@ function btcpaywall_get_post_info_string($post_id = null, $type = 'post')
     $non_number = $duration_type === 'unlimited' || $duration_type === 'onetime';
 
     $duration_type = ($duration > 1 && !$non_number) ? "{$duration_type}s" : $duration_type;
-    $payblock_info = btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['info'];
-
+    //$payblock_info = btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['info'];
+    $payblock_info = btcpaywall_get_default_values($project)['info'];
+    $project_object = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true);
     if (!empty($payblock_info)) {
         $search = array('{price}', '{duration}', '{dtype}', '{currency}');
 
@@ -149,7 +153,12 @@ function btcpaywall_get_post_info_string($post_id = null, $type = 'post')
  */
 function btcpaywall_get_payblock_header_string()
 {
-    return btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['title'] ? btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['title'] : 'For access to ' . get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] . ' first pay';
+    $invoice_content = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true);
+    $project = isset($invoice_content['project']) ? $invoice_content['project'] : '';
+    $default_values = btcpaywall_get_default_values($project);
+    $title = isset($default_values['title']) ? $default_values['title'] : '';
+    return $title ? $title : 'For access to ' . $project . ' first pay';
+    //return btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['title'] ? btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['title'] : 'For access to ' . get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] . ' first pay';
 }
 /**
  * Get paywall button text
@@ -162,7 +171,12 @@ function btcpaywall_get_payblock_header_string()
  */
 function btcpaywall_get_payblock_button_string($atts)
 {
-    return !empty($atts['button_text']) ? $atts['button_text'] : btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['button'];
+    $invoice_content = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true);
+    $project = isset($invoice_content['project']) ? $invoice_content['project'] : '';
+    $default_values = btcpaywall_get_default_values($project);
+    $button = isset($default_values['button']) ? $default_values['button'] : '';
+    return !empty($atts['button_text']) ? $atts['button_text'] : $button;
+    //return !empty($atts['button_text']) ? $atts['button_text'] : btcpaywall_get_default_values(get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'])['button'];
 }
 /**
  * Return default values for each revenue type
@@ -210,9 +224,12 @@ function btcpaywall_get_default_values($name)
  */
 function btcpaywall_calculate_price_for_invoice($post_id)
 {
-    $project = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] !== false ? get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] : 'post';
-
+    $invoice_content = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true);
+    $project = isset($invoice_content['project']) ? $invoice_content['project'] : 'post';
     return get_post_meta($post_id, 'btcpw_price', true) ? get_post_meta($post_id, 'btcpw_price', true) : get_option('btcpw_default_pay_per_' . $project . '_price', 1000);
+    // $project = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] !== false ? get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] : 'post';
+    //
+    // return get_post_meta($post_id, 'btcpw_price', true) ? get_post_meta($post_id, 'btcpw_price', true) : get_option('btcpw_default_pay_per_' . $project . '_price', 1000);
 }
 
 /**
@@ -301,7 +318,9 @@ function btcpaywall_generate_order_id($post_id)
 function btcpaywall_get_cookie_duration($post_id)
 {
     $duration = get_post_meta($post_id, 'btcpw_duration', true);
-    $project = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] ? get_post_meta(get_the_ID(), 'btcpw_invoice_content', true)['project'] : 'post';
+    $invoice_content = get_post_meta(get_the_ID(), 'btcpw_invoice_content', true);
+    $project = isset($invoice_content['project']) ? $invoice_content['project'] : 'post';
+
     if (empty($duration)) {
         $duration = get_option('btcpw_default_pay_per_' . $project . 'duration');
     }

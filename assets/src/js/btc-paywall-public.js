@@ -54,29 +54,70 @@
       });
     });
   });
-  $(document).ready(function() {
-    var eur, usd, sats, gbp;
+  function get_rates() {
+    let result;
     $.ajax({
       url: "/wp-admin/admin-ajax.php",
+      async: false,
       method: "GET",
       data: {
         action: "btcpw_convert_currencies",
       },
       success: function(response) {
         if (response.success) {
-          eur = response["data"]["eur"]["value"];
+          result = response;
+          /*eur = response["data"]["eur"]["value"];
           usd = response["data"]["usd"]["value"];
           sats = response["data"]["sats"]["value"];
-          gbp = response["data"]["gbp"]["value"];
+          gbp = response["data"]["gbp"]["value"];*/
         } else {
           console.log(response);
         }
       },
     });
+    return result;
+  }
+  $(document).ready(function() {
+    var eur, usd, sats, gbp;
+    $(
+      "#btcpw_tipping_amount,#btcpw_tipping_amount_btcpw_widget,#btcpw_page_tipping_amount,#btcpw_widget_btcpw_skyscraper_tipping_amount_high,#btcpw_widget_btcpw_skyscraper_tipping_amount_wide,#btcpw_skyscraper_tipping_high_amount,#btcpw_skyscraper_tipping_wide_amount "
+    ).on("input", function() {
+      if (eur) {
+        return;
+      }
+      let rates = get_rates();
+      eur = rates["data"]["eur"]["value"];
+      usd = rates["data"]["usd"]["value"];
+      sats = rates["data"]["sats"]["value"];
+      gbp = rates["data"]["gbp"]["value"];
+    });
+    $(
+      "#value_1_high, #value_2_high, #value_3_high,#value_1_wide, #value_2_wide, #value_3_wide"
+    ).on("change", function() {
+      if (eur) {
+        return;
+      }
+      let rates = get_rates();
+      eur = rates["data"]["eur"]["value"];
+      usd = rates["data"]["usd"]["value"];
+      sats = rates["data"]["sats"]["value"];
+      gbp = rates["data"]["gbp"]["value"];
+    });
+    $(
+      ".btcpw_skyscraper_amount_value_1, .btcpw_skyscraper_amount_value_2, .btcpw_skyscraper_amount_value_3,.btcpw_page_amount_value_1, .btcpw_page_amount_value_2, .btcpw_page_amount_value_3"
+    ).on("click", function() {
+      if (eur) {
+        return;
+      }
+      let rates = get_rates();
+      eur = rates["data"]["eur"]["value"];
+      usd = rates["data"]["usd"]["value"];
+      sats = rates["data"]["sats"]["value"];
+      gbp = rates["data"]["gbp"]["value"];
+    });
     $("#btcpw_tipping_amount").on("input", function() {
       var currency = $("#btcpw_tipping_currency").val();
       var amount = $(this).val();
-      var converted = fiat_to_crypto(currency, amount, usd, eur, sats, gbp);
       $("#btcpw_converted_amount")
         .attr("readonly", false)
         .val(fiat_to_crypto(currency, amount, usd, eur, sats, gbp))
@@ -90,7 +131,6 @@
     $("#btcpw_tipping_amount_btcpw_widget").on("input", function() {
       var currency = $("#btcpw_tipping_currency_btcpw_widget").val();
       var amount = $(this).val();
-      var converted = fiat_to_crypto(currency, amount, usd, eur, sats, gbp);
       $("#btcpw_converted_amount_btcpw_widget")
         .attr("readonly", false)
         .val(fiat_to_crypto(currency, amount, usd, eur, sats, gbp))
@@ -104,7 +144,6 @@
     $("#btcpw_page_tipping_amount").on("input", function() {
       var currency = $("#btcpw_page_tipping_currency").val();
       var amount = $(this).val();
-      var converted = fiat_to_crypto(currency, amount, usd, eur, sats, gbp);
       $("#btcpw_page_converted_amount")
         .attr("readonly", false)
         .val(fiat_to_crypto(currency, amount, usd, eur, sats, gbp))
@@ -122,7 +161,6 @@
           "#btcpw_widget_btcpw_skyscraper_tipping_currency_high"
         ).val();
         var amount = $(this).val();
-        var converted = fiat_to_crypto(currency, amount, usd, eur, sats, gbp);
         $("#btcpw_widget_btcpw_skyscraper_converted_amount_high")
           .attr("readonly", false)
           .val(fiat_to_crypto(currency, amount, usd, eur, sats, gbp))
@@ -141,7 +179,6 @@
           "#btcpw_widget_btcpw_skyscraper_tipping_currency_wide"
         ).val();
         var amount = $(this).val();
-        var converted = fiat_to_crypto(currency, amount, usd, eur, sats, gbp);
         $("#btcpw_widget_btcpw_skyscraper_converted_amount_wide")
           .attr("readonly", false)
           .val(fiat_to_crypto(currency, amount, usd, eur, sats, gbp))
@@ -156,7 +193,6 @@
     $("#btcpw_skyscraper_tipping_high_amount").on("input", function() {
       var currency = $("#btcpw_skyscraper_tipping_high_currency").val();
       var amount = $(this).val();
-      var converted = fiat_to_crypto(currency, amount, usd, eur, sats, gbp);
       $("#btcpw_skyscraper_high_converted_amount")
         .attr("readonly", false)
         .val(fiat_to_crypto(currency, amount, usd, eur, sats, gbp))
@@ -169,18 +205,6 @@
     $("#value_1_high, #value_2_high, #value_3_high").change(function() {
       if ($(this).is(":checked")) {
         var predefined = $(this).val().split(" ");
-        var converted_icon = fiat_to_crypto(
-          predefined[1],
-          predefined[0],
-          usd,
-          eur,
-          sats,
-          gbp
-        );
-        var converted_icon_amount =
-          fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp) +
-          " " +
-          get_currency(predefined[1]);
         $("#btcpw_skyscraper_high_converted_amount")
           .attr("readonly", false)
           .val(
@@ -197,7 +221,6 @@
     $("#btcpw_skyscraper_tipping_wide_amount").on("input", function() {
       var currency = $("#btcpw_skyscraper_tipping_wide_currency").val();
       var amount = $(this).val();
-      var converted = fiat_to_crypto(currency, amount, usd, eur, sats);
       $("#btcpw_skyscraper_wide_converted_amount")
         .attr("readonly", false)
         .val(fiat_to_crypto(currency, amount, usd, eur, sats, gbp))
@@ -210,18 +233,6 @@
     $("#value_1_wide, #value_2_wide, #value_3_wide").change(function() {
       if ($(this).is(":checked")) {
         var predefined = $(this).val().split(" ");
-        var converted_icon = fiat_to_crypto(
-          predefined[1],
-          predefined[0],
-          usd,
-          eur,
-          sats,
-          gbp
-        );
-        var converted_icon_amount =
-          fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp) +
-          " " +
-          get_currency(predefined[1]);
         $("#btcpw_skyscraper_wide_converted_amount")
           .attr("readonly", false)
           .val(
@@ -260,18 +271,6 @@
         $(this).toggleClass("selected");
       }
       var predefined = $(this).children().find("input:radio").val().split(" ");
-      var converted_icon = fiat_to_crypto(
-        predefined[1],
-        predefined[0],
-        usd,
-        eur,
-        sats,
-        gbp
-      );
-      var converted_icon_amount =
-        fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp) +
-        " " +
-        get_currency(predefined[1]);
       $("#btcpw_page_converted_amount")
         .attr("readonly", false)
         .val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp))
@@ -326,18 +325,6 @@
         $(this).toggleClass("selected");
       }
       var predefined = $(this).children().find("input:radio").val().split(" ");
-      var converted_icon = fiat_to_crypto(
-        predefined[1],
-        predefined[0],
-        usd,
-        eur,
-        sats,
-        gbp
-      );
-      var converted_icon_amount =
-        fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp) +
-        " " +
-        get_currency(predefined[1]);
       $("#btcpw_widget_btcpw_skyscraper_converted_amount_high")
         .attr("readonly", false)
         .val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp))
@@ -392,18 +379,6 @@
         $(this).toggleClass("selected");
       }
       var predefined = $(this).children().find("input:radio").val().split(" ");
-      var converted_icon = fiat_to_crypto(
-        predefined[1],
-        predefined[0],
-        usd,
-        eur,
-        sats,
-        gbp
-      );
-      var converted_icon_amount =
-        fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp) +
-        " " +
-        get_currency(predefined[1]);
       $("#btcpw_widget_btcpw_skyscraper_converted_amount_wide")
         .attr("readonly", false)
         .val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats))
@@ -439,18 +414,6 @@
         $(this).toggleClass("selected");
       }
       var predefined = $(this).children().find("input:radio").val().split(" ");
-      var converted_icon = fiat_to_crypto(
-        predefined[1],
-        predefined[0],
-        usd,
-        eur,
-        sats,
-        gbp
-      );
-      var converted_icon_amount =
-        fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats) +
-        " " +
-        get_currency(predefined[1]);
       $("#btcpw_skyscraper_converted_amount")
         .attr("readonly", false)
         .val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp))
@@ -486,17 +449,6 @@
         $(this).toggleClass("selected");
       }
       var predefined = $(this).children().find("input:radio").val().split(" ");
-      var converted_icon = fiat_to_crypto(
-        predefined[1],
-        predefined[0],
-        usd,
-        eur,
-        sats
-      );
-      var converted_icon_amount =
-        fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats) +
-        " " +
-        get_currency(predefined[1]);
       $("#btcpw_skyscraper_converted_amount")
         .attr("readonly", false)
         .val(fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp))
