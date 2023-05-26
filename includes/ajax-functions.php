@@ -1174,11 +1174,11 @@ function ajax_btcpaywall_paid_content_file_invoice()
         $link = btcpaywall_get_download_url($payment->invoice_id, $link_id, $customer->email, attachment_url_to_postid($download->get_file_url()));
         $db_links[] = esc_url_raw(rawurldecode($link));
     }
+    $valid_statuses = ['paid', 'Complete', 'Settled', 'Paid'];
     $status = (in_array($body['status'], $valid_statuses) || body['paid'] == true) ? 'Paid' : 'Unpaid';
     if (in_array($body['status'], $invalid_statuses) && $body['paid'] != true) {
         setcookie("btcpaywall_initiated_purchase", '', time() - 3600, "/");
     }
-    $valid_statuses = ['paid', 'Complete', 'Settled', 'Paid'];
     $payment->update(array(
         'status' => $status, 'payment_method' => $payment_method, 'download_links' => $db_links
     ));
