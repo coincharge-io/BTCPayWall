@@ -3,11 +3,11 @@
 /**
  * Digital Download
  *
- * @package     BTCPayWall
- * @subpackage  Functions/Enqueue
- * @copyright   Copyright (c) 2021, Coincharge
- * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
- * @since       1.0
+ * @package    BTCPayWall
+ * @subpackage Functions/Enqueue
+ * @copyright  Copyright (c) 2021, Coincharge
+ * @license    http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
+ * @since      1.0
  */
 // Exit if accessed directly
 if (!defined('ABSPATH')) {
@@ -17,7 +17,9 @@ if (!defined('ABSPATH')) {
 
 function btcpaywall_enqueue_styles()
 {
-    wp_enqueue_style('btcpaywall', BTCPAYWALL_PLUGIN_URL . 'assets/src/css/btc-paywall-public.css', array(), null, 'all');
+    //wp_enqueue_style('btcpaywall', BTCPAYWALL_PLUGIN_URL . 'assets/src/css/btc-paywall-public.css', array(), null, 'all');
+    //Use minified file
+    wp_enqueue_style('btcpaywall', BTCPAYWALL_PLUGIN_URL . 'assets/src/css/BTCPayWall.css', array(), null, 'all');
 
     wp_enqueue_style('load-fa', 'https://use.fontawesome.com/releases/v5.12.1/css/all.css');
 }
@@ -26,7 +28,6 @@ add_action('enqueue_block_assets', 'btcpaywall_enqueue_styles');
 
 /**
  * Register the JavaScript for the -facing side of the site.
- *
  */
 function btcpaywall_enqueue_scripts()
 {
