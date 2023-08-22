@@ -26,7 +26,7 @@ $btcpw_coinsnap_website_id = get_option('btcpw_coinsnap_website_id');
           <?php settings_fields('btcpw_coinsnap_settings'); ?>
           <tr class="odd">
             <td>
-              <label for="btcpw_coinsnap_website_id"><?php echo esc_html__('Website ID', 'btcpaywall'); ?></label>
+              <label for="btcpw_coinsnap_website_id"><?php echo esc_html__('Store ID', 'btcpaywall'); ?></label>
             </td>
             <td>
               <input type="text" name="btcpw_coinsnap_website_id" id="btcpw_coinsnap_website_id" value="<?php echo esc_attr($btcpw_coinsnap_website_id); ?>">
