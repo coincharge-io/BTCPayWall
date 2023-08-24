@@ -3,11 +3,11 @@
 /**
  * Digital Download
  *
- * @package     BTCPayWall
- * @subpackage  Admin/Settings
- * @copyright   Copyright (c) 2021, Coincharge
- * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
- * @since       1.0
+ * @package    BTCPayWall
+ * @subpackage Admin/Settings
+ * @copyright  Copyright (c) 2021, Coincharge
+ * @license    http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
+ * @since      1.0
  */
 if (!defined('ABSPATH')) {
     exit;
@@ -26,7 +26,7 @@ function btcpaywall_register_settings()
 
 
     register_setting('btcpw_coinsnap_settings', 'btcpw_coinsnap_auth_key', array('type' => 'string', 'sanitize_callback' => 'btcpaywall_sanitize_coinsnap_auth_key'));
-    register_setting('btcpw_coinsnap_settings', 'btcpw_coinsnap_website_id', array('type' => 'string', 'sanitize_callback' => 'btcpaywall_sanitize_coinsnap_auth_key'));
+    register_setting('btcpw_coinsnap_settings', 'btcpw_coinsnap_store_id', array('type' => 'string', 'sanitize_callback' => 'btcpaywall_sanitize_coinsnap_auth_key'));
 
 
     register_setting('btcpw_lnbits_settings', 'btcpw_lnbits_server_url', array('type' => 'string', 'sanitize_callback' => 'btcpaywall_sanitize_btcpay_server_url'));
