@@ -183,7 +183,7 @@ function btcpaywall_ajax_coinsnap_test_connection()
 
     $body = json_decode($response['body']);
     if (empty($body->storeId)) {
-        wp_send_json_error();
+        wp_send_json_error(["message" => "Wrong credentials"]);
     }
     wp_send_json_success($body);
 }
