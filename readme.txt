@@ -91,6 +91,12 @@ https://btcpaywall.com/faq-support-center/
 = 1.1.0 =
 
 - Fix: Add support for smaller screens - responsiveness
+- Add: Coinsnap and LNBits as payment provider
+
+= 1.0.9.1 =
+
+- Fix: Problem with customizing colors in Elementor
+
 = 1.0.9 =
 
 - Add: Template generator for Pay-per modules
