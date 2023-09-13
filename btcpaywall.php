@@ -4,7 +4,7 @@
  * Plugin Name: BTCPayWall
  * Plugin URI: https://wordpress.org/plugins/btcpaywall
  * Description: The Bitcoin Paywall to sell content and digital goods on WordPress.
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: Coincharge https://btcpaywall.com
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
@@ -94,14 +94,14 @@ if (!class_exists('BTCPayWall')) :
          * Setup plugin constants.
          *
          * @access private
-         * @since 1.0
+         * @since  1.0
          * @return void
          */
         private function setup_constants()
         {
             // Plugin version.
             if (!defined('BTCPAYWALL_VERSION')) {
-                define('BTCPAYWALL_VERSION', '1.1.0');
+                define('BTCPAYWALL_VERSION', '1.1.1');
             }
 
             // Plugin Folder Path.
@@ -124,87 +124,87 @@ if (!class_exists('BTCPayWall')) :
          * Include required files.
          *
          * @access private
-         * @since 1.0
+         * @since  1.0
          * @return void
          */
         private function includes()
         {
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/settings/register-settings.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/pay-per/class-pay-per-shortcode-list.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/shortcodes.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-functions.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/widgets/functions.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/gutenberg/functions.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/gutenberg/actions.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/settings/register-settings.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/pay-per/class-pay-per-shortcode-list.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/shortcodes.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-functions.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/widgets/functions.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/gutenberg/functions.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/gutenberg/actions.php';
 
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/trait/format-trait.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/exception/class-exception.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/trait/format-trait.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/exception/class-exception.php';
 
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/actions.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/functions.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/download-functions.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/filters.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/ajax-functions.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/actions.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/functions.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/download-functions.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/filters.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/ajax-functions.php';
 
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/scripts.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/post-types.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/shortcodes.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/api/actions.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/cart/class-btcpaywall-cart.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/cart/functions.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/emails/functions.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-customer.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-tipper.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-form.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-digital-download.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-pay-per-shortcode.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/scripts.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/post-types.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/shortcodes.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/api/actions.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/cart/class-btcpaywall-cart.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/cart/functions.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/emails/functions.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-customer.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-tipper.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-form.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-digital-download.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/class-btcpaywall-pay-per-shortcode.php';
 
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/tippings/class-btcpaywall-tipping.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/payments/class-btcpaywall-payment.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/tippings/class-btcpaywall-tipping.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/payments/class-btcpaywall-payment.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db.php';
 
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-customers.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-tippers.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-payments.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-tippings.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-tipping-forms.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-pay-per-shortcode.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-customers.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-tippers.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-payments.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-tippings.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-tipping-forms.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/database/class-btcpaywall-db-pay-per-shortcode.php';
 
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/wpbakery/actions.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/elementor/functions.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/wpbakery/actions.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/editors/elementor/functions.php';
 
 
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/abstract-class-btcpaywall-client.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/class-btcpay-client.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/class-opennode-client.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/class-lnbits-client.php';
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/class-coinsnap-client.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/abstract-class-btcpaywall-client.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/class-btcpay-client.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/class-opennode-client.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/class-lnbits-client.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/clients/class-coinsnap-client.php';
             if (is_admin()) {
-                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/settings/functions.php';
+                include_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/settings/functions.php';
 
 
-                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-actions.php';
-                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-scripts.php';
-                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/payments/view.php';
+                include_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-actions.php';
+                include_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-scripts.php';
+                include_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/payments/view.php';
 
-                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/tipping-forms/class-donation-metabox.php';
-                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-pages.php';
-
-
-                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-ajax-functions.php';
+                include_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/tipping-forms/class-donation-metabox.php';
+                include_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-pages.php';
 
 
-                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/upload-functions.php';
-                require_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/digital-products/metabox.php';
+                include_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/admin-ajax-functions.php';
+
+
+                include_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/upload-functions.php';
+                include_once BTCPAYWALL_PLUGIN_DIR . 'includes/admin/digital-products/metabox.php';
             }
 
-            require_once BTCPAYWALL_PLUGIN_DIR . 'includes/install.php';
+            include_once BTCPAYWALL_PLUGIN_DIR . 'includes/install.php';
         }
 
         /**
          * Loads the plugin language files.
          *
-         * @since 1.0.0
+         * @since  1.0.0
          * @return void
          */
         public function load_textdomain()
@@ -219,16 +219,16 @@ if (!class_exists('BTCPayWall')) :
         {
             $client_type = get_option('btcpw_selected_payment_gateway');
             switch ($client_type) {
-                case 'BTCPayServer':
-                    return new BTCPay_Client();
-                case 'OpenNode':
-                    return new OpenNode_Client();
-                case 'LNBits':
-                    return new LNBits_Client();
-                case 'Coinsnap':
-                    return new Coinsnap_Client();
-                default:
-                    throw new \Exception('Invalid client');
+            case 'BTCPayServer':
+                return new BTCPay_Client();
+            case 'OpenNode':
+                return new OpenNode_Client();
+            case 'LNBits':
+                return new LNBits_Client();
+            case 'Coinsnap':
+                return new Coinsnap_Client();
+            default:
+                throw new \Exception('Invalid client');
             }
         }
     }

@@ -113,19 +113,6 @@ function btcpaywall_generate_invoice_id($post_id, $order_id, $customer_data)
         'method' => 'POST',
         'timeout' => 60,
     );
-    /*$response = wp_remote_request($url, $args);
-    if (is_wp_error($response)) {
-        return $response;
-    }
-
-    if ($response['response']['code'] != 200) {
-        return new WP_Error($response['response']['code'], 'HTTP Error ' . $response['response']['code']);
-    }
-
-    $body = json_decode($response['body'], true);
-    if (empty($body) || !empty($body['error'])) {
-        return new WP_Error('invoice_error', $body['error'] ?? 'Something went wrong');
-    }*/
     $gateway = BTCPayWall::create_client();
     $body = $gateway->createInvoice($data);
     $revenue_type = $body['metadata']['type'];
