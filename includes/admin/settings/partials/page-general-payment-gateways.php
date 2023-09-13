@@ -25,7 +25,7 @@ $supported_gateways = array(
             <tbody>
                 <tr>
                     <td>
-                        <div><?php echo (file_get_contents(BTCPAYWALL_PLUGIN_DIR . 'assets/dist/img/coincharge_pay_logo.svg')); ?></div>
+                        <div><?php echo (file_get_contents(BTCPAYWALL_PLUGIN_DIR . 'assets/dist/img/coinsnap_logo.svg')); ?></div>
                     </td>
                     <td><input type="radio" id="coinsnap" name="btcpw_selected_payment_gateway" value=<?php echo esc_attr__("Coinsnap", "btcpaywall"); ?> <?php echo $selected_gateway === 'Coinsnap' ? 'checked' : ''; ?>>
                     </td>
