@@ -3,15 +3,17 @@
 /**
  * Digital Download
  *
- * @package     BTCPayWall
- * @subpackage  Classes/BTCPayWall_DB_Payments
- * @copyright   Copyright (c) 2021, Coincharge
- * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
- * @since       1.0
+ * @package    BTCPayWall
+ * @subpackage Classes/BTCPayWall_DB_Payments
+ * @copyright  Copyright (c) 2021, Coincharge
+ * @license    http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
+ * @since      1.0
  */
 
 //Eit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 class BTCPayWall_DB_Payments extends BTCPayWall_DB
@@ -144,7 +146,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
             return $this->insert($data, 'payment');
         }
     }
-    public function get_payment_by($field = 'id', $value=null)
+    public function get_payment_by($field = 'id', $value = null)
     {
         global $wpdb;
         $row = $wpdb->get_row(
@@ -179,6 +181,47 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
 
         return $result;
     }
+    public function get_filtered_payments($per_page = null, $page_number = null, $search_query)
+    {
+
+        global $wpdb;
+
+        $sql = "SELECT * FROM {$this->table_name}";
+        $sql .= ' ORDER BY date_created';
+        $sql .= ' DESC';
+        if (!empty($search_query)) {
+            $sql .= " AND (invoice_id LIKE '%{$search_query}%' OR id LIKE '%{$search_query}%' )";
+        }
+        $per_page = (int)$per_page;
+        $page_number = (int)$page_number;
+        if (!empty($per_page) && !empty($page_number)) {
+            $sql .= " LIMIT $per_page";
+
+            $sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
+        }
+        $result = $wpdb->get_results($sql, 'ARRAY_A');
+        return $result;
+    }
+    public function delete_older_than_day()
+    {
+        global $wpdb;
+        $table_name = "{$this->table_name}";
+        $older_than = date('Y-m-d H:i:s', strtotime('-1 day'));
+
+        $sql = $wpdb->prepare("DELETE FROM $table_name WHERE status='New' AND date_created < %s", $older_than);
+
+        return $wpdb->query($sql);
+    }
+    public function delete_older_than_7days()
+    {
+        global $wpdb;
+        $table_name = "{$this->table_name}";
+        $older_than = date('Y-m-d H:i:s', strtotime('-1 day'));
+
+        $sql = $wpdb->prepare("DELETE FROM $table_name WHERE status='New' AND date_created < %s", $older_than);
+
+        return $wpdb->query($sql);
+    }
     public function create_table()
     {
         global $wpdb;
@@ -186,24 +229,24 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
         $charset_collate = $wpdb->get_charset_collate();
 
         $sql = "CREATE TABLE {$this->table_name}(
-			  id bigint(20) NOT NULL AUTO_INCREMENT,
-              invoice_id TINYTEXT,
-			  customer_id BIGINT(20) NOT NULL,
-              page_title TINYTEXT,
-              revenue_type TINYTEXT,
-              currency CHAR(4),
-              amount DECIMAL(16,8),
-              status TINYTEXT,
-              gateway TINYTEXT,
-              payment_method TINYTEXT,
-              download_ids LONGTEXT,
-              download_links LONGTEXT,
-              date_created TIMESTAMP,
-			  PRIMARY KEY  (id),
-              KEY customer (customer_id)
-            ) {$charset_collate};";
+    id bigint(20) NOT null AUTO_INCREMENT,
+    invoice_id TINYTEXT,
+    customer_id BIGINT(20) NOT null,
+    page_title TINYTEXT,
+    revenue_type TINYTEXT,
+    currency CHAR(4),
+    amount DECIMAL(16, 8),
+    status TINYTEXT,
+    gateway TINYTEXT,
+    payment_method TINYTEXT,
+    download_ids LONGTEXT,
+    download_links LONGTEXT,
+    date_created TIMESTAMP,
+    PRIMARY KEY(id),
+    KEY customer(customer_id)
+) {$charset_collate};";
 
-        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+        include_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
         dbDelta($sql);
         update_option($this->table_name . '_db_version', $this->version, false);

@@ -3,14 +3,16 @@
 /**
  * Digital Download
  *
- * @package     BTCPayWall
- * @subpackage  Classes/BTCPayWall_Payment
- * @copyright   Copyright (c) 2021, Coincharge
- * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
- * @since       1.0
+ * @package    BTCPayWall
+ * @subpackage Classes/BTCPayWall_Payment
+ * @copyright  Copyright (c) 2021, Coincharge
+ * @license    http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
+ * @since      1.0
  */
 // Exit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 class BTCPayWall_Payment
@@ -143,6 +145,12 @@ class BTCPayWall_Payment
 
         return $payments;
     }
+    public function get_filtered_payments($per_page, $page_number, $search_query)
+    {
+        $payments = $this->db->get_payments($per_page, $page_number, $search_query);
+
+        return $payments;
+    }
     /**
      * Increase Download Number
      * 
@@ -164,6 +172,14 @@ class BTCPayWall_Payment
             return $this->download_number;
         }
         return false;
+    }
+    public function delete_older_than_day()
+    {
+        return $this->db->delete_older_than_day();
+    }
+    public function delete_older_than_7days()
+    {
+        return $this->db->delete_older_than_7days();
     }
     private function sanitize_columns($data)
     {

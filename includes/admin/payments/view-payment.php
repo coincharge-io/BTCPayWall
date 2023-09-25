@@ -3,14 +3,16 @@
 /**
  * Digital Download
  *
- * @package     BTCPayWall
- * @subpackage  Admin/Payment_Details
- * @copyright   Copyright (c) 2021, Coincharge
- * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
- * @since       1.0
+ * @package    BTCPayWall
+ * @subpackage Admin/Payment_Details
+ * @copyright  Copyright (c) 2021, Coincharge
+ * @license    http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
+ * @since      1.0
  */
 // Exit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 if (!isset($_GET['id'])) {
     wp_die(__('Payment ID not supplied. Please try again', 'btcpaywall'), __('Error', 'btcpaywall'));

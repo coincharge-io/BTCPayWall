@@ -3,11 +3,11 @@
 /**
  * Pay_Per_Shortcode_List
  *
- * @package     BTCPayWall
- * @subpackage  Admin/Pay_Per_Shortcode_List
- * @copyright   Copyright (c) 2022, Coincharge
- * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
- * @since       1.0.9
+ * @package    BTCPayWall
+ * @subpackage Admin/Pay_Per_Shortcode_List
+ * @copyright  Copyright (c) 2022, Coincharge
+ * @license    http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
+ * @since      1.0.9
  */
 
 use Pay_Per_Shortcode_List as GlobalPay_Per_Shortcode_List;
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 if (!class_exists('WP_List_Table')) {
-    require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
+    include_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
 }
 
 class Pay_Per_Shortcode_List extends WP_List_Table
@@ -25,11 +25,13 @@ class Pay_Per_Shortcode_List extends WP_List_Table
     public $items;
     public function __construct()
     {
-        parent::__construct([
-            'singular' => __('Shortcode', 'btcpaywall'),
-            'plural'   => __('Shortcodes', 'btcpaywall'),
-            'ajax'     => false
-        ]);
+        parent::__construct(
+            [
+                'singular' => __('Shortcode', 'btcpaywall'),
+                'plural'   => __('Shortcodes', 'btcpaywall'),
+                'ajax'     => false
+            ]
+        );
     }
     /**
      * Get a list of columns.
@@ -62,10 +64,12 @@ class Pay_Per_Shortcode_List extends WP_List_Table
         $current_page = $this->get_pagenum();
         $total_items = self::record_count();
 
-        $this->set_pagination_args([
-            'total_items' => $total_items,
-            'per_page' => $per_page
-        ]);
+        $this->set_pagination_args(
+            [
+                'total_items' => $total_items,
+                'per_page' => $per_page
+            ]
+        );
         $this->items = self::get_shortcodes($per_page, $current_page);
     }
     /**
@@ -96,7 +100,6 @@ class Pay_Per_Shortcode_List extends WP_List_Table
     /**
      * Retrieve all shortcodes from the database
      *
-     *
      * @return mixed
      */
     public static function get_all_shortcodes()
@@ -120,7 +123,6 @@ class Pay_Per_Shortcode_List extends WP_List_Table
     {
         if ('delete' === $this->current_action()) {
             $nonce = esc_attr($_REQUEST['_wpnonce']);
-
             if (!wp_verify_nonce($nonce, 'delete')) {
                 wp_die('Nope! Security check failed!');
             }
@@ -197,7 +199,7 @@ class Pay_Per_Shortcode_List extends WP_List_Table
     /**
      * Generates content for a single row of the table.
      *
-     * @param object $item The current item.
+     * @param object $item        The current item.
      * @param string $column_name The current column name.
      */
     protected function column_default($item, $column_name)
