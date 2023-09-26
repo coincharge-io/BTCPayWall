@@ -5,7 +5,7 @@ Tags: btcpaywall, Bitcoin, Lightning, paywall, BTCPay, pay-per-post, pay-per-vie
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.2
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -87,6 +87,11 @@ Further information can be found here: https://btcpaywall.com
 https://btcpaywall.com/faq-support-center/
 
  == Changelog ==
+
+= 1.2.0 =
+
+- Add: Search for specific payment record
+- Add: Remove unpaid records
 
 = 1.1.1 =
 

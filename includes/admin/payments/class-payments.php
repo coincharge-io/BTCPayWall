@@ -41,26 +41,20 @@ class Payments_Table extends WP_List_Table
     }
     public function process_bulk_action()
     {
+        $nonce = isset($_REQUEST['_wpnonce']) ? $_REQUEST['_wpnonce'] : '';
+
+        if (!wp_verify_nonce($nonce, 'btcpaywall_remove_old_records')) {
+            return;
+        }
+
         if ('remove_older_1' === $this->current_action()) {
-            // $nonce = esc_attr($_REQUEST['_wpnonce']);
-            //
-            // if (!wp_verify_nonce($nonce, 'remove_older_1')) {
-            //     wp_die('Nope! Security check failed!');
-            // }
 
             $payments = new BTCPayWall_Payment();
             return $payments->delete_older_than_day();
         } elseif ('remove_older_7' === $this->current_action()) {
-            // $nonce = esc_attr($_REQUEST['_wpnonce']);
-            //
-            // if (!wp_verify_nonce($nonce, 'remove_older_7')) {
-            //     wp_die('Nope! Security check failed!');
-            // }
-
             $payments = new BTCPayWall_Payment();
             return $payments->delete_older_than_7days();
         }
-        // Add more conditions for additional actions
     }
     /**
      * Get a list of columns.
@@ -88,7 +82,7 @@ class Payments_Table extends WP_List_Table
     public function prepare_items()
     {
         $search_query = isset($_REQUEST['s']) ? sanitize_text_field($_REQUEST['s']) : '';
-        $this->column_headers = array($this->get_columns(), array(), array(), 'cb');
+        $this->_column_headers = array($this->get_columns(), array(), array(), 'cb');
         $this->process_bulk_action();
 
         $per_page = $this->get_items_per_page('payments_per_page', 5);
@@ -127,7 +121,7 @@ class Payments_Table extends WP_List_Table
     }
     /**
      * Generates content for a single row of the table.
-     * 
+     *
      * @param object $item        The current item.
      * @param string $column_name The current column name.
      */
@@ -163,25 +157,25 @@ class Payments_Table extends WP_List_Table
 
     protected function display_tablenav($which)
     {
-?>
+        $search_query = $_REQUEST['s'] ?? '';
+        wp_nonce_field('btcpaywall_remove_old_records');
+        ?>
         <div class="tablenav <?php echo esc_attr($which); ?>">
             <div class="alignleft actions bulkactions">
                 <?php $this->bulk_actions($which); ?>
                 <label for="search_field">Search:</label>
-                <input type="text" id="search_field" name="s" value="<?php echo esc_attr($_REQUEST['s']); ?>" />
+                <input type="text" id="search_field" name="s" value="<?php echo esc_attr($search_query); ?>" />
                 <input type="submit" class="button" value="Search" />
             </div>
             <?php
-            $this->extra_tablenav($which);
-            $this->pagination($which);
-            ?>
+                    $this->extra_tablenav($which);
+        $this->pagination($which);
+        ?>
             <br class="clear" />
         </div>
 
     <?php
     }
-
-
     public function display()
     {
         $singular = $this->_args['singular'];
@@ -189,7 +183,7 @@ class Payments_Table extends WP_List_Table
         $this->display_tablenav('top');
 
         $this->screen->render_screen_reader_content('heading_list');
-    ?>
+        ?>
         <table class="wp-list-table <?php echo implode(' ', $this->get_table_classes()); ?>">
             <thead>
                 <tr>
@@ -198,10 +192,10 @@ class Payments_Table extends WP_List_Table
             </thead>
 
             <tbody id="the-list" <?php
-                                    if ($singular) {
-                                        echo " data-wp-lists='list:$singular'";
-                                    }
-                                    ?>>
+                                        if ($singular) {
+                                            echo " data-wp-lists='list:$singular'";
+                                        }
+        ?>>
                 <?php $this->display_rows_or_placeholder(); ?>
             </tbody>
 

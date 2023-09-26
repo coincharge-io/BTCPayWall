@@ -439,7 +439,7 @@ function ajax_btcpaywall_paid_tipping()
     }
 
     $valid_statuses = ['paid', 'Complete', 'Settled', 'Paid'];
-    if (!in_array($body['status'], $valid_statuses) && body['paid'] != true) {
+    if (!in_array($body['status'], $valid_statuses) && $body['paid'] != true) {
         wp_send_json_error(['message' => 'Donation is not paid.']);
     }
 

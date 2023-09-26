@@ -23,7 +23,7 @@ function btcpaywall_render_payments_page()
         $table = new Payments_Table();
 
 
-?>
+        ?>
         <div class="wrap">
             <h2>Payments</h2>
 
@@ -33,8 +33,8 @@ function btcpaywall_render_payments_page()
                         <div>
                             <form method="post">
                                 <?php
-                                $table->prepare_items();
-                                $table->display(); ?>
+                                        $table->prepare_items();
+        $table->display(); ?>
                             </form>
                         </div>
                     </div>

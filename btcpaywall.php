@@ -4,7 +4,7 @@
  * Plugin Name: BTCPayWall
  * Plugin URI: https://wordpress.org/plugins/btcpaywall
  * Description: The Bitcoin Paywall to sell content and digital goods on WordPress.
- * Version: 1.1.1
+ * Version: 1.2.0
  * Author: Coincharge https://btcpaywall.com
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
@@ -101,7 +101,7 @@ if (!class_exists('BTCPayWall')) :
         {
             // Plugin version.
             if (!defined('BTCPAYWALL_VERSION')) {
-                define('BTCPAYWALL_VERSION', '1.1.1');
+                define('BTCPAYWALL_VERSION', '1.2.0');
             }
 
             // Plugin Folder Path.
@@ -219,16 +219,16 @@ if (!class_exists('BTCPayWall')) :
         {
             $client_type = get_option('btcpw_selected_payment_gateway');
             switch ($client_type) {
-            case 'BTCPayServer':
-                return new BTCPay_Client();
-            case 'OpenNode':
-                return new OpenNode_Client();
-            case 'LNBits':
-                return new LNBits_Client();
-            case 'Coinsnap':
-                return new Coinsnap_Client();
-            default:
-                throw new \Exception('Invalid client');
+                case 'BTCPayServer':
+                    return new BTCPay_Client();
+                case 'OpenNode':
+                    return new OpenNode_Client();
+                case 'LNBits':
+                    return new LNBits_Client();
+                case 'Coinsnap':
+                    return new Coinsnap_Client();
+                default:
+                    throw new \Exception('Invalid client');
             }
         }
     }

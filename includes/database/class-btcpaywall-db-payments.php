@@ -10,6 +10,8 @@
  * @since      1.0
  */
 
+use function PHPUnit\Framework\throwException;
+
 //Eit if accessed directly
 if (!defined('ABSPATH')) {
     exit;
@@ -154,7 +156,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
         );
         return $row;
     }
-    public  function record_count()
+    public function record_count()
     {
         global $wpdb;
 
@@ -181,17 +183,24 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
 
         return $result;
     }
-    public function get_filtered_payments($per_page = null, $page_number = null, $search_query)
+    public function get_filtered_payments($per_page = null, $page_number = null, $search_query = "")
     {
 
         global $wpdb;
 
+
         $sql = "SELECT * FROM {$this->table_name}";
+        if (!empty($search_query)) {
+            $sql .= $wpdb->prepare(
+                " WHERE id LIKE %s OR page_title LIKE %s OR date_created LIKE %s OR invoice_id LIKE %s",
+                '%' . $search_query . '%',
+                '%' . $search_query . '%',
+                '%' . $search_query . '%',
+                '%' . $search_query . '%'
+            );
+        }
         $sql .= ' ORDER BY date_created';
         $sql .= ' DESC';
-        if (!empty($search_query)) {
-            $sql .= " AND (invoice_id LIKE '%{$search_query}%' OR id LIKE '%{$search_query}%' )";
-        }
         $per_page = (int)$per_page;
         $page_number = (int)$page_number;
         if (!empty($per_page) && !empty($page_number)) {
