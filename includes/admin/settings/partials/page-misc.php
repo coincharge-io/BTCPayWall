@@ -16,9 +16,7 @@ $email = get_option('btcpw_invoices_email');
                     <p><?php echo esc_html__('Email for invoices', 'btcpaywall'); ?> <span class="btcpaywall_helper_tip" title="Change it if you don't want to use website email for receiving invoices"></span></p>
                 </div>
                 <div class="col-50">
-
-                    <input type="email" name="btcpw_invoices_email" value=<?php echo esc_attr($email); ?> />
-
+                    <input type="email" name="btcpw_invoices_email" value="<?php echo esc_attr($email); ?>" />
                 </div>
             </div>
             <div class="row">
