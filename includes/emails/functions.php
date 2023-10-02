@@ -67,10 +67,12 @@ function btcpaywall_get_notify_customers_body($invoice_id, $collect_data)
 function btcpaywall_notify_administrator($email_body, $type = 'Pay')
 {
     $admin = get_bloginfo('admin_email');
+    $email = get_option('btcpw_invoices_email');
+    $email_to_send = is_email($email) ? $email : $admin;
     $subject = $type === 'Pay' ? 'You have received a payment via BTCPayWall' : 'You have received a donation via BTCPayWall';
     $headers = array('Content-Type: text/html; charset=UTF-8');
 
-    wp_mail($admin, $subject, $email_body, $headers);
+    wp_mail($email_to_send, $subject, $email_body, $headers);
 }
 
 

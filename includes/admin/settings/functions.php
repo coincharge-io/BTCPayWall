@@ -21,6 +21,10 @@ function btcpaywall_sanitize_number($value)
 {
     return filter_var($value, FILTER_SANITIZE_NUMBER_INT);
 }
+function btcpaywall_sanitize_email($value)
+{
+    return is_email($value) ? sanitize_email($value) : '';
+}
 function btcpaywall_validate_textarea($values)
 {
     $default_values = array();
