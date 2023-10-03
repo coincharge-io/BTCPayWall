@@ -192,7 +192,9 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
         $sql = "SELECT * FROM {$this->table_name}";
         if (!empty($search_query)) {
             $sql .= $wpdb->prepare(
-                " WHERE id LIKE %s OR page_title LIKE %s OR date_created LIKE %s OR invoice_id LIKE %s",
+                " WHERE id LIKE %s OR page_title LIKE %s OR date_created LIKE %s OR invoice_id LIKE %s OR revenue_type LIKE %s OR status LIKE %s",
+                '%' . $search_query . '%',
+                '%' . $search_query . '%',
                 '%' . $search_query . '%',
                 '%' . $search_query . '%',
                 '%' . $search_query . '%',
