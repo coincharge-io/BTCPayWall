@@ -4,7 +4,6 @@
 
 # BTCPayWall - The Bitcoin Paywall to sell content and digital products on WordPress
 
-[![IMAGE_ALT](https://img.youtube.com/vi/gjxcc1Ld3R8/0.jpg)](https://www.youtube.com/watch?v=gjxcc1Ld3R8)
 **BTCPayWall offers four distinct modules for delivering its digital products and content:**
 
 - Pay-per-post for individual blog posts and news articles
