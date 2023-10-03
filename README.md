@@ -2,61 +2,53 @@
 
 [![IMAGE_ALT](https://img.youtube.com/vi/gjxcc1Ld3R8/0.jpg)](https://www.youtube.com/watch?v=gjxcc1Ld3R8)
 
+# BTCPayWall - The Bitcoin Paywall to sell content and digital products on WordPress
 
+[![IMAGE_ALT](https://img.youtube.com/vi/gjxcc1Ld3R8/0.jpg)](https://www.youtube.com/watch?v=gjxcc1Ld3R8)
+**BTCPayWall offers four distinct modules for delivering its digital products and content:**
 
-# BTCPayWall - The Bitcoin Paywall to sell content and digital goods on WordPress
+- Pay-per-post for individual blog posts and news articles
+- Pay-per-view for direct video playback sales
+- Download store for selling downloadable digital files
+- Tipping for accepting donations and tips
 
-**BTCPayWall supports four different modules to distribute its digital goods and content:**
+Offer individual blog articles, digital content like videos, eBooks, or PDF files, and accept tips and donations on your website.
 
-- Pay-per-post for the sale of individual blog posts and newspaper articles
-- Pay-per-view for the sale of videos that are played directly
-- Digital store for selling digital files that are downloaded
-- Tipping for receiving donations and tips
+**Single Article Payment _(Pay-per-Post)_**
+Using BTCPayWall, introduce a Bitcoin Paywall for individual blog posts. Allow readers the flexibility to purchase just one article rather than commit to a monthly subscription.
 
-**Sell individual blog articles, digital content and products like videos, eBooks or PDF files and receive tips and donations through your website.**
+**Direct Content Access _(Pay-per-View)_**
+Provide immediate access to digital content. Through the View module, offer video or audio files to your audience for a fee, and let them play it directly on your website.
 
-**Pay for a single blog article (pay-per-post)**
+**Digital Download Store**
+In the Download Store, sell digital files that customers can conveniently download to their computers.
 
-With BTCPayWall you can offer a Bitcoin Paywall for a single blog post (pay-per-post). Instead of a monthly subscription, readers can pay for a single article.
+**Accept Tips & Donations**
+Gain financial backing from your website's visitors, either as tips or contributions to larger initiatives.
 
-**Pay per video (pay-per-view)**
+**Publisher Benefits**
+Sell premium content to readers who prefer purchasing individual top-notch articles over monthly subscriptions. As a publisher, BTCPayWall allows you to:
 
-Sell digital content that is played directly. With the Content Store View module, you can offer videos or audio files to your visitors for a fee and have them played directly on your own website.
+- Generate revenue from your exceptional content, reducing reliance on banner ads.
+- Monetize without binding users to monthly memberships.
+- Provide free posts, charging only for exclusive, high-quality content.
+- Offer teaser content for free, with a seamless transition to paid content.
 
-**Download Store**
+**BTCPayWall's Value to the Customer**
 
-With the Download Store you can sell your digital files and the customer can download files to their computer.
+Many customers are deterred by long-term subscriptions, especially when they're interested in just one article. BTCPayWall addresses this by enabling spontaneous, anonymous digital content purchases without the hassle of extensive sign-ups or personal data sharing.
 
-**Receive tips & donations**
+- No need for account creation or registration.
+- Ensures user privacy, avoiding personal data collection.
+- Bypass lengthy subscription steps for a one-time read.
+- Swift and straightforward payment using Bitcoin and Lightning.
 
-Receive financial support from visitors to your site in the form of a tip payment or a donation to a larger project.
+**Payment Methods**
 
-**Advantages for the publisher**
+For your digital content transactions, BTCPayWall offers cutting-edge payment methods using both Bitcoin and the Lightning Network. The versatile payment infrastructure supports renowned platforms including BTCPay Server, OpenNode, Coinsnap, and LNbits.
 
-Sell high quality content to readers willing to pay who do not want to subscribe but are willing to pay for a single and high quality article.
-Publishers can become independent from banner ads, Google and clickbait content and focus more on high quality content that readers are willing to pay for.
-
-- Generate revenue for your high-quality content and make yourself independent from banner ads.
-- With BTCPayWall, you can make money without forcing users to sign up for a monthly membership.
-- Offer free posts on your blog with pay-per-post and especially high-quality blog articles are offered for a small fee.
-- Each article has a free part and at a certain point the article becomes paid.
-
-**The advantages of BTCPayWall for the customer**
-
-Customers do not want to sign up for lengthy subscriptions when they really only want to read a single article.
-
-The user wants to buy digital content spontaneously and anonymously and avoid a lengthy sign-up and registration process, with the disclosure of a variety of personal data.
-
-- No login or registration required
-- No transmission of personal data (privacy) required
-- No lengthy subscription process if you only want to read a single article
-- Fast and easy payment via Bitcoin and Lightning
-
-**Payment processing**
-
-Digital content is paid for via Bitcoin and Lightning payment methods.
-The payment processing is done via BTCPay Server or via opennode.
-You can use your own BTCPay server or share the BTCPay server of BTCPayWall.
-A connection to the Bitcoin and Lightning payment provider opennode is also available.
+You have the flexibility to either integrate with your personal BTCPay server or take advantage of the shared server provided by BTCPayWall. Moreover, it is possible to integrate with OpenNode, a leading Bitcoin and Lightning payment provider, to further enhance your transaction experience.
 
 Further information can be found here: https://btcpaywall.com
+
+**Support:** [Visit the Support Page](https://btcpaywall.com/support)
