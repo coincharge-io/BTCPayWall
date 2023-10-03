@@ -60,7 +60,7 @@ You have the flexibility to either integrate with your personal BTCPay server or
 Further information can be found here: https://btcpaywall.com
 
 
-For FAQ or need help visit: https://btcpaywall.com/support
+**Support:** [Visit the Support Page](https://btcpaywall.com/support)
 
 == Prerequisites ==
 
