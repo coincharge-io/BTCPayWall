@@ -48,6 +48,5 @@ For your digital content transactions, BTCPayWall offers cutting-edge payment me
 
 You have the flexibility to either integrate with your personal BTCPay server or take advantage of the shared server provided by BTCPayWall. Moreover, it is possible to integrate with OpenNode, a leading Bitcoin and Lightning payment provider, to further enhance your transaction experience.
 
-Further information can be found here: https://btcpaywall.com
-
+**Website:** [Visit Our Website](https://btcpaywall.com)
 **Support:** [Visit the Support Page](https://btcpaywall.com/support)
