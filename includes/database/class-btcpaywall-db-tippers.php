@@ -87,19 +87,18 @@ class BTCPayWall_DB_Tippers extends BTCPayWall_DB
         if (empty($data)) {
             return false;
         }
-
+        if (empty($data['id'])) {
+            return $this->insert($data, 'tipper');
+        }
         $tipper = $this->get_tipper_by('id', $data['id']);
         if ($tipper) {
 
             $this->update($tipper->id, $data);
 
             return $tipper->id;
-        } else {
-
-            return $this->insert($data, 'tipper');
         }
     }
-    public function get_tipper_by($field = 'id', $value)
+    public function get_tipper_by($field = 'id', $value = null)
     {
         global $wpdb;
         $row = $wpdb->get_row(

@@ -1,6 +1,8 @@
 <?php
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 $used_currency = get_option('btcpw_default_pay_per_post_currency');
 $supported_currencies = BTCPayWall::CURRENCIES;
 $default_price = get_option('btcpw_default_pay_per_post_price');
@@ -16,8 +18,6 @@ $collect_email = get_option('btcpw_default_pay_per_post_display_email', false);
 $collect_address = get_option('btcpw_default_pay_per_post_display_address', false);
 $collect_phone = get_option('btcpw_default_pay_per_post_display_phone', false);
 $collect_message = get_option('btcpw_default_pay_per_post_display_message', false);
-
-
 $mandatory_name = get_option('btcpw_default_pay_per_post_mandatory_name', false);
 $mandatory_email = get_option('btcpw_default_pay_per_post_mandatory_email', false);
 $mandatory_address = get_option('btcpw_default_pay_per_post_mandatory_address', false);
@@ -32,8 +32,8 @@ $additional_help_text = get_option('btcpw_pay_per_post_additional_help_link_text
 $background = get_option('btcpw_pay_per_post_background');
 $width = get_option('btcpw_pay_per_post_width');
 $height = get_option('btcpw_pay_per_post_height');
-
 $header_color = get_option('btcpw_pay_per_post_header_color');
+
 $info_color = get_option('btcpw_pay_per_post_info_color');
 $button_color = get_option('btcpw_pay_per_post_button_color');
 $button_text_color = get_option('btcpw_pay_per_post_button_text_color');
@@ -41,7 +41,13 @@ $default_text = get_option('btcpw_pay_per_post_title');
 $default_button = get_option('btcpw_pay_per_post_button');
 $default_info = get_option('btcpw_pay_per_post_info');
 
+$default_continue_button = get_option('btcpw_pay_per_post_continue_button');
+$continue_button_color = get_option('btcpw_pay_per_post_continue_button_color');
+$continue_button_text_color = get_option('btcpw_pay_per_post_continue_button_text_color');
 
+$default_previous_button = get_option('btcpw_pay_per_post_previous_button');
+$previous_button_color = get_option('btcpw_pay_per_post_previous_button_color');
+$previous_button_text_color = get_option('btcpw_pay_per_post_previous_button_text_color');
 ?>
 <style>
     .btcpw_help_preview.pay_per_post {
@@ -75,14 +81,14 @@ $default_info = get_option('btcpw_pay_per_post_info');
     <div>
         <form method="POST" action="options.php">
             <?php settings_fields('btcpw_general_pay_per_post_options'); ?>
-            <h2>General Settings</h2>
+            <h2>Default Options</h2>
             <div class="row">
                 <div class="col-20">
                     <label for="btcpw_general_pay_per_post_settings_price">Default price</label>
                 </div>
                 <div class="col-80">
 
-                    <input required type="number" min=0 placeholder="Default Price" step=1 name="btcpw_default_pay_per_post_price" id="btcpw_general_pay_per_post_settings_price" value="<?php echo esc_attr($default_price); ?>">
+                    <input required type="number" min=0 placeholder="Default Price" name="btcpw_default_pay_per_post_price" id="btcpw_general_pay_per_post_settings_price" value="<?php echo esc_attr($default_price); ?>">
 
                     <select required name="btcpw_default_pay_per_post_currency" id="btcpw_general_pay_per_post_settings_currency">
                         <option disabled value="">Select currency</option>
@@ -119,75 +125,7 @@ $default_info = get_option('btcpw_pay_per_post_info');
                     </select>
                 </div>
             </div>
-            <h3>User information</h3>
-            <div class="row">
-                <div class="col-50">
-                    <p>Full name</p>
-                </div>
-                <div class="col-50">
-                    <label for="btcpw_default_pay_per_post_display_name">Display</label>
 
-                    <input type="checkbox" class="btcpw_default__name" name="btcpw_default_pay_per_post_display_name" <?php checked($collect_name); ?> value="true" />
-
-                    <label for="btcpw_default_pay_per_post_mandatory_name">Mandatory</label>
-                    <input type="checkbox" class="btcpw_default__name_mandatory" name="btcpw_default_pay_per_post_mandatory_name" <?php checked($mandatory_name); ?> value="true" />
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-50">
-                    <p>Email</p>
-                </div>
-                <div class="col-50">
-                    <label for="btcpw_default_pay_per_post_display_email">Display</label>
-
-                    <input type="checkbox" class="btcpw_default__email" name="btcpw_default_pay_per_post_display_email" <?php checked($collect_email); ?> value="true" />
-
-                    <label for="btcpw_default_pay_per_post_mandatory_email">Mandatory</label>
-                    <input type="checkbox" class="btcpw_default__email_mandatory" name="btcpw_default_pay_per_post_mandatory_email" <?php checked($mandatory_email); ?> value="true" />
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-50">
-                    <p>Address</p>
-                </div>
-                <div class="col-50">
-                    <label for="btcpw_default_pay_per_post_display_address">Display</label>
-
-                    <input type="checkbox" class="btcpw_default__address" name="btcpw_default_pay_per_post_display_address" <?php checked($collect_address); ?> value="true" />
-
-                    <label for="btcpw_default_pay_per_post_mandatory_address">Mandatory</label>
-                    <input type="checkbox" class="btcpw_default__address_mandatory" name="btcpw_default_pay_per_post_mandatory_address" <?php checked($mandatory_address); ?> value="true" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-50">
-                    <p>Phone number</p>
-                </div>
-                <div class="col-50">
-                    <label for="btcpw_default_pay_per_post_display_phone">Display</label>
-
-                    <input type="checkbox" class="btcpw_default__phone" name="btcpw_default_pay_per_post_display_phone" <?php checked($collect_phone); ?> value="true" />
-
-                    <label for="btcpw_default_pay_per_post_mandatory_phone">Mandatory</label>
-                    <input type="checkbox" class="btcpw_default__phone_mandatory" name="btcpw_default_pay_per_post_mandatory_phone" <?php checked($mandatory_phone); ?> value="true" />
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-50">
-                    <p>Message</p>
-                </div>
-                <div class="col-50">
-                    <label for="btcpw_default_pay_per_post_display_message">Display</label>
-                    <input type="checkbox" class="btcpw_default__message" name="btcpw_default_pay_per_post_display_message" <?php checked($collect_message); ?> value="true" />
-
-                    <label for="btcpw_default_pay_per_post_mandatory_message">Mandatory</label>
-                    <input type="checkbox" class="btcpw_default__message_mandatory" name="btcpw_default_pay_per_post_mandatory_message" <?php checked($mandatory_message); ?> value="true" />
-
-                </div>
-            </div>
             <h3>Background</h3>
             <div class="row">
                 <div class="col-20">
@@ -233,15 +171,15 @@ $default_info = get_option('btcpw_pay_per_post_info');
             </div>
             <div class="row">
                 <div class="col-20">
-                    <label for="btcpw_pay_per_post_info">Price information</label>
+                    <label for="btcpw_pay_per_post_info">Price information <span class="btcpaywall_helper_tip" title="Placeholders will be replaced with actual values in the paywall."></span></label>
                 </div>
                 <div class="col-80">
                     <textarea id="btcpw_pay_per_post_info" name="btcpw_pay_per_post_info"><?php echo esc_html($default_info); ?></textarea>
                     <div class="btcpw_pay_per_placeholders">
-                        <button type="button" class="btcpw_pay_per_post_price_placeholder" value="[price]">Price</button>
-                        <button type="button" class="btcpw_pay_per_post_currency_placeholder" value="[currency]">Currency</button>
-                        <button type="button" class="btcpw_pay_per_post_duration_placeholder" value="[duration]">Duration</button>
-                        <button type="button" class="btcpw_pay_per_post_duration_type_placeholder" value="[dtype]">Duration type</button>
+                        <button type="button" class="btcpw_pay_per_post_price_placeholder" value="{price}">Price</button>
+                        <button type="button" class="btcpw_pay_per_post_currency_placeholder" value="{currency}">Currency</button>
+                        <button type="button" class="btcpw_pay_per_post_duration_placeholder" value="{duration}">Duration</button>
+                        <button type="button" class="btcpw_pay_per_post_duration_type_placeholder" value="{dtype}">Duration type</button>
                     </div>
                 </div>
             </div>
@@ -279,6 +217,54 @@ $default_info = get_option('btcpw_pay_per_post_info');
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_post_continue_button">Continue button text</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_post_continue_button" name="btcpw_pay_per_post_continue_button" value="<?php echo esc_attr($default_continue_button); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_post_continue_button_color">Continue button color</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_post_continue_button_color" class="btcpw_pay_per_post_continue_button_color" name="btcpw_pay_per_post_continue_button_color" type="text" value="<?php echo esc_attr($continue_button_color); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_post_continue_button_text_color">Continue button text color</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_post_continue_button_text_color" class="btcpw_pay_per_post_continue_button_text_color" name="btcpw_pay_per_post_continue_button_text_color" type="text" value="<?php echo esc_attr($continue_button_text_color); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_post_previous_button">Previous button text</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_post_previous_button" name="btcpw_pay_per_post_previous_button" value="<?php echo esc_attr($default_previous_button); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_post_previous_button_color">Previous button color</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_post_previous_button_color" class="btcpw_pay_per_post_previous_button_color" name="btcpw_pay_per_post_previous_button_color" type="text" value="<?php echo esc_attr($previous_button_color); ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="btcpw_pay_per_post_previous_button_text_color">Previous button text color</label>
+                </div>
+                <div class="col-80">
+                    <input id="btcpw_pay_per_post_previous_button_text_color" class="btcpw_pay_per_post_previous_button_text_color" name="btcpw_pay_per_post_previous_button_text_color" type="text" value="<?php echo esc_attr($previous_button_text_color); ?>" />
+                </div>
+            </div>
             <div id="btcpw_pay_per_post_paywall_help_button">
                 <h3>Help link</h3>
                 <div class="row">
@@ -329,6 +315,75 @@ $default_info = get_option('btcpw_pay_per_post_info');
                     <div class="col-80">
                         <input id="btcpw_pay_per_post_additional_help_link_text" class="btcpw_pay_per_post_additional_help_link_text" name="btcpw_pay_per_post_additional_help_link_text" type="text" value="<?php echo esc_attr($additional_help_text); ?>" />
                     </div>
+                </div>
+            </div>
+            <h3><?php echo esc_html__('Customer information', 'btcpaywall'); ?> <span class="btcpaywall_helper_tip" title="Select which information about customers you want to collect by clicking on the checkboxes. Check the display if you want to make the field optional, or check both checkboxes if you want to make it mandatory."></span></h3>
+            <div class="row">
+                <div class="col-50">
+                    <p>Full name</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_pay_per_post_display_name"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
+
+                    <input type="checkbox" class="btcpw_default__name" name="btcpw_default_pay_per_post_display_name" <?php checked($collect_name); ?> value="true" />
+
+                    <label for="btcpw_default_pay_per_post_mandatory_name"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
+                    <input type="checkbox" class="btcpw_default__name_mandatory" name="btcpw_default_pay_per_post_mandatory_name" <?php checked($mandatory_name); ?> value="true" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p>Email</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_pay_per_post_display_email"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
+
+                    <input type="checkbox" class="btcpw_default__email" name="btcpw_default_pay_per_post_display_email" <?php checked($collect_email); ?> value="true" />
+
+                    <label for="btcpw_default_pay_per_post_mandatory_email"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
+                    <input type="checkbox" class="btcpw_default__email_mandatory" name="btcpw_default_pay_per_post_mandatory_email" <?php checked($mandatory_email); ?> value="true" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p>Address</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_pay_per_post_display_address"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
+
+                    <input type="checkbox" class="btcpw_default__address" name="btcpw_default_pay_per_post_display_address" <?php checked($collect_address); ?> value="true" />
+
+                    <label for="btcpw_default_pay_per_post_mandatory_address"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
+                    <input type="checkbox" class="btcpw_default__address_mandatory" name="btcpw_default_pay_per_post_mandatory_address" <?php checked($mandatory_address); ?> value="true" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p>Phone number</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_pay_per_post_display_phone"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
+
+                    <input type="checkbox" class="btcpw_default__phone" name="btcpw_default_pay_per_post_display_phone" <?php checked($collect_phone); ?> value="true" />
+
+                    <label for="btcpw_default_pay_per_post_mandatory_phone"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
+                    <input type="checkbox" class="btcpw_default__phone_mandatory" name="btcpw_default_pay_per_post_mandatory_phone" <?php checked($mandatory_phone); ?> value="true" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <p>Message</p>
+                </div>
+                <div class="col-50">
+                    <label for="btcpw_default_pay_per_post_display_message"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
+                    <input type="checkbox" class="btcpw_default__message" name="btcpw_default_pay_per_post_display_message" <?php checked($collect_message); ?> value="true" />
+
+                    <label for="btcpw_default_pay_per_post_mandatory_message"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
+                    <input type="checkbox" class="btcpw_default__message_mandatory" name="btcpw_default_pay_per_post_mandatory_message" <?php checked($mandatory_message); ?> value="true" />
+
                 </div>
             </div>
             <div class="btcpw__paywall_submit_button" style="display: inline-block;">

@@ -1,79 +1,73 @@
 === BTCPayWall ===
 Contributors: coincharge
 Donate link: https://btcpaywall.com/support/
-Tags: btcpaywall, Bitcoin, Lightning, paywall, BTCPay, pay-per-post, pay-per-view, pay-per-content,content-store, tipping, coincharge, publisher, payment
+Tags: btcpaywall, Bitcoin, Lightning, paywall, BTCPay, pay-per-post, pay-per-view, pay-per-content, digital-store, tipping, coincharge, publisher, payment
 Requires at least: 5.6
 Requires PHP: 7.4
-Tested up to: 5.8
-Stable tag: 1.1.0
+Tested up to: 6.2
+Stable tag: 1.1.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
 # BTCPayWall - The Bitcoin Paywall to sell content and digital products on WordPress
+[![IMAGE_ALT](https://img.youtube.com/vi/gjxcc1Ld3R8/0.jpg)](https://www.youtube.com/watch?v=gjxcc1Ld3R8)
+**BTCPayWall offers four distinct modules for delivering its digital products and content:**
 
-**BTCPayWall supports four different modules to distribute its digital products and content:**
+- Pay-per-post for individual blog posts and news articles
+- Pay-per-view for direct video playback sales
+- Download store for selling downloadable digital files
+- Tipping for accepting donations and tips
 
-- Pay-per-post for the sale of individual blog posts and newspaper articles
-- Pay-per-view for the sale of videos that are played directly
-- Content store for selling digital files that are downloaded
-- Tipping for receiving donations and tips
+Offer individual blog articles, digital content like videos, eBooks, or PDF files, and accept tips and donations on your website.
 
-**Sell individual blog articles, digital content and products like videos, eBooks or PDF files and receive tips and donations through your website.**
+**Single Article Payment _(Pay-per-Post)_**
+Using BTCPayWall, introduce a Bitcoin Paywall for individual blog posts. Allow readers the flexibility to purchase just one article rather than commit to a monthly subscription.
 
-**Pay for a single blog article (pay-per-post)**
+**Direct Content Access _(Pay-per-View)_**
+Provide immediate access to digital content. Through the View module, offer video or audio files to your audience for a fee, and let them play it directly on your website.
 
-With BTCPayWall you can offer a Bitcoin Paywall for a single blog post (pay-per-post). Instead of a monthly subscription, readers can pay for a single article.
+**Digital Download Store**
+In the Download Store, sell digital files that customers can conveniently download to their computers.
 
-**Pay per video (pay-per-view)**
+**Accept Tips & Donations**
+Gain financial backing from your website's visitors, either as tips or contributions to larger initiatives.
 
-Sell digital content that is played directly. With the Content Store View module, you can offer videos or audio files to your visitors for a fee and have them played directly on your own website.
+**Publisher Benefits**
+Sell premium content to readers who prefer purchasing individual top-notch articles over monthly subscriptions. As a publisher, BTCPayWall allows you to:
 
-**Content Store**
+- Generate revenue from your exceptional content, reducing reliance on banner ads.
+- Monetize without binding users to monthly memberships.
+- Provide free posts, charging only for exclusive, high-quality content.
+- Offer teaser content for free, with a seamless transition to paid content.
 
-With the Content Store you can sell your digital files and the customer can download this file to his computer.
+**BTCPayWall's Value to the Customer**
 
-**Receive tips & donations**
+Many customers are deterred by long-term subscriptions, especially when they're interested in just one article. BTCPayWall addresses this by enabling spontaneous, anonymous digital content purchases without the hassle of extensive sign-ups or personal data sharing.
 
-Receive financial support from visitors to your site in the form of a tip payment or a donation to a larger project.
+- No need for account creation or registration.
+- Ensures user privacy, avoiding personal data collection.
+- Bypass lengthy subscription steps for a one-time read.
+- Swift and straightforward payment using Bitcoin and Lightning.
 
-**Advantages for the publisher**
+**Payment Methods**
 
-Sell high quality content to readers willing to pay who do not want to subscribe but are willing to pay for a single and high quality article.
-Publishers can become independent from banner ads, Google and clickbait content and focus more on high quality content that readers are willing to pay for.
+For your digital content transactions, BTCPayWall offers cutting-edge payment methods using both Bitcoin and the Lightning Network. The versatile payment infrastructure supports renowned platforms including BTCPay Server, OpenNode, Coinsnap, and LNbits. 
 
-- Generate revenue for your high-quality content and make yourself independent from banner ads.
-- With BTCPayWall, you can make money without forcing users to sign up for a monthly membership.
-- Offer free posts on your blog with pay-per-post and especially high-quality blog articles are offered for a small fee.
-- Each article has a free part and at a certain point the article becomes paid.
+You have the flexibility to either integrate with your personal BTCPay server or take advantage of the shared server provided by Coincharge. Moreover, it is possible to integrate with OpenNode, a leading Bitcoin and Lightning payment provider, or use LNBits to further enhance your transaction experience.
 
-**The advantages of BTCPayWall for the customer**
 
-Customers do not want to sign up for lengthy subscriptions when they really only want to read a single article.
-
-The user wants to buy digital content spontaneously and anonymously and avoid a lengthy sign-up and registration process, with the disclosure of a variety of personal data.
-
-- No login or registration required
-- No transmission of personal data (privacy) required
-- No lengthy subscription process if you only want to read a single article
-- Fast and easy payment via Bitcoin and Lightning
-
-**Payment processing**
-
-Digital content is paid for via Bitcoin and Lightning payment methods.
-The payment processing is done via BTCPay Server or via OpenNode.
-You can use your own BTCPay server or share the BTCPay server of BTCPayWall.
-A connection to the Bitcoin and Lightning payment provider OpenNode is also available.
-
-Further information can be found here: https://btcpaywall.com
-
+**Website:** [Visit Our Website](https://btcpaywall.com)
+**Support:** [Visit the Support Page](https://btcpaywall.com/support)
 
 == Prerequisites ==
 
  - WordPress installation
- - BTCPay Server for Bitcoin and Lightning payment processing or
- - OpenNode account
+ - BTCPay Server for Bitcoin and Lightning payment processing or,
+ - OpenNode account or,
+ - Coinsnap account or,
+ - LNBits wallet
 
  == Installation ==
 
@@ -85,10 +79,103 @@ Further information can be found here: https://btcpaywall.com
 https://btcpaywall.com/faq-support-center/
 
  == Changelog ==
- 
+
+= 1.1.2 =
+
+- Add: Search for specific payment record
+- Add: Remove unpaid records
+- Add: Specifiy email address for receiving invoices
+
+= 1.1.1 =
+
+- Fix: Problem with authenticating requests - Coinsnap
+
 = 1.1.0 =
 
+- Fix: Add support for smaller screens - responsiveness
+- Add: Coinsnap and LNBits as payment provider
+
+= 1.0.9.1 =
+
+- Fix: Problem with customizing colors in Elementor
+
+= 1.0.9 =
+
+- Add: Template generator for Pay-per modules
+- Add: Change buttons color on hover
+
+= 1.0.8.1 =
+
+- Fix: Placeholder values for paywall 
+
+= 1.0.8 =
+
+- Add: Pay-per modules -> buttons, text and links can be customized via editors
+- Fix: Problem with paywall onetime view
+
+- Improve: Payment gateway page design
+
+= 1.0.7.1 =
+
+- Fix: Problem with loading scripts for donations
+
+= 1.0.7 =
+
+- Add: Background color, text color and border can be modified for fixed amount
+- Add: Continue and previous buttons can be modified
+- Fix: Widget problem with uploading images and not registering changes
+
+= 1.0.6 =
+
+- Improve: Admin menu navigation
+
+- Improve: Donation form creation process
+
+
+= 1.0.5 =
+
+- Improve: Donation form creation process
+
+= 1.0.4.2 =
+
+- Fix: Creating Tipping shortcode
+
+= 1.0.4.1 =
+
+- Fix: Missing background color for free input
+
+= 1.0.4 =
+
+- Improve: Use cookies for cart
+
+- Improve: Tipping forms 
+
+- Fix: Uploading images in Gutenberg
+
+= 1.0.3 =
+
+- Fix: Display all download links in email
+
+- Fix: All links can be downloaded
+
+- Improve: Confirmation page
+ 
+= 1.0.2 =
+
 - Add: Uninstall function
+
+- Add: Customization for digital store 
+
+- Add: Customer notification - if collect email is enabled
+
+- Improve: Form design
+
+- Improve: Email format
+
+- Improve: Product page
+
+- Fix: Gutenberg unresponsive fields
+
 
 = 1.0.1 =
 

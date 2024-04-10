@@ -37,7 +37,8 @@ function btcpaywall_filter_the_content($content)
     if (($end_pos = strpos($content, '<!-- /btcpw:end_content -->')) === false) {
         $content_end = '';
     } else {
-        $content_end = substr($content, $end_pos + 26);
+        //Increase from 26 to 27
+        $content_end = substr($content, $end_pos + 27);
     }
 
     return $content_start . $content_end;
@@ -57,8 +58,19 @@ function btcpaywall_digital_download_template($single_template)
 }
 add_filter('single_template', 'btcpaywall_digital_download_template', 99, 1);
 
+/**
+ * @since 1.0.5
+ */
+function btcpaywall_donation_template($single_template)
+{
+    global $post;
 
-
+    if ($post->post_type == 'btcpw_donation') {
+        $single_template = BTCPAYWALL_PLUGIN_DIR . 'templates/single-donation.php';
+    }
+    return $single_template;
+}
+add_filter('single_template', 'btcpaywall_donation_template', 99, 1);
 
 
 /**

@@ -82,13 +82,10 @@ class BTCPayWall_Customer
         $create_or_update = $this->db->add($data);
 
         if ($create_or_update) {
-
-
             $customer = $this->db->get_customer_by('id', $create_or_update);
             $this->setup_customer($customer);
             $created = $this->id;
         }
-
         return $created;
     }
 

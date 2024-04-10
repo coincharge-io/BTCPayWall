@@ -35,7 +35,7 @@ function create_pages()
         $success = wp_insert_post(
             array(
                 'post_title'     => __('Purchase Confirmation', 'btcpaywall'),
-                'post_content'   => __('Thank you for your purchase! [btcpaywall_receipt]', 'btcpaywall'),
+                'post_content'   => __('[btcpaywall_receipt]', 'btcpaywall'),
                 'post_status'    => 'publish',
                 'post_author'    => 1,
                 'post_parent'    => $checkout,
@@ -66,6 +66,8 @@ function register_tables()
         'tippers_db'        => new BTCPayWall_DB_Tippers(),
         'payments_db'      => new BTCPayWall_DB_Payments(),
         'tippings_db'     => new BTCPayWall_DB_Tippings(),
+        'pay_per_shortcodes_db' => new BTCPayWall_DB_Pay_Per_Shortcode(),
+
     ];
 
     foreach ($tables  as $table) {

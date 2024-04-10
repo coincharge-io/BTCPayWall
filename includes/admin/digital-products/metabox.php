@@ -58,11 +58,6 @@ function render_btcpw_product_description($post)
 {
     $btcpw_stored_meta = get_post_meta($post->ID);
     $description = $btcpw_stored_meta['_btcpw_product_description'][0] ?? '';
-    $args = array(
-        'tinymce' => false,
-        'quicktags' => true,
-    );
-    //wp_editor(htmlspecialchars_decode($description), 'description');
     wp_editor(htmlspecialchars_decode($description), 'btcpw_product_description');
 }
 function render_btcpw_product_settings($post)
@@ -73,7 +68,7 @@ function render_btcpw_product_settings($post)
 ?>
     <div class='btcpw_product_limit'>
         <div>
-            <label for="btcpw_product_download_limit">Download limit <span class="btcpw_digital_download_limit_help" title="Set 0 for unlimited number of downloads."></span></label>
+            <label for="btcpw_product_download_limit">Download limit <span class="btcpaywall_helper_tip" title="Set 0 for unlimited number of downloads."></span></label>
 
             <input type="number" name="btcpw_product_limit" id="btcpw_product_download_limit" min="0" value="<?php echo esc_attr($limit); ?>" />
         </div>
@@ -121,7 +116,7 @@ function render_btcpw_amount($post)
 ?>
 
     <div class='btcpw_price_meta'>
-        <input type="number" name="btcpw_price" id="btcpw_price" min="1" value="<?php echo esc_attr($price); ?>" />
+        <input type="number" name="btcpw_price" id="btcpw_price" min="0.1" step="any" value="<?php echo esc_attr($price); ?>" />
         <input type="text" name="btcpw_currency" id="btcpw_currency" value="<?php echo esc_attr($currency); ?>" disabled />
 
 
@@ -198,7 +193,7 @@ function btcpaywall_meta_save($post_id)
             }
         } else {
             if (!empty($_POST[$field])) {
-                $new_value = filter_var($_POST[$field], FILTER_SANITIZE_STRING);
+                $new_value = sanitize_text_field($_POST[$field]);
                 update_post_meta($post_id, $field, $new_value);
             } else {
                 delete_post_meta($post_id, $field);

@@ -35,7 +35,7 @@ function btcpaywall_register_post_types()
         'rewrite' => true,
         'query_var' => true,
     ]);
-    $labels = apply_filters('btcpaywall_change_product_labels', array(
+    $download_labels = apply_filters('btcpaywall_change_product_labels', array(
         'name'               => _x('BP Digital Download', 'BP Digital Download', 'btcpaywall'),
         'singular_name'      => _x('BP Digital Download', 'BP Digital Download', 'btcpaywall'),
         'add_new'            => __('Add New', 'btcpaywall'),
@@ -52,7 +52,7 @@ function btcpaywall_register_post_types()
     ));
 
     register_post_type('digital_download', [
-        'labels' => $labels,
+        'labels' => $download_labels,
         'public' => true,
         'show_ui'         => true,
         'show_in_menu'    => false,
@@ -64,6 +64,41 @@ function btcpaywall_register_post_types()
         'taxonomies' => [],
         'has_archive' => false,
         'rewrite'     => array('slug' => 'digital-download'),
+        'query_var' => true,
+    ]);
+
+    $labels = apply_filters('btcpaywall_change_donation_labels', array(
+        'name'               => _x('Donation Form', 'Donation Form', 'btcpaywall'),
+        'singular_name'      => _x('Donation Form', 'Donation Form', 'btcpaywall'),
+        'add_new'            => __('Add New', 'btcpaywall'),
+        'add_new_item'       => __('Add New Donation Form', 'btcpaywall'),
+        'edit_item'          => __('Edit Donation Form', 'btcpaywall'),
+        'new_item'           => __('New Donation Form', 'btcpaywall'),
+        'all_items'          => __('All Donation Form', 'btcpaywall'),
+        'view_item'          => __('View Donation Form', 'btcpaywall'),
+        'search_items'       => __('Search Donation Form', 'btcpaywall'),
+        'not_found'          => __('No Donation Form found', 'btcpaywall'),
+        'not_found_in_trash' => __('No Donation Form found in Trash', 'btcpaywall'),
+        'parent_item_colon'  => '',
+        'menu_name'          => __('Donation Forms', 'btcpaywall')
+    ));
+
+    register_post_type('btcpw_donation', [
+        'labels' => $labels,
+        'public' => true,
+        'show_ui'         => true,
+        'show_in_menu'    => false,
+        'rest_base' => null,
+        'menu_position' => null,
+        'menu_icon' => null,
+        'hierarchical' => false,
+        'supports'           => array(
+            'title', 'author', 'thumbnail',
+            'revisions', 'excerpt'
+        ),
+        'taxonomies' => [],
+        'has_archive' => false,
+        'rewrite'     => array('slug' => 'donation'),
         'query_var' => true,
     ]);
 }

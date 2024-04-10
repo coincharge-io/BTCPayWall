@@ -10,20 +10,22 @@
  * @since       1.0
  */
 // Exit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 /**
  * Prepare email body for notifying site admin
- * 
+ *
  * @param int $invoice_id Invoice id
- * 
+ *
  * @param array $collect_data Whether or not customer information are collected
- * 
+ *
  * @param string $type Module type
- * 
+ *
  * @since 1.0.0
- * 
+ *
  * @return void
  */
 function btcpaywall_get_notify_administrator_body($invoice_id, $collect_data = null, $type = 'Pay-per-file')
@@ -38,13 +40,13 @@ function btcpaywall_get_notify_administrator_body($invoice_id, $collect_data = n
 }
 /**
  * Send Payment Notification
- * 
+ *
  * @param string $name Customer name
- * @param string $invoice_id 
+ * @param string $invoice_id
  * @param array $collect_data Whether or not customer information are collected
- * 
+ *
  * @since 1.0.2
- * 
+ *
  * @return void
  */
 function btcpaywall_get_notify_customers_body($invoice_id, $collect_data)
@@ -54,32 +56,34 @@ function btcpaywall_get_notify_customers_body($invoice_id, $collect_data)
     return ob_get_clean();
 }
 /**
- * Notify site admin upon payment 
- * 
- * @param string $email_body. 
- * 
+ * Notify site admin upon payment
+ *
+ * @param string $email_body.
+ *
  * @since 1.0.2
- * 
+ *
  * @return void
  */
 function btcpaywall_notify_administrator($email_body, $type = 'Pay')
 {
     $admin = get_bloginfo('admin_email');
+    $email = get_option('btcpw_invoices_email');
+    $email_to_send = is_email($email) ? $email : $admin;
     $subject = $type === 'Pay' ? 'You have received a payment via BTCPayWall' : 'You have received a donation via BTCPayWall';
     $headers = array('Content-Type: text/html; charset=UTF-8');
 
-    wp_mail($admin, $subject, $email_body, $headers);
+    wp_mail($email_to_send, $subject, $email_body, $headers);
 }
 
 
 /**
- * Notify customer upon payment 
- * 
+ * Notify customer upon payment
+ *
  * @param string $email_address.
- * @param string $email_body. 
+ * @param string $email_body.
  * @param string $type.
  * @since 1.0.2
- * 
+ *
  * @return void
  */
 function btcpaywall_notify_customer($email_address, $email_body, $type = 'Pay')

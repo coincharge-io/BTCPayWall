@@ -12,43 +12,43 @@
 
 
 // Exit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 /**
  * Get File Download Url
- * 
+ *
  * @param int $payment_id Payment ID.
- * 
+ *
  * @param int $file_url File URL.
- * 
+ *
  * @param int $download_id Digital Download ID.
- * 
+ *
  * @param string $email Optional. Customer email.
- * 
+ *
  * @since 1.0
- * 
+ *
  * @return string Download url
  */
 
-function btcpaywall_get_download_url($payment_id, $file_url, $download_id, $email)
+function btcpaywall_get_download_url($payment_id, $download_id, $email, $download_file)
 {
-    if (!get_option('btcpaywall_secret_key')) {
+    if (!get_option('btcpw_secret_key')) {
         update_option('btcpw_secret_key', bin2hex(random_bytes(14)));
     }
     $secret_key = get_option('btcpw_secret_key');
     $date = strtotime("14 Jan 2038");
 
     $params = array(
-        'payment_id'     => rawurlencode($payment_id),
-        'digital_file'          => rawurlencode($file_url),
+        'payment_id'    => rawurlencode($payment_id),
         'download_id'   => (int)$download_id,
         'expire'        => rawurlencode($date),
-        'email'         => rawurlencode($email)
+        'email'         => rawurlencode($email),
+        'download_file' => (int)($download_file)
     );
-
     $payment = new BTCPayWall_Payment($params['payment_id']);
-
     if (!$payment) {
         return false;
     }
@@ -56,23 +56,18 @@ function btcpaywall_get_download_url($payment_id, $file_url, $download_id, $emai
     $args = array();
 
     if (!empty($payment->id)) {
-
-
         $args = array(
-            'btcpw_file' => $params['digital_file'],
-            'payment_id'    => $params['payment_id'],
-            'download_id'   => $params['download_id'],
-            'email'   => $params['email'],
+            'payment_id'  => $params['payment_id'],
+            'download_id' => $params['download_id'],
+            'email'       => $params['email'],
+            'download_file' => $params['download_file']
         );
-
 
         if (isset($params['expire'])) {
             $args['ttl'] = $params['expire'];
         }
-
         $args['token'] = btcpaywall_generate_url_token($secret_key, $args);
     }
-
     $download_url = add_query_arg($args, site_url('index.php'));
 
     return $download_url;
@@ -81,21 +76,20 @@ function btcpaywall_get_download_url($payment_id, $file_url, $download_id, $emai
 
 function btcpaywall_process_download()
 {
-
     $args = array(
-        'download_id' => (isset($_GET['download_id']))  ? (int) $_GET['download_id']                       : '',
-        'payment_id' => (isset($_GET['payment_id']))  ? sanitize_text_field($_GET['payment_id'])                       : '',
-        'email'    => (isset($_GET['email']))        ? sanitize_email($_GET['email'])                   : '',
-        'btcpw_file'  => (isset($_GET['btcpw_file']))      ? sanitize_text_field($_GET['btcpw_file'])                                 : '',
-        'ttl'      => (isset($_GET['ttl']))          ? sanitize_text_field($_GET['ttl'])                                    : '',
-        'token'    => (isset($_GET['token']))        ? sanitize_text_field($_GET['token'])                                   : ''
+        'download_id' => (isset($_GET['download_id'])) ? (int) $_GET['download_id'] : '',
+        'payment_id' => (isset($_GET['payment_id'])) ? sanitize_text_field($_GET['payment_id']) : '',
+        'email'    => (isset($_GET['email'])) ? sanitize_email($_GET['email']) : '',
+        'ttl'      => (isset($_GET['ttl'])) ? sanitize_text_field($_GET['ttl']) : '',
+        'token'    => (isset($_GET['token'])) ? sanitize_text_field($_GET['token']) : '',
+        'download_file' => (isset($_GET['download_file'])) ? (int) $_GET['download_file'] : '',
     );
 
-    if (!empty($args['btcpw_file']) && !empty($args['payment_id']) && !empty($args['download_id']) && !empty($args['ttl']) && !empty($args['token'])) {
+    if (!empty($args['download_file']) && !empty($args['payment_id']) && !empty($args['download_id']) && !empty($args['ttl']) && !empty($args['token'])) {
+        $args['btcpw_file'] = wp_get_attachment_url($args['download_file']);
         $payment = new BTCPayWall_Payment($args['payment_id']);
         $download = new BTCPayWall_Digital_Download($args['download_id']);
         if ($download->get_download_is_allowed($payment->invoice_id) == false) {
-
             wp_die(__('You have reached download limit for this payment.', 'btcpaywall'), '', array(
                 'response' => 403,
                 'link_url' => '/',
@@ -113,10 +107,9 @@ function btcpaywall_process_download()
             return false;
         }
 
-
         $file['url'] = $download_args['btcpw_file'];
-        $id = btcpaywall_get_attachment_id($download_args['btcpw_file']);
-
+        //$id = btcpaywall_get_attachment_id($download_args['btcpw_file']);
+        $id = $args['download_file'];
         $file_path = get_attached_file($id);
 
         $file['name'] = btcpaywall_get_file_name_from_path($download_args['btcpw_file']);
@@ -129,11 +122,9 @@ function btcpaywall_process_download()
         $file['content_type'] = btcpaywall_get_file_content_type($file['extension']);
         setcookie("btcpw_{$payment->invoice_id}{$download->ID}", isset($_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"]) ? ++$_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"] : 1, strtotime("14 Jan 2038"), '/');
         $headers = btcpaywall_get_all_headers();
-
         if (in_array($file['extension'], array('php', 'js'))) {
             wp_die(__('File extension is not supported.', 'btcpaywall'));
         }
-
         if (headers_sent()) {
             wp_die(__('Headers sent before download.', 'btcpaywall'));
         }
@@ -141,7 +132,6 @@ function btcpaywall_process_download()
             btcpaywall_prepare_system_before_download_file();
             $file_read_is_success = btcpaywall_file_resume_download($file, $headers);
         } else {
-
             btcpaywall_prepare_system_before_download_file();
 
             btcpaywall_set_headers_for_file_download($file);
@@ -162,16 +152,15 @@ add_action('init', 'btcpaywall_process_download', 500);
 
 /**
  * Get File Extension
- * 
+ *
  * @param string $ext File extension.
- * 
- * @since 1.0 
- * 
- * @return string Extension 
+ *
+ * @since 1.0
+ *
+ * @return string Extension
  */
 function btcpaywall_get_file_content_type($ext)
 {
-
     switch ($ext):
         case 'ac':
             $ctype = "application/pkix-attr-cert";
@@ -1054,8 +1043,6 @@ function btcpaywall_get_file_content_type($ext)
 }
 function btcpaywall_readfile_by_parts($file_url, $file_seek_offset = false)
 {
-
-
     $handle = @fopen($file_url, 'rb');
     if (false === $handle) {
         return false;
@@ -1081,8 +1068,6 @@ function btcpaywall_readfile_by_parts($file_url, $file_seek_offset = false)
 
 function btcpaywall_file_resume_download($file, $headers)
 {
-
-
     @header($_SERVER['SERVER_PROTOCOL'] . ' 206 Partial content' . "\n");
 
     //nocache_headers();
@@ -1138,20 +1123,18 @@ function btcpaywall_process_download_url($args)
     $providedToken = sanitize_text_field($_GET['token']);
 
     $verificationToken = btcpaywall_generate_url_token($secret_key, [
-        'ttl' => rawurlencode(sanitize_text_field($query_args['ttl'])),
-        'btcpw_file' => rawurlencode(sanitize_text_field($query_args['btcpw_file'])),
-        'payment_id' => rawurlencode(sanitize_text_field($query_args['payment_id'])),
+        'ttl' => rawurlencode($query_args['ttl']),
+        'download_file' => (int)($query_args['download_file']),
+        'payment_id' => rawurlencode($query_args['payment_id']),
         'download_id' => (int)$query_args['download_id'],
-        'email' => rawurlencode(sanitize_email($query_args['email'])),
-        'ip' => $_SERVER['REMOTE_ADDR'],
+        'email' => rawurlencode($query_args['email']),
     ]);
 
-    if (!hash_equals($verificationToken, $providedToken)) {
+    if (!hash_equals($providedToken, $verificationToken)) {
         $args['valid_token']    = false;
     }
 
     if (isset($query_args['ttl']) && current_time('timestamp') > $query_args['ttl']) {
-
         wp_die(__('Download link has expired.', 'btcpaywall'), array('response' => 403));
     }
 
@@ -1160,23 +1143,20 @@ function btcpaywall_process_download_url($args)
 }
 function btcpaywall_generate_url_token($secret_key, $args)
 {
-
     $tokenData = [
         'ttl' => sanitize_text_field($args['ttl']),
-        'btcpw_file' => sanitize_text_field($args['btcpw_file']),
+        'download_file' => (int)($args['download_file']),
         'payment_id' => sanitize_text_field($args['payment_id']),
-        'download_id' => (int)$args['download_id'],
+        'download_id' => (int)($args['download_id']),
         'email' => sanitize_email($args['email']),
         'ip' => $_SERVER['REMOTE_ADDR'],
     ];
-
     $serialized = json_encode($tokenData);
 
     return hash_hmac('sha256', $serialized, $secret_key);
 }
 function btcpaywall_get_all_headers()
 {
-
     $headers = array();
     foreach ((array) $_SERVER as $key => $value) {
         if (strncmp($key, "HTTP_", 5) == 0) {
@@ -1219,7 +1199,6 @@ function btcpaywall_readable_format_seconds_to_words($seconds)
 
 function btcpaywall_set_headers_for_file_download($file)
 {
-
     nocache_headers();
     header("Robots: none" . "\n");
     @header($_SERVER['SERVER_PROTOCOL'] . ' 200 OK' . "\n");
@@ -1228,17 +1207,17 @@ function btcpaywall_set_headers_for_file_download($file)
     header("Content-Disposition: attachment; filename=\"" . $file['name'] . "\"" . "\n");
     header("Content-Transfer-Encoding: binary" . "\n");
 
-    if ((int) $file['size'] > 0)
+    if ((int) $file['size'] > 0) {
         header("Content-Length: " . $file['size'] . "\n");
+    }
 }
 function btcpaywall_prepare_system_before_download_file()
 {
-
-    $disabled = explode(',', ini_get('disable_functions'));
-    $is_func_disabled = in_array('set_time_limit', $disabled);
-    if (!$is_func_disabled && !ini_get('safe_mode')) {
-        @set_time_limit(0);
-    }
+    // $disabled = explode(',', ini_get('disable_functions'));
+    // $is_func_disabled = in_array('set_time_limit', $disabled);
+    // if (!$is_func_disabled && !ini_get('safe_mode')) {
+    //     @set_time_limit(0);
+    // }
 
     @session_write_close();
     if (function_exists('apache_setenv')) {
@@ -1250,7 +1229,6 @@ function btcpaywall_prepare_system_before_download_file()
 }
 function btcpaywall_get_local_path_from_real_link($file_url)
 {
-
     $file_local_path = str_replace(site_url(), '', $file_url);
 
     $file_local_path = trailingslashit(ABSPATH) . ltrim($file_local_path, '/\\');
@@ -1266,7 +1244,6 @@ function btcpaywall_get_local_path_from_real_link($file_url)
  */
 function btcpaywall_get_file_name_from_path($file_path)
 {
-
     $file_name = str_replace('\\', '/', $file_path);
     $file_name = explode('/', $file_name);
     $file_name = end($file_name);
@@ -1278,7 +1255,6 @@ function btcpaywall_get_file_name_from_path($file_path)
 
 function btcpaywall_get_file_extension($file_name)
 {
-
     $file_extension = explode('.', $file_name);
     $file_extension = end($file_extension);
 
@@ -1288,7 +1264,6 @@ function btcpaywall_get_file_extension($file_name)
 
 function btcpaywall_is_file_local($download_file)
 {
-
     $file = strtolower($download_file);
 
     $is_found_url = preg_match('#https?://#', $file, $matches, PREG_OFFSET_CAPTURE);

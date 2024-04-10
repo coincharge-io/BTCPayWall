@@ -4,25 +4,33 @@
   display: none;
 }
 
-input[type='text']:not(.btcpw_add_form_preview),
-select:not(.btcpw_add_form_preview),
-textarea:not(.btcpw_add_form_preview) {
-  width: 50%;
+#btcpw_general_pay_per_view_options_paywall input[type="text"],
+#btcpw_general_pay_per_view_options_paywall select,
+#btcpw_general_pay_per_view_options_paywall textarea,
+#btcpw_general_pay_per_post_options_paywall input[type="text"],
+#btcpw_general_pay_per_post_options_paywall select,
+#btcpw_general_pay_per_post_options_paywall textarea,
+#btcpw_general_content_store_options input[type="text"],
+#btcpw_general_content_store_options select,
+#btcpw_general_content_store_options textarea {
   padding: 6px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
   resize: vertical;
+  vertical-align: middle;
 }
 
 .row {
   display: flex;
   flex-direction: row;
 }
+
 .col-20 {
   flex: 1;
   margin-top: 8px;
 }
+
 .col-80 {
   flex: 4;
   margin-top: 8px;
@@ -33,70 +41,12 @@ textarea:not(.btcpw_add_form_preview) {
   flex: 0.4;
 }
 
-.section > h1 {
-  font-size: 35px;
-  margin-bottom: 15px;
-  text-transform: uppercase;
-  font-weight: 400;
-  text-align: center;
-}
-
-.section.scroll {
-  height: 500px;
-  overflow: auto;
-}
-
-.section.table {
-  width: 100%;
-  font-family: Helvetica, Arial, sans-serif;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 30px 0;
-  font-size: 0.9em;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.192);
-}
-
-.section.table thead tr th {
-  background-color: #1d5aa3;
-  color: #ffffff;
-  text-align: left;
-  font-size: 1.4em;
-}
-.section.table thead tr th {
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
-}
-
-.section.table th,
-.section.table td {
-  padding: 15px 15px;
-}
-
-.section.table tbody tr {
-  border-bottom: 1px solid #dddddd;
-}
-
-.section.table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
-}
-
-td.Expired,
-td.Invalid {
-  background-color: #f53c18;
-}
-td.Processing,
-td.New {
-  background-color: #f6b330;
-}
-td.Settled {
-  background-color: #269950;
-}
 .btcpw_pay__gutenberg_block_separator {
   width: 100%;
   height: 25px;
   background: #c2cbd2;
 }
+
 .btcpw_pay__gutenberg_block_file {
   border: solid;
   text-align: center;
@@ -114,7 +64,7 @@ td.Settled {
   font-weight: bold;
 }
 
-.container_predefined_amount input:not([type='checkbox']),
+.container_predefined_amount input:not([type="checkbox"]),
 .container_predefined_amount select {
   width: 100px;
 }
@@ -131,6 +81,7 @@ td.Settled {
   box-sizing: border-box;
   resize: vertical;
 }
+
 .tipping_box_settings label,
 .tipping_box_settings textarea,
 .tipping_banner_high_settings label,
@@ -150,6 +101,7 @@ td.Settled {
   display: flex;
   flex-direction: column;
 }
+
 .col-fixed {
   display: flex;
   flex-direction: column;
@@ -162,16 +114,7 @@ td.Settled {
   width: auto;
   height: 100px;
 }
-.tipping_box textarea,
-.tipping_banner textarea {
-  width: auto;
-  height: 80px;
-}
-.tipping_box label,
-.tipping_banner textarea {
-  display: inline-block;
-  vertical-align: middle;
-}
+
 .tipping_box input.widget-tipping-basic_redirect,
 .tipping_banner input.widget-tipping-basic_redirect {
   width: 100%;
@@ -187,18 +130,21 @@ td.Settled {
   -webkit-border-radius: 10px;
   background: #ffffe0;
 }
+
 .btcpw_add_form_notice p,
 .btcpw_form_notice p {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 15px;
   letter-spacing: 0.1em;
   line-height: 1.75;
   letter-spacing: 0.05em;
 }
+
 .btcpw_expanded_notice p {
   font-size: 10px;
 }
+
 .btcpw_general_settings,
 .tipping_box_settings,
 .tipping_banner_high_settings,
@@ -210,35 +156,41 @@ td.Settled {
 #btcpw_general_content_store_options,
 #btcpw_misc_options,
 #btcpw_general_payment_gateway_options {
-  border: 1px solid #1e1e1e;
-  background: #fff;
   padding: 0;
   border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  padding: 0 5px;
 }
+
+.btcpw__paywall_submit_button a {
+  text-decoration: none;
+  color: #fff;
+}
+
 .button.button-primary.btcpw_button {
   background: #0066a2;
   color: #fff;
   border-style: outset;
   border-color: #0066a2;
   height: 50px;
-  width: 100px;
+  width: 100%;
   font: bold 15px arial, sans-serif;
   text-shadow: none;
   border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  margin-left: -5px;
 }
 
 .button.button-secondary.btcpw_button {
   height: 50px;
+  width: 100%;
   background-color: #008000;
   color: #fff;
   font: bold 15px arial, sans-serif;
+  border-color: #008000;
+  margin: 0 5px;
 }
+
 div.btcpw_help_link a {
   width: 40px;
   background-color: #008000;
@@ -249,6 +201,7 @@ div.btcpw_help_link a {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
 }
+
 div.btcpw_help_link a:hover {
   background-color: #555;
 }
@@ -256,9 +209,11 @@ div.btcpw_help_link a:hover {
 .btcpw_general_settings_buttons {
   margin-top: 5em;
 }
+
 #btcpw_btcpay_store_id {
   width: 60%;
 }
+
 #btcpw_expanded_notice_split {
   display: flex;
   gap: 30px;
@@ -273,6 +228,7 @@ div.btcpw_help_link a:hover {
   border-radius: 3px;
   width: fit-content;
 }
+
 .sc_menu_item.btcpw_shortcode {
   font-size: 16px;
   white-space: nowrap;
@@ -280,6 +236,7 @@ div.btcpw_help_link a:hover {
   padding: 2px;
   margin-bottom: 2px;
 }
+
 #sc_menu {
   width: fit-content;
   display: none;
@@ -298,7 +255,9 @@ div.btcpw_help_link a:hover {
 #btcpw_pay_per_file_paywall,
 #btcpw_general_pay_per_post_options_paywall,
 #btcpw_general_pay_per_view_options_paywall,
-#btcpw_general_content_store_options {
+#btcpw_general_content_store_options,
+#btcpaywall_pay_per_post_shortcode_generator,
+#btcpaywall_pay_per_view_shortcode_generator {
   display: flex;
 }
 
@@ -307,15 +266,20 @@ div.btcpw_help_link a:hover {
 #btcpw_pay_per_file_paywall > div,
 #btcpw_general_pay_per_post_options_paywall > div,
 #btcpw_general_content_store_options > div,
-#btcpw_general_pay_per_view_options_paywall > div {
+#btcpw_general_pay_per_view_options_paywall > div,
+#btcpaywall_pay_per_post_shortcode_generator > div,
+#btcpaywall_pay_per_view_shortcode_generator > div {
   flex: 1;
 }
+
 .btcpw_pay_preview.pay_per_post,
 .btcpw_pay_preview.pay_per_view {
   position: sticky;
-  position: -webkit-sticky; /* Safari */
+  position: -webkit-sticky;
+  /* Safari */
   top: 0;
 }
+
 /*Paywall preview*/
 .btcpw_pay_preview {
   background-color: #ecf0f1;
@@ -332,6 +296,7 @@ div.btcpw_help_link a:hover {
   flex-direction: column;
   text-align: center;
 }
+
 #btcpw_pay__button_preview {
   background: #f6b330;
   border-radius: 0.25rem;
@@ -352,6 +317,7 @@ div.btcpw_help_link a:hover {
 .btcpw_pay__content_preview p {
   font-size: 1.1em;
 }
+
 .btcpw_pay__footer_preview div.btcpw_help_preview {
   margin-top: 3em;
 }
@@ -362,22 +328,28 @@ div.btcpw_help_link a:hover {
   display: flex;
   align-items: center;
 }
+
 #btcpw_pay_per_file_paywall_preview {
   flex-direction: column;
 }
+
 .btcpw_pay_preview.pay_per_file {
   width: 300px;
   align-items: center;
 }
+
 .btcpw__paywall_submit_button {
-  margin-top: 50px;
+  margin-top: 25px;
+  width: 15%;
 }
+
 .btcpw_pay_per_placeholders {
   display: flex;
   width: 50%;
   height: 40px;
   margin: 5px 0 30px 0;
 }
+
 #btcpw_pay_per_post_info,
 #btcpw_pay_per_view_info,
 #btcpw_pay_per_file_info,
@@ -387,28 +359,34 @@ div.btcpw_help_link a:hover {
   width: 90%;
   height: 100px;
 }
+
 .btcpw_pay__preview_preview {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
+
 .btcpw_pay__preview_preview.preview_img {
   width: 200px;
   height: 200px;
 }
+
 .btcpw_pay__preview_preview.preview_description {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: stretch;
 }
+
 .btcpw_pay__preview_preview.preview_img img {
   width: 100%;
   height: 100%;
 }
+
 .btcpw_pay__loading_preview {
   display: none;
 }
+
 .btcpw_pay_preview {
   display: flex;
   flex-direction: column;
@@ -416,17 +394,21 @@ div.btcpw_help_link a:hover {
   align-self: flex-start;
   align-items: center;
 }
+
 .btcpw_links_preview {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1em;
 }
+
 .btcpw_pay_preview h2 {
   font-size: 23px;
 }
+
 .btcpw_pay_preview p {
   font-size: 18px;
 }
+
 #btcpw_pay__button_preview_pay_per_view,
 #btcpw_pay__button_preview_pay_per_file,
 #btcpw_pay__button_preview {
@@ -441,10 +423,10 @@ div.btcpw_help_link a:hover {
   padding: 0.5rem 0.5rem;
   margin: 0.25rem;
 }
+
 #btcpw_pay__button_preview_pay_per_view:hover,
 #btcpw_pay__button_preview_pay_per_file:hover,
 #btcpw_pay__button_preview:hover {
-  background: #8c82fc;
   color: #fff;
   cursor: pointer;
 }
@@ -454,9 +436,11 @@ div.btcpw_help_link a:hover {
   flex-direction: column;
   justify-content: space-between;
 }
+
 .btcpw_download_product {
   display: flex;
 }
+
 /*
 Settings Tabs
 */
@@ -467,12 +451,14 @@ Settings Tabs
   height: 50px;
   margin: 0 -20px 0 -20px;
 }
+
 .btcpw.modules_sub_nav {
   list-style: none;
   margin: 12px 0 3px;
   padding: 0;
   float: left;
 }
+
 .btcpw.subsub {
   list-style: none;
   margin: 0;
@@ -502,6 +488,7 @@ Settings Tabs
   box-shadow: inset 0 4px 0 #2980b9;
   margin: 0;
 }
+
 .btcpw.nav-tab-wrapper .nav-tab {
   float: left;
   border: 1px solid #c3c4c7;
@@ -517,6 +504,7 @@ Settings Tabs
   text-decoration: none;
   white-space: nowrap;
 }
+
 .btcpw.nav-tab-wrapper .btcpw-nav-tab.nav-tab {
   float: left;
   border: none;
@@ -531,7 +519,7 @@ Settings Tabs
 }
 
 .btcpw_digital_download_limit_help:before {
-  content: '\003F';
+  content: "\003F";
   font-weight: bolder;
 }
 
@@ -548,7 +536,7 @@ Settings Tabs
 }
 
 .btcpw_download_limit_helper:after {
-  content: '\003F';
+  content: "\003F";
 }
 
 .btcpw_pay_preview {
@@ -558,4 +546,339 @@ Settings Tabs
   -moz-border-radius: 15px;
   -webkit-border-radius: 15px;
   -khtml-border-radius: 15px;
+}
+
+/*Payment view labels*/
+.btcpaywall_payment_container label {
+  display: inline-block;
+  width: 70px;
+}
+
+.btcpaywall_payment_container_type table,
+.btcpaywall_payment_container_customer_details table {
+  table-layout: fixed !important;
+  width: 100% !important;
+  border-collapse: collapse;
+  border: 2px solid rgb(0, 0, 0);
+}
+
+.btcpaywall_payment_container_customer_details td,
+.btcpaywall_payment_container_type td {
+  padding: 15px;
+  text-align: center;
+  letter-spacing: 1px;
+  border: thin solid rgb(0, 0, 0);
+  vertical-align: top;
+  border-spacing: 0;
+}
+
+.btcpaywall_payment_container_customer_message textarea {
+  width: 100%;
+  min-height: 100px;
+}
+
+/*Tipping metabox*/
+
+#btcpaywall_template_appearance,
+.btcpaywall_tipping_selected_template {
+  display: none;
+}
+
+.btcpaywall_template_helper p {
+  font-size: 16px;
+  padding: 10px;
+  background-color: #17a2b8;
+  color: #fff;
+}
+
+.btcpaywall_metabox_wrap_metabox_tabs {
+  background-color: #1d59a2;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+.btcpaywall_metabox_wrap_metabox_tabs li {
+  color: #fff;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.btcpaywall_metabox_wrap_metabox_tabs li:hover {
+  background: #fc852e;
+}
+
+.btcpaywall_metabox_wrap_metabox_tabs li.current {
+  background: #fcfafa;
+  color: #000000;
+}
+
+.btcpaywall_tabset {
+  display: none;
+  padding: 15px;
+}
+
+.btcpaywall_tabset.current {
+  display: inherit;
+}
+
+.btcpaywall_tipping_templates img {
+  width: 200px;
+  object-fit: contain;
+  height: 150px;
+}
+
+.btcpaywall_field_wrap {
+  display: none;
+  border-bottom: 1px solid #000;
+  margin: 0;
+  padding: 20px;
+}
+
+.btcpaywall_field_wrap.common {
+  display: flex;
+}
+
+.btcpaywall_container_header[data-id="fixed-amount"],
+.btcpaywall_container_header[data-id="donor"] {
+  display: none;
+}
+
+.btcpaywall_field_wrap div:nth-child(1) {
+  display: flex;
+  align-items: center;
+  width: 30%;
+}
+
+.btcpaywall_field_wrap div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  width: 69%;
+}
+
+.btcpaywall_field_wrap input[type="text"],
+.btcpaywall_field_wrap select,
+.btcpaywall_field_wrap textarea {
+  padding: 6px;
+  box-sizing: border-box;
+  resize: vertical;
+  vertical-align: middle;
+}
+
+.btcpaywall_field_wrap label {
+  display: inline-block;
+  width: 100px;
+}
+
+.btcpaywall_container_header h2,
+.btcpaywall_pay_per_container_header h3 {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.btcpaywall_container_header h2::after,
+.btcpaywall_pay_per_container_header h3::after {
+  font-family: "Font Awesome 5 Free";
+  content: "\f062";
+  vertical-align: middle;
+  font-weight: 900;
+}
+
+.btcpaywall_container_header.inactive h2::after,
+.btcpaywall_pay_per_container_header.inactive h3::after {
+  content: "\f063";
+}
+
+.btcpaywall_container_header,
+.btcpaywall_pay_per_container_header {
+  border-bottom: 1px solid #c3c4c7;
+  background-color: #fc852e;
+  cursor: pointer;
+}
+
+.btcpaywall_tipping_selected_template {
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #fafafa;
+  border: 1px solid #eee;
+  padding: 10px 14px;
+}
+
+/*Helper icon*/
+
+.btcpaywall_helper_tip::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f059";
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  text-indent: 0;
+  text-align: center;
+}
+
+/*Templates*/
+
+.btcpaywall_tipping_templates {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.btcpaywall_tipping_templates h2,
+.btcpaywall_tipping_selected_template div {
+  font-size: 20px !important;
+  text-align: center;
+}
+
+.btcpaywall_tipping_templates button,
+.btcpaywall_tipping_selected_template button {
+  padding: 15px 17px;
+  color: #2271b1;
+  border-color: #2271b1;
+  background: #f6f7f7;
+  line-height: 1.1;
+  border-radius: 5px;
+}
+
+.btcpaywall_tipping_templates button:hover,
+.btcpaywall_tipping_selected_template button:hover {
+  cursor: pointer;
+  border: solid 3px;
+}
+
+.btcpaywall_tipping_image_wrap {
+  max-width: 300px;
+  overflow: hidden;
+}
+
+/*Donation Metabox & Gateway Page Table*/
+.btcpaywall_metabox_wrap table,
+#btcpw_general_payment_gateway_options table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #c3c4c7;
+}
+
+.btcpaywall_metabox_wrap thead th:nth-child(1),
+#btcpw_general_payment_gateway_options thead th:nth-child(1) {
+  width: 30%;
+}
+
+.btcpaywall_metabox_wrap thead th:nth-child(2),
+#btcpw_general_payment_gateway_options thead th:nth-child(2) {
+  width: 20%;
+}
+
+.btcpaywall_metabox_wrap thead th:nth-child(3),
+#btcpw_general_payment_gateway_options thead th:nth-child(3) {
+  width: 15%;
+}
+
+.btcpaywall_metabox_wrap thead th:nth-child(4) {
+  width: 35%;
+}
+
+.btcpaywall_metabox_wrap th,
+.btcpaywall_metabox_wrap td,
+#btcpw_general_payment_gateway_options th,
+#btcpw_general_payment_gateway_options td {
+  padding: 5px;
+}
+
+.btcpaywall_metabox_wrap th,
+#btcpw_general_payment_gateway_options th {
+  letter-spacing: 2px;
+}
+
+.btcpaywall_metabox_wrap td,
+#btcpw_general_payment_gateway_options td {
+  letter-spacing: 1px;
+}
+
+.btcpaywall_metabox_wrap tbody td,
+#btcpw_general_payment_gateway_options tbody td {
+  text-align: center;
+}
+
+.btcpaywall_metabox_wrap tr:nth-child(odd) td,
+#btcpw_general_payment_gateway_options tr:nth-child(odd) td {
+  background: #f9f9f9;
+}
+
+/*
+Gateway
+*/
+
+#btcpw_general_payment_gateway_options td a {
+  color: #006ba1;
+  box-shadow: inset 0 0 0 1px #006ba1;
+  background: #f6f7f7;
+  vertical-align: top;
+  padding: 10px;
+  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+  -webkit-appearance: none;
+  border-radius: 3px;
+  white-space: nowrap;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+#btcpw_general_payment_gateway_options td a:hover {
+  border: solid 2px;
+}
+
+/*Shortcode generator*/
+.btcpw_pay_per_shortcode {
+  border: 1px solid black;
+  padding: 20px 0px 20px 5px;
+}
+
+#btcpaywall_pay_per_shortcode {
+  border: 5px solid #fc852e;
+}
+.loading-spinner {
+  content: "";
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #ffa500 #1d5aa3 #ffa500 #1d5aa3;
+  animation: spinner 1s linear infinite;
+}
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+table.general_settings_table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+table.general_settings_table input:not(#show_password),
+table.general_settings_table select {
+  width: 100%;
+  height: 100%;
+}
+
+table.general_settings_table tr.odd > * {
+  box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.023);
+}
+
+table.general_settings_table tr.even > * {
+  box-shadow: inset 0 0 0 9999px rgba(13 110 253, 0.903);
 }

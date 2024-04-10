@@ -1,3 +1,0 @@
-<div class='btcpw_add_form_notice'>
-    <p>This page contains currently available tipping forms. All the examples are using default values. You can experiment with forms to see how they work. The submit button is disabled, so you won't be able to send data. Click on the select button when you choose the one you like, and you will be redirected to the page where you can customize the chosen form. </p>
-</div>

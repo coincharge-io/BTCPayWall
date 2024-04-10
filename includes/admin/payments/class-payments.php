@@ -3,16 +3,18 @@
 /**
  * Digital Download
  *
- * @package     BTCPayWall
- * @subpackage  Admin/Payments_Table
- * @copyright   Copyright (c) 2021, Coincharge
- * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
- * @since       1.0
+ * @package    BTCPayWall
+ * @subpackage Admin/Payments_Table
+ * @copyright  Copyright (c) 2021, Coincharge
+ * @license    http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
+ * @since      1.0
  */
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 if (!class_exists('WP_List_Table')) {
-    require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
+    include_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
 }
 
 class Payments_Table extends WP_List_Table
@@ -21,11 +23,38 @@ class Payments_Table extends WP_List_Table
 
     public function __construct()
     {
-        parent::__construct([
-            'singular' => __('Payment', 'btcpaywall'),
-            'plural'   => __('Payments', 'btcpaywall'),
-            'ajax'     => false
-        ]);
+        parent::__construct(
+            [
+                'singular' => __('Payment', 'btcpaywall'),
+                'plural'   => __('Payments', 'btcpaywall'),
+                'ajax'     => false
+            ]
+        );
+    }
+    public function get_bulk_actions()
+    {
+        $actions = array(
+            'remove_older_1' => 'Remove unpaid records older than 1 day',
+            'remove_older_7' => 'Remove unpaid records older than 7 day',
+        );
+        return $actions;
+    }
+    public function process_bulk_action()
+    {
+        $nonce = isset($_REQUEST['_wpnonce']) ? $_REQUEST['_wpnonce'] : '';
+
+        if (!wp_verify_nonce($nonce, 'btcpaywall_remove_old_records')) {
+            return;
+        }
+
+        if ('remove_older_1' === $this->current_action()) {
+
+            $payments = new BTCPayWall_Payment();
+            return $payments->delete_older_than_day();
+        } elseif ('remove_older_7' === $this->current_action()) {
+            $payments = new BTCPayWall_Payment();
+            return $payments->delete_older_than_7days();
+        }
     }
     /**
      * Get a list of columns.
@@ -52,6 +81,7 @@ class Payments_Table extends WP_List_Table
 
     public function prepare_items()
     {
+        $search_query = isset($_REQUEST['s']) ? sanitize_text_field($_REQUEST['s']) : '';
         $this->_column_headers = array($this->get_columns(), array(), array(), 'cb');
         $this->process_bulk_action();
 
@@ -59,12 +89,13 @@ class Payments_Table extends WP_List_Table
         $current_page = $this->get_pagenum();
         $total_items = self::record_count();
 
-        $this->set_pagination_args([
-            'total_items' => $total_items,
-            'per_page' => $per_page
-        ]);
-
-        $this->items = self::get_payments($per_page, $current_page);
+        $this->set_pagination_args(
+            [
+                'total_items' => $total_items,
+                'per_page' => $per_page
+            ]
+        );
+        $this->items = self::get_payments($per_page, $current_page, $search_query);
     }
     protected function column_details($item)
     {
@@ -80,20 +111,18 @@ class Payments_Table extends WP_List_Table
 
     public static function record_count()
     {
-
         $record = new BTCPayWall_Payment();
-
         return $record->payment_count();
     }
-    public static function get_payments($per_page = 5, $page_number = 1)
+    public static function get_payments($per_page = 5, $page_number = 1, $search_query = '')
     {
         $payments = new BTCPayWall_Payment();
-        return $payments->get_payments($per_page, $page_number);
+        return $payments->get_filtered_payments($per_page, $page_number, $search_query);
     }
     /**
      * Generates content for a single row of the table.
-     * 
-     * @param object $item The current item.
+     *
+     * @param object $item        The current item.
      * @param string $column_name The current column name.
      */
     protected function column_default($item, $column_name)
@@ -114,7 +143,7 @@ class Payments_Table extends WP_List_Table
             case 'payment_method':
                 return esc_html($item['payment_method']);
             case 'amount':
-                return esc_html($item['amount']);
+                return esc_html(btcpaywall_round_amount($item['currency'], $item['amount']));
             case 'currency':
                 return esc_html($item['currency']);
             case 'invoice_id':
@@ -128,24 +157,25 @@ class Payments_Table extends WP_List_Table
 
     protected function display_tablenav($which)
     {
-?>
+        $search_query = $_REQUEST['s'] ?? '';
+        wp_nonce_field('btcpaywall_remove_old_records');
+        ?>
         <div class="tablenav <?php echo esc_attr($which); ?>">
-
             <div class="alignleft actions bulkactions">
                 <?php $this->bulk_actions($which); ?>
+                <label for="search_field">Search:</label>
+                <input type="text" id="search_field" name="s" value="<?php echo esc_attr($search_query); ?>" />
+                <input type="submit" class="button" value="Search" />
             </div>
             <?php
-            $this->extra_tablenav($which);
-            $this->pagination($which);
-
-            ?>
-
+                    $this->extra_tablenav($which);
+        $this->pagination($which);
+        ?>
             <br class="clear" />
         </div>
+
     <?php
     }
-
-
     public function display()
     {
         $singular = $this->_args['singular'];
@@ -153,7 +183,7 @@ class Payments_Table extends WP_List_Table
         $this->display_tablenav('top');
 
         $this->screen->render_screen_reader_content('heading_list');
-    ?>
+        ?>
         <table class="wp-list-table <?php echo implode(' ', $this->get_table_classes()); ?>">
             <thead>
                 <tr>
@@ -162,10 +192,10 @@ class Payments_Table extends WP_List_Table
             </thead>
 
             <tbody id="the-list" <?php
-                                    if ($singular) {
-                                        echo " data-wp-lists='list:$singular'";
-                                    }
-                                    ?>>
+                                        if ($singular) {
+                                            echo " data-wp-lists='list:$singular'";
+                                        }
+        ?>>
                 <?php $this->display_rows_or_placeholder(); ?>
             </tbody>
 
