@@ -1155,15 +1155,35 @@ function btcpaywall_generate_url_token($secret_key, $args)
 
     return hash_hmac('sha256', $serialized, $secret_key);
 }
+// function btcpaywall_get_all_headers()
+// {
+//     $headers = array();
+//     foreach ((array) $_SERVER as $key => $value) {
+//         if (strncmp($key, "HTTP_", 5) == 0) {
+//             $key = strtr(ucwords(strtolower(strtr(substr($key, 5), "_", " "))), " ", "-");
+//             $headers[$key] = $value;
+//         }
+//     }
+//     return $headers;
+// }
 function btcpaywall_get_all_headers()
 {
-    $headers = array();
-    foreach ((array) $_SERVER as $key => $value) {
-        if (strncmp($key, "HTTP_", 5) == 0) {
-            $key = strtr(ucwords(strtolower(strtr(substr($key, 5), "_", " "))), " ", "-");
-            $headers[$key] = $value;
+    $required_headers = array(
+        'Content-Type',
+        'Content-Disposition',
+        'Content-Length',
+        'Content-Encoding',
+        'Authorization',
+    );
+
+    $headers = [];
+    foreach ($required_headers as $header_name) {
+        $header_key = 'HTTP_' . str_replace('-', '_', strtoupper($header_name));
+        if (isset($_SERVER[$header_key])) {
+            $headers[$header_name] = $_SERVER[$header_key];
         }
     }
+
     return $headers;
 }
 
