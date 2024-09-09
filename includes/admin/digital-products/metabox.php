@@ -10,35 +10,37 @@
  * @since       1.0
  */
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 /**
  * Register all meta boxes for custom post type
- * 
+ *
  * @since 1.0
- * 
+ *
  * @return void
  */
 
 function btcpaywall_add_product_meta_boxes()
 {
-    add_meta_box('btcpw_product_amount', __('BTCPayWall Product  Price', 'btcpaywall'), 'render_btcpw_amount', 'digital_download');
+    add_meta_box('btcpw_product_amount', __('BTCPayWall Product  Price', 'btcpaywall'), 'btcpaywall_amount', 'digital_download');
 
-    add_meta_box('btcpw_product_files', __('BTCPayWall Upload File', 'btcpaywall'), 'render_btcpw_file_upload', 'digital_download');
+    add_meta_box('btcpw_product_files', __('BTCPayWall Upload File', 'btcpaywall'), 'btcpaywall_file_upload', 'digital_download');
 
-    add_meta_box('btcpw_product_stats', __('BTCPayWall Product Sales', 'btcpaywall'), 'render_btcpw_product_stats', 'digital_download', 'side', 'high');
+    add_meta_box('btcpw_product_stats', __('BTCPayWall Product Sales', 'btcpaywall'), 'btcpaywall_product_stats', 'digital_download', 'side', 'high');
 
-    add_meta_box('btcpw_product_limit', __('BTCPayWall Product Download Limit', 'btcpaywall'), 'render_btcpw_product_settings', 'digital_download', 'side');
+    add_meta_box('btcpw_product_limit', __('BTCPayWall Product Download Limit', 'btcpaywall'), 'btcpaywall_product_settings', 'digital_download', 'side');
 
-    add_meta_box('btcpw_product_image', __('BTCPayWall Product Image', 'btcpaywall'), 'render_btcpw_product_image', 'digital_download', 'side');
+    add_meta_box('btcpw_product_image', __('BTCPayWall Product Image', 'btcpaywall'), 'btcpaywall_product_image', 'digital_download', 'side');
 
-    add_meta_box('_btcpw_product_description',  __('BTCPayWall Product Description', 'btcpaywall'), 'render_btcpw_product_description', 'digital_download');
+    add_meta_box('_btcpw_product_description', __('BTCPayWall Product Description', 'btcpaywall'), 'btcpaywall_product_description', 'digital_download');
 }
 
 add_action('add_meta_boxes', 'btcpaywall_add_product_meta_boxes');
 
-function btcpw_meta_fields()
+function btcpaywall_meta_fields()
 {
     $fields =
         [
@@ -54,13 +56,13 @@ function btcpw_meta_fields()
         ];
     return $fields;
 }
-function render_btcpw_product_description($post)
+function btcpaywall_product_description($post)
 {
     $btcpw_stored_meta = get_post_meta($post->ID);
     $description = $btcpw_stored_meta['_btcpw_product_description'][0] ?? '';
     wp_editor(htmlspecialchars_decode($description), 'btcpw_product_description');
 }
-function render_btcpw_product_settings($post)
+function btcpaywall_product_settings($post)
 {
     $btcpw_stored_meta = get_post_meta($post->ID);
     $limit = $btcpw_stored_meta['btcpw_product_limit'][0] ?? 0;
@@ -76,7 +78,7 @@ function render_btcpw_product_settings($post)
     </div>
 <?php
 }
-function render_btcpw_product_image($post)
+function btcpaywall_product_image($post)
 {
     $btcpw_stored_meta = get_post_meta($post->ID);
     $logo_id = $btcpw_stored_meta['btcpw_product_image_id'][0] ?? '';
@@ -100,12 +102,12 @@ function render_btcpw_product_image($post)
 }
 /**
  * Product price
- * 
+ *
  * @since 1.0
- * 
+ *
  * @return void
  */
-function render_btcpw_amount($post)
+function btcpaywall_amount($post)
 {
 
     wp_nonce_field(basename(__FILE__), 'btcpw_nonce');
@@ -126,7 +128,7 @@ function render_btcpw_amount($post)
 <?php
 }
 
-function render_btcpw_file_upload($post)
+function btcpaywall_file_upload($post)
 {
     $btcpw_stored_meta = get_post_meta($post->ID);
 
@@ -151,7 +153,7 @@ function render_btcpw_file_upload($post)
 
 
 
-function render_btcpw_product_stats($post)
+function btcpaywall_product_stats($post)
 {
     $download = new BTCPayWall_Digital_Download($post->ID);
 ?>
@@ -175,7 +177,7 @@ function btcpaywall_meta_save($post_id)
         return;
     }
 
-    $fields = btcpw_meta_fields();
+    $fields = btcpaywall_meta_fields();
 
     foreach ($fields as $field) {
         if (('btcpw_product_limit' === $field) || ('btcpw_price' === $field)  || ('btcpw_product_sales' === $field)) {
