@@ -13,7 +13,7 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-function load_elementor_widgets()
+function btcpaywall_load_elementor_widgets()
 {
     require_once __DIR__ . '/class-start-content-widget.php';
     require_once __DIR__ . '/class-end-content-widget.php';
@@ -45,4 +45,4 @@ function load_elementor_widgets()
     \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Pay_Per_Post_Template_Widget());
     \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Pay_Per_View_Template_Widget());
 }
-add_action('elementor/widgets/widgets_registered', 'load_elementor_widgets');
+add_action('elementor/widgets/widgets_registered', 'btcpaywall_load_elementor_widgets');
