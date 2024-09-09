@@ -185,12 +185,12 @@ class Pay_Per_Shortcode_List extends WP_List_Table
         $actions['edit'] = sprintf(
             '<a href="%1$s">%2$s</a>',
             esc_url(wp_nonce_url(add_query_arg($edit_query_args, 'admin.php'), 'id' . $item['id'])),
-            _x('Edit', 'List table row action', 'wp-list-table')
+            _x('Edit', 'List table row action', 'btcpaywall')
         );
         $actions['delete'] = sprintf(
             '<a href="%1$s">%2$s</a>',
             esc_url(wp_nonce_url(add_query_arg($delete_query_args, 'admin.php'), 'delete')),
-            _x('Delete', 'List table row action', 'wp-list-table')
+            _x('Delete', 'List table row action', 'btcpaywall')
         );
         $item_json = json_decode(json_encode($item), true);
 
