@@ -11,13 +11,14 @@
  */
 
 //Exit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 
 abstract class BTCPayWall_DB
 {
-
     public $table_name;
 
     public $version;
@@ -25,9 +26,7 @@ abstract class BTCPayWall_DB
     public $primary_key;
 
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
 
     public function get_columns()
@@ -177,9 +176,7 @@ abstract class BTCPayWall_DB
             $this->create_table();
         }
     }
-    public function create_table()
-    {
-    }
+    public function create_table() {}
     public function installed()
     {
         return $this->table_exists($this->table_name);

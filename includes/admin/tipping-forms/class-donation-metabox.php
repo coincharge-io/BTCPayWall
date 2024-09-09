@@ -10,7 +10,9 @@
  * @since       1.0.5
  */
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 /**
@@ -331,7 +333,7 @@ class Donation_Forms_Metabox
                 '<div class="misc-pub-section"><button type="button" class="button hint-tooltip hint--top js-btcpaywall-shortcode-button" aria-label="%1$s" data-btcpaywall-shortcode="%2$s"><span class="dashicons dashicons-admin-page"></span> %3$s</button></div>',
                 esc_attr($shortcode),
                 esc_attr($shortcode),
-                esc_html__('Copy Shortcode', 'give')
+                esc_html__('Copy Shortcode', 'btcpaywall')
             );
         }
     }

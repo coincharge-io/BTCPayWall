@@ -156,7 +156,7 @@ class Pay_Per_Shortcode_List extends WP_List_Table
             '<div class="misc-pub-section"><button type="button" class="button hint-tooltip hint--top js-btcpaywall-shortcode-button" aria-label="%1$s" data-btcpaywall-shortcode="%2$s"><span class="dashicons dashicons-admin-page"></span> %3$s</button></div>',
             esc_attr($shortcode),
             esc_attr($shortcode),
-            esc_html__('Copy Shortcode', 'give')
+            esc_html__('Copy Shortcode', 'btcpaywall')
         );
     }
     protected function get_bulk_actions()
