@@ -13,7 +13,7 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-function create_pages()
+function btcpaywall_create_pages()
 {
     $checkout_page  = get_option('btcpw_checkout_page') ? get_post(get_option('btcpw_checkout_page')) : false;
     if (empty($checkout_page)) {
@@ -51,13 +51,13 @@ function create_pages()
 function btcpaywall_run_install()
 {
 
-    create_pages();
+    btcpaywall_create_pages();
 
-    register_tables();
+    btcpaywall_register_tables();
 }
 register_activation_hook(BTCPAYWALL_PLUGIN_FILE, 'btcpaywall_run_install');
 
-function register_tables()
+function btcpaywall_register_tables()
 {
 
     $tables = [
@@ -70,7 +70,7 @@ function register_tables()
 
     ];
 
-    foreach ($tables  as $table) {
+    foreach ($tables as $table) {
         if (!$table->installed()) {
             $table->register_table();
         }
