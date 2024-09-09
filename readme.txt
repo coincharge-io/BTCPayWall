@@ -4,8 +4,8 @@ Donate link: https://btcpaywall.com/support/
 Tags: btcpaywall, Bitcoin, Lightning, paywall, BTCPay, pay-per-post, pay-per-view, pay-per-content, digital-store, tipping, coincharge, publisher, payment
 Requires at least: 5.6
 Requires PHP: 7.4
-Tested up to: 6.2
-Stable tag: 1.1.2
+Tested up to: 6.5
+Stable tag: 1.1.3
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,10 @@ You have the flexibility to either integrate with your personal BTCPay server or
 https://btcpaywall.com/faq-support-center/
 
  == Changelog ==
+
+= 1.1.3 =
+
+- Fix: Page update after successful payment
 
 = 1.1.2 =
 
