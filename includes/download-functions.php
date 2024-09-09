@@ -1213,17 +1213,12 @@ function btcpaywall_set_headers_for_file_download($file)
 }
 function btcpaywall_prepare_system_before_download_file()
 {
-    // $disabled = explode(',', ini_get('disable_functions'));
-    // $is_func_disabled = in_array('set_time_limit', $disabled);
-    // if (!$is_func_disabled && !ini_get('safe_mode')) {
-    //     @set_time_limit(0);
-    // }
 
     @session_write_close();
-    if (function_exists('apache_setenv')) {
-        @apache_setenv('no-gzip', 1);
-    }
-    @ini_set('zlib.output_compression', 'Off');
+    // if (function_exists('apache_setenv')) {
+    //     @apache_setenv('no-gzip', 1);
+    // }
+    // @ini_set('zlib.output_compression', 'Off');
 
     @ob_end_clean();
 }
