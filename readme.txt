@@ -1,7 +1,7 @@
 === BTCPayWall ===
 Contributors: coincharge
 Donate link: https://btcpaywall.com/support/
-Tags: btcpaywall, Bitcoin, Lightning, paywall, BTCPay, pay-per-post, pay-per-view, pay-per-content, digital-store, tipping, coincharge, publisher, payment
+Tags: btcpaywall, Bitcoin, Lightning, paywall, coinsnap
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.6

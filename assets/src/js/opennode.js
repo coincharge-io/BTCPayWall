@@ -578,22 +578,6 @@
 
     var redirect = "https://checkout.opennode.com/" + invoice_id;
     location.replace(redirect);
-
-    /*form_container.append(
-      `<div id=opennode_modal><iframe title=OpenNode height=700px width=400px src=${redirect}> </iframe></div>`
-    );
-    $("#opennode_modal").dialog({
-      autoOpen: true,
-      modal: true,
-      resizable: false,
-      width: "auto",
-      height: 700,
-      buttons: {
-        Close: function() {
-          $("#opennode_modal").remove();
-        },
-      },
-    });*/
   }
   function btcpwShowOpenNodeInvoice(
     invoice_id,
@@ -638,22 +622,6 @@
 
     var redirect = "https://checkout.opennode.com/" + invoice_id;
     location.replace(redirect);
-
-    /*form_container.append(
-      `<div id=opennode_modal><iframe title=OpenNode height=700px width=400px src=${redirect}> </iframe></div>`
-    );
-    $("#opennode_modal").dialog({
-      autoOpen: true,
-      modal: true,
-      resizable: false,
-      width: "auto",
-      height: 700,
-      buttons: {
-        Close: function() {
-          $("#opennode_modal").remove();
-        },
-      },
-    });*/
   }
   function btcpwShowTippingOpenNodeInvoice(
     invoice_id,
@@ -698,22 +666,6 @@
 
     var redirect = "https://checkout.opennode.com/" + invoice_id;
     location.replace(redirect);
-
-    /*form_container.append(
-  `<div id=opennode_modal><iframe title=OpenNode height=700px width=400px src=${redirect}> </iframe></div>`
-);
-$("#opennode_modal").dialog({
-  autoOpen: true,
-  modal: true,
-  resizable: false,
-  width: "auto",
-  height: 700,
-  buttons: {
-    Close: function() {
-      $("#opennode_modal").remove();
-    },
-  },
-});*/
   }
   function getCookie(name) {
     const cookies = document.cookie.split(";");
