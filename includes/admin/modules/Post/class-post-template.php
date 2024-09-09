@@ -4,7 +4,7 @@
  * Post Template
  *
  * @package     BTCPayWall
- * @subpackage  Admin/Post_Template
+ * @subpackage  Admin/BTCPayWall_Post_Template
  * @copyright   Copyright (c) 2021, Coincharge
  * @license     http://www.gnu.org/licenses/gpl-2.0.txt GPL-2.0+
  * @since       1.1.0
@@ -21,7 +21,7 @@ if (!defined('ABSPATH')) {
  * @since 1.0.5
  *
  */
-class Post_Template
+class BTCPayWall_Post_Template
 {
     private string $type = 'post';
     public function __construct()
