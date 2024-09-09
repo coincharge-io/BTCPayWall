@@ -18,7 +18,8 @@ function btcpaywall_admin_enqueue_styles()
     wp_enqueue_style('btcpaywall', BTCPAYWALL_PLUGIN_URL . 'assets/src/css/btc-paywall-admin.css', array(), BTCPAYWALL_VERSION, 'all');
 
     wp_enqueue_style('wp-color-picker');
-    wp_enqueue_style('load-fa', 'https://use.fontawesome.com/releases/v5.12.1/css/all.css');
+    // wp_enqueue_style('load-fa', 'https://use.fontawesome.com/releases/v5.12.1/css/all.css');
+    wp_enqueue_style('load-fa', BTCPAYWALL_PLUGIN_URL . 'assets/dist/css/font-awesome.css', array(), null, 'all');
     if (isset($_GET['page']) && ((sanitize_text_field($_GET['page']) == 'btcpw_pay_per_post' || sanitize_text_field($_GET['page']) == 'btcpw_pay_per_view') || sanitize_text_field($_GET['page']) == 'btcpw_pay_per_shortcode')) {
         wp_enqueue_style('btcpaywall_preview', BTCPAYWALL_PLUGIN_URL . 'assets/src/css/btc-paywall-public.css', array(), BTCPAYWALL_VERSION, 'all');
     }
