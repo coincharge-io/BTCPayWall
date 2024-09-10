@@ -27,6 +27,7 @@ if (!defined('ABSPATH')) {
  */
 function btcpaywall_ajax_get_invoice_id()
 {
+    check_ajax_referer('payment-security-nonce', 'nonce_ajax');
     if (empty($_POST['post_id'])) {
         wp_send_json_error(['message' => 'Post_id required']);
     }
@@ -242,6 +243,7 @@ add_action('wp_ajax_nopriv_btcpw_convert_currencies', 'btcpaywall_ajax_convert_c
 
 function btcpaywall_ajax_tipping()
 {
+    check_ajax_referer('payment-security-nonce', 'nonce_ajax');
     $tipper = new BTCPayWall_Tipper();
 
     $tipper->create(
@@ -353,6 +355,7 @@ function btcpaywall_format_server_response($gateway, $response, $type, $customer
 }
 function btcpaywall_paid_invoice()
 {
+    check_ajax_referer('payment-security-nonce', 'nonce_ajax');
     if (empty($_POST['order_id'])) {
         wp_send_json_error();
     }
@@ -418,6 +421,7 @@ add_action('wp_ajax_nopriv_btcpw_paid_invoice', 'btcpaywall_ajax_paid_invoice');
 
 function btcpaywall_paid_tipping()
 {
+    check_ajax_referer('payment-security-nonce', 'nonce_ajax');
     if (empty($_POST['invoice_id'])) {
         wp_send_json_error();
     }
@@ -781,6 +785,7 @@ function btcpaywall_tipping_invoice_args($amount, $currency, $type, $collects, $
 
 function btcpaywall_ajax_paid_opennode_invoice()
 {
+    check_ajax_referer('payment-security-nonce', 'nonce_ajax');
     $id = sanitize_text_field($_POST['id']);
 
     if (!$id) {
@@ -859,6 +864,7 @@ add_action('wp_ajax_nopriv_opennode_paid_invoice', 'btcpaywall_ajax_paid_opennod
  */
 function btcpaywall_paid_lnbits_invoice()
 {
+    check_ajax_referer('payment-security-nonce', 'nonce_ajax');
     $id = sanitize_text_field($_POST['invoice_id']);
     if (!$id) {
         wp_send_json_error(
@@ -916,6 +922,7 @@ add_action('wp_ajax_nopriv_lnbits_paid_invoice', 'btcpaywall_ajax_paid_lnbits_in
  */
 function btcpaywall_ajax_paid_tipping_opennode_invoice()
 {
+    check_ajax_referer('payment-security-nonce', 'nonce_ajax');
     $id = sanitize_text_field($_POST['id']);
 
     if (!$id) {
@@ -976,6 +983,7 @@ add_action('wp_ajax_nopriv_opennode_tipping_paid_invoice', 'btcpaywall_ajax_paid
  */
 function btcpaywall_ajax_paid_tipping_lnbits_invoice()
 {
+    check_ajax_referer('payment-security-nonce', 'nonce_ajax');
     $id = sanitize_text_field($_POST['id']);
 
     if (!$id) {
@@ -1037,6 +1045,7 @@ add_action('wp_ajax_lnbits_tipping_paid_invoice', 'btcpaywall_ajax_paid_tipping_
 add_action('wp_ajax_nopriv_lnbits_tipping_paid_invoice', 'btcpaywall_ajax_paid_tipping_lnbits_invoice');
 function btcpaywall_ajax_add_to_cart()
 {
+    check_ajax_referer('payment-security-nonce', 'nonce_ajax');
     if (!is_numeric($_POST['id'])) {
         wp_send_json_error();
     }
@@ -1053,6 +1062,7 @@ add_action('wp_ajax_nopriv_btcpw_add_to_cart', 'btcpaywall_ajax_add_to_cart');
 
 function btcpaywall_ajax_remove_from_cart()
 {
+    check_ajax_referer('payment-security-nonce', 'nonce_ajax');
     if (!is_numeric($_POST['cart_item'])) {
         wp_send_json_error();
     }
@@ -1071,6 +1081,7 @@ add_action('wp_ajax_nopriv_btcpw_remove_from_cart', 'btcpaywall_ajax_remove_from
 
 function btcpaywall_ajax_generate_invoice_id_content_file()
 {
+    check_ajax_referer('payment-security-nonce', 'nonce_ajax');
     $gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer');
     $products = BTCPayWall()->cart->get_contents();
     $total = btcpaywall_get_total();
@@ -1195,6 +1206,7 @@ add_action('wp_ajax_nopriv_btcpw_generate_content_file_invoice_id', 'btcpaywall_
 
 function btcpaywall_ajax_paid_content_file_invoice()
 {
+    check_ajax_referer('payment-security-nonce', 'nonce_ajax');
     if (empty($_POST['invoice_id'])) {
         wp_send_json_error();
     }
@@ -1363,6 +1375,7 @@ add_action('wp_ajax_nopriv_btcpw_coinsnap_monitor_invoice_status', 'btcpaywall_a
 
 function btcpaywall_ajax_check_invoice_after_expiration()
 {
+    check_ajax_referer('payment-security-nonce', 'nonce_ajax');
     if (empty($_POST['order_id'])) {
         wp_send_json_error();
     }

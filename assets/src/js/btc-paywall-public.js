@@ -10,6 +10,7 @@
         data: {
           action: "btcpw_remove_from_cart",
           cart_item: item,
+          nonce_ajax: payment.security,
         },
         success: function() {
           location.reload();
@@ -27,6 +28,7 @@
           action: "btcpw_add_to_cart",
           id: id,
           title: title,
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           if (response.success) {
@@ -80,7 +82,7 @@
   $(document).ready(function() {
     var eur, usd, sats, gbp;
     $(
-      "#btcpw_tipping_amount,#btcpw_tipping_amount_btcpw_widget,#btcpw_page_tipping_amount,#btcpw_widget_btcpw_skyscraper_tipping_amount_high,#btcpw_widget_btcpw_skyscraper_tipping_amount_wide,#btcpw_skyscraper_tipping_high_amount,#btcpw_skyscraper_tipping_wide_amount "
+      "#btcpw_tipping_amount,#btcpw_tipping_amount_btcpw_widget,#btcpw_page_tipping_amount,#btcpw_widget_btcpw_skyscraper_tipping_amount_high,#btcpw_widget_btcpw_skyscraper_tipping_amount_wide,#btcpw_skyscraper_tipping_high_amount,#btcpw_skyscraper_tipping_wide_amount ",
     ).on("input", function() {
       if (eur) {
         return;
@@ -92,7 +94,7 @@
       gbp = rates["data"]["gbp"]["value"];
     });
     $(
-      "#value_1_high, #value_2_high, #value_3_high,#value_1_wide, #value_2_wide, #value_3_wide"
+      "#value_1_high, #value_2_high, #value_3_high,#value_1_wide, #value_2_wide, #value_3_wide",
     ).on("change", function() {
       if (eur) {
         return;
@@ -104,7 +106,7 @@
       gbp = rates["data"]["gbp"]["value"];
     });
     $(
-      ".btcpw_skyscraper_amount_value_1, .btcpw_skyscraper_amount_value_2, .btcpw_skyscraper_amount_value_3,.btcpw_page_amount_value_1, .btcpw_page_amount_value_2, .btcpw_page_amount_value_3"
+      ".btcpw_skyscraper_amount_value_1, .btcpw_skyscraper_amount_value_2, .btcpw_skyscraper_amount_value_3,.btcpw_page_amount_value_1, .btcpw_page_amount_value_2, .btcpw_page_amount_value_3",
     ).on("click", function() {
       if (eur) {
         return;
@@ -158,7 +160,7 @@
       "input",
       function() {
         var currency = $(
-          "#btcpw_widget_btcpw_skyscraper_tipping_currency_high"
+          "#btcpw_widget_btcpw_skyscraper_tipping_currency_high",
         ).val();
         var amount = $(this).val();
         $("#btcpw_widget_btcpw_skyscraper_converted_amount_high")
@@ -169,14 +171,14 @@
           .attr("readonly", false)
           .val(get_currency(currency))
           .attr("readonly", true);
-      }
+      },
     );
 
     $("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").on(
       "input",
       function() {
         var currency = $(
-          "#btcpw_widget_btcpw_skyscraper_tipping_currency_wide"
+          "#btcpw_widget_btcpw_skyscraper_tipping_currency_wide",
         ).val();
         var amount = $(this).val();
         $("#btcpw_widget_btcpw_skyscraper_converted_amount_wide")
@@ -187,7 +189,7 @@
           .attr("readonly", false)
           .val(get_currency(currency))
           .attr("readonly", true);
-      }
+      },
     );
 
     $("#btcpw_skyscraper_tipping_high_amount").on("input", function() {
@@ -208,7 +210,7 @@
         $("#btcpw_skyscraper_high_converted_amount")
           .attr("readonly", false)
           .val(
-            fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp)
+            fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp),
           )
           .attr("readonly", true);
         $("#btcpw_skyscraper_high_converted_currency")
@@ -236,7 +238,7 @@
         $("#btcpw_skyscraper_wide_converted_amount")
           .attr("readonly", false)
           .val(
-            fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp)
+            fiat_to_crypto(predefined[1], predefined[0], usd, eur, sats, gbp),
           )
           .attr("readonly", true);
         $("#btcpw_skyscraper_wide_converted_currency")
@@ -246,7 +248,7 @@
       }
     });
     $(
-      ".btcpw_page_amount_value_1, .btcpw_page_amount_value_2, .btcpw_page_amount_value_3"
+      ".btcpw_page_amount_value_1, .btcpw_page_amount_value_2, .btcpw_page_amount_value_3",
     ).on("click", function() {
       switch ($(this)[0].className) {
         case "btcpw_page_amount_value_1":
@@ -282,42 +284,42 @@
     });
 
     $(
-      ".btcpw_widget.btcpw_skyscraper_amount_value_1.high, .btcpw_widget.btcpw_skyscraper_amount_value_2.high, .btcpw_widget.btcpw_skyscraper_amount_value_3.high"
+      ".btcpw_widget.btcpw_skyscraper_amount_value_1.high, .btcpw_widget.btcpw_skyscraper_amount_value_2.high, .btcpw_widget.btcpw_skyscraper_amount_value_3.high",
     ).on("click", function() {
       switch ($(this)[0].className) {
         case "btcpw_widget.btcpw_skyscraper_amount_value_1.high":
           $(".btcpw_widget.btcpw_skyscraper_amount_value_2.high").removeClass(
-            "selected"
+            "selected",
           );
           $(".btcpw_widget.btcpw_skyscraper_amount_value_3.high").removeClass(
-            "selected"
+            "selected",
           );
           break;
         case "btcpw_widget.btcpw_skyscraper_amount_value_2.high":
           $(".btcpw_widget.btcpw_skyscraper_amount_value_1.high").removeClass(
-            "selected"
+            "selected",
           );
           $(".btcpw_widget.btcpw_skyscraper_amount_value_3.high").removeClass(
-            "selected"
+            "selected",
           );
           break;
         case "btcpw_widget.btcpw_skyscraper_amount_value_3.high":
           $(".btcpw_widget.btcpw_skyscraper_amount_value_1.high").removeClass(
-            "selected"
+            "selected",
           );
           $(".btcpw_widget.btcpw_skyscraper_amount_value_2.high").removeClass(
-            "selected"
+            "selected",
           );
           break;
         default:
           $(".btcpw_widget.btcpw_skyscraper_amount_value_1.high").removeClass(
-            "selected"
+            "selected",
           );
           $(".btcpw_widget.btcpw_skyscraper_amount_value_2.high").removeClass(
-            "selected"
+            "selected",
           );
           $(".btcpw_widget.btcpw_skyscraper_amount_value_3.high").removeClass(
-            "selected"
+            "selected",
           );
       }
       $(this).children().find("input:radio").prop("checked", true).change();
@@ -336,42 +338,42 @@
     });
 
     $(
-      ".btcpw_widget.btcpw_skyscraper_amount_value_1.wide, .btcpw_widget.btcpw_skyscraper_amount_value_2.wide, .btcpw_widget.btcpw_skyscraper_amount_value_3.wide"
+      ".btcpw_widget.btcpw_skyscraper_amount_value_1.wide, .btcpw_widget.btcpw_skyscraper_amount_value_2.wide, .btcpw_widget.btcpw_skyscraper_amount_value_3.wide",
     ).on("click", function() {
       switch ($(this)[0].className) {
         case "btcpw_widget.btcpw_skyscraper_amount_value_1.wide":
           $(".btcpw_widget.btcpw_skyscraper_amount_value_2.wide").removeClass(
-            "selected"
+            "selected",
           );
           $(".btcpw_widget.btcpw_skyscraper_amount_value_3.wide").removeClass(
-            "selected"
+            "selected",
           );
           break;
         case "btcpw_widget.btcpw_skyscraper_amount_value_2.wide":
           $(".btcpw_widget.btcpw_skyscraper_amount_value_1.wide").removeClass(
-            "selected"
+            "selected",
           );
           $(".btcpw_widget.btcpw_skyscraper_amount_value_3.wide").removeClass(
-            "selected"
+            "selected",
           );
           break;
         case "btcpw_widget.btcpw_skyscraper_amount_value_3.wide":
           $(".btcpw_widget.btcpw_skyscraper_amount_value_1.wide").removeClass(
-            "selected"
+            "selected",
           );
           $(".btcpw_widget.btcpw_skyscraper_amount_value_2.wide").removeClass(
-            "selected"
+            "selected",
           );
           break;
         default:
           $(".btcpw_widget.btcpw_skyscraper_amount_value_1.wide").removeClass(
-            "selected"
+            "selected",
           );
           $(".btcpw_widget.btcpw_skyscraper_amount_value_2.wide").removeClass(
-            "selected"
+            "selected",
           );
           $(".btcpw_widget.btcpw_skyscraper_amount_value_3.wide").removeClass(
-            "selected"
+            "selected",
           );
       }
       $(this).children().find("input:radio").prop("checked", true).change();
@@ -389,7 +391,7 @@
         .attr("readonly", true);
     });
     $(
-      ".btcpw_skyscraper_amount_value_1.high, .btcpw_skyscraper_amount_value_2.high, .btcpw_skyscraper_amount_value_3.high"
+      ".btcpw_skyscraper_amount_value_1.high, .btcpw_skyscraper_amount_value_2.high, .btcpw_skyscraper_amount_value_3.high",
     ).on("click", function() {
       switch ($(this)[0].className) {
         case "btcpw_skyscraper_amount_value_1.high":
@@ -424,7 +426,7 @@
         .attr("readonly", true);
     });
     $(
-      ".btcpw_skyscraper_amount_value_1.wide, .btcpw_skyscraper_amount_value_2.wide, .btcpw_skyscraper_amount_value_3.wide"
+      ".btcpw_skyscraper_amount_value_1.wide, .btcpw_skyscraper_amount_value_2.wide, .btcpw_skyscraper_amount_value_3.wide",
     ).on("click", function() {
       switch ($(this)[0].className) {
         case "btcpw_skyscraper_amount_value_1.wide":
@@ -494,31 +496,31 @@
       function() {
         $("input[type=radio][name=btcpw_tipping_default_amount]").attr(
           "required",
-          true
+          true,
         );
         $("#btcpw_tipping_amount").removeAttr("required");
         $("#btcpw_tipping_amount").val("");
-      }
+      },
     );
     $("#btcpw_tipping_amount").on("click", function() {
       $("#btcpw_tipping_amount").attr("required", true);
       $("input[type=radio][name=btcpw_tipping_default_amount]").removeAttr(
-        "required"
+        "required",
       );
       $("input[type=radio][name=btcpw_tipping_default_amount]").prop(
         "checked",
-        false
+        false,
       );
     });
 
     $(
-      "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]"
+      "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]",
     ).change(function() {
       $(
-        "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]"
+        "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]",
       ).attr("required", true);
       $("input[name=btcpw_skyscraper_tipping_amount_wide]").removeAttr(
-        "required"
+        "required",
       );
       $("input[name=btcpw_skyscraper_tipping_amount_wide]").val("");
     });
@@ -527,28 +529,28 @@
       function() {
         $("input[name=btcpw_skyscraper_tipping_amount_wide]").attr(
           "required",
-          true
+          true,
         );
         $(
-          "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]"
+          "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]",
         ).removeAttr("required");
         $(
-          "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]"
+          "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]",
         ).prop("checked", false);
         $(".btcpw_skyscraper_amount_value_1.wide").removeClass("selected");
         $(".btcpw_skyscraper_amount_value_2.wide").removeClass("selected");
         $(".btcpw_skyscraper_amount_value_3.wide").removeClass("selected");
-      }
+      },
     );
 
     $(
-      "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]"
+      "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]",
     ).change(function() {
       $(
-        "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]"
+        "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]",
       ).attr("required", true);
       $("input[name=btcpw_skyscraper_tipping_amount_high]").removeAttr(
-        "required"
+        "required",
       );
       $("input[name=btcpw_skyscraper_tipping_amount_high]").val("");
     });
@@ -557,31 +559,31 @@
       function() {
         $("input[name=btcpw_skyscraper_tipping_amount_high]").attr(
           "required",
-          true
+          true,
         );
         $(
-          "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]"
+          "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]",
         ).removeAttr("required");
         $(
-          "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]"
+          "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]",
         ).prop("checked", false);
         $(".btcpw_skyscraper_amount_value_1.high").removeClass("selected");
         $(".btcpw_skyscraper_amount_value_2.high").removeClass("selected");
         $(".btcpw_skyscraper_amount_value_3.high").removeClass("selected");
-      }
+      },
     );
 
     $(
-      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
+      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]",
     ).change(function() {
       $(
-        "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
+        "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]",
       ).attr("required", true);
       $(
-        "input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]"
+        "input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]",
       ).removeAttr("required");
       $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]").val(
-        ""
+        "",
       );
     });
     $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]").on(
@@ -589,37 +591,37 @@
       function() {
         $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]").attr(
           "required",
-          true
+          true,
         );
         $(
-          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
+          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]",
         ).removeAttr("required");
         $(
-          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
+          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]",
         ).prop("checked", false);
         $(".btcpw_widget.btcpw_skyscraper_amount_value_1.wide").removeClass(
-          "selected"
+          "selected",
         );
         $(".btcpw_widget.btcpw_skyscraper_amount_value_2.wide").removeClass(
-          "selected"
+          "selected",
         );
         $(".btcpw_widget.btcpw_skyscraper_amount_value_3.wide").removeClass(
-          "selected"
+          "selected",
         );
-      }
+      },
     );
 
     $(
-      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
+      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]",
     ).change(function() {
       $(
-        "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
+        "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]",
       ).attr("required", true);
       $(
-        "input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]"
+        "input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]",
       ).removeAttr("required");
       $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]").val(
-        ""
+        "",
       );
     });
     $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]").on(
@@ -627,35 +629,35 @@
       function() {
         $("input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]").attr(
           "required",
-          true
+          true,
         );
         $(
-          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
+          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]",
         ).removeAttr("required");
         $(
-          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
+          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]",
         ).prop("checked", false);
         $(".btcpw_widget.btcpw_skyscraper_amount_value_1.high").removeClass(
-          "selected"
+          "selected",
         );
         $(".btcpw_widget.btcpw_skyscraper_amount_value_2.high").removeClass(
-          "selected"
+          "selected",
         );
         $(".btcpw_widget.btcpw_skyscraper_amount_value_3.high").removeClass(
-          "selected"
+          "selected",
         );
-      }
+      },
     );
   });
   $(document).ready(function() {
     $(
-      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
+      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]",
     ).change(function() {
       $(
-        "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
+        "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]",
       ).attr("required", true);
       $("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").removeAttr(
-        "required"
+        "required",
       );
       $("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").val("");
     });
@@ -664,26 +666,26 @@
       function() {
         $("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").attr(
           "required",
-          true
+          true,
         );
         $(
-          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
+          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]",
         ).removeAttr("required");
         $(
-          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
+          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]",
         ).prop("checked", false);
-      }
+      },
     );
   });
   $(document).ready(function() {
     $(
-      "input[name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
+      "input[name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]",
     ).change(function() {
       $(
-        "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
+        "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]",
       ).attr("required", true);
       $("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").removeAttr(
-        "required"
+        "required",
       );
       $("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").val("");
     });
@@ -692,35 +694,35 @@
       function() {
         $("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").attr(
           "required",
-          true
+          true,
         );
         $(
-          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
+          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]",
         ).removeAttr("required");
         $(
-          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
+          "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]",
         ).prop("checked", false);
-      }
+      },
     );
 
     $("input[type=radio][name=btcpw_page_tipping_default_amount]").change(
       function() {
         $("input[type=radio][name=btcpw_page_tipping_default_amount]").attr(
           "required",
-          true
+          true,
         );
         $("#btcpw_page_tipping_amount").removeAttr("required");
         $("#btcpw_page_tipping_amount").val("");
-      }
+      },
     );
     $("#btcpw_page_tipping_amount").on("click", function() {
       $("#btcpw_page_tipping_amount").attr("required", true);
       $("input[type=radio][name=btcpw_page_tipping_default_amount]").removeAttr(
-        "required"
+        "required",
       );
       $("input[type=radio][name=btcpw_page_tipping_default_amount]").prop(
         "checked",
-        false
+        false,
       );
       $(".btcpw_page_amount_value_1").removeClass("selected");
       $(".btcpw_page_amount_value_2").removeClass("selected");
@@ -730,10 +732,10 @@
   $(document).ready(function() {
     var previous_form, next_form;
     var freeInput = $(
-      "input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]"
+      "input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_high]",
     );
     var fixedAmount = $(
-      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]"
+      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]",
     );
     var validationField =
       fixedAmount.length !== 0 && freeInput.length === 0
@@ -757,17 +759,17 @@
         next_form = $(this).parent().parent().parent().prev();
         next_form.show();
         previous_form.hide();
-      }
+      },
     );
   });
 
   $(document).ready(function() {
     var previous_form, next_form;
     var freeInput = $(
-      "input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]"
+      "input[name=btcpw_widget_btcpw_skyscraper_tipping_amount_wide]",
     );
     var fixedAmount = $(
-      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]"
+      "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]",
     );
 
     var validationField =
@@ -792,7 +794,7 @@
         next_form = $(this).parent().parent().parent().prev();
         next_form.show();
         previous_form.hide();
-      }
+      },
     );
   });
   $(document).ready(function() {
@@ -830,7 +832,7 @@
     var previous_form, next_form;
     var freeInput = $("input[name=btcpw_skyscraper_tipping_amount_high]");
     var fixedAmount = $(
-      "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]"
+      "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]",
     );
     var validationField =
       fixedAmount.length !== 0 && freeInput.length === 0
@@ -859,7 +861,7 @@
     var previous_form, next_form;
     var freeInput = $("input[name=btcpw_skyscraper_tipping_amount_wide]");
     var fixedAmount = $(
-      "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]"
+      "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]",
     );
     var validationField =
       fixedAmount.length !== 0 && freeInput.length === 0
