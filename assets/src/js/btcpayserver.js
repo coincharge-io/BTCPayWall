@@ -45,6 +45,7 @@
         data: {
           action: "btcpw_paid_tipping",
           invoice_id: getCookie("btcpw_donation_initiated_" + payment.post_id),
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           if (response.success) {
@@ -63,6 +64,7 @@
         data: {
           action: "btcpw_check_order_after_expiration",
           order_id: getCookie("btcpw_initiated_" + payment.post_id),
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           if (response.success) {
@@ -115,6 +117,7 @@
           message: $(
             "#btcpw_revenue_post_customer_message, #btcpw_revenue_view_customer_message, #btcpw_revenue_file_customer_message",
           ).val(),
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           $("#btcpw_pay__button").html(text);
@@ -157,6 +160,7 @@
             "input[type=radio][name=btcpw_tipping_default_amount]:checked",
           ).val(),
           type: "Tipping Box",
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           $("#btcpw_tipping__button").html(text);
@@ -201,6 +205,7 @@
           currency: $("#btcpw_tipping_currency_btcpw_widget").val(),
           amount: $("#btcpw_tipping_amount_btcpw_widget").val(),
           type: "Tipping Box Widget",
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           $("#btcpw_tipping__button_btcpw_widget").html(text);
@@ -253,6 +258,7 @@
           phone: $("#btcpw_page_tipping_donor_phone").val(),
           message: $("#btcpw_page_tipping_donor_message").val(),
           type: "Tipping Page",
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           $("#btcpw_page_tipping__button").html(text);
@@ -304,6 +310,7 @@
           phone: $("#btcpw_skyscraper_tipping_donor_phone_high").val(),
           message: $("#btcpw_skyscraper_tipping_donor_message_high").val(),
           type: "Tipping Banner High",
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           $("#btcpw_skyscraper_tipping_high_button").html(text);
@@ -372,6 +379,7 @@
             "#btcpw_widget_btcpw_skyscraper_tipping_donor_message_high",
           ).val(),
           type: "Tipping Banner High Widget",
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           $("#btcpw_widget_btcpw_skyscraper_tipping__button_high").html(text);
@@ -423,6 +431,7 @@
           phone: $("#btcpw_skyscraper_tipping_donor_phone_wide").val(),
           message: $("#btcpw_skyscraper_tipping_donor_message_wide").val(),
           type: "Tipping Banner Wide",
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           $("#btcpw_skyscraper_tipping_wide_button").html(text);
@@ -489,6 +498,7 @@
             "#btcpw_widget_btcpw_skyscraper_tipping_donor_message_wide",
           ).val(),
           type: "Tipping Banner Wide Widget",
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           $("#btcpw_widget_btcpw_skyscraper_tipping__button_wide").html(text);
@@ -526,6 +536,7 @@
             invoice_id: invoice_id,
             order_id: order_id,
             amount: amount,
+            nonce_ajax: payment.security,
           },
           success: function(response) {
             if (response.success) {
@@ -550,6 +561,7 @@
           data: {
             action: "btcpw_paid_content_file_invoice",
             invoice_id: invoice_id,
+            nonce_ajax: payment.security,
           },
           success: function(response) {
             if (response.success) {
@@ -574,6 +586,7 @@
           data: {
             action: "btcpw_paid_tipping",
             invoice_id: invoice_id,
+            nonce_ajax: payment.security,
           },
           success: function(response) {
             if (response.success) {
@@ -607,6 +620,7 @@
           data: {
             action: "btcpw_paid_tipping",
             invoice_id: invoice_id,
+            nonce_ajax: payment.security,
           },
           success: function(response) {
             if (response.success) {

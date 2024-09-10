@@ -2,7 +2,7 @@
   "use strict";
   function showQR(target, request) {
     target.append(
-      `<div id=lnbits_modal style="padding:20px; margin: 0 auto;"><div class=btcpaywall-qr-code></div></div>`
+      `<div id=lnbits_modal style="padding:20px; margin: 0 auto;"><div class=btcpaywall-qr-code></div></div>`,
     );
     $(".btcpaywall-qr-code").qrcode({ width: 450, height: 450, text: request });
     let dialog = $("#lnbits_modal").dialog({
@@ -19,7 +19,7 @@
             .then(() =>
               $(".ui-dialog-buttonset button:first-child")
                 .text("Copied to clipboard")
-                .css({ backgroundColor: "#008000", color: "#fff" })
+                .css({ backgroundColor: "#008000", color: "#fff" }),
             );
         },
         Close: function() {
@@ -39,13 +39,13 @@
         btcpwShowLNBitsFileInvoice(
           payment_request,
           btcpw_invoice_id,
-          form_container
+          form_container,
         );
         return;
       }
       var text = $(".btcpw_digital_download").text();
       $(".btcpw_digital_download").html(
-        `<span class="tipping-border" role="status" aria-hidden="true"></span>`
+        `<span class="tipping-border" role="status" aria-hidden="true"></span>`,
       );
 
       $.ajax({
@@ -58,6 +58,7 @@
           address: $("#btcpw_digital_download_customer_address").val(),
           phone: $("#btcpw_digital_download_customer_phone").val(),
           message: $("#btcpw_digital_download_customer_message").val(),
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           $(".btcpw_digital_download").html(text);
@@ -70,7 +71,7 @@
             btcpwShowLNBitsFileInvoice(
               payment_request,
               btcpw_invoice_id,
-              form_container
+              form_container,
             );
           }
         },
@@ -88,13 +89,13 @@
         btcpwShowLNBitsInvoice(
           payment_request,
           btcpw_invoice_id,
-          form_container
+          form_container,
         );
         return;
       }
       var text = $("#btcpw_pay__button").text();
       $("#btcpw_pay__button").html(
-        `<span class="tipping-border" role="status" aria-hidden="true"></span>`
+        `<span class="tipping-border" role="status" aria-hidden="true"></span>`,
       );
       var post_id = $("#btcpw_pay__button").data("post_id");
 
@@ -105,20 +106,21 @@
           action: "btcpw_get_invoice_id",
           post_id: post_id,
           full_name: $(
-            "#btcpw_revenue_post_customer_name, #btcpw_revenue_view_customer_name, #btcpw_revenue_file_customer_name"
+            "#btcpw_revenue_post_customer_name, #btcpw_revenue_view_customer_name, #btcpw_revenue_file_customer_name",
           ).val(),
           email: $(
-            "#btcpw_revenue_post_customer_email, #btcpw_revenue_view_customer_email, #btcpw_revenue_file_customer_email"
+            "#btcpw_revenue_post_customer_email, #btcpw_revenue_view_customer_email, #btcpw_revenue_file_customer_email",
           ).val(),
           address: $(
-            "#btcpw_revenue_post_customer_address, #btcpw_revenue_view_customer_address, #btcpw_revenue_file_customer_address"
+            "#btcpw_revenue_post_customer_address, #btcpw_revenue_view_customer_address, #btcpw_revenue_file_customer_address",
           ).val(),
           phone: $(
-            "#btcpw_revenue_post_customer_phone, #btcpw_revenue_view_customer_phone, #btcpw_revenue_file_customer_phone"
+            "#btcpw_revenue_post_customer_phone, #btcpw_revenue_view_customer_phone, #btcpw_revenue_file_customer_phone",
           ).val(),
           message: $(
-            "#btcpw_revenue_post_customer_message, #btcpw_revenue_view_customer_message, #btcpw_revenue_file_customer_message"
+            "#btcpw_revenue_post_customer_message, #btcpw_revenue_view_customer_message, #btcpw_revenue_file_customer_message",
           ).val(),
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           $("#btcpw_pay__button").html(text);
@@ -126,12 +128,12 @@
             payment_request = response.data.payment_request;
             btcpw_invoice_id = response.data.invoice_id;
             form_container = $(
-              ".btcpw_revenue_post_container,.btcpw_revenue_view_container"
+              ".btcpw_revenue_post_container,.btcpw_revenue_view_container",
             );
             btcpwShowLNBitsInvoice(
               payment_request,
               btcpw_invoice_id,
-              form_container
+              form_container,
             );
           }
         },
@@ -148,13 +150,13 @@
         btcpwShowLNBitsInvoice(
           payment_request,
           btcpw_invoice_id,
-          form_container
+          form_container,
         );
         return;
       }
       var text = $("#btcpw_tipping__button").text();
       $("#btcpw_tipping__button").html(
-        `<span class="tipping-border" role="status" aria-hidden="true"></span>`
+        `<span class="tipping-border" role="status" aria-hidden="true"></span>`,
       );
       e.preventDefault();
 
@@ -166,9 +168,10 @@
           currency: $("#btcpw_tipping_currency").val(),
           amount: $("#btcpw_tipping_amount").val(),
           predefined_amount: $(
-            "input[type=radio][name=btcpw_tipping_default_amount]:checked"
+            "input[type=radio][name=btcpw_tipping_default_amount]:checked",
           ).val(),
           type: "Tipping Box",
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           $("#btcpw_tipping__button").html(text);
@@ -187,7 +190,7 @@
               payment_request,
               btcpw_invoice_id,
               form_container,
-              $("#btcpw_redirect_link").val()
+              $("#btcpw_redirect_link").val(),
             );
           }
         },
@@ -203,13 +206,13 @@
         btcpwShowLNBitsInvoice(
           payment_request,
           btcpw_invoice_id,
-          form_container
+          form_container,
         );
         return;
       }
       var text = $("#btcpw_tipping__button_btcpw_widget").text();
       $("#btcpw_tipping__button_btcpw_widget").html(
-        `<span class="tipping-border" role="status" aria-hidden="true"></span>`
+        `<span class="tipping-border" role="status" aria-hidden="true"></span>`,
       );
       $.ajax({
         url: "/wp-admin/admin-ajax.php",
@@ -219,6 +222,7 @@
           currency: $("#btcpw_tipping_currency_btcpw_widget").val(),
           amount: $("#btcpw_tipping_amount_btcpw_widget").val(),
           type: "Tipping Box Widget",
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           $("#btcpw_tipping__button_btcpw_widget").html(text);
@@ -230,7 +234,7 @@
               payment_request,
               btcpw_invoice_id,
               form_container,
-              $("#btcpw_redirect_link_btcpw_widget").val()
+              $("#btcpw_redirect_link_btcpw_widget").val(),
             );
             donor =
               "Type: Tipping Box Widget" +
@@ -253,13 +257,13 @@
         btcpwShowLNBitsInvoice(
           payment_request,
           btcpw_invoice_id,
-          form_container
+          form_container,
         );
         return;
       }
       var text = $("#btcpw_page_tipping__button").text();
       $("#btcpw_page_tipping__button").html(
-        `<span class="tipping-border" role="status" aria-hidden="true"></span>`
+        `<span class="tipping-border" role="status" aria-hidden="true"></span>`,
       );
 
       $.ajax({
@@ -270,7 +274,7 @@
           currency: $("#btcpw_page_tipping_currency").val(),
           amount: $("#btcpw_page_tipping_amount").val(),
           predefined_amount: $(
-            "input[type=radio][name=btcpw_page_tipping_default_amount]:checked"
+            "input[type=radio][name=btcpw_page_tipping_default_amount]:checked",
           ).val(),
           name: $("#btcpw_page_tipping_donor_name").val(),
           email: $("#btcpw_page_tipping_donor_email").val(),
@@ -278,6 +282,7 @@
           phone: $("#btcpw_page_tipping_donor_phone").val(),
           message: $("#btcpw_page_tipping_donor_message").val(),
           type: "Tipping Page",
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           $("#btcpw_page_tipping__button").html(text);
@@ -289,7 +294,7 @@
               payment_request,
               btcpw_invoice_id,
               form_container,
-              $("#btcpw_page_redirect_link").val()
+              $("#btcpw_page_redirect_link").val(),
             );
             donor =
               "Type: Tipping Page" +
@@ -311,13 +316,13 @@
         btcpwShowLNBitsInvoice(
           payment_request,
           btcpw_invoice_id,
-          form_container
+          form_container,
         );
         return;
       }
       var text = $("#btcpw_skyscraper_tipping_high_button").text();
       $("#btcpw_skyscraper_tipping_high_button").html(
-        `<span class="tipping-border" role="status" aria-hidden="true"></span>`
+        `<span class="tipping-border" role="status" aria-hidden="true"></span>`,
       );
 
       $.ajax({
@@ -328,7 +333,7 @@
           currency: $("#btcpw_skyscraper_tipping_high_currency").val(),
           amount: $("#btcpw_skyscraper_tipping_high_amount").val(),
           predefined_amount: $(
-            " input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]:checked"
+            " input[type=radio][name=btcpw_skyscraper_tipping_default_amount_high]:checked",
           ).val(),
           name: $("#btcpw_skyscraper_tipping_donor_name_high").val(),
           email: $("#btcpw_skyscraper_tipping_donor_email_high").val(),
@@ -336,6 +341,7 @@
           phone: $("#btcpw_skyscraper_tipping_donor_phone_high").val(),
           message: $("#btcpw_skyscraper_tipping_donor_message_high").val(),
           type: "Tipping Banner High",
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           $("#btcpw_skyscraper_tipping_high_button").html(text);
@@ -348,7 +354,7 @@
               payment_request,
               btcpw_invoice_id,
               form_container,
-              $("#btcpw_skyscraper_redirect_link_high").val()
+              $("#btcpw_skyscraper_redirect_link_high").val(),
             );
             donor =
               "Type: Tipping Banner High" +
@@ -371,15 +377,15 @@
         btcpwShowLNBitsInvoice(
           payment_request,
           btcpw_invoice_id,
-          form_container
+          form_container,
         );
         return;
       }
       var text = $(
-        "#btcpw_widget_btcpw_skyscraper_tipping__button_high"
+        "#btcpw_widget_btcpw_skyscraper_tipping__button_high",
       ).text();
       $("#btcpw_widget_btcpw_skyscraper_tipping__button_high").html(
-        `<span class="tipping-border" role="status" aria-hidden="true"></span>`
+        `<span class="tipping-border" role="status" aria-hidden="true"></span>`,
       );
 
       $.ajax({
@@ -388,28 +394,29 @@
         data: {
           action: "btcpw_tipping",
           currency: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_currency_high"
+            "#btcpw_widget_btcpw_skyscraper_tipping_currency_high",
           ).val(),
           amount: $("#btcpw_widget_btcpw_skyscraper_tipping_amount_high").val(),
           predefined_amount: $(
-            "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]:checked"
+            "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_high]:checked",
           ).val(),
           name: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_name_high"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_name_high",
           ).val(),
           email: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_email_high"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_email_high",
           ).val(),
           address: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_address_high"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_address_high",
           ).val(),
           phone: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_phone_high"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_phone_high",
           ).val(),
           message: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_message_high"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_message_high",
           ).val(),
           type: "Tipping Banner High Widget",
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           $("#btcpw_widget_btcpw_skyscraper_tipping__button_high").html(text);
@@ -421,7 +428,7 @@
               payment_request,
               btcpw_invoice_id,
               form_container,
-              $("#btcpw_widget_btcpw_skyscraper_redirect_link_high").val()
+              $("#btcpw_widget_btcpw_skyscraper_redirect_link_high").val(),
             );
             donor =
               "Type: Tipping Banner High Widget" +
@@ -443,13 +450,13 @@
         btcpwShowLNBitsInvoice(
           payment_request,
           btcpw_invoice_id,
-          form_container
+          form_container,
         );
         return;
       }
       var text = $("#btcpw_skyscraper_tipping_wide_button").text();
       $("#btcpw_skyscraper_tipping_wide_button").html(
-        `<span class="tipping-border" role="status" aria-hidden="true"></span>`
+        `<span class="tipping-border" role="status" aria-hidden="true"></span>`,
       );
 
       $.ajax({
@@ -460,7 +467,7 @@
           currency: $("#btcpw_skyscraper_tipping_wide_currency").val(),
           amount: $("#btcpw_skyscraper_tipping_wide_amount").val(),
           predefined_amount: $(
-            "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]:checked"
+            "input[type=radio][name=btcpw_skyscraper_tipping_default_amount_wide]:checked",
           ).val(),
           name: $("#btcpw_skyscraper_tipping_donor_name_wide").val(),
           email: $("#btcpw_skyscraper_tipping_donor_email_wide").val(),
@@ -468,6 +475,7 @@
           phone: $("#btcpw_skyscraper_tipping_donor_phone_wide").val(),
           message: $("#btcpw_skyscraper_tipping_donor_message_wide").val(),
           type: "Tipping Banner Wide",
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           $("#btcpw_skyscraper_tipping_wide_button").html(text);
@@ -480,7 +488,7 @@
               payment_request,
               btcpw_invoice_id,
               form_container,
-              $("#btcpw_skyscraper_redirect_link_wide").val()
+              $("#btcpw_skyscraper_redirect_link_wide").val(),
             );
             donor =
               "Type: Tipping Banner Wide" +
@@ -502,15 +510,15 @@
         btcpwShowLNBitsInvoice(
           payment_request,
           btcpw_invoice_id,
-          form_container
+          form_container,
         );
         return;
       }
       var text = $(
-        "#btcpw_widget_btcpw_skyscraper_tipping__button_wide"
+        "#btcpw_widget_btcpw_skyscraper_tipping__button_wide",
       ).text();
       $("#btcpw_widget_btcpw_skyscraper_tipping__button_wide").html(
-        `<span class="tipping-border" role="status" aria-hidden="true"></span>`
+        `<span class="tipping-border" role="status" aria-hidden="true"></span>`,
       );
 
       $.ajax({
@@ -519,28 +527,29 @@
         data: {
           action: "btcpw_tipping",
           currency: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_currency_wide"
+            "#btcpw_widget_btcpw_skyscraper_tipping_currency_wide",
           ).val(),
           amount: $("#btcpw_widget_btcpw_skyscraper_tipping_amount_wide").val(),
           predefined_amount: $(
-            "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]:checked"
+            "input[type=radio][name=btcpw_widget_btcpw_skyscraper_tipping_default_amount_wide]:checked",
           ).val(),
           name: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_name_wide"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_name_wide",
           ).val(),
           email: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_email_wide"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_email_wide",
           ).val(),
           address: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_address_wide"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_address_wide",
           ).val(),
           phone: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_phone_wide"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_phone_wide",
           ).val(),
           message: $(
-            "#btcpw_widget_btcpw_skyscraper_tipping_donor_message_wide"
+            "#btcpw_widget_btcpw_skyscraper_tipping_donor_message_wide",
           ).val(),
           type: "Tipping Banner Wide Widget",
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           $("#btcpw_widget_btcpw_skyscraper_tipping__button_wide").html(text);
@@ -552,7 +561,7 @@
               payment_request,
               btcpw_invoice_id,
               form_container,
-              $("#btcpw_widget_btcpw_skyscraper_redirect_link_wide").val()
+              $("#btcpw_widget_btcpw_skyscraper_redirect_link_wide").val(),
             );
             donor =
               "Type: Tipping Banner Wide Widget" +
@@ -575,6 +584,7 @@
         data: {
           action: "btcpw_paid_tipping",
           invoice_id: getCookie("btcpw_donation_initiated_" + payment.post_id),
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           if (response.success) {
@@ -593,6 +603,7 @@
         data: {
           action: "btcpw_check_order_after_expiration",
           order_id: getCookie("btcpw_initiated_" + payment.post_id),
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           if (response.success) {
@@ -611,6 +622,7 @@
         data: {
           action: "btcpw_paid_content_file_invoice",
           invoice_id: getCookie("btcpaywall_initiated_purchase"),
+          nonce_ajax: payment.security,
         },
         success: function(response) {
           if (response.success) {
@@ -644,6 +656,7 @@
             data: {
               action: "btcpw_paid_content_file_invoice",
               invoice_id: invoice_id,
+              nonce_ajax: payment.security,
             },
             success: function(response) {
               if (response.success) {
@@ -664,7 +677,7 @@
     request,
     invoice_id,
     form_container,
-    redirectTo = null
+    redirectTo = null,
   ) {
     let check = setInterval(() => {
       btcpaywall_monitor_invoice(invoice_id).done(function(response) {
@@ -675,12 +688,13 @@
             data: {
               action: "lnbits_paid_invoice",
               invoice_id: invoice_id,
+              nonce_ajax: payment.security,
             },
             success: function(response) {
               if (response.success) {
                 if (
                   /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(
-                    redirectTo
+                    redirectTo,
                   )
                 ) {
                   location.replace(redirectTo);
@@ -703,7 +717,7 @@
     request,
     invoice_id,
     form_container,
-    redirectTo = null
+    redirectTo = null,
   ) {
     let check = setInterval(() => {
       btcpaywall_monitor_invoice(invoice_id).done(function(response) {
@@ -714,12 +728,13 @@
             data: {
               action: "btcpw_paid_tipping",
               invoice_id: invoice_id,
+              nonce_ajax: payment.security,
             },
             success: function(response) {
               if (response.success) {
                 if (
                   /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(
-                    redirectTo
+                    redirectTo,
                   )
                 ) {
                   location.replace(redirectTo);
