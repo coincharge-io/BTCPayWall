@@ -259,9 +259,6 @@ class Tipping_Banner_Wide extends WP_Widget
                     </form>
                 </div>
             </div>
-            <div id="powered_by_skyscraper">
-                <p>Powered by <a href='https://btcpaywall.com/' target='_blank'>BTCPayWall</a></p>
-            </div>
         </div>
     <?php
     }

@@ -168,9 +168,6 @@ class Tipping_Box extends WP_Widget
 
                 </form>
             </div>
-            <div id="powered_by_box">
-                <p>Powered by <a href='https://btcpaywall.com/' target='_blank'>BTCPayWall</a></p>
-            </div>
         </div>
     <?php
     }
