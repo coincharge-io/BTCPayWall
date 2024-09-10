@@ -12,14 +12,16 @@
 
 
 // Exit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 /**
  *
  * @param string $content
- * 
- * 
+ *
+ *
  * @return string
  */
 function btcpaywall_filter_the_content($content)
@@ -43,7 +45,7 @@ function btcpaywall_filter_the_content($content)
 
     return $content_start . $content_end;
 }
-add_filter('the_content',  'btcpaywall_filter_the_content', 50);
+add_filter('the_content', 'btcpaywall_filter_the_content', 50);
 
 
 
@@ -81,17 +83,17 @@ function btcpaywall_change_product_labels()
     $labels = array(
         'name'               => _x('Digital Product', 'Digital Product', 'btcpaywall'),
         'singular_name'      => _x('Digital Product', 'Digital Product', 'btcpaywall'),
-        'add_new'            => __('Add New', 'btcpaywall'),
-        'add_new_item'       => __('Add New Digital Product', 'btcpaywall'),
-        'edit_item'          => __('Edit Digital Product', 'btcpaywall'),
-        'new_item'           => __('New Digital Product', 'btcpaywall'),
-        'all_items'          => __('All Digital Products', 'btcpaywall'),
-        'view_item'          => __('View Digital Product', 'btcpaywall'),
-        'search_items'       => __('Search Digital Product', 'btcpaywall'),
-        'not_found'          => __('No Digital Product found', 'btcpaywall'),
-        'not_found_in_trash' => __('No Digital Product found in Trash', 'btcpaywall'),
+        'add_new'            => esc_html__('Add New', 'btcpaywall'),
+        'add_new_item'       => esc_html__('Add New Digital Product', 'btcpaywall'),
+        'edit_item'          => esc_html__('Edit Digital Product', 'btcpaywall'),
+        'new_item'           => esc_html__('New Digital Product', 'btcpaywall'),
+        'all_items'          => esc_html__('All Digital Products', 'btcpaywall'),
+        'view_item'          => esc_html__('View Digital Product', 'btcpaywall'),
+        'search_items'       => esc_html__('Search Digital Product', 'btcpaywall'),
+        'not_found'          => esc_html__('No Digital Product found', 'btcpaywall'),
+        'not_found_in_trash' => esc_html__('No Digital Product found in Trash', 'btcpaywall'),
         'parent_item_colon'  => '',
-        'menu_name'          => __('Digital Products', 'btcpaywall')
+        'menu_name'          => esc_html__('Digital Products', 'btcpaywall')
     );
     return $labels;
 }
