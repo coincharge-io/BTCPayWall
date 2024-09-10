@@ -174,7 +174,9 @@
   border-color: #0066a2;
   height: 50px;
   width: 100%;
-  font: bold 15px arial, sans-serif;
+  font:
+    bold 15px arial,
+    sans-serif;
   text-shadow: none;
   border-radius: 10px;
   -moz-border-radius: 10px;
@@ -186,7 +188,9 @@
   width: 100%;
   background-color: #008000;
   color: #fff;
-  font: bold 15px arial, sans-serif;
+  font:
+    bold 15px arial,
+    sans-serif;
   border-color: #008000;
   margin: 0 5px;
 }

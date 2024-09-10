@@ -17,7 +17,7 @@ if (! defined('ABSPATH')) {
         <table style="border-collapse: separate; width: 100%;
             table-layout: auto; margin-top:30px;" role="presentation" border="0" cellpadding="0" cellspacing="0">
             <?php $payment_details = new BTCPayWall_Payment($invoice_id);
-            $header1 = strtolower($type)[0] == 't' ? "Tipping Information" : "Payment Information"; ?>
+$header1 = strtolower($type)[0] == 't' ? "Tipping Information" : "Payment Information"; ?>
             <thead>
                 <tr>
                     <th style="color: #000000; font-family: sans-serif; font-weight: 400; line-height: 1.4; font-size: 20px;  border: 1px solid #000000;" colspan="2"><strong><?php echo esc_html__($header1, 'btcpaywall'); ?></strong></th>
@@ -91,7 +91,7 @@ if (! defined('ABSPATH')) {
                                 <?php endif; ?>
                                 <tr>
                                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><strong><?php echo esc_html__(ucfirst($key), 'btcpaywall'); ?></strong></td>
-                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo (esc_html__($value, 'btcpaywall')); ?></td>
+                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo(esc_html__($value, 'btcpaywall')); ?></td>
                                 </tr>
 
                             <?php endif; ?>
@@ -106,15 +106,6 @@ if (! defined('ABSPATH')) {
         <!-- START FOOTER -->
         <div class="footer" style="clear: both; margin-top: 10px; text-align: center; width: 100%;">
             <h4><?php echo esc_html__('Thank you for using BTCPayWall', 'btcpaywall'); ?></h4>
-            <table style="border-collapse: separate; width: 100%;
-            table-layout: auto; margin-top:30px;" role="presentation" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td style="padding-bottom: 10px;
-        padding-top: 10px; color: #999999; font-size: 12px; text-align: center;" class="content-block powered-by">
-                        Powered by <a style="color: #999999; font-size: 12px; text-align: center; text-decoration:none;" href="https://btcpaywall.com/">BTCPayWall</a>.
-                    </td>
-                </tr>
-            </table>
         </div>
     </div>
 </body>
