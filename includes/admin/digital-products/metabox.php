@@ -25,17 +25,17 @@ if (!defined('ABSPATH')) {
 
 function btcpaywall_add_product_meta_boxes()
 {
-    add_meta_box('btcpw_product_amount', __('BTCPayWall Product  Price', 'btcpaywall'), 'btcpaywall_amount', 'digital_download');
+    add_meta_box('btcpw_product_amount', esc_html__('BTCPayWall Product  Price', 'btcpaywall'), 'btcpaywall_amount', 'digital_download');
 
-    add_meta_box('btcpw_product_files', __('BTCPayWall Upload File', 'btcpaywall'), 'btcpaywall_file_upload', 'digital_download');
+    add_meta_box('btcpw_product_files', esc_html__('BTCPayWall Upload File', 'btcpaywall'), 'btcpaywall_file_upload', 'digital_download');
 
-    add_meta_box('btcpw_product_stats', __('BTCPayWall Product Sales', 'btcpaywall'), 'btcpaywall_product_stats', 'digital_download', 'side', 'high');
+    add_meta_box('btcpw_product_stats', esc_html__('BTCPayWall Product Sales', 'btcpaywall'), 'btcpaywall_product_stats', 'digital_download', 'side', 'high');
 
-    add_meta_box('btcpw_product_limit', __('BTCPayWall Product Download Limit', 'btcpaywall'), 'btcpaywall_product_settings', 'digital_download', 'side');
+    add_meta_box('btcpw_product_limit', esc_html__('BTCPayWall Product Download Limit', 'btcpaywall'), 'btcpaywall_product_settings', 'digital_download', 'side');
 
-    add_meta_box('btcpw_product_image', __('BTCPayWall Product Image', 'btcpaywall'), 'btcpaywall_product_image', 'digital_download', 'side');
+    add_meta_box('btcpw_product_image', esc_html__('BTCPayWall Product Image', 'btcpaywall'), 'btcpaywall_product_image', 'digital_download', 'side');
 
-    add_meta_box('_btcpw_product_description', __('BTCPayWall Product Description', 'btcpaywall'), 'btcpaywall_product_description', 'digital_download');
+    add_meta_box('_btcpw_product_description', esc_html__('BTCPayWall Product Description', 'btcpaywall'), 'btcpaywall_product_description', 'digital_download');
 }
 
 add_action('add_meta_boxes', 'btcpaywall_add_product_meta_boxes');
@@ -67,7 +67,7 @@ function btcpaywall_product_settings($post)
     $btcpw_stored_meta = get_post_meta($post->ID);
     $limit = $btcpw_stored_meta['btcpw_product_limit'][0] ?? 0;
 
-?>
+    ?>
     <div class='btcpw_product_limit'>
         <div>
             <label for="btcpw_product_download_limit">Download limit <span class="btcpaywall_helper_tip" title="Set 0 for unlimited number of downloads."></span></label>
@@ -83,7 +83,7 @@ function btcpaywall_product_image($post)
     $btcpw_stored_meta = get_post_meta($post->ID);
     $logo_id = $btcpw_stored_meta['btcpw_product_image_id'][0] ?? '';
     $logo = wp_get_attachment_image_src($logo_id);
-?>
+    ?>
     <div class="row">
 
         <div class="col-50">
@@ -115,7 +115,7 @@ function btcpaywall_amount($post)
     $currency = get_option('btcpw_default_pay_per_file_currency', 'SATS');
     $price = $btcpw_stored_meta['btcpw_price'][0] ?? 0;
 
-?>
+    ?>
 
     <div class='btcpw_price_meta'>
         <input type="number" name="btcpw_price" id="btcpw_price" min="0.1" step="any" value="<?php echo esc_attr($price); ?>" />
@@ -135,7 +135,7 @@ function btcpaywall_file_upload($post)
     $file = $btcpw_stored_meta['btcpw_digital_product_file'][0] ?? '';
     $filename = $btcpw_stored_meta['btcpw_digital_product_filename'][0] ?? '';
     $file_id = $btcpw_stored_meta['btcpw_digital_product_id'][0] ?? 0;
-?>
+    ?>
     <div class='btcpw_product_file_download'>
 
         <div id="btcpw_file" class="btcpw_repeatable_product_wrap">
@@ -156,7 +156,7 @@ function btcpaywall_file_upload($post)
 function btcpaywall_product_stats($post)
 {
     $download = new BTCPayWall_Digital_Download($post->ID);
-?>
+    ?>
     <div class="btcpw_product_stats">
         <p>Sales: <?php echo esc_html($download->get_sales()); ?></p>
     </div>

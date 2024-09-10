@@ -11,7 +11,9 @@
  */
 
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 function btcpaywall_register_post_types()
 {
 
@@ -36,19 +38,19 @@ function btcpaywall_register_post_types()
         'query_var' => true,
     ]);
     $download_labels = apply_filters('btcpaywall_change_product_labels', array(
-        'name'               => _x('BP Digital Download', 'BP Digital Download', 'btcpaywall'),
-        'singular_name'      => _x('BP Digital Download', 'BP Digital Download', 'btcpaywall'),
-        'add_new'            => __('Add New', 'btcpaywall'),
-        'add_new_item'       => __('Add New Digital Download', 'btcpaywall'),
-        'edit_item'          => __('Edit Digital Download', 'btcpaywall'),
-        'new_item'           => __('New Digital Download', 'btcpaywall'),
-        'all_items'          => __('All Digital Downloads', 'btcpaywall'),
-        'view_item'          => __('View Digital Download', 'btcpaywall'),
-        'search_items'       => __('Search Digital Download', 'btcpaywall'),
-        'not_found'          => __('No Digital Download found', 'btcpaywall'),
-        'not_found_in_trash' => __('No Digital Download found in Trash', 'btcpaywall'),
+        'name'               => esc_html__('BP Digital Download', 'BP Digital Download', 'btcpaywall'),
+        'singular_name'      => esc_html__('BP Digital Download', 'BP Digital Download', 'btcpaywall'),
+        'add_new'            => esc_html__('Add New', 'btcpaywall'),
+        'add_new_item'       => esc_html__('Add New Digital Download', 'btcpaywall'),
+        'edit_item'          => _esc_html_('Edit Digital Download', 'btcpaywall'),
+        'new_item'           => esc_html__('New Digital Download', 'btcpaywall'),
+        'all_items'          => esc_html__('All Digital Downloads', 'btcpaywall'),
+        'view_item'          => esc_html__('View Digital Download', 'btcpaywall'),
+        'search_items'       => esc_html__('Search Digital Download', 'btcpaywall'),
+        'not_found'          => esc_html__('No Digital Download found', 'btcpaywall'),
+        'not_found_in_trash' => esc_html__('No Digital Download found in Trash', 'btcpaywall'),
         'parent_item_colon'  => '',
-        'menu_name'          => __('Digital Downloads', 'btcpaywall')
+        'menu_name'          => esc_html__('Digital Downloads', 'btcpaywall')
     ));
 
     register_post_type('digital_download', [
@@ -68,19 +70,19 @@ function btcpaywall_register_post_types()
     ]);
 
     $labels = apply_filters('btcpaywall_change_donation_labels', array(
-        'name'               => _x('Donation Form', 'Donation Form', 'btcpaywall'),
-        'singular_name'      => _x('Donation Form', 'Donation Form', 'btcpaywall'),
-        'add_new'            => __('Add New', 'btcpaywall'),
-        'add_new_item'       => __('Add New Donation Form', 'btcpaywall'),
-        'edit_item'          => __('Edit Donation Form', 'btcpaywall'),
-        'new_item'           => __('New Donation Form', 'btcpaywall'),
-        'all_items'          => __('All Donation Form', 'btcpaywall'),
-        'view_item'          => __('View Donation Form', 'btcpaywall'),
-        'search_items'       => __('Search Donation Form', 'btcpaywall'),
-        'not_found'          => __('No Donation Form found', 'btcpaywall'),
-        'not_found_in_trash' => __('No Donation Form found in Trash', 'btcpaywall'),
+        'name'               => esc_html__('Donation Form', 'Donation Form', 'btcpaywall'),
+        'singular_name'      => esc_html__('Donation Form', 'Donation Form', 'btcpaywall'),
+        'add_new'            => esc_html__('Add New', 'btcpaywall'),
+        'add_new_item'       => esc_html__('Add New Donation Form', 'btcpaywall'),
+        'edit_item'          => esc_html__('Edit Donation Form', 'btcpaywall'),
+        'new_item'           => esc_html__('New Donation Form', 'btcpaywall'),
+        'all_items'          => esc_html__('All Donation Form', 'btcpaywall'),
+        'view_item'          => esc_html__('View Donation Form', 'btcpaywall'),
+        'search_items'       => esc_html__('Search Donation Form', 'btcpaywall'),
+        'not_found'          => esc_html__('No Donation Form found', 'btcpaywall'),
+        'not_found_in_trash' => esc_html__('No Donation Form found in Trash', 'btcpaywall'),
         'parent_item_colon'  => '',
-        'menu_name'          => __('Donation Forms', 'btcpaywall')
+        'menu_name'          => esc_html__('Donation Forms', 'btcpaywall')
     ));
 
     register_post_type('btcpw_donation', [
@@ -93,8 +95,11 @@ function btcpaywall_register_post_types()
         'menu_icon' => null,
         'hierarchical' => false,
         'supports'           => array(
-            'title', 'author', 'thumbnail',
-            'revisions', 'excerpt'
+            'title',
+            'author',
+            'thumbnail',
+            'revisions',
+            'excerpt'
         ),
         'taxonomies' => [],
         'has_archive' => false,
