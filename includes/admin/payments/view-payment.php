@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 }
 
 if (!isset($_GET['id'])) {
-    wp_die(__('Payment ID not supplied. Please try again', 'btcpaywall'), __('Error', 'btcpaywall'));
+    wp_die(_esc_html__('Payment ID not supplied. Please try again', 'btcpaywall'), esc_html__('Error', 'btcpaywall'));
 }
 $id = sanitize_text_field($_GET['id']);
 $payment = new BTCPayWall_Payment($id);

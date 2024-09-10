@@ -11,75 +11,75 @@
  */
 // Exit if accessed directly.
 if (!defined('ABSPATH')) {
-  exit;
+    exit;
 }
 class Elementor_BTCPW_Donation_Template_Widget extends \Elementor\Widget_Base
 {
-  /**
-   * @return string
-   */
-  public function get_name()
-  {
-    return 'elementor_btcpw_donation_templates';
-  }
+    /**
+     * @return string
+     */
+    public function get_name()
+    {
+        return 'elementor_btcpw_donation_templates';
+    }
 
-  /**
-   * @return string
-   */
-  public function get_title()
-  {
-    return 'BTCPW Donation Templates';
-  }
+    /**
+     * @return string
+     */
+    public function get_title()
+    {
+        return 'BTCPW Donation Templates';
+    }
 
-  /**
-   * @return string
-   */
-  public function get_icon()
-  {
-    return 'fab fa-btc';
-  }
+    /**
+     * @return string
+     */
+    public function get_icon()
+    {
+        return 'fab fa-btc';
+    }
 
-  /**
-   * @return string[]
-   */
-  public function get_categories()
-  {
-    return ['general'];
-  }
+    /**
+     * @return string[]
+     */
+    public function get_categories()
+    {
+        return ['general'];
+    }
 
-  /**
-   *
-   */
-  protected function _register_controls()
-  {
-    $this->start_controls_section(
-      'content_section',
-      [
-        'label' => __('Templates', 'btcpaywall'),
-        'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+    /**
+     *
+     */
+    protected function _register_controls()
+    {
+        $this->start_controls_section(
+            'content_section',
+            [
+            'label' => esc_html__('Templates', 'btcpaywall'),
+            'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
       ]
-    );
+        );
 
-    $this->add_control(
-      'shortcode',
-      [
-        'label' => 'Templates',
-        'type' => \Elementor\Controls_Manager::SELECT,
-        'options' => array_flip(btcpaywall_get_donation_templates()),
+        $this->add_control(
+            'shortcode',
+            [
+            'label' => 'Templates',
+            'type' => \Elementor\Controls_Manager::SELECT,
+            'options' => array_flip(btcpaywall_get_donation_templates()),
       ]
-    );
+        );
 
 
 
-    $this->end_controls_section();
-  }
+        $this->end_controls_section();
+    }
 
-  /**
-   *
-   */
-  protected function render()
-  {
-    $settings = $this->get_settings_for_display();
-    echo $settings['shortcode'];
-  }
+    /**
+     *
+     */
+    protected function render()
+    {
+        $settings = $this->get_settings_for_display();
+        echo $settings['shortcode'];
+    }
 }

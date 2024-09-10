@@ -27,8 +27,8 @@ class Pay_Per_Shortcode_List extends WP_List_Table
     {
         parent::__construct(
             [
-                'singular' => __('Shortcode', 'btcpaywall'),
-                'plural'   => __('Shortcodes', 'btcpaywall'),
+                'singular' => esc_html__('Shortcode', 'btcpaywall'),
+                'plural'   => esc_html__('Shortcodes', 'btcpaywall'),
                 'ajax'     => false
             ]
         );
@@ -42,12 +42,12 @@ class Pay_Per_Shortcode_List extends WP_List_Table
     {
         return array(
             'cb'      => '<input type="checkbox" />',
-            'name' => (__('Name', 'btcpaywall')),
-            'type' => (__('Type', 'btcpaywall')),
-            'header_text'   => (__('Title', 'btcpaywall')),
-            'info_text'    => (__('Price information text', 'btcpaywall')),
-            'button_text'    => (__('Button text', 'btcpaywall')),
-            'shortcode'      => (__('Shortcode', 'btcpaywall')),
+            'name' => (esc_html__('Name', 'btcpaywall')),
+            'type' => (esc_html__('Type', 'btcpaywall')),
+            'header_text'   => (esc_html__('Title', 'btcpaywall')),
+            'info_text'    => (esc_html__('Price information text', 'btcpaywall')),
+            'button_text'    => (esc_html__('Button text', 'btcpaywall')),
+            'shortcode'      => (esc_html__('Shortcode', 'btcpaywall')),
         );
     }
 
@@ -233,17 +233,17 @@ class Pay_Per_Shortcode_List extends WP_List_Table
      */
     protected function display_tablenav($which)
     {
-?>
+        ?>
         <div class="tablenav <?php echo esc_attr($which); ?>">
 
             <div class="alignleft actions bulkactions">
                 <?php $this->bulk_actions($which); ?>
             </div>
             <?php
-            $this->extra_tablenav($which);
-            $this->pagination($which);
+                    $this->extra_tablenav($which);
+        $this->pagination($which);
 
-            ?>
+        ?>
 
             <br class="clear" />
         </div>
@@ -293,7 +293,7 @@ class Pay_Per_Shortcode_List extends WP_List_Table
         $this->display_tablenav('top');
 
         $this->screen->render_screen_reader_content('heading_list');
-    ?>
+        ?>
         <table class="wp-list-table <?php echo implode(' ', $this->get_table_classes()); ?>">
             <thead>
                 <tr>
@@ -302,10 +302,10 @@ class Pay_Per_Shortcode_List extends WP_List_Table
             </thead>
 
             <tbody id="the-list" <?php
-                                    if ($singular) {
-                                        echo " data-wp-lists='list:$singular'";
-                                    }
-                                    ?>>
+                                        if ($singular) {
+                                            echo " data-wp-lists='list:$singular'";
+                                        }
+        ?>>
                 <?php $this->display_rows_or_placeholder(); ?>
             </tbody>
 
@@ -329,7 +329,7 @@ class Pay_Per_Shortcode
     }
     public function btcpaywall_add_submenu()
     {
-        $hook = add_submenu_page('btcpw_general_settings', __('Pay-per -> All templates', 'btcpaywall'), __('Pay-per -> All templates', 'btcpaywall'), 'manage_options', 'btcpw_pay_per_shortcode_list', array($this, 'btcpaywall_render_pay_per_shortcode_list'), 2);
+        $hook = add_submenu_page('btcpw_general_settings', esc_html__('Pay-per -> All templates', 'btcpaywall'), esc_html__('Pay-per -> All templates', 'btcpaywall'), 'manage_options', 'btcpw_pay_per_shortcode_list', array($this, 'btcpaywall_render_pay_per_shortcode_list'), 2);
         add_action("load-$hook", [$this, 'screen_option']);
     }
     public function screen_option()
@@ -349,7 +349,7 @@ class Pay_Per_Shortcode
     {
         $shortcodes = new Pay_Per_Shortcode_List();
         $shortcodes->prepare_items();
-    ?>
+        ?>
         <div class="wrap">
             <h2><?php echo esc_html__('Pay-per shortcodes', 'btcpaywall'); ?></h2>
             <div>
@@ -358,8 +358,8 @@ class Pay_Per_Shortcode
                         <div>
                             <form method="post">
                                 <?php
-                                $shortcodes->prepare_items();
-                                $shortcodes->display(); ?>
+                                    $shortcodes->prepare_items();
+        $shortcodes->display(); ?>
                             </form>
                         </div>
                     </div>

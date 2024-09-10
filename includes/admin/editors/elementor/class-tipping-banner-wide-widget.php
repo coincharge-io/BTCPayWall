@@ -56,7 +56,7 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'settings',
             [
-                'label' => __('General', 'btcpaywall'),
+                'label' => esc_html__('General', 'btcpaywall'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -107,7 +107,7 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'global',
             [
-                'label' => __('Global', 'btcpaywall'),
+                'label' => esc_html__('Global', 'btcpaywall'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -141,7 +141,7 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'header',
             [
-                'label' => __('Header', 'btcpaywall'),
+                'label' => esc_html__('Header', 'btcpaywall'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -191,7 +191,7 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'main',
             [
-                'label' => __('Main', 'btcpaywall'),
+                'label' => esc_html__('Main', 'btcpaywall'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -235,7 +235,7 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'footer',
             [
-                'label' => __('Footer', 'btcpaywall'),
+                'label' => esc_html__('Footer', 'btcpaywall'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -339,7 +339,7 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'fixed_amount',
             [
-                'label' => __('Fixed amount', 'btcpaywall'),
+                'label' => esc_html__('Fixed amount', 'btcpaywall'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -478,7 +478,7 @@ class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'donor_information',
             [
-                'label' => __('Donor information', 'btcpaywall'),
+                'label' => esc_html__('Donor information', 'btcpaywall'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );

@@ -90,7 +90,7 @@ function btcpaywall_process_download()
         $payment = new BTCPayWall_Payment($args['payment_id']);
         $download = new BTCPayWall_Digital_Download($args['download_id']);
         if ($download->get_download_is_allowed($payment->invoice_id) == false) {
-            wp_die(__('You have reached download limit for this payment.', 'btcpaywall'), '', array(
+            wp_die(esc_html__('You have reached download limit for this payment.', 'btcpaywall'), '', array(
                 'response' => 403,
                 'link_url' => '/',
                 'link_text' => 'Go to the homepage.',
@@ -123,10 +123,10 @@ function btcpaywall_process_download()
         setcookie("btcpw_{$payment->invoice_id}{$download->ID}", isset($_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"]) ? ++$_COOKIE["btcpw_{$payment->invoice_id}{$download->ID}"] : 1, strtotime("14 Jan 2038"), '/');
         $headers = btcpaywall_get_all_headers();
         if (in_array($file['extension'], array('php', 'js'))) {
-            wp_die(__('File extension is not supported.', 'btcpaywall'));
+            wp_die(esc_html__('File extension is not supported.', 'btcpaywall'));
         }
         if (headers_sent()) {
-            wp_die(__('Headers sent before download.', 'btcpaywall'));
+            wp_die(esc_html__('Headers sent before download.', 'btcpaywall'));
         }
         if (isset($headers["Range"])) {
             btcpaywall_prepare_system_before_download_file();
@@ -140,7 +140,7 @@ function btcpaywall_process_download()
         }
 
         if (!$file_read_is_success) {
-            wp_die(__('There is a problem with opening file', 'btcpaywall'));
+            wp_die(esc_html__('There is a problem with opening file', 'btcpaywall'));
         }
 
         return array('file' => $file, 'error' => 0);
@@ -1135,7 +1135,7 @@ function btcpaywall_process_download_url($args)
     }
 
     if (isset($query_args['ttl']) && current_time('timestamp') > $query_args['ttl']) {
-        wp_die(__('Download link has expired.', 'btcpaywall'), array('response' => 403));
+        wp_die(esc_html__('Download link has expired.', 'btcpaywall'), array('response' => 403));
     }
 
 
@@ -1194,22 +1194,22 @@ function btcpaywall_readable_format_seconds_to_words($seconds)
 
     $days = intval(intval($seconds) / (3600 * 24));
     if ($days > 0) {
-        $ret .= $days . ' ' . (($days > 1) ? __('days', 'btcpaywall') : __('day', 'btcpaywall')) . ' ';
+        $ret .= $days . ' ' . (($days > 1) ? esc_html__('days', 'btcpaywall') : esc_html__('day', 'btcpaywall')) . ' ';
     }
 
     $hours = (intval($seconds) / 3600) % 24;
     if ($hours > 0) {
-        $ret .= $hours . ' ' . (($hours > 1) ? __('hours', 'btcpaywall') : __('hour', 'btcpaywall')) . ' ';
+        $ret .= $hours . ' ' . (($hours > 1) ? esc_html__('hours', 'btcpaywall') : esc_html__('hour', 'btcpaywall')) . ' ';
     }
 
     $minutes = (intval($seconds) / 60) % 60;
     if ($minutes > 0) {
-        $ret .= $minutes . ' ' . (($minutes > 1) ? __('minutes', 'btcpaywall') : __('minute', 'btcpaywall')) . ' ';
+        $ret .= $minutes . ' ' . (($minutes > 1) ? esc_html__('minutes', 'btcpaywall') : esc_html__('minute', 'btcpaywall')) . ' ';
     }
 
     $seconds = intval($seconds) % 60;
     if ($seconds > 0) {
-        $ret .= $seconds . ' ' . (($seconds > 1) ? __('seconds', 'btcpaywall') : __('second', 'btcpaywall')) . ' ';
+        $ret .= $seconds . ' ' . (($seconds > 1) ? esc_html__('seconds', 'btcpaywall') : esc_html__('second', 'btcpaywall')) . ' ';
     }
 
     return trim($ret);

@@ -56,7 +56,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 		$this->start_controls_section(
 			'video-option',
 			[
-				'label' => __('Option', 'btcpaywall'),
+				'label' => esc_html__('Option', 'btcpaywall'),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -127,7 +127,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 		$this->start_controls_section(
 			'video-design',
 			[
-				'label' => __('Paywall design', 'btcpaywall'),
+				'label' => esc_html__('Paywall design', 'btcpaywall'),
 			]
 		);
 		$this->add_control(
@@ -157,7 +157,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 		$this->start_controls_tab(
 			'video-video_preview',
 			[
-				'label' => __('Main', 'btcpaywall'),
+				'label' => esc_html__('Main', 'btcpaywall'),
 			]
 		);
 		$this->add_control(
@@ -205,7 +205,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 		$this->start_controls_tab(
 			'video-main',
 			[
-				'label' => __('Main', 'btcpaywall'),
+				'label' => esc_html__('Main', 'btcpaywall'),
 			]
 		);
 		$this->add_control(
@@ -244,7 +244,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 		$this->start_controls_tab(
 			'video-button',
 			[
-				'label' => __('Buttons', 'btcpaywall'),
+				'label' => esc_html__('Buttons', 'btcpaywall'),
 			]
 		);
 		$this->add_control(
@@ -347,7 +347,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 		$this->start_controls_tab(
 			'video-help',
 			[
-				'label' => __('Help link', 'btcpaywall'),
+				'label' => esc_html__('Help link', 'btcpaywall'),
 			]
 		);
 		$this->add_control(
@@ -377,7 +377,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 		$this->start_controls_tab(
 			'video-additional',
 			[
-				'label' => __('Additional link', 'btcpaywall'),
+				'label' => esc_html__('Additional link', 'btcpaywall'),
 			]
 		);
 		$this->add_control(
@@ -406,7 +406,7 @@ class Elementor_BTCPW_Start_Video_Widget extends \Elementor\Widget_Base
 		$this->start_controls_tab(
 			'video-customer-information',
 			[
-				'label' => __('Customer information', 'btcpaywall'),
+				'label' => esc_html__('Customer information', 'btcpaywall'),
 			]
 		);
 		$this->add_control(

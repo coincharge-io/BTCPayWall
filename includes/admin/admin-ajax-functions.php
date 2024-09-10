@@ -148,7 +148,7 @@ function btcpaywall_create_pay_per_shortcode()
     if ($row) {
         wp_send_json_success(array('res' => true, 'data' => array('id' => $row->id)));
     } else {
-        wp_send_json_error(array('res' => false, 'message' => __('Something went wrong. Please try again later.')));
+        wp_send_json_error(array('res' => false, 'message' => esc_html__('Something went wrong. Please try again later.')));
     }
 }
 add_action('wp_ajax_btcpw_create_shortcode', 'btcpaywall_create_pay_per_shortcode');

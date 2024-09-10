@@ -10,56 +10,56 @@
  * @since       1.0
  */
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 class Elementor_BTCPW_Pay_Block_Widget extends \Elementor\Widget_Base
 {
+    /**
+     * @return string
+     */
+    public function get_name()
+    {
+        return 'elementor_btcpw_pay_block';
+    }
 
+    /**
+     * @return string
+     */
+    public function get_title()
+    {
+        return 'BTCPW Pay Widget';
+    }
 
-	/**
-	 * @return string
-	 */
-	public function get_name()
-	{
-		return 'elementor_btcpw_pay_block';
-	}
+    /**
+     * @return string
+     */
+    public function get_icon()
+    {
+        return 'fab fa-btc';
+    }
 
-	/**
-	 * @return string
-	 */
-	public function get_title()
-	{
-		return 'BTCPW Pay Widget';
-	}
+    /**
+     * @return string[]
+     */
+    public function get_categories()
+    {
+        return ['general'];
+    }
 
-	/**
-	 * @return string
-	 */
-	public function get_icon()
-	{
-		return 'fab fa-btc';
-	}
+    /**
+     *
+     */
+    protected function _register_controls()
+    {
+        //
+    }
 
-	/**
-	 * @return string[]
-	 */
-	public function get_categories()
-	{
-		return ['general'];
-	}
-
-	/**
-	 *
-	 */
-	protected function _register_controls()
-	{
-		//
-	}
-
-	/**
-	 *
-	 */
-	protected function render()
-	{
-		echo do_shortcode("[btcpw_pay_block]");
-	}
+    /**
+     *
+     */
+    protected function render()
+    {
+        echo do_shortcode("[btcpw_pay_block]");
+    }
 }

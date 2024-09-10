@@ -10,11 +10,11 @@
  * @since       1.0
  */
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 class Elementor_BTCPW_Shortcode_List_Widget extends \Elementor\Widget_Base
 {
-
-
     /**
      * @return string
      */
@@ -57,7 +57,7 @@ class Elementor_BTCPW_Shortcode_List_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'content_section',
             [
-                'label' => __('Content', 'btcpaywall'),
+                'label' => esc_html__('Content', 'btcpaywall'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );

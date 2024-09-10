@@ -12,7 +12,9 @@
 
 
 // Exit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 /**
@@ -23,33 +25,33 @@ class BTCPayWall_Digital_Download
 {
     /**
      * Digital Download ID
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access public
-     * 
+     *
      * @var    int
      */
     public $ID = 0;
 
     /**
      * Digital Download Price
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var string
      */
     private $price;
 
     /**
      * Digital Download Amount
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var string
      */
     private $amount;
@@ -58,173 +60,173 @@ class BTCPayWall_Digital_Download
      * Download Limit
      *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var int
      */
     private $download_limit;
     /**
      * Digital Download Sale Count
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var int
      */
     private $sales;
 
     /**
      * Digital Download Earning
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var float
      */
     private $earnings;
 
     /**
      * Digital Download File ID
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var int
      */
     private $file_id;
 
     /**
      * Digital Download Filename
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var string
      */
     private $filename;
 
     /**
      * Digital Download File Url
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var string
      */
     private $file_url;
 
     /**
      * Digital Download Collect Customer Name
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var bool
      */
     private $collect_customer_name;
 
     /**
      * Digital Download Mandatory Customer Name
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var bool
      */
     private $mandatory_customer_name;
 
     /**
      * Digital Download Collect Customer Email
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var bool
      */
     private $collect_customer_email;
 
     /**
      * Digital Download Mandatory Customer Email
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var bool
      */
     private $mandatory_customer_email;
 
     /**
      * Digital Download Collect Customer Address
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var bool
      */
     private $collect_customer_address;
 
     /**
      * Digital Download Mandatory Customer Address
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var bool
      */
     private $mandatory_customer_address;
 
     /**
      * Digital Download Collect Customer Phone
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var bool
      */
     private $collect_customer_phone;
 
     /**
      * Digital Download Mandatory Customer Phone
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var bool
      */
     private $mandatory_customer_phone;
 
     /**
      * Digital Download Collect Customer Message
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var bool
      */
     private $collect_customer_message;
 
     /**
      * Digital Download Mandatory Customer Message
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @var bool
      */
     private $mandatory_customer_message;
@@ -233,7 +235,7 @@ class BTCPayWall_Digital_Download
      * Post Author
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    int
@@ -244,7 +246,7 @@ class BTCPayWall_Digital_Download
      * Post Date
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    string
@@ -255,7 +257,7 @@ class BTCPayWall_Digital_Download
      * Post GTM Date
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    string
@@ -266,7 +268,7 @@ class BTCPayWall_Digital_Download
      * Post Content
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    string
@@ -277,7 +279,7 @@ class BTCPayWall_Digital_Download
      * Post Title
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    string
@@ -288,7 +290,7 @@ class BTCPayWall_Digital_Download
      * Post Excerpt
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    string
@@ -299,7 +301,7 @@ class BTCPayWall_Digital_Download
      * Post Status
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    string
@@ -310,7 +312,7 @@ class BTCPayWall_Digital_Download
      * Comment Status
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    string
@@ -321,7 +323,7 @@ class BTCPayWall_Digital_Download
      * Ping Status
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    string
@@ -342,7 +344,7 @@ class BTCPayWall_Digital_Download
      * Post Name
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    string
@@ -353,7 +355,7 @@ class BTCPayWall_Digital_Download
      * Ping
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    string
@@ -364,7 +366,7 @@ class BTCPayWall_Digital_Download
      * Pinged
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    string
@@ -375,7 +377,7 @@ class BTCPayWall_Digital_Download
      * Post Modified Date
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    string
@@ -386,7 +388,7 @@ class BTCPayWall_Digital_Download
      * Post Modified GTM Date
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    string
@@ -397,7 +399,7 @@ class BTCPayWall_Digital_Download
      * Post Filtered Content
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    string
@@ -408,7 +410,7 @@ class BTCPayWall_Digital_Download
      * Post Parent
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    int
@@ -430,7 +432,7 @@ class BTCPayWall_Digital_Download
      * Menu Order
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    int
@@ -441,7 +443,7 @@ class BTCPayWall_Digital_Download
      * Mime Type
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    string
@@ -452,7 +454,7 @@ class BTCPayWall_Digital_Download
      * Comment Count
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @var    int
@@ -471,9 +473,9 @@ class BTCPayWall_Digital_Download
 
     /**
      * Constructor
-     * 
+     *
      * Register a custom post type
-     * 
+     *
      * @param int $id WP Post id.
      */
 
@@ -486,13 +488,13 @@ class BTCPayWall_Digital_Download
 
     /**
      * Set properties based on download data
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access private
-     * 
+     *
      * @param WP_Post $download WP_Post Object for download.
-     * 
+     *
      * @return bool
      */
 
@@ -512,11 +514,11 @@ class BTCPayWall_Digital_Download
 
     /**
      * Creates a download
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @param array $data Array of attributes for a download.
-     * 
+     *
      * @return bool|int False if download isn't create or download ID.
      */
 
@@ -529,7 +531,7 @@ class BTCPayWall_Digital_Download
         $defaults = [
             'post_type'   => 'digital_download',
             'post_status' => 'draft',
-            'post_title'  => __('New Download', 'btcpaywall'),
+            'post_title'  => esc_html__('New Download', 'btcpaywall'),
         ];
         $args = wp_parse_args($data, $defaults);
 
@@ -544,7 +546,7 @@ class BTCPayWall_Digital_Download
      * Retrieve ID
      *
      * @since  1.0
-     * 
+     *
      * @access public
      *
      * @return int Download ID.
@@ -573,11 +575,11 @@ class BTCPayWall_Digital_Download
 
     /**
      * Retrieve Price
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access public
-     * 
+     *
      * @return string Price
      */
 
@@ -602,11 +604,11 @@ class BTCPayWall_Digital_Download
 
     /**
      * Retrieve Price Without Currency
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access public
-     * 
+     *
      * @return string Price
      */
 
@@ -625,11 +627,11 @@ class BTCPayWall_Digital_Download
     }
     /**
      * Retrieve Number of Sales
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access public
-     * 
+     *
      * @return int Number of sales.
      */
 
@@ -647,13 +649,13 @@ class BTCPayWall_Digital_Download
     }
     /**
      * Increase Sales Count
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access public
-     * 
+     *
      * @param int $quantity The quantity to increase.
-     * 
+     *
      * @return int|false Number of total sales.
      */
 
@@ -672,11 +674,11 @@ class BTCPayWall_Digital_Download
 
     /**
      * Retrieve Download Limit
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access public
-     * 
+     *
      * @return int Download limit number
      */
 
@@ -697,18 +699,19 @@ class BTCPayWall_Digital_Download
     }
     /**
      * Return Publisher Choices for Collecting Customer's Data
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access public
-     * 
+     *
      * @return array Return information for every field
      */
     public function get_collect()
     {
         foreach ($this as $key => $value) {
-            if ((substr($key, 0, 7) === 'collect') || (substr($key, 0, 9) === 'mandatory'))
+            if ((substr($key, 0, 7) === 'collect') || (substr($key, 0, 9) === 'mandatory')) {
                 $this->$key = get_post_meta($this->ID, 'btcpw_' . $key, true);
+            }
         }
         return array(
             array(
@@ -746,11 +749,11 @@ class BTCPayWall_Digital_Download
 
     /**
      * Return Digital Download Filename
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access public
-     * 
+     *
      * @return string
      */
     public function get_filename()
@@ -766,13 +769,13 @@ class BTCPayWall_Digital_Download
     }
     /**
      * Check If Payment Reached Download Limit
-     * 
+     *
      * @param int $payment_id Payment ID for Digital Download
-     * 
-     * @since 1.0 
-     * 
+     *
+     * @since 1.0
+     *
      * @access public
-     * 
+     *
      * @return bool Whether a payment has reached the limit
      */
     public function get_download_is_allowed($payment_id)
@@ -789,11 +792,11 @@ class BTCPayWall_Digital_Download
 
     /**
      * Return Digital Download Filename
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access public
-     * 
+     *
      * @return string
      */
     public function get_file_url()
@@ -809,11 +812,11 @@ class BTCPayWall_Digital_Download
     }
     /**
      * Return Digital Download Filename
-     * 
+     *
      * @since 1.0
-     * 
+     *
      * @access public
-     * 
+     *
      * @return string
      */
     public function get_file_id()
