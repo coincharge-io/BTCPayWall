@@ -42,7 +42,7 @@ function btcpaywall_register_post_types()
         'singular_name'      => esc_html__('BP Digital Download', 'BP Digital Download', 'btcpaywall'),
         'add_new'            => esc_html__('Add New', 'btcpaywall'),
         'add_new_item'       => esc_html__('Add New Digital Download', 'btcpaywall'),
-        'edit_item'          => _esc_html_('Edit Digital Download', 'btcpaywall'),
+        'edit_item'          => esc_html__('Edit Digital Download', 'btcpaywall'),
         'new_item'           => esc_html__('New Digital Download', 'btcpaywall'),
         'all_items'          => esc_html__('All Digital Downloads', 'btcpaywall'),
         'view_item'          => esc_html__('View Digital Download', 'btcpaywall'),
