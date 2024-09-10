@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Elementor_BTCPW_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
+class BTCPayWall_Elementor_Tipping_Banner_Wide_Widget extends \Elementor\Widget_Base
 {
     /**
      * @return string

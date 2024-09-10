@@ -13,14 +13,14 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-class Elementor_BTCPW_Donation_Template_Widget extends \Elementor\Widget_Base
+class BTCPayWall_Elementor_Donation_Template_Widget extends \Elementor\Widget_Base
 {
     /**
      * @return string
      */
     public function get_name()
     {
-        return 'elementor_btcpw_donation_templates';
+        return 'btcpaywall_donation_templates';
     }
 
     /**
@@ -28,7 +28,7 @@ class Elementor_BTCPW_Donation_Template_Widget extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return 'BTCPW Donation Templates';
+        return 'BTCPayWall Donation Templates';
     }
 
     /**

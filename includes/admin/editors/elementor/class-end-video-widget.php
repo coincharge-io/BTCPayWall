@@ -14,14 +14,14 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Elementor_BTCPW_End_Video_Widget extends \Elementor\Widget_Base
+class BTCPayWall_Elementor_End_Video_Widget extends \Elementor\Widget_Base
 {
     /**
      * @return string
      */
     public function get_name()
     {
-        return 'elementor_btcpw_end_video';
+        return 'btcpaywall_end_video';
     }
 
     /**
@@ -29,7 +29,7 @@ class Elementor_BTCPW_End_Video_Widget extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return 'BTCPW Pay-per-View End';
+        return 'BTCPayWall Pay-per-View End';
     }
 
     /**

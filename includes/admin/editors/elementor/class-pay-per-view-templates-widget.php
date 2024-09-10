@@ -13,7 +13,7 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-class Elementor_BTCPW_Pay_Per_View_Template_Widget extends \Elementor\Widget_Base
+class BTCPayWall_Elementor_Pay_Per_View_Template_Widget extends \Elementor\Widget_Base
 {
     /**
      * @return string

@@ -13,14 +13,14 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-class Elementor_BTCPW_Pay_Block_Widget extends \Elementor\Widget_Base
+class BTCPayWall_Elementor_Pay_Block_Widget extends \Elementor\Widget_Base
 {
     /**
      * @return string
      */
     public function get_name()
     {
-        return 'elementor_btcpw_pay_block';
+        return 'btcpaywall_pay_block';
     }
 
     /**
@@ -28,7 +28,7 @@ class Elementor_BTCPW_Pay_Block_Widget extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return 'BTCPW Pay Widget';
+        return 'BTCPayWall Pay Widget';
     }
 
     /**

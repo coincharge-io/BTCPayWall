@@ -30,19 +30,19 @@ function btcpaywall_load_elementor_widgets()
     require_once __DIR__ . '/class-pay-per-post-templates-widget.php';
     require_once __DIR__ . '/class-pay-per-view-templates-widget.php';
 
-    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Start_Content_Widget());
-    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_End_Content_Widget());
-    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Pay_Block_Widget());
-    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Start_Video_Widget());
-    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_End_Video_Widget());
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new BTCPayWall_Elementor_Start_Content_Widget());
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new BTCPayWall_Elementor_End_Content_Widget());
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new BTCPayWall_Elementor_Pay_Block_Widget());
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new BTCPayWall_Elementor_Start_Video_Widget());
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new BTCPayWall_Elementor_End_Video_Widget());
     //\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_File_Widget());
-    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Tipping_Box_Widget());
-    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Tipping_Banner_High_Widget());
-    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Tipping_Banner_Wide_Widget());
-    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Tipping_Page_Widget());
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new BTCPayWall_Elementor_Tipping_Box_Widget());
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new BTCPayWall_Elementor_Tipping_Banner_High_Widget());
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new BTCPayWall_Elementor_Tipping_Banner_Wide_Widget());
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new BTCPayWall_Elementor_Tipping_Page_Widget());
     //\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Shortcode_List_Widget());
-    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Donation_Template_Widget());
-    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Pay_Per_Post_Template_Widget());
-    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_BTCPW_Pay_Per_View_Template_Widget());
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new BTCPayWall_Elementor_Donation_Template_Widget());
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new BTCPayWall_Elementor_Pay_Per_Post_Template_Widget());
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new BTCPayWall_Elementor_Pay_Per_View_Template_Widget());
 }
 add_action('elementor/widgets/widgets_registered', 'btcpaywall_load_elementor_widgets');

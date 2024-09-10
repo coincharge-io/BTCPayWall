@@ -13,7 +13,7 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-class Elementor_BTCPW_Shortcode_List_Widget extends \Elementor\Widget_Base
+class BTCPayWall_Elementor_Shortcode_List_Widget extends \Elementor\Widget_Base
 {
     /**
      * @return string
