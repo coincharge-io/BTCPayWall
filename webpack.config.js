@@ -27,7 +27,7 @@ module.exports = {
     coinsnap: path.join(__dirname, "assets/src/js/coinsnap.js"),
   },
   output: {
-    filename: "[name].[contenthash].js",
+    filename: "[name].js",
     path: path.join(__dirname, "assets/dist/js"),
   },
 };
