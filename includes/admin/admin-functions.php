@@ -134,7 +134,7 @@ function btcpaywall_check_store_id($store_id)
     if (get_option("btcpw_btcpay_store_id") !== false) {
         update_option("btcpw_btcpay_store_id", $store_id);
     } else {
-        add_option("btcpw_btcpay_store_id", $store_id, null, 'no');
+        add_option("btcpw_btcpay_store_id", $store_id, '', 'no');
     }
 }
 function btcpaywall_render_post_settings_meta_box($post, $meta)

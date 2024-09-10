@@ -14,6 +14,7 @@
 					action: "btcpw_coinsnap_test_connection",
 					api_key: $("#btcpw_coinsnap_auth_key").val(),
 					store_id: $("#btcpw_coinsnap_store_id").val(),
+					nonce_ajax: shortcode_ajax_object.security,
 				},
 				success: function(response) {
 					$("#btcpw_coinsnap_check_status").html(text);
@@ -44,6 +45,7 @@
 					auth_key_view: $("#btcpw_btcpay_auth_key_view").val(),
 					auth_key_create: $("#btcpw_btcpay_auth_key_create").val(),
 					server_url: $("#btcpw_btcpay_server_url").val(),
+					nonce_ajax: shortcode_ajax_object.security,
 				},
 				success: function(response) {
 					$("#btcpw_btcpay_check_status").html(text);

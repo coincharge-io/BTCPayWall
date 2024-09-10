@@ -17,6 +17,9 @@ if (!defined('ABSPATH')) {
 }
 function btcpaywall_check_greenfield_api_work()
 {
+    if (!isset($_POST['security']) || !wp_verify_nonce($_POST['security'], 'shortcode-security-nonce')) {
+        wp_send_json_error('Security check failed');
+    }
     if (empty($_POST['auth_key_view']) || empty($_POST['auth_key_create']) || empty($_POST['server_url'])) {
         wp_send_json_error(['message' => 'Auth Keys & Server Url required']);
     }
@@ -154,6 +157,9 @@ add_action('wp_ajax_btcpw_create_shortcode', 'btcpaywall_create_pay_per_shortcod
 
 function btcpaywall_ajax_coinsnap_test_connection()
 {
+    if (!isset($_POST['security']) || !wp_verify_nonce($_POST['security'], 'shortcode-security-nonce')) {
+        wp_send_json_error('Security check failed');
+    }
     if (empty($_POST['api_key']) || empty($_POST['store_id'])) {
         wp_send_json_error(['message' => 'Provide credentials']);
     }
