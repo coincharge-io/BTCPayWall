@@ -351,7 +351,7 @@ function btcpaywall_format_server_response($gateway, $response, $type, $customer
     }
     return $response;
 }
-function ajax_btcpaywall_paid_invoice()
+function btcpaywall_paid_invoice()
 {
     if (empty($_POST['order_id'])) {
         wp_send_json_error();
@@ -413,10 +413,10 @@ function ajax_btcpaywall_paid_invoice()
     wp_send_json_success();
 }
 
-add_action('wp_ajax_btcpw_paid_invoice', 'ajax_btcpaywall_paid_invoice');
-add_action('wp_ajax_nopriv_btcpw_paid_invoice', 'ajax_btcpaywall_paid_invoice');
+add_action('wp_ajax_btcpw_paid_invoice', 'btcpaywall_ajax_paid_invoice');
+add_action('wp_ajax_nopriv_btcpw_paid_invoice', 'btcpaywall_ajax_paid_invoice');
 
-function ajax_btcpaywall_paid_tipping()
+function btcpaywall_paid_tipping()
 {
     if (empty($_POST['invoice_id'])) {
         wp_send_json_error();
@@ -460,8 +460,8 @@ function ajax_btcpaywall_paid_tipping()
     }
     wp_send_json_success();
 }
-add_action('wp_ajax_btcpw_paid_tipping', 'ajax_btcpaywall_paid_tipping');
-add_action('wp_ajax_nopriv_btcpw_paid_tipping', 'ajax_btcpaywall_paid_tipping');
+add_action('wp_ajax_btcpw_paid_tipping', 'btcpaywall_ajax_paid_tipping');
+add_action('wp_ajax_nopriv_btcpw_paid_tipping', 'btcpaywall_ajax_paid_tipping');
 
 
 /**
@@ -779,7 +779,7 @@ function btcpaywall_tipping_invoice_args($amount, $currency, $type, $collects, $
     }
 }
 
-function ajax_btcpaywall_paid_opennode_invoice()
+function btcpaywall_ajax_paid_opennode_invoice()
 {
     $id = sanitize_text_field($_POST['id']);
 
@@ -852,12 +852,12 @@ function ajax_btcpaywall_paid_opennode_invoice()
         )
     );
 }
-add_action('wp_ajax_opennode_paid_invoice', 'ajax_btcpaywall_paid_opennode_invoice');
-add_action('wp_ajax_nopriv_opennode_paid_invoice', 'ajax_btcpaywall_paid_opennode_invoice');
+add_action('wp_ajax_opennode_paid_invoice', 'btcpaywall_ajax_paid_opennode_invoice');
+add_action('wp_ajax_nopriv_opennode_paid_invoice', 'btcpaywall_ajax_paid_opennode_invoice');
 /**
  * @since 1.1.o
  */
-function ajax_btcpaywall_paid_lnbits_invoice()
+function btcpaywall_paid_lnbits_invoice()
 {
     $id = sanitize_text_field($_POST['invoice_id']);
     if (!$id) {
@@ -909,12 +909,12 @@ function ajax_btcpaywall_paid_lnbits_invoice()
         )
     );
 }
-add_action('wp_ajax_lnbits_paid_invoice', 'ajax_btcpaywall_paid_lnbits_invoice');
-add_action('wp_ajax_nopriv_lnbits_paid_invoice', 'ajax_btcpaywall_paid_lnbits_invoice');
+add_action('wp_ajax_lnbits_paid_invoice', 'btcpaywall_ajax_paid_lnbits_invoice');
+add_action('wp_ajax_nopriv_lnbits_paid_invoice', 'btcpaywall_ajax_paid_lnbits_invoice');
 /**
  * @since 1.0.2
  */
-function ajax_btcpaywall_paid_tipping_opennode_invoice()
+function btcpaywall_ajax_paid_tipping_opennode_invoice()
 {
     $id = sanitize_text_field($_POST['id']);
 
@@ -968,13 +968,13 @@ function ajax_btcpaywall_paid_tipping_opennode_invoice()
         )
     );
 }
-add_action('wp_ajax_opennode_tipping_paid_invoice', 'ajax_btcpaywall_paid_tipping_opennode_invoice');
-add_action('wp_ajax_nopriv_opennode_tipping_paid_invoice', 'ajax_btcpaywall_paid_tipping_opennode_invoice');
+add_action('wp_ajax_opennode_tipping_paid_invoice', 'btcpaywall_ajax_paid_tipping_opennode_invoice');
+add_action('wp_ajax_nopriv_opennode_tipping_paid_invoice', 'btcpaywall_ajax_paid_tipping_opennode_invoice');
 
 /**
  * @since 1.1.0
  */
-function ajax_btcpaywall_paid_tipping_lnbits_invoice()
+function btcpaywall_ajax_paid_tipping_lnbits_invoice()
 {
     $id = sanitize_text_field($_POST['id']);
 
@@ -1033,9 +1033,9 @@ function ajax_btcpaywall_paid_tipping_lnbits_invoice()
         )
     );
 }
-add_action('wp_ajax_lnbits_tipping_paid_invoice', 'ajax_btcpaywall_paid_tipping_lnbits_invoice');
-add_action('wp_ajax_nopriv_lnbits_tipping_paid_invoice', 'ajax_btcpaywall_paid_tipping_lnbits_invoice');
-function ajax_btcpaywall_add_to_cart()
+add_action('wp_ajax_lnbits_tipping_paid_invoice', 'btcpaywall_ajax_paid_tipping_lnbits_invoice');
+add_action('wp_ajax_nopriv_lnbits_tipping_paid_invoice', 'btcpaywall_ajax_paid_tipping_lnbits_invoice');
+function btcpaywall_ajax_add_to_cart()
 {
     if (!is_numeric($_POST['id'])) {
         wp_send_json_error();
@@ -1045,13 +1045,13 @@ function ajax_btcpaywall_add_to_cart()
     $checkout_page = get_permalink(get_option('btcpw_checkout_page'));
     wp_send_json_success(['data' => $checkout_page]);
 }
-add_action('wp_ajax_btcpw_add_to_cart', 'ajax_btcpaywall_add_to_cart');
-add_action('wp_ajax_nopriv_btcpw_add_to_cart', 'ajax_btcpaywall_add_to_cart');
+add_action('wp_ajax_btcpw_add_to_cart', 'btcpaywall_ajax_add_to_cart');
+add_action('wp_ajax_nopriv_btcpw_add_to_cart', 'btcpaywall_ajax_add_to_cart');
 
 
 
 
-function ajax_btcpaywall_remove_from_cart()
+function btcpaywall_ajax_remove_from_cart()
 {
     if (!is_numeric($_POST['cart_item'])) {
         wp_send_json_error();
@@ -1062,14 +1062,14 @@ function ajax_btcpaywall_remove_from_cart()
 
     wp_send_json_success();
 }
-add_action('wp_ajax_btcpw_remove_from_cart', 'ajax_btcpaywall_remove_from_cart');
-add_action('wp_ajax_nopriv_btcpw_remove_from_cart', 'ajax_btcpaywall_remove_from_cart');
+add_action('wp_ajax_btcpw_remove_from_cart', 'btcpaywall_ajax_remove_from_cart');
+add_action('wp_ajax_nopriv_btcpw_remove_from_cart', 'btcpaywall_ajax_remove_from_cart');
 
 
 
 
 
-function ajax_btcpaywall_generate_invoice_id_content_file()
+function btcpaywall_ajax_generate_invoice_id_content_file()
 {
     $gateway = get_option('btcpw_selected_payment_gateway', 'BTCPayServer');
     $products = BTCPayWall()->cart->get_contents();
@@ -1187,13 +1187,13 @@ function ajax_btcpaywall_generate_invoice_id_content_file()
         ]
     );
 }
-add_action('wp_ajax_btcpw_generate_content_file_invoice_id', 'ajax_btcpaywall_generate_invoice_id_content_file');
-add_action('wp_ajax_nopriv_btcpw_generate_content_file_invoice_id', 'ajax_btcpaywall_generate_invoice_id_content_file');
+add_action('wp_ajax_btcpw_generate_content_file_invoice_id', 'btcpaywall_ajax_generate_invoice_id_content_file');
+add_action('wp_ajax_nopriv_btcpw_generate_content_file_invoice_id', 'btcpaywall_ajax_generate_invoice_id_content_file');
 
 
 
 
-function ajax_btcpaywall_paid_content_file_invoice()
+function btcpaywall_ajax_paid_content_file_invoice()
 {
     if (empty($_POST['invoice_id'])) {
         wp_send_json_error();
@@ -1264,15 +1264,15 @@ function ajax_btcpaywall_paid_content_file_invoice()
     wp_send_json_success();
 }
 
-add_action('wp_ajax_btcpw_paid_content_file_invoice', 'ajax_btcpaywall_paid_content_file_invoice');
-add_action('wp_ajax_nopriv_btcpw_paid_content_file_invoice', 'ajax_btcpaywall_paid_content_file_invoice');
+add_action('wp_ajax_btcpw_paid_content_file_invoice', 'btcpaywall_ajax_paid_content_file_invoice');
+add_action('wp_ajax_nopriv_btcpw_paid_content_file_invoice', 'btcpaywall_paid_content_file_invoice');
 
 
 /**
  * @since 1.0.1
  */
 
-function ajax_btcpaywall_opennode_monitor_invoice_status()
+function btcpaywall_ajax_opennode_monitor_invoice_status()
 {
     if (empty($_GET['invoice_id'])) {
         wp_send_json_error(['status' => 'unpaid']);
@@ -1290,14 +1290,14 @@ function ajax_btcpaywall_opennode_monitor_invoice_status()
     wp_send_json_success(['status' => 'paid']);
 }
 
-add_action('wp_ajax_btcpw_opennode_monitor_invoice_status', 'ajax_btcpaywall_opennode_monitor_invoice_status');
-add_action('wp_ajax_nopriv_btcpw_opennode_monitor_invoice_status', 'ajax_btcpaywall_opennode_monitor_invoice_status');
+add_action('wp_ajax_btcpw_opennode_monitor_invoice_status', 'btcpaywall_opennode_monitor_invoice_status');
+add_action('wp_ajax_nopriv_btcpw_opennode_monitor_invoice_status', 'btcpaywall_opennode_monitor_invoice_status');
 
 /**
  * @since 1.1.0
  */
 
-function ajax_btcpaywall_lnbits_monitor_invoice_status()
+function btcpaywall_ajax_lnbits_monitor_invoice_status()
 {
     if (empty($_GET['invoice_id'])) {
         wp_send_json_error(['status' => 'unpaid']);
@@ -1335,10 +1335,10 @@ function ajax_btcpaywall_lnbits_monitor_invoice_status()
     wp_send_json_success(['status' => 'paid']);
 }
 
-add_action('wp_ajax_btcpw_lnbits_monitor_invoice_status', 'ajax_btcpaywall_lnbits_monitor_invoice_status');
-add_action('wp_ajax_nopriv_btcpw_lnbits_monitor_invoice_status', 'ajax_btcpaywall_lnbits_monitor_invoice_status');
+add_action('wp_ajax_btcpw_lnbits_monitor_invoice_status', 'btcpaywall_lnbits_monitor_invoice_status');
+add_action('wp_ajax_nopriv_btcpw_lnbits_monitor_invoice_status', 'btcpaywall_lnbits_monitor_invoice_status');
 
-function ajax_btcpaywall_coinsnap_monitor_invoice_status()
+function btcpaywall_ajax_coinsnap_monitor_invoice_status()
 {
     if (empty($_GET['invoice_id'])) {
         wp_send_json_error(['status' => 'unpaid']);
@@ -1357,11 +1357,11 @@ function ajax_btcpaywall_coinsnap_monitor_invoice_status()
     wp_send_json_success(['status' => $body['status'] ?? 'paid']);
 }
 
-add_action('wp_ajax_btcpw_coinsnap_monitor_invoice_status', 'ajax_btcpaywall_coinsnap_monitor_invoice_status');
-add_action('wp_ajax_nopriv_btcpw_coinsnap_monitor_invoice_status', 'ajax_btcpaywall_coinsnap_monitor_invoice_status');
+add_action('wp_ajax_btcpw_coinsnap_monitor_invoice_status', 'btcpaywall_ajax_coinsnap_monitor_invoice_status');
+add_action('wp_ajax_nopriv_btcpw_coinsnap_monitor_invoice_status', 'btcpaywall_ajax_coinsnap_monitor_invoice_status');
 
 
-function ajax_btcpaywall_check_invoice_after_expiration()
+function btcpaywall_ajax_check_invoice_after_expiration()
 {
     if (empty($_POST['order_id'])) {
         wp_send_json_error();
@@ -1417,5 +1417,5 @@ function ajax_btcpaywall_check_invoice_after_expiration()
     wp_send_json_success();
 }
 
-add_action('wp_ajax_btcpw_check_order_after_expiration', 'ajax_btcpaywall_check_invoice_after_expiration');
-add_action('wp_ajax_nopriv_btcpw_check_order_after_expiration', 'ajax_btcpaywall_check_invoice_after_expiration');
+add_action('wp_ajax_btcpw_check_order_after_expiration', 'btcpaywall_ajax_check_invoice_after_expiration');
+add_action('wp_ajax_nopriv_btcpw_check_order_after_expiration', 'btcpaywall_ajax_check_invoice_after_expiration');
