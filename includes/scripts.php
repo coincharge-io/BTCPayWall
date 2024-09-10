@@ -65,7 +65,8 @@ function btcpaywall_enqueue_scripts()
         [
             'gateway' => get_option('btcpw_selected_payment_gateway', 'BTCPayServer'),
             'success_url' => get_permalink(get_option('btcpw_success_page')),
-            'post_id' => get_the_ID()
+            'post_id' => get_the_ID(),
+            'security'  => wp_create_nonce('payment-security-nonce'),
         ]
     );
 }
