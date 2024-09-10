@@ -295,9 +295,6 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                 </form>
             </div>
         </div>
-        <div id="powered_by_skyscraper">
-            <p>Powered by <a href='https://btcpaywall.com/' target='_blank'>BTCPayWall</a></p>
-        </div>
     </div>
 <?php
 
@@ -580,9 +577,6 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                     <?php endif; ?>
                 </form>
             </div>
-        </div>
-        <div id="powered_by_skyscraper">
-            <p>Powered by <a href='https://btcpaywall.com/' target='_blank'>BTCPayWall</a></p>
         </div>
     </div>
 <?php
@@ -904,9 +898,6 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                 <?php endif; ?>
             </form>
         </div>
-        <div id="powered_by">
-            <p>Powered by <a href='https://btcpaywall.com/' target='_blank'>BTCPayWall</a></p>
-        </div>
     </div>
 <?php
 
@@ -1049,9 +1040,6 @@ function btcpaywall_render_shortcode_box_tipping($atts)
                     </div>
                 </fieldset>
             </form>
-        </div>
-        <div id="powered_by_box">
-            <p>Powered by <a href='https://btcpaywall.com/' target='_blank'>BTCPayWall</a></p>
         </div>
     </div>
     </div>
