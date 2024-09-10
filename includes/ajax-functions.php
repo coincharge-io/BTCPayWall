@@ -25,7 +25,7 @@ if (!defined('ABSPATH')) {
  *
  * @return void
  */
-function ajax_btcpaywall_get_invoice_id()
+function btcpaywall_ajax_get_invoice_id()
 {
     if (empty($_POST['post_id'])) {
         wp_send_json_error(['message' => 'Post_id required']);
@@ -68,8 +68,8 @@ function ajax_btcpaywall_get_invoice_id()
         ]
     );
 }
-add_action('wp_ajax_btcpw_get_invoice_id', 'ajax_btcpaywall_get_invoice_id');
-add_action('wp_ajax_nopriv_btcpw_get_invoice_id', 'ajax_btcpaywall_get_invoice_id');
+add_action('wp_ajax_btcpw_get_invoice_id', 'btcpaywall_ajax_get_invoice_id');
+add_action('wp_ajax_nopriv_btcpw_get_invoice_id', 'btcpaywall_ajax_get_invoice_id');
 
 /**
  * Retrieve order id and invoice id from the server
@@ -203,7 +203,7 @@ function btcpaywall_get_payment_method($invoice_id)
  *
  * @return void
  */
-function ajax_btcpaywall_convert_currencies()
+function btcpaywall_ajax_convert_currencies()
 {
     $url = 'https://api.coingecko.com/api/v3/exchange_rates';
     //TODO: Cache call
@@ -236,11 +236,11 @@ function ajax_btcpaywall_convert_currencies()
     );
 }
 
-add_action('wp_ajax_btcpw_convert_currencies', 'ajax_btcpaywall_convert_currencies');
-add_action('wp_ajax_nopriv_btcpw_convert_currencies', 'ajax_btcpaywall_convert_currencies');
+add_action('wp_ajax_btcpw_convert_currencies', 'btcpaywall_ajax_convert_currencies');
+add_action('wp_ajax_nopriv_btcpw_convert_currencies', 'btcpaywall_ajax_convert_currencies');
 
 
-function ajax_btcpaywall_tipping()
+function btcpaywall_ajax_tipping()
 {
     $tipper = new BTCPayWall_Tipper();
 
@@ -329,8 +329,8 @@ function ajax_btcpaywall_tipping()
         ]
     );
 }
-add_action('wp_ajax_btcpw_tipping', 'ajax_btcpaywall_tipping');
-add_action('wp_ajax_nopriv_btcpw_tipping', 'ajax_btcpaywall_tipping');
+add_action('wp_ajax_btcpw_tipping', 'btcpaywall_ajax_tipping');
+add_action('wp_ajax_nopriv_btcpw_tipping', 'btcpaywall_ajax_tipping');
 /**
  * @since 1.1.0
  */
@@ -405,11 +405,11 @@ function ajax_btcpaywall_paid_invoice()
 
     update_post_meta($order_id, 'btcpw_status', 'success');
     btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($invoice_id, $body['metadata']['customer_data'], $body['metadata']['type']), 'Pay');
-    
-    if(isset($body['metadata']['customer_data']) && isset($body['metadata']['customer_data']['email'])){
-        btcpaywall_notify_customer($body['metadata']['customer_data']['email'], btcpaywall_get_notify_customers_body($invoice_id, $body['metadata']['customer_data']),'Pay');
+
+    if (isset($body['metadata']['customer_data']) && isset($body['metadata']['customer_data']['email'])) {
+        btcpaywall_notify_customer($body['metadata']['customer_data']['email'], btcpaywall_get_notify_customers_body($invoice_id, $body['metadata']['customer_data']), 'Pay');
     }
-    
+
     wp_send_json_success();
 }
 
@@ -454,8 +454,8 @@ function ajax_btcpaywall_paid_tipping()
     setcookie("btcpw_donation_initiated_{$post_id}", '', time() - 3600, $cookie_path);
     //btcpaywall_notify_administrator($body['metadata']['donor']);
     btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($invoice_id, $body['metadata']['donor'], $body['metadata']['type']), 'Tipping');
-    
-    if(isset($body['metadata']['donor']) && isset($body['metadata']['donor']['email'])){
+
+    if (isset($body['metadata']['donor']) && isset($body['metadata']['donor']['email'])) {
         btcpaywall_notify_customer($body['metadata']['donor']['email'], btcpaywall_get_notify_customers_body($invoice_id, $body['metadata']['donor']), 'Tipping');
     }
     wp_send_json_success();
@@ -841,8 +841,8 @@ function ajax_btcpaywall_paid_opennode_invoice()
 
     update_post_meta($order_id, 'btcpw_status', 'success');
     btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($invoice_id, $body['data']['metadata']['customer_data'], $body['data']['metadata']['type']), 'Pay');
-    
-    if(isset($body['data']['metadata']['customer_data']) && isset($body['data']['metadata']['customer_data']['email'])){
+
+    if (isset($body['data']['metadata']['customer_data']) && isset($body['data']['metadata']['customer_data']['email'])) {
         btcpaywall_notify_customer($body['data']['metadata']['customer_data']['email'], btcpaywall_get_notify_customers_body($invoice_id, $body['data']['metadata']['customer_data']), 'Pay');
     }
     wp_send_json_success(
@@ -898,8 +898,8 @@ function ajax_btcpaywall_paid_lnbits_invoice()
 
     update_post_meta($order_id, 'btcpw_status', 'success');
     btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($invoice_id, $memo['customer_data'], $memo['type']), 'Pay');
-    
-    if(isset($memo['customer_data']) && isset($memo['customer_data']['email'])){
+
+    if (isset($memo['customer_data']) && isset($memo['customer_data']['email'])) {
         btcpaywall_notify_customer($memo['customer_data']['email'], btcpaywall_get_notify_customers_body($invoice_id, $memo['customer_data']), 'Pay');
     }
     wp_send_json_success(
@@ -958,7 +958,7 @@ function ajax_btcpaywall_paid_tipping_opennode_invoice()
     $payment->update(array('status' => $body['status'], 'payment_method' => 'BTC'));
     $tipping->update(array('status' => $body['status'], 'payment_method' => 'BTC'));
     btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($id, $body['metadata']['donor'], $body['metadata']['type']), 'Tipping');
-    if(isset($body['metadata']['donor']) && isset($body['metadata']['donor']['email'])){
+    if (isset($body['metadata']['donor']) && isset($body['metadata']['donor']['email'])) {
         btcpaywall_notify_customer($body['metadata']['donor']['email'], btcpaywall_get_notify_customers_body($id, $body['metadata']['donor']), 'Tipping');
     }
     wp_send_json_success(
@@ -1023,7 +1023,7 @@ function ajax_btcpaywall_paid_tipping_lnbits_invoice()
     $payment->update(array('status' => $status, 'payment_method' => 'Lightning'));
     $tipping->update(array('status' => $status, 'payment_method' => 'Lightning'));
     btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($id, $memo['donor'], $memo['type']), 'Tipping');
-    if(isset($memo['donor']) && isset($memo['donor']['email'])){
+    if (isset($memo['donor']) && isset($memo['donor']['email'])) {
         btcpaywall_notify_customer($memo['donor']['email'], btcpaywall_get_notify_customers_body($id, $memo['donor']), 'Tipping');
     }
     wp_send_json_success(
@@ -1247,12 +1247,14 @@ function ajax_btcpaywall_paid_content_file_invoice()
     }
     $payment->update(
         array(
-            'status' => $status, 'payment_method' => $payment_method, 'download_links' => $db_links
+            'status' => $status,
+            'payment_method' => $payment_method,
+            'download_links' => $db_links
         )
     );
     if ($status == 'Paid') {
         setcookie("btcpaywall_initiated_purchase", '', time() - 3600, "/");
-        if(isset($body['metadata']['customer_data']) && isset($body['metadata']['customer_data']['email'])){
+        if (isset($body['metadata']['customer_data']) && isset($body['metadata']['customer_data']['email'])) {
             btcpaywall_notify_customer($body['metadata']['customer_data']['email'], btcpaywall_get_notify_customers_body($invoice_id, $body['metadata']['customer_data']), 'Pay');
         }
         BTCPayWall()->cart->empty_cart();
@@ -1409,7 +1411,7 @@ function ajax_btcpaywall_check_invoice_after_expiration()
 
     update_post_meta($order_id, 'btcpw_status', 'success');
     btcpaywall_notify_administrator(btcpaywall_get_notify_administrator_body($invoice_id, $body['metadata']['customer_data'], $body['metadata']['type']), 'Pay');
-    if(isset($body['metadata']['customer_data']) && isset($body['metadata']['customer_data']['email'])){
+    if (isset($body['metadata']['customer_data']) && isset($body['metadata']['customer_data']['email'])) {
         btcpaywall_notify_customer($body['metadata']['customer_data']['email'], btcpaywall_get_notify_customers_body($invoice_id, $body['metadata']['customer_data']), 'Pay');
     }
     wp_send_json_success();
