@@ -21,7 +21,7 @@ class BTCPayWall_Elementor_Tipping_Banner_High_Widget extends \Elementor\Widget_
      */
     public function get_name()
     {
-        return 'elementor_btcpw_tipping_banner_high';
+        return 'btcpaywall_tipping_banner_high';
     }
 
     /**
@@ -29,7 +29,7 @@ class BTCPayWall_Elementor_Tipping_Banner_High_Widget extends \Elementor\Widget_
      */
     public function get_title()
     {
-        return 'BTCPW Tipping Banner High';
+        return 'BTCPayWall Tipping Banner High';
     }
 
     /**

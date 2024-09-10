@@ -20,7 +20,7 @@ class BTCPayWall_Elementor_Shortcode_List_Widget extends \Elementor\Widget_Base
      */
     public function get_name()
     {
-        return 'elementor_btcpw_shortcode_list';
+        return 'btcpaywall_shortcode_list';
     }
 
     /**
@@ -28,7 +28,7 @@ class BTCPayWall_Elementor_Shortcode_List_Widget extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return 'BTCPW Shortcode List';
+        return 'BTCPayWall Shortcode List';
     }
 
     /**

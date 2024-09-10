@@ -26,7 +26,9 @@ abstract class BTCPayWall_DB
     public $primary_key;
 
 
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
 
     public function get_columns()
@@ -153,11 +155,19 @@ abstract class BTCPayWall_DB
             return false;
         }
 
-        if (false === $wpdb->query($wpdb->prepare("DELETE FROM $this->table_name WHERE $this->primary_key = %d", $row_id))) {
+        if (false == $wpdb->delete(
+            $this->table_name,
+            array($this->primary_key => $row_id),
+            array('%d') // Format for the primary key
+        )) {
             return false;
         }
+        // if (false === $wpdb->query($wpdb->prepare("DELETE FROM $this->table_name WHERE $this->primary_key = %d", $row_id))) {
+        //     return false;
+        // }
 
-        return true;
+        // return true;
+
     }
 
 
@@ -176,7 +186,9 @@ abstract class BTCPayWall_DB
             $this->create_table();
         }
     }
-    public function create_table() {}
+    public function create_table()
+    {
+    }
     public function installed()
     {
         return $this->table_exists($this->table_name);

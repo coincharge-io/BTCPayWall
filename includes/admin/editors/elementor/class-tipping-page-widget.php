@@ -20,7 +20,7 @@ class BTCPayWall_Elementor_Tipping_Page_Widget extends \Elementor\Widget_Base
      */
     public function get_name()
     {
-        return 'elementor_btcpw_tipping_page';
+        return 'btcpaywall_tipping_page';
     }
 
     /**
@@ -28,7 +28,7 @@ class BTCPayWall_Elementor_Tipping_Page_Widget extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return 'BTCPW Tipping Page';
+        return 'BTCPayWall Tipping Page';
     }
 
     /**

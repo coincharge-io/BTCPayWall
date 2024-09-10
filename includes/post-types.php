@@ -53,7 +53,8 @@ function btcpaywall_register_post_types()
         'menu_name'          => esc_html__('Digital Downloads', 'btcpaywall')
     ));
 
-    register_post_type('digital_download', [
+    //Migrate digital_download to btcpaywall_digital_download on update
+    register_post_type('btcpaywall_digital_download', [
         'labels' => $download_labels,
         'public' => true,
         'show_ui'         => true,

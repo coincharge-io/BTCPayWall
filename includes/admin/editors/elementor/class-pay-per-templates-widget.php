@@ -20,7 +20,7 @@ class BTCPayWall_Elementor_Pay_Per_Template_Widget extends \Elementor\Widget_Bas
      */
     public function get_name()
     {
-        return 'elementor_btcpw_pay_per_templates';
+        return 'btcpaywall_pay_per_templates';
     }
 
     /**
@@ -28,7 +28,7 @@ class BTCPayWall_Elementor_Pay_Per_Template_Widget extends \Elementor\Widget_Bas
      */
     public function get_title()
     {
-        return 'BTCPW Pay Per Templates';
+        return 'BTCPayWall Pay Per Templates';
     }
 
     /**

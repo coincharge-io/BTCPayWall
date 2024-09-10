@@ -20,7 +20,7 @@ class BTCPayWall_Elementor_Start_Content_Widget extends \Elementor\Widget_Base
      */
     public function get_name()
     {
-        return 'elementor_btcpw_start_content';
+        return 'btcpaywall_start_content';
     }
 
     /**
@@ -28,7 +28,7 @@ class BTCPayWall_Elementor_Start_Content_Widget extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return 'BTCPW Pay-per-Post Start';
+        return 'BTCPayWall Pay-per-Post Start';
     }
 
     /**
