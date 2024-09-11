@@ -189,31 +189,31 @@ work', 'btcpaywall');
         $tipping_text = !empty($instance['tipping_text'])
             ? $instance['tipping_text'] : printf(__('%s','btcpaywall'),esc_html('Enter Tipping Amount'));
         $tipping_text_color = !empty($instance['tipping_text_color']) ?
-            $instance['tipping_text_color'] : esc_html('#000000');
+            $instance['tipping_text_color'] : '#000000';
         $redirect = !empty($instance['redirect']) ? $instance['redirect'] :
             esc_html('');
         $amount = !empty($instance['amount']) ?
-            $instance['amount'] : esc_html__('', 'btcpaywall');
+            $instance['amount'] : '';
         $description_color = !empty($instance['description_color']) ?
-            $instance['description_color'] : esc_html__('#000000', 'btcpaywall');
+            $instance['description_color'] : '#000000';
         $button_text = !empty($instance['button_text']) ? $instance['button_text'] :
-            esc_html('Tipping now');
+            __('Tipping now','btcpaywall');
         $button_text_color = !empty($instance['button_text_color']) ?
-            $instance['button_text_color'] : esc_html('#FFFFFF');
+            $instance['button_text_color'] : '#FFFFFF';
         $button_color = !empty($instance['button_color']) ? $instance['button_color'] :
-            esc_html('#FE642E');
+            '#FE642E';
 
         $button_color_hover = !empty($instance['button_color_hover']) ? $instance['button_color_hover'] : '#e45a29j';
         $logo_id = !empty($instance['logo_id']) ?
             $instance['logo_id'] : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png';
         $background_id = !empty($instance['background_id']) ? $instance['background_id'] :
-            esc_html('');
+            '';
         $logo = wp_get_attachment_image_src($logo_id);
         $background = wp_get_attachment_image_src($background_id);
         $hf_color = !empty($instance['hf_color']) ? $instance['hf_color'] :
             esc_html('#1d5aa3');
         $input_background = !empty($instance['input_background']) ? $instance['input_background']
-            : esc_html('#ffa500'); ?>
+            : '#ffa500'; ?>
 
 
         <style>
@@ -288,7 +288,7 @@ work', 'btcpaywall');
                     <input id="<?php echo esc_attr($this->get_field_id('redirect')); ?>" name="<?php echo esc_attr($this->get_field_name('redirect')); ?>" class="widget-tipping-basic_redirect" type="text" value="<?php echo esc_attr($redirect); ?>" />
                 </div>
             </div>
-            <h3><?php echo esc_html__('Global', 'btcpaywall'); ?></h3>
+            <h3><?php echo __('Global', 'btcpaywall'); ?></h3>
             <div class="row">
                 <div class="col-20">
                     <label for="<?php echo esc_attr($this->get_field_id('dimension')); ?>"><?php echo esc_html__('Dimension', 'btcpaywall'); ?></label>
@@ -338,7 +338,7 @@ work', 'btcpaywall');
                     <input id="<?php echo esc_attr($this->get_field_id('hf_color')); ?>" class="widget-tipping-basic-box-hf_color" name="<?php echo esc_attr($this->get_field_name('hf_color')); ?>" type="text" value="<?php echo esc_attr($hf_color); ?>" />
                 </div>
             </div>
-            <h3><?php echo esc_html__('Header', 'btcpaywall'); ?></h3>
+            <h3><?php echo __('Header', 'btcpaywall'); ?></h3>
             <div class="row">
                 <div class="col-20">
                     <label for="<?php echo esc_attr($this->get_field_id('logo')); ?>"><?php echo esc_html__('Tipping logo', 'btcpaywall'); ?></label>
