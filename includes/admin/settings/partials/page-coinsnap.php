@@ -1,18 +1,23 @@
 <?php
 // Exit if accessed directly.
 if (!defined('ABSPATH')) {
-    exit;
+  exit;
 }
 $btcpw_coinsnap_key = get_option('btcpw_coinsnap_auth_key');
 $btcpw_coinsnap_store_id = get_option('btcpw_coinsnap_store_id');
-?>
-<style>
-  .connected {
+wp_add_inline_style('wp-block-library', ".connected{
     height: 50px;
     color: #fff;
     background: green;
-  }
-</style>
+  }");
+// <style>
+//   .connected {
+//     height: 50px;
+//     color: #fff;
+//     background: green;
+//   }
+// </style>
+?>
 <div class="btcpw_general_settings">
   <div style="margin-top: 25px;">
     <?php if (empty($btcpw_coinsnap_website_id)) : ?>
