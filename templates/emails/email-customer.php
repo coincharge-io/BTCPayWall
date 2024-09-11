@@ -1,6 +1,6 @@
 <?php
 if (! defined('ABSPATH')) {
-    exit;
+        exit;
 } // Exit if accessed directly
 ?>
 <!DOCTYPE html>
@@ -16,13 +16,13 @@ if (! defined('ABSPATH')) {
         <div style="display: block; margin: 0 auto !important; max-width: 580px; padding: 10px; width: 580px; background: #ffffff; border-radius: 3px;">
                 <?php //$customer = empty($name) ? 'customer' : $name;
                 $payment_details = new BTCPayWall_Payment($invoice_id);
-$customer_data = new BTCPayWall_Customer($payment_details->customer_id);
-$customer = empty($customer_data->full_name) ? ',' : " {$customer_data->full_name},";
-$download_links = explode(',', $payment_details->download_links);
-$is_tipping = strtolower($payment_details->revenue_type)[0] == 't' ? true : false;
-$message = strtolower($payment_details->revenue_type)[0] == 't' ? 'Thank you for your tipping. You can see tipping details in the table below.' : 'Thank you for your purchase. You can see payment details in the table below.'; ?>
+                $customer_data = new BTCPayWall_Customer($payment_details->customer_id);
+                $customer = empty($customer_data->full_name) ? ',' : " {$customer_data->full_name},";
+                $download_links = explode(',', $payment_details->download_links);
+                $is_tipping = strtolower($payment_details->revenue_type)[0] == 't' ? true : false;
+                $message = strtolower($payment_details->revenue_type)[0] == 't' ? 'Thank you for your tipping. You can see tipping details in the table below.' : 'Thank you for your purchase. You can see payment details in the table below.'; ?>
                 <p>Hello<?php echo esc_html($customer); ?></p>
-                <p><?php echo esc_html__($message, 'btcpaywall'); ?></p>
+                <p><?php echo printf(__('%s', 'btcpaywall'), esc_html($message)); ?></p>
                 <table style="border-collapse: separate; width: 100%; table-layout: auto;" role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                         <tbody>
                                 <tr>
@@ -32,7 +32,7 @@ $message = strtolower($payment_details->revenue_type)[0] == 't' ? 'Thank you for
                                                         <thead>
                                                                 <tr>
                                                                         <th style="color: #000000; font-family: sans-serif; font-weight: 400; line-height: 1.4; font-size: 20px; border: 1px solid #000000;" colspan="2">
-                                                                                <strong><?php echo esc_html__($header1, 'btcpaywall'); ?></strong>
+                                                                                <strong><?php echo printf(__('%s', 'btcpaywall'), esc_html($header1)); ?></strong>
                                                                         </th>
                                                                 </tr>
                                                         </thead>
@@ -109,7 +109,7 @@ $message = strtolower($payment_details->revenue_type)[0] == 't' ? 'Thank you for
                                                                 <thead>
                                                                         <tr>
                                                                                 <th style="color: #000000; font-family: sans-serif; font-weight: 400; line-height: 1.4; font-size: 20px; border: 1px solid #000000;" colspan="2">
-                                                                                        <strong><?php echo esc_html__($header, 'btcpaywall'); ?></strong>
+                                                                                        <strong><?php echo printf(__('%s', 'btcpaywall'), esc_html($header)); ?></strong>
                                                                                 </th>
                                                                         </tr>
                                                                 </thead>
@@ -117,10 +117,10 @@ $message = strtolower($payment_details->revenue_type)[0] == 't' ? 'Thank you for
                                                                         <?php foreach ($collect_data as $key => $value) : ?><?php if ($key != 'id') : ?><?php if (!empty($value)) : ?><?php if ($key == 'full_name') : ?><?php $key = 'name'; ?><?php endif; ?>
                                                                         <tr>
                                                                                 <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">
-                                                                                        <strong><?php echo esc_html__(ucfirst($key), 'btcpaywall'); ?></strong>
+                                                                                        <strong><?php echo printf(__('%s', 'btcpaywall'), esc_html(ucfirst($key))); ?></strong>
                                                                                 </td>
                                                                                 <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;">
-                                                                                        <?php echo(esc_html__($value, 'btcpaywall')); ?></td>
+                                                                                        <?php echo printf(__('%s', 'btcpaywall'), esc_html($value)); ?></td>
                                                                         </tr>
                                                                         <?php endif; ?><?php endif; ?><?php endforeach; ?>
                                                                 </tbody>
@@ -130,8 +130,8 @@ $message = strtolower($payment_details->revenue_type)[0] == 't' ? 'Thank you for
                                                                 <p>You can download file/s by clicking on the button/s bellow.</p>
                                                                 <ul>
                                                                         <?php foreach ($download_links as $key => $link) : ?><?php $product = new BTCPayWall_Digital_Download($download_ids[$key]);
-                                                                            $name = $product->get_name(); ?>
-                                                                        <li><a href="<?php echo esc_url($link); ?>" target="_blank"><?php echo esc_html__($name, 'btcpaywall'); ?></a></li>
+                                                                                                                                $name = $product->get_name(); ?>
+                                                                        <li><a href="<?php echo esc_url($link); ?>" target="_blank"><?php echo printf(__('%s', 'btcpaywall'), esc_html($name)); ?></a></li>
                                                                 <?php endforeach; ?>
                                                                 </ul>
                                                         </div>
