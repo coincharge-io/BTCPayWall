@@ -58,6 +58,39 @@ For your digital content transactions, BTCPayWall offers cutting-edge payment me
 You have the flexibility to either integrate with your personal BTCPay server or take advantage of the shared server provided by Coincharge. Moreover, it is possible to integrate with OpenNode, a leading Bitcoin and Lightning payment provider, or use LNBits to further enhance your transaction experience.
 
 
+## Third-Party Service Integration
+
+The **BTC Paywall** plugin relies on third-party services for processing Bitcoin and Lightning payments. By using this plugin, you agree that certain data will be transmitted to these external services for the purpose of handling payments. Below is a list of the integrated services, along with links to their respective terms of use and privacy policies.
+
+### 1. **BTCPayServer**
+
+- **Description**: BTCPayServer is an open-source, self-hosted payment processor that facilitates Bitcoin and Lightning payments.
+- **Service URL**: [BTCPayServer](https://btcpayserver.org)
+
+### 2. **Coinsnap**
+
+- **Description**: Coinsnap provides a Lightning Network payment gateway, allowing users to process Bitcoin payments securely.
+- **Service URL**: [Coinsnap](https://www.coinsnap.io)
+- **Terms of Use**: [Coinsnap Terms](https://coinsnap.io/en/general-terms-and-conditions/)
+- **Privacy Policy**: [Coinsnap Privacy Policy](https://coinsnap.io/en/privacy/)
+
+### 3. **OpenNode**
+
+- **Description**: OpenNode is a Bitcoin payment processor that supports both on-chain and Lightning payments for businesses.
+- **Service URL**: [OpenNode](https://www.opennode.com)
+- **Terms of Use**: [OpenNode Terms](https://www.opennode.com/terms)
+- **Privacy Policy**: [OpenNode Privacy Policy](https://opennode.com/privacy-policy/)
+
+### 4. **LNBits**
+
+- **Description**: LNBits is a lightweight Lightning Network wallet and payment processing solution, supporting quick and easy Bitcoin transactions.
+- **Service URL**: [LNBits](https://lnbits.com)
+
+### Data Transmission Notice:
+
+When using this plugin, payment-related data, including payment details and transaction identifiers, will be securely transmitted to the selected payment gateway. Users are encouraged to review the privacy policies and terms of service of the respective providers to ensure they comply with their own legal requirements.
+
+
 **Website:** [Visit Our Website](https://btcpaywall.com)
 **Support:** [Visit the Support Page](https://btcpaywall.com/support)
 
