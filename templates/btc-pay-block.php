@@ -170,8 +170,17 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
                                 $label = $collect[$key]['label'];
                                 $type = $collect[$key]['type']; ?>
                                 <div class="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}_wrap"); ?>">
-                                    <label for="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
-                                    <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>" name="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                    <label for="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>"><?php echo printf(
+                                                                                                                    __('%s', 'btcpaywall'),
+                                                                                                                    esc_html__($label)
+                                                                                                                ); ?></label>
+                                    <input type="<?php echo esc_attr($type); ?>" id="<?php echo printf(
+                                                                                            __('btcpw_revenue_post_customer_%s', 'btcpaywall'),
+                                                                                            esc_attr($id)
+                                                                                        ); ?>" name="<?php echo printf(
+                                                        __('btcpw_revenue_post_customer_%s', 'btcpaywall'),
+                                                        esc_attr($id)
+                                                    ); ?>" ); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                 </div>
                             <?php endif; ?>
