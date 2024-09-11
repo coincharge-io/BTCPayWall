@@ -104,7 +104,7 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
                 <div class="btcpw_pay__content paywall_header">
                     <h2><?php echo printf(
                             __('%s', 'btcpaywall'),
-                            esc_html($header) // Dynamic content
+                            esc_html($header)
                         ) ?></h2>
 
                 </div>
@@ -112,7 +112,7 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
                     <p>
                         <?php echo  printf(
                             __('%s', 'btcpaywall'),
-                            esc_html($info) // Dynamic content
+                            esc_html($info)
                         ) ?>
                     </p>
                 </div>
