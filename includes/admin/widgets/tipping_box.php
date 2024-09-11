@@ -125,17 +125,17 @@ class Tipping_Box extends WP_Widget
                             <?php endif; ?>
                             <div>
                                 <?php if (!empty($instance['title'])) : ?>
-                                    <h4><?php echo esc_html__($instance['title'], 'btcpaywall'); ?></h4>
+                                    <h4><?php echo printf(__('%s','btcpaywall'),esc_html($instance['title']))); ?></h4>
                                 <?php endif; ?>
                                 <?php if (!empty($instance['description'])) : ?>
-                                    <p><?php echo esc_html__($instance['description'], 'btcpaywall'); ?></p>
+                                    <p><?php echo printf(__('%s','btcpaywall'),esc_html($instance['description'])); ?></p>
                                 <?php endif; ?>
                             </div>
                         </div>
                         <div class="btcpw_tipping_box_info_container">
 
                         </div>
-                        <h5><?php echo (!empty($instance['tipping_text']) ? esc_html__($instance['tipping_text'], 'btcpaywall') : ''); ?></h5>
+                        <h5><?php echo (!empty($instance['tipping_text']) ? printf(__('%s','btcpaywall'),esc_html($instance['tipping_text'])) : ''); ?></h5>
                         <div class="btcpw_tipping_box_amount">
 
                             <div class="btcpw_tipping_free_input btcpw_widget">
@@ -161,7 +161,7 @@ class Tipping_Box extends WP_Widget
                         <input type="hidden" id="btcpw_redirect_link_btcpw_widget" name="btcpw_redirect_link" value=<?php echo esc_attr($instance['redirect']); ?> />
                         <div id="button">
 
-                            <button type="submit" id="btcpw_tipping__button_btcpw_widget"><?php echo (!empty($instance['button_text']) ? esc_html__($instance['button_text'], 'btcpaywall') : 'Tip'); ?></button>
+                            <button type="submit" id="btcpw_tipping__button_btcpw_widget"><?php echo (!empty($instance['button_text']) ? printf(__('%s','btcpaywall'),esc_html($instance['button_text'])) : 'Tip'); ?></button>
                         </div>
                     </fieldset>
 
@@ -174,46 +174,46 @@ class Tipping_Box extends WP_Widget
     {
         $dimensions = array('250x300', '300x300');
         $supported_currencies = BTCPayWall::CURRENCIES;
-        $title = !empty($instance['title']) ? $instance['title'] : esc_html__('Support my
+        $title = !empty($instance['title']) ? $instance['title'] : __('Support my
 work', 'btcpaywall');
         $description = !empty($instance['description']) ?
-            $instance['description'] : esc_html__('', 'btcpaywall');
+            $instance['description'] : '';
         $dimension = !empty($instance['dimension']) ? $instance['dimension'] :
-            esc_html__('250x300', 'btcpaywall');
+            '250x300';
         $currency = !empty($instance['currency']) ?
-            $instance['currency'] : esc_html__('SATS', 'btcpaywall');
+            $instance['currency'] : __('SATS','btcpaywall');
         $background_color = !empty($instance['background_color']) ? $instance['background_color']
-            : esc_html__('#E6E6E6', 'btcpaywall');
+            : '#E6E6E6';
         $title_text_color = !empty($instance['title_text_color']) ? $instance['title_text_color']
-            : esc_html__('#ffffff', 'btcpaywall');
+            : esc_html('#ffffff');
         $tipping_text = !empty($instance['tipping_text'])
-            ? $instance['tipping_text'] : esc_html__('Enter Tipping Amount', 'btcpaywall');
+            ? $instance['tipping_text'] : printf(__('%s','btcpaywall'),esc_html('Enter Tipping Amount'));
         $tipping_text_color = !empty($instance['tipping_text_color']) ?
-            $instance['tipping_text_color'] : esc_html__('#000000', 'btcpaywall');
+            $instance['tipping_text_color'] : esc_html('#000000');
         $redirect = !empty($instance['redirect']) ? $instance['redirect'] :
-            esc_html__('', 'btcpaywall');
+            esc_html('');
         $amount = !empty($instance['amount']) ?
             $instance['amount'] : esc_html__('', 'btcpaywall');
         $description_color = !empty($instance['description_color']) ?
             $instance['description_color'] : esc_html__('#000000', 'btcpaywall');
         $button_text = !empty($instance['button_text']) ? $instance['button_text'] :
-            esc_html__('Tipping now', 'btcpaywall');
+            esc_html('Tipping now');
         $button_text_color = !empty($instance['button_text_color']) ?
-            $instance['button_text_color'] : esc_html__('#FFFFFF', 'btcpaywall');
+            $instance['button_text_color'] : esc_html('#FFFFFF');
         $button_color = !empty($instance['button_color']) ? $instance['button_color'] :
-            esc_html__('#FE642E', 'btcpaywall');
+            esc_html('#FE642E');
 
         $button_color_hover = !empty($instance['button_color_hover']) ? $instance['button_color_hover'] : '#e45a29j';
         $logo_id = !empty($instance['logo_id']) ?
             $instance['logo_id'] : BTCPAYWALL_PLUGIN_URL . '/assets/src/img/BTCPayWall_logo.png';
         $background_id = !empty($instance['background_id']) ? $instance['background_id'] :
-            esc_html__('', 'btcpaywall');
+            esc_html('');
         $logo = wp_get_attachment_image_src($logo_id);
         $background = wp_get_attachment_image_src($background_id);
         $hf_color = !empty($instance['hf_color']) ? $instance['hf_color'] :
-            esc_html__('#1d5aa3', 'btcpaywall');
+            esc_html('#1d5aa3');
         $input_background = !empty($instance['input_background']) ? $instance['input_background']
-            : esc_html__('#ffa500', 'btcpaywall'); ?>
+            : esc_html('#ffa500'); ?>
 
 
         <style>
@@ -307,13 +307,13 @@ work', 'btcpaywall');
             </div>
             <div class="row">
                 <div class="col-20">
-                    <label for="<?php echo esc_attr($this->get_field_id('background_image')); ?>"><?php echo esc_html__('Background image', 'btcpaywall'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('background_image')); ?>"><?php echo __('Background image', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-80">
                     <?php if ($background) : ?>
                         <button class="widget-tipping-basic-upload_box_image" name="btcpw_tipping_button_image_background"><img width="100" height="100" alt="Tipping box background" src="<?php echo esc_url($background[0]); ?>" /></a></button>
                         <button type="button" class="widget-tipping-basic-remove_box_image">
-                            <?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
+                            <?php echo __('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-background_id" id="<?php echo esc_attr($this->get_field_id('background_id')); ?>" name="<?php echo esc_attr($this->get_field_name('background_id')); ?>" type="text" value="<?php echo esc_attr($background_id); ?>" />
                     <?php else : ?>
                         <button class="widget-tipping-basic-upload_box_image" name="btcpw_tipping_button_image_background"><?php echo esc_html__('Upload', 'btcpaywall'); ?></button>
@@ -349,27 +349,27 @@ work', 'btcpaywall');
                         <button type="button" class="widget-tipping-basic-remove_box_image"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-logo_id" id="<?php echo esc_attr($this->get_field_id('logo_id')); ?>" name="<?php echo esc_attr($this->get_field_name('logo_id')); ?>" type="text" value="<?php echo esc_attr($logo_id); ?>" />
                     <?php else : ?>
-                        <button class="widget-tipping-basic-upload_box_logo" name="btcpw_tipping_button_image"><?php echo esc_html__('Upload', 'btcpaywall'); ?></button>
-                        <button type="button" class="widget-tipping-basic-remove_box_image" style="display:none"><?php echo esc_html__('Remove', 'btcpaywall'); ?></button>
+                        <button class="widget-tipping-basic-upload_box_logo" name="btcpw_tipping_button_image"><?php echo __('Upload', 'btcpaywall'); ?></button>
+                        <button type="button" class="widget-tipping-basic-remove_box_image" style="display:none"><?php echo __('Remove', 'btcpaywall'); ?></button>
                         <input type="hidden" class="widget-tipping-basic-logo_id" id="<?php echo esc_attr($this->get_field_id('logo_id')); ?>" name="<?php echo esc_attr($this->get_field_name('logo_id')); ?>" type="text" value="<?php echo esc_attr($logo_id); ?>" />
                     <?php endif; ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php echo esc_html__('Title:', 'btcpaywall'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php echo __('Title:', 'btcpaywall'); ?></label>
                     <textarea id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text"><?php echo esc_html($title); ?></textarea>
                 </div>
             </div>
             <div class="row">
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('title_text_color')); ?>"><?php echo esc_html__('Title text color', 'btcpaywall'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('title_text_color')); ?>"><?php echo __('Title text color', 'btcpaywall'); ?></label>
                     <input id="<?php echo esc_attr($this->get_field_id('title_text_color')); ?>" name="<?php echo esc_attr($this->get_field_name('title_text_color')); ?>" class="widget-tipping-basic-title_text_color" type="text" value="<?php echo esc_attr($title_text_color); ?>" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-50">
-                    <label for="<?php echo esc_attr($this->get_field_id('description')); ?>"><?php echo esc_html__('Description:', 'btcpaywall'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('description')); ?>"><?php echo __('Description:', 'btcpaywall'); ?></label>
                     <textarea id="<?php echo esc_attr($this->get_field_id('description')); ?>" name="<?php echo esc_attr($this->get_field_name('description')); ?>" type="text"><?php echo esc_html($description); ?></textarea>
                 </div>
             </div>
@@ -379,7 +379,7 @@ work', 'btcpaywall');
                     <input id="<?php echo esc_attr($this->get_field_id('description_color')); ?>" name="<?php echo esc_attr($this->get_field_name('description_color')); ?>" class="widget-tipping-basic-description-color" type="text" value="<?php echo esc_attr($description_color); ?>" />
                 </div>
             </div>
-            <h3><?php echo esc_html__('Main', 'btcpaywall'); ?></h3>
+            <h3><?php echo __('Main', 'btcpaywall'); ?></h3>
             <div class="row">
                 <div class="col-50">
                     <label for="<?php echo esc_attr($this->get_field_id('tipping_text')); ?>"><?php echo esc_html__('Tipping text', 'btcpaywall'); ?></label>
@@ -401,10 +401,10 @@ work', 'btcpaywall');
                     <input id="<?php echo esc_attr($this->get_field_id('input_background')); ?>" name="<?php echo esc_attr($this->get_field_name('input_background')); ?>" type="text" class="widget-tipping-basic-input_background" value="<?php echo esc_attr($input_background); ?>" />
                 </div>
             </div>
-            <h3><?php echo esc_html__('Footer', 'btcpaywall'); ?></h3>
+            <h3><?php echo __('Footer', 'btcpaywall'); ?></h3>
             <div class="row">
                 <div class="col-20">
-                    <label for="<?php echo esc_attr($this->get_field_id('button_text')); ?>"><?php echo esc_html__('Button text', 'btcpaywall'); ?></label>
+                    <label for="<?php echo esc_attr($this->get_field_id('button_text')); ?>"><?php echo __('Button text', 'btcpaywall'); ?></label>
                 </div>
                 <div class="col-80">
                     <textarea id="<?php echo esc_attr($this->get_field_id('button_text')); ?>" name="<?php echo esc_attr($this->get_field_name('button_text')); ?>" type="text" value="<?php echo esc_attr($button_text); ?>"><?php echo esc_html($button_text); ?></textarea>
