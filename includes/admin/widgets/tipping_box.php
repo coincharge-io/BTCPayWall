@@ -125,17 +125,17 @@ class Tipping_Box extends WP_Widget
                             <?php endif; ?>
                             <div>
                                 <?php if (!empty($instance['title'])) : ?>
-                                    <h4><?php echo printf(__('%s','btcpaywall'),esc_html($instance['title']))); ?></h4>
+                                    <h4><?php echo printf(__('%s', 'btcpaywall'), esc_html($instance['title'])); ?></h4>
                                 <?php endif; ?>
                                 <?php if (!empty($instance['description'])) : ?>
-                                    <p><?php echo printf(__('%s','btcpaywall'),esc_html($instance['description'])); ?></p>
+                                    <p><?php echo printf(__('%s', 'btcpaywall'), esc_html($instance['description'])); ?></p>
                                 <?php endif; ?>
                             </div>
                         </div>
                         <div class="btcpw_tipping_box_info_container">
 
                         </div>
-                        <h5><?php echo (!empty($instance['tipping_text']) ? printf(__('%s','btcpaywall'),esc_html($instance['tipping_text'])) : ''); ?></h5>
+                        <h5><?php echo (!empty($instance['tipping_text']) ? printf(__('%s', 'btcpaywall'), esc_html($instance['tipping_text'])) : ''); ?></h5>
                         <div class="btcpw_tipping_box_amount">
 
                             <div class="btcpw_tipping_free_input btcpw_widget">
@@ -161,7 +161,7 @@ class Tipping_Box extends WP_Widget
                         <input type="hidden" id="btcpw_redirect_link_btcpw_widget" name="btcpw_redirect_link" value=<?php echo esc_attr($instance['redirect']); ?> />
                         <div id="button">
 
-                            <button type="submit" id="btcpw_tipping__button_btcpw_widget"><?php echo (!empty($instance['button_text']) ? printf(__('%s','btcpaywall'),esc_html($instance['button_text'])) : 'Tip'); ?></button>
+                            <button type="submit" id="btcpw_tipping__button_btcpw_widget"><?php echo (!empty($instance['button_text']) ? printf(__('%s', 'btcpaywall'), esc_html($instance['button_text'])) : 'Tip'); ?></button>
                         </div>
                     </fieldset>
 
@@ -181,13 +181,13 @@ work', 'btcpaywall');
         $dimension = !empty($instance['dimension']) ? $instance['dimension'] :
             '250x300';
         $currency = !empty($instance['currency']) ?
-            $instance['currency'] : __('SATS','btcpaywall');
+            $instance['currency'] : __('SATS', 'btcpaywall');
         $background_color = !empty($instance['background_color']) ? $instance['background_color']
             : '#E6E6E6';
         $title_text_color = !empty($instance['title_text_color']) ? $instance['title_text_color']
             : esc_html('#ffffff');
         $tipping_text = !empty($instance['tipping_text'])
-            ? $instance['tipping_text'] : printf(__('%s','btcpaywall'),esc_html('Enter Tipping Amount'));
+            ? $instance['tipping_text'] : printf(__('%s', 'btcpaywall'), esc_html('Enter Tipping Amount'));
         $tipping_text_color = !empty($instance['tipping_text_color']) ?
             $instance['tipping_text_color'] : '#000000';
         $redirect = !empty($instance['redirect']) ? $instance['redirect'] :
@@ -197,7 +197,7 @@ work', 'btcpaywall');
         $description_color = !empty($instance['description_color']) ?
             $instance['description_color'] : '#000000';
         $button_text = !empty($instance['button_text']) ? $instance['button_text'] :
-            __('Tipping now','btcpaywall');
+            __('Tipping now', 'btcpaywall');
         $button_text_color = !empty($instance['button_text_color']) ?
             $instance['button_text_color'] : '#FFFFFF';
         $button_color = !empty($instance['button_color']) ? $instance['button_color'] :
