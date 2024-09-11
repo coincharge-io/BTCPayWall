@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@wordpress/scripts": "^17.1.0",
+    "@wordpress/scripts": "^29.0.0",
     "eslint-plugin-jquery": "^1.5.1"
   }
 }

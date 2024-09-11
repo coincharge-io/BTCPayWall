@@ -13,7 +13,7 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-class BTCPayWall_Tipping_Box extends WP_Widget
+class Tipping_Box extends WP_Widget
 {
     public function __construct()
     {
@@ -31,76 +31,87 @@ class BTCPayWall_Tipping_Box extends WP_Widget
         $logo = wp_get_attachment_image_src($instance['logo_id']) ? wp_get_attachment_image_src($instance['logo_id'])[0] : $instance['logo_id'];
         $background = wp_get_attachment_image_src($instance['background_id']) ? wp_get_attachment_image_src($instance['background_id'])[0] : $instance['background_id'];
         $dimension = explode('x', ($instance['dimension'] == '250x300' ? '250x300' : '300x300'));
-        $custom_css = "
-.btcpw_tipping_box_container.btcpw_widget {
-background-color: " . (!empty($instance['background_color']) ? esc_html($instance['background_color']) : 'transparent') . ";
-width: " . esc_html($dimension[0]) . "px !important;
-height: " . esc_html($dimension[1]) . "px !important;
-background-image: url(" . (!empty($background) ? esc_url($background) : 'none') . ");
-}
-
-#btcpw_tipping__button_btcpw_widget {
-color: " . esc_html($instance['button_text_color']) . ";
-background: " . esc_html($instance['button_color']) . ";
-}
-
-#btcpw_tipping__button_btcpw_widget:hover {
-background: " . esc_html($instance['button_color_hover']) . ";
-}
-
-#tipping_form_box_widget fieldset div.btcpw_tipping_box_header_container h4 {
-color: " . esc_html($instance['title_text_color']) . ";
-}
-
-#tipping_form_box_widget fieldset div p {
-color: " . esc_html($instance['description_color']) . ";
-}
-
-#tipping_form_box_widget fieldset div.btcpw_tipping_box_header_container,
-#button {
-background-color: " . esc_html($instance['hf_color']) . ";
-}
-
-#tipping_form_box_widget fieldset h5 {
-color: " . esc_html($instance['tipping_text_color']) . ";
-}
-
-.btcpw_tipping_free_input.btcpw_widget {
-background-color: " . esc_html($instance['input_background']) . ";
-}
-
-@media screen and (max-width:900px) {
-.btcpw_tipping_box_container.btcpw_widget {
-width: 200px !important;
-height: 250px !important;
-}
-
-#tipping_form_box_widget fieldset .btcpw_tipping_box_header_container h4 {
-margin-bottom: 0.2rem;
-font-size: 12px;
-}
-
-#btcpw_box_widget_logo_wrap {
-height: 30px !important;
-width: 30px !important;
-}
-
-.btcpw_tipping_box_header_container {
-height: 60px !important;
-}
-
-#button button {
-font-size: 11px;
-}
-}
-";
-        wp_add_inline_style('wp-block-library', $custom_css);
-
-        // <style>
-        //
-        // </style>
         //TODO - Refactor responsive design
 ?>
+        <style>
+            .btcpw_tipping_box_container.btcpw_widget {
+                background-color: <?php echo ($instance['background_color'] ? esc_html($instance['background_color']) : '');
+                                    ?>;
+                width: <?php echo esc_html($dimension[0]) . 'px !important';
+                        ?>;
+                height: <?php echo esc_html($dimension[1]) . 'px !important';
+                        ?>;
+                background-image: url(<?php echo ($background ? esc_url($background) : '');
+                                        ?>);
+
+            }
+
+            #btcpw_tipping__button_btcpw_widget {
+                color: <?php echo esc_html($instance['button_text_color']);
+                        ?>;
+                background: <?php echo esc_html($instance['button_color']);
+                            ?>;
+            }
+
+            #btcpw_tipping__button_btcpw_widget:hover {
+
+                background: <?php echo esc_html($instance['button_color_hover']);
+                            ?>;
+            }
+
+            #tipping_form_box_widget fieldset div.btcpw_tipping_box_header_container h4 {
+                color: <?php echo esc_html($instance['title_text_color']);
+                        ?>
+            }
+
+
+
+            #tipping_form_box_widget fieldset div p {
+                color: <?php echo esc_html($instance['description_color']);
+                        ?>
+            }
+
+            #tipping_form_box_widget fieldset div.btcpw_tipping_box_header_container,
+            #button {
+                background-color: <?php echo esc_html($instance['hf_color']);
+                                    ?>;
+            }
+
+            #tipping_form_box_widget fieldset h5 {
+                color: <?php echo esc_html($instance['tipping_text_color']);
+                        ?>;
+            }
+
+            .btcpw_tipping_free_input.btcpw_widget {
+                background-color: <?php echo esc_html($instance['input_background']);
+                                    ?>;
+            }
+
+            @media screen and (max-width:900px) {
+                .btcpw_tipping_box_container.btcpw_widget {
+                    width: 200px !important;
+                    height: 250px !important;
+                }
+
+                #tipping_form_box_widget fieldset .btcpw_tipping_box_header_container h4 {
+                    margin-bottom: 0.2rem;
+                    font-size: 12px;
+                }
+
+                #btcpw_box_widget_logo_wrap {
+                    height: 30px !important;
+                    width: 30px !important;
+                }
+
+                .btcpw_tipping_box_header_container {
+                    height: 60px !important;
+                }
+
+                #button button {
+                    font-size: 11px;
+                }
+            }
+        </style>
         <div id="btcpw_page">
             <div class="btcpw_tipping_box_container btcpw_widget">
 
@@ -463,7 +474,7 @@ work', 'btcpaywall');
         return $instance;
     }
 }
-$my_widget = new Tipping_Box();
+// $my_widget = new Tipping_Box();
 
 
 ?>

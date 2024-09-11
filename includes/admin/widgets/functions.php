@@ -10,7 +10,9 @@
  * @since       1.0
  */
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 function btcpaywall_wpdocs_register_tiping_box_widget()
 {
     require_once __DIR__ . '/tipping_box.php';
