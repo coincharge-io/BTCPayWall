@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Tipping_Banner_Wide extends WP_Widget
+class BTCPayWall_Tipping_Banner_Wide extends WP_Widget
 {
     public function __construct()
     {
