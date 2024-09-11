@@ -17,10 +17,10 @@ if (! defined('ABSPATH')) {
         <table style="border-collapse: separate; width: 100%;
             table-layout: auto; margin-top:30px;" role="presentation" border="0" cellpadding="0" cellspacing="0">
             <?php $payment_details = new BTCPayWall_Payment($invoice_id);
-$header1 = strtolower($type)[0] == 't' ? "Tipping Information" : "Payment Information"; ?>
+            $header1 = strtolower($type)[0] == 't' ? "Tipping Information" : "Payment Information"; ?>
             <thead>
                 <tr>
-                    <th style="color: #000000; font-family: sans-serif; font-weight: 400; line-height: 1.4; font-size: 20px;  border: 1px solid #000000;" colspan="2"><strong><?php echo esc_html__($header1, 'btcpaywall'); ?></strong></th>
+                    <th style="color: #000000; font-family: sans-serif; font-weight: 400; line-height: 1.4; font-size: 20px;  border: 1px solid #000000;" colspan="2"><strong><?php echo printf(__('%s', 'btcpaywall'), esc_html($header1)); ?></strong></th>
                 </tr>
             </thead>
             <tbody>
@@ -54,16 +54,16 @@ $header1 = strtolower($type)[0] == 't' ? "Tipping Information" : "Payment Inform
                 <?php if ($gateway == 'BTCPayServer') : ?>
                     <tr>
                         <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><strong>Credit on Store ID</strong></td>
-                        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html__($storeId, 'btcpaywall'); ?></td>
+                        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($storeId); ?></td>
                     </tr>
                 <?php endif; ?>
                 <tr>
                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><strong>Type</strong></td>
-                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html__($payment_details->revenue_type, 'btcpaywall'); ?></td>
+                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo printf(__('%s', 'btcpaywall'), esc_html($payment_details->revenue_type)); ?></td>
                 </tr>
                 <tr>
                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><strong>Date</strong></td>
-                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html__($payment_details->date_created, 'btcpaywall'); ?></td>
+                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo esc_html($payment_details->date_created); ?></td>
                 </tr>
                 <tr>
                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><strong>Total</strong></td>
@@ -79,7 +79,7 @@ $header1 = strtolower($type)[0] == 't' ? "Tipping Information" : "Payment Inform
                 <?php $header = strtolower($type)[0] == 't' ? "Tipper Information" : "Customer Information"; ?>
                 <thead>
                     <tr>
-                        <th style="color: #000000; font-family: sans-serif; font-weight: 400; line-height: 1.4; font-size: 20px;  border: 1px solid #000000;" colspan="2"><strong><?php echo esc_html__($header, 'btcpaywall'); ?></strong></th>
+                        <th style="color: #000000; font-family: sans-serif; font-weight: 400; line-height: 1.4; font-size: 20px;  border: 1px solid #000000;" colspan="2"><strong><?php echo printf(__('%s', 'btcpaywall'), esc_html($header)); ?></strong></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -90,8 +90,8 @@ $header1 = strtolower($type)[0] == 't' ? "Tipping Information" : "Payment Inform
                                     <?php $key = 'name'; ?>
                                 <?php endif; ?>
                                 <tr>
-                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><strong><?php echo esc_html__(ucfirst($key), 'btcpaywall'); ?></strong></td>
-                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo(esc_html__($value, 'btcpaywall')); ?></td>
+                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><strong><?php echo printf(__('%s', 'btcpaywall'), esc_html(ucfirst($key))); ?></strong></td>
+                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border: 1px solid #999; padding: 0.5rem;"><?php echo printf(__('%s', 'btcpaywall'), esc_html($value)); ?></td>
                                 </tr>
 
                             <?php endif; ?>
@@ -105,7 +105,7 @@ $header1 = strtolower($type)[0] == 't' ? "Tipping Information" : "Payment Inform
 
         <!-- START FOOTER -->
         <div class="footer" style="clear: both; margin-top: 10px; text-align: center; width: 100%;">
-            <h4><?php echo esc_html__('Thank you for using BTCPayWall', 'btcpaywall'); ?></h4>
+            <h4><?php echo printf(__('%s', 'btcpaywall'), esc_html('Thank you for using BTCPayWall')); ?></h4>
         </div>
     </div>
 </body>
