@@ -11,7 +11,9 @@
  */
 
 //Eit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 class BTCPayWall_DB_Customers extends BTCPayWall_DB
@@ -102,12 +104,25 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
     public function get_customer_by($field = 'id', $value = null)
     {
         global $wpdb;
-        $row = $wpdb->get_row(
-            $wpdb->prepare("SELECT * FROM {$this->table_name} WHERE {$field} = %s LIMIT 1", $value)
+        $table_columns = $this->get_columns();
+
+        // Check if the provided field is a valid column
+        if (!in_array($field, $table_columns)) {
+            return null; // Or throw an exception
+        }
+        $field = esc_sql($field);
+        // $row = $wpdb->get_row(
+        //     $wpdb->prepare("SELECT * FROM {$this->table_name} WHERE {$field} = %s LIMIT 1", $value)
+        // );
+        // return $row;
+        $sql = $wpdb->prepare(
+            "SELECT * FROM {$this->table_name} WHERE {$field} = %s LIMIT 1",
+            $value
         );
-        return $row;
+
+        return $wpdb->get_row($sql);
     }
-    public  function customer_count()
+    public function customer_count()
     {
         global $wpdb;
 

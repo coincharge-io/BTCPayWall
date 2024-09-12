@@ -26,9 +26,7 @@ abstract class BTCPayWall_DB
     public $primary_key;
 
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
 
     public function get_columns()
@@ -186,9 +184,7 @@ abstract class BTCPayWall_DB
             $this->create_table();
         }
     }
-    public function create_table()
-    {
-    }
+    public function create_table() {}
     public function installed()
     {
         return $this->table_exists($this->table_name);
