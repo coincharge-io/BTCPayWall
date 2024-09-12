@@ -172,7 +172,7 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
                                 $label = $collect[$key]['label'];
                                 $type = $collect[$key]['type']; ?>
                                 <div class="<?php echo esc_attr("btcpw_revenue_view_customer_{$id}_wrap"); ?>">
-                                    <label for="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
+                                    <label for="<?php echo esc_attr("btcpw_revenue_post_customer_{$id}"); ?>"><?php echo printf(__('%s','btcpaywall'),esc_html($label)); ?></label>
                                     <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_revenue_view_customer_{$id}"); ?>" name="<?php echo esc_attr("btcpw_revenue_view_customer_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                 </div>
@@ -181,11 +181,11 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
                     </div>
                     <div class="btcpw_revenue_view_button" id="btcpw_revenue_view_button_second_step">
                         <div>
-                            <input type="button" name="previous" class="revenue-view-previous-form" value="<?php echo esc_attr($atts['previous_button_text'], 'btcpaywall'); ?>" />
+                            <input type="button" name="previous" class="revenue-view-previous-form" value="<?php echo printf(__('%s','btcpaywall'),esc_attr($atts['previous_button_text']); ?>" />
                         </div>
 
                         <div>
-                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo esc_html__(btcpaywall_get_payblock_button_string($atts), 'btcpaywall'); ?></button>
+                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>"><?php echo printf(__('%s','btcpaywall'),esc_html(btcpaywall_get_payblock_button_string($atts))); ?></button>
                         </div>
                     </div>
                 </fieldset>
