@@ -5,7 +5,9 @@
 */
 
 // Exit if accessed directly.
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 global $post;
 $download = new BTCPayWall_Digital_Download($post->ID);
@@ -137,7 +139,7 @@ $allowed_tags = wp_kses_allowed_html('post');
 
 
                     <input type="hidden" id="btcpw_download_id" data-post_title="<?php echo esc_attr($post->post_title); ?>" data-post_id="<?php echo esc_attr($download->ID); ?>">
-                    <button type="submit" class="btcpaywall_add_to_cart"><?php echo esc_html__($default_button, 'btcpaywall'); ?></button>
+                    <button type="submit" class="btcpaywall_add_to_cart"><?php echo printf(__('%s', 'btcpaywall'), esc_html($default_button)); ?></button>
                 </form>
             </div>
             <?php if (!empty($logo_id)) : ?>

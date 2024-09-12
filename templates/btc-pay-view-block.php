@@ -150,12 +150,12 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
                     <div class="btcpw_help_links">
                         <?php if ($help === true) : ?>
                             <div class="btcpw_help">
-                                <a class="btcpw_help__link" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo esc_html__($help_text, 'btcpaywall'); ?></a>
+                                <a class="btcpw_help__link" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo printf(__('%s','btcpaywall'),esc_html($help_text)); ?></a>
                             </div>
                         <?php endif; ?>
                         <?php if ($additional_help === true) : ?>
                             <div class="btcpw_additional_help">
-                                <a class="btcpw_additional_help__link" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo esc_html__($additional_help_text, 'btcpaywall'); ?></a>
+                                <a class="btcpw_additional_help__link" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo printf(__('%s','btcpaywall'),esc_html($additional_help_text)); ?></a>
                             </div>
                         <?php endif; ?>
                     </div>
