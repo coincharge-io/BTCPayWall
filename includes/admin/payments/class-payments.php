@@ -65,7 +65,7 @@ class Payments_Table extends WP_List_Table
     {
         return array(
             'cb'    => '<input type="checkbox" />',
-            'id'    => _esc_html_('Id', 'btcpaywall'),
+            'id'    => esc_html__('Id', 'btcpaywall'),
             'details'   => esc_html__('Details', 'btcpaywall'),
             'date' => esc_html__('Date', 'btcpaywall'),
             'blog'   => esc_html__('Post/Page', 'btcpaywall'),
@@ -99,7 +99,7 @@ class Payments_Table extends WP_List_Table
     }
     protected function column_details($item)
     {
-        return '<a href="' . add_query_arg('id', $item['invoice_id'], admin_url('admin.php?page=btcpw_payments&view=view-payment')) . '">' . _esc_html_('View Payment Details', 'btcpaywall') . '</a>';
+        return '<a href="' . add_query_arg('id', $item['invoice_id'], admin_url('admin.php?page=btcpw_payments&view=view-payment')) . '">' . esc_html__('View Payment Details', 'btcpaywall') . '</a>';
     }
     protected function column_cb($item)
     {
