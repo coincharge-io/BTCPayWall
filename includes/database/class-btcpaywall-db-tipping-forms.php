@@ -11,7 +11,9 @@
  */
 
 //Eit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 class BTCPayWall_DB_Tipping_Forms extends BTCPayWall_DB
@@ -189,11 +191,11 @@ class BTCPayWall_DB_Tipping_Forms extends BTCPayWall_DB
     {
         global $wpdb;
         $row = $wpdb->get_row(
-            $wpdb->prepare("SELECT * FROM {$this->table_name} WHERE id = %d LIMIT 1", $id)
+            $wpdb->prepare("SELECT * FROM %i WHERE id = %d LIMIT 1", [$this->table_name, $id])
         );
         return $row;
     }
-    public  function record_count()
+    public function record_count()
     {
         global $wpdb;
 

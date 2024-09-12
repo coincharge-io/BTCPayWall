@@ -11,7 +11,9 @@
  */
 
 //Eit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 class BTCPayWall_DB_Tippings extends BTCPayWall_DB
@@ -109,15 +111,15 @@ class BTCPayWall_DB_Tippings extends BTCPayWall_DB
             return $this->insert($data, 'tipping');
         }
     }
-    public function get_tipping_by($field = 'id', $value=null)
+    public function get_tipping_by($field = 'id', $value = null)
     {
         global $wpdb;
         $row = $wpdb->get_row(
-            $wpdb->prepare("SELECT * FROM {$this->table_name} WHERE {$field} = %s LIMIT 1", $value)
+            $wpdb->prepare("SELECT * FROM %i WHERE %i = %s LIMIT 1", [$this->table_name, $field, $value])
         );
         return $row;
     }
-    public  function record_count()
+    public function record_count()
     {
         global $wpdb;
 

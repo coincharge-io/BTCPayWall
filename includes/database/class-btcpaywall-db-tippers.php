@@ -11,7 +11,9 @@
  */
 
 //Eit if accessed directly
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 
 class BTCPayWall_DB_Tippers extends BTCPayWall_DB
@@ -102,7 +104,7 @@ class BTCPayWall_DB_Tippers extends BTCPayWall_DB
     {
         global $wpdb;
         $row = $wpdb->get_row(
-            $wpdb->prepare("SELECT * FROM {$this->table_name} WHERE {$field} = %s LIMIT 1", $value)
+            $wpdb->prepare("SELECT * FROM %i WHERE %i = %s LIMIT 1", [$this->table_name, $field, $value])
         );
         return $row;
     }
