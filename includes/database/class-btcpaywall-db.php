@@ -43,7 +43,7 @@ abstract class BTCPayWall_DB
     public function get($row_id)
     {
         global $wpdb;
-        return $wpdb->get_row($wpdb->prepare("SELECT * FROM $this->table_name WHERE $this->primary_key = %s LIMIT 1;", $row_id));
+        return $wpdb->get_row($wpdb->prepare("SELECT * FROM %i WHERE %i = %s LIMIT 1;", [$this->table_name, $this->primary_key, $row_id]));
     }
 
 
@@ -57,7 +57,7 @@ abstract class BTCPayWall_DB
 
         $column = esc_sql($column);
 
-        return $wpdb->get_row($wpdb->prepare("SELECT * FROM $this->table_name WHERE $column = %s LIMIT 1;", $row_id));
+        return $wpdb->get_row($wpdb->prepare("SELECT * FROM %i WHERE %i = %s LIMIT 1;", [$this->table_name, $column, $row_id]));
     }
 
 
@@ -69,9 +69,8 @@ abstract class BTCPayWall_DB
             return null;
         }
 
-        $column = esc_sql($column);
 
-        return $wpdb->get_var($wpdb->prepare("SELECT $column FROM $this->table_name WHERE $this->primary_key = %s LIMIT 1;", $row_id));
+        return $wpdb->get_var($wpdb->prepare("SELECT %i FROM %i WHERE %i = %s LIMIT 1;", [$column, $this->table_name, $this->primary_key, $row_id]));
     }
 
 
@@ -83,10 +82,8 @@ abstract class BTCPayWall_DB
             return null;
         }
 
-        $column_where = esc_sql($column_where);
-        $column       = esc_sql($column);
 
-        return $wpdb->get_var($wpdb->prepare("SELECT $column FROM $this->table_name WHERE $column_where = %s LIMIT 1;", $column_value));
+        return $wpdb->get_var($wpdb->prepare("SELECT %i FROM %i WHERE %i = %s LIMIT 1;", [$column, $this->table_name, $column_where, $column_value]));
     }
 
 

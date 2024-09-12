@@ -110,7 +110,6 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
         if (!in_array($field, $table_columns)) {
             return null; // Or throw an exception
         }
-        $field = esc_sql($field);
 
         $sql = $wpdb->prepare(
             "SELECT * FROM %i WHERE %i = %s LIMIT 1",
