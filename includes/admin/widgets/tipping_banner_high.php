@@ -238,7 +238,7 @@ class Tipping_Banner_High extends WP_Widget
                                             $id = $collect[$key]['id'];
                                             $type = $collect[$key]['type']; ?>
                                             <div class="<?php echo esc_attr("btcpw_widget btcpw_skyscraper_tipping_donor_{$id}_wrap high"); ?>">
-                                                <label for="<?php echo esc_attr("btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_high"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
+                                                <label for="<?php echo esc_attr("btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_high"); ?>"><?php echo printf(__('%s', 'btcpaywall'), esc_html($label)); ?></label>
                                                 <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_high"); ?>" name="<?php echo esc_attr("btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_high"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                             </div>

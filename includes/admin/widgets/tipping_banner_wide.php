@@ -239,7 +239,7 @@ class Tipping_Banner_Wide extends WP_Widget
                                             $id = $collect[$key]['id'];
                                             $type = $collect[$key]['type']; ?>
                                             <div class="<?php echo esc_attr("btcpw_widget btcpw_skyscraper_tipping_donor_{$id}_wrap wide"); ?>">
-                                                <label for="<?php echo esc_attr("btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
+                                                <label for="<?php echo esc_attr("btcpw_widget_btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>"><?php echo printf(__('%s', 'btcpaywall'), esc_html($label)); ?></label>
                                                 <input type="<?php echo esc_attr($type); ?>" id="<?php echo printf(__('btcpw_widget_btcpw_skyscraper_tipping_donor_%s_wide', 'btcpaywall'), esc_attr($id)); ?>" name="<?php echo printf(__('btcpw_widget_btcpw_skyscraper_tipping_donor_%s_wide', 'btcpaywall'), esc_attr($id)); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                             </div>
@@ -331,15 +331,15 @@ class Tipping_Banner_Wide extends WP_Widget
         $fixed_background = !empty($instance['fixed_background']) ? $instance['fixed_background'] : '#ffa500';
         $selected_amount_background = !empty($instance['selected_amount_background']) ? $instance['selected_amount_background'] : "#000";
 
-        $hf_color = !empty($instance['hf_color']) ? $instance['hf_color'] : esc_html__('#1d5aa3', 'btcpaywall');
-        $continue_button_text = !empty($instance['continue_button_text']) ? $instance['continue_button_text'] : esc_html__('Continue', 'btcpaywall');
+        $hf_color = !empty($instance['hf_color']) ? $instance['hf_color'] : '#1d5aa3';
+        $continue_button_text = !empty($instance['continue_button_text']) ? $instance['continue_button_text'] : __('Continue', 'btcpaywall');
         $continue_button_text_color = !empty($instance['continue_button_text_color']) ? $instance['continue_button_text_color'] : '#FFFFFF';
 
         $continue_button_color = !empty($instance['continue_button_color']) ? $instance['continue_button_color'] : '#FE642E';
         $continue_button_color_hover = !empty($instance['continue_button_color_hover']) ? $instance['continue_button_color_hover'] : '#FFF';
 
 
-        $previous_button_text = !empty($instance['previous_button_text']) ? $instance['previous_button_text'] : esc_html__('Previous', 'btcpaywall');
+        $previous_button_text = !empty($instance['previous_button_text']) ? $instance['previous_button_text'] : __('Previous', 'btcpaywall');
         $previous_button_text_color = !empty($instance['previous_button_text_color']) ? $instance['previous_button_text_color'] : '#FFFFFF';
 
         $previous_button_color = !empty($instance['previous_button_color']) ? $instance['previous_button_color'] : '#1d5aa3';
