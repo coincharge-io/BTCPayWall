@@ -157,12 +157,8 @@ abstract class BTCPayWall_DB
         )) {
             return false;
         }
-        // if (false === $wpdb->query($wpdb->prepare("DELETE FROM $this->table_name WHERE $this->primary_key = %d", $row_id))) {
-        //     return false;
-        // }
 
-        // return true;
-
+        return true;
     }
 
 

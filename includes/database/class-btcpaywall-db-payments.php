@@ -152,7 +152,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
     {
         global $wpdb;
         $row = $wpdb->get_row(
-            $wpdb->prepare("SELECT * FROM {$this->table_name} WHERE {$field} = %s LIMIT 1", $value)
+            $wpdb->prepare("SELECT * FROM %i WHERE %i = %s LIMIT 1", [$this->table_name, $field, $value])
         );
         return $row;
     }
@@ -219,7 +219,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
         $table_name = "{$this->table_name}";
         $older_than = date('Y-m-d H:i:s', strtotime('-1 day'));
 
-        $sql = $wpdb->prepare("DELETE FROM $table_name WHERE status='New' AND date_created < %s", $older_than);
+        $sql = $wpdb->prepare("DELETE FROM %i WHERE status='New' AND date_created < %s", [$table_name, $older_than]);
 
         return $wpdb->query($sql);
     }
@@ -229,7 +229,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
         $table_name = "{$this->table_name}";
         $older_than = date('Y-m-d H:i:s', strtotime('-1 day'));
 
-        $sql = $wpdb->prepare("DELETE FROM $table_name WHERE status='New' AND date_created < %s", $older_than);
+        $sql = $wpdb->prepare("DELETE FROM %i WHERE status='New' AND date_created < %s", [$table_name, $older_than]);
 
         return $wpdb->query($sql);
     }

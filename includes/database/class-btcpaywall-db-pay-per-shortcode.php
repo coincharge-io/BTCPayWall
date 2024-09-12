@@ -186,7 +186,7 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
     {
         global $wpdb;
         $row = $wpdb->get_row(
-            $wpdb->prepare("SELECT * FROM {$this->table_name} WHERE id = %d LIMIT 1", $id)
+            $wpdb->prepare("SELECT * FROM %i WHERE id = %d LIMIT 1", [$this->table_name, $id])
         );
         return $row;
     }
