@@ -492,12 +492,12 @@ class Donation_Forms_Metabox
                         </div>
                         <fieldset class="btcpaywall_field_wrap common">
                             <div>
-                                <label for="btcpaywall_tipping_text_currency"><?php echo __('Currency', 'btcpaywall'); ?></label>
+                                <label for="btcpaywall_tipping_text_currency"><?php echo esc_html__('Currency', 'btcpaywall'); ?></label>
                                 <span title="Currency value is used as starting value for conversion rate. Donors can change it and see conversion rate based on that." class="btcpaywall_helper_tip"></span>
                             </div>
                             <div>
                                 <select required name="btcpaywall_tipping_text_currency" id="btcpaywall_tipping_text_currency">
-                                    <option disabled value=""><?php echo __('Select currency', 'btcpaywall'); ?></option>
+                                    <option disabled value=""><?php echo esc_html__('Select currency', 'btcpaywall'); ?></option>
                                     <?php foreach ($supported_currencies as $currency) : ?>
                                         <option <?php echo $used_currency === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
                                             <?php echo esc_html($currency); ?>

@@ -40,7 +40,7 @@ $download_links = explode(',', $payment->download_links);
                     <?php if ($payment->revenue_type === 'Pay-per-file') : ?>
                         <div class="postbox btcpaywall_payment">
 
-                            <h2><span><?php esc_attr_e('Products', 'btcpaywall'); ?></span></h2>
+                            <h2><span><?php printf(__('%s', 'btcpaywall'), esc_html('Products')); ?></span></h2>
 
                             <div class="inside">
                                 <div class="meta-box-sortables" style="min-height: 0">
@@ -81,7 +81,7 @@ $download_links = explode(',', $payment->download_links);
                     <?php else : ?>
                         <div class="postbox btcpaywall_payment">
 
-                            <h2><span><?php esc_attr_e('Blog', 'btcpaywall'); ?></span></h2>
+                            <h2><span><?php printf(__('%s', 'btcpaywall'), esc_html('Blog')); ?></span></h2>
 
                             <div class="inside">
                                 <div class="meta-box-sortables" style="min-height: 0">
@@ -98,7 +98,7 @@ $download_links = explode(',', $payment->download_links);
                     <?php endif; ?>
                     <div class="postbox btcpaywall_payment">
 
-                        <h2><span><?php esc_attr_e('Customer Details', 'btcpaywall'); ?></span></h2>
+                        <h2><span><?php printf(__('%s', 'btcpaywall'), esc_html('Customer Details')); ?></span></h2>
 
                         <div class="inside">
                             <div class="meta-box-sortables" style="min-height: 0">
@@ -132,7 +132,7 @@ $download_links = explode(',', $payment->download_links);
 
                     <div class="postbox btcpaywall_payment_message">
 
-                        <h2><span><?php esc_attr_e('Message', 'btcpaywall'); ?></span></h2>
+                        <h2><span><?php printf(__('%s', 'btcpaywall'), esc_html('Message')); ?></span></h2>
 
                         <div class="inside">
                             <div class="meta-box-sortables" style="min-height: 0">
@@ -162,7 +162,7 @@ $download_links = explode(',', $payment->download_links);
 
                     <div class="postbox btcpaywall_payment_meta">
 
-                        <h2><span><?php esc_attr_e('Payment Information', 'btcpaywall'); ?></span></h2>
+                        <h2><span><?php printf(__('%s', 'btcpaywall'), esc_html('Payment Information')); ?></span></h2>
 
                         <div class="inside">
                             <div class="meta-box-sortables" style="min-height: 0">
