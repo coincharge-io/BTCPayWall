@@ -418,12 +418,12 @@ class BTCPayWall_Post_Template
                         </div>
                         <fieldset class="btcpaywall_field_wrap common">
                             <div>
-                                <label for="btcpaywall_tipping_text_currency"><?php echo __('Currency', 'btcpaywall'); ?></label>
+                                <label for="btcpaywall_tipping_text_currency"><?php echo esc_html__('Currency', 'btcpaywall'); ?></label>
                                 <span title="Currency value is used as starting value for conversion rate. Donors can change it and see conversion rate based on that." class="btcpaywall_helper_tip"></span>
                             </div>
                             <div>
                                 <select required name="btcpaywall_tipping_text_currency" id="btcpaywall_tipping_text_currency">
-                                    <option disabled value=""><?php echo __('Select currency', 'btcpaywall'); ?></option>
+                                    <option disabled value=""><?php echo esc_html__('Select currency', 'btcpaywall'); ?></option>
                                     <?php foreach ($supported_currencies as $currency) : ?>
                                         <option <?php echo $used_currency === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
                                             <?php echo esc_html($currency); ?>
@@ -434,7 +434,7 @@ class BTCPayWall_Post_Template
                         </fieldset>
                         <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
                             <div>
-                                <label for="btcpaywall_tipping_bool_free_input"><?php echo __('Free input of amount', 'btcpaywall'); ?></label>
+                                <label for="btcpaywall_tipping_bool_free_input"><?php echo esc_html__('Free input of amount', 'btcpaywall'); ?></label>
                                 <span title="Do you want to allow donors to enter custom amount for donation?" class="btcpaywall_helper_tip"></span>
                             </div>
                             <div>
@@ -443,23 +443,23 @@ class BTCPayWall_Post_Template
                         </fieldset>
                         <fieldset class="btcpaywall_field_wrap common">
                             <div>
-                                <label for="btcpaywall_tipping_text_thankyou"><?php echo __('Link to Thank you page', 'btcpaywall'); ?></label>
+                                <label for="btcpaywall_tipping_text_thankyou"><?php echo esc_html__('Link to Thank you page', 'btcpaywall'); ?></label>
                             </div>
                             <div>
                                 <input type="text" id="btcpaywall_tipping_text_thankyou" name="btcpaywall_tipping_text_thankyou" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_thankyou'][0] ?? ''); ?>" />
                             </div>
                         </fieldset>
                         <div data-id="global" class="btcpaywall_container_header">
-                            <h2><?php echo __('Global', 'btcpaywall'); ?></h2>
+                            <h2><?php echo esc_html__('Global', 'btcpaywall'); ?></h2>
                         </div>
                         <div class="btcpaywall_container_body global-body">
                             <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_box">
                                 <div>
-                                    <label for="btcpaywall_tipping_text_dimension"><?php echo __('Dimension', 'btcpaywall'); ?></label>
+                                    <label for="btcpaywall_tipping_text_dimension"><?php echo esc_html__('Dimension', 'btcpaywall'); ?></label>
                                 </div>
                                 <div>
                                     <select required name="btcpaywall_tipping_text_dimension" id="btcpaywall_tipping_text_dimension">
-                                        <option disabled value=""><?php echo __('Select dimension', 'btcpaywall'); ?></option>
+                                        <option disabled value=""><?php echo esc_html__('Select dimension', 'btcpaywall'); ?></option>
                                         <?php foreach ($dimensions as $dimension) : ?>
                                             <option <?php echo $stored_data['btcpaywall_tipping_text_dimension'][0] === $dimension ? 'selected' : ''; ?> value="<?php echo esc_attr($dimension); ?>">
                                                 <?php echo esc_html($dimension); ?>
@@ -470,23 +470,23 @@ class BTCPayWall_Post_Template
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap common">
                                 <div>
-                                    <label for="btcpaywall_tipping_text_button_background"><?php echo __('Background image', 'btcpaywall'); ?></label>
+                                    <label for="btcpaywall_tipping_text_button_background"><?php echo esc_html__('Background image', 'btcpaywall'); ?></label>
                                 </div>
                                 <div>
                                     <?php if ($background) : ?>
                                         <button id="btcpaywall_tipping_text_button_background" class="btcpaywall_tipping_text_button_background" name="btcpaywall_tipping_button_background"><img src="<?php echo esc_url($background[0]); ?>" height=100px width=100px /></a></button>
-                                        <button class="btcpaywall_tipping_button_remove_background"><?php echo __('Remove background', 'btcpaywall'); ?></button>
+                                        <button class="btcpaywall_tipping_button_remove_background"><?php echo esc_html__('Remove background', 'btcpaywall'); ?></button>
                                         <input type="hidden" id="btcpaywall_tipping_background" class="btcpaywall_tipping_background" name="btcpaywall_tipping_text_background" value=<?php echo esc_attr($stored_data['btcpaywall_tipping_text_background'][0]); ?> />
                                     <?php else : ?>
                                         <button id="btcpaywall_tipping_text_button_background" class="btcpaywall_tipping_text_button_background" name="btcpaywall_tipping_button_background">Upload</button>
-                                        <button class="btcpaywall_tipping_button_remove_background" style="display:none"><?php echo __('Remove background', 'btcpaywall'); ?></button>
+                                        <button class="btcpaywall_tipping_button_remove_background" style="display:none"><?php echo esc_html__('Remove background', 'btcpaywall'); ?></button>
                                         <input type="hidden" id="btcpaywall_tipping_background" class="btcpaywall_tipping_background" name="btcpaywall_tipping_text_background" value=<?php echo esc_attr($stored_data['btcpaywall_tipping_text_background'][0]); ?> />
                                     <?php endif; ?>
                                 </div>
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap common">
                                 <div>
-                                    <label for="btcpaywall_tipping_color_background"><?php echo __('Background color', 'btcpaywall'); ?></label>
+                                    <label for="btcpaywall_tipping_color_background"><?php echo esc_html__('Background color', 'btcpaywall'); ?></label>
                                     <span title="This color will be used as background." class="btcpaywall_helper_tip"></span>
                                 </div>
                                 <div>
@@ -495,7 +495,7 @@ class BTCPayWall_Post_Template
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap common">
                                 <div>
-                                    <label for="btcpaywall_tipping_color_header_footer_background"><?php echo __('Background color for header and footer', 'btcpaywall'); ?></label>
+                                    <label for="btcpaywall_tipping_color_header_footer_background"><?php echo esc_html__('Background color for header and footer', 'btcpaywall'); ?></label>
                                     <span title="This color will be used as background for header and footer section." class="btcpaywall_helper_tip"></span>
                                 </div>
                                 <div>
@@ -504,28 +504,28 @@ class BTCPayWall_Post_Template
                             </fieldset>
                         </div>
                         <div data-id="header" class="btcpaywall_container_header">
-                            <h2><?php echo __('Header', 'btcpaywall'); ?></h2>
+                            <h2><?php echo esc_html__('Header', 'btcpaywall'); ?></h2>
                         </div>
                         <div class="btcpaywall_container_body header-body">
                             <fieldset class="btcpaywall_field_wrap common">
                                 <div>
-                                    <label for="btcpaywall_tipping_text_button_logo"><?php echo __('Logo', 'btcpaywall'); ?></label>
+                                    <label for="btcpaywall_tipping_text_button_logo"><?php echo esc_html__('Logo', 'btcpaywall'); ?></label>
                                 </div>
                                 <div>
                                     <?php if ($logo) : ?>
                                         <button id="btcpaywall_tipping_text_button_logo" class="btcpaywall_tipping_text_button_logo" name="btcpaywall_tipping_text_button_logo"><img src="<?php echo esc_url($logo[0]); ?>" height=100px width=100px /></a></button>
-                                        <button class="btcpaywall_tipping_button_remove_logo"><?php echo __('Remove logo', 'btcpaywall'); ?></button>
+                                        <button class="btcpaywall_tipping_button_remove_logo"><?php echo esc_html__('Remove logo', 'btcpaywall'); ?></button>
                                         <input type="hidden" id="btcpaywall_tipping_logo" class="btcpaywall_tipping_logo" name="btcpaywall_tipping_text_logo" value=<?php echo esc_attr($stored_data['btcpaywall_tipping_text_logo'][0]); ?> />
                                     <?php else : ?>
                                         <button id="btcpaywall_tipping_text_button_logo" class="btcpaywall_tipping_text_button_logo" name="btcpaywall_tipping_text_button_logo">Upload</button>
-                                        <button class="btcpaywall_tipping_button_remove_logo" style="display:none"><?php echo __('Remove logo', 'btcpaywall'); ?></button>
+                                        <button class="btcpaywall_tipping_button_remove_logo" style="display:none"><?php echo esc_html__('Remove logo', 'btcpaywall'); ?></button>
                                         <input type="hidden" id="btcpaywall_tipping_logo" class="btcpaywall_tipping_logo" name="btcpaywall_tipping_text_logo" value=<?php echo esc_attr($stored_data['btcpaywall_tipping_text_logo'][0]); ?> />
                                     <?php endif; ?>
                                 </div>
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap common">
                                 <div>
-                                    <label for="btcpaywall_tipping_text_title"><?php echo __('Title', 'btcpaywall'); ?></label>
+                                    <label for="btcpaywall_tipping_text_title"><?php echo esc_html__('Title', 'btcpaywall'); ?></label>
                                 </div>
                                 <div>
                                     <textarea id="btcpaywall_tipping_text_title" name="btcpaywall_tipping_text_title"><?php echo esc_html($stored_data['btcpaywall_tipping_text_title'][0]); ?></textarea>
@@ -533,7 +533,7 @@ class BTCPayWall_Post_Template
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap common">
                                 <div>
-                                    <label for="btcpaywall_tipping_color_title"><?php echo __('Title color', 'btcpaywall'); ?></label>
+                                    <label for="btcpaywall_tipping_color_title"><?php echo esc_html__('Title color', 'btcpaywall'); ?></label>
                                 </div>
                                 <div>
                                     <input type="text" id="btcpaywall_tipping_color_title" name="btcpaywall_tipping_color_title" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_title'][0]); ?>" />
@@ -541,7 +541,7 @@ class BTCPayWall_Post_Template
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_box">
                                 <div>
-                                    <label for="btcpaywall_tipping_text_description"><?php echo __('Description', 'btcpaywall'); ?></label>
+                                    <label for="btcpaywall_tipping_text_description"><?php echo esc_html__('Description', 'btcpaywall'); ?></label>
                                 </div>
                                 <div>
                                     <input type="text" id="btcpaywall_tipping_text_description" name="btcpaywall_tipping_text_description" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_description'][0] ?? ""); ?>" />
@@ -549,7 +549,7 @@ class BTCPayWall_Post_Template
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_box">
                                 <div>
-                                    <label for="btcpaywall_tipping_color_description"><?php echo __('Description color', 'btcpaywall'); ?></label>
+                                    <label for="btcpaywall_tipping_color_description"><?php echo esc_html__('Description color', 'btcpaywall'); ?></label>
                                 </div>
                                 <div>
                                     <input type="text" id="btcpaywall_tipping_color_description" name="btcpaywall_tipping_color_description" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_description'][0]); ?>" />
@@ -557,7 +557,7 @@ class BTCPayWall_Post_Template
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_page">
                                 <div>
-                                    <label for="btcpaywall_tipping_text_progress_bar_step1"><?php echo __('Step 1', 'btcpaywall'); ?></label>
+                                    <label for="btcpaywall_tipping_text_progress_bar_step1"><?php echo esc_html__('Step 1', 'btcpaywall'); ?></label>
                                     <span title="Text for first step in progress bar. The progress bar is positioned underneath the header." class="btcpaywall_helper_tip"></span>
                                 </div>
                                 <div>
@@ -566,7 +566,7 @@ class BTCPayWall_Post_Template
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_page">
                                 <div>
-                                    <label for="btcpaywall_tipping_color_progress_bar_step1"><?php echo __('Background color for active step', 'btcpaywall'); ?></label>
+                                    <label for="btcpaywall_tipping_color_progress_bar_step1"><?php echo esc_html__('Background color for active step', 'btcpaywall'); ?></label>
                                 </div>
                                 <div>
                                     <input id="btcpaywall_tipping_color_progress_bar_step1" name="btcpaywall_tipping_color_progress_bar_step1" type="text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_progress_bar_step1'][0]); ?>" />
@@ -574,7 +574,7 @@ class BTCPayWall_Post_Template
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_page">
                                 <div>
-                                    <label for="btcpaywall_tipping_text_progress_bar_step2"><?php echo __('Step 2', 'btcpaywall'); ?></label>
+                                    <label for="btcpaywall_tipping_text_progress_bar_step2"><?php echo esc_html__('Step 2', 'btcpaywall'); ?></label>
                                     <span title="Text for second step in progress bar." class="btcpaywall_helper_tip"></span>
 
                                 </div>
@@ -584,7 +584,7 @@ class BTCPayWall_Post_Template
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_page">
                                 <div>
-                                    <label for="btcpaywall_tipping_color_progress_bar_step2"><?php echo __('Background color for inactive step', 'btcpaywall'); ?></label>
+                                    <label for="btcpaywall_tipping_color_progress_bar_step2"><?php echo esc_html__('Background color for inactive step', 'btcpaywall'); ?></label>
                                 </div>
                                 <div>
                                     <input id="btcpaywall_tipping_color_progress_bar_step2" name="btcpaywall_tipping_color_progress_bar_step2" type="text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_progress_bar_step2'][0]); ?>" />
@@ -592,13 +592,13 @@ class BTCPayWall_Post_Template
                             </fieldset>
                         </div>
                         <div data-id="main" class="btcpaywall_container_header">
-                            <h2><?php echo __('Main', 'btcpaywall'); ?></h2>
+                            <h2><?php echo esc_html__('Main', 'btcpaywall'); ?></h2>
                         </div>
                         <div class="btcpaywall_container_body main-body">
                             <div class="btcpaywall_template_main">
                                 <fieldset class="btcpaywall_field_wrap common">
                                     <div>
-                                        <label for="btcpaywall_tipping_text_main"><?php echo __('Main text', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_text_main"><?php echo esc_html__('Main text', 'btcpaywall'); ?></label>
                                         <span title="This text will be displayed in the main area, above input fields." class="btcpaywall_helper_tip"></span>
                                     </div>
                                     <div>
@@ -607,7 +607,7 @@ class BTCPayWall_Post_Template
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common">
                                     <div>
-                                        <label for="btcpaywall_tipping_color_main"><?php echo __('Main text color', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_color_main"><?php echo esc_html__('Main text color', 'btcpaywall'); ?></label>
                                     </div>
                                     <div>
                                         <input type="text" id="btcpaywall_tipping_color_main" name="btcpaywall_tipping_color_main" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_main'][0]); ?>" />
@@ -615,7 +615,7 @@ class BTCPayWall_Post_Template
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common">
                                     <div>
-                                        <label for="btcpaywall_tipping_color_amounts"><?php echo __('Primary color for amount', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_color_amounts"><?php echo esc_html__('Primary color for amount', 'btcpaywall'); ?></label>
                                         <span title="This color will be used as background color for all unselected amount fields and as a text and border color for selected amount field." class="btcpaywall_helper_tip"></span>
                                     </div>
                                     <div>
@@ -624,7 +624,7 @@ class BTCPayWall_Post_Template
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_page">
                                     <div>
-                                        <label for="btcpaywall_tipping_color_selected_amount"><?php echo __('Secondary color for amount ', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_color_selected_amount"><?php echo esc_html__('Secondary color for amount ', 'btcpaywall'); ?></label>
                                         <span title="This color will be used as background color for selected amount field and as a text and border color for all unselected amount fields." class="btcpaywall_helper_tip"></span>
                                     </div>
                                     <div>
@@ -634,13 +634,13 @@ class BTCPayWall_Post_Template
                             </div>
                         </div>
                         <div data-id="footer" class="btcpaywall_container_header">
-                            <h2><?php echo __('Footer', 'btcpaywall'); ?></h2>
+                            <h2><?php echo esc_html__('Footer', 'btcpaywall'); ?></h2>
                         </div>
                         <div class="btcpaywall_container_body footer-body">
                             <div class="btcpaywall_template_footer">
                                 <fieldset class="btcpaywall_field_wrap common">
                                     <div>
-                                        <label for="btcpaywall_tipping_text_button"><?php echo __('Button text', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_text_button"><?php echo esc_html__('Button text', 'btcpaywall'); ?></label>
                                     </div>
                                     <div>
                                         <input type="text" id="btcpaywall_tipping_text_button" name="btcpaywall_tipping_text_button" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_button'][0]); ?>" />
@@ -648,7 +648,7 @@ class BTCPayWall_Post_Template
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common">
                                     <div>
-                                        <label for="btcpaywall_tipping_color_button_text"><?php echo __('Button text color', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_color_button_text"><?php echo esc_html__('Button text color', 'btcpaywall'); ?></label>
                                     </div>
                                     <div>
                                         <input type="text" id="btcpaywall_tipping_color_button_text" name="btcpaywall_tipping_color_button_text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_button_text'][0]); ?>" />
@@ -656,7 +656,7 @@ class BTCPayWall_Post_Template
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common">
                                     <div>
-                                        <label for="btcpaywall_tipping_color_button"><?php echo __('Button color', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_color_button"><?php echo esc_html__('Button color', 'btcpaywall'); ?></label>
                                     </div>
                                     <div>
                                         <input id="btcpaywall_tipping_color_button" name="btcpaywall_tipping_color_button" type="text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_button'][0]); ?>" />
@@ -664,7 +664,7 @@ class BTCPayWall_Post_Template
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common">
                                     <div>
-                                        <label for="btcpaywall_tipping_color_button_hover"><?php echo __('Button color on hover', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_color_button_hover"><?php echo esc_html__('Button color on hover', 'btcpaywall'); ?></label>
                                     </div>
                                     <div>
                                         <input id="btcpaywall_tipping_color_button_hover" name="btcpaywall_tipping_color_button_hover" type="text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_button_hover'][0]); ?>" />
@@ -672,7 +672,7 @@ class BTCPayWall_Post_Template
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_page">
                                     <div>
-                                        <label for="btcpaywall_tipping_text_continue_button"><?php echo __('Continue button text', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_text_continue_button"><?php echo esc_html__('Continue button text', 'btcpaywall'); ?></label>
                                     </div>
                                     <div>
                                         <input type="text" id="btcpaywall_tipping_text_continue_button" name="btcpaywall_tipping_text_continue_button" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_continue_button'][0]); ?>" />
@@ -680,7 +680,7 @@ class BTCPayWall_Post_Template
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_page">
                                     <div>
-                                        <label for="btcpaywall_tipping_color_continue_button_text"><?php echo __('Continue button text color', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_color_continue_button_text"><?php echo esc_html__('Continue button text color', 'btcpaywall'); ?></label>
                                     </div>
                                     <div>
                                         <input type="text" id="btcpaywall_tipping_color_continue_button_text" name="btcpaywall_tipping_color_continue_button_text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_continue_button_text'][0]); ?>" />
@@ -688,7 +688,7 @@ class BTCPayWall_Post_Template
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_page">
                                     <div>
-                                        <label for="btcpaywall_tipping_color_continue_button"><?php echo __('Continue button color', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_color_continue_button"><?php echo esc_html__('Continue button color', 'btcpaywall'); ?></label>
                                     </div>
                                     <div>
                                         <input id="btcpaywall_tipping_color_continue_button" name="btcpaywall_tipping_color_continue_button" type="text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_continue_button'][0]); ?>" />
@@ -696,7 +696,7 @@ class BTCPayWall_Post_Template
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_page">
                                     <div>
-                                        <label for="btcpaywall_tipping_color_continue_button_hover"><?php echo __('Continue button color on hover', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_color_continue_button_hover"><?php echo esc_html__('Continue button color on hover', 'btcpaywall'); ?></label>
                                     </div>
                                     <div>
                                         <input id="btcpaywall_tipping_color_continue_button_hover" name="btcpaywall_tipping_color_continue_button_hover" type="text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_continue_button_hover'][0]); ?>" />
@@ -704,7 +704,7 @@ class BTCPayWall_Post_Template
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_page">
                                     <div>
-                                        <label for="btcpaywall_tipping_text_previous_button"><?php echo __('Previous button text', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_text_previous_button"><?php echo esc_html__('Previous button text', 'btcpaywall'); ?></label>
                                     </div>
                                     <div>
                                         <input type="text" id="btcpaywall_tipping_text_previous_button" name="btcpaywall_tipping_text_previous_button" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_previous_button'][0]); ?>" />
@@ -712,7 +712,7 @@ class BTCPayWall_Post_Template
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_page">
                                     <div>
-                                        <label for="btcpaywall_tipping_color_previous_button_text"><?php echo __('Previous button text color', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_color_previous_button_text"><?php echo esc_html__('Previous button text color', 'btcpaywall'); ?></label>
                                     </div>
                                     <div>
                                         <input type="text" id="btcpaywall_tipping_color_previous_button_text" name="btcpaywall_tipping_color_previous_button_text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_previous_button_text'][0]); ?>" />
@@ -720,7 +720,7 @@ class BTCPayWall_Post_Template
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_page">
                                     <div>
-                                        <label for="btcpaywall_tipping_color_previous_button"><?php echo __('Previous button color', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_color_previous_button"><?php echo esc_html__('Previous button color', 'btcpaywall'); ?></label>
                                     </div>
                                     <div>
                                         <input id="btcpaywall_tipping_color_previous_button" name="btcpaywall_tipping_color_previous_button" type="text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_previous_button'][0]); ?>" />
@@ -728,7 +728,7 @@ class BTCPayWall_Post_Template
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap common btcpaywall_tipping_banner_and_page">
                                     <div>
-                                        <label for="btcpaywall_tipping_color_previous_button_hover"><?php echo __('Previous button color on hover', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_color_previous_button_hover"><?php echo esc_html__('Previous button color on hover', 'btcpaywall'); ?></label>
                                     </div>
                                     <div>
                                         <input id="btcpaywall_tipping_color_previous_button_hover" name="btcpaywall_tipping_color_previous_button_hover" type="text" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_color_previous_button_hover'][0]); ?>" />
@@ -737,13 +737,13 @@ class BTCPayWall_Post_Template
                             </div>
                         </div>
                         <div data-id="fixed-amount" class="btcpaywall_container_header">
-                            <h2><?php echo __('Fixed amount', 'btcpaywall'); ?> <span class="btcpaywall_helper_tip" title="Define whether to display fields with a fixed amount in the form."></span></h2>
+                            <h2><?php echo esc_html__('Fixed amount', 'btcpaywall'); ?> <span class="btcpaywall_helper_tip" title="Define whether to display fields with a fixed amount in the form."></span></h2>
                         </div>
                         <div class="btcpaywall_container_body fixed-amount-body">
 
                             <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
                                 <div>
-                                    <label for="btcpaywall_tipping_bool_show_icons"><?php echo __('Show icons', 'btcpaywall'); ?></label>
+                                    <label for="btcpaywall_tipping_bool_show_icons"><?php echo esc_html__('Show icons', 'btcpaywall'); ?></label>
                                     <span title="Do you want do display Font Awesome icons next to the fixed amount fields?" class="btcpaywall_helper_tip"></span>
                                 </div>
                                 <div>
@@ -751,11 +751,11 @@ class BTCPayWall_Post_Template
                                 </div>
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
-                                <label><?php echo __('Default amount 1', 'btcpaywall'); ?></label>
+                                <label><?php echo esc_html__('Default amount 1', 'btcpaywall'); ?></label>
                                 <input type="checkbox" id="btcpaywall_tipping_bool_show_default_amount_1" name="btcpaywall_tipping_bool_show_default_amount_1" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_show_default_amount_1'][0]); ?> />
                                 <input type="number" min=0 placeholder="Default Amount 1" step=1 name="btcpaywall_tipping_number_default_amount_1" id="btcpaywall_tipping_number_default_amount_1" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_number_default_amount_1'][0]); ?>">
                                 <select required name="btcpaywall_tipping_text_default_currency_1" id="btcpaywall_tipping_text_default_currency_1">
-                                    <option disabled value=""><?php echo __('Select currency', 'btcpaywall'); ?></option>
+                                    <option disabled value=""><?php echo esc_html__('Select currency', 'btcpaywall'); ?></option>
                                     <?php foreach ($supported_currencies as $currency) : ?>
                                         <option <?php echo $amount_1_currency === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
                                             <?php echo esc_html($currency); ?>
@@ -766,11 +766,11 @@ class BTCPayWall_Post_Template
                                 <input type="text" id="btcpaywall_tipping_text_default_icon_1" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_default_icon_1'][0]); ?>" name="btcpaywall_tipping_text_default_icon_1" placeholder="Font Awesome 5 Icon" title="Enter Font Awesome 5 Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
-                                <label><?php echo __('Default amount 2', 'btcpaywall'); ?></label>
+                                <label><?php echo esc_html__('Default amount 2', 'btcpaywall'); ?></label>
                                 <input type="checkbox" id="btcpaywall_tipping_bool_show_default_amount_2" name="btcpaywall_tipping_bool_show_default_amount_2" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_show_default_amount_2'][0]); ?> />
                                 <input type="number" min=0 placeholder="Default Amount 2" step=1 name="btcpaywall_tipping_number_default_amount_2" id="btcpaywall_tipping_number_default_amount_2" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_number_default_amount_2'][0]); ?>">
                                 <select required name="btcpaywall_tipping_text_default_currency_2" id="btcpaywall_tipping_text_default_currency_2">
-                                    <option disabled value=""><?php echo __('Select currency', 'btcpaywall'); ?></option>
+                                    <option disabled value=""><?php echo esc_html__('Select currency', 'btcpaywall'); ?></option>
                                     <?php foreach ($supported_currencies as $currency) : ?>
                                         <option <?php echo $amount_2_currency === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
                                             <?php echo esc_html($currency); ?>
@@ -780,11 +780,11 @@ class BTCPayWall_Post_Template
                                 <input type="text" id="btcpaywall_tipping_text_default_icon_2" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_text_default_icon_2'][0]); ?>" name="btcpaywall_tipping_text_default_icon_2" placeholder="Font Awesome 5 Icon" title="Enter Font Awesome 5 Icon class value. For example, in order to use beer icon <i class=fa fa-beer></i> you need to enter fa fa-beer." />
                             </fieldset>
                             <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
-                                <label><?php echo __('Default amount 3', 'btcpaywall'); ?></label>
+                                <label><?php echo esc_html__('Default amount 3', 'btcpaywall'); ?></label>
                                 <input type="checkbox" id="btcpaywall_tipping_bool_show_default_amount_3" name="btcpaywall_tipping_bool_show_default_amount_3" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_show_default_amount_3'][0]); ?> />
                                 <input type="number" min=0 placeholder="Default Amount 3" step=1 name="btcpaywall_tipping_number_default_amount_3" id="btcpaywall_tipping_number_default_amount_3" value="<?php echo esc_attr($stored_data['btcpaywall_tipping_number_default_amount_3'][0]); ?>">
                                 <select required name="btcpaywall_tipping_text_default_currency_3" id="btcpaywall_tipping_text_default_currency_3">
-                                    <option disabled value=""><?php echo __('Select currency', 'btcpaywall'); ?></option>
+                                    <option disabled value=""><?php echo esc_html__('Select currency', 'btcpaywall'); ?></option>
                                     <?php foreach ($supported_currencies as $currency) : ?>
                                         <option <?php echo $amount_3_currency === $currency ? 'selected' : ''; ?> value="<?php echo esc_attr($currency); ?>">
                                             <?php echo esc_html($currency); ?>
@@ -795,72 +795,72 @@ class BTCPayWall_Post_Template
                             </fieldset>
                         </div>
                         <div data-id="donor" class="btcpaywall_container_header">
-                            <h2><?php echo __('Donor information', 'btcpaywall'); ?><span class="btcpaywall_helper_tip" title="Select which information about donors you want to collect by clicking on the checkboxes. Check the display if you want to make the field optional, or check both checkboxes if you want to make it mandatory."></span></h2>
+                            <h2><?php echo esc_html__('Donor information', 'btcpaywall'); ?><span class="btcpaywall_helper_tip" title="Select which information about donors you want to collect by clicking on the checkboxes. Check the display if you want to make the field optional, or check both checkboxes if you want to make it mandatory."></span></h2>
                         </div>
                         <div class="btcpaywall_container_body donor-body">
                             <div class="btcpaywall_template_donor_information">
                                 <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
                                     <div>
-                                        <p><?php echo __('Full name', 'btcpaywall'); ?></p>
+                                        <p><?php echo esc_html__('Full name', 'btcpaywall'); ?></p>
                                     </div>
                                     <div>
-                                        <label for="btcpaywall_tipping_bool_display_name"><?php echo __('Display', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_bool_display_name"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
 
                                         <input type="checkbox" name="btcpaywall_tipping_bool_display_name" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_name'][0] ?? false); ?> />
 
-                                        <label for="btcpaywall_tipping_bool_mandatory_name"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_bool_mandatory_name"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
                                         <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_name" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_name'][0] ?? false); ?> />
                                     </div>
 
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
                                     <div>
-                                        <p><?php echo __('Email', 'btcpaywall'); ?></p>
+                                        <p><?php echo esc_html__('Email', 'btcpaywall'); ?></p>
                                     </div>
                                     <div>
-                                        <label for="btcpaywall_tipping_bool_display_email"><?php echo __('Display', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_bool_display_email"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
 
                                         <input type="checkbox" name="btcpaywall_tipping_bool_display_email" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_email'][0] ?? false); ?> />
 
-                                        <label for="btcpaywall_tipping_bool_mandatory_email"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_bool_mandatory_email"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
                                         <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_email" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_email'][0] ?? false); ?> />
                                     </div>
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
                                     <div>
-                                        <p><?php echo __('Address', 'btcpaywall'); ?></p>
+                                        <p><?php echo esc_html__('Address', 'btcpaywall'); ?></p>
                                     </div>
                                     <div>
-                                        <label for="btcpaywall_tipping_bool_display_address"><?php echo __('Display', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_bool_display_address"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
 
                                         <input type="checkbox" name="btcpaywall_tipping_bool_display_address" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_address'][0] ?? false); ?> />
 
-                                        <label for="btcpaywall_tipping_bool_mandatory_email"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_bool_mandatory_email"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
                                         <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_email" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_address'][0] ?? false); ?> />
                                     </div>
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
                                     <div>
-                                        <p><?php echo __('Phone number', 'btcpaywall'); ?></p>
+                                        <p><?php echo esc_html__('Phone number', 'btcpaywall'); ?></p>
                                     </div>
                                     <div>
-                                        <label for="btcpaywall_tipping_bool_display_phone"><?php echo __('Display', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_bool_display_phone"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
 
                                         <input type="checkbox" name="btcpaywall_tipping_bool_display_phone" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_phone'][0] ?? false); ?> />
 
-                                        <label for="btcpaywall_tipping_bool_mandatory_phone"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_bool_mandatory_phone"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
                                         <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_phone" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_phone'][0] ?? false); ?> />
                                     </div>
                                 </fieldset>
                                 <fieldset class="btcpaywall_field_wrap btcpaywall_tipping_banner_and_page">
                                     <div>
-                                        <p><?php echo __('Message', 'btcpaywall'); ?></p>
+                                        <p><?php echo esc_html__('Message', 'btcpaywall'); ?></p>
                                     </div>
                                     <div>
-                                        <label for="btcpaywall_tipping_bool_display_message"><?php echo __('Display', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_bool_display_message"><?php echo esc_html__('Display', 'btcpaywall'); ?></label>
                                         <input type="checkbox" name="btcpaywall_tipping_bool_display_message" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_display_message'][0] ?? false); ?> />
 
-                                        <label for="btcpaywall_tipping_bool_mandatory_message"><?php echo __('Mandatory', 'btcpaywall'); ?></label>
+                                        <label for="btcpaywall_tipping_bool_mandatory_message"><?php echo esc_html__('Mandatory', 'btcpaywall'); ?></label>
                                         <input type="checkbox" name="btcpaywall_tipping_bool_mandatory_message" value="true" <?php checked($stored_data['btcpaywall_tipping_bool_mandatory_message'][0] ?? false); ?> />
                                     </div>
                                 </fieldset>
