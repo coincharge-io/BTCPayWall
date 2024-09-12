@@ -113,7 +113,7 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
         <form method="POST" action="" id="view_revenue_type">
             <fieldset>
                 <div class="btcpw_pay__content">
-                    <h2><?php echo esc_html__($header, 'btcpaywall'); ?></h2>
+                    <h2><?php echo printf(__('%s','btcpaywall'),esc_html($header)); ?></h2>
 
                 </div>
                 <div class="btcpw_pay__preview">
@@ -130,7 +130,7 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
                 </div>
                 <div class="btcpw_pay__content">
                     <p>
-                        <?php echo esc_html__($info, 'btcpaywall'); ?>
+                        <?php echo printf(__('%s','btcpaywall'),esc_html($info)); ?>
                     </p>
                 </div>
 

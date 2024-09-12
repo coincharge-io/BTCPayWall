@@ -274,7 +274,7 @@ function btcpaywall_render_shortcode_banner_wide_tipping($atts)
                                         $type = $collect[$key]['type'];
                                         ?>
                                         <div class="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wrap wide"); ?>">
-                                            <label for="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
+                                            <label for="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>"><?php echo printf(__('%s', 'btcpaywall'), esc_html($label)); ?></label>
                                             <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" name="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wide"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                         </div>
@@ -558,7 +558,7 @@ function btcpaywall_render_shortcode_banner_high_tipping($atts)
                                         $type = $collect[$key]['type'];
                                         ?>
                                         <div class="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_wrap high"); ?>">
-                                            <label for="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_high"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
+                                            <label for="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_high"); ?>"><?php echo printf(__('%s', 'btcpaywall'), esc_html($label)); ?></label>
                                             <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_high"); ?>" name="<?php echo esc_attr("btcpw_skyscraper_tipping_donor_{$id}_high"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
 
                                         </div>
@@ -880,7 +880,7 @@ function btcpaywall_render_shortcode_page_tipping($atts)
                                     $type = $collect[$key]['type'];
                                     ?>
                                     <div class="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}_wrap"); ?>">
-                                        <label for="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
+                                        <label for="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}"); ?>"><?php echo printf(__('%s', 'btcpaywall'), esc_html($label)); ?></label>
                                         <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}"); ?>" name="<?php echo esc_attr("btcpw_page_tipping_donor_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
                                     </div>
                                 <?php endif; ?>
@@ -1361,10 +1361,10 @@ function btcpaywall_render_checkout()
                                 ?>
                                 <div class="<?php echo esc_attr("btcpw_digital_download_customer_{$id}_wrap"); ?>">
                                     <?php if ($id !== 'message') : ?>
-                                        <label for="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
+                                        <label for="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>"><?php echo printf(__('%s', 'btcpaywall'), esc_html($label)); ?></label>
                                         <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>" name="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
                                     <?php else : ?>
-                                        <label for="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>"><?php echo esc_html__($label, 'btcpaywall'); ?></label>
+                                        <label for="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>"><?php echo printf(__('%s', 'btcpaywall'), esc_html($label)); ?></label>
                                         <textarea type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>" name="<?php echo esc_attr("btcpw_digital_download_customer_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> /></textarea>
                                     <?php endif; ?>
                                 </div>
@@ -1492,7 +1492,7 @@ function btcpaywall_render_receipt()
                     <?php foreach ($download_links as $key => $link) : ?>
                         <?php $product = new BTCPayWall_Digital_Download($download_ids[$key]);
                         $name = $product->get_name(); ?>
-                        <li> <a href="<?php echo esc_url($link); ?>" target="_blank"><?php echo esc_html__($name, 'btcpaywall'); ?></a> </li>
+                        <li> <a href="<?php echo esc_url($link); ?>" target="_blank"><?php echo printf(__('%s', 'btcpaywall'), esc_html($name)); ?></a> </li>
                     <?php endforeach; ?>
                 </ul>
             </div>
