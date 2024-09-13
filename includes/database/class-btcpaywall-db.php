@@ -26,7 +26,9 @@ abstract class BTCPayWall_DB
     public $primary_key;
 
 
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
 
     public function get_columns()
@@ -55,7 +57,7 @@ abstract class BTCPayWall_DB
             return null;
         }
 
-        $column = esc_sql($column);
+        // $column = esc_sql($column);
 
         return $wpdb->get_row($wpdb->prepare("SELECT * FROM %i WHERE %i = %s LIMIT 1;", [$this->table_name, $column, $row_id]));
     }
@@ -177,7 +179,9 @@ abstract class BTCPayWall_DB
             $this->create_table();
         }
     }
-    public function create_table() {}
+    public function create_table()
+    {
+    }
     public function installed()
     {
         return $this->table_exists($this->table_name);

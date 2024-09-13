@@ -134,10 +134,11 @@ class BTCPayWall_DB_Tippings extends BTCPayWall_DB
 
         $sql = "SELECT * FROM {$this->table_name}";
 
-        if (!empty($_REQUEST['orderby'])) {
-            $sql .= ' ORDER BY ' . sanitize_sql_orderby($_REQUEST['orderby'] . ' ' . $_REQUEST['order']);
-            //$sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
-        }
+        // if (!empty($_REQUEST['orderby'])) {
+        //     $sql .= ' ORDER BY ' . sanitize_sql_orderby($_REQUEST['orderby'] . ' ' . $_REQUEST['order']);
+        //     //$sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
+        // }
+
         $per_page = (int)$per_page;
         $page_number = (int)$page_number;
         if (!empty($per_page) && !empty($page_number)) {
@@ -145,6 +146,9 @@ class BTCPayWall_DB_Tippings extends BTCPayWall_DB
 
             $sql .= ' OFFSET ' . ($page_number - 1) * $per_page;
         }
+        $orderby = !empty($_REQUEST['orderby']) ? sanitize_sql_orderby($_REQUEST['orderby']) : 'date_created';
+        $order = !empty($_REQUEST['order']) ? strtoupper(sanitize_text_field($_REQUEST['order'])) : 'DESC';
+        $sql .= " ORDER BY $orderby $order";
 
         $result = $wpdb->get_results($sql, 'ARRAY_A');
 

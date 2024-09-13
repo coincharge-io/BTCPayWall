@@ -120,12 +120,14 @@ class BTCPayWall_DB_Tippers extends BTCPayWall_DB
     {
         global $wpdb;
         $sql = "SELECT * FROM {$this->table_name}";
-
-        if (!empty($_REQUEST['orderby'])) {
-            /*$sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
-            $sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';*/
-            $sql .= ' ORDER BY ' . sanitize_sql_orderby($_REQUEST['orderby'] . ' ' . $_REQUEST['order']);
-        }
+        $orderby = !empty($_REQUEST['orderby']) ? sanitize_sql_orderby($_REQUEST['orderby']) : 'id';
+        $order = !empty($_REQUEST['order']) ? strtoupper(sanitize_text_field($_REQUEST['order'])) : 'ASC';
+        $sql .= " ORDER BY $orderby $order";
+        // if (!empty($_REQUEST['orderby'])) {
+        //     /*$sql .= ' ORDER BY ' . esc_sql($_REQUEST['orderby']);
+        //     $sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';*/
+        //     $sql .= ' ORDER BY ' . sanitize_sql_orderby($_REQUEST['orderby'] . ' ' . $_REQUEST['order']);
+        // }
         $per_page = (int)$per_page;
         $page_number = (int)$page_number;
         if (!empty($per_page) && !empty($page_number)) {
