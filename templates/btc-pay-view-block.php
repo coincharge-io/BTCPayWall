@@ -43,8 +43,7 @@ $image = wp_get_attachment_image_src($atts['preview']);
 $preview_url = $image ? $image[0] : $atts['preview'];
 $header = !empty($atts['header_text']) ? $atts['header_text'] : btcpaywall_get_payblock_header_string();
 $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attributes($atts) : btcpaywall_get_post_info_string(null, 'video');
-?>
-<style>
+/*<style>
     .btcpw_revenue_view_container {
         background-color: <?php echo esc_html($background); ?>;
         width: <?php echo esc_html($width) . 'px'; ?>;
@@ -303,6 +302,145 @@ $info = !empty($atts['info_text']) ? btcpaywall_get_post_info_string_from_attrib
                                                                                                                                     __('%s', 'btcpaywall'),
                                                                                                                                     esc_html(btcpaywall_get_payblock_button_string($atts))
                                                                                                                                 ); ?></button>
+                        </div>
+                    </div>
+                </fieldset>
+            <?php endif; ?>
+        </form>
+    </div>
+</div>*/
+?>
+<div id="btcpw_revenue_container">
+    <div class="btcpw_revenue_view_container" style="
+        background-color: <?php echo esc_attr($background); ?>;
+        width: <?php echo esc_attr($width) . 'px'; ?>;
+        height: <?php echo esc_attr($height) . 'px'; ?>;
+    ">
+        <form method="POST" action="" id="view_revenue_type">
+            <fieldset>
+                <div class="btcpw_pay__content" style="
+                    color: <?php echo esc_attr($header_color); ?>;
+                ">
+                    <h2><?php echo printf(
+                        __('%s', 'btcpaywall'),
+                        esc_html($header)
+                    ); ?></h2>
+                </div>
+                <div class="btcpw_pay__preview">
+                    <?php if (!empty($preview_url)) : ?>
+                        <div class="btcpw_pay__preview preview_img">
+                            <img src="<?php echo esc_url($preview_url); ?>" alt="Video preview">
+                        </div>
+                    <?php endif; ?>
+                    <div class="btcpw_pay__preview preview_description">
+                        <h3 style="
+                            color: <?php echo esc_attr($preview_title_color); ?>;
+                        "><?php echo printf(
+                            __('%s', 'btcpaywall'),
+                            esc_html($atts['title'])
+                        ); ?></h3>
+                        <p style="
+                            color: <?php echo esc_attr($preview_description_color); ?>;
+                        "><?php echo printf(
+                            __('%s', 'btcpaywall'),
+                            esc_html($atts['description'])
+                        ); ?></p>
+                    </div>
+                </div>
+                <div class="btcpw_pay__content" style="
+                    color: <?php echo esc_attr($info_color); ?>;
+                ">
+                    <p><?php echo printf(
+                        __('%s', 'btcpaywall'),
+                        esc_html($info)
+                    ); ?></p>
+                </div>
+                <div class="btcpw_revenue_view_button" id="btcpw_revenue_view_button">
+                    <?php if (true === $collect_data) : ?>
+                        <div>
+                            <input type="button" name="next" class="revenue-view-next-form" value="<?php echo esc_attr($atts['continue_button_text']); ?>" style="
+                                color: <?php echo esc_attr($atts['continue_button_text_color']); ?>;
+                                background: <?php echo esc_attr($atts['continue_button_color']); ?>;
+                            ">
+                        </div>
+                    <?php else : ?>
+                        <div>
+                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>" style="
+                                background-color: <?php echo esc_attr($button_color); ?>;
+                                color: <?php echo esc_attr($button_text_color); ?>;
+                            "><?php echo printf(
+                                __('%s', 'btcpaywall'),
+                                esc_html(btcpaywall_get_payblock_button_string($atts))
+                            ); ?></button>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <?php if ($help === true || $additional_help === true) : ?>
+                    <div class="btcpw_help_links" style="
+                        display: flex;
+                        flex-direction: <?php echo ($help === true && $additional_help === true) ? 'row' : 'column'; ?>;
+                        justify-content: center;
+                        gap: 1em;
+                        width: 100%;
+                        align-items: center;
+                        color: <?php echo esc_attr($info_color); ?>;
+                    ">
+                        <?php if ($help === true) : ?>
+                            <div class="btcpw_help">
+                                <a class="btcpw_help__link" href="<?php echo esc_attr($help_link); ?>" target="_blank"><?php echo printf(
+                                    __('%s', 'btcpaywall'),
+                                    esc_html($help_text)
+                                ); ?></a>
+                            </div>
+                        <?php endif; ?>
+                        <?php if ($additional_help === true) : ?>
+                            <div class="btcpw_additional_help">
+                                <a class="btcpw_additional_help__link" href="<?php echo esc_attr($additional_help_link); ?>" target="_blank"><?php echo printf(
+                                    __('%s', 'btcpaywall'),
+                                    esc_html($additional_help_text)
+                                ); ?></a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
+            </fieldset>
+            <?php if (true === $collect_data) : ?>
+                <fieldset>
+                    <h2><?php echo esc_html__('Personal Information', 'btcpaywall'); ?></h2>
+                    <div class="btcpw_revenue_view_customer_information">
+                        <?php foreach ($collect as $key => $value) : ?>
+                            <?php if ($collect[$key]['display'] === true) : ?>
+                                <?php $id = $collect[$key]['id'];
+                                $label = $collect[$key]['label'];
+                                $type = $collect[$key]['type']; ?>
+                                <div class="<?php echo esc_attr("btcpw_revenue_view_customer_{$id}_wrap"); ?>">
+                                    <label for="<?php echo esc_attr("btcpw_revenue_view_customer_{$id}"); ?>"><?php echo printf(
+                                        __('%s', 'btcpaywall'),
+                                        esc_html($label)
+                                    ); ?></label>
+                                    <input type="<?php echo esc_attr($type); ?>" id="<?php echo esc_attr("btcpw_revenue_view_customer_{$id}"); ?>" name="<?php echo esc_attr("btcpw_revenue_view_customer_{$id}"); ?>" <?php echo $collect[$key]['mandatory'] === true ? 'required' : ''; ?> />
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="btcpw_revenue_view_button" id="btcpw_revenue_view_button_second_step">
+                        <div>
+                            <input type="button" name="previous" class="revenue-view-previous-form" value="<?php echo printf(
+                                __('%s', 'btcpaywall'),
+                                esc_attr($atts['previous_button_text'])
+                            ); ?>" style="
+                                color: <?php echo esc_attr($atts['previous_button_text_color']); ?>;
+                                background: <?php echo esc_attr($atts['previous_button_color']); ?>;
+                            " />
+                        </div>
+                        <div>
+                            <button type="submit" id="btcpw_pay__button" data-post_id="<?php echo esc_attr(get_the_ID()); ?>" style="
+                                background-color: <?php echo esc_attr($button_color); ?>;
+                                color: <?php echo esc_attr($button_text_color); ?>;
+                            "><?php echo printf(
+                                __('%s', 'btcpaywall'),
+                                esc_html(btcpaywall_get_payblock_button_string($atts))
+                            ); ?></button>
                         </div>
                     </div>
                 </fieldset>
