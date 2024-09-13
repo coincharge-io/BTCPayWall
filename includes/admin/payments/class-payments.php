@@ -157,9 +157,10 @@ class Payments_Table extends WP_List_Table
 
     protected function display_tablenav($which)
     {
-        $search_query = $_REQUEST['s'] ?? '';
+        // $search_query = $_REQUEST['s'] ?? '';
+        $search_query = sanitize_text_field($_REQUEST['s'] ?? '');
         wp_nonce_field('btcpaywall_remove_old_records');
-?>
+        ?>
         <div class="tablenav <?php echo esc_attr($which); ?>">
             <div class="alignleft actions bulkactions">
                 <?php $this->bulk_actions($which); ?>
@@ -168,9 +169,9 @@ class Payments_Table extends WP_List_Table
                 <input type="submit" class="button" value="Search" />
             </div>
             <?php
-            $this->extra_tablenav($which);
-            $this->pagination($which);
-            ?>
+                    $this->extra_tablenav($which);
+        $this->pagination($which);
+        ?>
             <br class="clear" />
         </div>
 
@@ -183,7 +184,7 @@ class Payments_Table extends WP_List_Table
         $this->display_tablenav('top');
 
         $this->screen->render_screen_reader_content('heading_list');
-    ?>
+        ?>
         <table class="wp-list-table <?php echo esc_attr(implode(' ', $this->get_table_classes())); ?>">
             <thead>
                 <tr>
@@ -192,10 +193,10 @@ class Payments_Table extends WP_List_Table
             </thead>
 
             <tbody id="the-list" <?php
-                                    if ($singular) {
-                                        echo " data-wp-lists='list:$singular'";
-                                    }
-                                    ?>>
+                                        if ($singular) {
+                                            echo " data-wp-lists='list:$singular'";
+                                        }
+        ?>>
                 <?php $this->display_rows_or_placeholder(); ?>
             </tbody>
 

@@ -122,7 +122,7 @@ class Pay_Per_Shortcode_List extends WP_List_Table
     public function process_bulk_action()
     {
         if ('delete' === $this->current_action()) {
-            $nonce = esc_attr($_REQUEST['_wpnonce']);
+            $nonce = $_REQUEST['_wpnonce'] ?? '';
             if (!wp_verify_nonce($nonce, 'delete')) {
                 wp_die('Nope! Security check failed!');
             }
@@ -133,7 +133,12 @@ class Pay_Per_Shortcode_List extends WP_List_Table
         if ((isset($_POST['action']) && sanitize_text_field($_POST['action']) == 'bulk-delete')
             || (isset($_POST['action2']) && sanitize_text_field($_POST['action2']) == 'bulk-delete')
         ) {
-            $delete_ids = esc_sql($_POST['bulk-delete']);
+            // $delete_ids = esc_sql($_POST['bulk-delete']);
+            $delete_ids = isset($_POST['bulk-delete']) ? array_map('sanitize_text_field', (array) $_POST['bulk-delete']) : [];
+
+            // Validate that IDs are numeric
+            $delete_ids = array_filter($delete_ids, 'is_numeric');
+            $delete_ids = array_map('intval', $delete_ids); // Convert to integers
             foreach ($delete_ids as $id) {
                 self::delete_shortcode($id);
             }
@@ -264,19 +269,25 @@ class Pay_Per_Shortcode_List extends WP_List_Table
     private function sort_data($a, $b)
     {
         // Set defaults
-        $orderby = 'title';
-        $order = 'asc';
 
-        // If orderby is set, use this as the sort column
-        if (!empty($_GET['orderby'])) {
-            $orderby = $_GET['orderby'];
-        }
+        // // If orderby is set, use this as the sort column
+        // if (!empty($_GET['orderby'])) {
+        //     $orderby = $_GET['orderby'];
+        // }
+        //
+        // // If order is set use this as the order
+        // if (!empty($_GET['order'])) {
+        //     $order = $_GET['order'];
+        // }
+        $allowed_order = ['asc', 'desc']; // Allowed values for order
 
-        // If order is set use this as the order
-        if (!empty($_GET['order'])) {
-            $order = $_GET['order'];
-        }
+        // Sanitize and validate the orderby parameter
+        $orderby = !empty($_GET['orderby']) ? sanitize_text_field($_GET['orderby'])
+            : 'title';
 
+        // Sanitize and validate the order parameter
+        $order = !empty($_GET['order']) && in_array(sanitize_text_field($_GET['order']), $allowed_order, true)
+            ? sanitize_text_field($_GET['order']) : 'asc';
 
         $result = strcmp($a[$orderby], $b[$orderby]);
 
