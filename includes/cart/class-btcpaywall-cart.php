@@ -105,7 +105,7 @@ class BTCPayWall_Cart
     public function sanitize_cart()
     {
         $sanitized = array();
-        $stripped_cookie = !empty($_COOKIE['btcpaywall_product_cart']) ? stripslashes($_COOKIE['btcpaywall_product_cart']) : null;
+        $stripped_cookie = !empty($_COOKIE['btcpaywall_product_cart']) ? wp_kses(sanitize_text_field(wp_unslash($_COOKIE['btcpaywall_product_cart'] ?? '')), []) : null;
         //Need testing
         if (!$stripped_cookie) {
             return false;
