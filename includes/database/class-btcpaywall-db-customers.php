@@ -130,11 +130,11 @@ class BTCPayWall_DB_Customers extends BTCPayWall_DB
     {
         global $wpdb;
         $sql = "SELECT * FROM {$this->table_name}";
+        $order = isset($_REQUEST['order']) ? strtoupper($_REQUEST['order']) : 'ASC';
+        $order = in_array($order, ['ASC', 'DESC']) ? $order : 'ASC';
 
         if (!empty($_REQUEST['orderby'])) {
-            $sql .= ' ORDER BY ' . sanitize_sql_orderby($_REQUEST['orderby'] . ' ' . $_REQUEST['order']);
-
-            //$sql .= !empty($_REQUEST['order']) ? ' ' . esc_sql($_REQUEST['order']) : ' ASC';
+            $sql .= ' ORDER BY ' . sanitize_sql_orderby($_REQUEST['orderby']) . ' ' . $order;
         }
         $per_page = (int)$per_page;
         $page_number = (int)$page_number;

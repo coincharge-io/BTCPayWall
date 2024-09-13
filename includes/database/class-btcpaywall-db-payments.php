@@ -105,8 +105,8 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
         if (empty($data)) {
             return false;
         }
-        if (!empty($args['download_ids']) && is_array($args['download_ids'])) {
-            $args['download_ids'] = implode(',', array_unique(array_values($args['download_ids'])));
+        if (!empty($data['download_ids']) && is_array($data['download_ids'])) {
+            $data['download_ids'] = implode(',', array_unique(array_values($data['download_ids'])));
         }
         $payment = $this->get_payment_by('invoice_id', $data['invoice_id']);
         if ($payment) {
@@ -227,7 +227,7 @@ class BTCPayWall_DB_Payments extends BTCPayWall_DB
     {
         global $wpdb;
         $table_name = "{$this->table_name}";
-        $older_than = date('Y-m-d H:i:s', strtotime('-1 day'));
+        $older_than = date('Y-m-d H:i:s', strtotime('-7 day'));
 
         $sql = $wpdb->prepare("DELETE FROM %i WHERE status='New' AND date_created < %s", [$table_name, $older_than]);
 

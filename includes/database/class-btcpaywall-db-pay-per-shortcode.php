@@ -203,7 +203,7 @@ class BTCPayWall_DB_Pay_Per_Shortcode extends BTCPayWall_DB
     {
         global $wpdb;
 
-        $sql = "SELECT * FROM {$this->table_name} WHERE type='{$type}'";
+        $sql = $wpdb->prepare("SELECT * FROM %i WHERE type = %s", [$this->table_name, $type]);
 
 
         $sql .= ' ORDER BY time DESC';
