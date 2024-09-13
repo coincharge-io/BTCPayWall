@@ -100,7 +100,7 @@ function btcpaywall_generate_invoice_id($post_id, $order_id, $customer_data)
             'type' => 'Pay-per-' . get_post_meta($post_id, 'btcpw_invoice_content', true)['project'],
             'blog' => $blogname,
             'buyer' => array(
-                'name' => (string) $_SERVER['REMOTE_ADDR']
+                'name' => filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP) ? filter_var($_SERVER['REMOTE_ADDR'], FILTER_SANITIZE_STRING) : ''
             ),
             'customer_data' => $customer_data
         )
@@ -502,7 +502,7 @@ function btcpaywall_generate_opennode_invoice_id($post_id, $order_id, $customer_
             'type' => 'Pay-per-' . get_post_meta($post_id, 'btcpw_invoice_content', true)['project'],
             'blog' => $blogname,
             'buyer' => array(
-                'name' => (string) $_SERVER['REMOTE_ADDR']
+                'name' => filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP) ? filter_var($_SERVER['REMOTE_ADDR'], FILTER_SANITIZE_STRING) : ''
             ),
             'customer_data' => $customer_data
         )
@@ -600,7 +600,7 @@ function btcpaywall_generate_lnbits_invoice_id($post_id, $order_id, $customer_da
             'type' => 'Pay-per-' . get_post_meta($post_id, 'btcpw_invoice_content', true)['project'],
             'blog' => $blogname,
             'buyer' => array(
-                'name' => (string) $_SERVER['REMOTE_ADDR']
+                'name' => filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP) ? filter_var($_SERVER['REMOTE_ADDR'], FILTER_SANITIZE_STRING) : ''
             ),
             'customer_data' => $customer_data
         )
@@ -1100,11 +1100,6 @@ function btcpaywall_ajax_generate_invoice_id_content_file()
         $posts .= " {$val['id']}";
         $downloads[] = $val['id'];
     }
-    /*$order_id = wp_insert_post([
-        'post_title' => 'Pay ' . $posts . ' from ' . $_SERVER['REMOTE_ADDR'],
-        'post_status' => 'publish',
-        'post_type' => 'btcpw_order',
-    ]);*/
     $order_id = btcpaywall_generate_order_id($posts);
     $data = [];
     if ($gateway === 'Coinsnap') {
