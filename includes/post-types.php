@@ -54,7 +54,9 @@ function btcpaywall_register_post_types()
     ));
 
     //Migrate digital_download to btcpaywall_digital_download on update
-    register_post_type('btcpaywall_download', [
+    // register_post_type('btcpaywall_download', [
+
+    register_post_type('digital_download', [
         'labels' => $download_labels,
         'public' => true,
         'show_ui'         => true,
