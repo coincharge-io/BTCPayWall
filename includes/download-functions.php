@@ -1068,7 +1068,12 @@ function btcpaywall_readfile_by_parts($file_url, $file_seek_offset = false)
 
 function btcpaywall_file_resume_download($file, $headers)
 {
-    @header($_SERVER['SERVER_PROTOCOL'] . ' 206 Partial content' . "\n");
+    $protocol = isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.1';
+    $protocol = filter_var($protocol, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
+
+    // Setting the header with a status code and optional content type
+    header($protocol . ' 206 Partial Content');
+    // @header($_SERVER['SERVER_PROTOCOL'] . ' 206 Partial content' . "\n");
 
     //nocache_headers();
     header("Robots: none" . "\n");
@@ -1149,7 +1154,8 @@ function btcpaywall_generate_url_token($secret_key, $args)
         'payment_id' => sanitize_text_field($args['payment_id']),
         'download_id' => (int)($args['download_id']),
         'email' => sanitize_email($args['email']),
-        'ip' => $_SERVER['REMOTE_ADDR'],
+        'ip' => filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP) ? filter_var($_SERVER['REMOTE_ADDR'], FILTER_SANITIZE_STRING) : ''
+
     ];
     $serialized = json_encode($tokenData);
 
@@ -1179,9 +1185,18 @@ function btcpaywall_get_all_headers()
     $headers = [];
     foreach ($required_headers as $header_name) {
         $header_key = 'HTTP_' . str_replace('-', '_', strtoupper($header_name));
+
+        // Check if the header exists in $_SERVER
         if (isset($_SERVER[$header_key])) {
-            $headers[$header_name] = $_SERVER[$header_key];
+            // Sanitize header value
+            $header_value = filter_var($_SERVER[$header_key], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
+            // Add sanitized header to the headers array
+            $headers[$header_name] = $header_value;
         }
+        // $header_key = 'HTTP_' . str_replace('-', '_', strtoupper($header_name));
+        // if (isset($_SERVER[$header_key])) {
+        //     $headers[$header_name] = $_SERVER[$header_key];
+        // }
     }
 
     return $headers;
@@ -1219,9 +1234,12 @@ function btcpaywall_readable_format_seconds_to_words($seconds)
 
 function btcpaywall_set_headers_for_file_download($file)
 {
+    $protocol = isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.1';
+    $protocol = filter_var($protocol, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
     nocache_headers();
     header("Robots: none" . "\n");
-    @header($_SERVER['SERVER_PROTOCOL'] . ' 200 OK' . "\n");
+    // @header($_SERVER['SERVER_PROTOCOL'] . ' 200 OK' . "\n");
+    header($_SERVER['SERVER_PROTOCOL'] . ' 200 OK' . "\n");
     header("Content-Type: " . $file['content_type'] . "\n");
     header("Content-Description: File Transfer" . "\n");
     header("Content-Disposition: attachment; filename=\"" . $file['name'] . "\"" . "\n");
